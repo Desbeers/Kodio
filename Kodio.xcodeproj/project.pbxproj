@@ -1,0 +1,759 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D706CE0C2644E7B6006D690D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE0B2644E7B6006D690D /* Player.swift */; };
+		D706CE0D2644E7B6006D690D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE0B2644E7B6006D690D /* Player.swift */; };
+		D706CE0F264533F6006D690D /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE0E264533F6006D690D /* Genres.swift */; };
+		D706CE10264533F6006D690D /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE0E264533F6006D690D /* Genres.swift */; };
+		D706CE1226453A6F006D690D /* ViewGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1126453A6F006D690D /* ViewGenres.swift */; };
+		D706CE1326453A6F006D690D /* ViewGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1126453A6F006D690D /* ViewGenres.swift */; };
+		D706CE1526454161006D690D /* ViewSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1426454161006D690D /* ViewSidebar.swift */; };
+		D706CE1626454161006D690D /* ViewSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1426454161006D690D /* ViewSidebar.swift */; };
+		D706CE1826454369006D690D /* ViewTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1726454369006D690D /* ViewTabs.swift */; };
+		D706CE1926454369006D690D /* ViewTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1726454369006D690D /* ViewTabs.swift */; };
+		D706CE1B2645516A006D690D /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1A2645516A006D690D /* SearchField.swift */; };
+		D706CE1D26459389006D690D /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1C26459389006D690D /* Search.swift */; };
+		D706CE1F264594ED006D690D /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1C26459389006D690D /* Search.swift */; };
+		D706CE2126468B48006D690D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE2026468B48006D690D /* HeaderView.swift */; };
+		D706CE232646C1BC006D690D /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE222646C1BC006D690D /* FooterView.swift */; };
+		D712BE48265B89E400DA3F26 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D712BE47265B89E400DA3F26 /* .swiftlint.yml */; };
+		D712BE49265B89E400DA3F26 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D712BE47265B89E400DA3F26 /* .swiftlint.yml */; };
+		D71B4AFC26428E3F00852BDF /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4AE926428E3E00852BDF /* KodioApp.swift */; };
+		D71B4AFE26428E3F00852BDF /* ViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4AEA26428E3E00852BDF /* ViewContent.swift */; };
+		D71B4B0026428E3F00852BDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71B4AEB26428E3F00852BDF /* Assets.xcassets */; };
+		D71B4B0126428E3F00852BDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71B4AEB26428E3F00852BDF /* Assets.xcassets */; };
+		D71B4B1C26428ED600852BDF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B1226428ED600852BDF /* APIClient.swift */; };
+		D71B4B1D26428ED600852BDF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B1226428ED600852BDF /* APIClient.swift */; };
+		D71B4B2826428F2500852BDF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B2726428F2500852BDF /* Extensions.swift */; };
+		D71B4B2926428F2500852BDF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B2726428F2500852BDF /* Extensions.swift */; };
+		D71B4B2D26428F3F00852BDF /* KodiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B2C26428F3F00852BDF /* KodiClient.swift */; };
+		D71B4B2E26428F3F00852BDF /* KodiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B2C26428F3F00852BDF /* KodiClient.swift */; };
+		D71B4B322642900300852BDF /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B312642900300852BDF /* General.swift */; };
+		D71B4B332642900300852BDF /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B312642900300852BDF /* General.swift */; };
+		D71B4B472642A08E00852BDF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B462642A08E00852BDF /* Files.swift */; };
+		D71B4B482642A08E00852BDF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B462642A08E00852BDF /* Files.swift */; };
+		D71B4B4E2642A6E300852BDF /* Artists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B4D2642A6E300852BDF /* Artists.swift */; };
+		D71B4B4F2642A6E300852BDF /* Artists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B4D2642A6E300852BDF /* Artists.swift */; };
+		D71B4B552642AC8B00852BDF /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B542642AC8B00852BDF /* Debug.swift */; };
+		D71B4B562642AC8B00852BDF /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B542642AC8B00852BDF /* Debug.swift */; };
+		D71B4B5A2642BBC900852BDF /* Albums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B592642BBC900852BDF /* Albums.swift */; };
+		D71B4B5B2642BBC900852BDF /* Albums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B592642BBC900852BDF /* Albums.swift */; };
+		D71B4B612642CA4F00852BDF /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B602642CA4F00852BDF /* Playlists.swift */; };
+		D71B4B622642CA4F00852BDF /* Playlists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B602642CA4F00852BDF /* Playlists.swift */; };
+		D71B4B682642CB0500852BDF /* Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B672642CB0500852BDF /* Songs.swift */; };
+		D71B4B692642CB0500852BDF /* Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B672642CB0500852BDF /* Songs.swift */; };
+		D71B4B892642D53B00852BDF /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B882642D53B00852BDF /* Cache.swift */; };
+		D71B4B8A2642D53B00852BDF /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B882642D53B00852BDF /* Cache.swift */; };
+		D71B4B8F264305F700852BDF /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B8D264305F700852BDF /* SearchField.swift */; };
+		D71FB3E626591AE3009061CC /* ViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FB3E526591AE3009061CC /* ViewDetails.swift */; };
+		D71FB3E726591AE3009061CC /* ViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FB3E526591AE3009061CC /* ViewDetails.swift */; };
+		D73A8E2D265518EA00A1A81F /* KodiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A8E2C265518EA00A1A81F /* KodiAPI.swift */; };
+		D73A8E2E265518EA00A1A81F /* KodiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A8E2C265518EA00A1A81F /* KodiAPI.swift */; };
+		D74C9A58264417AD00132DAC /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A57264417A500132DAC /* KodioApp.swift */; };
+		D74C9A5A26441F1F00132DAC /* ViewArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A5926441F1F00132DAC /* ViewArtists.swift */; };
+		D74C9A5B26441F1F00132DAC /* ViewArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A5926441F1F00132DAC /* ViewArtists.swift */; };
+		D74C9A5D26441F3200132DAC /* ViewAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A5C26441F3200132DAC /* ViewAlbums.swift */; };
+		D74C9A5E26441F3200132DAC /* ViewAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A5C26441F3200132DAC /* ViewAlbums.swift */; };
+		D74C9A6026441F3C00132DAC /* ViewSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A5F26441F3C00132DAC /* ViewSongs.swift */; };
+		D74C9A6126441F3C00132DAC /* ViewSongs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A5F26441F3C00132DAC /* ViewSongs.swift */; };
+		D74C9A632644200C00132DAC /* ViewPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A622644200C00132DAC /* ViewPlaylist.swift */; };
+		D74C9A642644200C00132DAC /* ViewPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A622644200C00132DAC /* ViewPlaylist.swift */; };
+		D74C9A6626443B4100132DAC /* ViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A6526443B4100132DAC /* ViewContent.swift */; };
+		D74C9A692644553A00132DAC /* ViewArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A682644553A00132DAC /* ViewArt.swift */; };
+		D74C9A6A2644557200132DAC /* ViewArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A682644553A00132DAC /* ViewArt.swift */; };
+		D74C9A6C264458C700132DAC /* ViewSmartLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A6B264458C700132DAC /* ViewSmartLists.swift */; };
+		D74C9A6D264458CD00132DAC /* ViewSmartLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A6B264458C700132DAC /* ViewSmartLists.swift */; };
+		D75332D52647E39000F21ACD /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75332D42647E39000F21ACD /* WebSocket.swift */; };
+		D75332D62647E39000F21ACD /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75332D42647E39000F21ACD /* WebSocket.swift */; };
+		D75332D8264814CD00F21ACD /* ViewPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75332D7264814CD00F21ACD /* ViewPlayer.swift */; };
+		D75332D9264814CD00F21ACD /* ViewPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75332D7264814CD00F21ACD /* ViewPlayer.swift */; };
+		D75688A6265C01CE008A7D16 /* ViewLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75688A5265C01CE008A7D16 /* ViewLog.swift */; };
+		D75688A7265C01CE008A7D16 /* ViewLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75688A5265C01CE008A7D16 /* ViewLog.swift */; };
+		D75BFCD9266A4F46005E0C77 /* ViewiPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75BFCD8266A4F46005E0C77 /* ViewiPad.swift */; };
+		D7694E13265168F10092D195 /* ViewDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7694E12265168F10092D195 /* ViewDescription.swift */; };
+		D7694E14265168F10092D195 /* ViewDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7694E12265168F10092D195 /* ViewDescription.swift */; };
+		D76EDE92266A36C000DB91DF /* ViewiPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EDE91266A36C000DB91DF /* ViewiPhone.swift */; };
+		D79563C32669340200962DFB /* Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79563C22669340200962DFB /* Radio.swift */; };
+		D79563C42669340200962DFB /* Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79563C22669340200962DFB /* Radio.swift */; };
+		D79563C62669489D00962DFB /* ViewRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79563C52669489D00962DFB /* ViewRadio.swift */; };
+		D79563C72669489D00962DFB /* ViewRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79563C52669489D00962DFB /* ViewRadio.swift */; };
+		D79A54AF265FAE1300FCC425 /* KodiHosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79A54AE265FAE1300FCC425 /* KodiHosts.swift */; };
+		D79A54B0265FAE1300FCC425 /* KodiHosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79A54AE265FAE1300FCC425 /* KodiHosts.swift */; };
+		D7ABB9F5265A33DC00098E19 /* ViewKodi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABB9F4265A33DC00098E19 /* ViewKodi.swift */; };
+		D7ABB9F6265A33DC00098E19 /* ViewKodi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ABB9F4265A33DC00098E19 /* ViewKodi.swift */; };
+		D7AC7B10266684920069B564 /* KodiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC7B0F266684920069B564 /* KodiRequest.swift */; };
+		D7AC7B11266684920069B564 /* KodiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC7B0F266684920069B564 /* KodiRequest.swift */; };
+		D7AF349F2665270E0078504E /* AudioLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF349E2665270E0078504E /* AudioLibrary.swift */; };
+		D7AF34A02665270E0078504E /* AudioLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF349E2665270E0078504E /* AudioLibrary.swift */; };
+		D7B4CE912643F2C000E66F22 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4CE902643F2C000E66F22 /* Images.swift */; };
+		D7B4CE922643F2C000E66F22 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4CE902643F2C000E66F22 /* Images.swift */; };
+		D7F0A0AD2662E3DC00CE7F21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0AC2662E3DC00CE7F21 /* AppDelegate.swift */; };
+		D7F435872666AF36009149D7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F435862666AF36009149D7 /* AppState.swift */; };
+		D7F435882666AF36009149D7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F435862666AF36009149D7 /* AppState.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D706CE0B2644E7B6006D690D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D706CE0E264533F6006D690D /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
+		D706CE1126453A6F006D690D /* ViewGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGenres.swift; sourceTree = "<group>"; };
+		D706CE1426454161006D690D /* ViewSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSidebar.swift; sourceTree = "<group>"; };
+		D706CE1726454369006D690D /* ViewTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTabs.swift; sourceTree = "<group>"; };
+		D706CE1A2645516A006D690D /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		D706CE1C26459389006D690D /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		D706CE2026468B48006D690D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		D706CE222646C1BC006D690D /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		D712BE47265B89E400DA3F26 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		D71B4AE926428E3E00852BDF /* KodioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
+		D71B4AEA26428E3E00852BDF /* ViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContent.swift; sourceTree = "<group>"; };
+		D71B4AEB26428E3F00852BDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D71B4AF026428E3F00852BDF /* Kodio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kodio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D71B4AF326428E3F00852BDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D71B4AF826428E3F00852BDF /* Kodio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kodio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D71B4AFA26428E3F00852BDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D71B4AFB26428E3F00852BDF /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		D71B4B1226428ED600852BDF /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		D71B4B2726428F2500852BDF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D71B4B2C26428F3F00852BDF /* KodiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiClient.swift; sourceTree = "<group>"; };
+		D71B4B312642900300852BDF /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		D71B4B462642A08E00852BDF /* Files.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
+		D71B4B4D2642A6E300852BDF /* Artists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artists.swift; sourceTree = "<group>"; };
+		D71B4B542642AC8B00852BDF /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		D71B4B592642BBC900852BDF /* Albums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Albums.swift; sourceTree = "<group>"; };
+		D71B4B602642CA4F00852BDF /* Playlists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlists.swift; sourceTree = "<group>"; };
+		D71B4B672642CB0500852BDF /* Songs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songs.swift; sourceTree = "<group>"; };
+		D71B4B882642D53B00852BDF /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		D71B4B8D264305F700852BDF /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		D71FB3E526591AE3009061CC /* ViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetails.swift; sourceTree = "<group>"; };
+		D724E2BB266A8A3900AE87EF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		D73A8E2C265518EA00A1A81F /* KodiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiAPI.swift; sourceTree = "<group>"; };
+		D74C9A57264417A500132DAC /* KodioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
+		D74C9A5926441F1F00132DAC /* ViewArtists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewArtists.swift; sourceTree = "<group>"; };
+		D74C9A5C26441F3200132DAC /* ViewAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAlbums.swift; sourceTree = "<group>"; };
+		D74C9A5F26441F3C00132DAC /* ViewSongs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongs.swift; sourceTree = "<group>"; };
+		D74C9A622644200C00132DAC /* ViewPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlaylist.swift; sourceTree = "<group>"; };
+		D74C9A6526443B4100132DAC /* ViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContent.swift; sourceTree = "<group>"; };
+		D74C9A682644553A00132DAC /* ViewArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewArt.swift; sourceTree = "<group>"; };
+		D74C9A6B264458C700132DAC /* ViewSmartLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSmartLists.swift; sourceTree = "<group>"; };
+		D75332D42647E39000F21ACD /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		D75332D7264814CD00F21ACD /* ViewPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPlayer.swift; sourceTree = "<group>"; };
+		D75688A5265C01CE008A7D16 /* ViewLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLog.swift; sourceTree = "<group>"; };
+		D75BFCD8266A4F46005E0C77 /* ViewiPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewiPad.swift; sourceTree = "<group>"; };
+		D7694E12265168F10092D195 /* ViewDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDescription.swift; sourceTree = "<group>"; };
+		D76EDE91266A36C000DB91DF /* ViewiPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewiPhone.swift; sourceTree = "<group>"; };
+		D79563C22669340200962DFB /* Radio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radio.swift; sourceTree = "<group>"; };
+		D79563C52669489D00962DFB /* ViewRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRadio.swift; sourceTree = "<group>"; };
+		D79A54AE265FAE1300FCC425 /* KodiHosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHosts.swift; sourceTree = "<group>"; };
+		D7ABB9F4265A33DC00098E19 /* ViewKodi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewKodi.swift; sourceTree = "<group>"; };
+		D7AC7B0F266684920069B564 /* KodiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiRequest.swift; sourceTree = "<group>"; };
+		D7AF349E2665270E0078504E /* AudioLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioLibrary.swift; sourceTree = "<group>"; };
+		D7B4CE902643F2C000E66F22 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		D7D6C7582665958B00EBF920 /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .jazzy.yaml; sourceTree = "<group>"; };
+		D7D6C759266595B200EBF920 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D7F0A0AC2662E3DC00CE7F21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D7F435862666AF36009149D7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D71B4AED26428E3F00852BDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D71B4AF526428E3F00852BDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D71B4AE326428E3E00852BDF = {
+			isa = PBXGroup;
+			children = (
+				D7D6C759266595B200EBF920 /* README.md */,
+				D724E2BB266A8A3900AE87EF /* .gitignore */,
+				D7D6C7582665958B00EBF920 /* .jazzy.yaml */,
+				D712BE47265B89E400DA3F26 /* .swiftlint.yml */,
+				D71B4B2626428EF100852BDF /* Kodi */,
+				D74C9A672644552600132DAC /* Shared */,
+				D71B4AF926428E3F00852BDF /* macOS */,
+				D71B4AF226428E3F00852BDF /* iOS */,
+				D71B4AF126428E3F00852BDF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D71B4AF126428E3F00852BDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D71B4AF026428E3F00852BDF /* Kodio.app */,
+				D71B4AF826428E3F00852BDF /* Kodio.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D71B4AF226428E3F00852BDF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D71B4AE926428E3E00852BDF /* KodioApp.swift */,
+				D71B4AEA26428E3E00852BDF /* ViewContent.swift */,
+				D75BFCD8266A4F46005E0C77 /* ViewiPad.swift */,
+				D76EDE91266A36C000DB91DF /* ViewiPhone.swift */,
+				D706CE2026468B48006D690D /* HeaderView.swift */,
+				D706CE222646C1BC006D690D /* FooterView.swift */,
+				D706CE1A2645516A006D690D /* SearchField.swift */,
+				D71B4AF326428E3F00852BDF /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		D71B4AF926428E3F00852BDF /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				D74C9A57264417A500132DAC /* KodioApp.swift */,
+				D7F0A0AC2662E3DC00CE7F21 /* AppDelegate.swift */,
+				D74C9A6526443B4100132DAC /* ViewContent.swift */,
+				D71B4B8D264305F700852BDF /* SearchField.swift */,
+				D71B4AFA26428E3F00852BDF /* Info.plist */,
+				D71B4AFB26428E3F00852BDF /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		D71B4B2626428EF100852BDF /* Kodi */ = {
+			isa = PBXGroup;
+			children = (
+				D71B4B1226428ED600852BDF /* APIClient.swift */,
+				D7AC7B0F266684920069B564 /* KodiRequest.swift */,
+				D79A54AE265FAE1300FCC425 /* KodiHosts.swift */,
+				D71B4B2C26428F3F00852BDF /* KodiClient.swift */,
+				D73A8E2C265518EA00A1A81F /* KodiAPI.swift */,
+				D75332D42647E39000F21ACD /* WebSocket.swift */,
+				D71B4B312642900300852BDF /* General.swift */,
+				D7AF349E2665270E0078504E /* AudioLibrary.swift */,
+				D71B4B4D2642A6E300852BDF /* Artists.swift */,
+				D71B4B592642BBC900852BDF /* Albums.swift */,
+				D71B4B672642CB0500852BDF /* Songs.swift */,
+				D706CE0E264533F6006D690D /* Genres.swift */,
+				D71B4B602642CA4F00852BDF /* Playlists.swift */,
+				D71B4B462642A08E00852BDF /* Files.swift */,
+				D71B4B882642D53B00852BDF /* Cache.swift */,
+				D7B4CE902643F2C000E66F22 /* Images.swift */,
+				D706CE0B2644E7B6006D690D /* Player.swift */,
+				D706CE1C26459389006D690D /* Search.swift */,
+				D71B4B542642AC8B00852BDF /* Debug.swift */,
+				D79563C22669340200962DFB /* Radio.swift */,
+			);
+			path = Kodi;
+			sourceTree = "<group>";
+		};
+		D74C9A672644552600132DAC /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D7F435862666AF36009149D7 /* AppState.swift */,
+				D71B4B2726428F2500852BDF /* Extensions.swift */,
+				D706CE1426454161006D690D /* ViewSidebar.swift */,
+				D74C9A6B264458C700132DAC /* ViewSmartLists.swift */,
+				D74C9A5926441F1F00132DAC /* ViewArtists.swift */,
+				D706CE1126453A6F006D690D /* ViewGenres.swift */,
+				D74C9A5C26441F3200132DAC /* ViewAlbums.swift */,
+				D71FB3E526591AE3009061CC /* ViewDetails.swift */,
+				D74C9A5F26441F3C00132DAC /* ViewSongs.swift */,
+				D74C9A622644200C00132DAC /* ViewPlaylist.swift */,
+				D74C9A682644553A00132DAC /* ViewArt.swift */,
+				D706CE1726454369006D690D /* ViewTabs.swift */,
+				D75332D7264814CD00F21ACD /* ViewPlayer.swift */,
+				D7694E12265168F10092D195 /* ViewDescription.swift */,
+				D7ABB9F4265A33DC00098E19 /* ViewKodi.swift */,
+				D75688A5265C01CE008A7D16 /* ViewLog.swift */,
+				D71B4AEB26428E3F00852BDF /* Assets.xcassets */,
+				D79563C52669489D00962DFB /* ViewRadio.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D71B4AEF26428E3F00852BDF /* Kodio (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D71B4B0426428E3F00852BDF /* Build configuration list for PBXNativeTarget "Kodio (iOS)" */;
+			buildPhases = (
+				D71B4AEC26428E3F00852BDF /* Sources */,
+				D71B4AED26428E3F00852BDF /* Frameworks */,
+				D71B4AEE26428E3F00852BDF /* Resources */,
+				D75BFCDA266A84A1005E0C77 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kodio (iOS)";
+			productName = "Connector (iOS)";
+			productReference = D71B4AF026428E3F00852BDF /* Kodio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D71B4AF726428E3F00852BDF /* Kodio (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D71B4B0726428E3F00852BDF /* Build configuration list for PBXNativeTarget "Kodio (macOS)" */;
+			buildPhases = (
+				D71B4AF426428E3F00852BDF /* Sources */,
+				D71B4AF526428E3F00852BDF /* Frameworks */,
+				D71B4AF626428E3F00852BDF /* Resources */,
+				D712BE46265B799400DA3F26 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kodio (macOS)";
+			productName = "Connector (macOS)";
+			productReference = D71B4AF826428E3F00852BDF /* Kodio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D71B4AE426428E3E00852BDF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					D71B4AEF26428E3F00852BDF = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					D71B4AF726428E3F00852BDF = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = D71B4AE726428E3E00852BDF /* Build configuration list for PBXProject "Kodio" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D71B4AE326428E3E00852BDF;
+			productRefGroup = D71B4AF126428E3F00852BDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D71B4AEF26428E3F00852BDF /* Kodio (iOS) */,
+				D71B4AF726428E3F00852BDF /* Kodio (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D71B4AEE26428E3F00852BDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D712BE48265B89E400DA3F26 /* .swiftlint.yml in Resources */,
+				D71B4B0026428E3F00852BDF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D71B4AF626428E3F00852BDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D712BE49265B89E400DA3F26 /* .swiftlint.yml in Resources */,
+				D71B4B0126428E3F00852BDF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D712BE46265B799400DA3F26 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  # swiftlint --enable-all-rules\n  # swiftlint autocorrect\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		D75BFCDA266A84A1005E0C77 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  # swiftlint --enable-all-rules\n  # swiftlint autocorrect\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D71B4AEC26428E3F00852BDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D75332D52647E39000F21ACD /* WebSocket.swift in Sources */,
+				D79563C32669340200962DFB /* Radio.swift in Sources */,
+				D75332D8264814CD00F21ACD /* ViewPlayer.swift in Sources */,
+				D706CE0C2644E7B6006D690D /* Player.swift in Sources */,
+				D71B4B5A2642BBC900852BDF /* Albums.swift in Sources */,
+				D74C9A5A26441F1F00132DAC /* ViewArtists.swift in Sources */,
+				D71B4B1C26428ED600852BDF /* APIClient.swift in Sources */,
+				D71B4AFE26428E3F00852BDF /* ViewContent.swift in Sources */,
+				D71B4B682642CB0500852BDF /* Songs.swift in Sources */,
+				D71B4B2D26428F3F00852BDF /* KodiClient.swift in Sources */,
+				D71B4B322642900300852BDF /* General.swift in Sources */,
+				D706CE0F264533F6006D690D /* Genres.swift in Sources */,
+				D76EDE92266A36C000DB91DF /* ViewiPhone.swift in Sources */,
+				D7F435872666AF36009149D7 /* AppState.swift in Sources */,
+				D706CE1D26459389006D690D /* Search.swift in Sources */,
+				D79563C62669489D00962DFB /* ViewRadio.swift in Sources */,
+				D71B4B892642D53B00852BDF /* Cache.swift in Sources */,
+				D7ABB9F5265A33DC00098E19 /* ViewKodi.swift in Sources */,
+				D706CE1226453A6F006D690D /* ViewGenres.swift in Sources */,
+				D7B4CE912643F2C000E66F22 /* Images.swift in Sources */,
+				D7694E13265168F10092D195 /* ViewDescription.swift in Sources */,
+				D706CE1526454161006D690D /* ViewSidebar.swift in Sources */,
+				D706CE1B2645516A006D690D /* SearchField.swift in Sources */,
+				D79A54AF265FAE1300FCC425 /* KodiHosts.swift in Sources */,
+				D74C9A632644200C00132DAC /* ViewPlaylist.swift in Sources */,
+				D74C9A692644553A00132DAC /* ViewArt.swift in Sources */,
+				D71B4B612642CA4F00852BDF /* Playlists.swift in Sources */,
+				D706CE1826454369006D690D /* ViewTabs.swift in Sources */,
+				D71B4B552642AC8B00852BDF /* Debug.swift in Sources */,
+				D7AF349F2665270E0078504E /* AudioLibrary.swift in Sources */,
+				D71B4B472642A08E00852BDF /* Files.swift in Sources */,
+				D75688A6265C01CE008A7D16 /* ViewLog.swift in Sources */,
+				D7AC7B10266684920069B564 /* KodiRequest.swift in Sources */,
+				D71B4B4E2642A6E300852BDF /* Artists.swift in Sources */,
+				D74C9A6C264458C700132DAC /* ViewSmartLists.swift in Sources */,
+				D73A8E2D265518EA00A1A81F /* KodiAPI.swift in Sources */,
+				D74C9A6026441F3C00132DAC /* ViewSongs.swift in Sources */,
+				D706CE232646C1BC006D690D /* FooterView.swift in Sources */,
+				D75BFCD9266A4F46005E0C77 /* ViewiPad.swift in Sources */,
+				D71B4B2826428F2500852BDF /* Extensions.swift in Sources */,
+				D74C9A5D26441F3200132DAC /* ViewAlbums.swift in Sources */,
+				D71FB3E626591AE3009061CC /* ViewDetails.swift in Sources */,
+				D71B4AFC26428E3F00852BDF /* KodioApp.swift in Sources */,
+				D706CE2126468B48006D690D /* HeaderView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D71B4AF426428E3F00852BDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D79A54B0265FAE1300FCC425 /* KodiHosts.swift in Sources */,
+				D706CE0D2644E7B6006D690D /* Player.swift in Sources */,
+				D73A8E2E265518EA00A1A81F /* KodiAPI.swift in Sources */,
+				D74C9A58264417AD00132DAC /* KodioApp.swift in Sources */,
+				D74C9A5B26441F1F00132DAC /* ViewArtists.swift in Sources */,
+				D79563C42669340200962DFB /* Radio.swift in Sources */,
+				D71B4B5B2642BBC900852BDF /* Albums.swift in Sources */,
+				D7AC7B11266684920069B564 /* KodiRequest.swift in Sources */,
+				D71B4B1D26428ED600852BDF /* APIClient.swift in Sources */,
+				D71B4B692642CB0500852BDF /* Songs.swift in Sources */,
+				D71B4B2E26428F3F00852BDF /* KodiClient.swift in Sources */,
+				D71B4B332642900300852BDF /* General.swift in Sources */,
+				D75332D62647E39000F21ACD /* WebSocket.swift in Sources */,
+				D7694E14265168F10092D195 /* ViewDescription.swift in Sources */,
+				D7F0A0AD2662E3DC00CE7F21 /* AppDelegate.swift in Sources */,
+				D75332D9264814CD00F21ACD /* ViewPlayer.swift in Sources */,
+				D706CE10264533F6006D690D /* Genres.swift in Sources */,
+				D71FB3E726591AE3009061CC /* ViewDetails.swift in Sources */,
+				D706CE1F264594ED006D690D /* Search.swift in Sources */,
+				D79563C72669489D00962DFB /* ViewRadio.swift in Sources */,
+				D71B4B8A2642D53B00852BDF /* Cache.swift in Sources */,
+				D706CE1326453A6F006D690D /* ViewGenres.swift in Sources */,
+				D74C9A6626443B4100132DAC /* ViewContent.swift in Sources */,
+				D706CE1626454161006D690D /* ViewSidebar.swift in Sources */,
+				D74C9A642644200C00132DAC /* ViewPlaylist.swift in Sources */,
+				D74C9A6A2644557200132DAC /* ViewArt.swift in Sources */,
+				D7ABB9F6265A33DC00098E19 /* ViewKodi.swift in Sources */,
+				D7B4CE922643F2C000E66F22 /* Images.swift in Sources */,
+				D706CE1926454369006D690D /* ViewTabs.swift in Sources */,
+				D71B4B622642CA4F00852BDF /* Playlists.swift in Sources */,
+				D71B4B562642AC8B00852BDF /* Debug.swift in Sources */,
+				D71B4B482642A08E00852BDF /* Files.swift in Sources */,
+				D74C9A6D264458CD00132DAC /* ViewSmartLists.swift in Sources */,
+				D74C9A6126441F3C00132DAC /* ViewSongs.swift in Sources */,
+				D75688A7265C01CE008A7D16 /* ViewLog.swift in Sources */,
+				D7AF34A02665270E0078504E /* AudioLibrary.swift in Sources */,
+				D71B4B4F2642A6E300852BDF /* Artists.swift in Sources */,
+				D74C9A5E26441F3200132DAC /* ViewAlbums.swift in Sources */,
+				D7F435882666AF36009149D7 /* AppState.swift in Sources */,
+				D71B4B2926428F2500852BDF /* Extensions.swift in Sources */,
+				D71B4B8F264305F700852BDF /* SearchField.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D71B4B0226428E3F00852BDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D71B4B0326428E3F00852BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		D71B4B0526428E3F00852BDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconiPad;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FHPCJ7396C;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
+				PRODUCT_NAME = Kodio;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D71B4B0626428E3F00852BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconiPad;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FHPCJ7396C;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
+				PRODUCT_NAME = Kodio;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D71B4B0826428E3F00852BDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconMac;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FHPCJ7396C;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
+				PRODUCT_NAME = Kodio;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D71B4B0926428E3F00852BDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconMac;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FHPCJ7396C;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
+				PRODUCT_NAME = Kodio;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D71B4AE726428E3E00852BDF /* Build configuration list for PBXProject "Kodio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D71B4B0226428E3F00852BDF /* Debug */,
+				D71B4B0326428E3F00852BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D71B4B0426428E3F00852BDF /* Build configuration list for PBXNativeTarget "Kodio (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D71B4B0526428E3F00852BDF /* Debug */,
+				D71B4B0626428E3F00852BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D71B4B0726428E3F00852BDF /* Build configuration list for PBXNativeTarget "Kodio (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D71B4B0826428E3F00852BDF /* Debug */,
+				D71B4B0926428E3F00852BDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D71B4AE426428E3E00852BDF /* Project object */;
+}
