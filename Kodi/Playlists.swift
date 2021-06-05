@@ -145,7 +145,6 @@ extension KodiClient {
     // MARK: get a list of playlist files
 
     func getPlaylistFiles() {
-        self.library.playlists = false
         let request = FilesGetDirectory(directory: "special://musicplaylists")
         sendRequest(request: request) { [weak self] result in
             switch result {
@@ -153,7 +152,6 @@ extension KodiClient {
                 guard let results = result?.result.files else {
                     return
                 }
-                self?.library.playlists = true
                 self?.playlists.files = results
                 self?.log(#function, "Got a list of playlists")
             case .failure(let error):

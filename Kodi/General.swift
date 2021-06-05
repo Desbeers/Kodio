@@ -113,7 +113,7 @@ enum FilterType: String {
 struct LibraryState {
     /// Check if all items are loaded
     var all: Bool {
-        if artists, albums, albumsRecent, albumsMost, songs, songsRecent, songsMost, genres, playlists, loaded {
+        if artists, albums, albumsRecent, albumsMost, songs, songsRecent, songsMost, genres, loaded {
             return true
         }
         return false
@@ -131,7 +131,6 @@ struct LibraryState {
     var songsRecent: Bool = false
     var songsMost: Bool = false
     var genres: Bool = false
-    var playlists: Bool = false
     /// Bool if we have switched to a new library
     var switchHost: Bool = true
     /// Function to reset all vars to initial value
