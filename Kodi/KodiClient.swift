@@ -84,7 +84,7 @@ class KodiClient: APIClient, ObservableObject {
         /// Network stuff
         configuration.timeoutIntervalForRequest = 300
         configuration.waitsForConnectivity = true
-        configuration.timeoutIntervalForResource = 60
+        configuration.timeoutIntervalForResource = 120
         self.urlSession = URLSession(configuration: configuration)
         /// Host stuff
         self.hosts = getAllHosts()
