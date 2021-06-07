@@ -113,6 +113,7 @@ struct AudioLibraryGetArtists: KodiRequest {
         let properties = ArtistFields().properties
         let sort = Sort()
         struct Sort: Encodable {
+            let useartistsortname = true
             let order = SortFields.ascending.string()
             let method = SortFields.artist.string()
         }
