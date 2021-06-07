@@ -13,19 +13,29 @@ import SwiftUI
 struct ViewAlbums: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// Show long artist description or not
     @State private var showDescription: Bool = false
     /// The view
     var body: some View {
         VStack(spacing: 0) {
             ViewArtFanart()
-            if kodi.artists.selected != nil, !(kodi.artists.selected?.description.isEmpty ?? true) {
-                ViewDescription(description: kodi.artists.selected!.description)
-            }
             ScrollViewReader { proxy in
                 List {
                     ForEach(kodi.albumsFilter, id: \.self) { album in
                         ViewAlbumsListRow(album: album)
+                    }
+                    if kodi.artists.selected != nil, !(kodi.artists.selected?.description.isEmpty ?? true) {
+                        HStack {
+                            Spacer()
+                            Button("More about '\(kodi.artists.selected!.artist)'") {
+                                DispatchQueue.main.async {
+                                    appState.activeSheet = .viewArtistInfo
+                                    appState.showSheet = true
+                                }
+                            }
+                        }
                     }
                 }
                 .id(kodi.albumListID)
@@ -68,7 +78,7 @@ struct ViewAlbumsListRow: View {
                         Text(album.genre.first ?? "")
                     }
                     Text(album.playCountLabel)
-                    .isHidden(kodi.filter.songs != .mostPlayed)
+                        .isHidden(kodi.filter.songs != .mostPlayed)
                 }
                 .font(.caption)
             }

@@ -70,6 +70,8 @@ struct ViewSongs: View {
 struct SongsViewHeader: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// Show long album description or not
     @State private var showDescription: Bool = false
     /// The view
@@ -87,12 +89,19 @@ struct SongsViewHeader: View {
                     label: {
                         Label("Shuffle songs", systemImage: "shuffle")
                     }
+                if kodi.albums.selected != nil, !(kodi.albums.selected?.description.isEmpty ?? true) {
+                        Spacer()
+                        Button("Info") {
+                            DispatchQueue.main.async {
+                                appState.activeSheet = .viewAlbumInfo
+                                appState.showSheet = true
+                            }
+                        }
+                    .foregroundColor(.accentColor)
+                }
             }
             .buttonStyle(ViewPlayerStyleButton())
             Divider()
-            if kodi.albums.selected != nil, !(kodi.albums.selected?.description.isEmpty ?? true) {
-                ViewDescription(description: kodi.albums.selected!.description)
-            }
         }
         .padding(.horizontal)
     }

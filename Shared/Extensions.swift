@@ -114,6 +114,10 @@ extension ViewContent {
         switch appState.activeSheet {
         case .editHosts:
             ViewKodiEditHosts()
+        case .viewArtistInfo:
+            ViewDescription(artist: kodi.artists.selected)
+        case .viewAlbumInfo:
+            ViewDescription(album: kodi.albums.selected)
         }
     }
     /// A general Alert constructor

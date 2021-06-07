@@ -9,25 +9,43 @@ import SwiftUI
 
 /// Show a description about artist or album
 struct ViewDescription: View {
-    /// Show long description or not
-    @State private var showDescription: Bool = false
-    /// The actual description
-    var description: String
+    /// State of application
+    @EnvironmentObject var appState: AppState
+    /// The object
+    var artist: ArtistFields?
+    var album: AlbumFields?
     /// The view
     var body: some View {
-        HStack(alignment: .top) {
-            Button { withAnimation { showDescription.toggle() } }
-                label: {
-                    Image(systemName: showDescription ? "chevron.up" : "chevron.down")
+        VStack {
+            
+            switch appState.activeSheet {
+            case .viewArtistInfo:
+                Text(artist!.artist)
+                    .font(.title)
+                ScrollView {
+                    Text(artist!.description)
+                        .padding()
+                }
+            case .viewAlbumInfo:
+                Text(album!.title)
+                    .font(.title)
+                Text(album!.artist.first!)
+                    .font(.title2)
+                ScrollView {
+                    Text(album!.description)
+                        .padding()
+                }
+            case .editHosts:
+                Text("This will not happen")
             }
-            .padding(.leading)
-            .padding(.top)
-            ScrollView {
-                Text(description)
-                    .padding()
+            Button("Close") {
+                DispatchQueue.main.async {
+                    appState.showSheet = false
+                }
             }
+            .keyboardShortcut(.defaultAction)
         }
-        .padding(.bottom)
-        .if(!showDescription) { $0.frame(maxHeight: 66) }
+        .padding()
+        .frame(idealWidth: 500, idealHeight: 500)
     }
 }

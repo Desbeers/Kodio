@@ -25,6 +25,8 @@ class AppState: ObservableObject {
     /// The different kind of sheets
     enum Sheets {
         case editHosts
+        case viewArtistInfo
+        case viewAlbumInfo
     }
 }
 
