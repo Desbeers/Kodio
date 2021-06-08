@@ -141,17 +141,22 @@ struct ViewKodiServiceSettings: View {
 struct ViewKodiRotatingIcon: View {
     /// Rotating image
     @State private var isAnimating = false
-    var foreverAnimation: Animation {
+    var rotateRecord: Animation {
         Animation.linear(duration: 3.6)
             .repeatForever(autoreverses: false)
+    }
+    var stopRecord: Animation {
+        Animation.linear(duration: 0)
     }
     var body: some View {
         Image("Record")
             .resizable()
             .aspectRatio(contentMode: .fit)
             .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0.0))
+            .animation(isAnimating ? rotateRecord : stopRecord)
             .onAppear {
-                withAnimation(foreverAnimation) {
+                /// Give it a moment to settle; else the animation is strange on macOS
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     isAnimating = true
                 }
             }
