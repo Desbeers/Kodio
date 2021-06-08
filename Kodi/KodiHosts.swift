@@ -69,7 +69,8 @@ extension KodiClient {
                     self?.library.loaded = true
                     self?.log(#function, "Connected to Kodi")
                     if let results = result?.result {
-                        self?.version = results
+                        self?.properties = results
+                        print(results.volume)
                     }
                     /// Check if the library is still up to date
                     self?.getAudioLibraryLastUpdate()
@@ -77,6 +78,7 @@ extension KodiClient {
                     self?.connectWebSocket()
                     self?.library.online = true
                 }
+                self?.properties.volume = result?.result.volume ?? 0
                 /// While we are here; keep an eye on the player
                 self?.getPlayerItem() 
             case .failure:
@@ -89,7 +91,7 @@ extension KodiClient {
                 if self?.library.online == true {
                     self?.disconnectWebSocket()
                     self?.player = PlayerLists()
-                    self?.version = KodiProperties()
+                    self?.properties = KodiProperties()
                     self?.log(#function, "Kodi is offline")
                     self?.library.reset()
                     self?.library.online = false
@@ -111,7 +113,7 @@ extension KodiClient {
         saveSelectedHost(host: selected)
         saveAllHosts(hosts: newHostsList)
         /// Reload Kodio with selected host
-        self.version = KodiProperties()
+        self.properties = KodiProperties()
         self.log(#function, "Loading new Host")
         self.library.reset()
         self.connectHost()
@@ -138,6 +140,8 @@ struct ApplicationGetProperties: KodiRequest {
 
 struct KodiProperties: Codable {
     var name: String = ""
+    var volume: Double = 0
+    var muted: Bool = false
     var version = Version()
     struct Version: Codable {
         var major: Int = 0
@@ -153,7 +157,7 @@ struct KodiProperties: Codable {
 
 extension KodiProperties {
     enum CodingKeys: String, CodingKey {
-        case name, version
+        case name, version, volume, muted
     }
 }
 

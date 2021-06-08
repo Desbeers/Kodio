@@ -46,6 +46,9 @@ struct ViewContent: View {
                     .frame(minWidth: 400, idealWidth: 500, maxWidth: .infinity, maxHeight: .infinity)
                     .toolbar {
                         ToolbarItemGroup {
+                            ViewPlayerVolume()
+                                .frame(width: 160)
+                            Spacer()
                             ViewPlayerButtons()
                             Spacer()
                             ViewPlayerOptions()

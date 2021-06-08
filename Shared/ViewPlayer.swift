@@ -57,6 +57,25 @@ struct ViewPlayerOptions: View {
     }
 }
 
+// MARK: - ViewPlayerVolume (view)
+
+/// The options for shuffle and repeat
+struct ViewPlayerVolume: View {
+    /// The object that has it all:
+    @EnvironmentObject var kodi: KodiClient
+    /// The view
+    var body: some View {
+        HStack {
+            Image(systemName: "speaker.wave.3.fill")
+        Slider(value: $kodi.properties.volume, in: 0...100)
+            .onChange(of: kodi.properties.volume, perform: { value in
+                kodi.setApplicationVolume(volume: value)
+                print(value)
+            })
+        }
+    }
+}
+
 // MARK: - ViewPlayerStyleButton: (button style)
 
 struct ViewPlayerStyleButton: ButtonStyle {

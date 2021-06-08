@@ -14,6 +14,7 @@ enum KodiAPI: String {
     /// Application
     case applicationGetProperties = "Application.GetProperties"
     case applicationQuit = "Application.Quit"
+    case applicationSetVolume = "Application.SetVolume"
     
     /// Audio Library
     case audioLibraryScan = "AudioLibrary.Scan"

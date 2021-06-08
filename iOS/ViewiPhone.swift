@@ -74,6 +74,8 @@ struct ViewiPhoneMain: View {
                     ViewPlayerOptions()
                 }
                 .scaleEffect(1.5)
+                ViewPlayerVolume()
+                    .frame(width: 160)
             }
             .buttonStyle(ViewPlayerStyleButton())
             Spacer()

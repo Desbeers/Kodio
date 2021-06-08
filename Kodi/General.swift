@@ -67,6 +67,12 @@ extension KodiClient {
         getSongsSmartLists()
     }
     
+    // MARK: setApplicationVolume (function)
+    
+    func setApplicationVolume(volume: Double) {
+        let request = ApplicationSetVolume(volume: volume)
+        sendMessage(request: request)    }
+    
     // MARK: applicationQuit (function)
     
     func applicationQuit(confirm: Bool = false) {
@@ -137,6 +143,29 @@ struct LibraryState {
     mutating func reset() {
         self = LibraryState()
     }
+}
+
+struct ApplicationSetVolume: KodiRequest {
+    /// Arguments
+    var volume: Double
+    // Method
+    var api: KodiAPI = .applicationSetVolume
+    /// The JSON creator
+    var parameters: Data {
+        let method = api.method()
+        var params = Params()
+        params.volume = Int(volume)
+        return buildParams(method: method, params: params)
+    }
+    /// The request struct
+    struct Params: Encodable {
+        var volume: Int = 0
+    }
+    /// The response struct
+    struct Response: Decodable {
+        /// I don't care
+    }
+    
 }
 
 // MARK: - SystemAction (API request)

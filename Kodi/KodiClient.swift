@@ -20,8 +20,9 @@ class KodiClient: APIClient, ObservableObject {
     @Published var hosts: [HostFields]
     /// The  selected Kodi host
     @Published var selectedHost: HostFields
-    @Published var version = KodiProperties()
+    @Published var properties = KodiProperties()
     var hostTimer: Timer?
+    var volumeTimer: Timer?
     
     var userInterface: UserInterface = .macOS
 

@@ -27,6 +27,8 @@ struct FooterView: View {
                     }
                     .disabled(kodi.libraryIsScanning)
                 }
+                ViewPlayerVolume()
+                    .frame(width: 160)
                 Spacer()
             }
             if kodi.library.all {

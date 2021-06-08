@@ -20,7 +20,7 @@ struct ViewLog: View {
     var info: String {
         var text = ""
         if kodi.library.online {
-            text = "\(kodi.version.info) @ \(kodi.selectedHost.ip)"
+            text = "\(kodi.properties.info) @ \(kodi.selectedHost.ip)"
         }
         return text
     }
