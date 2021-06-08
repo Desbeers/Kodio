@@ -31,6 +31,8 @@ struct ViewArtists: View {
 struct ViewArtistsListRow: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// The artist object
     var artist: ArtistFields
     /// A bit of eye-candy
@@ -54,6 +56,7 @@ struct ViewArtistsListRow: View {
             kodi.albums.selected = nil
             kodi.filter.albums = .artist
             kodi.filter.songs = .artist
+            appState.tabs.tabSongPlaylist = .songs
         })
         .if(artist == kodi.artists.selected) {
             $0.background(Color.accentColor.opacity(opacity)).foregroundColor(.white)
