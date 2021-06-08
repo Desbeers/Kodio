@@ -26,7 +26,7 @@ struct ViewSidebar: View {
                 }
             }
             .onChange(of: kodi.libraryJump) { item in
-                proxy.scrollTo(item.artistID, anchor: .center)
+                proxy.scrollTo(item.artist, anchor: .center)
             }
         }
     }

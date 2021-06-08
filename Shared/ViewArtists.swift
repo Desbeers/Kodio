@@ -60,6 +60,6 @@ struct ViewArtistsListRow: View {
         }
         .cornerRadius(5)
         .padding(.bottom, 6)
-        .id(artist.artistID)
+        .id(artist.artist)
     }
 }

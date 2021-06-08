@@ -89,7 +89,7 @@ extension KodiClient {
 
     func hideArtistLabel(song: SongFields) -> Bool {
         if artists.selected != nil {
-            if song.albumArtistID.first == song.artistID.first {
+            if song.albumArtist.first == song.artist.first {
                 return true
             }
         }

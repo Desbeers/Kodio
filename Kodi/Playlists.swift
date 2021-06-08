@@ -24,7 +24,7 @@ extension KodiClient {
     }
 
     struct LibraryJump: Equatable {
-        var artistID: Int = 0
+        var artist: String = ""
         var albumID: Int = 0
         var songID: Int = 0
     }
@@ -33,7 +33,7 @@ extension KodiClient {
         if let index = songs.all.firstIndex(where: { $0.songID == item.songID }) {
             let appState = AppState.shared
             let song = songs.all[index]
-            if let index = artists.all.firstIndex(where: { $0.artistID == song.albumArtistID.first }) {
+            if let index = artists.all.firstIndex(where: { $0.artist == song.albumArtist.first }) {
                 artists.selected = artists.all[index]
             }
             if let index = albums.all.firstIndex(where: { $0.albumID == song.albumID }) {
@@ -46,7 +46,7 @@ extension KodiClient {
             filter.albums = .artist
             filter.songs = .album
             /// Trigger the jump
-            libraryJump = LibraryJump(artistID: song.albumArtistID.first!, albumID: song.albumID, songID: song.songID)
+            libraryJump = LibraryJump(artist: song.albumArtist.first!, albumID: song.albumID, songID: song.songID)
         }
     }
 

@@ -88,7 +88,7 @@ extension KodiClient {
         case .album:
             return songs.all.filter { $0.albumID == albums.selected?.albumID }
         case .artist:
-            return songs.all.filter { $0.albumArtistID.first == artists.selected?.artistID }
+            return songs.all.filter { $0.albumArtist.first == artists.selected?.artist }
                 .sorted { $0.year == $1.year ? $0.track < $1.track : $0.year < $1.year }
         case .mostPlayed:
             return songs.mostPlayed
@@ -235,18 +235,19 @@ struct AudioLibraryGetSongs: KodiRequest {
 // MARK: - SongFields (struct)
 
 /// The fields for an song
+/// - Note: "Requesting the genreid, artistid, albumartistid and/or sourceid fields will result in increased response times"
+///         From the Wiki, so I don't do that
 struct SongFields: Codable, Identifiable {
     /// The fields that we ask for
-    var properties = ["title", "artist", "year", "playcount", "albumid", "track", "lastplayed", "album",
-                      "thumbnail", "artistid", "dateadded", "albumartistid", "genre", "duration"]
+    var properties = ["title", "artist", "year", "playcount", "albumid", "albumartist", "track", "lastplayed", "album",
+                      "thumbnail", "dateadded", "genre", "duration"]
     /// Make it indentifiable
     var id = UUID()
     /// The fields from above
     var album: String = ""
-    var albumArtistID: [Int] = [0]
+    var albumArtist: [String] = [""]
     var albumID: Int = 0
     var artist: [String] = ["Play your own music"]
-    var artistID: [Int] = [0]
     var dateAdded: String = ""
     var genre: [String] = [""]
     var lastPlayed: String = ""
@@ -270,9 +271,8 @@ struct SongFields: Codable, Identifiable {
 extension SongFields {
     enum CodingKeys: String, CodingKey {
         case album, artist, genre, thumbnail, title, track, year, duration
-        case albumArtistID = "albumartistid"
         case albumID = "albumid"
-        case artistID = "artistid"
+        case albumArtist = "albumartist"
         case dateAdded = "dateadded"
         case lastPlayed = "lastplayed"
         case playCount = "playcount"
