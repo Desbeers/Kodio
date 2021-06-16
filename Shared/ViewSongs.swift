@@ -116,7 +116,7 @@ extension ViewSongs {
     /// - Returns: Song art or track number
     @ViewBuilder
     func songsViewRowHeader(song: SongFields) -> some View {
-        if kodi.filter.songs == .album {
+        if kodi.filter.songs == .album, song.track != 0 {
             Text(String(song.track))
                 .font(.caption)
         } else {
