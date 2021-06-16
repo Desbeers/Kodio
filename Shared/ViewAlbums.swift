@@ -55,7 +55,7 @@ struct ViewAlbums: View {
     }
 }
 
-// MARK: - ViewGenresListRow (view)
+// MARK: - ViewAlbumsListRow (view)
 
 /// The row of an album in the list
 struct ViewAlbumsListRow: View {
@@ -72,10 +72,13 @@ struct ViewAlbumsListRow: View {
                     .font(.headline)
                 Group {
                     Text(album.artist.first!)
-                    HStack(spacing: 0) {
-                        Text(String(album.year))
-                        Text("∙")
-                        Text(album.genre.first ?? "")
+                    /// Hide details when there is no year
+                    if album.year != 0 {
+                        HStack(spacing: 0) {
+                            Text(String(album.year))
+                            Text("∙")
+                            Text(album.genre.first ?? "")
+                        }
                     }
                     Text(album.playCountLabel)
                         .isHidden(kodi.filter.songs != .mostPlayed)
