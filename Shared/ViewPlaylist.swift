@@ -35,7 +35,7 @@ struct ViewPlaylist: View {
                                         VStack(alignment: .leading) {
                                             Text(song.title).font(.headline)
                                             Group {
-                                                Text(song.artist.first!)
+                                                Text(song.artist.joined(separator: " & "))
                                                 Text("\(song.album)")
                                             }
                                             .font(.caption)

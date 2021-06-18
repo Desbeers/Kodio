@@ -71,7 +71,7 @@ struct ViewAlbumsListRow: View {
                 Text(album.title)
                     .font(.headline)
                 Group {
-                    Text(album.artist.first!)
+                    Text(album.artist.joined(separator: " & "))
                     /// Hide details when there is no year
                     if album.year != 0 {
                         HStack(spacing: 0) {

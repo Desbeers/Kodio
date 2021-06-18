@@ -29,7 +29,7 @@ struct ViewSongs: View {
                                         Text(song.title)
                                             .font(.headline)
                                         Group {
-                                            Text(song.artist.first!)
+                                            Text(song.artist.joined(separator: " & "))
                                                 .isHidden(kodi.hideArtistLabel(song: song))
                                             Text("\(song.album)")
                                                 .isHidden(kodi.filter.songs == .album)
