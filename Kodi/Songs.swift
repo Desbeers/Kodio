@@ -88,8 +88,9 @@ extension KodiClient {
         case .album:
             return songs.all.filter { $0.albumID == albums.selected?.albumID }
         case .artist:
-            return songs.all.filter { $0.albumArtist.first == artists.selected?.artist }
-                .sorted { $0.year == $1.year ? $0.track < $1.track : $0.year < $1.year }
+            return songs.all.filter {$0.artist.contains(artists.selected!.artist) ||
+                $0.albumArtist.contains(artists.selected!.artist)
+            }.sorted { $0.year == $1.year ? $0.track < $1.track : $0.year < $1.year }
         case .mostPlayed:
             return songs.mostPlayed
         case .recentlyPlayed:
