@@ -17,7 +17,9 @@ struct ViewArtists: View {
     var body: some View {
         List {
             ForEach(kodi.artistsFilter) { artist in
-                ViewArtistsListRow(artist: artist)
+                if (artist.isAlbumArtist || !kodi.search.text.isEmpty) {
+                    ViewArtistsListRow(artist: artist)
+                }
             }
         }
         .listStyle(SidebarListStyle())

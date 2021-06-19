@@ -109,7 +109,7 @@ struct AudioLibraryGetArtists: KodiRequest {
     }
     /// The request struct
     struct Params: Encodable {
-        let albumartistsonly = true
+        let albumartistsonly = false
         let properties = ArtistFields().properties
         let sort = Sort()
         struct Sort: Encodable {
@@ -131,12 +131,13 @@ struct AudioLibraryGetArtists: KodiRequest {
 
 struct ArtistFields: Codable, Identifiable, Hashable {
     /// The fields that we ask for
-    var properties = ["fanart", "thumbnail", "description"]
+    var properties = ["fanart", "thumbnail", "description", "isalbumartist"]
     /// Make it identifiable
     var id = UUID()
     /// The fields from above
     var artist: String = ""
     var artistID: Int = 0
+    var isAlbumArtist: Bool = false
     var fanart: String = ""
     var description: String = ""
     var thumbnail: String = ""
@@ -150,5 +151,6 @@ extension ArtistFields {
     enum CodingKeys: String, CodingKey {
         case artist, fanart, description, thumbnail
         case artistID = "artistid"
+        case isAlbumArtist = "isalbumartist"
     }
 }
