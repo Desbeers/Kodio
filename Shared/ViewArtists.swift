@@ -22,12 +22,13 @@ struct ViewArtists: View {
                 if artist.isAlbumArtist || !kodi.search.text.isEmpty {
                     NavigationLink(destination: ViewAlbums().onAppear {
                         print("Artist selected")
-                                    kodi.artists.selected = artist
+                                    //kodi.artists.selected = artist
                                     kodi.albums.selected = nil
                                     kodi.filter.albums = .artist
                                     kodi.filter.songs = .artist
                                     appState.tabs.tabSongPlaylist = .songs
-                    }) {
+                    }, tag: artist
+                    , selection: $kodi.artists.selected) {
                         ViewArtistsListRow(artist: artist)
                     }
                 }
