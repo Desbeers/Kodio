@@ -77,7 +77,7 @@ extension KodiClient {
     var albumsFilter: [AlbumFields] {
         switch filter.albums {
         case .artist:
-            return albums.all.filter {$0.artistID.contains(artists.selected!.artistID)}
+            return albums.all.filter {$0.artistID.contains(artists.selected?.artistID ?? 0)}
         case .compilations:
             return albums.all.filter {$0.compilation == true}.sorted {$0.title < $1.title}
         case .recentlyAdded:

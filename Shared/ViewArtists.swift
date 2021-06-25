@@ -27,14 +27,15 @@ struct ViewArtists: View {
                                     kodi.filter.albums = .artist
                                     kodi.filter.songs = .artist
                                     appState.tabs.tabSongPlaylist = .songs
-                    }, tag: artist
+                    }
+                    , tag: artist
                     , selection: $kodi.artists.selected) {
                         ViewArtistsListRow(artist: artist)
                     }
                 }
             }
         }
-        .listStyle(SidebarListStyle())
+        //.listStyle(SidebarListStyle())
         .id(kodi.artistListID)
     }
 }

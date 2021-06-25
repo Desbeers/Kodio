@@ -40,6 +40,7 @@ struct ViewContent: View {
                     ViewiPad()
                 } else {
                     ViewiPhone()
+                    //ViewiPad()
                 }
             }
         }

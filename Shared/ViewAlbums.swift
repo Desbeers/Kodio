@@ -25,12 +25,13 @@ struct ViewAlbums: View {
                 List {
                     ForEach(kodi.albumsFilter, id: \.self) { album in
                         NavigationLink(destination: ViewDetails().onAppear {
-                            print("Artist selected")
+                            print("Album selected")
                             kodi.albums.selected = album
                             kodi.filter.songs = .album
                             appState.tabs.tabSongPlaylist = .songs
-                        }) {
-                            
+                        }
+                        , tag: album
+                        , selection: $kodi.albums.selected) {
                             ViewAlbumsListRow(album: album)
                         }
                     }
@@ -50,7 +51,7 @@ struct ViewAlbums: View {
                 .onChange(of: kodi.libraryJump) { item in
                     proxy.scrollTo(item.albumID, anchor: .top)
                 }
-                .onChange(of: kodi.artists.selected) { _ in
+                .onAppear {
                     /// If the artist has only one album; select it
                     if kodi.albumsFilter.count == 1 {
                         kodi.albums.selected = kodi.albumsFilter.first!
