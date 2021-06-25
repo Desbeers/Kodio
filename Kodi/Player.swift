@@ -145,10 +145,8 @@ extension KodiClient {
 
     func sendPlayerPlayPause() {
         if self.player.item.songID == nil && !playlists.queue.isEmpty {
-            print("Player Open")
             sendPlayerAction(api: .playerOpen, playlistPosition: 0)
         } else {
-            print("Player Play/Pause")
             sendPlayerAction(api: .playerPlayPause)
         }
     }

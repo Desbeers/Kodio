@@ -70,7 +70,6 @@ struct ViewPlayerVolume: View {
         Slider(value: $kodi.properties.volume, in: 0...100)
             .onChange(of: kodi.properties.volume, perform: { value in
                 kodi.setApplicationVolume(volume: value)
-                print(value)
             })
         }
     }

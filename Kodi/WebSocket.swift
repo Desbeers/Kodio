@@ -98,8 +98,8 @@ extension KodiClient {
                           let method = NotificationMethod(rawValue: type.method)
                     else {
                         /// Not an interesting notification
-                        self.log(#function, "Unknown message received")
-                        print(message)
+                        // self.log(#function, "Unknown message received")
+                        // print(message)
                         return
                     }
                     self.log(#function, type.method)

@@ -70,7 +70,6 @@ extension KodiClient {
                     self?.log(#function, "Connected to Kodi")
                     if let results = result?.result {
                         self?.properties = results
-                        print(results.volume)
                     }
                     /// Check if the library is still up to date
                     self?.getAudioLibraryLastUpdate()

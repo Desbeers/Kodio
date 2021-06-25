@@ -87,7 +87,6 @@ struct ViewPlaylist: View {
         }
         .id(kodi.playlists.queueListID)
         .onAppear {
-            print("Jump")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             proxy.scrollTo(kodi.player.item.songID, anchor: .center)
             }
@@ -116,6 +115,7 @@ struct ViewPlaylistMenu: View {
                 }
             }
         }
+        .disabled(kodi.playlists.files.isEmpty)
     }
 }
 
