@@ -100,7 +100,7 @@ extension KodiClient {
         case .compilations:
             return songs.random
         case .genre:
-            return songs.all.filter {$0.genre.first == genres.selected?.label}
+            return songs.all.filter { $0.genre.contains(genres.selected!.label) }
         case .search:
             return songs.all.filter({self.search.text.isEmpty ? true :
                                         $0.search.localizedCaseInsensitiveContains(self.search.text)})
