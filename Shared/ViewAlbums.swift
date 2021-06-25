@@ -24,7 +24,15 @@ struct ViewAlbums: View {
             ScrollViewReader { proxy in
                 List {
                     ForEach(kodi.albumsFilter, id: \.self) { album in
-                        ViewAlbumsListRow(album: album)
+                        NavigationLink(destination: ViewDetails().onAppear {
+                            print("Artist selected")
+                            kodi.albums.selected = album
+                            kodi.filter.songs = .album
+                            appState.tabs.tabSongPlaylist = .songs
+                        }) {
+                            
+                            ViewAlbumsListRow(album: album)
+                        }
                     }
                     if kodi.artists.selected != nil, !(kodi.artists.selected?.description.isEmpty ?? true) {
                         HStack {
@@ -59,9 +67,6 @@ struct ViewAlbums: View {
 
 /// The row of an album in the list
 struct ViewAlbumsListRow: View {
-    @EnvironmentObject var kodi: KodiClient
-    /// State of the application
-    @EnvironmentObject var appState: AppState
     var album: AlbumFields
     /// The view
     var body: some View {
@@ -80,25 +85,11 @@ struct ViewAlbumsListRow: View {
                             Text(album.genre.first ?? "")
                         }
                     }
-                    Text(album.playCountLabel)
-                        .isHidden(kodi.filter.songs != .mostPlayed)
                 }
                 .font(.caption)
             }
             Spacer()
         }
-        .if(album == kodi.albums.selected) {
-            $0.background(Color.accentColor).foregroundColor(.white)
-        }
-        .cornerRadius(5)
-        .padding(.bottom, 6)
-        /// Make the whole listitem clickable
-        .contentShape(Rectangle())
-        .onTapGesture(perform: {
-            kodi.albums.selected = album
-            kodi.filter.songs = .album
-            appState.tabs.tabSongPlaylist = .songs
-        })
         .id(album.albumID)
     }
 }
