@@ -15,48 +15,48 @@ struct ViewAlbums: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
-    /// The list of artists
+    /// The list of albums
     @State var albums = [AlbumFields]()
     /// The view
     var body: some View {
-        VStack(spacing: 0) {
-            ViewArtFanart()
-            ScrollViewReader { proxy in
-                List {
-                    ForEach(albums) { album in
-                        NavigationLink(destination: ViewDetails().onAppear {
-                            kodi.albums.selected = album
-                            kodi.filter.songs = .album
-                        }, tag: album, selection: $kodi.albums.selected) {
-                            ViewAlbumsListRow(album: album)
-                        }
+        ScrollViewReader { proxy in
+            List {
+                ViewArtFanart()
+                ForEach(albums) { album in
+                    NavigationLink(destination: ViewDetails().onAppear {
+                        kodi.albums.selected = album
+                        kodi.filter.songs = .album
+                    }, tag: album, selection: $kodi.albums.selected) {
+                        ViewAlbumsListRow(album: album)
                     }
-                    if kodi.artists.selected != nil, !(kodi.artists.selected?.description.isEmpty ?? true) {
-                        HStack {
-                            Spacer()
-                            Button("More about '\(kodi.artists.selected!.artist)'") {
-                                DispatchQueue.main.async {
-                                    appState.activeSheet = .viewArtistInfo
-                                    appState.showSheet = true
-                                }
+                }
+                if kodi.artists.selected != nil, !(kodi.artists.selected?.description.isEmpty ?? true) {
+                    HStack {
+                        Spacer()
+                        Button("More about '\(kodi.artists.selected!.artist)'") {
+                            DispatchQueue.main.async {
+                                appState.activeSheet = .viewArtistInfo
+                                appState.showSheet = true
                             }
                         }
                     }
                 }
-                .id(kodi.albumListID)
-                .onChange(of: kodi.libraryJump) { item in
-                    proxy.scrollTo(item.albumID, anchor: .top)
-                }
-                .onAppear {
+            }
+            .id(kodi.albumListID)
+            .onChange(of: kodi.libraryJump) { item in
+                proxy.scrollTo(item.albumID, anchor: .top)
+            }
+            .onAppear {
+                DispatchQueue.main.async {
                     albums = kodi.albumsFilter
-                    /// If the artist has only one album; select it
-                    if albums.count == 1 {
+                    /// If the artist has only one album; select it. Only on macOS, iOS does not like this
+                    if albums.count == 1, kodi.userInterface == .macOS {
                         kodi.albums.selected = albums.first!
                         kodi.filter.songs = .album
                     }
-                    
                 }
             }
+            .modifier(DetailsModifier())
         }
     }
 }

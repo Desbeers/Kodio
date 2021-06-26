@@ -13,10 +13,12 @@ import SwiftUI
 struct ViewGenres: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// The list of artists
+    @State var genres = [GenreFields]()
     /// The view
     var body: some View {
         List {
-            ForEach(kodi.genres.all) { genre in
+            ForEach(genres) { genre in
                 NavigationLink(destination: ViewAlbums().onAppear {
                     kodi.albums.selected = nil
                     kodi.filter.albums = .genre
@@ -24,6 +26,11 @@ struct ViewGenres: View {
                 }, tag: genre, selection: $kodi.genres.selected) {
                     ViewGenresListRow(genre: genre)
                 }
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.async {
+                genres = kodi.genres.all
             }
         }
     }

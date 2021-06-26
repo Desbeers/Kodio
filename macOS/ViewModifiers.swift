@@ -19,3 +19,9 @@ struct SmartListsModifier: ViewModifier {
             .frame(height: 168)
     }
 }
+
+struct DetailsModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+    }
+}

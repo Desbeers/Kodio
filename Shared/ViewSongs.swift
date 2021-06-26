@@ -67,7 +67,9 @@ struct ViewSongs: View {
         }
         .id(kodi.songListID)
         .onAppear {
-            songs = kodi.songsFilter
+            DispatchQueue.main.async {
+                songs = kodi.songsFilter
+            }
         }
     }
 }

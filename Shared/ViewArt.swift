@@ -77,10 +77,12 @@ struct ViewArtFanart: View {
         if let fanart = kodi.artists.selected?.fanart {
             RemoteKodiImage(url: fanart, failure: Image("DefaultFanart"))
                 .aspectRatio(1.78, contentMode: .fit)
+                .cornerRadius(5)
         } else {
             Image("DefaultFanart")
                 .resizable()
                 .aspectRatio(1.78, contentMode: .fit)
+                .cornerRadius(5)
         }
     }
 }

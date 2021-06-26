@@ -61,3 +61,13 @@ struct SmartListsModifier: ViewModifier {
             .frame(height: 300)
     }
 }
+
+struct DetailsModifier: ViewModifier {
+    /// The object that has it all
+    @EnvironmentObject var kodi: KodiClient
+    func body(content: Content) -> some View {
+        content
+            .navigationTitle(kodi.player.navigationTitle + " | " + kodi.player.navigationSubtitle)
+            .navigationBarTitleDisplayMode(.inline)
+    }
+}

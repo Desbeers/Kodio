@@ -26,14 +26,14 @@ struct ViewSmartLists: View {
                     kodi.filter.albums = album.filter
                     kodi.filter.songs = album.filter
                     kodi.albums.selected = nil
-                },
-                tag: album,
-                selection: $selected) {
-                    Label(album.label, systemImage: album.icon)
-                }
-//                }) {
+//                },
+//                tag: album,
+//                selection: $selected) {
 //                    Label(album.label, systemImage: album.icon)
 //                }
+                }) {
+                    Label(album.label, systemImage: album.icon)
+                }
             }
             ViewTabArtistsGenres()
         }
