@@ -33,39 +33,24 @@ struct ToolbarModifier: ViewModifier {
                 ToolbarItemGroup(placement: .bottomBar) {
                     HStack(spacing: 10) {
                         Spacer()
-                    ViewPlaylistMenu()
+                        ViewPlaylistMenu()
                         Spacer()
-                    ViewRadioMenu()
+                        ViewRadioMenu()
                         Spacer()
-                    Menu(kodi.selectedHost.description) {
-                        ViewKodiHostsMenu()
-                        Button(showLog ? "Hide Console Messages" : "Show Console Messages") {
-                            withAnimation {
-                                showLog.toggle()
+                        Menu(kodi.selectedHost.description) {
+                            ViewKodiHostsMenu()
+                            Button(showLog ? "Hide Console Messages" : "Show Console Messages") {
+                                withAnimation {
+                                    showLog.toggle()
+                                }
                             }
+                            Button("Scan Library") {
+                                kodi.scanAudioLibrary()
+                            }
+                            .disabled(kodi.libraryIsScanning)
                         }
-                        Button("Scan Library") {
-                            kodi.scanAudioLibrary()
-                        }
-                        .disabled(kodi.libraryIsScanning)
-                    }
                     }
                 }
-                //                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                //                    ViewPlayerButtons()
-                //                    Divider()
-                //                    ViewPlayerOptions()
-                //                }
-                //                ToolbarItemGroup(placement: .bottomBar) {
-                //                    ViewPlayerVolume()
-                //                }
             }
-        //            .navigationBarItems(
-        //                trailing:
-        //                    HStack {
-        //                        ViewPlayerButtons()
-        //                        ViewPlayerOptions()
-        //                    }
-        //            )
     }
 }
