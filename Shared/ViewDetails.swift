@@ -16,9 +16,12 @@ struct ViewDetails: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// Show or hide log
+    @AppStorage("ShowLog") var showLog: Bool = false
     /// The view
     var body: some View {
         VStack {
+            ViewKodiStatus()
             ViewTabSongsPlaylist()
                 .padding(.vertical)
                 .frame(width: 200)
@@ -46,6 +49,9 @@ struct ViewDetails: View {
                 .onChange(of: kodi.genres.selected) { _ in
                     appState.tabs.tabSongPlaylist = .songs
                 }
+            }
+            if showLog {
+                ViewLog()
             }
         }
         .background(Color("DetailsBackground"))

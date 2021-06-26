@@ -15,8 +15,6 @@ struct ViewAlbums: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
-    /// Show long artist description or not
-    @State private var showDescription: Bool = false
     /// The view
     var body: some View {
         VStack(spacing: 0) {
@@ -25,13 +23,9 @@ struct ViewAlbums: View {
                 List {
                     ForEach(kodi.albumsFilter, id: \.self) { album in
                         NavigationLink(destination: ViewDetails().onAppear {
-                            print("Album selected")
                             kodi.albums.selected = album
                             kodi.filter.songs = .album
-                            //appState.tabs.tabSongPlaylist = .songs
-                        }
-                        , tag: album
-                        , selection: $kodi.albums.selected) {
+                        }, tag: album, selection: $kodi.albums.selected) {
                             ViewAlbumsListRow(album: album)
                         }
                     }

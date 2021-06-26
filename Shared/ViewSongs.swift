@@ -72,8 +72,6 @@ struct SongsViewHeader: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
-    /// Show long album description or not
-    @State private var showDescription: Bool = false
     /// The view
     var body: some View {
         VStack(alignment: .leading) {
