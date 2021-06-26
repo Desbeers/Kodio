@@ -18,20 +18,15 @@ struct ViewSmartLists: View {
     @State var selected: SmartMenuFields?
     /// The view
     var body: some View {
-//        Text("Smart lists")
-//            .foregroundColor(.secondary)
         List {
             ForEach(ViewSmartLists.smartMenu) { album in
                 NavigationLink(destination: ViewAlbums().onAppear {
                     kodi.filter.albums = album.filter
                     kodi.filter.songs = album.filter
                     kodi.albums.selected = nil
-//                },
-//                tag: album,
-//                selection: $selected) {
-//                    Label(album.label, systemImage: album.icon)
-//                }
-                }) {
+                },
+                tag: album,
+                selection: $selected) {
                     Label(album.label, systemImage: album.icon)
                 }
             }
