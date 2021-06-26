@@ -28,7 +28,7 @@ struct ViewAlbums: View {
                             print("Album selected")
                             kodi.albums.selected = album
                             kodi.filter.songs = .album
-                            appState.tabs.tabSongPlaylist = .songs
+                            //appState.tabs.tabSongPlaylist = .songs
                         }
                         , tag: album
                         , selection: $kodi.albums.selected) {

@@ -26,7 +26,7 @@ struct ViewArtists: View {
                                     kodi.albums.selected = nil
                                     kodi.filter.albums = .artist
                                     kodi.filter.songs = .artist
-                                    appState.tabs.tabSongPlaylist = .songs
+                                    //appState.tabs.tabSongPlaylist = .songs
                     }
                     , tag: artist
                     , selection: $kodi.artists.selected) {

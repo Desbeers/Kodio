@@ -13,11 +13,27 @@ import SwiftUI
 struct ViewGenres: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
         List {
             ForEach(kodi.genres.all) { genre in
-                ViewGenresListRow(genre: genre)
+                
+                NavigationLink(destination: ViewAlbums().onAppear {
+                    print("Genre selected")
+                    //kodi.genres.selected = genre
+                    kodi.albums.selected = nil
+                    kodi.filter.albums = .genre
+                    kodi.filter.songs = .genre
+                                //appState.tabs.tabSongPlaylist = .songs
+                }
+                , tag: genre
+                , selection: $kodi.genres.selected) {
+                    ViewGenresListRow(genre: genre)
+                }
+                
+                //ViewGenresListRow(genre: genre)
             }
         }
         .listStyle(SidebarListStyle())
@@ -27,17 +43,8 @@ struct ViewGenres: View {
 // MARK: - ViewGenresListRow (view)
 
 struct ViewGenresListRow: View {
-    /// The object that has it all
-    @EnvironmentObject var kodi: KodiClient
     /// The genre object
     var genre: GenreFields
-    /// A bit of eye-candy
-    var opacity: Double {
-        if kodi.albums.selected != nil {
-            return 0.8
-        }
-        return 1
-    }
     /// The view
     var body: some View {
         HStack {
@@ -49,19 +56,6 @@ struct ViewGenresListRow: View {
             Text(genre.label)
             Spacer()
         }
-        .padding()
-        /// Make the whole listitem clickable
-        .contentShape(Rectangle())
-        .onTapGesture(perform: {
-            kodi.genres.selected = genre
-            kodi.albums.selected = nil
-            kodi.filter.albums = .genre
-            kodi.filter.songs = .genre
-        })
         .id(genre.genreID)
-        .if(genre == kodi.genres.selected) {
-            $0.background(Color.accentColor.opacity(opacity)).foregroundColor(.white)
-        }
-        .cornerRadius(5)
     }
 }

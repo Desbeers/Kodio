@@ -87,7 +87,7 @@ extension KodiClient {
         case .recentlyPlayed:
             return albums.recentlyPlayed
         case .genre:
-            return albums.all.filter { $0.genre.contains(genres.selected!.label) }
+            return albums.all.filter { $0.genre.contains(genres.selected?.label ?? "") }
                 .sorted { $0.artist.first! < $1.artist.first! }
         case .search:
             return albums.all.filter {self.search.text.isEmpty ? true :
