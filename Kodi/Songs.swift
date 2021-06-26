@@ -88,8 +88,8 @@ extension KodiClient {
         case .album:
             return songs.all.filter { $0.albumID == albums.selected?.albumID }
         case .artist:
-            return songs.all.filter {$0.artist.contains(artists.selected!.artist) ||
-                $0.albumArtist.contains(artists.selected!.artist)
+            return songs.all.filter {$0.artist.contains(artists.selected?.artist ?? "") ||
+                $0.albumArtist.contains(artists.selected?.artist ?? "")
             }.sorted { $0.year == $1.year ? $0.track < $1.track : $0.year < $1.year }
         case .mostPlayed:
             return songs.mostPlayed
@@ -100,7 +100,7 @@ extension KodiClient {
         case .compilations:
             return songs.random
         case .genre:
-            return songs.all.filter { $0.genre.contains(genres.selected!.label) }
+            return songs.all.filter { $0.genre.contains(genres.selected?.label ?? "") }
         case .search:
             return songs.all.filter({self.search.text.isEmpty ? true :
                                         $0.search.localizedCaseInsensitiveContains(self.search.text)})

@@ -205,7 +205,6 @@ struct ViewKodiEditHosts: View {
                 }
             }
             .frame(maxWidth: 200)
-            .listStyle(SidebarListStyle())
             VStack {
                 if selectedHost != nil {
                     ViewKodiEditDetails(selectedHost: $selectedHost)

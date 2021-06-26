@@ -20,10 +20,10 @@
 		D706CE1B2645516A006D690D /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1A2645516A006D690D /* SearchField.swift */; };
 		D706CE1D26459389006D690D /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1C26459389006D690D /* Search.swift */; };
 		D706CE1F264594ED006D690D /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE1C26459389006D690D /* Search.swift */; };
-		D706CE2126468B48006D690D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE2026468B48006D690D /* HeaderView.swift */; };
-		D706CE232646C1BC006D690D /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D706CE222646C1BC006D690D /* FooterView.swift */; };
 		D712BE48265B89E400DA3F26 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D712BE47265B89E400DA3F26 /* .swiftlint.yml */; };
 		D712BE49265B89E400DA3F26 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D712BE47265B89E400DA3F26 /* .swiftlint.yml */; };
+		D714DC5226873D7A00B0A3E0 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D714DC5126873D7A00B0A3E0 /* ViewModifiers.swift */; };
+		D714DC5426873D9200B0A3E0 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D714DC5326873D9200B0A3E0 /* ViewModifiers.swift */; };
 		D71B4AFC26428E3F00852BDF /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4AE926428E3E00852BDF /* KodioApp.swift */; };
 		D71B4AFE26428E3F00852BDF /* ViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4AEA26428E3E00852BDF /* ViewContent.swift */; };
 		D71B4B0026428E3F00852BDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71B4AEB26428E3F00852BDF /* Assets.xcassets */; };
@@ -106,9 +106,9 @@
 		D706CE1726454369006D690D /* ViewTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTabs.swift; sourceTree = "<group>"; };
 		D706CE1A2645516A006D690D /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		D706CE1C26459389006D690D /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
-		D706CE2026468B48006D690D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		D706CE222646C1BC006D690D /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		D712BE47265B89E400DA3F26 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		D714DC5126873D7A00B0A3E0 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		D714DC5326873D9200B0A3E0 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		D71B4AE926428E3E00852BDF /* KodioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
 		D71B4AEA26428E3E00852BDF /* ViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContent.swift; sourceTree = "<group>"; };
 		D71B4AEB26428E3F00852BDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -208,8 +208,7 @@
 				D71B4AEA26428E3E00852BDF /* ViewContent.swift */,
 				D75BFCD8266A4F46005E0C77 /* ViewiPad.swift */,
 				D76EDE91266A36C000DB91DF /* ViewiPhone.swift */,
-				D706CE2026468B48006D690D /* HeaderView.swift */,
-				D706CE222646C1BC006D690D /* FooterView.swift */,
+				D714DC5126873D7A00B0A3E0 /* ViewModifiers.swift */,
 				D706CE1A2645516A006D690D /* SearchField.swift */,
 				D71B4AF326428E3F00852BDF /* Info.plist */,
 			);
@@ -222,6 +221,7 @@
 				D74C9A57264417A500132DAC /* KodioApp.swift */,
 				D7F0A0AC2662E3DC00CE7F21 /* AppDelegate.swift */,
 				D74C9A6526443B4100132DAC /* ViewContent.swift */,
+				D714DC5326873D9200B0A3E0 /* ViewModifiers.swift */,
 				D71B4B8D264305F700852BDF /* SearchField.swift */,
 				D71B4AFA26428E3F00852BDF /* Info.plist */,
 				D71B4AFB26428E3F00852BDF /* macOS.entitlements */,
@@ -443,6 +443,7 @@
 				D706CE1526454161006D690D /* ViewSidebar.swift in Sources */,
 				D706CE1B2645516A006D690D /* SearchField.swift in Sources */,
 				D79A54AF265FAE1300FCC425 /* KodiHosts.swift in Sources */,
+				D714DC5226873D7A00B0A3E0 /* ViewModifiers.swift in Sources */,
 				D74C9A632644200C00132DAC /* ViewPlaylist.swift in Sources */,
 				D74C9A692644553A00132DAC /* ViewArt.swift in Sources */,
 				D71B4B612642CA4F00852BDF /* Playlists.swift in Sources */,
@@ -456,13 +457,11 @@
 				D74C9A6C264458C700132DAC /* ViewSmartLists.swift in Sources */,
 				D73A8E2D265518EA00A1A81F /* KodiAPI.swift in Sources */,
 				D74C9A6026441F3C00132DAC /* ViewSongs.swift in Sources */,
-				D706CE232646C1BC006D690D /* FooterView.swift in Sources */,
 				D75BFCD9266A4F46005E0C77 /* ViewiPad.swift in Sources */,
 				D71B4B2826428F2500852BDF /* Extensions.swift in Sources */,
 				D74C9A5D26441F3200132DAC /* ViewAlbums.swift in Sources */,
 				D71FB3E626591AE3009061CC /* ViewDetails.swift in Sources */,
 				D71B4AFC26428E3F00852BDF /* KodioApp.swift in Sources */,
-				D706CE2126468B48006D690D /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +484,7 @@
 				D75332D62647E39000F21ACD /* WebSocket.swift in Sources */,
 				D7694E14265168F10092D195 /* ViewDescription.swift in Sources */,
 				D7F0A0AD2662E3DC00CE7F21 /* AppDelegate.swift in Sources */,
+				D714DC5426873D9200B0A3E0 /* ViewModifiers.swift in Sources */,
 				D75332D9264814CD00F21ACD /* ViewPlayer.swift in Sources */,
 				D706CE10264533F6006D690D /* Genres.swift in Sources */,
 				D71FB3E726591AE3009061CC /* ViewDetails.swift in Sources */,

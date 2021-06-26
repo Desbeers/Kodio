@@ -16,9 +16,12 @@ struct ViewDetails: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// Show or hide log
+    @AppStorage("ShowLog") var showLog: Bool = false
     /// The view
     var body: some View {
         VStack {
+            ViewKodiStatus()
             ViewTabSongsPlaylist()
                 .padding(.vertical)
                 .frame(width: 200)
@@ -36,8 +39,22 @@ struct ViewDetails: View {
                         proxy.scrollTo(item.songID, anchor: .top)
                     }
                 }
+                /// Make sure songs tab is selected when changing artist, song or genre
+                .onChange(of: kodi.albums.selected) { _ in
+                    appState.tabs.tabSongPlaylist = .songs
+                }
+                .onChange(of: kodi.artists.selected) { _ in
+                    appState.tabs.tabSongPlaylist = .songs
+                }
+                .onChange(of: kodi.genres.selected) { _ in
+                    appState.tabs.tabSongPlaylist = .songs
+                }
+            }
+            if showLog {
+                ViewLog()
             }
         }
         .background(Color("DetailsBackground"))
+        .modifier(ToolbarModifier())
     }
 }

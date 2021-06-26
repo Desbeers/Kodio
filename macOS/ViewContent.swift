@@ -44,37 +44,31 @@ struct ViewContent: View {
                     .frame(minWidth: 250, idealWidth: 250, maxWidth: 400, maxHeight: .infinity)
                 ViewAlbums()
                     .frame(minWidth: 400, idealWidth: 500, maxWidth: .infinity, maxHeight: .infinity)
-                    .toolbar {
-                        ToolbarItemGroup {
-                            ViewPlayerVolume()
-                                .frame(width: 160)
-                            Spacer()
-                            ViewPlayerButtons()
-                            Spacer()
-                            ViewPlayerOptions()
-                        }
-                        ToolbarItemGroup {
-                            ViewPlaylistMenu()
-                            ViewRadioMenu()
-                        }
-                        ToolbarItem {
-                            SearchField(search: $search, kodi: kodi)
-                                .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
-                        }
-                    }
-                VStack(spacing: 0) {
-                    ViewKodiStatus()
-                    ViewDetails()
-                    if showLog {
-                        ViewLog()
-                    }
-                }
-                .frame(minWidth: 400, idealWidth: 500, maxWidth: .infinity, maxHeight: .infinity)
+                ViewDetails()
+                    .frame(minWidth: 400, idealWidth: 500, maxWidth: .infinity, maxHeight: .infinity)
             }
         }
         .sheet(isPresented: $appState.showSheet, content: sheetContent)
         .alert(item: $appState.alertItem) { alertItem in
             return alertContent(alertItem)
+        }
+        .toolbar {
+            ToolbarItemGroup {
+                ViewPlayerVolume()
+                    .frame(width: 160)
+                Spacer()
+                ViewPlayerButtons()
+                Spacer()
+                ViewPlayerOptions()
+            }
+            ToolbarItemGroup {
+                ViewPlaylistMenu()
+                ViewRadioMenu()
+            }
+            ToolbarItem {
+                SearchField(search: $search, kodi: kodi)
+                    .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
+            }
         }
     }
 }

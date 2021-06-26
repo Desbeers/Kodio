@@ -24,10 +24,11 @@ So, bugs are included for free!
 #### macOS
 
 - Animations are really buggy on macOS so I try to avoid them as much as possible. The spinning record on start-up behaves most of the time ok, however, sometimes it likes to travel from the top left corner.
+- 'NavigationView' sucks...
 
 #### iPad
 
-- 'NavigationView' sucks; so I'm faking a 'three column' layout. Since I don't use navigation links the interface is a bit glitchy.
+- 'NavigationView' sucks even more on iOS; the 3 column layout is pretty buggy...
 
 #### iPhone
 

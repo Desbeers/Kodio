@@ -41,7 +41,7 @@ struct ViewiPhoneMain: View {
     var body: some View {
         VStack {
             HStack {
-            VStack(alignment: .leading) {
+                VStack(alignment: .leading) {
                     Text(kodi.player.navigationTitle)
                         .font(.headline)
                     Text(kodi.player.navigationSubtitle)
@@ -54,14 +54,14 @@ struct ViewiPhoneMain: View {
             .background(Color("iOSplayerBackground"))
             Spacer()
             VStack(alignment: .leading, spacing: 20) {
-            HStack {
-                Image(systemName: "music.note.list")
-                ViewPlaylistMenu()
-            }
-            HStack {
-                Image(systemName: "dot.radiowaves.left.and.right")
-                ViewRadioMenu()
-            }
+                HStack {
+                    Image(systemName: "music.note.list")
+                    ViewPlaylistMenu()
+                }
+                HStack {
+                    Image(systemName: "dot.radiowaves.left.and.right")
+                    ViewRadioMenu()
+                }
             }
             .padding()
             Spacer()

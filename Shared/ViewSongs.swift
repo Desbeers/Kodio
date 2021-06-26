@@ -13,11 +13,13 @@ import SwiftUI
 struct ViewSongs: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// The list of songs
+    @State var songs = [SongFields]()
     /// The view
     var body: some View {
         SongsViewHeader()
         List {
-            ForEach(kodi.songsFilter) { song in
+            ForEach(songs) { song in
                 HStack {
                     Button { kodi.sendSongAndPlay(song: song) }
                         label: {
@@ -64,6 +66,11 @@ struct ViewSongs: View {
             }
         }
         .id(kodi.songListID)
+        .onAppear {
+            DispatchQueue.main.async {
+                songs = kodi.songsFilter
+            }
+        }
     }
 }
 
@@ -72,8 +79,6 @@ struct SongsViewHeader: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
-    /// Show long album description or not
-    @State private var showDescription: Bool = false
     /// The view
     var body: some View {
         VStack(alignment: .leading) {

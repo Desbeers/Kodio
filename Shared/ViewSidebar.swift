@@ -15,10 +15,8 @@ struct ViewSidebar: View {
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
-            Group {
+            VStack(spacing: 0) {
                 ViewSmartLists()
-                    .padding(.horizontal)
-                ViewTabArtistsGenres()
                 if appState.tabs.tabArtistGenre == .artists {
                     ViewArtists()
                 } else {
