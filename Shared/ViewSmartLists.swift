@@ -14,21 +14,32 @@ struct ViewSmartLists: View {
     @EnvironmentObject var kodi: KodiClient
     /// The smart lists
     static var smartMenu = KodiClient.shared.getSmartMenu()
+    
+    @State var selected: SmartMenuFields?
     /// The view
     var body: some View {
-        Text("Smart lists")
-            .foregroundColor(.secondary)
+//        Text("Smart lists")
+//            .foregroundColor(.secondary)
         List {
             ForEach(ViewSmartLists.smartMenu) { album in
                 NavigationLink(destination: ViewAlbums().onAppear {
                     kodi.filter.albums = album.filter
                     kodi.filter.songs = album.filter
                     kodi.albums.selected = nil
-                }) {
+                },
+                tag: album,
+                selection: $selected) {
                     Label(album.label, systemImage: album.icon)
                 }
+//                }) {
+//                    Label(album.label, systemImage: album.icon)
+//                }
             }
+            ViewTabArtistsGenres()
         }
-        .frame(height: 130)
+        .onAppear {
+            selected = ViewSmartLists.smartMenu.first
+        }
+        .modifier(SmartListsModifier())
     }
 }

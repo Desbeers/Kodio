@@ -18,7 +18,7 @@ struct ViewiPad: View {
         NavigationView {
             ViewSidebar()
                 //.navigationTitle("Kodio")
-                .navigationTitle(kodi.player.navigationTitle + "|" + kodi.player.navigationSubtitle)
+                .navigationTitle(kodi.player.navigationTitle + " | " + kodi.player.navigationSubtitle)
                 .navigationBarTitleDisplayMode(.inline)
             ViewAlbums()
             ViewDetails()
