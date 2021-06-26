@@ -59,6 +59,7 @@ extension KodiClient {
     
     /// Check if there is a connection to the host and then load it.
     func connectHost() {
+        print("Check Kodi")
         /// Check connection and load the selected Kodi host if not yet done
         let request = ApplicationGetProperties()
         sendRequest(request: request) { [weak self] result in

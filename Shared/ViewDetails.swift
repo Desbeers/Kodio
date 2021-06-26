@@ -55,5 +55,6 @@ struct ViewDetails: View {
             }
         }
         .background(Color("DetailsBackground"))
+        .modifier(ToolbarModifier())
     }
 }

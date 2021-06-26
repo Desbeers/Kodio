@@ -84,6 +84,7 @@ extension KodiClient {
 
     /// Filter the songs for the SwiftUI lists
     var songsFilter: [SongFields] {
+        print("SONGS filter: \(filter.songs) \(UUID().uuidString)")
         switch filter.songs {
         case .album:
             return songs.all.filter { $0.albumID == albums.selected?.albumID }

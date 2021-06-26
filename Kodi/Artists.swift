@@ -67,8 +67,9 @@ extension KodiClient {
 
     // MARK: artistsFilter (Variable)
 
-    /// Filter the albums for the SwiftUI lists
+    /// Filter the albums for the SwiftUI list
     var artistsFilter: [ArtistFields] {
+        print("ARTIST filter: \(filter.artists) \(UUID().uuidString)")
         switch filter.artists {
         case .search:
             return artists.all.filter({self.search.text.isEmpty ? true :

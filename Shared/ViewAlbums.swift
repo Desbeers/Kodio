@@ -15,13 +15,15 @@ struct ViewAlbums: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// The list of artists
+    @State var albums = [AlbumFields]()
     /// The view
     var body: some View {
         VStack(spacing: 0) {
             ViewArtFanart()
             ScrollViewReader { proxy in
                 List {
-                    ForEach(kodi.albumsFilter, id: \.self) { album in
+                    ForEach(albums) { album in
                         NavigationLink(destination: ViewDetails().onAppear {
                             kodi.albums.selected = album
                             kodi.filter.songs = .album
@@ -46,9 +48,10 @@ struct ViewAlbums: View {
                     proxy.scrollTo(item.albumID, anchor: .top)
                 }
                 .onAppear {
+                    albums = kodi.albumsFilter
                     /// If the artist has only one album; select it
-                    if kodi.albumsFilter.count == 1 {
-                        kodi.albums.selected = kodi.albumsFilter.first!
+                    if albums.count == 1 {
+                        kodi.albums.selected = albums.first!
                         kodi.filter.songs = .album
                     }
                     

@@ -71,32 +71,4 @@ struct ViewContent: View {
             }
         }
     }
-    
-    var details: some View {
-        VStack(spacing: 0) {
-            ViewKodiStatus()
-            ViewDetails()
-            if showLog {
-                ViewLog()
-            }
-        }
-        .toolbar {
-            ToolbarItemGroup {
-                ViewPlayerVolume()
-                    .frame(width: 160)
-                Spacer()
-                ViewPlayerButtons()
-                Spacer()
-                ViewPlayerOptions()
-            }
-            ToolbarItemGroup {
-                ViewPlaylistMenu()
-                ViewRadioMenu()
-            }
-            ToolbarItem {
-                SearchField(search: $search, kodi: kodi)
-                    .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
-            }
-        }
-    }
 }

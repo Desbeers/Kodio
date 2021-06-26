@@ -13,10 +13,12 @@ import SwiftUI
 struct ViewArtists: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// The list of artists
+    @State var artists = [ArtistFields]()
     /// The view
     var body: some View {
         List {
-            ForEach(kodi.artists.all) { artist in
+            ForEach(artists) { artist in
                 if artist.isAlbumArtist || !kodi.search.text.isEmpty {
                     NavigationLink(destination: ViewAlbums().onAppear {
                         kodi.albums.selected = nil
@@ -31,6 +33,9 @@ struct ViewArtists: View {
             }
         }
         .id(kodi.artistListID)
+        .onAppear {
+            artists = kodi.artistsFilter
+        }
     }
 }
 
