@@ -18,6 +18,8 @@ struct KodioApp: App {
     init() {
         if UIDevice.current.userInterfaceIdiom == .pad {
             KodiClient.shared.userInterface = .iPad
+        } else if UIDevice.current.userInterfaceIdiom == .mac {
+            KodiClient.shared.userInterface = .iPad
         } else {
             KodiClient.shared.userInterface = .iPhone
         }
