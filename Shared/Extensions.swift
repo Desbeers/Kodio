@@ -115,9 +115,9 @@ extension ViewContent {
         case .editHosts:
             ViewKodiEditHosts()
         case .viewArtistInfo:
-            ViewDescription(artist: appState.selectedArtist)
+            ViewDescription(artist: appState.selectedArtist).environmentObject(appState)
         case .viewAlbumInfo:
-            ViewDescription(album: appState.selectedAlbum)
+            ViewDescription(album: appState.selectedAlbum).environmentObject(appState)
         }
     }
     /// A general Alert constructor
