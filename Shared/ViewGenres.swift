@@ -23,8 +23,8 @@ struct ViewGenres: View {
             ForEach(kodi.genres.all) { genre in
                 NavigationLink(destination: ViewAlbums().onAppear {
                     appState.selectedAlbum = nil
-                    kodi.filter.albums = .genre
-                    kodi.filter.songs = .genre
+                    appState.filter.albums = .genre
+                    appState.filter.songs = .genre
                 }, tag: genre, selection: $appState.selectedGenre) {
                     ViewGenresListRow(genre: genre)
                 }

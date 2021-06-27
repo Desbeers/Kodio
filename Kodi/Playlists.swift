@@ -43,8 +43,8 @@ extension KodiClient {
             appState.tabs.tabArtistGenre = .artists
             appState.tabs.tabSongPlaylist = .songs
             /// Set the correct filters
-            filter.albums = .artist
-            filter.songs = .album
+            appState.filter.albums = .artist
+            appState.filter.songs = .album
             /// Trigger the jump
             libraryJump = LibraryJump(artist: song.albumArtist.first!, albumID: song.albumID, songID: song.songID)
         }
@@ -180,7 +180,7 @@ extension KodiClient {
                 self?.playlists.songs = songlist
                 self?.playlists.title = file.label
                 appState.selectedAlbum = nil
-                self?.filter.songs = .playlist
+                appState.filter.songs = .playlist
                 appState.tabs.tabSongPlaylist = .songs
                 self?.log(#function, "Songs from the playlist loaded")
             case .failure(let error):

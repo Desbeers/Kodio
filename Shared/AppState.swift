@@ -23,15 +23,50 @@ class AppState: ObservableObject {
     /// Define what sheet to show
     @Published var activeSheet: Sheets = .editHosts
     /// Selected items
-    @Published var selectedArtist: ArtistFields?
-    @Published var selectedAlbum: AlbumFields?
-    @Published var selectedGenre: GenreFields?
+    @Published var selectedArtist: ArtistFields? {
+        willSet {
+            if newValue != nil {
+                print("Artist selected")
+                filter.albums = .artist
+                filter.songs = .artist
+            }
+        }
+    }
+    @Published var selectedAlbum: AlbumFields? {
+        willSet {
+            if newValue != nil {
+                print("Album selected")
+                filter.songs = .album
+            }
+        }
+    }
+    @Published var selectedGenre: GenreFields? {
+        willSet {
+            if newValue != nil {
+                print("Genre selected")
+                filter.albums = .genre
+                filter.songs = .genre
+            }
+        }
+    }
+    @Published var selectedSmartList: SmartMenuFields? {
+        willSet {
+            if newValue != nil {
+                print("Smart list selected")
+                filter.albums = newValue!.filter
+                filter.songs = newValue!.filter
+            }
+        }
+    }
+    @Published var selectedPlaylist: String?
+    
+    var filter = MediaFilter()
 }
 
 extension AppState {
     
     // MARK: Tab View selector
-
+    
     /// The selected tabs
     struct TabViews {
         var tabArtistGenre: TabOptions = .artists
@@ -58,7 +93,7 @@ extension AppState {
 extension AppState {
     
     // MARK: AlertItem (struct)
-
+    
     /// Contruct a SwiftUI Alert
     struct AlertItem: Identifiable {
         var id = UUID()

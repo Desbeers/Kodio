@@ -19,7 +19,7 @@ extension KodiClient {
         if text.isEmpty {
             DispatchQueue.main.async {
                 self.search.text = ""
-                self.filter = self.previousFilter
+                appState.filter = self.previousFilter
             }
         } else {
             searchTimer?.invalidate()
@@ -27,16 +27,16 @@ extension KodiClient {
             searchTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
           DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             DispatchQueue.main.async {
-                if self?.filter.songs != .search && !text.isEmpty {
+                if appState.filter.songs != .search && !text.isEmpty {
                     /// Save the state before search
-                    self!.previousFilter = self!.filter
+                    self!.previousFilter = appState.filter
                     /// Make sure the correct tabs are selected
                     appState.tabs.tabArtistGenre = .artists
                     appState.tabs.tabSongPlaylist = .songs
                     /// Set the view filter
-                    self!.filter.artists = .search
-                    self!.filter.songs = .search
-                    self!.filter.albums = .search
+                    appState.filter.artists = .search
+                    appState.filter.songs = .search
+                    appState.filter.albums = .search
                 }
                 /// Give the list a new ID so the view is faster
                 self!.search.searchID = UUID().uuidString

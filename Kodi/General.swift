@@ -18,9 +18,10 @@ extension KodiClient {
     ///     - reload: Bool; force a reload or else it will try to load it from the  cache
     /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
+        let appState = AppState.shared
         /// Opening state
-        filter.albums = .compilations
-        filter.songs = .compilations
+        appState.filter.albums = .compilations
+        appState.filter.songs = .compilations
         /// get media items
         getArtists(reload: reload)
         getAlbums(reload: reload)
@@ -202,7 +203,7 @@ struct SmartMenuFields: Identifiable, Hashable {
     let filter: FilterType
 }
 
-// MARK: - SmartMenuFields (struct)
+// MARK: - UserInterface (struct)
 
 /// Menu items for filtered content
 enum UserInterface {

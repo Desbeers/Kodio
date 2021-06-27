@@ -15,8 +15,6 @@ struct ViewAlbums: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
-    /// The list of albums
-    // @State var albums = [AlbumFields]()
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
@@ -24,10 +22,7 @@ struct ViewAlbums: View {
                 ViewArtFanart()
                 // Text(kodi.albumListID)
                 ForEach(kodi.albumsFilter) { album in
-                    NavigationLink(destination: ViewDetails().onAppear {
-                        appState.selectedAlbum = album
-                        kodi.filter.songs = .album
-                    }, tag: album, selection: $appState.selectedAlbum) {
+                    NavigationLink(destination: ViewDetails(), tag: album, selection: $appState.selectedAlbum) {
                         ViewAlbumsListRow(album: album)
                     }
                 }
