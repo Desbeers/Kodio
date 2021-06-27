@@ -59,7 +59,7 @@ extension KodiClient {
     /// The SwiftUI list should have a unique ID for each list to speed-up the view
     var albumListID: String {
         let appState = AppState.shared
-        switch filter.albums {
+        switch appState.filter.albums {
         case .artist:
             return "artist-\(appState.selectedArtist?.artistID ?? 0)"
         case .genre:
@@ -67,7 +67,7 @@ extension KodiClient {
         case .search:
             return search.searchID
         default:
-            return "albums-\(filter.albums.hashValue)"
+            return "albums-\(appState.filter.albums.hashValue)"
         }
     }
 
@@ -76,8 +76,8 @@ extension KodiClient {
     /// Filter the albums for the SwiftUI lists
     var albumsFilter: [AlbumFields] {
         let appState = AppState.shared
-        // print("ALBUM FILTER: \(appState.selectedArtist?.artist)")
-        switch filter.albums {
+        print("Album filter: \(appState.filter.albums)")
+        switch appState.filter.albums {
         case .artist:
             return albums.all.filter {$0.artistID.contains(appState.selectedArtist?.artistID ?? 0)}
         case .compilations:

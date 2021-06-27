@@ -23,13 +23,7 @@ struct ViewArtists: View {
             // Text(kodi.artistListID)
             ForEach(kodi.artistsFilter) { artist in
                 if artist.isAlbumArtist || !kodi.search.text.isEmpty {
-                    NavigationLink(destination: ViewAlbums().onAppear {
-                        appState.selectedAlbum = nil
-                        kodi.filter.albums = .artist
-                        kodi.filter.songs = .artist
-                    },
-                    tag: artist,
-                    selection: $appState.selectedArtist) {
+                    NavigationLink(destination: ViewAlbums(), tag: artist, selection: $appState.selectedArtist) {
                         ViewArtistsListRow(artist: artist)
                     }
                 }

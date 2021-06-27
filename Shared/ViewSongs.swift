@@ -13,6 +13,8 @@ import SwiftUI
 struct ViewSongs: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// The list of songs
     // @State var songs = [SongFields]()
     /// The view
@@ -35,7 +37,7 @@ struct ViewSongs: View {
                                             Text(song.artist.joined(separator: " & "))
                                                 .isHidden(kodi.hideArtistLabel(song: song))
                                             Text("\(song.album)")
-                                                .isHidden(kodi.filter.songs == .album)
+                                                .isHidden(appState.filter.songs == .album)
                                         }
                                         .font(.caption)
                                     }
@@ -75,12 +77,10 @@ struct SongsViewHeader: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
-    /// Header
-    @State private var songlistHeader: String = ""
     /// The view
     var body: some View {
         VStack(alignment: .leading) {
-            Text(songlistHeader)
+            Text(kodi.songlistHeader)
                 .font(.title)
                 .padding(.top)
             HStack {
@@ -119,7 +119,7 @@ extension ViewSongs {
     /// - Returns: Song art or track number
     @ViewBuilder
     func songsViewRowHeader(song: SongFields) -> some View {
-        if kodi.filter.songs == .album, song.track != 0 {
+        if appState.filter.songs == .album, song.track != 0 {
             Text(String(song.track))
                 .font(.caption)
         } else {

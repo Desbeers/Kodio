@@ -66,7 +66,7 @@ extension KodiClient {
     var songListID: String {
         let appState = AppState.shared
         // print("SonglistID: \(filter.songs)")
-        switch filter.songs {
+        switch appState.filter.songs {
         case .album:
             return "album-\(appState.selectedAlbum?.albumID ?? 0)"
         case .artist:
@@ -78,7 +78,7 @@ extension KodiClient {
         case .genre:
             return "genre-\(appState.selectedGenre?.genreID ?? 0)"
         default:
-            return "songs-\(filter.songs.hashValue)"
+            return "songs-\(appState.filter.songs.hashValue)"
         }
     }
 
@@ -87,8 +87,8 @@ extension KodiClient {
     /// Filter the songs for the SwiftUI lists
     var songsFilter: [SongFields] {
         let appState = AppState.shared
-        // print("SONG FILTER: \(appState.selectedAlbum?.title)")
-        switch filter.songs {
+        // print("Song filter: appState: \(appState.filter.songs)")
+        switch appState.filter.songs {
         case .album:
             return songs.all.filter { $0.albumID == appState.selectedAlbum?.albumID }
         case .artist:
@@ -121,7 +121,7 @@ extension KodiClient {
     var songlistHeader: String {
         // print("SONG HEADER: \(filter.songs)")
         let appState = AppState.shared
-        switch filter.songs {
+        switch appState.filter.songs {
         case .artist:
             return appState.selectedArtist?.artist ?? "Artist"
         case .album:
@@ -131,7 +131,7 @@ extension KodiClient {
         case .playlist:
             return playlists.title ?? "Playlist"
         default:
-            return filter.songs.rawValue
+            return appState.filter.songs.rawValue
         }
     }
 
