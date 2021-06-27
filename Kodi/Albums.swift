@@ -19,7 +19,6 @@ extension KodiClient {
         var recentlyPlayed = [AlbumFields]()
         var mostPlayed = [AlbumFields]()
         var random = [AlbumFields]()
-        var selected: AlbumFields?
     }
 
     // MARK: getAlbums (function)
@@ -59,11 +58,12 @@ extension KodiClient {
 
     /// The SwiftUI list should have a unique ID for each list to speed-up the view
     var albumListID: String {
+        let appState = AppState.shared
         switch filter.albums {
         case .artist:
-            return "artist-\(artists.selected?.artistID ?? 0)"
+            return "artist-\(appState.selectedArtist?.artistID ?? 0)"
         case .genre:
-            return "genre-\(genres.selected?.genreID ?? 0)"
+            return "genre-\(appState.selectedGenre?.genreID ?? 0)"
         case .search:
             return search.searchID
         default:
@@ -75,9 +75,11 @@ extension KodiClient {
 
     /// Filter the albums for the SwiftUI lists
     var albumsFilter: [AlbumFields] {
+        let appState = AppState.shared
+        // print("ALBUM FILTER: \(appState.selectedArtist?.artist)")
         switch filter.albums {
         case .artist:
-            return albums.all.filter {$0.artistID.contains(artists.selected?.artistID ?? 0)}
+            return albums.all.filter {$0.artistID.contains(appState.selectedArtist?.artistID ?? 0)}
         case .compilations:
             return albums.all.filter {$0.compilation == true}.sorted {$0.title < $1.title}
         case .recentlyAdded:
@@ -87,7 +89,7 @@ extension KodiClient {
         case .recentlyPlayed:
             return albums.recentlyPlayed
         case .genre:
-            return albums.all.filter { $0.genre.contains(genres.selected?.label ?? "") }
+            return albums.all.filter { $0.genre.contains(appState.selectedGenre?.label ?? "") }
                 .sorted { $0.artist.first! < $1.artist.first! }
         case .search:
             return albums.all.filter {self.search.text.isEmpty ? true :

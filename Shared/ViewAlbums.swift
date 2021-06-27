@@ -16,24 +16,25 @@ struct ViewAlbums: View {
     /// State of application
     @EnvironmentObject var appState: AppState
     /// The list of albums
-    @State var albums = [AlbumFields]()
+    // @State var albums = [AlbumFields]()
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
             List {
                 ViewArtFanart()
-                ForEach(albums) { album in
+                // Text(kodi.albumListID)
+                ForEach(kodi.albumsFilter) { album in
                     NavigationLink(destination: ViewDetails().onAppear {
-                        kodi.albums.selected = album
+                        appState.selectedAlbum = album
                         kodi.filter.songs = .album
-                    }, tag: album, selection: $kodi.albums.selected) {
+                    }, tag: album, selection: $appState.selectedAlbum) {
                         ViewAlbumsListRow(album: album)
                     }
                 }
-                if kodi.artists.selected != nil, !(kodi.artists.selected?.description.isEmpty ?? true) {
+                if appState.selectedArtist != nil, !(appState.selectedArtist?.description.isEmpty ?? true) {
                     HStack {
                         Spacer()
-                        Button("More about '\(kodi.artists.selected!.artist)'") {
+                        Button("More about '\(appState.selectedArtist!.artist)'") {
                             DispatchQueue.main.async {
                                 appState.activeSheet = .viewArtistInfo
                                 appState.showSheet = true
@@ -45,16 +46,6 @@ struct ViewAlbums: View {
             .id(kodi.albumListID)
             .onChange(of: kodi.libraryJump) { item in
                 proxy.scrollTo(item.albumID, anchor: .top)
-            }
-            .onAppear {
-                DispatchQueue.main.async {
-                    albums = kodi.albumsFilter
-                    /// If the artist has only one album; select it. Only on macOS, iOS does not like this
-                    if albums.count == 1, kodi.userInterface == .macOS {
-                        kodi.albums.selected = albums.first!
-                        kodi.filter.songs = .album
-                    }
-                }
             }
             .modifier(DetailsModifier())
         }

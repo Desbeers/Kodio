@@ -11,7 +11,6 @@ extension KodiClient {
     // MARK: - GenreLists (struct)
     struct GenreLists {
         var all = [GenreFields]()
-        var selected: GenreFields?
     }
 
     // MARK: - get a list of genres

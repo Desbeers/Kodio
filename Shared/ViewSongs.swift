@@ -14,12 +14,13 @@ struct ViewSongs: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
     /// The list of songs
-    @State var songs = [SongFields]()
+    // @State var songs = [SongFields]()
     /// The view
     var body: some View {
         SongsViewHeader()
         List {
-            ForEach(songs) { song in
+            // Text(kodi.songListID)
+            ForEach(kodi.songsFilter) { song in
                 HStack {
                     Button { kodi.sendSongAndPlay(song: song) }
                         label: {
@@ -66,11 +67,6 @@ struct ViewSongs: View {
             }
         }
         .id(kodi.songListID)
-        .onAppear {
-            DispatchQueue.main.async {
-                songs = kodi.songsFilter
-            }
-        }
     }
 }
 
@@ -79,10 +75,12 @@ struct SongsViewHeader: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// Header
+    @State private var songlistHeader: String = ""
     /// The view
     var body: some View {
         VStack(alignment: .leading) {
-            Text(kodi.songlistHeader)
+            Text(songlistHeader)
                 .font(.title)
                 .padding(.top)
             HStack {
@@ -94,7 +92,7 @@ struct SongsViewHeader: View {
                     label: {
                         Label("Shuffle songs", systemImage: "shuffle")
                     }
-                if kodi.albums.selected != nil, !(kodi.albums.selected?.description.isEmpty ?? true) {
+                if appState.selectedAlbum != nil, !(appState.selectedAlbum?.description.isEmpty ?? true) {
                         Spacer()
                         Button("Info") {
                             DispatchQueue.main.async {

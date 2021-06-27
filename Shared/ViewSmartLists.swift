@@ -12,6 +12,8 @@ import SwiftUI
 struct ViewSmartLists: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// The smart lists
     static var smartMenu = KodiClient.shared.getSmartMenu()
     
@@ -23,7 +25,7 @@ struct ViewSmartLists: View {
                 NavigationLink(destination: ViewAlbums().onAppear {
                     kodi.filter.albums = album.filter
                     kodi.filter.songs = album.filter
-                    kodi.albums.selected = nil
+                    appState.selectedAlbum = nil
                 },
                 tag: album,
                 selection: $selected) {

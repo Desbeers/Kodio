@@ -40,13 +40,13 @@ struct ViewDetails: View {
                     }
                 }
                 /// Make sure songs tab is selected when changing artist, song or genre
-                .onChange(of: kodi.albums.selected) { _ in
+                .onChange(of: appState.selectedAlbum) { _ in
                     appState.tabs.tabSongPlaylist = .songs
                 }
-                .onChange(of: kodi.artists.selected) { _ in
+                .onChange(of: appState.selectedArtist) { _ in
                     appState.tabs.tabSongPlaylist = .songs
                 }
-                .onChange(of: kodi.genres.selected) { _ in
+                .onChange(of: appState.selectedGenre) { _ in
                     appState.tabs.tabSongPlaylist = .songs
                 }
             }

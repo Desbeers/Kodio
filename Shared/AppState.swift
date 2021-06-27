@@ -22,12 +22,10 @@ class AppState: ObservableObject {
     @Published var alertItem: AlertItem?
     /// Define what sheet to show
     @Published var activeSheet: Sheets = .editHosts
-    /// The different kind of sheets
-    enum Sheets {
-        case editHosts
-        case viewArtistInfo
-        case viewAlbumInfo
-    }
+    /// Selected items
+    @Published var selectedArtist: ArtistFields?
+    @Published var selectedAlbum: AlbumFields?
+    @Published var selectedGenre: GenreFields?
 }
 
 extension AppState {
@@ -42,6 +40,18 @@ extension AppState {
     /// The available tabs
     enum TabOptions {
         case artists, genres, songs, playlist
+    }
+}
+
+extension AppState {
+    
+    // MARK: Sheets
+    
+    /// The different kind of sheets
+    enum Sheets {
+        case editHosts
+        case viewArtistInfo
+        case viewAlbumInfo
     }
 }
 

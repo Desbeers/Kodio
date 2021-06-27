@@ -37,16 +37,16 @@ class KodiClient: APIClient, ObservableObject {
     var notificate = true
 
     // MARK: artists (variable)
-    @Published var artists = ArtistLists()
+    var artists = ArtistLists()
 
     // MARK: albums (variable)
-    @Published var albums = AlbumLists()
+    var albums = AlbumLists()
 
     // MARK: songs (variable)
-    @Published var songs = SongLists()
+    var songs = SongLists()
 
     // MARK: genres (variable)
-    @Published var genres = GenreLists()
+    var genres = GenreLists()
 
     // MARK: playlists (variable)
     @Published var playlists = PlaylistLists()

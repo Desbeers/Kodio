@@ -19,8 +19,6 @@ extension KodiClient {
     /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
         /// Opening state
-        artists.selected = nil
-        albums.selected = nil
         filter.albums = .compilations
         filter.songs = .compilations
         /// get media items

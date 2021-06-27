@@ -34,10 +34,10 @@ extension KodiClient {
             let appState = AppState.shared
             let song = songs.all[index]
             if let index = artists.all.firstIndex(where: { $0.artist == song.albumArtist.first }) {
-                artists.selected = artists.all[index]
+                appState.selectedArtist = artists.all[index]
             }
             if let index = albums.all.firstIndex(where: { $0.albumID == song.albumID }) {
-                albums.selected = albums.all[index]
+                appState.selectedAlbum = albums.all[index]
             }
             /// Make sure the correct tabs are selected
             appState.tabs.tabArtistGenre = .artists
@@ -179,7 +179,7 @@ extension KodiClient {
                 }
                 self?.playlists.songs = songlist
                 self?.playlists.title = file.label
-                self?.albums.selected = nil
+                appState.selectedAlbum = nil
                 self?.filter.songs = .playlist
                 appState.tabs.tabSongPlaylist = .songs
                 self?.log(#function, "Songs from the playlist loaded")

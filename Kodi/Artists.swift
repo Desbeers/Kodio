@@ -16,7 +16,6 @@ extension KodiClient {
     /// The list of all artist types
     struct ArtistLists {
         var all = [ArtistFields]()
-        var selected: ArtistFields?
     }
 
     // MARK: getArtists (function)
@@ -69,6 +68,7 @@ extension KodiClient {
 
     /// Filter the albums for the SwiftUI list
     var artistsFilter: [ArtistFields] {
+        // print("ARTIST FILTER")
         switch filter.artists {
         case .search:
             return artists.all.filter({self.search.text.isEmpty ? true :
@@ -88,7 +88,8 @@ extension KodiClient {
     /// - Returns: Bool: true when the label needs to he hidden
 
     func hideArtistLabel(song: SongFields) -> Bool {
-        if artists.selected != nil {
+        let appState = AppState.shared
+        if appState.selectedArtist != nil {
             if song.albumArtist.first == song.artist.first {
                 return true
             }

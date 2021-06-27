@@ -71,10 +71,12 @@ struct ViewArtSong: View {
 struct ViewArtFanart: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// The view
     @ViewBuilder
     var body: some View {
-        if let fanart = kodi.artists.selected?.fanart {
+        if let fanart = appState.selectedArtist?.fanart {
             RemoteKodiImage(url: fanart, failure: Image("DefaultFanart"))
                 .aspectRatio(1.78, contentMode: .fit)
                 .cornerRadius(5)

@@ -79,7 +79,7 @@ extension KodiClient {
                 }
                 self?.properties.volume = result?.result.volume ?? 0
                 /// While we are here; keep an eye on the player
-                self?.getPlayerItem() 
+                self?.getPlayerItem()
             case .failure:
                 /// The first timed request after switching hosts gives a failure for no good reason
                 if self?.library.switchHost == true {

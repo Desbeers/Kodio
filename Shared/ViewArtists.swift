@@ -13,29 +13,29 @@ import SwiftUI
 struct ViewArtists: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// The list of artists
-    @State var artists = [ArtistFields]()
+    // @State var artists = [ArtistFields]()
     /// The view
     var body: some View {
         List {
-            ForEach(artists) { artist in
+            // Text(kodi.artistListID)
+            ForEach(kodi.artistsFilter) { artist in
                 if artist.isAlbumArtist || !kodi.search.text.isEmpty {
                     NavigationLink(destination: ViewAlbums().onAppear {
-                        kodi.albums.selected = nil
+                        appState.selectedAlbum = nil
                         kodi.filter.albums = .artist
                         kodi.filter.songs = .artist
                     },
                     tag: artist,
-                    selection: $kodi.artists.selected) {
+                    selection: $appState.selectedArtist) {
                         ViewArtistsListRow(artist: artist)
                     }
                 }
             }
         }
         .id(kodi.artistListID)
-        .onAppear {
-            artists = kodi.artistsFilter
-        }
     }
 }
 

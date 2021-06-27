@@ -64,17 +64,19 @@ extension KodiClient {
 
     /// The SwiftUI list should have a unique ID for each list to speed-up the view
     var songListID: String {
+        let appState = AppState.shared
+        // print("SonglistID: \(filter.songs)")
         switch filter.songs {
         case .album:
-            return "album-\(albums.selected?.albumID ?? 0)"
+            return "album-\(appState.selectedAlbum?.albumID ?? 0)"
         case .artist:
-            return "artist-\(artists.selected?.artistID ?? 0)"
+            return "artist-\(appState.selectedArtist?.artistID ?? 0)"
         case .playlist:
             return playlists.title ?? "playlist"
         case .search:
             return search.searchID
         case .genre:
-            return "genre-\(genres.selected?.genreID ?? 0)"
+            return "genre-\(appState.selectedGenre?.genreID ?? 0)"
         default:
             return "songs-\(filter.songs.hashValue)"
         }
@@ -84,12 +86,14 @@ extension KodiClient {
 
     /// Filter the songs for the SwiftUI lists
     var songsFilter: [SongFields] {
+        let appState = AppState.shared
+        // print("SONG FILTER: \(appState.selectedAlbum?.title)")
         switch filter.songs {
         case .album:
-            return songs.all.filter { $0.albumID == albums.selected?.albumID }
+            return songs.all.filter { $0.albumID == appState.selectedAlbum?.albumID }
         case .artist:
-            return songs.all.filter {$0.artist.contains(artists.selected?.artist ?? "") ||
-                $0.albumArtist.contains(artists.selected?.artist ?? "")
+            return songs.all.filter {$0.artist.contains(appState.selectedArtist?.artist ?? "") ||
+                $0.albumArtist.contains(appState.selectedArtist?.artist ?? "")
             }.sorted { $0.year == $1.year ? $0.track < $1.track : $0.year < $1.year }
         case .mostPlayed:
             return songs.mostPlayed
@@ -100,7 +104,7 @@ extension KodiClient {
         case .compilations:
             return songs.random
         case .genre:
-            return songs.all.filter { $0.genre.contains(genres.selected?.label ?? "") }
+            return songs.all.filter { $0.genre.contains(appState.selectedGenre?.label ?? "") }
         case .search:
             return songs.all.filter({self.search.text.isEmpty ? true :
                                         $0.search.localizedCaseInsensitiveContains(self.search.text)})
@@ -115,13 +119,15 @@ extension KodiClient {
 
     /// The header for the SwiftUI songlist view
     var songlistHeader: String {
+        // print("SONG HEADER: \(filter.songs)")
+        let appState = AppState.shared
         switch filter.songs {
         case .artist:
-            return artists.selected?.artist ?? "Artist"
+            return appState.selectedArtist?.artist ?? "Artist"
         case .album:
-            return albums.selected?.title ?? "Album"
+            return appState.selectedAlbum?.title ?? "Album"
         case .genre:
-            return genres.selected?.label ?? "Genre"
+            return appState.selectedGenre?.label ?? "Genre"
         case .playlist:
             return playlists.title ?? "Playlist"
         default:
