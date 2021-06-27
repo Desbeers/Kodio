@@ -27,7 +27,11 @@ struct ViewSmartLists: View {
             ViewTabArtistsGenres()
         }
         .onAppear {
-            appState.selectedSmartList = ViewSmartLists.smartMenu.first
+            /// Bug: iOS got upset when doing below. When hiding the sidebar,
+            /// this is triggered on refresh of the UI even thought the sidebar is not visible.
+            if kodi.userInterface == .macOS {
+                appState.selectedSmartList = ViewSmartLists.smartMenu.first
+            }
         }
         .modifier(SmartListsModifier())
     }
