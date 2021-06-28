@@ -28,14 +28,19 @@ class MenuBarController {
 struct ViewMenuBar: View {
     @StateObject var kodi = KodiClient.shared
     var body: some View {
-        VStack {
-            Text(kodi.player.navigationTitle)
-                .font(.headline)
-                .lineLimit(1)
-            Text(kodi.player.navigationSubtitle)
-                .font(.subheadline)
-            HStack {
-                ViewPlayerButtons().environmentObject(kodi)
+        HStack {
+            RemoteKodiImage(url: kodi.player.item.thumbnail, failure: Image("DefaultCoverArt"))
+                .frame(width: 60, height: 60)
+                .cornerRadius(5)
+            VStack {
+                Text(kodi.player.navigationTitle)
+                    .font(.headline)
+                    .lineLimit(1)
+                Text(kodi.player.navigationSubtitle)
+                    .font(.subheadline)
+                HStack {
+                    ViewPlayerButtons().environmentObject(kodi)
+                }
             }
         }
         .padding(.horizontal)

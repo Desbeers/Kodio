@@ -371,15 +371,16 @@ struct PlayerPropertiesFields: Decodable {
 
 struct PlayerItemFields: Decodable {
     /// The fields that we ask for
-    var properties = ["title", "artist"]
+    var properties = ["title", "artist", "thumbnail"]
     /// The fields from above
     var songID: Int?
     var title: String?
     var artist: [String]?
     var label: String = ""
+    var thumbnail: String = ""
     var type: String = ""
     enum CodingKeys: String, CodingKey {
-        case label, title, artist, type
+        case label, title, artist, thumbnail, type
         case songID = "id"
     }
 }
