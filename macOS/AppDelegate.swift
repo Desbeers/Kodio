@@ -8,14 +8,20 @@
 import SwiftUI
 
 class AppDelegate: NSObject, NSApplicationDelegate {
+    var menuBar: MenuBarController?
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         /// Hide tabs related stuff in the menu
         NSWindow.allowsAutomaticWindowTabbing = false
-        
+        /// Notifications
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sleepListener(_:)),
                                                           name: NSWorkspace.willSleepNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sleepListener(_:)),
                                                           name: NSWorkspace.didWakeNotification, object: nil)
+        /// Menu Bar
+        let viewMenuBar = ViewMenuBar()
+        let content = NSHostingView(rootView: viewMenuBar)
+        content.frame = NSRect(x: 0, y: 0, width: 240, height: 80)
+        menuBar = MenuBarController(content)
     }
 
     @objc private func sleepListener(_ aNotification: Notification) {

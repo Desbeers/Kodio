@@ -19,7 +19,7 @@ extension KodiClient {
     ///     - message: String: the message
 
     func log( _ sender: String, _ message: String) {
-        //print("\(sender): \(message)")
+        print("\(sender): \(message)")
         DispatchQueue.main.async {
             if self.debugLog.count > 100 {
                 self.debugLog = []
