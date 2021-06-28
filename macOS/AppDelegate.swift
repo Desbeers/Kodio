@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         /// Menu Bar
         let viewMenuBar = ViewMenuBar()
         let content = NSHostingView(rootView: viewMenuBar)
-        content.frame = NSRect(x: 0, y: 0, width: 300, height: 80)
+        content.frame = NSRect(x: 0, y: 0, width: 320, height: 120)
         menuBar = MenuBarController(content)
     }
 

@@ -30,18 +30,24 @@ struct ViewMenuBar: View {
     var body: some View {
         HStack {
             RemoteKodiImage(url: kodi.player.item.thumbnail, failure: Image("DefaultCoverArt"))
-                .frame(width: 60, height: 60)
+                .frame(width: 100, height: 100)
                 .cornerRadius(5)
-            VStack {
+            Spacer()
+            VStack(spacing: 6) {
                 Text(kodi.player.navigationTitle)
                     .font(.headline)
                     .lineLimit(1)
+                    .padding(.top, 6)
                 Text(kodi.player.navigationSubtitle)
                     .font(.subheadline)
                 HStack {
                     ViewPlayerButtons().environmentObject(kodi)
                 }
+                .padding(.top, 6)
+                ViewPlayerVolume().environmentObject(kodi)
+                    .frame(width: 160)
             }
+            Spacer()
         }
         .padding(.horizontal)
     }
