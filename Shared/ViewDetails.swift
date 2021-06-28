@@ -12,8 +12,8 @@ import SwiftUI
 /// A view that shown either songs or the playlist queue
 
 struct ViewDetails: View {
-    /// State of the tabs
-    let tabs: AppState.TabOptions
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
         VStack {
@@ -21,7 +21,7 @@ struct ViewDetails: View {
             ViewTabSongsPlaylist()
                 .padding(.vertical)
                 .frame(width: 200)
-            switch tabs {
+            switch appState.tabs.tabSongPlaylist {
             case .playlist:
                 ViewPlaylist()
             default:

@@ -16,11 +16,11 @@ struct ViewiPad: View {
     @AppStorage("ShowLog") var showLog: Bool = false
     var body: some View {
         NavigationView {
-            ViewSidebar(tabs: appState.tabs.tabArtistGenre)
+            ViewSidebar()
                 .navigationTitle("Kodio")
                 .navigationBarTitleDisplayMode(.inline)
             ViewAlbums()
-            ViewDetails(tabs: appState.tabs.tabSongPlaylist)
+            ViewDetails()
         }
     }
 }

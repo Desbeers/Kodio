@@ -40,11 +40,11 @@ struct ViewContent: View {
                     }
                 }
             } else {
-                ViewSidebar(tabs: appState.tabs.tabArtistGenre)
+                ViewSidebar()
                     .frame(minWidth: 250, idealWidth: 250, maxWidth: 400, maxHeight: .infinity)
                 ViewAlbums()
                     .frame(minWidth: 400, idealWidth: 500, maxWidth: .infinity, maxHeight: .infinity)
-                ViewDetails(tabs: appState.tabs.tabSongPlaylist)
+                ViewDetails()
                     .frame(minWidth: 400, idealWidth: 500, maxWidth: .infinity, maxHeight: .infinity)
             }
         }

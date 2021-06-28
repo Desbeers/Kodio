@@ -22,7 +22,7 @@ struct ViewAlbums: View {
                 ViewArtFanart()
                 // Text(kodi.albumListID)
                 ForEach(kodi.albumsFilter) { album in
-                    NavigationLink(destination: ViewDetails(tabs: .songs), tag: album, selection: $appState.selectedAlbum) {
+                    NavigationLink(destination: ViewDetails(), tag: album, selection: $appState.selectedAlbum) {
                         ViewAlbumsListRow(album: album)
                     }
                 }

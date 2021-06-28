@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ViewSidebar: View {
-    /// State of the tabs
-    let tabs: AppState.TabOptions
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
             VStack(spacing: 0) {
                 ViewSmartLists()
-                switch tabs {
+                switch appState.tabs.tabArtistGenre {
                 case .genres:
                     ViewGenres()
                 default:
