@@ -207,6 +207,13 @@ struct AlbumFields: Codable, Identifiable, Hashable {
     var title: String = ""
     var year: Int = 0
     /// Computed stuff
+    var details: [String] {
+        var details: [String] = []
+        if year > 0 {
+            details.append(String(year))
+        }
+        return details + genre
+    }
     var search: String {
         return "\(artist) \(title)"
     }

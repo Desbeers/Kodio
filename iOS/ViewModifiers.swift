@@ -55,13 +55,6 @@ struct ToolbarModifier: ViewModifier {
     }
 }
 
-struct SmartListsModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(height: 300)
-    }
-}
-
 struct DetailsModifier: ViewModifier {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient

@@ -13,13 +13,6 @@ struct ToolbarModifier: ViewModifier {
     }
 }
 
-struct SmartListsModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(height: 168)
-    }
-}
-
 struct DetailsModifier: ViewModifier {
     func body(content: Content) -> some View {
         content

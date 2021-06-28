@@ -29,6 +29,7 @@ class AppState: ObservableObject {
                 print("Artist selected")
                 filter.albums = .artist
                 filter.songs = .artist
+                tabs.tabSongPlaylist = .songs
             }
         }
     }
@@ -37,6 +38,7 @@ class AppState: ObservableObject {
             if newValue != nil {
                 print("Album selected")
                 filter.songs = .album
+                tabs.tabSongPlaylist = .songs
             }
         }
     }
@@ -46,6 +48,7 @@ class AppState: ObservableObject {
                 print("Genre selected")
                 filter.albums = .genre
                 filter.songs = .genre
+                tabs.tabSongPlaylist = .songs
             }
         }
     }
@@ -55,6 +58,7 @@ class AppState: ObservableObject {
                 print("Smart list selected")
                 filter.albums = newValue!.filter
                 filter.songs = newValue!.filter
+                tabs.tabSongPlaylist = .songs
             }
         }
     }

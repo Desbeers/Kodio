@@ -8,24 +8,18 @@
 import SwiftUI
 
 struct ViewSidebar: View {
-    /// The object that has it all
-    @EnvironmentObject var kodi: KodiClient
-    /// State of the application
-    @EnvironmentObject var appState: AppState
+    /// State of the tabs
+    let tabs: AppState.TabOptions
     /// The view
     var body: some View {
-        ScrollViewReader { proxy in
             VStack(spacing: 0) {
                 ViewSmartLists()
-                if appState.tabs.tabArtistGenre == .artists {
-                    ViewArtists()
-                } else {
+                switch tabs {
+                case .genres:
                     ViewGenres()
+                default:
+                    ViewArtists()
                 }
             }
-            .onChange(of: kodi.libraryJump) { item in
-                proxy.scrollTo(item.artist, anchor: .center)
-            }
-        }
     }
 }

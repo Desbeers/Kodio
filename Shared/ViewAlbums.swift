@@ -22,21 +22,11 @@ struct ViewAlbums: View {
                 ViewArtFanart()
                 // Text(kodi.albumListID)
                 ForEach(kodi.albumsFilter) { album in
-                    NavigationLink(destination: ViewDetails(), tag: album, selection: $appState.selectedAlbum) {
+                    NavigationLink(destination: ViewDetails(tabs: .songs), tag: album, selection: $appState.selectedAlbum) {
                         ViewAlbumsListRow(album: album)
                     }
                 }
-                if appState.selectedArtist != nil, !(appState.selectedArtist?.description.isEmpty ?? true) {
-                    HStack {
-                        Spacer()
-                        Button("More about '\(appState.selectedArtist!.artist)'") {
-                            DispatchQueue.main.async {
-                                appState.activeSheet = .viewArtistInfo
-                                appState.showSheet = true
-                            }
-                        }
-                    }
-                }
+                ViewAlbumsArtistDescription(artist: appState.selectedArtist)
             }
             .id(kodi.albumListID)
             .onChange(of: kodi.libraryJump) { item in
@@ -51,7 +41,8 @@ struct ViewAlbums: View {
 
 /// The row of an album in the list
 struct ViewAlbumsListRow: View {
-    var album: AlbumFields
+    /// The album object
+    let album: AlbumFields
     /// The view
     var body: some View {
         HStack {
@@ -61,19 +52,37 @@ struct ViewAlbumsListRow: View {
                     .font(.headline)
                 Group {
                     Text(album.artist.joined(separator: " & "))
-                    /// Hide details when there is no year
-                    if album.year != 0 {
-                        HStack(spacing: 0) {
-                            Text(String(album.year))
-                            Text("∙")
-                            Text(album.genre.first ?? "")
-                        }
-                    }
+                    Text(album.details.joined(separator: "・"))
                 }
                 .font(.caption)
             }
             Spacer()
         }
         .id(album.albumID)
+    }
+}
+
+// MARK: - ViewAlbumsArtistDescription (view)
+
+struct ViewAlbumsArtistDescription: View {
+    /// State of application
+    @EnvironmentObject var appState: AppState
+    /// The artist object
+    let artist: ArtistFields?
+    /// The View
+    var body: some View {
+        if artist != nil, !(artist?.description.isEmpty ?? true) {
+            HStack {
+                Spacer()
+                Button("More about '\(artist!.artist)'") {
+                    DispatchQueue.main.async {
+                        appState.activeSheet = .viewArtistInfo
+                        appState.showSheet = true
+                    }
+                }
+            }
+        } else {
+            EmptyView()
+        }
     }
 }

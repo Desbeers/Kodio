@@ -72,6 +72,8 @@ struct ViewSongs: View {
     }
 }
 
+// MARK: - SongsViewHeader (view)
+
 struct SongsViewHeader: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
@@ -92,16 +94,7 @@ struct SongsViewHeader: View {
                     label: {
                         Label("Shuffle songs", systemImage: "shuffle")
                     }
-                if appState.selectedAlbum != nil, !(appState.selectedAlbum?.description.isEmpty ?? true) {
-                        Spacer()
-                        Button("Info") {
-                            DispatchQueue.main.async {
-                                appState.activeSheet = .viewAlbumInfo
-                                appState.showSheet = true
-                            }
-                        }
-                    .foregroundColor(.accentColor)
-                }
+                ViewSongsAlbumDescription(album: appState.selectedAlbum)
             }
             .buttonStyle(ViewPlayerStyleButton())
             Divider()
@@ -135,6 +128,30 @@ struct ViewSongsStyleLabel: LabelStyle {
         HStack {
             configuration.icon.foregroundColor(.accentColor)
             configuration.title
+        }
+    }
+}
+
+// MARK: - ViewSongsAlbumDescription (view)
+
+struct ViewSongsAlbumDescription: View {
+    /// State of application
+    @EnvironmentObject var appState: AppState
+    /// The artist object
+    let album: AlbumFields?
+    /// The View
+    var body: some View {
+        if album != nil, !(album?.description.isEmpty ?? true) {
+                Spacer()
+                Button("Info") {
+                    DispatchQueue.main.async {
+                        appState.activeSheet = .viewAlbumInfo
+                        appState.showSheet = true
+                    }
+                }
+            .foregroundColor(.accentColor)
+        } else {
+            EmptyView()
         }
     }
 }

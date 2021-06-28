@@ -33,6 +33,8 @@ struct ViewSmartLists: View {
                 appState.selectedSmartList = ViewSmartLists.smartMenu.first
             }
         }
-        .modifier(SmartListsModifier())
+        /// Different heights for macOS and iOS.
+        /// I have to set the height because the list is dynamic and will use 50% of the height by default.
+        .frame(height: kodi.userInterface == .macOS ? 168 : 280)
     }
 }
