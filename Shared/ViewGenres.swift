@@ -15,14 +15,20 @@ struct ViewGenres: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// The list of genres
+    @State private var genres: [GenreFields] = []
     /// The view
     var body: some View {
         List {
-            ForEach(kodi.genres.all) { genre in
+            ForEach(genres) { genre in
                 NavigationLink(destination: ViewAlbums(), tag: genre, selection: $appState.selectedGenre) {
                     ViewGenresListRow(genre: genre)
                 }
             }
+        }
+        .onAppear {
+            kodi.log(#function, "ViewGenres onAppear")
+            genres = kodi.genres.all
         }
     }
 }

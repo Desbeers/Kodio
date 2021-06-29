@@ -16,13 +16,13 @@ struct ViewSongs: View {
     /// State of application
     @EnvironmentObject var appState: AppState
     /// The list of songs
-    // @State var songs = [SongFields]()
+    @State private var songs: [SongFields] = []
     /// The view
     var body: some View {
         SongsViewHeader()
         List {
             // Text(kodi.songListID)
-            ForEach(kodi.songsFilter) { song in
+            ForEach(songs) { song in
                 HStack {
                     Button { kodi.sendSongAndPlay(song: song) }
                         label: {
@@ -69,6 +69,10 @@ struct ViewSongs: View {
             }
         }
         .id(kodi.songListID)
+        .onAppear {
+            kodi.log(#function, "ViewSongs onAppear")
+            songs = kodi.songsFilter
+        }
     }
 }
 

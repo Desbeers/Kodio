@@ -15,12 +15,14 @@ struct ViewArtists: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// The list of artists
+    @State private var artists: [ArtistFields] = []
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
         List {
             // Text(kodi.artistListID)
-            ForEach(kodi.artistsFilter, id: \.id) { artist in
+            ForEach(artists) { artist in
                 if artist.isAlbumArtist || !kodi.search.text.isEmpty {
                     NavigationLink(destination: ViewAlbums(), tag: artist, selection: $appState.selectedArtist) {
                         ViewArtistsListRow(artist: artist)
@@ -31,6 +33,10 @@ struct ViewArtists: View {
         .onChange(of: kodi.libraryJump) { item in
             print("Jump to \(item.artist)")
             proxy.scrollTo(item.artist, anchor: .center)
+        }
+        .onAppear {
+            kodi.log(#function, "ViewArtists onAppear")
+            artists = kodi.artistsFilter
         }
         .id(kodi.artistListID)
         }
