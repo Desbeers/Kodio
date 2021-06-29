@@ -7,6 +7,25 @@
 
 import SwiftUI
 
+struct ViewPlayerItem: View {
+    /// The object that has it all:
+    @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
+    /// The View
+    var body: some View {
+        VStack {
+            Divider()
+            HStack {
+                Text(kodi.player.navigationTitle)
+                    .font(.headline)
+                Text(kodi.player.navigationSubtitle)
+                    .font(.subheadline)
+            }
+        }
+    }
+}
+
 // MARK: - ViewPlayerButtons (view)
 
 /// The buttons for player start, pause, next and previous

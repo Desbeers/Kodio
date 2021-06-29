@@ -33,8 +33,10 @@ struct ToolbarModifier: ViewModifier {
                 ToolbarItemGroup(placement: .bottomBar) {
                     HStack(spacing: 10) {
                         Spacer()
+                        Image(systemName: "dot.radiowaves.left.and.right")
                         ViewRadioMenu()
                         Spacer()
+                        Image(systemName: "gear")
                         Menu(kodi.selectedHost.description) {
                             ViewKodiHostsMenu()
                             Button(showLog ? "Hide Console Messages" : "Show Console Messages") {
@@ -53,12 +55,23 @@ struct ToolbarModifier: ViewModifier {
     }
 }
 
-struct DetailsModifier: ViewModifier {
+struct AlbumsModifier: ViewModifier {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
     func body(content: Content) -> some View {
         content
-            .navigationTitle(kodi.player.navigationTitle + " | " + kodi.player.navigationSubtitle)
+            .navigationTitle("Kodio")
+            .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct DetailsModifier: ViewModifier {
+    /// The object that has it all
+    @EnvironmentObject var kodi: KodiClient
+    func body(content: Content) -> some View {
+        ViewPlayerItem()
+        content
+            .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -36,6 +36,12 @@ struct ToolbarModifier: ViewModifier {
     }
 }
 
+struct AlbumsModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+    }
+}
+
 struct DetailsModifier: ViewModifier {
     func body(content: Content) -> some View {
         content

@@ -41,7 +41,7 @@ struct ViewAlbums: View {
                 kodi.log(#function, "ViewAlbums onAppear")
                 albums = kodi.albumsFilter
             }
-            .modifier(DetailsModifier())
+            .modifier(AlbumsModifier())
         }
     }
 }

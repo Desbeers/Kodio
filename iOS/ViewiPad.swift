@@ -17,7 +17,7 @@ struct ViewiPad: View {
     var body: some View {
         NavigationView {
             ViewSidebar()
-                .navigationTitle("Kodio")
+                .navigationTitle("")
                 .navigationBarTitleDisplayMode(.inline)
             ViewAlbums()
             ViewDetails()
