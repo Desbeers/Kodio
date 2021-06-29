@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-// MARK: - ViewTabArtistsGenres (view)
+// MARK: - ViewTabsSidebar (view)
 
 /// Tab between artists and genres
-struct ViewTabArtistsGenres: View {
+struct ViewTabsSidebar: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
     /// State of the application
@@ -27,9 +27,9 @@ struct ViewTabArtistsGenres: View {
     }
 }
 
-// MARK: - ViewTabSongsPlaylist (view)
+// MARK: - ViewTabsDetails (view)
 
-struct ViewTabSongsPlaylist: View {
+struct ViewTabsDetails: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
     /// State of the application
@@ -38,6 +38,7 @@ struct ViewTabSongsPlaylist: View {
     var body: some View {
         Picker("Playlist", selection: $appState.tabs.tabSongPlaylist) {
             Text("My songs").tag(AppState.TabOptions.songs)
+            Text("My playlists").tag(AppState.TabOptions.playlists)
             Text("Play queue").tag(AppState.TabOptions.playqueue)
         }
         .pickerStyle(SegmentedPickerStyle())

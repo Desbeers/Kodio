@@ -77,7 +77,7 @@ extension AppState {
     }
     /// The available tabs
     enum TabOptions {
-        case artists, genres, songs, playqueue
+        case artists, genres, songs, playqueue, playlists
     }
 }
 
