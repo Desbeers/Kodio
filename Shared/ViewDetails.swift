@@ -19,6 +19,7 @@ struct ViewDetails: View {
         VStack {
             ViewKodiStatus()
             ViewTabsDetails()
+                .padding(.horizontal)
                 .padding()
             switch appState.tabs.tabSongPlaylist {
             case .playlists:

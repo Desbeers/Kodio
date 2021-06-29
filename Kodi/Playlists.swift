@@ -12,12 +12,7 @@ extension KodiClient {
 
     struct PlaylistLists {
         var queue = [SongFields]()
-        var files = [FileFields]()///
-        /// TITLE.swift
-        /// Kodio
-        ///
-        /// © 2021 Nick Berendsen
-        ///
+        var files = [FileFields]()
         var songs = [SongFields]()
         var title: String?
         var queueListID = UUID().uuidString
