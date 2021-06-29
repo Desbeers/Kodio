@@ -25,8 +25,7 @@ struct ToolbarModifier: ViewModifier {
                     Spacer()
                     ViewPlayerOptions()
                 }
-                ToolbarItemGroup {
-                    ViewPlaylistMenu()
+                ToolbarItem {
                     ViewRadioMenu()
                 }
                 ToolbarItem {

@@ -15,7 +15,6 @@ class AppState: ObservableObject {
     static let shared = AppState()
     /// Tab selector
     @Published var tabs = TabViews()
-    var tabOption: TabOptions = .artists
     /// Show or hide a SwiftUI Sheet
     @Published var showSheet: Bool = false
     /// The Struct for an SwiftUI Alert
@@ -78,7 +77,7 @@ extension AppState {
     }
     /// The available tabs
     enum TabOptions {
-        case artists, genres, songs, playlist
+        case artists, genres, songs, playqueue, playlists
     }
 }
 

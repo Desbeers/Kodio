@@ -1,5 +1,5 @@
 ///
-/// ViewPlaylist.swift
+/// ViewPlayqueue.swift
 /// Kodio (Shared)
 ///
 /// © 2021 Nick Berendsen
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-// MARK: - ViewPlaylist (view)
+// MARK: - ViewPlaylistQueue (view)
 
-struct ViewPlaylist: View {
+struct ViewPlaylistQueue: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
     /// A timer for the song progress view
@@ -76,7 +76,7 @@ struct ViewPlaylist: View {
                                         kodi.getPlayerProperties(playerItem: false)
                                     }
                                 }
-                                .progressViewStyle(ViewPlaylistStyleProgressView())
+                                .progressViewStyle(ViewPlaylistQueueStyleProgressView())
                                 .padding(.horizontal)
                         }
                     }
@@ -100,29 +100,10 @@ struct ViewPlaylist: View {
     }
 }
 
-// MARK: - ViewPlaylistMenu (view)
-
-/// A view with a list of playlists
-struct ViewPlaylistMenu: View {
-    /// The object that has it all
-    @EnvironmentObject var kodi: KodiClient
-    /// The view
-    var body: some View {
-        Menu("Playlists") {
-            ForEach(kodi.playlists.files) { file in
-                Button(file.label.removeExtension()) {
-                    kodi.getPlaylistSongs(file: file)
-                }
-            }
-        }
-        .disabled(kodi.playlists.files.isEmpty)
-    }
-}
-
-// MARK: - ViewPlaylistStyleProgressView (view)
+// MARK: - ViewPlaylistQueueStyleProgressView (view)
 
 /// The style for the progress of a song
-struct ViewPlaylistStyleProgressView: ProgressViewStyle {
+struct ViewPlaylistQueueStyleProgressView: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         ProgressView(configuration)
             .accentColor(Color.green)

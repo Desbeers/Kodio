@@ -18,12 +18,13 @@ struct ViewDetails: View {
     var body: some View {
         VStack {
             ViewKodiStatus()
-            ViewTabSongsPlaylist()
-                .padding(.vertical)
-                .frame(width: 200)
+            ViewTabsDetails()
+                .padding()
             switch appState.tabs.tabSongPlaylist {
-            case .playlist:
-                ViewPlaylist()
+            case .playlists:
+                ViewPlaylists()
+            case .playqueue:
+                ViewPlaylistQueue()
             default:
                 ViewSongs()
             }

@@ -24,7 +24,7 @@ struct ViewSmartLists: View {
                     Label(album.label, systemImage: album.icon)
                 }
             }
-            ViewTabArtistsGenres()
+            ViewTabsSidebar()
         }
         .onAppear {
             /// Bug: iOS got upset when doing below. When hiding the sidebar,

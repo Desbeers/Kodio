@@ -19,7 +19,7 @@ struct ViewiPhone: View {
                     Label("Home", systemImage: "music.note.house")
                 }
             
-            ViewPlaylist()
+            ViewPlaylistQueue()
                 .tabItem {
                     Label("Queue", systemImage: "music.note.list")
                 }

@@ -33,8 +33,6 @@ struct ToolbarModifier: ViewModifier {
                 ToolbarItemGroup(placement: .bottomBar) {
                     HStack(spacing: 10) {
                         Spacer()
-                        ViewPlaylistMenu()
-                        Spacer()
                         ViewRadioMenu()
                         Spacer()
                         Menu(kodi.selectedHost.description) {

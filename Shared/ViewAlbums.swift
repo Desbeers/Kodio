@@ -15,22 +15,31 @@ struct ViewAlbums: View {
     @EnvironmentObject var kodi: KodiClient
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// The list of albums
+    @State private var albums: [AlbumFields] = []
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
-            List {
-                ViewArtFanart()
+            /// In a VStack or else the list will not update on search (??)
+            VStack {
                 // Text(kodi.albumListID)
-                ForEach(kodi.albumsFilter) { album in
-                    NavigationLink(destination: ViewDetails(), tag: album, selection: $appState.selectedAlbum) {
-                        ViewAlbumsListRow(album: album)
+                List {
+                    ViewArtFanart()
+                    ForEach(albums) { album in
+                        NavigationLink(destination: ViewDetails(), tag: album, selection: $appState.selectedAlbum) {
+                            ViewAlbumsListRow(album: album)
+                        }
                     }
+                    ViewAlbumsArtistDescription(artist: appState.selectedArtist)
                 }
-                ViewAlbumsArtistDescription(artist: appState.selectedArtist)
+                .id(kodi.albumListID)
+                .onChange(of: kodi.libraryJump) { item in
+                    proxy.scrollTo(item.albumID, anchor: .top)
+                }
             }
-            .id(kodi.albumListID)
-            .onChange(of: kodi.libraryJump) { item in
-                proxy.scrollTo(item.albumID, anchor: .top)
+            .onAppear {
+                kodi.log(#function, "ViewAlbums onAppear")
+                albums = kodi.albumsFilter
             }
             .modifier(DetailsModifier())
         }

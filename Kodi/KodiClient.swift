@@ -72,7 +72,7 @@ class KodiClient: APIClient, ObservableObject {
     var previousFilter = MediaFilter()
 
     // MARK: debugLog (variable)
-    var debugLog = [DebugLog]()
+    @Published var debugLog = [DebugLog]()
 
     // MARK: init (function)
 
