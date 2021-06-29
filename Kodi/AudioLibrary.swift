@@ -37,16 +37,16 @@ extension KodiClient {
                             self?.libraryUpToDate = false
                             self?.log(#function, "Library is out of date.")
                             let alertItem = AppState.AlertItem(title: Text("Reload Library"),
-                                                      message: Text("Your library is out of date.\nDo you want to reload it?"),
-                                                      button: .default(Text("Reload"),
-                                                                       action: {
-                                                                        /// Stop nagging after one time
-                                                                        DispatchQueue.main.async {
-                                                                            AppState.shared.alertItem = nil
-                                                                        }
-                                                                        self?.getLibrary(reload: true)
-                                                                       }
-                                                      )
+                                                               message: Text("Your library is out of date.\nDo you want to reload it?"),
+                                                               button: .default(Text("Reload"),
+                                                                                action: {
+                                                                                    /// Stop nagging after one time
+                                                                                    DispatchQueue.main.async {
+                                                                                        AppState.shared.alertItem = nil
+                                                                                    }
+                                                                                    self?.getLibrary(reload: true)
+                                                                                }
+                                                               )
                             )
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                 AppState.shared.alertItem = alertItem
@@ -66,13 +66,16 @@ extension KodiClient {
     /// - Parameter confirm: show an Alert to confirm this action
     func scanAudioLibrary(confirm: Bool = false) {
         if confirm {
+            AppState.shared.alertItem = nil
             let request = SystemAction(api: .audioLibraryScan)
             sendMessage(request: request)
         } else {
             let alertItem = AppState.AlertItem(title: Text("Scan Library"),
-                                      message: Text("Are you sure you want to scan the library?"),
-                                      button: .default(Text("Scan"),
-                                                       action: { self.scanAudioLibrary(confirm: true) })
+                                               message: Text("Are you sure you want to scan the library?"),
+                                               button: .default(Text("Scan"),
+                                                                action: {
+                                                                    self.scanAudioLibrary(confirm: true)
+                                                                })
             )
             AppState.shared.alertItem = alertItem
         }
