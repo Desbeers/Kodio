@@ -38,7 +38,7 @@ struct ViewTabSongsPlaylist: View {
     var body: some View {
         Picker("Playlist", selection: $appState.tabs.tabSongPlaylist) {
             Text("My songs").tag(AppState.TabOptions.songs)
-            Text("Play queue").tag(AppState.TabOptions.playlist)
+            Text("Play queue").tag(AppState.TabOptions.playqueue)
         }
         .pickerStyle(SegmentedPickerStyle())
         .labelsHidden()

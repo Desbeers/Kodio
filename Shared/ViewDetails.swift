@@ -22,8 +22,8 @@ struct ViewDetails: View {
                 .padding(.vertical)
                 .frame(width: 200)
             switch appState.tabs.tabSongPlaylist {
-            case .playlist:
-                ViewPlaylist()
+            case .playqueue:
+                ViewPlaylistQueue()
             default:
                 ViewSongs()
             }
