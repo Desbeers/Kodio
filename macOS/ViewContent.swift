@@ -52,23 +52,5 @@ struct ViewContent: View {
         .alert(item: $appState.alertItem) { alertItem in
             return alertContent(alertItem)
         }
-        .toolbar {
-            ToolbarItemGroup {
-                ViewPlayerVolume()
-                    .frame(width: 160)
-                Spacer()
-                ViewPlayerButtons()
-                Spacer()
-                ViewPlayerOptions()
-            }
-            ToolbarItemGroup {
-                ViewPlaylistMenu()
-                ViewRadioMenu()
-            }
-            ToolbarItem {
-                SearchField(search: $search, kodi: kodi)
-                    .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
-            }
-        }
     }
 }
