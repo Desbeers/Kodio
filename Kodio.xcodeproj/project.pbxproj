@@ -284,8 +284,8 @@
 				D7694E12265168F10092D195 /* ViewDescription.swift */,
 				D7ABB9F4265A33DC00098E19 /* ViewKodi.swift */,
 				D75688A5265C01CE008A7D16 /* ViewLog.swift */,
-				D71B4AEB26428E3F00852BDF /* Assets.xcassets */,
 				D79563C52669489D00962DFB /* ViewRadio.swift */,
+				D71B4AEB26428E3F00852BDF /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";

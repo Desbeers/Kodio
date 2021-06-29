@@ -51,13 +51,9 @@ struct ViewiPhoneMain: View {
                 Spacer()
             }
             .padding()
-            .background(Color("iOSplayerBackground"))
+            .background(Color.secondary.opacity(0.2))
             Spacer()
             VStack(alignment: .leading, spacing: 20) {
-                HStack {
-                    Image(systemName: "music.note.list")
-                    ViewPlaylistMenu()
-                }
                 HStack {
                     Image(systemName: "dot.radiowaves.left.and.right")
                     ViewRadioMenu()
@@ -69,11 +65,11 @@ struct ViewiPhoneMain: View {
                 HStack {
                     ViewPlayerButtons()
                 }
-                .scaleEffect(2)
+                .scaleEffect(1.5)
                 HStack {
                     ViewPlayerOptions()
                 }
-                .scaleEffect(1.5)
+                .scaleEffect(1.2)
                 ViewPlayerVolume()
                     .frame(width: 160)
             }
