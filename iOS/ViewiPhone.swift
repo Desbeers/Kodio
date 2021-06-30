@@ -55,7 +55,7 @@ struct ViewiPhoneMain: View {
             Spacer()
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
-                    Image(systemName: "dot.radiowaves.left.and.right")
+                    Image(systemName: "antenna.radiowaves.left.and.right")
                     ViewRadioMenu()
                 }
             }

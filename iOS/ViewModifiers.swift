@@ -19,12 +19,12 @@ struct ToolbarModifier: ViewModifier {
             .toolbar {
                 ToolbarItemGroup(placement: .principal) {
                     HStack(spacing: 10) {
-                        ViewPlayerVolume()
-                            .frame(width: 160)
-                        Spacer()
                         ViewPlayerButtons()
                         Spacer()
                         ViewPlayerOptions()
+                        Spacer()
+                        ViewPlayerVolume()
+                            .frame(width: 160)
                         Spacer()
                         SearchField(search: $search, kodi: kodi)
                             .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
@@ -32,9 +32,6 @@ struct ToolbarModifier: ViewModifier {
                 }
                 ToolbarItemGroup(placement: .bottomBar) {
                     HStack(spacing: 10) {
-                        Spacer()
-                        Image(systemName: "dot.radiowaves.left.and.right")
-                        ViewRadioMenu()
                         Spacer()
                         Image(systemName: "gear")
                         Menu(kodi.selectedHost.description) {

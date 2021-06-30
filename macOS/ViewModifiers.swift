@@ -18,15 +18,12 @@ struct ToolbarModifier: ViewModifier {
         content
             .toolbar {
                 ToolbarItemGroup {
-                    ViewPlayerVolume()
-                        .frame(width: 160)
-                    Spacer()
                     ViewPlayerButtons()
                     Spacer()
                     ViewPlayerOptions()
-                }
-                ToolbarItem {
-                    ViewRadioMenu()
+                    Spacer()
+                    ViewPlayerVolume()
+                        .frame(width: 160)
                 }
                 ToolbarItem {
                     SearchField(search: $search, kodi: kodi)

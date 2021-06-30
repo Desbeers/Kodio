@@ -24,6 +24,8 @@ struct ViewDetails: View {
             switch appState.tabs.tabDetails {
             case .playlists:
                 ViewPlaylists()
+            case .radio:
+                ViewRadioStations()
             case .playqueue:
                 ViewPlaylistQueue()
             default:
