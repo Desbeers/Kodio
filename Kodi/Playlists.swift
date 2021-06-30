@@ -35,8 +35,8 @@ extension KodiClient {
                 appState.selectedAlbum = albums.all[index]
             }
             /// Make sure the correct tabs are selected
-            appState.tabs.tabArtistGenre = .artists
-            appState.tabs.tabSongPlaylist = .songs
+            appState.tabs.tabSidebar = .artists
+            appState.tabs.tabDetails = .songs
             /// Set the correct filters
             appState.filter.albums = .artist
             appState.filter.songs = .album
@@ -176,7 +176,7 @@ extension KodiClient {
                 self?.playlists.title = file.label
                 appState.selectedAlbum = nil
                 appState.filter.songs = .playlist
-                appState.tabs.tabSongPlaylist = .songs
+                appState.tabs.tabDetails = .songs
                 self?.log(#function, "Songs from the playlist loaded")
             case .failure(let error):
                 self?.log(#function, "Error: \(#function) \(error.localizedDescription)")

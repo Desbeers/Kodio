@@ -31,8 +31,8 @@ extension KodiClient {
                     /// Save the state before search
                     self!.previousFilter = appState.filter
                     /// Make sure the correct tabs are selected
-                    appState.tabs.tabArtistGenre = .artists
-                    appState.tabs.tabSongPlaylist = .songs
+                    appState.tabs.tabSidebar = .artists
+                    appState.tabs.tabDetails = .songs
                     /// Set the view filter
                     appState.filter.artists = .search
                     appState.filter.songs = .search

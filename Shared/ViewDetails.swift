@@ -21,7 +21,7 @@ struct ViewDetails: View {
             ViewTabsDetails()
                 .padding(.horizontal)
                 .padding()
-            switch appState.tabs.tabSongPlaylist {
+            switch appState.tabs.tabDetails {
             case .playlists:
                 ViewPlaylists()
             case .playqueue:

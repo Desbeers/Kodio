@@ -17,7 +17,7 @@ struct ViewTabsSidebar: View {
     @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        Picker("Playlist", selection: $appState.tabs.tabArtistGenre) {
+        Picker("Playlist", selection: $appState.tabs.tabSidebar) {
             Text("Artists").tag(AppState.TabOptions.artists)
             Text("Genres").tag(AppState.TabOptions.genres)
         }
@@ -36,7 +36,7 @@ struct ViewTabsDetails: View {
     @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        Picker("Playlist", selection: $appState.tabs.tabSongPlaylist) {
+        Picker("Playlist", selection: $appState.tabs.tabDetails) {
             Text("My songs").tag(AppState.TabOptions.songs)
             Text("My playlists").tag(AppState.TabOptions.playlists)
             Text("Play queue").tag(AppState.TabOptions.playqueue)

@@ -14,7 +14,7 @@ struct ViewSidebar: View {
     var body: some View {
             VStack(spacing: 0) {
                 ViewSmartLists()
-                switch appState.tabs.tabArtistGenre {
+                switch appState.tabs.tabSidebar {
                 case .genres:
                     ViewGenres()
                 default:

@@ -90,14 +90,20 @@ struct SongsViewHeader: View {
                 .font(.title)
                 .padding(.top)
             HStack {
-                Button { kodi.sendPlaylistAndPlay(songs: kodi.songsFilter) }
-                    label: {
-                        Label("Play songs", systemImage: "play")
-                    }
-                Button { kodi.sendPlaylistAndPlay(songs: kodi.songsFilter, shuffled: true) }
-                    label: {
-                        Label("Shuffle songs", systemImage: "shuffle")
-                    }
+                Button {
+                    appState.tabs.tabDetails = .playqueue
+                    kodi.sendPlaylistAndPlay(songs: kodi.songsFilter)
+                }
+                label: {
+                    Label("Play songs", systemImage: "play")
+                }
+                Button {
+                    appState.tabs.tabDetails = .playqueue
+                    kodi.sendPlaylistAndPlay(songs: kodi.songsFilter, shuffled: true)
+                }
+                label: {
+                    Label("Shuffle songs", systemImage: "shuffle")
+                }
                 ViewSongsAlbumDescription(album: appState.selectedAlbum)
             }
             .buttonStyle(ViewPlayerStyleButton())
@@ -146,13 +152,13 @@ struct ViewSongsAlbumDescription: View {
     /// The View
     var body: some View {
         if album != nil, !(album?.description.isEmpty ?? true) {
-                Spacer()
-                Button("Info") {
-                    DispatchQueue.main.async {
-                        appState.activeSheet = .viewAlbumInfo
-                        appState.showSheet = true
-                    }
+            Spacer()
+            Button("Info") {
+                DispatchQueue.main.async {
+                    appState.activeSheet = .viewAlbumInfo
+                    appState.showSheet = true
                 }
+            }
             .foregroundColor(.accentColor)
         } else {
             EmptyView()
