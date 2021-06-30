@@ -30,7 +30,7 @@ struct ViewAlbums: View {
                             ViewAlbumsListRow(album: album)
                         }
                     }
-                    ViewAlbumsArtistDescription(artist: appState.selectedArtist)
+                    ViewArtistDescription(artist: appState.selectedArtist)
                 }
                 .id(kodi.albumListID)
                 .onChange(of: kodi.libraryJump) { item in
@@ -71,25 +71,25 @@ struct ViewAlbumsListRow: View {
     }
 }
 
-// MARK: - ViewAlbumsArtistDescription (view)
+// MARK: - ViewAlbumDescription (view)
 
-struct ViewAlbumsArtistDescription: View {
+/// Optional description of an album
+struct ViewAlbumDescription: View {
     /// State of application
     @EnvironmentObject var appState: AppState
     /// The artist object
-    let artist: ArtistFields?
+    let album: AlbumFields?
     /// The View
     var body: some View {
-        if artist != nil, !(artist?.description.isEmpty ?? true) {
-            HStack {
-                Spacer()
-                Button("More about '\(artist!.artist)'") {
-                    DispatchQueue.main.async {
-                        appState.activeSheet = .viewArtistInfo
-                        appState.showSheet = true
-                    }
+        if album != nil, !(album?.description.isEmpty ?? true) {
+            Spacer()
+            Button("Info") {
+                DispatchQueue.main.async {
+                    appState.activeSheet = .viewAlbumInfo
+                    appState.showSheet = true
                 }
             }
+            .foregroundColor(.accentColor)
         } else {
             EmptyView()
         }

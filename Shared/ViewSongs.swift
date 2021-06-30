@@ -13,72 +13,30 @@ import SwiftUI
 struct ViewSongs: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
-    /// State of application
-    @EnvironmentObject var appState: AppState
     /// The list of songs
     @State private var songs: [SongFields] = []
     /// The view
     var body: some View {
-        SongsViewHeader()
-        List {
-            // Text(kodi.songListID)
-            ForEach(songs) { song in
-                HStack {
-                    Button { kodi.sendSongAndPlay(song: song) }
-                        label: {
-                            Label {
-                                HStack {
-                                    songsViewRowHeader(song: song)
-                                    Divider()
-                                    VStack(alignment: .leading) {
-                                        Text(song.title)
-                                            .font(.headline)
-                                        Group {
-                                            Text(song.artist.joined(separator: " & "))
-                                                .isHidden(kodi.hideArtistLabel(song: song))
-                                            Text("\(song.album)")
-                                                .isHidden(appState.filter.songs == .album)
-                                        }
-                                        .font(.caption)
-                                    }
-                                    .lineLimit(1)
-                                    Spacer()
-                                }
-                            } icon: {
-                                Image(systemName: kodi.getSongListIcon(itemID: song.songID))
-                            }
-                        }
-                        .labelStyle(ViewSongsStyleLabel())
-                        .id(song.songID)
-                        .padding()
-                    Menu() {
-                        Button("Add this song to the queue") {
-                            kodi.sendPlaylistAction(api: .playlistAdd, songList: [song.songID])
-                        }
-                    }
-                    label: {
-                        Image(systemName: "ellipsis")
-                    }
-                    .menuStyle(BorderlessButtonMenuStyle())
-                    .frame(width: 40)
-                    .padding(.trailing)
+        VStack {
+            ViewSongsHeader()
+            List {
+                // Text(kodi.songListID)
+                ForEach(songs) { song in
+                    ViewSongsListRow(song: song)
                 }
-                .buttonStyle(PlainButtonStyle())
-                .background(Color("SongList"))
-                .cornerRadius(5)
             }
-        }
-        .id(kodi.songListID)
-        .onAppear {
-            kodi.log(#function, "ViewSongs onAppear")
-            songs = kodi.songsFilter
+            .id(kodi.songListID)
+            .onAppear {
+                kodi.log(#function, "ViewSongs onAppear")
+                songs = kodi.songsFilter
+            }
         }
     }
 }
 
-// MARK: - SongsViewHeader (view)
+// MARK: - ViewSongsHeader (view)
 
-struct SongsViewHeader: View {
+struct ViewSongsHeader: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
     /// State of application
@@ -104,7 +62,7 @@ struct SongsViewHeader: View {
                 label: {
                     Label("Shuffle songs", systemImage: "shuffle")
                 }
-                ViewSongsAlbumDescription(album: appState.selectedAlbum)
+                ViewAlbumDescription(album: appState.selectedAlbum)
             }
             .buttonStyle(ViewPlayerStyleButton())
             Divider()
@@ -113,16 +71,45 @@ struct SongsViewHeader: View {
     }
 }
 
-// MARK: - songsViewRowHeader (extension)
+// MARK: - ViewSongsListRow (view)
 
-extension ViewSongs {
-    
-    /// If an album is selected; we show the track numbers, else the song art.
-    /// - Parameter song: The song object
-    /// - Returns: Song art or track number
-    @ViewBuilder
-    func songsViewRowHeader(song: SongFields) -> some View {
-        if appState.filter.songs == .album, song.track != 0 {
+/// The row of an song in the list
+struct ViewSongsListRow: View {
+    /// The song object
+    let song: SongFields
+    /// The View
+    var body: some View {
+        HStack {
+            Button {
+                KodiClient.shared.sendSongAndPlay(song: song)
+            } label: {
+                ViewSongsListRowLabel(song: song)
+            }
+            .padding()
+            Menu() {
+                ViewSongsMenuButtons(song: song)
+            }
+            label: {
+                Image(systemName: "ellipsis")
+            }
+            .menuStyle(BorderlessButtonMenuStyle())
+            .frame(width: 40)
+            .padding(.trailing)
+        }
+        .buttonStyle(PlainButtonStyle())
+        .contextMenu {
+            ViewSongsMenuButtons(song: song)
+        }
+        .background(Color("SongList"))
+        .cornerRadius(5)
+    }
+}
+
+/// If an album is selected; we show the track numbers, else the song art
+struct ViewSongsListRowHeader: View {
+    let song: SongFields
+    var body: some View {
+        if AppState.shared.filter.songs == .album, song.track != 0 {
             Text(String(song.track))
                 .font(.caption)
         } else {
@@ -131,37 +118,62 @@ extension ViewSongs {
     }
 }
 
-// MARK: - SongLabelStyle (label style)
+/// The label of the songlist button
+struct ViewSongsListRowLabel: View {
+    /// The object that has it all
+    @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
+    /// The song object
+    let song: SongFields
+    /// The View
+    var body: some View {
+        Label {
+            HStack {
+                ViewSongsListRowHeader(song: song)
+                Divider()
+                VStack(alignment: .leading) {
+                    Text(song.title)
+                        .font(.headline)
+                    Group {
+                        Text(song.artist.joined(separator: " & "))
+                            .isHidden(kodi.hideArtistLabel(song: song))
+                        Text("\(song.album)")
+                            .isHidden(appState.filter.songs == .album)
+                    }
+                    .font(.caption)
+                }
+                .lineLimit(1)
+                Spacer()
+            }
+        } icon: {
+            Image(systemName: kodi.getSongListIcon(itemID: song.songID))
+        }
+        .labelStyle(ViewSongsStyleLabel())
+        .id(song.songID)
+    }
+}
+
+// MARK: - ViewSongsMenuButtons (view)
+
+/// Menu is reachable via right-click and via menu button,
+/// so in a seperaie View to avoid duplicating.
+struct ViewSongsMenuButtons: View {
+    let song: SongFields
+    var body: some View {
+        Button("Add this song to the queue") {
+            KodiClient.shared.sendPlaylistAction(api: .playlistAdd, songList: [song.songID])
+        }
+    }
+}
+
+// MARK: - ViewSongsStyleLabel (label style)
 
 struct ViewSongsStyleLabel: LabelStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.icon.foregroundColor(.accentColor)
             configuration.title
-        }
-    }
-}
-
-// MARK: - ViewSongsAlbumDescription (view)
-
-struct ViewSongsAlbumDescription: View {
-    /// State of application
-    @EnvironmentObject var appState: AppState
-    /// The artist object
-    let album: AlbumFields?
-    /// The View
-    var body: some View {
-        if album != nil, !(album?.description.isEmpty ?? true) {
-            Spacer()
-            Button("Info") {
-                DispatchQueue.main.async {
-                    appState.activeSheet = .viewAlbumInfo
-                    appState.showSheet = true
-                }
-            }
-            .foregroundColor(.accentColor)
-        } else {
-            EmptyView()
         }
     }
 }

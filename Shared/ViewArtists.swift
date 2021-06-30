@@ -59,3 +59,28 @@ struct ViewArtistsListRow: View {
         .id(artist.artist)
     }
 }
+
+// MARK: - ViewArtistDescription (view)
+
+struct ViewArtistDescription: View {
+    /// State of application
+    @EnvironmentObject var appState: AppState
+    /// The artist object
+    let artist: ArtistFields?
+    /// The View
+    var body: some View {
+        if artist != nil, !(artist?.description.isEmpty ?? true) {
+            HStack {
+                Spacer()
+                Button("More about '\(artist!.artist)'") {
+                    DispatchQueue.main.async {
+                        appState.activeSheet = .viewArtistInfo
+                        appState.showSheet = true
+                    }
+                }
+            }
+        } else {
+            EmptyView()
+        }
+    }
+}
