@@ -20,13 +20,16 @@ struct ViewAlbums: View {
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
-            //Text(kodi.albumListID)
+            // Text(kodi.albumListID)
             List {
                 ViewArtFanart()
                 ForEach(albums) { album in
                     NavigationLink(destination: ViewDetails(), tag: album, selection: $appState.selectedAlbum) {
                         ViewAlbumsListRow(album: album)
                     }
+                    /// When added the id to NavigationLink, the app will crash...
+                    EmptyView()
+                        .id(album.albumID)
                 }
                 ViewArtistDescription(artist: appState.selectedArtist)
             }
@@ -67,7 +70,6 @@ struct ViewAlbumsListRow: View {
             }
             Spacer()
         }
-        .id(album.albumID)
     }
 }
 

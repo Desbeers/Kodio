@@ -27,6 +27,9 @@ struct ViewArtists: View {
                     NavigationLink(destination: ViewAlbums(), tag: artist, selection: $appState.selectedArtist) {
                         ViewArtistsListRow(artist: artist)
                     }
+                    /// When added the id to NavigationLink, the app will crash...
+                    EmptyView()
+                        .id(artist.artist)
                 }
             }
         }
@@ -56,7 +59,6 @@ struct ViewArtistsListRow: View {
             Text(artist.artist)
             Spacer()
         }
-        .id(artist.artist)
     }
 }
 
