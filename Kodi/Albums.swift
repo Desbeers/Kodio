@@ -58,45 +58,47 @@ extension KodiClient {
 
     /// The SwiftUI list should have a unique ID for each list to speed-up the view
     var albumListID: String {
-        let appState = AppState.shared
-        switch appState.filter.albums {
-        case .artist:
-            return "artist-\(appState.selectedArtist?.artistID ?? 0)"
-        case .genre:
-            return "genre-\(appState.selectedGenre?.genreID ?? 0)"
-        case .search:
+        if search.text.isEmpty {
+            let appState = AppState.shared
+            switch appState.filter.albums {
+            case .artist:
+                return "artist-\(appState.selectedArtist?.artistID ?? 0)"
+            case .genre:
+                return "genre-\(appState.selectedGenre?.genreID ?? 0)"
+            default:
+                return "albums-\(appState.filter.albums.hashValue)"
+            }
+        } else {
             return search.searchID
-        default:
-            return "albums-\(appState.filter.albums.hashValue)"
         }
     }
 
     // MARK: albumsFilter (variable)
-
+    
     /// Filter the albums for the SwiftUI lists
     var albumsFilter: [AlbumFields] {
-        let appState = AppState.shared
-        print("Album filter: \(appState.filter.albums)")
-        switch appState.filter.albums {
-        case .artist:
-            return albums.all.filter {$0.artistID.contains(appState.selectedArtist?.artistID ?? 0)}
-        case .compilations:
-            return albums.all.filter {$0.compilation == true}.sorted {$0.title < $1.title}
-        case .recentlyAdded:
-            return Array(albums.all.sorted {$0.dateAdded > $1.dateAdded}.prefix(10))
-        case .mostPlayed:
-            return albums.mostPlayed
-        case .recentlyPlayed:
-            return albums.recentlyPlayed
-        case .genre:
-            return albums.all.filter { $0.genre.contains(appState.selectedGenre?.label ?? "") }
-                .sorted { $0.artist.first! < $1.artist.first! }
-        case .search:
-            return albums.all.filter {self.search.text.isEmpty ? true :
-                $0.search.localizedCaseInsensitiveContains(self.search.text)
+        if search.text.isEmpty {
+            let appState = AppState.shared
+            switch appState.filter.albums {
+            case .artist:
+                return albums.all.filter {$0.artistID.contains(appState.selectedArtist?.artistID ?? 0)}
+            case .compilations:
+                return albums.all.filter {$0.compilation == true}.sorted {$0.title < $1.title}
+            case .recentlyAdded:
+                return Array(albums.all.sorted {$0.dateAdded > $1.dateAdded}.prefix(10))
+            case .mostPlayed:
+                return albums.mostPlayed
+            case .recentlyPlayed:
+                return albums.recentlyPlayed
+            case .genre:
+                return albums.all.filter { $0.genre.contains(appState.selectedGenre?.label ?? "") }
+                    .sorted { $0.artist.first! < $1.artist.first! }
+            default:
+                return albums.all
             }
-        default:
-            return albums.all
+        } else {
+            return albums.all.filter { $0.search.localizedCaseInsensitiveContains(self.search.text)
+            }
         }
     }
 

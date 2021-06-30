@@ -61,57 +61,58 @@ extension KodiClient {
     }
 
     // MARK: songListID (variable)
-
+    
     /// The SwiftUI list should have a unique ID for each list to speed-up the view
     var songListID: String {
-        let appState = AppState.shared
-        // print("SonglistID: \(filter.songs)")
-        switch appState.filter.songs {
-        case .album:
-            return "album-\(appState.selectedAlbum?.albumID ?? 0)"
-        case .artist:
-            return "artist-\(appState.selectedArtist?.artistID ?? 0)"
-        case .playlist:
-            return playlists.title ?? "playlist"
-        case .search:
+        if search.text.isEmpty {
+            let appState = AppState.shared
+            switch appState.filter.songs {
+            case .album:
+                return "album-\(appState.selectedAlbum?.albumID ?? 0)"
+            case .artist:
+                return "artist-\(appState.selectedArtist?.artistID ?? 0)"
+            case .playlist:
+                return playlists.title ?? "playlist"
+            case .genre:
+                return "genre-\(appState.selectedGenre?.genreID ?? 0)"
+            default:
+                return "songs-\(appState.filter.songs.hashValue)"
+            }
+        } else {
             return search.searchID
-        case .genre:
-            return "genre-\(appState.selectedGenre?.genreID ?? 0)"
-        default:
-            return "songs-\(appState.filter.songs.hashValue)"
         }
     }
 
     // MARK: songsFilter (variable)
-
+    
     /// Filter the songs for the SwiftUI lists
     var songsFilter: [SongFields] {
-        let appState = AppState.shared
-        print("Song filter: \(appState.filter.songs)")
-        switch appState.filter.songs {
-        case .album:
-            return songs.all.filter { $0.albumID == appState.selectedAlbum?.albumID }
-        case .artist:
-            return songs.all.filter {$0.artist.contains(appState.selectedArtist?.artist ?? "") ||
-                $0.albumArtist.contains(appState.selectedArtist?.artist ?? "")
-            }.sorted { $0.year == $1.year ? $0.track < $1.track : $0.year < $1.year }
-        case .mostPlayed:
-            return songs.mostPlayed
-        case .recentlyPlayed:
-            return songs.recentlyPlayed
-        case .recentlyAdded:
-            return Array(songs.all.sorted { $0.dateAdded > $1.dateAdded }.prefix(100))
-        case .compilations:
-            return songs.random
-        case .genre:
-            return songs.all.filter { $0.genre.contains(appState.selectedGenre?.label ?? "") }
-        case .search:
-            return songs.all.filter({self.search.text.isEmpty ? true :
-                                        $0.search.localizedCaseInsensitiveContains(self.search.text)})
-        case .playlist:
-            return playlists.songs
-        default:
-            return songs.all
+        if search.text.isEmpty {
+            let appState = AppState.shared
+            switch appState.filter.songs {
+            case .album:
+                return songs.all.filter { $0.albumID == appState.selectedAlbum?.albumID }
+            case .artist:
+                return songs.all.filter {$0.artist.contains(appState.selectedArtist?.artist ?? "") ||
+                    $0.albumArtist.contains(appState.selectedArtist?.artist ?? "")
+                }.sorted { $0.year == $1.year ? $0.track < $1.track : $0.year < $1.year }
+            case .mostPlayed:
+                return songs.mostPlayed
+            case .recentlyPlayed:
+                return songs.recentlyPlayed
+            case .recentlyAdded:
+                return Array(songs.all.sorted { $0.dateAdded > $1.dateAdded }.prefix(100))
+            case .compilations:
+                return songs.random
+            case .genre:
+                return songs.all.filter { $0.genre.contains(appState.selectedGenre?.label ?? "") }
+            case .playlist:
+                return playlists.songs
+            default:
+                return songs.all
+            }
+        } else {
+            return songs.all.filter({ $0.search.localizedCaseInsensitiveContains(self.search.text)})
         }
     }
 
@@ -120,6 +121,7 @@ extension KodiClient {
     /// The header for the SwiftUI songlist view
     var songlistHeader: String {
         // print("SONG HEADER: \(filter.songs)")
+        if search.text.isEmpty {
         let appState = AppState.shared
         switch appState.filter.songs {
         case .artist:
@@ -132,6 +134,9 @@ extension KodiClient {
             return playlists.title ?? "Playlist"
         default:
             return appState.filter.songs.rawValue
+        }
+        } else {
+            return "Search library..."
         }
     }
 

@@ -56,12 +56,10 @@ extension KodiClient {
 
     /// The SwiftUI list should have a unique ID for each list to speed-up the view
     var artistListID: String {
-        let appState = AppState.shared
-        switch appState.filter.artists {
-        case .search:
-            return search.searchID
-        default:
+        if search.text.isEmpty {
             return "artists"
+        } else {
+            return search.searchID
         }
     }
 
@@ -71,12 +69,10 @@ extension KodiClient {
     var artistsFilter: [ArtistFields] {
         let appState = AppState.shared
         print("Artist filter: \(appState.filter.artists)")
-        switch appState.filter.artists {
-        case .search:
-            return artists.all.filter({self.search.text.isEmpty ? true :
-                                        $0.search.localizedCaseInsensitiveContains(self.search.text)})
-        default:
+        if search.text.isEmpty {
             return artists.all
+        } else {
+            return artists.all.filter({ $0.search.localizedCaseInsensitiveContains(self.search.text)})
         }
     }
 

@@ -30,6 +30,9 @@ struct ViewSongs: View {
                 kodi.log(#function, "ViewSongs onAppear")
                 songs = kodi.songsFilter
             }
+            .onChange(of: kodi.search.text) { _ in
+                songs = kodi.songsFilter
+            }
         }
     }
 }

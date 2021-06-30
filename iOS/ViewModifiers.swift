@@ -26,7 +26,7 @@ struct ToolbarModifier: ViewModifier {
                         ViewPlayerVolume()
                             .frame(width: 160)
                         Spacer()
-                        SearchField(search: $search, kodi: kodi)
+                        SearchField(search: $search)
                             .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
                     }
                 }

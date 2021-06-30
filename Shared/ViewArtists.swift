@@ -37,6 +37,9 @@ struct ViewArtists: View {
             print("Jump to \(item.artist)")
             proxy.scrollTo(item.artist, anchor: .center)
         }
+        .onChange(of: kodi.search.text) { _ in
+            artists = kodi.artistsFilter
+        }
         .onAppear {
             kodi.log(#function, "ViewArtists onAppear")
             artists = kodi.artistsFilter

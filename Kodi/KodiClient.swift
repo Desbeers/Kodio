@@ -67,10 +67,6 @@ class KodiClient: APIClient, ObservableObject {
     var libraryUpToDate: Bool = true
     var libraryIsScanning: Bool = false
 
-    // MARK: filter (variable)
-    /// Remember previous state before starting a search
-    var previousFilter = MediaFilter()
-
     // MARK: debugLog (variable)
     @Published var debugLog = [DebugLog]()
 

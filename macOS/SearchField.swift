@@ -12,8 +12,6 @@ import SwiftUI
 struct SearchField: NSViewRepresentable {
     /// The search string
     @Binding var search: String
-    /// The object that has it all
-    var kodi: KodiClient
 
     class Coordinator: NSObject, NSSearchFieldDelegate {
         var parent: SearchField
@@ -25,7 +23,7 @@ struct SearchField: NSViewRepresentable {
                 return
             }
             /// Pass the new value to the view
-            parent.kodi.searchUpdate(text: searchField.stringValue)
+            KodiClient.shared.searchUpdate(text: searchField.stringValue)
         }
     }
 

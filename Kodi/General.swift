@@ -109,7 +109,6 @@ enum FilterType: String {
     case mostPlayed = "Most played songs"
     case recentlyAdded = "Recently added songs"
     case recentlyPlayed = "Recently played songs"
-    case search = "Search library..."
 }
 
 // MARK: - Library loading status (struct)
