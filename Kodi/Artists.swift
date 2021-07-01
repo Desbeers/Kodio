@@ -7,6 +7,13 @@
 
 import Foundation
 
+class Artists: ObservableObject {
+    /// Use a shared instance
+    static let shared = Artists()
+    @Published var list = [ArtistFields]()
+    @Published var filter: FilterType = .compilations
+}
+
 // MARK: - Artists related stuff (KodiClient extension)
 
 extension KodiClient {
@@ -56,10 +63,10 @@ extension KodiClient {
 
     /// The SwiftUI list should have a unique ID for each list to speed-up the view
     var artistListID: String {
-        if search.text.isEmpty {
+        if searchQuery.isEmpty {
             return "artists"
         } else {
-            return search.searchID
+            return searchID
         }
     }
 
@@ -67,13 +74,15 @@ extension KodiClient {
 
     /// Filter the albums for the SwiftUI list
     var artistsFilter: [ArtistFields] {
-        let appState = AppState.shared
-        print("Artist filter: \(appState.filter.artists)")
-        if search.text.isEmpty {
-            return artists.all
-        } else {
-            return artists.all.filter({ $0.search.localizedCaseInsensitiveContains(self.search.text)})
-        }
+        return artists.all
+//        let appState = AppState.shared
+//        print("Artist filter: \(appState.filter.artists)")
+//        if searchQuery.isEmpty {
+//            return artists.all
+//        } else {
+//            return artists.all.filterArtists()
+//            //return artists.all.filter({ $0.search.folding(options: .diacriticInsensitive, locale: Locale.current).localizedCaseInsensitiveContains(self.searchQuery)})
+//        }
     }
 
     // MARK: hideArtistLabel (function)

@@ -55,8 +55,8 @@ class KodiClient: APIClient, ObservableObject {
     @Published var libraryJump = LibraryJump()
 
     // MARK: search (variable)
-    @Published var search = SearchFields()
-    var searchTimer: Timer?
+    @Published var searchQuery: String = ""
+    @Published var searchID = UUID().uuidString
 
     // MARK: player (variable)
     @Published var player = PlayerLists()

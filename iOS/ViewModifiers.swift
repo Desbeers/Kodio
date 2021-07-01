@@ -12,9 +12,16 @@ struct ToolbarModifier: ViewModifier {
     @EnvironmentObject var kodi: KodiClient
     /// Show or hide log
     @AppStorage("ShowLog") var showLog: Bool = false
-    /// State of the seachfield in the toolbar
-    @State private var search = ""
+    /// Search
+    @StateObject var searchObserver = SearchFieldObserver.shared
+    /// The modifier
     func body(content: Content) -> some View {
+        HStack {
+        SearchField(search: $searchObserver.searchText)
+            .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
+            ViewPlayerVolume()
+                .frame(width: 160)
+        }
         content
             .toolbar {
                 ToolbarItemGroup(placement: .principal) {
@@ -23,11 +30,6 @@ struct ToolbarModifier: ViewModifier {
                         Spacer()
                         ViewPlayerOptions()
                         Spacer()
-                        ViewPlayerVolume()
-                            .frame(width: 160)
-                        Spacer()
-                        SearchField(search: $search)
-                            .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
                     }
                 }
                 ToolbarItemGroup(placement: .bottomBar) {

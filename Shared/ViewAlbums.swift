@@ -41,8 +41,8 @@ struct ViewAlbums: View {
                 kodi.log(#function, "ViewAlbums onAppear")
                 albums = kodi.albumsFilter
             }
-            .onChange(of: kodi.search.text) { _ in
-                albums = kodi.albumsFilter
+            .onChange(of: kodi.searchQuery) { _ in
+                albums = kodi.albumsFilter.filterAlbums()
             }
             .modifier(AlbumsModifier())
         }

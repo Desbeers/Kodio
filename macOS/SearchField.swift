@@ -22,8 +22,7 @@ struct SearchField: NSViewRepresentable {
             guard let searchField = notification.object as? NSSearchField else {
                 return
             }
-            /// Pass the new value to the view
-            KodiClient.shared.searchUpdate(text: searchField.stringValue)
+            SearchFieldObserver.shared.searchText = searchField.stringValue
         }
     }
 

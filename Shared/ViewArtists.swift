@@ -23,7 +23,7 @@ struct ViewArtists: View {
         List {
             // Text(kodi.artistListID)
             ForEach(artists) { artist in
-                if artist.isAlbumArtist || !kodi.search.text.isEmpty {
+                if artist.isAlbumArtist || !kodi.searchQuery.isEmpty {
                     NavigationLink(destination: ViewAlbums(), tag: artist, selection: $appState.selectedArtist) {
                         ViewArtistsListRow(artist: artist)
                     }
@@ -37,12 +37,13 @@ struct ViewArtists: View {
             print("Jump to \(item.artist)")
             proxy.scrollTo(item.artist, anchor: .center)
         }
-        .onChange(of: kodi.search.text) { _ in
-            artists = kodi.artistsFilter
-        }
+//        .onChange(of: kodi.searchQuery) { _ in
+//            print("Filter artists")
+//            artists = kodi.artists.all.filterArtists()
+//        }
         .onAppear {
             kodi.log(#function, "ViewArtists onAppear")
-            artists = kodi.artistsFilter
+            artists = kodi.artists.all.filterArtists()
         }
         .id(kodi.artistListID)
         }

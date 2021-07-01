@@ -19,9 +19,8 @@ struct SearchField: UIViewRepresentable {
         // MARK: Text did change
 
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            /// Pass the new value to the view
-            parent.search = searchText
-            KodiClient.shared.searchUpdate(text: searchText)
+            parent.search = searchText            
+            SearchFieldObserver.shared.searchText = searchText
         }
     }
 

@@ -20,6 +20,7 @@ So, bugs are included for free!
 
 - Radio stations are hard-coded at the moment.
 - Adding a host is a bit back and forward; I don't know yet how to make this a bit more smooth.
+- Search is buggy.
 
 #### macOS
 
@@ -28,7 +29,7 @@ So, bugs are included for free!
 
 #### iPad
 
-- 'NavigationView' sucks even more on iOS; the 3 column layout is pretty buggy...
+- 'NavigationView' sucks even more on iOS; the 3 column layout is pretty terrible...
 
 #### iPhone
 

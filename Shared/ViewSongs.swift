@@ -13,6 +13,8 @@ import SwiftUI
 struct ViewSongs: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
+    /// State of application
+    @EnvironmentObject var appState: AppState
     /// The list of songs
     @State private var songs: [SongFields] = []
     /// The view
@@ -30,7 +32,10 @@ struct ViewSongs: View {
                 kodi.log(#function, "ViewSongs onAppear")
                 songs = kodi.songsFilter
             }
-            .onChange(of: kodi.search.text) { _ in
+            .onChange(of: kodi.searchQuery) { _ in
+                songs = kodi.songsFilter.filterSongs()
+            }
+            .onChange(of: appState.selectedArtist) { _ in
                 songs = kodi.songsFilter
             }
         }
