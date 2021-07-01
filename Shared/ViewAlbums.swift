@@ -62,11 +62,10 @@ struct ViewAlbumsListRow: View {
             VStack(alignment: .leading) {
                 Text(album.title)
                     .font(.headline)
-                Group {
-                    Text(album.artist.joined(separator: " & "))
-                    Text(album.details.joined(separator: "・"))
-                }
-                .font(.caption)
+                Text(album.artist.joined(separator: " & "))
+                    .font(.subheadline)
+                Text(album.details.joined(separator: "・"))
+                    .font(.caption)
             }
             Spacer()
         }

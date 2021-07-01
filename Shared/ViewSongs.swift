@@ -143,13 +143,12 @@ struct ViewSongsListRowLabel: View {
                 VStack(alignment: .leading) {
                     Text(song.title)
                         .font(.headline)
-                    Group {
-                        Text(song.artist.joined(separator: " & "))
-                            .isHidden(kodi.hideArtistLabel(song: song))
-                        Text("\(song.album)")
-                            .isHidden(appState.filter.songs == .album)
-                    }
-                    .font(.caption)
+                    Text(song.artist.joined(separator: " & "))
+                        .isHidden(kodi.hideArtistLabel(song: song))
+                        .font(.subheadline)
+                    Text("\(song.album)")
+                        .isHidden(appState.filter.songs == .album)
+                        .font(.caption)
                 }
                 .lineLimit(1)
                 Spacer()

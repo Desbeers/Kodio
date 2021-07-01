@@ -33,12 +33,12 @@ struct ViewPlaylistQueue: View {
                                             ViewArtSong(song: song)
                                             Divider()
                                             VStack(alignment: .leading) {
-                                                Text(song.title).font(.headline)
-                                                Group {
-                                                    Text(song.artist.joined(separator: " & "))
-                                                    Text("\(song.album)")
-                                                }
-                                                .font(.caption)
+                                                Text(song.title)
+                                                    .font(.headline)
+                                                Text(song.artist.joined(separator: " & "))
+                                                    .font(.subheadline)
+                                                Text("\(song.album)")
+                                                    .font(.caption)
                                             }
                                             Spacer()
                                         }
