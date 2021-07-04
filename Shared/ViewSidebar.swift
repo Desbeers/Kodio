@@ -12,14 +12,21 @@ struct ViewSidebar: View {
     @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-            VStack(spacing: 0) {
-                ViewSmartLists()
-                switch appState.tabs.tabSidebar {
-                case .genres:
-                    ViewGenres()
-                default:
-                    ViewArtists()
-                }
+        ScrollViewReader { proxy in
+        List {
+            ViewSmartLists()
+            ViewTabsSidebar()
+            switch appState.tabs.tabSidebar {
+            case .genres:
+                ViewGenres()
+            default:
+                ViewArtists()
             }
+        }
+        .onChange(of: KodiClient.shared.libraryJump) { item in
+            print("Jump to \(item.artist)")
+            proxy.scrollTo(item.artist, anchor: .center)
+        }
+        }
     }
 }
