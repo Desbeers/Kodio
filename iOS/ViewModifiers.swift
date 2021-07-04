@@ -16,16 +16,13 @@ struct ToolbarModifier: ViewModifier {
     @StateObject var searchObserver = SearchFieldObserver.shared
     /// The modifier
     func body(content: Content) -> some View {
-        HStack {
-        SearchField(search: $searchObserver.searchText)
-            .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
-            ViewPlayerVolume()
-                .frame(width: 160)
-        }
+        Divider()
         content
             .toolbar {
-                ToolbarItemGroup(placement: .principal) {
+                ToolbarItemGroup(placement: .automatic) {
                     HStack(spacing: 10) {
+                        ViewPlayerItem()
+                        Spacer()
                         ViewPlayerButtons()
                         Spacer()
                         ViewPlayerOptions()
@@ -34,7 +31,6 @@ struct ToolbarModifier: ViewModifier {
                 }
                 ToolbarItemGroup(placement: .bottomBar) {
                     HStack(spacing: 10) {
-                        Spacer()
                         Image(systemName: "gear")
                         Menu(kodi.selectedHost.description) {
                             ViewKodiHostsMenu()
@@ -48,19 +44,12 @@ struct ToolbarModifier: ViewModifier {
                             }
                             .disabled(kodi.libraryIsScanning)
                         }
+                        Spacer()
+                        ViewPlayerVolume()
+                            .frame(width: 160)
                     }
                 }
             }
-    }
-}
-
-struct AlbumsModifier: ViewModifier {
-    /// The object that has it all
-    @EnvironmentObject var kodi: KodiClient
-    func body(content: Content) -> some View {
-        content
-            .navigationTitle("Kodio")
-            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -68,7 +57,6 @@ struct DetailsModifier: ViewModifier {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
     func body(content: Content) -> some View {
-        ViewPlayerItem()
         content
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)

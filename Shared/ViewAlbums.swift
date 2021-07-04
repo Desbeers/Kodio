@@ -16,7 +16,6 @@ struct ViewAlbums: View {
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
-            // Text(kodi.albumListID)
             List {
                 ViewArtFanart()
                 ForEach(albums.list) { album in
@@ -29,19 +28,12 @@ struct ViewAlbums: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     .foregroundColor(Albums.shared.selectedAlbum == album ? Color.accentColor : Color.primary)
-//                    NavigationLink(destination: ViewDetails(), tag: album, selection: $albums.selectedAlbum) {
-//                        ViewAlbumsListRow(album: album)
-//                    }
-//                    /// When added the id to NavigationLink, the app will crash...
-//                    EmptyView()
-//                        .id(album.albumID)
                 }
                 ViewArtistDescription(artist: Artists.shared.selectedArtist)
             }
             .onChange(of: KodiClient.shared.libraryJump) { item in
                 proxy.scrollTo(item.albumID, anchor: .top)
             }
-            .modifier(AlbumsModifier())
         }
         .onAppear {
             print("Album appear")
@@ -69,6 +61,7 @@ struct ViewAlbumsListRow: View {
             }
             Spacer()
         }
+        .contentShape(Rectangle())
     }
 }
 

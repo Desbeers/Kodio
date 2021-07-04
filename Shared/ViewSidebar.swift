@@ -10,6 +10,8 @@ import SwiftUI
 struct ViewSidebar: View {
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// Search
+    @StateObject var searchObserver = SearchFieldObserver.shared
     /// The view
     var body: some View {
         ScrollViewReader { proxy in

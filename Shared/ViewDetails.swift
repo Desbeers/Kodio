@@ -14,6 +14,8 @@ import SwiftUI
 struct ViewDetails: View {
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// Search
+    @StateObject var searchObserver = SearchFieldObserver.shared
     /// The view
     var body: some View {
         HStack {
@@ -24,6 +26,10 @@ struct ViewDetails: View {
                 ViewTabsDetails()
                     .padding(.horizontal)
                     .padding()
+                if appState.userInterface != .macOS {
+                    SearchField(search: $searchObserver.searchText)
+                        .frame(minWidth: 100, idealWidth: 150, maxWidth: 200)
+                }
                 switch appState.tabs.tabDetails {
                 case .playlists:
                     ViewPlaylists()
