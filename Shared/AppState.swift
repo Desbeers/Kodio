@@ -21,6 +21,9 @@ class AppState: ObservableObject {
     @Published var alertItem: AlertItem?
     /// Define what sheet to show
     @Published var activeSheet: Sheets = .editHosts
+    /// To Mac or nor to Mac?
+    /// The iOS app thingy will override if so..
+    var userInterface: UserInterface = .macOS
 }
 
 extension AppState {

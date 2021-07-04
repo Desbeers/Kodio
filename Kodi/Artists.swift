@@ -72,32 +72,6 @@ extension KodiClient {
         }
     }
 
-    // MARK: artistlist ID  (Variable)
-
-    /// The SwiftUI list should have a unique ID for each list to speed-up the view
-    var artistListID: String {
-        if searchQuery.isEmpty {
-            return "artists"
-        } else {
-            return searchID
-        }
-    }
-
-    // MARK: artistsFilter (Variable)
-
-    /// Filter the albums for the SwiftUI list
-    var artistsFilter: [ArtistFields] {
-        return artists.all
-//        let appState = AppState.shared
-//        print("Artist filter: \(appState.filter.artists)")
-//        if searchQuery.isEmpty {
-//            return artists.all
-//        } else {
-//            return artists.all.filterArtists()
-//            //return artists.all.filter({ $0.search.folding(options: .diacriticInsensitive, locale: Locale.current).localizedCaseInsensitiveContains(self.searchQuery)})
-//        }
-    }
-
     // MARK: hideArtistLabel (function)
 
     /// In the SongView I like to hide 'double' information. If an artist is selected,

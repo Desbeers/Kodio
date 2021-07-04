@@ -22,7 +22,6 @@ struct ViewSongs: View {
                     ViewSongsListRow(song: song)
                 }
             }
-            .id(KodiClient.shared.songListID)
             .onAppear {
                 print("Songs appear")
             }

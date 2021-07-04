@@ -25,4 +25,8 @@ class SmartLists: ObservableObject {
             }
         }
     }
+    init() {
+        /// iOS ignores below
+        selectedSmartList = list.first
+    }
 }

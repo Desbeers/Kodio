@@ -75,29 +75,6 @@ extension KodiClient {
         }
     }
 
-    // MARK: songListID (variable)
-    
-    /// The SwiftUI list should have a unique ID for each list to speed-up the view
-    var songListID: String {
-        if searchQuery.isEmpty {
-            let filter = Songs.shared.filter
-            switch filter {
-            case .album:
-                return "album-\(Albums.shared.selectedAlbum?.albumID ?? 0)"
-            case .artist:
-                return "artist-\(Artists.shared.selectedArtist?.artistID ?? 0)"
-            case .playlist:
-                return playlists.title ?? "playlist"
-            case .genre:
-                return "genre-\(Genres.shared.selectedGenre?.genreID ?? 0)"
-            default:
-                return "songs-\(filter.hashValue)"
-            }
-        } else {
-            return searchID
-        }
-    }
-
     // MARK: songsFilter (variable)
     
     /// Filter the songs for the SwiftUI lists

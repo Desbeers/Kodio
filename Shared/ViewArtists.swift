@@ -15,24 +15,23 @@ struct ViewArtists: View {
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
-        List {
-            // Text(kodi.artistListID)
-            ForEach(artists.list) { artist in
-                if artist.isAlbumArtist || !KodiClient.shared.searchQuery.isEmpty {
-                    NavigationLink(destination: ViewAlbums(), tag: artist, selection: $artists.selectedArtist) {
-                        ViewArtistsListRow(artist: artist)
+            List {
+                // Text(kodi.artistListID)
+                ForEach(artists.list) { artist in
+                    if artist.isAlbumArtist || !KodiClient.shared.searchQuery.isEmpty {
+                        NavigationLink(destination: ViewAlbums(), tag: artist, selection: $artists.selectedArtist) {
+                            ViewArtistsListRow(artist: artist)
+                        }
+                        /// When added the id to NavigationLink, the app will crash...
+                        EmptyView()
+                            .id(artist.artist)
                     }
-                    /// When added the id to NavigationLink, the app will crash...
-                    EmptyView()
-                        .id(artist.artist)
                 }
             }
-        }
-        .onChange(of: KodiClient.shared.libraryJump) { item in
-            print("Jump to \(item.artist)")
-            proxy.scrollTo(item.artist, anchor: .center)
-        }
-        .id(KodiClient.shared.artistListID)
+            .onChange(of: KodiClient.shared.libraryJump) { item in
+                print("Jump to \(item.artist)")
+                proxy.scrollTo(item.artist, anchor: .center)
+            }
         }
     }
 }

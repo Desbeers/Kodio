@@ -51,7 +51,7 @@ struct ViewPlaylistQueue: View {
                                 }
                             Spacer()
                             /// Dumb-down for the iPhone
-                            if kodi.userInterface != .iPhone {
+                            if AppState.shared.userInterface != .iPhone {
                                 Menu() {
                                     Button("View this song in your library") {
                                         kodi.jumpTo(song)

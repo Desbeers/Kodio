@@ -17,11 +17,11 @@ struct KodioApp: App {
     @Environment(\.scenePhase) var scenePhase
     init() {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            KodiClient.shared.userInterface = .iPad
+            AppState.shared.userInterface = .iPad
         } else if UIDevice.current.userInterfaceIdiom == .mac {
-            KodiClient.shared.userInterface = .iPad
+            AppState.shared.userInterface = .iPad
         } else {
-            KodiClient.shared.userInterface = .iPhone
+            AppState.shared.userInterface = .iPhone
         }
     }
     /// The view

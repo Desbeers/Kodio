@@ -29,7 +29,6 @@ struct ViewAlbums: View {
                 }
                 ViewArtistDescription(artist: Artists.shared.selectedArtist)
             }
-            .id(KodiClient.shared.albumListID)
             .onChange(of: KodiClient.shared.libraryJump) { item in
                 proxy.scrollTo(item.albumID, anchor: .top)
             }

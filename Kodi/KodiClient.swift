@@ -23,8 +23,6 @@ class KodiClient: APIClient, ObservableObject {
     @Published var properties = KodiProperties()
     var hostTimer: Timer?
     var volumeTimer: Timer?
-    
-    var userInterface: UserInterface = .macOS
 
     // MARK: urlSession (variable)
     /// The URL session
