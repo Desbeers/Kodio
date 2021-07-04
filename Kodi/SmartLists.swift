@@ -22,6 +22,7 @@ class SmartLists: ObservableObject {
                 /// Set filters
                 Albums.shared.filter = selectedSmartList!.filter
                 Songs.shared.filter = selectedSmartList!.filter
+                ///
             }
         }
     }

@@ -15,6 +15,7 @@ struct ToolbarModifier: ViewModifier {
     /// Show or hide log
     @AppStorage("ShowLog") var showLog: Bool = false
     func body(content: Content) -> some View {
+        Divider()
         content
             .toolbar {
                 ToolbarItemGroup {

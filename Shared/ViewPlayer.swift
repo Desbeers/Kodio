@@ -15,7 +15,6 @@ struct ViewPlayerItem: View {
     /// The View
     var body: some View {
         VStack {
-            Divider()
             HStack {
                 Text(kodi.player.navigationTitle)
                     .font(.headline)

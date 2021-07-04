@@ -10,16 +10,25 @@ import SwiftUI
 struct ViewSidebar: View {
     /// State of application
     @EnvironmentObject var appState: AppState
+    /// Search
+    @StateObject var searchObserver = SearchFieldObserver.shared
     /// The view
     var body: some View {
-            VStack(spacing: 0) {
-                ViewSmartLists()
-                switch appState.tabs.tabSidebar {
-                case .genres:
-                    ViewGenres()
-                default:
-                    ViewArtists()
-                }
+        ScrollViewReader { proxy in
+        List {
+            ViewSmartLists()
+            ViewTabsSidebar()
+            switch appState.tabs.tabSidebar {
+            case .genres:
+                ViewGenres()
+            default:
+                ViewArtists()
             }
+        }
+        .onChange(of: KodiClient.shared.libraryJump) { item in
+            print("Jump to \(item.artist)")
+            proxy.scrollTo(item.artist, anchor: .center)
+        }
+        }
     }
 }
