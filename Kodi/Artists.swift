@@ -10,8 +10,21 @@ import Foundation
 class Artists: ObservableObject {
     /// Use a shared instance
     static let shared = Artists()
-    @Published var list = [ArtistFields]()
-    @Published var filter: FilterType = .compilations
+    @Published var list: [ArtistFields]
+    @Published var selectedArtist: ArtistFields? {
+        didSet {
+            if selectedArtist != nil {
+                /// Switch to correct tab
+                AppState.shared.tabs.tabDetails = .songs
+                /// Set the filters
+                Albums.shared.filter = .artist
+                Songs.shared.filter = .artist
+            }
+        }
+    }
+    init() {
+        list = KodiClient.shared.artists.all
+    }
 }
 
 // MARK: - Artists related stuff (KodiClient extension)
@@ -95,8 +108,7 @@ extension KodiClient {
     /// - Returns: Bool: true when the label needs to he hidden
 
     func hideArtistLabel(song: SongFields) -> Bool {
-        let appState = AppState.shared
-        if appState.selectedArtist != nil {
+        if Artists.shared.selectedArtist != nil {
             if song.albumArtist.first == song.artist.first {
                 return true
             }

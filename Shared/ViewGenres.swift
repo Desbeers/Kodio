@@ -11,24 +11,25 @@ import SwiftUI
 
 /// The main genres view
 struct ViewGenres: View {
-    /// The object that has it all
-    @EnvironmentObject var kodi: KodiClient
-    /// State of application
-    @EnvironmentObject var appState: AppState
-    /// The list of genres
-    @State private var genres: [GenreFields] = []
+//    /// The object that has it all
+//    @EnvironmentObject var kodi: KodiClient
+//    /// State of application
+//    @EnvironmentObject var appState: AppState
+//    /// The list of genres
+//    @State private var genres: [GenreFields] = []
+    /// The albums object
+    @StateObject var genres: Genres = .shared
     /// The view
     var body: some View {
         List {
-            ForEach(genres) { genre in
-                NavigationLink(destination: ViewAlbums(), tag: genre, selection: $appState.selectedGenre) {
+            ForEach(genres.list) { genre in
+                NavigationLink(destination: ViewAlbums(), tag: genre, selection: $genres.selectedGenre) {
                     ViewGenresListRow(genre: genre)
                 }
             }
         }
         .onAppear {
-            kodi.log(#function, "ViewGenres onAppear")
-            genres = kodi.genres.all
+            print("ViewGenres onAppear")
         }
     }
 }

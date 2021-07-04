@@ -11,32 +11,20 @@ import SwiftUI
 
 /// The main songs view
 struct ViewSongs: View {
-    /// The object that has it all
-    @EnvironmentObject var kodi: KodiClient
-    /// State of application
-    @EnvironmentObject var appState: AppState
-    /// The list of songs
-    @State private var songs: [SongFields] = []
+    /// The songs object
+    @StateObject var songs: Songs = .shared
     /// The view
     var body: some View {
         VStack {
             ViewSongsHeader()
             List {
-                // Text(kodi.songListID)
-                ForEach(songs) { song in
+                ForEach(songs.list) { song in
                     ViewSongsListRow(song: song)
                 }
             }
-            .id(kodi.songListID)
+            .id(KodiClient.shared.songListID)
             .onAppear {
-                kodi.log(#function, "ViewSongs onAppear")
-                songs = kodi.songsFilter
-            }
-            .onChange(of: kodi.searchQuery) { _ in
-                songs = kodi.songsFilter.filterSongs()
-            }
-            .onChange(of: appState.selectedArtist) { _ in
-                songs = kodi.songsFilter
+                print("Songs appear")
             }
         }
     }
@@ -70,7 +58,7 @@ struct ViewSongsHeader: View {
                 label: {
                     Label("Shuffle songs", systemImage: "shuffle")
                 }
-                ViewAlbumDescription(album: appState.selectedAlbum)
+                ViewAlbumDescription(album: Albums.shared.selectedAlbum)
             }
             .buttonStyle(ViewPlayerStyleButton())
             Divider()
@@ -117,7 +105,7 @@ struct ViewSongsListRow: View {
 struct ViewSongsListRowHeader: View {
     let song: SongFields
     var body: some View {
-        if AppState.shared.filter.songs == .album, song.track != 0 {
+        if Songs.shared.filter == .album, song.track != 0 {
             Text(String(song.track))
                 .font(.caption)
         } else {
@@ -147,7 +135,7 @@ struct ViewSongsListRowLabel: View {
                         .isHidden(kodi.hideArtistLabel(song: song))
                         .font(.subheadline)
                     Text("\(song.album)")
-                        .isHidden(appState.filter.songs == .album)
+                        .isHidden(Songs.shared.filter == .album)
                         .font(.caption)
                 }
                 .lineLimit(1)

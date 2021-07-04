@@ -11,40 +11,32 @@ import SwiftUI
 
 /// The main albums view
 struct ViewAlbums: View {
-    /// The object that has it all
-    @EnvironmentObject var kodi: KodiClient
-    /// State of application
-    @EnvironmentObject var appState: AppState
-    /// The list of albums
-    @State private var albums: [AlbumFields] = []
+    /// The albums object
+    @StateObject var albums: Albums = .shared
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
             // Text(kodi.albumListID)
             List {
                 ViewArtFanart()
-                ForEach(albums) { album in
-                    NavigationLink(destination: ViewDetails(), tag: album, selection: $appState.selectedAlbum) {
+                ForEach(albums.list) { album in
+                    NavigationLink(destination: ViewDetails(), tag: album, selection: $albums.selectedAlbum) {
                         ViewAlbumsListRow(album: album)
                     }
                     /// When added the id to NavigationLink, the app will crash...
                     EmptyView()
                         .id(album.albumID)
                 }
-                ViewArtistDescription(artist: appState.selectedArtist)
+                ViewArtistDescription(artist: Artists.shared.selectedArtist)
             }
-            .id(kodi.albumListID)
-            .onChange(of: kodi.libraryJump) { item in
+            .id(KodiClient.shared.albumListID)
+            .onChange(of: KodiClient.shared.libraryJump) { item in
                 proxy.scrollTo(item.albumID, anchor: .top)
             }
-            .onAppear {
-                kodi.log(#function, "ViewAlbums onAppear")
-                albums = kodi.albumsFilter
-            }
-            .onChange(of: kodi.searchQuery) { _ in
-                albums = kodi.albumsFilter.filterAlbums()
-            }
             .modifier(AlbumsModifier())
+        }
+        .onAppear {
+            print("Album appear")
         }
     }
 }

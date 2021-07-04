@@ -7,6 +7,26 @@
 
 import Foundation
 
+class Genres: ObservableObject {
+    /// Use a shared instance
+    static let shared = Genres()
+    @Published var list: [GenreFields]
+    @Published var selectedGenre: GenreFields? {
+        didSet {
+            if selectedGenre != nil {
+                /// Switch to correct tab
+                AppState.shared.tabs.tabDetails = .songs
+                /// Set the filters
+                Albums.shared.filter = .genre
+                Songs.shared.filter = .genre
+            }
+        }
+    }
+    init() {
+        list = KodiClient.shared.genres.all
+    }
+}
+
 extension KodiClient {
     // MARK: - GenreLists (struct)
     struct GenreLists {

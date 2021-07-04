@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ViewContent: View {
-    /// The object that has it all
-    @EnvironmentObject var kodi: KodiClient
+//    /// The object that has it all
+//    @EnvironmentObject var kodi: KodiClient
     /// State of the application
     @EnvironmentObject var appState: AppState
     /// Show or hide log
@@ -19,7 +19,7 @@ struct ViewContent: View {
     /// The view
     var body: some View {
         NavigationView {
-            if !kodi.library.all {
+            if !KodiClient.shared.library.all {
                 EmptyView()
                     .frame(minWidth: 250, idealWidth: 250, maxWidth: 400, maxHeight: .infinity)
                 VStack {

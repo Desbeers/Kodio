@@ -21,50 +21,21 @@ class AppState: ObservableObject {
     @Published var alertItem: AlertItem?
     /// Define what sheet to show
     @Published var activeSheet: Sheets = .editHosts
-    /// Selected items
-    @Published var selectedArtist: ArtistFields? {
-        willSet {
-            if newValue != nil {
-                print("Artist selected")
-                filter.albums = .artist
-                filter.songs = .artist
-                tabs.tabDetails = .songs
-            }
-        }
-    }
-    @Published var selectedAlbum: AlbumFields? {
-        willSet {
-            if newValue != nil {
-                print("Album selected")
-                filter.songs = .album
-                tabs.tabDetails = .songs
-            }
-        }
-    }
-    @Published var selectedGenre: GenreFields? {
-        willSet {
-            if newValue != nil {
-                print("Genre selected")
-                filter.albums = .genre
-                filter.songs = .genre
-                tabs.tabDetails = .songs
-            }
-        }
-    }
+
     @Published var selectedSmartList: SmartMenuFields? {
-        willSet {
-            if newValue != nil {
+        didSet {
+            if selectedSmartList != nil {
                 print("Smart list selected")
-                filter.albums = newValue!.filter
-                filter.songs = newValue!.filter
                 tabs.tabDetails = .songs
+                /// Deselect stuff
+                Artists.shared.selectedArtist = nil
+                Albums.shared.selectedAlbum = nil
+                /// Set filters
+                Albums.shared.filter = selectedSmartList!.filter
+                Songs.shared.filter = selectedSmartList!.filter
             }
         }
-    }
-    @Published var selectedPlaylist: String?
-    
-    var filter = MediaFilter()
-}
+    }}
 
 extension AppState {
     

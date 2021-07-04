@@ -18,10 +18,6 @@ extension KodiClient {
     ///     - reload: Bool; force a reload or else it will try to load it from the  cache
     /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
-        let appState = AppState.shared
-        /// Opening state
-        appState.filter.albums = .compilations
-        appState.filter.songs = .compilations
         /// get media items
         getArtists(reload: reload)
         getAlbums(reload: reload)
@@ -91,12 +87,6 @@ extension KodiClient {
 
 // MARK: - Filter media stuff
 
-/// The active filter for the artistlist, albumlist and songlists
-struct MediaFilter {
-    var artists: FilterType = .none
-    var albums: FilterType = .none
-    var songs: FilterType = .none
-}
 /// The type of filter that can be applied to either an
 /// artistlist, albumlist or songlist.
 enum FilterType: String {

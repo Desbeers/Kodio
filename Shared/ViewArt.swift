@@ -76,7 +76,7 @@ struct ViewArtFanart: View {
     /// The view
     @ViewBuilder
     var body: some View {
-        if let fanart = appState.selectedArtist?.fanart {
+        if let fanart = Artists.shared.selectedArtist?.fanart {
             RemoteKodiImage(url: fanart, failure: Image("DefaultFanart"))
                 .aspectRatio(1.78, contentMode: .fit)
                 .cornerRadius(5)

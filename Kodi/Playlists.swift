@@ -29,17 +29,17 @@ extension KodiClient {
             let appState = AppState.shared
             let song = songs.all[index]
             if let index = artists.all.firstIndex(where: { $0.artist == song.albumArtist.first }) {
-                appState.selectedArtist = artists.all[index]
+                Artists.shared.selectedArtist = artists.all[index]
             }
             if let index = albums.all.firstIndex(where: { $0.albumID == song.albumID }) {
-                appState.selectedAlbum = albums.all[index]
+                Albums.shared.selectedAlbum = albums.all[index]
             }
             /// Make sure the correct tabs are selected
             appState.tabs.tabSidebar = .artists
             appState.tabs.tabDetails = .songs
             /// Set the correct filters
-            appState.filter.albums = .artist
-            appState.filter.songs = .album
+            Albums.shared.filter = .artist
+            Songs.shared.filter = .album
             /// Trigger the jump
             libraryJump = LibraryJump(artist: song.albumArtist.first!, albumID: song.albumID, songID: song.songID)
         }
@@ -174,8 +174,8 @@ extension KodiClient {
                 }
                 self?.playlists.songs = songlist
                 self?.playlists.title = file.label
-                appState.selectedAlbum = nil
-                appState.filter.songs = .playlist
+                Albums.shared.selectedAlbum = nil
+                Songs.shared.filter = .playlist
                 appState.tabs.tabDetails = .songs
                 self?.log(#function, "Songs from the playlist loaded")
             case .failure(let error):

@@ -11,20 +11,15 @@ import SwiftUI
 
 /// The main artists view
 struct ViewArtists: View {
-    /// The object that has it all
-    @EnvironmentObject var kodi: KodiClient
-    /// State of application
-    @EnvironmentObject var appState: AppState
-    /// The list of artists
-    @State private var artists: [ArtistFields] = []
+    @StateObject var artists: Artists = .shared
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
         List {
             // Text(kodi.artistListID)
-            ForEach(artists) { artist in
-                if artist.isAlbumArtist || !kodi.searchQuery.isEmpty {
-                    NavigationLink(destination: ViewAlbums(), tag: artist, selection: $appState.selectedArtist) {
+            ForEach(artists.list) { artist in
+                if artist.isAlbumArtist || !KodiClient.shared.searchQuery.isEmpty {
+                    NavigationLink(destination: ViewAlbums(), tag: artist, selection: $artists.selectedArtist) {
                         ViewArtistsListRow(artist: artist)
                     }
                     /// When added the id to NavigationLink, the app will crash...
@@ -33,19 +28,11 @@ struct ViewArtists: View {
                 }
             }
         }
-        .onChange(of: kodi.libraryJump) { item in
+        .onChange(of: KodiClient.shared.libraryJump) { item in
             print("Jump to \(item.artist)")
             proxy.scrollTo(item.artist, anchor: .center)
         }
-//        .onChange(of: kodi.searchQuery) { _ in
-//            print("Filter artists")
-//            artists = kodi.artists.all.filterArtists()
-//        }
-        .onAppear {
-            kodi.log(#function, "ViewArtists onAppear")
-            artists = kodi.artists.all.filterArtists()
-        }
-        .id(kodi.artistListID)
+        .id(KodiClient.shared.artistListID)
         }
     }
 }
