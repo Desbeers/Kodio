@@ -19,7 +19,7 @@ struct ViewiPad: View {
             ViewSidebar()
                 .navigationTitle("")
                 .navigationBarTitleDisplayMode(.inline)
-            ViewAlbums()
+            //ViewAlbums()
             ViewDetails()
         }
     }

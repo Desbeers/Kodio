@@ -19,7 +19,7 @@ struct ViewArtists: View {
                 // Text(kodi.artistListID)
                 ForEach(artists.list) { artist in
                     if artist.isAlbumArtist || !KodiClient.shared.searchQuery.isEmpty {
-                        NavigationLink(destination: ViewAlbums(), tag: artist, selection: $artists.selectedArtist) {
+                        NavigationLink(destination: ViewDetails(), tag: artist, selection: $artists.selectedArtist) {
                             ViewArtistsListRow(artist: artist)
                         }
                         /// When added the id to NavigationLink, the app will crash...

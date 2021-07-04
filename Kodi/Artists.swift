@@ -19,6 +19,8 @@ class Artists: ObservableObject {
                 /// Set the filters
                 Albums.shared.filter = .artist
                 Songs.shared.filter = .artist
+            } else {
+                print("Artist nilled")
             }
         }
     }

@@ -16,7 +16,7 @@ struct ViewSmartLists: View {
     var body: some View {
         List {
             ForEach(smartLists.list) { album in
-                NavigationLink(destination: ViewAlbums(), tag: album, selection: $smartLists.selectedSmartList) {
+                NavigationLink(destination: ViewDetails(), tag: album, selection: $smartLists.selectedSmartList) {
                     Label(album.label, systemImage: album.icon)
                 }
             }

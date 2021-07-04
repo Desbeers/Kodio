@@ -16,22 +16,26 @@ struct ViewDetails: View {
     @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        VStack {
-            ViewKodiStatus()
-            ViewTabsDetails()
-                .padding(.horizontal)
-                .padding()
-            switch appState.tabs.tabDetails {
-            case .playlists:
-                ViewPlaylists()
-            case .radio:
-                ViewRadioStations()
-            case .playqueue:
-                ViewPlaylistQueue()
-            default:
-                ViewSongs()
+        HStack {
+            ViewAlbums()
+            
+            VStack {
+                ViewKodiStatus()
+                ViewTabsDetails()
+                    .padding(.horizontal)
+                    .padding()
+                switch appState.tabs.tabDetails {
+                case .playlists:
+                    ViewPlaylists()
+                case .radio:
+                    ViewRadioStations()
+                case .playqueue:
+                    ViewPlaylistQueue()
+                default:
+                    ViewSongs()
+                }
+                ViewLog()
             }
-            ViewLog()
         }
         .background(Color("DetailsBackground"))
         .modifier(ToolbarModifier())

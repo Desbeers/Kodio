@@ -20,12 +20,21 @@ struct ViewAlbums: View {
             List {
                 ViewArtFanart()
                 ForEach(albums.list) { album in
-                    NavigationLink(destination: ViewDetails(), tag: album, selection: $albums.selectedAlbum) {
+                    
+                    Button {
+                        albums.selectedAlbum = album
+                    }
+                    label: {
                         ViewAlbumsListRow(album: album)
                     }
-                    /// When added the id to NavigationLink, the app will crash...
-                    EmptyView()
-                        .id(album.albumID)
+                    .buttonStyle(PlainButtonStyle())
+                    .foregroundColor(Albums.shared.selectedAlbum == album ? Color.accentColor : Color.primary)
+//                    NavigationLink(destination: ViewDetails(), tag: album, selection: $albums.selectedAlbum) {
+//                        ViewAlbumsListRow(album: album)
+//                    }
+//                    /// When added the id to NavigationLink, the app will crash...
+//                    EmptyView()
+//                        .id(album.albumID)
                 }
                 ViewArtistDescription(artist: Artists.shared.selectedArtist)
             }
