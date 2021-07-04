@@ -26,6 +26,7 @@ class SearchFieldObserver: ObservableObject {
                 if text.isEmpty {
                     self.searchIsActive = false
                     /// Back to opening state
+                    Artists.shared.list = KodiClient.shared.artists.all
                     Albums.shared.filter = .compilations
                     Songs.shared.filter = .compilations
                 }
@@ -36,7 +37,9 @@ class SearchFieldObserver: ObservableObject {
                     Songs.shared.filter = .none
                 }
                 if !text.isEmpty {
+                    Artists.shared.list = KodiClient.shared.artists.all.filterArtists()
                     Albums.shared.list = KodiClient.shared.albums.all.filterAlbums()
+                    Songs.shared.list = KodiClient.shared.songs.all.filterSongs()
                 }
             })
             .store(in: &subscriptions)

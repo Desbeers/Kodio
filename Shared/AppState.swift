@@ -21,21 +21,7 @@ class AppState: ObservableObject {
     @Published var alertItem: AlertItem?
     /// Define what sheet to show
     @Published var activeSheet: Sheets = .editHosts
-
-    @Published var selectedSmartList: SmartMenuFields? {
-        didSet {
-            if selectedSmartList != nil {
-                print("Smart list selected")
-                tabs.tabDetails = .songs
-                /// Deselect stuff
-                Artists.shared.selectedArtist = nil
-                Albums.shared.selectedAlbum = nil
-                /// Set filters
-                Albums.shared.filter = selectedSmartList!.filter
-                Songs.shared.filter = selectedSmartList!.filter
-            }
-        }
-    }}
+}
 
 extension AppState {
     
