@@ -7,6 +7,29 @@
 
 import Foundation
 
+class Albums: ObservableObject {
+    /// Use a shared instance
+    static let shared = Albums()
+    @Published var list = [AlbumFields]()
+    var filter: FilterType {
+        didSet {
+            print("Set album filter")
+            list = KodiClient.shared.albumsFilter
+        }
+    }
+    @Published var selectedAlbum: AlbumFields? {
+        didSet {
+            if selectedAlbum != nil {
+                Songs.shared.filter = .album
+                AppState.shared.tabs.tabDetails = .songs
+            }
+        }
+    }
+    init() {
+        filter = .compilations
+    }
+}
+
 // MARK: - Albums related stuff (KodiClient extension)
 
 extension KodiClient {
@@ -54,33 +77,14 @@ extension KodiClient {
         }
     }
 
-    // MARK: albumlistID (variable)
-
-    /// The SwiftUI list should have a unique ID for each list to speed-up the view
-    var albumListID: String {
-        if searchQuery.isEmpty {
-            let appState = AppState.shared
-            switch appState.filter.albums {
-            case .artist:
-                return "artist-\(appState.selectedArtist?.artistID ?? 0)"
-            case .genre:
-                return "genre-\(appState.selectedGenre?.genreID ?? 0)"
-            default:
-                return "albums-\(appState.filter.albums.hashValue)"
-            }
-        } else {
-            return searchID
-        }
-    }
-
     // MARK: albumsFilter (variable)
     
     /// Filter the albums for the SwiftUI lists
     var albumsFilter: [AlbumFields] {
-        let appState = AppState.shared
-        switch appState.filter.albums {
+        let filter = Albums.shared.filter
+        switch filter {
         case .artist:
-            return albums.all.filter {$0.artistID.contains(appState.selectedArtist?.artistID ?? 0)}
+            return albums.all.filter {$0.artistID.contains(Artists.shared.selectedArtist?.artistID ?? 0)}
         case .compilations:
             return albums.all.filter {$0.compilation == true}.sorted {$0.title < $1.title}
         case .recentlyAdded:
@@ -90,7 +94,7 @@ extension KodiClient {
         case .recentlyPlayed:
             return albums.recentlyPlayed
         case .genre:
-            return albums.all.filter { $0.genre.contains(appState.selectedGenre?.label ?? "") }
+            return albums.all.filter { $0.genre.contains(Genres.shared.selectedGenre?.label ?? "") }
                 .sorted { $0.artist.first! < $1.artist.first! }
         default:
             return albums.all

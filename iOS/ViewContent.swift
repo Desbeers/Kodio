@@ -36,7 +36,7 @@ struct ViewContent: View {
                     }
                 }
             } else {
-                if kodi.userInterface == .iPad {
+                if AppState.shared.userInterface == .iPad {
                     ViewiPad()
                 } else {
                     ViewiPhone()

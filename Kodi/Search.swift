@@ -26,15 +26,20 @@ class SearchFieldObserver: ObservableObject {
                 if text.isEmpty {
                     self.searchIsActive = false
                     /// Back to opening state
-                    AppState.shared.filter.albums = .compilations
-                    AppState.shared.filter.songs = .compilations
+                    Artists.shared.list = KodiClient.shared.artists.all
+                    Albums.shared.filter = .compilations
+                    Songs.shared.filter = .compilations
                 }
                 if !self.searchIsActive, !text.isEmpty {
-                    let appState = AppState.shared
                     /// Start the search
                     self.searchIsActive = true
-                    appState.filter.albums = .none
-                    appState.filter.songs = .none
+                    Albums.shared.filter = .none
+                    Songs.shared.filter = .none
+                }
+                if !text.isEmpty {
+                    Artists.shared.list = KodiClient.shared.artists.all.filterArtists()
+                    Albums.shared.list = KodiClient.shared.albums.all.filterAlbums()
+                    Songs.shared.list = KodiClient.shared.songs.all.filterSongs()
                 }
             })
             .store(in: &subscriptions)
@@ -53,7 +58,7 @@ extension Array where Element == ArtistFields {
 
 extension Array where Element == AlbumFields {
     func filterAlbums() -> [Element] {
-        if AppState.shared.filter.albums == .none {
+        if Albums.shared.filter == .none {
             return KodiClient.shared.albums.all.filter { $0.search.folding(options: .diacriticInsensitive, locale: Locale.current).localizedCaseInsensitiveContains(KodiClient.shared.searchQuery)}
         }
         return self
@@ -63,7 +68,7 @@ extension Array where Element == AlbumFields {
 extension Array where Element == SongFields {
     func filterSongs() -> [Element] {
         print("Filter Songs")
-        if AppState.shared.filter.songs == .none {
+        if Songs.shared.filter == .none {
             return KodiClient.shared.songs.all.filter { $0.search.folding(options: .diacriticInsensitive, locale: Locale.current).localizedCaseInsensitiveContains(KodiClient.shared.searchQuery)}
         }
         return self

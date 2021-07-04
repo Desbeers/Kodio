@@ -10,8 +10,21 @@ import Foundation
 class Artists: ObservableObject {
     /// Use a shared instance
     static let shared = Artists()
-    @Published var list = [ArtistFields]()
-    @Published var filter: FilterType = .compilations
+    @Published var list: [ArtistFields]
+    @Published var selectedArtist: ArtistFields? {
+        didSet {
+            if selectedArtist != nil {
+                /// Switch to correct tab
+                AppState.shared.tabs.tabDetails = .songs
+                /// Set the filters
+                Albums.shared.filter = .artist
+                Songs.shared.filter = .artist
+            }
+        }
+    }
+    init() {
+        list = KodiClient.shared.artists.all
+    }
 }
 
 // MARK: - Artists related stuff (KodiClient extension)
@@ -59,32 +72,6 @@ extension KodiClient {
         }
     }
 
-    // MARK: artistlist ID  (Variable)
-
-    /// The SwiftUI list should have a unique ID for each list to speed-up the view
-    var artistListID: String {
-        if searchQuery.isEmpty {
-            return "artists"
-        } else {
-            return searchID
-        }
-    }
-
-    // MARK: artistsFilter (Variable)
-
-    /// Filter the albums for the SwiftUI list
-    var artistsFilter: [ArtistFields] {
-        return artists.all
-//        let appState = AppState.shared
-//        print("Artist filter: \(appState.filter.artists)")
-//        if searchQuery.isEmpty {
-//            return artists.all
-//        } else {
-//            return artists.all.filterArtists()
-//            //return artists.all.filter({ $0.search.folding(options: .diacriticInsensitive, locale: Locale.current).localizedCaseInsensitiveContains(self.searchQuery)})
-//        }
-    }
-
     // MARK: hideArtistLabel (function)
 
     /// In the SongView I like to hide 'double' information. If an artist is selected,
@@ -95,8 +82,7 @@ extension KodiClient {
     /// - Returns: Bool: true when the label needs to he hidden
 
     func hideArtistLabel(song: SongFields) -> Bool {
-        let appState = AppState.shared
-        if appState.selectedArtist != nil {
+        if Artists.shared.selectedArtist != nil {
             if song.albumArtist.first == song.artist.first {
                 return true
             }

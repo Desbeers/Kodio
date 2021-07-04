@@ -82,6 +82,8 @@
 		D7694E13265168F10092D195 /* ViewDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7694E12265168F10092D195 /* ViewDescription.swift */; };
 		D7694E14265168F10092D195 /* ViewDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7694E12265168F10092D195 /* ViewDescription.swift */; };
 		D76EDE92266A36C000DB91DF /* ViewiPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76EDE91266A36C000DB91DF /* ViewiPhone.swift */; };
+		D7799F7C269250690096EFF4 /* SmartLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7799F7B269250690096EFF4 /* SmartLists.swift */; };
+		D7799F7D269250690096EFF4 /* SmartLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7799F7B269250690096EFF4 /* SmartLists.swift */; };
 		D79563C32669340200962DFB /* Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79563C22669340200962DFB /* Radio.swift */; };
 		D79563C42669340200962DFB /* Radio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79563C22669340200962DFB /* Radio.swift */; };
 		D79563C62669489D00962DFB /* ViewRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79563C52669489D00962DFB /* ViewRadio.swift */; };
@@ -152,6 +154,7 @@
 		D75BFCD8266A4F46005E0C77 /* ViewiPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewiPad.swift; sourceTree = "<group>"; };
 		D7694E12265168F10092D195 /* ViewDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDescription.swift; sourceTree = "<group>"; };
 		D76EDE91266A36C000DB91DF /* ViewiPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewiPhone.swift; sourceTree = "<group>"; };
+		D7799F7B269250690096EFF4 /* SmartLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLists.swift; sourceTree = "<group>"; };
 		D79563C22669340200962DFB /* Radio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radio.swift; sourceTree = "<group>"; };
 		D79563C52669489D00962DFB /* ViewRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRadio.swift; sourceTree = "<group>"; };
 		D79A54AE265FAE1300FCC425 /* KodiHosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHosts.swift; sourceTree = "<group>"; };
@@ -260,6 +263,7 @@
 				D706CE1C26459389006D690D /* Search.swift */,
 				D71B4B542642AC8B00852BDF /* Debug.swift */,
 				D79563C22669340200962DFB /* Radio.swift */,
+				D7799F7B269250690096EFF4 /* SmartLists.swift */,
 			);
 			path = Kodi;
 			sourceTree = "<group>";
@@ -433,6 +437,7 @@
 				D75332D8264814CD00F21ACD /* ViewPlayer.swift in Sources */,
 				D706CE0C2644E7B6006D690D /* Player.swift in Sources */,
 				D709BA5F268B9BB3004D805B /* ViewPlaylistQueue.swift in Sources */,
+				D7799F7C269250690096EFF4 /* SmartLists.swift in Sources */,
 				D71B4B5A2642BBC900852BDF /* Albums.swift in Sources */,
 				D74C9A5A26441F1F00132DAC /* ViewArtists.swift in Sources */,
 				D71B4B1C26428ED600852BDF /* APIClient.swift in Sources */,
@@ -484,6 +489,7 @@
 				D73A8E2E265518EA00A1A81F /* KodiAPI.swift in Sources */,
 				D74C9A58264417AD00132DAC /* KodioApp.swift in Sources */,
 				D709BA60268B9BB3004D805B /* ViewPlaylistQueue.swift in Sources */,
+				D7799F7D269250690096EFF4 /* SmartLists.swift in Sources */,
 				D74C9A5B26441F1F00132DAC /* ViewArtists.swift in Sources */,
 				D79563C42669340200962DFB /* Radio.swift in Sources */,
 				D71B4B5B2642BBC900852BDF /* Albums.swift in Sources */,
