@@ -18,6 +18,7 @@ struct ViewDetails: View {
     var body: some View {
         HStack {
             ViewAlbums()
+            Divider()
             VStack {
                 ViewKodiStatus()
                 ViewTabsDetails()
