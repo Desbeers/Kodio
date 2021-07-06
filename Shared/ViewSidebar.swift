@@ -14,9 +14,9 @@ struct ViewSidebar: View {
     var body: some View {
         ScrollViewReader { proxy in
             List {
-                #if os(iOS)
-                ViewSearch()
-                #endif
+                if appState.userInterface != .macOS {
+                    ViewSearch()
+                }
                 ViewSmartLists()
                 ViewTabsSidebar()
                 switch appState.tabs.tabSidebar {

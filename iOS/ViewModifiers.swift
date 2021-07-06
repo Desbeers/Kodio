@@ -20,9 +20,9 @@ struct ToolbarModifier: ViewModifier {
         content
             .toolbar {
                 ToolbarItemGroup(placement: .automatic) {
-                    HStack(spacing: 10) {
+                    HStack(spacing: 30) {
                         ViewPlayerItem()
-                        Spacer()
+                        Divider()
                         ViewPlayerButtons()
                         Spacer()
                         ViewPlayerOptions()
