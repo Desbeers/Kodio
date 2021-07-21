@@ -1,9 +1,9 @@
-//
-//  Library.swift
-//  Kodio
-//
-//  Created by Nick Berendsen on 31/05/2021.
-//
+///
+/// AudioLibrary.swift
+/// Kodio (macOS)
+///
+/// © 2021 Nick Berendsen
+///
 
 import SwiftUI
 

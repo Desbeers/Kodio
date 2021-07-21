@@ -1,9 +1,9 @@
-//
-//  AppState.swift
-//  Kodio
-//
-//  Created by Nick Berendsen on 01/06/2021.
-//
+///
+/// AppState.swift
+/// Kodio (Shared)
+///
+/// © 2021 Nick Berendsen
+///
 
 import SwiftUI
 

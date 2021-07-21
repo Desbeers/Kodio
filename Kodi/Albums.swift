@@ -13,12 +13,12 @@ class Albums: ObservableObject {
     @Published var list = [AlbumFields]()
     var filter: FilterType {
         didSet {
-            print("Set album filter")
             list = KodiClient.shared.albumsFilter
         }
     }
     @Published var selectedAlbum: AlbumFields? {
         didSet {
+            /// Album can be nilled and then it should not do below, so check
             if selectedAlbum != nil {
                 Songs.shared.filter = .album
                 AppState.shared.tabs.tabDetails = .songs

@@ -13,14 +13,13 @@ class Artists: ObservableObject {
     @Published var list: [ArtistFields]
     @Published var selectedArtist: ArtistFields? {
         didSet {
+            /// Artist can be nilled and then it should not do below, so check
             if selectedArtist != nil {
                 /// Switch to correct tab
                 AppState.shared.tabs.tabDetails = .songs
                 /// Set the filters
                 Albums.shared.filter = .artist
                 Songs.shared.filter = .artist
-            } else {
-                print("Artist nilled")
             }
         }
     }
