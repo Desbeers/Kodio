@@ -12,8 +12,6 @@ import SwiftUI
 struct ViewPlaylistQueue: View {
     /// The object that has it all
     @EnvironmentObject var kodi: KodiClient
-    /// A timer for the song progress view
-    let timer = Timer.publish(every: 2.0, on: .main, in: .common).autoconnect()
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
@@ -26,32 +24,11 @@ struct ViewPlaylistQueue: View {
                 ForEach(kodi.playlists.queue) { song in
                     VStack {
                         HStack {
-                            Button { kodi.sendSongAndPlay(song: song) }
-                                label: {
-                                    Label {
-                                        HStack {
-                                            ViewArtSong(song: song)
-                                            Divider()
-                                            VStack(alignment: .leading) {
-                                                Text(song.title)
-                                                    .font(.headline)
-                                                Text(song.artist.joined(separator: " & "))
-                                                    .font(.subheadline)
-                                                Text("\(song.album)")
-                                                    .font(.caption)
-                                            }
-                                            Spacer()
-                                        }
-                                        .lineLimit(1)
-                                    } icon: {
-                                        Image(systemName: kodi.getSongListIcon(itemID: song.songID))
-                                    }
-                                    .labelStyle(ViewSongsStyleLabel())
-                                    .opacity(song.playlistID < kodi.player.properties.playlistPosition ? 0.5 : 1)
-                                }
-                            Spacer()
+                            ViewPlaylistQueueButton(song: song)
+                                .opacity(song.playlistID < kodi.player.properties.playlistPosition ? 0.5 : 1)
                             /// Dumb-down for the iPhone
                             if AppState.shared.userInterface != .iPhone {
+                                Spacer()
                                 Menu() {
                                     Button("View this song in your library") {
                                         kodi.jumpTo(song)
@@ -69,15 +46,7 @@ struct ViewPlaylistQueue: View {
                             }
                         }
                         if kodi.player.item.songID == song.songID {
-                            ProgressView(value: Double(kodi.player.properties.percentage), total: 100)
-                                .onReceive(timer) { _ in
-                                    /// Only update the progress view when we are actualy playing
-                                    if kodi.player.properties.speed == 1 {
-                                        kodi.getPlayerProperties(playerItem: false)
-                                    }
-                                }
-                                .progressViewStyle(ViewPlaylistQueueStyleProgressView())
-                                .padding(.horizontal)
+                            ViewPlaylistQueueProgressView()
                         }
                     }
                     .buttonStyle(PlainButtonStyle())
@@ -97,6 +66,58 @@ struct ViewPlaylistQueue: View {
     func move(from source: IndexSet, to destination: Int) {
         kodi.sendPlaylistMove(fromPosition: source.first!, toPosition: destination)
         kodi.playlists.queue.move(fromOffsets: source, toOffset: destination)
+    }
+}
+
+// MARK: - ViewPlaylistQueueButton (view)
+
+struct ViewPlaylistQueueButton: View {
+    let song: SongFields
+    var body: some View {
+        Button(action: {
+            KodiClient.shared.sendSongAndPlay(song: song)
+        }, label: {
+            Label {
+                HStack {
+                    ViewArtSong(song: song)
+                    Divider()
+                    VStack(alignment: .leading) {
+                        Text(song.title)
+                            .font(.headline)
+                        Text(song.artist.joined(separator: " & "))
+                            .font(.subheadline)
+                        Text(song.album)
+                            .font(.caption)
+                    }
+                    Spacer()
+                }
+                .lineLimit(1)
+            } icon: {
+                Image(systemName: KodiClient.shared.getSongListIcon(itemID: song.songID))
+            }
+            .labelStyle(ViewSongsStyleLabel())
+        })
+    }
+}
+
+// MARK: - ViewPlaylistQueueProgressView (view)
+
+struct ViewPlaylistQueueProgressView: View {
+    /// The object that has it all
+    @EnvironmentObject var kodi: KodiClient
+    /// A timer for the song progress view
+    let timer = Timer.publish(every: 2.0, on: .main, in: .common).autoconnect()
+    /// The view
+    var body: some View {
+        ProgressView(value: Double(kodi.player.properties.percentage), total: 100)
+            .onReceive(timer) { _ in
+                /// Only update the progress view when we are actualy playing
+                if kodi.player.properties.speed == 1 {
+                    kodi.getPlayerProperties(playerItem: false)
+                }
+            }
+            .progressViewStyle(ViewPlaylistQueueStyleProgressView())
+            .padding(.horizontal)
     }
 }
 
