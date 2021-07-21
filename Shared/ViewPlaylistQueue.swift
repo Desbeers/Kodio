@@ -30,13 +30,7 @@ struct ViewPlaylistQueue: View {
                             if AppState.shared.userInterface != .iPhone {
                                 Spacer()
                                 Menu() {
-                                    Button("View this song in your library") {
-                                        kodi.jumpTo(song)
-                                    }
-                                    Divider()
-                                    Button("Remove this song from the queue") {
-                                        kodi.sendPlaylistAction(api: .playlistRemove, playlistPosition: song.playlistID)
-                                    }
+                                    ViewPlaylistQueueMenuButtons(song: song)
                                 }
                                 label: {
                                     Image(systemName: "ellipsis")
@@ -48,6 +42,9 @@ struct ViewPlaylistQueue: View {
                         if kodi.player.item.songID == song.songID {
                             ViewPlaylistQueueProgressView()
                         }
+                    }
+                    .contextMenu {
+                        ViewPlaylistQueueMenuButtons(song: song)
                     }
                     .buttonStyle(PlainButtonStyle())
                     .id(song.songID)
@@ -97,6 +94,23 @@ struct ViewPlaylistQueueButton: View {
             }
             .labelStyle(ViewSongsStyleLabel())
         })
+    }
+}
+
+// MARK: - ViewPlaylistQueueMenuButtons (view)
+
+/// Menu is reachable via right-click and via menu button,
+/// so in a seperaie View to avoid duplicating.
+struct ViewPlaylistQueueMenuButtons: View {
+    let song: SongFields
+    var body: some View {
+        Button("View this song in your library") {
+            KodiClient.shared.jumpTo(song)
+        }
+        Divider()
+        Button("Remove this song from the queue") {
+            KodiClient.shared.sendPlaylistAction(api: .playlistRemove, playlistPosition: song.playlistID)
+        }
     }
 }
 
