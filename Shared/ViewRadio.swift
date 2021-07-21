@@ -25,14 +25,17 @@ struct ViewRadioStations: View {
             Divider()
             LazyVGrid(columns: colums, alignment: .leading) {
                 ForEach(ViewRadioMenu.radioStations) { station in
-                    Button {
-                        kodi.radio(stream: station.stream)
-                    } label: {
-                        HStack {
-                            Label(station.label, systemImage: "antenna.radiowaves.left.and.right")
-                            Spacer()
+                    Button(
+                        action: {
+                            kodi.radio(stream: station.stream)
+                        },
+                        label: {
+                            HStack {
+                                Label(station.label, systemImage: "antenna.radiowaves.left.and.right")
+                                Spacer()
+                            }
                         }
-                    }
+                    )
                 }
             }
             .buttonStyle(ViewPlayerStyleButton())

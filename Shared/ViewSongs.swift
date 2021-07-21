@@ -40,20 +40,24 @@ struct ViewSongsHeader: View {
                 .font(.title)
                 .padding(.top)
             HStack {
-                Button {
-                    appState.tabs.tabDetails = .playqueue
-                    kodi.sendPlaylistAndPlay(songs: kodi.songsFilter)
-                }
-                label: {
-                    Label("Play songs", systemImage: "play")
-                }
-                Button {
-                    appState.tabs.tabDetails = .playqueue
-                    kodi.sendPlaylistAndPlay(songs: kodi.songsFilter, shuffled: true)
-                }
-                label: {
-                    Label("Shuffle songs", systemImage: "shuffle")
-                }
+                Button(
+                    action: {
+                        appState.tabs.tabDetails = .playqueue
+                        kodi.sendPlaylistAndPlay(songs: kodi.songsFilter)
+                    },
+                    label: {
+                        Label("Play songs", systemImage: "play")
+                    }
+                )
+                Button(
+                    action: {
+                        appState.tabs.tabDetails = .playqueue
+                        kodi.sendPlaylistAndPlay(songs: kodi.songsFilter, shuffled: true)
+                    },
+                    label: {
+                        Label("Shuffle songs", systemImage: "shuffle")
+                    }
+                )
                 ViewAlbumDescription(album: Albums.shared.selectedAlbum)
             }
             .buttonStyle(ViewPlayerStyleButton())
@@ -72,18 +76,23 @@ struct ViewSongsListRow: View {
     /// The View
     var body: some View {
         HStack {
-            Button {
-                KodiClient.shared.sendSongAndPlay(song: song)
-            } label: {
-                ViewSongsListRowLabel(song: song)
-            }
+            Button(
+                action: {
+                    KodiClient.shared.sendSongAndPlay(song: song)
+                },
+                label: {
+                    ViewSongsListRowLabel(song: song)
+                }
+            )
             .padding()
-            Menu() {
-                ViewSongsMenuButtons(song: song)
-            }
-            label: {
-                Image(systemName: "ellipsis")
-            }
+            Menu(
+                content: {
+                    ViewSongsMenuButtons(song: song)
+                },
+                label: {
+                    Image(systemName: "ellipsis")
+                }
+            )
             .menuStyle(BorderlessButtonMenuStyle())
             .frame(width: 40)
             .padding(.trailing)

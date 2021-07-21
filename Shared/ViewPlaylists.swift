@@ -33,14 +33,17 @@ struct ViewPlaylists: View {
                 Divider()
                 LazyVGrid(columns: colums, alignment: .leading) {
                     ForEach(kodi.playlists.files) { file in
-                        Button {
-                            kodi.getPlaylistSongs(file: file)
-                        } label: {
-                            HStack {
-                                Label(file.label, systemImage: file.file.hasSuffix(".m3u") ? "list.number" : "list.star")
-                                Spacer()
+                        Button(
+                            action: {
+                                kodi.getPlaylistSongs(file: file)
+                            },
+                            label: {
+                                HStack {
+                                    Label(file.label, systemImage: file.file.hasSuffix(".m3u") ? "list.number" : "list.star")
+                                    Spacer()
+                                }
                             }
-                        }
+                        )
                     }
                 }
                 .buttonStyle(ViewPlayerStyleButton())
@@ -61,9 +64,14 @@ struct ViewPlaylistMenu: View {
     var body: some View {
         Menu("Playlists") {
             ForEach(kodi.playlists.files) { file in
-                Button(file.label.removeExtension()) {
-                    kodi.getPlaylistSongs(file: file)
-                }
+                Button(
+                    action: {
+                        kodi.getPlaylistSongs(file: file)
+                    },
+                    label: {
+                        Text(file.label.removeExtension())
+                    }
+                )
             }
         }
         .disabled(kodi.playlists.files.isEmpty)

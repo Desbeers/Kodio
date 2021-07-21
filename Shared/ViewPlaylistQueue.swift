@@ -29,14 +29,15 @@ struct ViewPlaylistQueue: View {
                             /// Dumb-down for the iPhone
                             if AppState.shared.userInterface != .iPhone {
                                 Spacer()
-                                Menu() {
-                                    ViewPlaylistQueueMenuButtons(song: song)
-                                }
-                                label: {
-                                    Image(systemName: "ellipsis")
-                                }
-                                .menuStyle(BorderlessButtonMenuStyle())
-                                .frame(width: 40)
+                                Menu(
+                                    content: {
+                                        ViewPlaylistQueueMenuButtons(song: song)
+                                    },
+                                    label: {
+                                        Image(systemName: "ellipsis")
+                                    })
+                                    .menuStyle(BorderlessButtonMenuStyle())
+                                    .frame(width: 40)
                             }
                         }
                         if kodi.player.item.songID == song.songID {
@@ -71,29 +72,34 @@ struct ViewPlaylistQueue: View {
 struct ViewPlaylistQueueButton: View {
     let song: SongFields
     var body: some View {
-        Button(action: {
-            KodiClient.shared.sendSongAndPlay(song: song)
-        }, label: {
-            Label {
-                HStack {
-                    ViewArtSong(song: song)
-                    Divider()
-                    VStack(alignment: .leading) {
-                        Text(song.title)
-                            .font(.headline)
-                        Text(song.artist.joined(separator: " & "))
-                            .font(.subheadline)
-                        Text(song.album)
-                            .font(.caption)
+        Button(
+            action: {
+                KodiClient.shared.sendSongAndPlay(song: song)
+            },
+            label: {
+                Label(
+                    title: {
+                        HStack {
+                            ViewArtSong(song: song)
+                            Divider()
+                            VStack(alignment: .leading) {
+                                Text(song.title)
+                                    .font(.headline)
+                                Text(song.artist.joined(separator: " & "))
+                                    .font(.subheadline)
+                                Text(song.album)
+                                    .font(.caption)
+                            }
+                            Spacer()
+                        }
+                        .lineLimit(1) },
+                    icon: {
+                        Image(systemName: KodiClient.shared.getSongListIcon(itemID: song.songID))
                     }
-                    Spacer()
-                }
-                .lineLimit(1)
-            } icon: {
-                Image(systemName: KodiClient.shared.getSongListIcon(itemID: song.songID))
+                )
+                .labelStyle(ViewSongsStyleLabel())
             }
-            .labelStyle(ViewSongsStyleLabel())
-        })
+        )
     }
 }
 

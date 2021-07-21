@@ -33,24 +33,36 @@ struct ViewPlayerButtons: View {
     @EnvironmentObject var kodi: KodiClient
     /// The view
     var body: some View {
-        Button { kodi.sendPlayerAction(api: .playerGoTo,
-                                       playlistPosition: kodi.player.properties.playlistPosition - 1) }
+        Button(
+            action: {
+                kodi.sendPlayerAction(api: .playerGoTo,
+                                      playlistPosition: kodi.player.properties.playlistPosition - 1)
+            },
             label: {
                 Image(systemName: "backward.fill")
             }
-            .disabled(kodi.player.item.songID == nil || kodi.player.properties.playlistPosition == 0)
-        Button { kodi.sendPlayerPlayPause() }
+        )
+        .disabled(kodi.player.item.songID == nil || kodi.player.properties.playlistPosition == 0)
+        Button(
+            action: {
+                kodi.sendPlayerPlayPause()
+            },
             label: {
                 Image(systemName: kodi.player.properties.speed == 1 ? "pause.fill" : "play.fill")
             }
-            .disabled(kodi.player.item.type != "song")
-        Button { kodi.sendPlayerAction(api: .playerGoTo,
-                                       playlistPosition: kodi.player.properties.playlistPosition + 1) }
+        )
+        .disabled(kodi.player.item.type != "song")
+        Button(
+            action: {
+                kodi.sendPlayerAction(api: .playerGoTo,
+                                      playlistPosition: kodi.player.properties.playlistPosition + 1)
+            },
             label: {
                 Image(systemName: "forward.fill")
             }
-            .disabled(kodi.player.item.songID == nil ||
-                        kodi.player.properties.playlistPosition == kodi.player.playlistItems)
+        )
+        .disabled(kodi.player.item.songID == nil ||
+                    kodi.player.properties.playlistPosition == kodi.player.playlistItems)
     }
 }
     
@@ -62,16 +74,24 @@ struct ViewPlayerOptions: View {
     @EnvironmentObject var kodi: KodiClient
     /// The view
     var body: some View {
-        Button { kodi.sendPlayerAction(api: .playerSetShuffle) }
+        Button(
+            action: {
+                kodi.sendPlayerAction(api: .playerSetShuffle)
+            },
             label: {
                 Image(systemName: "shuffle")
                     .foregroundColor(kodi.player.properties.shuffled ? .accentColor : .primary)
             }
-        Button { kodi.sendPlayerAction(api: .playerSetRepeat) }
+        )
+        Button(
+            action: {
+                kodi.sendPlayerAction(api: .playerSetRepeat)
+            },
             label: {
                 Image(systemName: kodi.player.properties.repeatingIcon)
                     .foregroundColor(kodi.player.properties.repeating != "off"  ? .accentColor : .primary)
             }
+        )
     }
 }
 

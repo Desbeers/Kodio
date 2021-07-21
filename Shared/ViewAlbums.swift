@@ -19,13 +19,14 @@ struct ViewAlbums: View {
             List {
                 ViewArtFanart()
                 ForEach(albums.list) { album in
-                    
-                    Button {
-                        albums.selectedAlbum = album
-                    }
-                    label: {
-                        ViewAlbumsListRow(album: album)
-                    }
+                    Button(
+                        action: {
+                            albums.selectedAlbum = album
+                        },
+                        label: {
+                            ViewAlbumsListRow(album: album)
+                        }
+                    )
                     .buttonStyle(PlainButtonStyle())
                     .foregroundColor(Albums.shared.selectedAlbum == album ? Color.accentColor : Color.primary)
                 }
