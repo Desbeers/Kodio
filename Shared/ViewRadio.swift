@@ -1,9 +1,9 @@
-//
-//  ViewRadio.swift
-//  Kodio
-//
-//  Created by Nick Berendsen on 03/06/2021.
-//
+///
+/// ViewRadio.swift
+/// Kodio (Shared)
+///
+/// © 2021 Nick Berendsen
+///
 
 import SwiftUI
 

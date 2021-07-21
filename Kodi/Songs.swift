@@ -13,7 +13,6 @@ class Songs: ObservableObject {
     @Published var list = [SongFields]()
     var filter: FilterType {
         didSet {
-            print("Set songs filter")
             list = KodiClient.shared.songsFilter
         }
     }

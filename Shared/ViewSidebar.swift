@@ -27,7 +27,6 @@ struct ViewSidebar: View {
                 }
             }
             .onChange(of: KodiClient.shared.libraryJump) { item in
-                print("Jump to \(item.artist)")
                 proxy.scrollTo(item.artist, anchor: .center)
             }
         }

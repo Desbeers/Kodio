@@ -59,7 +59,7 @@ extension Array where Element == ArtistFields {
 extension Array where Element == AlbumFields {
     func filterAlbums() -> [Element] {
         if Albums.shared.filter == .none {
-            return KodiClient.shared.albums.all.filter { $0.search.folding(options: .diacriticInsensitive, locale: Locale.current).localizedCaseInsensitiveContains(KodiClient.shared.searchQuery)}
+            return self.filter { $0.search.folding(options: .diacriticInsensitive, locale: Locale.current).localizedCaseInsensitiveContains(KodiClient.shared.searchQuery)}
         }
         return self
     }
@@ -67,9 +67,8 @@ extension Array where Element == AlbumFields {
 
 extension Array where Element == SongFields {
     func filterSongs() -> [Element] {
-        print("Filter Songs")
         if Songs.shared.filter == .none {
-            return KodiClient.shared.songs.all.filter { $0.search.folding(options: .diacriticInsensitive, locale: Locale.current).localizedCaseInsensitiveContains(KodiClient.shared.searchQuery)}
+            return self.filter { $0.search.folding(options: .diacriticInsensitive, locale: Locale.current).localizedCaseInsensitiveContains(KodiClient.shared.searchQuery)}
         }
         return self
     }

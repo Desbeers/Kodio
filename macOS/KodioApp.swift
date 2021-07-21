@@ -56,17 +56,6 @@ struct MenuCommands: Commands {
                 kodi.applicationQuit()
             }
         }
-//        CommandMenu("Debug") {
-//            Button("Radio 2") {
-//                kodi.sendPlayerAction(api: .playerOpen, file: "https://icecast.omroep.nl/radio2-bb-aac")
-//            }
-//            Button("Radio 2 (function)") {
-//                kodi.radio()
-//            }
-//            Button("PlayerItem") {
-//                kodi.getPlayerItem()
-//            }
-//        }
         CommandGroup(replacing: CommandGroupPlacement.newItem) {
             ViewKodiHostsMenu().environmentObject(kodi).environmentObject(appState)
         }

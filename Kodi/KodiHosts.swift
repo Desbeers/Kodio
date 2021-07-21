@@ -22,12 +22,12 @@ func getAllHosts() -> [HostFields] {
 
 /// Get the selected host from the list of available hosts
 func getSelectedHost() -> HostFields {
-    var host = HostFields()
     let hosts = getAllHosts()
-    if let index = hosts.firstIndex(where: { $0.selected == true }) {
-        host = hosts[index]
-        saveSelectedHost(host: host)
+    guard let host = hosts.first(where: { $0.selected == true }) else {
+        /// Return default host
+        return HostFields()
     }
+    saveSelectedHost(host: host)
     return host
 }
 

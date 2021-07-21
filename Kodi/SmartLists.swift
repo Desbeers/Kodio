@@ -14,7 +14,6 @@ class SmartLists: ObservableObject {
     @Published var selectedSmartList: SmartMenuFields? {
         didSet {
             if selectedSmartList != nil {
-                print("Smart list selected")
                 AppState.shared.tabs.tabDetails = .songs
                 /// Deselect stuff
                 Artists.shared.selectedArtist = nil

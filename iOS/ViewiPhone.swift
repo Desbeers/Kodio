@@ -1,9 +1,9 @@
-//
-//  ViewiPhone.swift
-//  Kodio (iOS)
-//
-//  Created by Nick Berendsen on 04/06/2021.
-//
+///
+/// ViewiPhone.swift
+/// Kodio (iOS)
+///
+/// © 2021 Nick Berendsen
+///
 
 import SwiftUI
 

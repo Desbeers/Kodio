@@ -35,9 +35,6 @@ struct ViewAlbums: View {
                 proxy.scrollTo(item.albumID, anchor: .top)
             }
         }
-        .onAppear {
-            print("Album appear")
-        }
     }
 }
 

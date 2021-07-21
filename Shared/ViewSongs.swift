@@ -22,9 +22,6 @@ struct ViewSongs: View {
                     ViewSongsListRow(song: song)
                 }
             }
-            .onAppear {
-                print("Songs appear")
-            }
         }
     }
 }
