@@ -126,7 +126,7 @@ struct AudioLibraryGetArtists: KodiRequest {
 
 struct ArtistFields: Codable, Identifiable, Hashable {
     /// The fields that we ask for
-    var properties = ["fanart", "thumbnail", "description", "isalbumartist"]
+    var properties = ["fanart", "thumbnail", "description", "isalbumartist", "songgenres"]
     /// Make it identifiable
     var id = UUID()
     /// The fields from above
@@ -136,9 +136,28 @@ struct ArtistFields: Codable, Identifiable, Hashable {
     var fanart: String = ""
     var description: String = ""
     var thumbnail: String = ""
+    var songGenres = [SongGenres]()
     /// Computed stuff
     var search: String {
         return artist
+    }
+    var genres: [String] {
+        var genres: [String] = []
+        for genre in songGenres {
+            genres.append(genre.title)
+        }
+        return genres
+    }
+    /// Song genres
+    struct SongGenres: Codable, Identifiable, Hashable {
+        /// Make it identifiable
+        var id = UUID()
+        var genreID: Int = 0
+        var title: String = ""
+        enum CodingKeys: String, CodingKey {
+            case title
+            case genreID = "genreid"
+        }
     }
 }
 
@@ -147,5 +166,6 @@ extension ArtistFields {
         case artist, fanart, description, thumbnail
         case artistID = "artistid"
         case isAlbumArtist = "isalbumartist"
+        case songGenres = "songgenres"
     }
 }

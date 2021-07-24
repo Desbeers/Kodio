@@ -37,7 +37,11 @@ struct ViewArtistsListRow: View {
     var body: some View {
         HStack {
             ViewArtArtist(artist: artist)
-            Text(artist.artist)
+            VStack(alignment: .leading) {
+                Text(artist.artist)
+                Text(artist.genres.joined(separator: "・"))
+                    .font(.caption)
+            }
             Spacer()
         }
     }
