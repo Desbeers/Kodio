@@ -13,13 +13,12 @@ struct FilesGetDirectory: KodiRequest {
     /// Arguments
     var directory: String
     /// Method
-    var api = KodiAPI.filesGetDirectory
+    var method = Method.filesGetDirectory
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
         var params = Params()
         params.directory = directory
-        return buildParams(method: method, params: params)
+        return buildParams(params: params)
     }
     /// The request struct
     struct Params: Encodable {

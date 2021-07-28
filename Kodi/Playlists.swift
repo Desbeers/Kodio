@@ -113,14 +113,14 @@ extension KodiClient {
     // MARK: sendPlaylistAction (No response needed)
 
     func sendPlaylistAction(
-        api: KodiAPI,
+        api: Method,
         songList: [Int] = [0],
         playlistPosition: Int = -1,
         fromPosition: Int = -1,
         toPosition: Int = -1
     ) {
         let request = PlaylistAction(
-            api: api,
+            method: api,
             songList: songList,
             playlistPosition: playlistPosition,
             fromPosition: fromPosition,
@@ -189,7 +189,7 @@ extension KodiClient {
 
 struct PlaylistAction: KodiRequest {
     /// Arguments
-    var api: KodiAPI
+    var method: Method
     var songList: [Int] = []
     var stream: String = ""
     var playlistPosition: Int = -1
@@ -197,15 +197,14 @@ struct PlaylistAction: KodiRequest {
     var toPosition: Int = -1
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
-        switch api {
+        switch method {
         // MARK: Playlist.Clear
         case .playlistClear:
             struct Clear: Encodable {
                 let playlistid = 0
             }
             let params = Clear()
-            return buildParams(method: method, params: params)
+            return buildParams(params: params)
 
         // MARK: Playlist.Add
         case .playlistAdd:
@@ -220,7 +219,7 @@ struct PlaylistAction: KodiRequest {
                 }
                 var params = Stream()
                 params.item.file = stream
-                return buildParams(method: method, params: params)
+                return buildParams(params: params)
             }
             /// Add an array of songs
             if !songList.isEmpty {
@@ -235,7 +234,7 @@ struct PlaylistAction: KodiRequest {
                 for song in songList {
                     params.item.append(Add.Songs(songid: song))
                 }
-                return buildParams(method: method, params: params)
+                return buildParams(params: params)
             }
             return Data()
         // MARK: Playlist.Remove
@@ -246,7 +245,7 @@ struct PlaylistAction: KodiRequest {
             }
             var params = Remove()
             params.position = playlistPosition
-            return buildParams(method: method, params: params)
+            return buildParams(params: params)
 
         // MARK: Playlist.Swap
         case .playlistSwap:
@@ -258,7 +257,7 @@ struct PlaylistAction: KodiRequest {
             var params = Swap()
             params.position1 = fromPosition
             params.position2 = toPosition
-            return buildParams(method: method, params: params)
+            return buildParams(params: params)
 
         default:
             /// Should be an unused fallback
@@ -275,11 +274,10 @@ struct PlaylistAction: KodiRequest {
 // MARK: - Playlist.GetItems (API request)
 
 struct PlaylistGetItems: KodiRequest {
-    var api: KodiAPI = .playlistGetItems
+    var method: Method = .playlistGetItems
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
-        return buildParams(method: method, params: Params())
+        return buildParams(params: Params())
     }
     // typealias response = Response
     /// The request struct

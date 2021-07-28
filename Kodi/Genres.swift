@@ -67,11 +67,10 @@ extension KodiClient {
 
 struct AudioLibraryGetGenres: KodiRequest {
     /// Method
-    var api = KodiAPI.audioLibraryGetGenres
+    var method = Method.audioLibraryGetGenres
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
-        return buildParams(method: method, params: Params())
+        return buildParams(params: Params())
     }
     /// The request struct
     struct Params: Encodable {

@@ -72,7 +72,7 @@ extension KodiClient {
     
     func applicationQuit(confirm: Bool = false) {
         if confirm {
-            let request = SystemAction(api: .applicationQuit)
+            let request = SystemAction(method: .applicationQuit)
             sendMessage(request: request)
         } else {
             let alertItem = AppState.AlertItem(title: Text("Quit"),
@@ -137,13 +137,12 @@ struct ApplicationSetVolume: KodiRequest {
     /// Arguments
     var volume: Double
     // Method
-    var api: KodiAPI = .applicationSetVolume
+    var method: Method = .applicationSetVolume
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
         var params = Params()
         params.volume = Int(volume)
-        return buildParams(method: method, params: params)
+        return buildParams(params: params)
     }
     /// The request struct
     struct Params: Encodable {
@@ -167,11 +166,10 @@ struct ApplicationSetVolume: KodiRequest {
 
 struct SystemAction: KodiRequest {
     /// Arguments
-    var api: KodiAPI
+    var method: Method
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
-        return buildParams(method: method, params: Params())
+        return buildParams(params: Params())
     }
     /// The request struct
     struct Params: Encodable {

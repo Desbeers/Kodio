@@ -14,13 +14,13 @@ protocol KodiRequest {
     associatedtype Response: Decodable
     /// The httpBody for the request
     var parameters: Data { get }
-    var api: KodiAPI { get }
+    var method: Method { get }
 }
 
 extension KodiRequest {
     /// Build the JSON request
-    func buildParams<T: Encodable>(method: String, params: T) -> Data {
-        let parameters = BaseParameters(method: method, params: params.self, id: method)
+    func buildParams<T: Encodable>(params: T) -> Data {
+        let parameters = BaseParameters(method: method.rawValue, params: params.self, id: method.rawValue)
         do {
             return try JSONEncoder().encode(parameters)
         } catch {
@@ -64,7 +64,7 @@ extension KodiClient {
             guard let result = json as? BaseResponse<T.Response> else {
                 return nil
             }
-            self.responseAction(request.api)
+            self.responseAction(request.method)
             return result
         }, completion: completion)
     }
@@ -76,7 +76,7 @@ extension KodiClient {
     /// - Parameters:
     ///     - action: the method of the request
 
-    func responseAction(_ action: KodiAPI) {
+    func responseAction(_ action: Method) {
         switch action {
         case .playerPlayPause:
             getPlayerProperties(playerItem: false)

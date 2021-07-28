@@ -1,5 +1,5 @@
 ///
-/// KodiAPI.swift
+/// Method.swift
 /// Kodio
 ///
 /// © 2021 Nick Berendsen
@@ -7,9 +7,9 @@
 
 import Foundation
 
-// MARK: - KodiAPI (enum)
+// MARK: - Method (enum)
 
-enum KodiAPI: String {
+enum Method: String {
     
     /// Application
     case applicationGetProperties = "Application.GetProperties"
@@ -45,7 +45,7 @@ enum KodiAPI: String {
     case filesGetDirectory = "Files.GetDirectory"
 }
 
-extension KodiAPI {
+extension Method {
     /// Nicer that using rawValue
     func method() -> String {
         return self.rawValue

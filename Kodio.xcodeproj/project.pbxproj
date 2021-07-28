@@ -58,8 +58,8 @@
 		D71B4B8F264305F700852BDF /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B4B8D264305F700852BDF /* SearchField.swift */; };
 		D71FB3E626591AE3009061CC /* ViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FB3E526591AE3009061CC /* ViewDetails.swift */; };
 		D71FB3E726591AE3009061CC /* ViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FB3E526591AE3009061CC /* ViewDetails.swift */; };
-		D73A8E2D265518EA00A1A81F /* KodiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A8E2C265518EA00A1A81F /* KodiAPI.swift */; };
-		D73A8E2E265518EA00A1A81F /* KodiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A8E2C265518EA00A1A81F /* KodiAPI.swift */; };
+		D73A8E2D265518EA00A1A81F /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A8E2C265518EA00A1A81F /* Methods.swift */; };
+		D73A8E2E265518EA00A1A81F /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73A8E2C265518EA00A1A81F /* Methods.swift */; };
 		D74C9A58264417AD00132DAC /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A57264417A500132DAC /* KodioApp.swift */; };
 		D74C9A5A26441F1F00132DAC /* ViewArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A5926441F1F00132DAC /* ViewArtists.swift */; };
 		D74C9A5B26441F1F00132DAC /* ViewArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C9A5926441F1F00132DAC /* ViewArtists.swift */; };
@@ -142,7 +142,7 @@
 		D71B4B8D264305F700852BDF /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		D71FB3E526591AE3009061CC /* ViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetails.swift; sourceTree = "<group>"; };
 		D724E2BB266A8A3900AE87EF /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		D73A8E2C265518EA00A1A81F /* KodiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiAPI.swift; sourceTree = "<group>"; };
+		D73A8E2C265518EA00A1A81F /* Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
 		D74C9A57264417A500132DAC /* KodioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
 		D74C9A5926441F1F00132DAC /* ViewArtists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewArtists.swift; sourceTree = "<group>"; };
 		D74C9A5C26441F3200132DAC /* ViewAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAlbums.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 				D7AC7B0F266684920069B564 /* KodiRequest.swift */,
 				D79A54AE265FAE1300FCC425 /* KodiHosts.swift */,
 				D71B4B2C26428F3F00852BDF /* KodiClient.swift */,
-				D73A8E2C265518EA00A1A81F /* KodiAPI.swift */,
+				D73A8E2C265518EA00A1A81F /* Methods.swift */,
 				D75332D42647E39000F21ACD /* WebSocket.swift */,
 				D71B4B312642900300852BDF /* General.swift */,
 				D7AF349E2665270E0078504E /* AudioLibrary.swift */,
@@ -475,7 +475,7 @@
 				D7AC7B10266684920069B564 /* KodiRequest.swift in Sources */,
 				D71B4B4E2642A6E300852BDF /* Artists.swift in Sources */,
 				D74C9A6C264458C700132DAC /* ViewSmartLists.swift in Sources */,
-				D73A8E2D265518EA00A1A81F /* KodiAPI.swift in Sources */,
+				D73A8E2D265518EA00A1A81F /* Methods.swift in Sources */,
 				D74C9A6026441F3C00132DAC /* ViewSongs.swift in Sources */,
 				D75BFCD9266A4F46005E0C77 /* ViewiPad.swift in Sources */,
 				D71B4B2826428F2500852BDF /* Extensions.swift in Sources */,
@@ -491,7 +491,7 @@
 			files = (
 				D79A54B0265FAE1300FCC425 /* KodiHosts.swift in Sources */,
 				D706CE0D2644E7B6006D690D /* Player.swift in Sources */,
-				D73A8E2E265518EA00A1A81F /* KodiAPI.swift in Sources */,
+				D73A8E2E265518EA00A1A81F /* Methods.swift in Sources */,
 				D74C9A58264417AD00132DAC /* KodioApp.swift in Sources */,
 				D709BA60268B9BB3004D805B /* ViewPlaylistQueue.swift in Sources */,
 				D7799F7D269250690096EFF4 /* SmartLists.swift in Sources */,

@@ -96,7 +96,7 @@ extension KodiClient {
             songList.append(song.songID)
         }
         /// # Add the songs
-        let request = PlaylistAction(api: .playlistAdd, songList: songList)
+        let request = PlaylistAction(method: .playlistAdd, songList: songList)
         sendRequest(request: request) { [weak self] result in
             switch result {
             case .success:
@@ -154,14 +154,14 @@ extension KodiClient {
     // MARK: sendPlayerAction (No response needed)
 
     func sendPlayerAction(
-        api: KodiAPI,
+        api: Method,
         playlistPosition: Int = -1,
         songID: Int = -1,
         file: String = "",
         shuffled: Bool = false
     ) {
         let request = PlayerAction(
-            api: api,
+            method: api,
             playlistPosition: playlistPosition,
             songID: songID,
             file: file,
@@ -183,21 +183,20 @@ extension KodiClient {
 
 struct PlayerAction: KodiRequest {
     /// Arguments
-    var api: KodiAPI
+    var method: Method
     var playlistPosition = -1
     var songID = -1
     var file = ""
     var shuffled: Bool = false
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
-        switch api {
+        switch method {
         // MARK: Player.PlayPause
         case .playerPlayPause:
             struct PlayPause: Encodable {
                 let playerid = 0
             }
-            return buildParams(method: method, params: PlayPause())
+            return buildParams(params: PlayPause())
 
         // MARK: Player.Open
         case .playerOpen:
@@ -228,13 +227,13 @@ struct PlayerAction: KodiRequest {
             if songID != -1 {
                 var params = OpenSong()
                 params.item.songid = songID
-                return buildParams(method: method, params: params)
+                return buildParams(params: params)
             }
             /// Open a file
             if !file.isEmpty {
                 var params = OpenFile()
                 params.item.file = file
-                return buildParams(method: method, params: params)
+                return buildParams(params: params)
             }
             /// Open a playlist
             if playlistPosition != -1 {
@@ -242,7 +241,7 @@ struct PlayerAction: KodiRequest {
                 params.item.position = playlistPosition
                 params.options.shuffled = shuffled
 
-                return buildParams(method: method, params: params)
+                return buildParams(params: params)
             }
             /// Should be an unused fallback
             return Data()
@@ -252,7 +251,7 @@ struct PlayerAction: KodiRequest {
             struct Stop: Encodable {
                 let playerid = 0
             }
-            return buildParams(method: method, params: Stop())
+            return buildParams(params: Stop())
 
         // MARK: Player.Goto
         case .playerGoTo:
@@ -262,7 +261,7 @@ struct PlayerAction: KodiRequest {
             }
             var params = GoTo()
             params.to = playlistPosition
-            return buildParams(method: method, params: params)
+            return buildParams(params: params)
 
         // MARK: Player.SetShuffle
         case .playerSetShuffle:
@@ -271,7 +270,7 @@ struct PlayerAction: KodiRequest {
                 let shuffle = "toggle"
             }
             let params = SetShuffle()
-            return buildParams(method: method, params: params)
+            return buildParams(params: params)
 
         // MARK: Player.SetRepeat
         case .playerSetRepeat:
@@ -286,7 +285,7 @@ struct PlayerAction: KodiRequest {
                 }
             }
             let params = SetRepeat()
-            return buildParams(method: method, params: params)
+            return buildParams(params: params)
 
         default:
             return Data()
@@ -303,11 +302,10 @@ struct PlayerAction: KodiRequest {
 
 struct PlayerGetProperties: KodiRequest {
     /// Method
-    var api = KodiAPI.playerGetProperties
+    var method = Method.playerGetProperties
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
-        return buildParams(method: method, params: GetProperties())
+        return buildParams(params: GetProperties())
     }
     /// The request struct
     struct GetProperties: Encodable {
@@ -322,11 +320,10 @@ struct PlayerGetProperties: KodiRequest {
 
 struct PlayerGetItem: KodiRequest {
     /// Method
-    var api = KodiAPI.playerGetItem
+    var method = Method.playerGetItem
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
-        return buildParams(method: method, params: GetItem())
+        return buildParams(params: GetItem())
     }
     /// The request struct
     struct GetItem: Encodable {

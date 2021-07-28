@@ -21,7 +21,7 @@ extension KodiClient {
         /// # Clear the playlist
         sendPlaylistAction(api: .playlistClear)
         /// # Add the stream and play it
-        let request = PlaylistAction(api: .playlistAdd, stream: stream)
+        let request = PlaylistAction(method: .playlistAdd, stream: stream)
         sendRequest(request: request) { [weak self] result in
             switch result {
             case .success:

@@ -187,10 +187,9 @@ struct AudioLibraryGetSongs: KodiRequest {
     /// Arguments
     var filter: FilterType = .none
     /// Method
-    var api = KodiAPI.audioLibraryGetSongs
+    var method = Method.audioLibraryGetSongs
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
         var params = Params()
         switch filter {
         case .recentlyPlayed:
@@ -205,7 +204,7 @@ struct AudioLibraryGetSongs: KodiRequest {
             params.sort.method = SortFields.track.string()
             params.sort.order = SortFields.ascending.string()
         }
-        return buildParams(method: method, params: params)
+        return buildParams(params: params)
     }
     /// The request struct
     struct Params: Encodable {

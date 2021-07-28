@@ -123,11 +123,10 @@ extension KodiClient {
 
 struct ApplicationGetProperties: KodiRequest {
     /// Method
-    var api = KodiAPI.applicationGetProperties
+    var method = Method.applicationGetProperties
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
-        return buildParams(method: method, params: Params())
+        return buildParams(params: Params())
     }
     /// The request struct
     struct Params: Encodable {

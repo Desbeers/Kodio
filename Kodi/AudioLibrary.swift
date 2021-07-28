@@ -67,7 +67,7 @@ extension KodiClient {
     func scanAudioLibrary(confirm: Bool = false) {
         if confirm {
             AppState.shared.alertItem = nil
-            let request = SystemAction(api: .audioLibraryScan)
+            let request = SystemAction(method: .audioLibraryScan)
             sendMessage(request: request)
         } else {
             let alertItem = AppState.AlertItem(title: Text("Scan Library"),
@@ -86,11 +86,10 @@ extension KodiClient {
 
 struct AudioLibraryGetProperties: KodiRequest {
     /// Arguments
-    var api: KodiAPI = .audioLibraryGetProperties
+    var method: Method = .audioLibraryGetProperties
     /// The JSON creator
     var parameters: Data {
-        let method = api.method()
-        return buildParams(method: method, params: Params())
+        return buildParams(params: Params())
     }
     /// The request struct
     struct Params: Encodable {
