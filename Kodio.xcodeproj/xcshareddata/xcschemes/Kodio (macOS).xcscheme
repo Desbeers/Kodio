@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1250"
+   LastUpgradeVersion = "1300"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D71B4AF726428E3F00852BDF"
+               BlueprintIdentifier = "D7EA913E26A93C1D0090C137"
                BuildableName = "Kodio.app"
                BlueprintName = "Kodio (macOS)"
                ReferencedContainer = "container:Kodio.xcodeproj">
@@ -44,7 +44,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D71B4AF726428E3F00852BDF"
+            BlueprintIdentifier = "D7EA913E26A93C1D0090C137"
             BuildableName = "Kodio.app"
             BlueprintName = "Kodio (macOS)"
             ReferencedContainer = "container:Kodio.xcodeproj">
@@ -68,7 +68,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D71B4AF726428E3F00852BDF"
+            BlueprintIdentifier = "D7EA913E26A93C1D0090C137"
             BuildableName = "Kodio.app"
             BlueprintName = "Kodio (macOS)"
             ReferencedContainer = "container:Kodio.xcodeproj">

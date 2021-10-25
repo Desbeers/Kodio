@@ -6,6 +6,8 @@ disabled_rules:
  - trailing_whitespace
  - cyclomatic_complexity
  - line_length
+ - function_body_length
+ - force_try
 opt_in_rules:
 - empty_count
 - empty_string

@@ -1,9 +1,12 @@
-module: Kodio
+module: Kodio2
 title: Kodio
 author: Nick Berendsen
 author_url: https://desbeers.nl
 github_url: https://github.com/desbeers/kodio/
-min_acl: private
+min_acl: internal
 clean: true
 theme: apple
-build_tool_arguments: -target,"Kodio (macOS)",-sdk,macosx
+
+# Command line for doc generation:
+
+# jazzy --xcodebuild-arguments -target,"Kodio2 (macOS)",-sdk,macosx
