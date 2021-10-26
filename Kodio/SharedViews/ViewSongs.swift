@@ -155,7 +155,6 @@ extension ViewSongs {
                     Spacer()
                 }
                 .padding(.bottom)
-                //Divider()
                 content
             } else {
                 content

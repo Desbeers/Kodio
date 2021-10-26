@@ -30,7 +30,6 @@ struct ViewHelp: View {
             Spacer()
             }
         }
-        //.padding()
         .frame(minWidth: 500, minHeight: 600)
         .task {
             animate = true
