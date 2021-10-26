@@ -4,7 +4,7 @@
 
 Kodio is written in SwiftUI 3 for macOS Monterey and iOS 15.
 
-![Screenshot](screenshot.png)
+![Screenshot](https://github.com/Desbeers/Kodio/raw/main/screenshot.png)
 
-See [Kodio Help](Kodio/General/Help.md) for more information.
+See [Kodio Help](https://github.com/Desbeers/Kodio/blob/main/Kodio/General/Help.md) for more information.
 
