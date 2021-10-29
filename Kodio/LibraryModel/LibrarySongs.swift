@@ -133,6 +133,12 @@ extension Library {
             if media == .favorites {
                 filterAllMedia()
             }
+            /// Reload queue if viewing queue
+            if AppState.shared.activeSheet == .queue {
+                Task {
+                    await Queue.shared.getItems()
+                }
+            }
             /// Refresh UI
             DispatchQueue.main.async {
                 self.objectWillChange.send()
