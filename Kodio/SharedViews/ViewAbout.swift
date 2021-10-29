@@ -10,8 +10,6 @@ import SwiftUI
 struct ViewAbout: View {
     /// State of this application
     @EnvironmentObject var appState: AppState
-    /// The state of the rotating LP
-    @State private var animate: Bool = false
     /// The view
     var body: some View {
         VStack {
@@ -27,7 +25,7 @@ struct ViewAbout: View {
             Text("For those who are still treasure their **own** music.")
                 .font(.caption)
                 .padding()
-            ViewKodiRotatingIcon(animate: $animate)
+            ViewRotatingRecord()
             if let text = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
                 VStack {
                     Text("© Nick Berendsen")
@@ -42,12 +40,6 @@ struct ViewAbout: View {
             }
         }
         .padding()
-        .onAppear {
-            /// Give it a moment to settle; else the animation is strange on macOS
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                animate = true
-            }
-        }
 #if os(macOS)
         .frame(minWidth: 500, idealWidth: 500, maxWidth: 500, minHeight: 500, idealHeight: 500, maxHeight: 500, alignment: .top)
 #endif

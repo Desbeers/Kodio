@@ -108,8 +108,6 @@
 		D7AE512B26B9448800A57244 /* ViewRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE512A26B9448800A57244 /* ViewRadio.swift */; };
 		D7AE512C26B9448800A57244 /* ViewRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE512A26B9448800A57244 /* ViewRadio.swift */; };
 		D7AEEE3F26FCA13C00335211 /* PlayerRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043F26FA09CB0012C7B2 /* PlayerRadio.swift */; };
-		D7B5DB1826B3B5AC00417B63 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B5DB1726B3B5AC00417B63 /* Animation.swift */; };
-		D7B5DB1926B3B5AC00417B63 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B5DB1726B3B5AC00417B63 /* Animation.swift */; };
 		D7BBB90026B19BF00097D286 /* LibrarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBB8FF26B19BF00097D286 /* LibrarySearch.swift */; };
 		D7BBB90126B19BF00097D286 /* LibrarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBB8FF26B19BF00097D286 /* LibrarySearch.swift */; };
 		D7DE9A0626AF6AE20002BC48 /* LibraryPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE9A0526AF6AE20002BC48 /* LibraryPlaylists.swift */; };
@@ -204,7 +202,6 @@
 		D7A9043F26FA09CB0012C7B2 /* PlayerRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRadio.swift; sourceTree = "<group>"; };
 		D7AE512726B9379600A57244 /* LibraryRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRadio.swift; sourceTree = "<group>"; };
 		D7AE512A26B9448800A57244 /* ViewRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRadio.swift; sourceTree = "<group>"; };
-		D7B5DB1726B3B5AC00417B63 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		D7BBB8FF26B19BF00097D286 /* LibrarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySearch.swift; sourceTree = "<group>"; };
 		D7DE9A0526AF6AE20002BC48 /* LibraryPlaylists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylists.swift; sourceTree = "<group>"; };
 		D7DE9A0826B026200002BC48 /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .jazzy.yaml; sourceTree = "<group>"; };
@@ -414,7 +411,6 @@
 				D70D141126AC926B0015EE82 /* Array.swift */,
 				D7F00A8626AECDEB00CEE39E /* View.swift */,
 				D7F00A9C26AEFFF100CEE39E /* String.swift */,
-				D7B5DB1726B3B5AC00417B63 /* Animation.swift */,
 				D7241F522719A2610093E68A /* NSTableView.swift */,
 			);
 			path = Extensions;
@@ -621,7 +617,6 @@
 				D76B190D271326E200CEB741 /* ViewHelp.swift in Sources */,
 				D73163DB26ABEFC100CD5F7E /* LibraryAlbums.swift in Sources */,
 				D7EA916426A93D780090C137 /* Bundle.swift in Sources */,
-				D7B5DB1826B3B5AC00417B63 /* Animation.swift in Sources */,
 				D72740ED26B186EF00067D4A /* PlayerGetItem.swift in Sources */,
 				D75F765F26CAA72000165656 /* ViewSettings.swift in Sources */,
 				D7F00A8726AECDEB00CEE39E /* View.swift in Sources */,
@@ -687,7 +682,6 @@
 				D72740E826B1809100067D4A /* KodiHostProperties.swift in Sources */,
 				D7F00A9E26AEFFF100CEE39E /* String.swift in Sources */,
 				D75F766326CAACAD00165656 /* ViewAbout.swift in Sources */,
-				D7B5DB1926B3B5AC00417B63 /* Animation.swift in Sources */,
 				D73163DF26ABF31000CD5F7E /* LibrarySongs.swift in Sources */,
 				D72740E226B17BC000067D4A /* PlayerPlayPause.swift in Sources */,
 				D72740F126B187F000067D4A /* PlayerGetProperties.swift in Sources */,

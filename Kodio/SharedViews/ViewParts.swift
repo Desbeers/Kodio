@@ -152,18 +152,25 @@ private extension ButtonStyleList {
     }
 }
 
-// MARK: - Rotating icon
+// MARK: - Rotating record
 
-/// View a rotating LP
-struct ViewKodiRotatingIcon: View {
-    /// State of the animation
-    @Binding var animate: Bool
-    /// The view
+struct ViewRotatingRecord: View {
+    var foreverAnimation: Animation {
+        Animation.linear(duration: 3.6)
+            .repeatForever(autoreverses: false)
+    }
+    @State var rotate: Bool = false
     var body: some View {
         Image("Record")
             .resizable()
             .aspectRatio(contentMode: .fit)
-            .rotationEffect(Angle(degrees: self.animate ? 360 : 0.0))
-            .animation(Animation.linear(duration: 3.6).repeat(while: animate), value: animate)
+            .rotationEffect(Angle(degrees: self.rotate ? 360 : 0.0))
+            .animation(rotate ? foreverAnimation : .easeInOut, value: rotate)
+            .task {
+                /// Give it a moment to settle; else the animation can be strange on macOS
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    rotate = true
+                }
+            }
     }
 }

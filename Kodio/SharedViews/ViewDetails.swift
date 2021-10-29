@@ -66,12 +66,6 @@ extension ViewDetails {
     
     /// View artwork for the selected media
     struct ViewDetailsArtwork<T: LibraryItem>: View {
-        @State private var isAnimating = false
-        /// Animation for LP image
-        var foreverAnimation: Animation {
-            Animation.linear(duration: 3.6)
-                .repeatForever(autoreverses: false)
-        }
         let media: T
         var body: some View {
             VStack {
@@ -93,16 +87,10 @@ extension ViewDetails {
                     .cornerRadius(2)
                     .padding(1)
             case .albums:
-                
                 ZStack {
                     HStack(alignment: .top) {
-                        Image("Record")
-                            .resizable()
+                        ViewRotatingRecord()
                             .frame(width: 150, height: 150)
-                            .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0.0))
-                            .animation(isAnimating ? foreverAnimation : .default, value: isAnimating)
-                            .onAppear { isAnimating = true }
-                            .onDisappear { isAnimating = false }
                             .padding(.leading, 68)
                         Spacer()
                     }

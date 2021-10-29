@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ViewHelp: View {
     @State var help: String = ""
-    @State var animate: Bool = false
     
     var body: some View {
         VStack {
@@ -17,7 +16,7 @@ struct ViewHelp: View {
                 .font(.title)
                 .padding()
             ZStack(alignment: .top) {
-                ViewKodiRotatingIcon(animate: $animate)
+                ViewRotatingRecord()
                     .padding()
                     .opacity(0.05)
             ScrollView {
@@ -32,7 +31,6 @@ struct ViewHelp: View {
         }
         .frame(minWidth: 500, minHeight: 600)
         .task {
-            animate = true
             if let filepath = Bundle.main.url(forResource: "Help", withExtension: "md") {
                 do {
                     let contents = try String(contentsOf: filepath)

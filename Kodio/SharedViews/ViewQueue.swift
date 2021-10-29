@@ -32,8 +32,6 @@ extension ViewQueue {
     struct ViewQueueArtAndPlayer: View {
         /// The Player model
         @EnvironmentObject var player: Player
-        /// The state of rotating LP
-        @State var playing: Bool = false
         /// The view
         var body: some View {
             VStack {
@@ -41,23 +39,24 @@ extension ViewQueue {
                     .font(.title)
                     .padding()
                 ZStack {
-                    ViewKodiRotatingIcon(animate: $playing)
-                        .frame(width: 300)
-                        .padding(.leading, 120)
-                    /// The 'now playing' thumbnail
-                    ViewArtPlayer(item: player.item, size: 300)
-                        .cornerRadius(4)
-                        .padding(.trailing, 120)
+                    if player.properties.playing {
+                        HStack(alignment: .top) {
+                            ViewRotatingRecord()
+                                .frame(width: 150, height: 150)
+                                .padding(.leading, 68)
+                            Spacer()
+                        }
+                    }
+                    HStack(alignment: .center) {
+                        ViewArtPlayer(item: player.item, size: 300)
+                            .frame(width: 150, height: 150)
+                            .cornerRadius(2)
+                        Spacer()
+                    }
                 }
+                .animation(.default, value: player.properties.playing)
+                .transition(.move(edge: .leading))
                 .padding()
-                /// Rotating LP when opening this view
-                .onAppear {
-                    playing = player.properties.playing
-                }
-                /// Rotating LP when start/pauze player
-                .onChange(of: player.properties) { properties in
-                    playing = properties.playing
-                }
                 HStack {
                     ViewPlayerButtons()
                 }
