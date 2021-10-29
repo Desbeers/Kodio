@@ -19,40 +19,32 @@ struct ViewSongs: View {
     @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        ScrollViewReader { proxy in
-            List {
-                if !library.filteredContent.songs.isEmpty {
-                    songsHeader
-                        .id("SongsHeader")
+        List {
+            if !library.filteredContent.songs.isEmpty {
+                songsHeader
+                    .id("SongsHeader")
 #if os(iOS)
-                        .listRowSeparator(.hidden)
+                    .listRowSeparator(.hidden)
 #endif
-                }
-                ForEach(library.filteredContent.songs) { song in
-                    ViewSongsListRow(song: song)
-                        .modifier(ViewModifierSongsDisc(song: song, selectedAlbum: library.selectedAlbum))
-                        .contextMenu {
-                            ViewSongsSwipeActions(song: song, library: library)
-                        }
-                        .swipeActions(edge: .leading) {
-                            ViewSongsSwipeActions(song: song, library: library)
-                        }
-                        .id(song.songID)
-#if os(macOS)
-                    Divider()
-#endif
-                }
             }
-            /// Speed up iOS
-            .id(library.songListID)
-            .listStyle(PlainListStyle())
-            .onChange(of: library.scroll) { scroll in
-                withAnimation(.linear(duration: 30)) {
-                    logger("Song jump \(scroll.song)")
-                    proxy.scrollTo(scroll.song, anchor: .center)
-                }
+            ForEach(library.filteredContent.songs) { song in
+                ViewSongsListRow(song: song)
+                    .modifier(ViewModifierSongsDisc(song: song, selectedAlbum: library.selectedAlbum))
+                    .contextMenu {
+                        ViewSongsSwipeActions(song: song, library: library)
+                    }
+                    .swipeActions(edge: .leading) {
+                        ViewSongsSwipeActions(song: song, library: library)
+                    }
+                    .id(song.songID)
+#if os(macOS)
+                Divider()
+#endif
             }
         }
+        /// Speed up iOS
+        .id(library.songListID)
+        .listStyle(PlainListStyle())
     }
 }
 
@@ -189,18 +181,6 @@ extension ViewSongs {
                 }
             )
                 .tint(.red.opacity(0.6))
-            /// Buttons to find a song in the library when we are in a smart list
-            if library.selectedSmartList != library.allSmartLists[0],
-               library.selectedSmartList != library.allSmartLists[1] {
-                Button(
-                    action: {
-                        library.scrollInLibrary(song: song)
-                    },
-                    label: {
-                        Label("Find in library", systemImage: "building.columns")
-                    })
-                    .tint(.indigo)
-            }
         }
     }
     
@@ -225,17 +205,6 @@ extension ViewSongs {
                     }
                 }
             )
-            /// Buttons to find a song in the library when we are in a smart list
-            if library.selectedSmartList != library.allSmartLists[0],
-               library.selectedSmartList != library.allSmartLists[1] {
-                Divider()
-                Button(action: {
-                    library.scrollInLibrary(song: song)
-                },
-                       label: {
-                    Text("View '\(song.title)' in your library")
-                })
-            }
         }
     }
 }

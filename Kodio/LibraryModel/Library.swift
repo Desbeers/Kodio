@@ -61,7 +61,6 @@ class Library: ObservableObject {
             }
         }
     }
-    @Published var scroll = Scroll()
     
     @Published var filteredContent = FilteredContent()
     
@@ -196,45 +195,6 @@ extension Library {
         /// Function to reset all vars to initial value
         mutating func reset() {
             self = Status()
-        }
-    }
-}
-
-// MARK: Scroll library lists (extension)
-
-extension Library {
-    
-    /// The scroll variables (artist, album and song)
-    
-    struct Scroll: Equatable {
-        var artist: Int = 0
-        var album: Int = 0
-        var song: Int = 0
-    }
-    
-    /// The function to scroll in the library lists
-    
-    func scrollInLibrary(song: SongItem) {
-        /// Set the scroll values
-        var scrollValues = Library.Scroll()
-        scrollValues.song = song.songID
-        /// Select the correct smart list
-        selectedSmartList = !song.compilation ? allSmartLists[0] : allSmartLists[1]
-        smartReload()
-        /// Select the artist if the song is not part of a compilation; else all 'various artists' will be shown
-        if !song.compilation,
-           let artist = allArtists.first(where: { $0.artistID == song.albumArtistID.first }) {
-            toggleArtist(artist: artist, force: true)
-            scrollValues.artist = artist.artistID
-        }
-        /// Select the album
-        if let album = allAlbums.first(where: { $0.albumID == song.albumID }) {
-            toggleAlbum(album: album, force: true)
-            scrollValues.album = album.albumID
-        }
-        /// Scroll to the correct library items
-        DispatchQueue.main.async {
-            self.scroll = scrollValues
         }
     }
 }

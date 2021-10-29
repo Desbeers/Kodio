@@ -32,12 +32,6 @@ struct ViewAlbums: View {
                     }
                 }
             }
-            .onChange(of: library.scroll) { scroll in
-                withAnimation(.linear(duration: 30)) {
-                    logger("Album jump \(scroll.album)")
-                    proxy.scrollTo(scroll.album, anchor: .center)
-                }
-            }
             /// Scroll to the top when selecting a new smart item
             .onChange(of: library.selectedArtist) { _ in
                 withAnimation(.easeInOut(duration: 1)) {

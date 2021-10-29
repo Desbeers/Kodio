@@ -35,13 +35,6 @@ struct ViewArtists: View {
                     }
                 }
             }
-            /// Scroll to a selected artist when selected
-            .onChange(of: library.scroll) { scroll in
-                withAnimation(.linear(duration: 30)) {
-                    logger("Artist jump \(scroll.artist)")
-                    proxy.scrollTo(scroll.artist, anchor: .center)
-                }
-            }
             /// Scroll to the top when selecting a new smart item
             .onChange(of: library.selectedGenre) { _ in
                 withAnimation(.easeInOut(duration: 1)) {
