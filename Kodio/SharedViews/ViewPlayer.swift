@@ -15,9 +15,11 @@ struct ViewPlayerButtons: View {
     @EnvironmentObject var player: Player
     /// The Queue model
     @EnvironmentObject var queue: Queue
+    /// The Appstate model
+    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        HStack {
+        HStack(spacing: appState.userInterface == .macOS ? 6 : 20) {
             Button(
                 action: {
                     player.sendAction(method: .playerGoTo,

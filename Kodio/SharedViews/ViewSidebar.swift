@@ -11,7 +11,7 @@ import SwiftUI
 struct ViewSidebar: View {
     /// The Library model
     @EnvironmentObject var library: Library
-    /// The Library model
+    /// The Appstate model
     @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
