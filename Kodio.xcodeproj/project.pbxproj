@@ -140,8 +140,6 @@
 		D7F00A9826AEFEDA00CEE39E /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F00A9626AEFEDA00CEE39E /* Methods.swift */; };
 		D7F00A9D26AEFFF100CEE39E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F00A9C26AEFFF100CEE39E /* String.swift */; };
 		D7F00A9E26AEFFF100CEE39E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F00A9C26AEFFF100CEE39E /* String.swift */; };
-		D7F0F1D326AE8DA9003D3D1B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0F1D226AE8DA9003D3D1B /* Image.swift */; };
-		D7F0F1D426AE914E003D3D1B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0F1D226AE8DA9003D3D1B /* Image.swift */; };
 		D7F37E5926AD747C00EFE6F1 /* ViewArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F37E5826AD747C00EFE6F1 /* ViewArt.swift */; };
 		D7F37E5A26AD747C00EFE6F1 /* ViewArt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F37E5826AD747C00EFE6F1 /* ViewArt.swift */; };
 		D7F37E6126AD8CDA00EFE6F1 /* ViewLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F37E5E26AD8B6C00EFE6F1 /* ViewLibrary.swift */; };
@@ -232,7 +230,6 @@
 		D7F00A9326AEFEB300CEE39E /* KodiAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodiAPI.swift; sourceTree = "<group>"; };
 		D7F00A9626AEFEDA00CEE39E /* Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
 		D7F00A9C26AEFFF100CEE39E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		D7F0F1D226AE8DA9003D3D1B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		D7F37E5826AD747C00EFE6F1 /* ViewArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewArt.swift; sourceTree = "<group>"; };
 		D7F37E5E26AD8B6C00EFE6F1 /* ViewLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLibrary.swift; sourceTree = "<group>"; };
 		D7F37E6B26AD9F6400EFE6F1 /* ViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetails.swift; sourceTree = "<group>"; };
@@ -415,7 +412,6 @@
 			children = (
 				D7EA916326A93D780090C137 /* Bundle.swift */,
 				D70D141126AC926B0015EE82 /* Array.swift */,
-				D7F0F1D226AE8DA9003D3D1B /* Image.swift */,
 				D7F00A8626AECDEB00CEE39E /* View.swift */,
 				D7F00A9C26AEFFF100CEE39E /* String.swift */,
 				D7B5DB1726B3B5AC00417B63 /* Animation.swift */,
@@ -638,7 +634,6 @@
 				D70D141226AC926B0015EE82 /* Array.swift in Sources */,
 				D7AE512B26B9448800A57244 /* ViewRadio.swift in Sources */,
 				D7F37E5926AD747C00EFE6F1 /* ViewArt.swift in Sources */,
-				D7F0F1D326AE8DA9003D3D1B /* Image.swift in Sources */,
 				D7BBB90026B19BF00097D286 /* LibrarySearch.swift in Sources */,
 				D7AE512826B9379600A57244 /* LibraryRadio.swift in Sources */,
 				D7EA914326A93C1D0090C137 /* KodioApp.swift in Sources */,
@@ -719,7 +714,6 @@
 				D71989EB26E9E15500281EA1 /* KodiHostReplayGain.swift in Sources */,
 				D7F37E5A26AD747C00EFE6F1 /* ViewArt.swift in Sources */,
 				D76CF9B526B2F07900351667 /* AppState.swift in Sources */,
-				D7F0F1D426AE914E003D3D1B /* Image.swift in Sources */,
 				D7EA917726A96C0C0090C137 /* ViewArtists.swift in Sources */,
 				D73163F526AC4D2700CD5F7E /* Search.swift in Sources */,
 				D7A1E7C026AAB4D2009643DD /* ViewGenres.swift in Sources */,
