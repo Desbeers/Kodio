@@ -1,217 +1,179 @@
-/// - Note: https://github.com/NiftyTreeStudios/Nifty-Markdown-Formatter/
+//
+//  Markdown.swift
+//  Kodio
+//
+//  © 2021 Nick Berendsen
+//
 
 import SwiftUI
 
-// MARK: Public
-/**
- SwiftUI view with formatted markdown. The formatted markdown is wrapped in a `VStack` with no extra view modifiers.
- 
- - Parameter markdown: The text needed to be formatted, as a `String`
- */
-public struct FormattedMarkdown: View {
-    public init(markdown: String) {
-        self.markdown = markdown
-    }
+/// A view that returns a formatted Markdown string
+struct FormattedMarkdown: View {
+    /// The Markdown `String` that will be formatted
     let markdown: String
-    
-    public var body: some View {
-        let formattedStrings = formattedMarkdownArray(markdown: markdown)
+    /// The view
+    var body: some View {
+        let markdownLines: [MarkdownLine] = convertMarkdown(string: markdown)
         VStack(alignment: .leading) {
-            ForEach(0..<formattedStrings.count, id: \.self) { textView in
-                formattedStrings[textView]
+            ForEach(markdownLines) { line in
+                switch line.markdownType {
+                case .heading(let heading):
+                    formatHeading(text: line.text, level: heading)
+                case .text:
+                    formatAttributedString(text: line.text)
+                case .listItem:
+                    formatListItem(text: line.text)
+                case .codeBlock:
+                    formatCodeBlock(text: line.text)
+                case .spacing:
+                    Text(" ")
+                }
             }
         }
     }
 }
 
-/**
- Formats the markdown.
- - Parameter markdown: the markdown to be formatted as a `String`.
- 
- - Returns: array of `Text` views.
- */
-public func formattedMarkdownArray(markdown: String) -> [AnyView] {
-    var formattedViews: [AnyView] = []
-    let splitStrings: [String] = markdown.components(separatedBy: "\n")
-    for string in splitStrings {
-        if string.starts(with: "#") {
-            let heading = formatHeading(convertMarkdownHeading(string))
-            formattedViews.append(AnyView(heading))
-        } else if string.starts(with: "    ") {
-            formattedViews.append(
-                AnyView(
-                    HStack {
-                        Text(string.trimmingCharacters(in: .whitespaces))
-                            .multilineTextAlignment(.leading)
-                            .font(.monospaced(.caption)())
-                        
-                    }
-                        .padding(.leading)
-                )
-            )
-        } else if string.starts(with: "- ") {
-            formattedViews.append(
-                AnyView(
-                    HStack(alignment: .top) {
-                        Text("・")
-                        if let attributedString = try? AttributedString(markdown: string) {
-                            Text(attributedString)
-                        } else {
-                            Text(string)
-                        }
-                    }
-                        .padding(.bottom, 5)
-                )
-            )
-        } else if string.range(of: "^[0-9].") != nil {
-            // formattedViews.append(AnyView(Text(formatOrderedListItem(string))))
-            formattedViews.append(
-                formatOrderedListItem(string)
-            )
-        } else if string.isEmpty {
-            // Ignore empty lines
-            formattedViews.append(AnyView(Text(" ")))
-        } else {
-            if #available(iOS 15, macOS 12, *) {
-                if let attributedString = try? AttributedString(markdown: string) {
-                    formattedViews.append(AnyView(Text(attributedString)))
-                } else {
-                    formattedViews.append(AnyView(Text(string)))
-                }
-            } else {
-                formattedViews.append(AnyView(Text(string)))
-            }
-        }
+// MARK: Convert a Markdown string to an array
+
+extension FormattedMarkdown {
+    
+    /// The `struct` for a Markdown line
+    struct MarkdownLine: Identifiable {
+        /// ID for the struct
+        let id = UUID()
+        /// The Markdown text
+        let text: String
+        /// The type of Markdown
+        var markdownType: MarkdownType
     }
     
-    return formattedViews
-}
-
-// MARK: Private
-// MARK: Headings
-/// Heading struct used to represent headings.
-internal struct Heading: Identifiable, Equatable {
-    let id = UUID()
-    let text: String
-    let headingSize: Int
-}
-
-/**
- Formats a markdown heading into a custom `Heading` struct.
- 
- - Parameter string: the markdown string to be formatted.
- 
- - Returns: a `Heading` with the correct heading size.
- */
-internal func convertMarkdownHeading(_ string: String) -> Heading {
-    let headingSize = string.distance(
-        from: string.startIndex,
-        to: string.firstIndex(of: " ") ?? string.startIndex
-    )
-    var headingText = string
-    headingText.removeSubrange(
-        headingText.startIndex...(
-            headingText.firstIndex(of: " ") ?? headingText.startIndex
-        )
-    )
-    return Heading(text: headingText, headingSize: headingSize)
-}
-
-/**
- Formats heading by giving it a correct font size.
- 
- - Parameter heading: the heading to be formatted.
- 
- - Returns: `Text` view with corrent font sizing.
- */
-internal func formatHeading(_ formattedText: Heading) -> Text {
-    if formattedText.headingSize <= 0 {
-        return Text(formattedText.text).font(.body)
-    } else if formattedText.headingSize == 1 {
-        return Text(formattedText.text).font(.title2)
-    } else if formattedText.headingSize == 2 {
-        return Text(formattedText.text).font(.title3)
-    } else if formattedText.headingSize == 3 {
-        return Text(formattedText.text).font(.title2)
-    } else if formattedText.headingSize == 4 {
-        return Text(formattedText.text).font(.title3)
-    } else if formattedText.headingSize == 4 {
-        return Text(formattedText.text).font(.headline)
-    } else if formattedText.headingSize >= 6 {
-        return Text("    " + formattedText.text).font(.monospaced(.body)())
-    } else {
-        return Text(formattedText.text).font(.body)
+    /// The `enum` for a Markdown type
+    enum MarkdownType {
+        /// Just text; not a block element
+        case text
+        /// A Markdown heading
+        case heading(Int)
+        /// A Markdowen list item
+        case listItem
+        /// A Markdown code block
+        case codeBlock
+        /// An empty line
+        case spacing
     }
-}
-
-// MARK: Lists
-/**
- Formats ordered lists.
- 
- - Parameter string: the markdown string to be formatted into an ordered list item.
- 
- - Returns: a `Text` view formatted into an ordered list item.
- */
-internal func formatOrderedListItem(_ string: String) -> AnyView {
-    let regex = "^[0-9*]."
-    if string.range(of: regex, options: .regularExpression) != nil {
-        var orderedItem = string
-        var orderedPrefix = string
-        orderedPrefix.removeSubrange(
-            (orderedItem.firstIndex(of: " ") ?? orderedItem.startIndex)..<orderedItem.endIndex
-        )
-        //        orderedItem.replaceSubrange(
-        //            orderedItem.startIndex...(
-        //                orderedItem.firstIndex(of: ".") ?? orderedItem.startIndex
-        //            ),
-        //            with: "**\(orderedPrefix)**")
-        orderedItem.removeSubrange(orderedItem.startIndex...(
-            orderedItem.firstIndex(of: " ") ?? orderedItem.startIndex
-        ))
-        return AnyView(
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(orderedPrefix).bold().padding(.top, 9)
-                    Spacer()
-                }
-                Text(orderedItem)
-                    .multilineTextAlignment(.leading)
+    
+    /// Convert a Markdown string into an array of `MarkdownLine` structs
+    /// - Parameter string: a markdown string
+    /// - Returns: an array of `MarkdownLine` structs
+    func convertMarkdown(string: String) -> [MarkdownLine] {
+        var markdownLines: [MarkdownLine] = []
+        let splitStrings: [String] = markdown.components(separatedBy: "\n")
+        for string in splitStrings {
+            if string.starts(with: "#") {
+                /// Heading
+                let heading = convertHeading(text: string)
+                markdownLines.append(MarkdownLine(text: heading.text, markdownType: .heading(heading.level)))
+            } else if string.starts(with: "    ") {
+                /// Code block
+                markdownLines.append(MarkdownLine(text: string, markdownType: .codeBlock))
+            } else if string.starts(with: "- ") {
+                /// List item
+                markdownLines.append(MarkdownLine(text: string, markdownType: .listItem))
+            } else if string.isEmpty {
+                /// Paragraph spacing
+                markdownLines.append(MarkdownLine(text: string, markdownType: .spacing))
+            } else {
+                /// Default
+                markdownLines.append(MarkdownLine(text: string, markdownType: .text))
             }
-        )
-    } else {
-        return AnyView(Text(string))
+        }
+        return markdownLines
     }
 }
 
-/**
- Formats unordered lists.
- 
- - Parameter string: the markdown string to be formatted into an unordered list item.
- 
- - Returns: a `Text` view formatted into an ordered list item.
- */
-internal func formatUnorderedListItem(_ string: String) -> String {
-    if string.starts(with: "- ") {
-        var orderedItem = string
-        var orderedPrefix = string
-        orderedPrefix.removeSubrange(
-            (orderedItem.firstIndex(of: " ") ?? orderedItem.startIndex)..<orderedItem.endIndex
+// MARK: Headings
+
+extension FormattedMarkdown {
+    
+    /// Convert a Markdown heading into seperate components
+    /// - Parameter text: a `String` with a Markdown heading
+    /// - Returns: a stripped text and the level of the header
+    func convertHeading(text: String) -> (text: String, level: Int) {
+        let level = text.distance(
+            from: text.startIndex,
+            to: text.firstIndex(of: " ") ?? text.startIndex
         )
-        orderedItem.removeSubrange(orderedItem.startIndex...(
-            orderedItem.firstIndex(of: " ") ?? orderedItem.startIndex
-        ))
-        return orderedItem
-    } else {
-        return string
+        var heading = text
+        heading.removeSubrange(
+            heading.startIndex...(
+                heading.firstIndex(of: " ") ?? heading.startIndex
+            )
+        )
+        return (heading, level)
+    }
+    
+    /// Format a heading
+    /// - Parameters:
+    ///   - text: the text of the heading
+    ///   - level: the level of the heading
+    /// - Returns: the formatted heading in a `Text` view
+    @ViewBuilder func formatHeading(text: String, level: Int) -> some View {
+        switch level {
+        case 1:
+            Text(text).font(.title2)
+        case 2:
+            Text(text).font(.title3)
+        default:
+            Text(text).font(.body)
+        }
     }
 }
 
-extension NSRegularExpression {
-    convenience init(_ pattern: String) {
-        do {
-            try self.init(pattern: pattern)
-        } catch {
-            preconditionFailure("Illegal regular expression: \(pattern).")
+// MARK: List items
+
+extension FormattedMarkdown {
+    
+    /// Format a list item
+    /// - Parameter text: the text of the list item
+    /// - Returns: a formatted list item in an `HStack` view
+    @ViewBuilder func formatListItem(text: String) -> some View {
+        HStack(alignment: .top) {
+            Text("・")
+            formatAttributedString(text: text)
+        }
+        .padding(.bottom, 5)
+    }
+}
+
+// MARK: Code blocks
+
+extension FormattedMarkdown {
+    
+    /// Format a code block
+    /// - Parameter text: the text of the code block
+    /// - Returns: a formatted code block in an `HStack` view
+    @ViewBuilder func formatCodeBlock(text: String) -> some View {
+        HStack {
+            Text(text.trimmingCharacters(in: .whitespaces))
+                .multilineTextAlignment(.leading)
+                .font(.monospaced(.caption)())
+            
+        }
+        .padding(.leading)
+    }
+}
+
+// MARK: Attributed string
+
+extension FormattedMarkdown {
+    
+    /// Format a string if it has atributes
+    /// - Parameter text: the Markdown text
+    /// - Returns: the formatted text in a `Text` view
+    @ViewBuilder func formatAttributedString(text: String) -> some View {
+        if let attributedString = try? AttributedString(markdown: text) {
+            Text(attributedString)
+        } else {
+            Text(text)
         }
     }
 }
