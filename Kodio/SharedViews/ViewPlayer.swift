@@ -17,7 +17,7 @@ struct ViewPlayerButtons: View {
     @EnvironmentObject var queue: Queue
     /// The view
     var body: some View {
-        Group {
+        HStack {
             Button(
                 action: {
                     player.sendAction(method: .playerGoTo,

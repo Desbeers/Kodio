@@ -12,16 +12,22 @@ struct ViewQueue: View {
     var body: some View {
 #if os(macOS)
         HStack {
-            ViewQueueArtAndPlayer()
+            VStack {
+                ViewQueueArt()
+                ViewPlayerButtons()
+                Spacer(minLength: 100)
+            }
             ViewQueueList()
                 .frame(minWidth: 400)
         }
 #endif
 #if os(iOS)
         VStack {
-            ViewQueueArtAndPlayer()
+            ViewQueueArt()
             ViewQueueList()
                 .padding(.horizontal)
+            ViewPlayerButtons()
+                .padding(40)
         }
 #endif
     }
@@ -29,7 +35,7 @@ struct ViewQueue: View {
 
 extension ViewQueue {
     
-    struct ViewQueueArtAndPlayer: View {
+    struct ViewQueueArt: View {
         /// The Player model
         @EnvironmentObject var player: Player
         /// The view
@@ -56,12 +62,8 @@ extension ViewQueue {
                 }
                 .animation(.default, value: player.properties.playing)
                 .transition(.move(edge: .leading))
+                .frame(width: 218)
                 .padding()
-                HStack {
-                    ViewPlayerButtons()
-                }
-                .padding()
-                Spacer()
             }
         }
     }
