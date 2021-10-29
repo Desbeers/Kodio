@@ -31,10 +31,10 @@ struct ViewSongs: View {
                 ViewSongsListRow(song: song)
                     .modifier(ViewModifierSongsDisc(song: song, selectedAlbum: library.selectedAlbum))
                     .contextMenu {
-                        ViewSongsSwipeActions(song: song, library: library)
+                        ViewSongsActions(song: song, library: library)
                     }
                     .swipeActions(edge: .leading) {
-                        ViewSongsSwipeActions(song: song, library: library)
+                        ViewSongsActions(song: song, library: library)
                     }
                     .id(song.songID)
 #if os(macOS)
@@ -154,7 +154,8 @@ extension ViewSongs {
         }
     }
     
-    struct ViewSongsSwipeActions: View {
+    /// Swipe and *rihgt click* actions.
+    struct ViewSongsActions: View {
         /// The song item
         let song: Library.SongItem
         /// The Library model
@@ -181,30 +182,6 @@ extension ViewSongs {
                 }
             )
                 .tint(.red.opacity(0.6))
-        }
-    }
-    
-    /// Menu buttons for a song
-    struct ViewSongsMenuButtons: View {
-        /// The song item
-        let song: Library.SongItem
-        /// The Library model
-        @State var library: Library
-        /// The view
-        var body: some View {
-            Text(song.title)
-            /// Button to add or remove a song from favorites
-            Button(
-                action: {
-                    library.favoriteSongToggle(song: song)
-                },
-                label: {
-                    HStack {
-                        Image(systemName: song.rating == 0 ? "heart" : "heart.slash")
-                        Text(song.rating == 0 ? "Add to favorites" : "Remove from favorites")
-                    }
-                }
-            )
         }
     }
 }
