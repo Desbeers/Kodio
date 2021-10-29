@@ -31,10 +31,10 @@ struct ViewSongs: View {
                 ViewSongsListRow(song: song)
                     .modifier(ViewModifierSongsDisc(song: song, selectedAlbum: library.selectedAlbum))
                     .contextMenu {
-                        ViewSongsActions(song: song, library: library)
+                        songActions(song: song)
                     }
                     .swipeActions(edge: .leading) {
-                        ViewSongsActions(song: song, library: library)
+                        songActions(song: song)
                     }
                     .id(song.songID)
 #if os(macOS)
@@ -154,34 +154,29 @@ extension ViewSongs {
         }
     }
     
-    /// Swipe and *rihgt click* actions.
-    struct ViewSongsActions: View {
-        /// The song item
-        let song: Library.SongItem
-        /// The Library model
-        @State var library: Library
-        /// The view
-        var body: some View {
-            /// Button to play this song
-            Button(
-                action: {
-                    Player.shared.sendSongAndPlay(song: song)
-                },
-                label: {
-                    Label("Play", systemImage: "play")
-                }
-            )
-                .tint(.accentColor)
-            /// Button to add or remove a song from favorites
-            Button(
-                action: {
-                    library.favoriteSongToggle(song: song)
-                },
-                label: {
-                    Label(song.rating == 0 ? "Add to favorites" : "Remove from favorites", systemImage: song.rating == 0 ? "heart" : "heart.slash")
-                }
-            )
-                .tint(.red.opacity(0.6))
-        }
+    /// Swipe and *right click* actions.
+    /// - Parameter song: The `SongItem` struct
+    /// - Returns: action buttons
+    @ViewBuilder func songActions(song: Library.SongItem) -> some View {
+        /// Button to play this song
+        Button(
+            action: {
+                Player.shared.sendSongAndPlay(song: song)
+            },
+            label: {
+                Label("Play", systemImage: "play")
+            }
+        )
+            .tint(.accentColor)
+        /// Button to add or remove a song from favorites
+        Button(
+            action: {
+                library.favoriteSongToggle(song: song)
+            },
+            label: {
+                Label(song.rating == 0 ? "Add to favorites" : "Remove from favorites", systemImage: song.rating == 0 ? "heart" : "heart.slash")
+            }
+        )
+            .tint(.red.opacity(0.6))
     }
 }
