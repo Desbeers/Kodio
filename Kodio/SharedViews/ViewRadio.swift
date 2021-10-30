@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+
+/// A list with radio channels
 struct ViewRadio: View {
-    /// The object that has it all
+    /// The Library object
     @EnvironmentObject var library: Library
     /// The player object
     @EnvironmentObject var player: Player
@@ -21,7 +23,7 @@ struct ViewRadio: View {
                         player.playRadio(stream: channel.stream)
                     },
                     label: {
-                        ViewRadioLabel(channel: channel)
+                        radioLabel(channel: channel)
                     }
                 )
             }
@@ -29,15 +31,20 @@ struct ViewRadio: View {
     }
 }
 
-private extension ViewRadio {
-    struct ViewRadioLabel: View {
-        /// The player object
-        @EnvironmentObject var player: Player
-        /// The radio channel
-        var channel: Library.RadioItem
-        /// The view
-        var body: some View {
-            Label(channel.label, systemImage: player.item.mediapath == channel.stream ? player.properties.speed == 1 ? "play.fill" : "pause.fill" : "antenna.radiowaves.left.and.right")
+extension ViewRadio {
+
+    /// Create a `Label` for a radio channel
+    /// - Parameter channel: the `RadioItem` struct
+    /// - Returns: a formatted `Label`
+    @ViewBuilder func radioLabel(channel: Library.RadioItem) -> some View {
+        if player.item.mediapath == channel.stream {
+            if player.properties.speed == 0 {
+                Label(channel.label, systemImage: "pause.fill")
+            } else {
+                Label(channel.label, systemImage: "play.fill")
+            }
+        } else {
+            Label(channel.label, systemImage: "antenna.radiowaves.left.and.right")
         }
     }
 }
