@@ -9,7 +9,7 @@ import Foundation
 
 extension KodiHost {
     
-    // MARK: - SystemAction (API request)
+    // MARK: - SystemAction
     
     /// Send a system action to Kodi; not caring about the response
     ///

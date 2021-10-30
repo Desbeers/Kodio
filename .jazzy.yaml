@@ -3,7 +3,7 @@ title: Kodio
 author: Nick Berendsen
 author_url: https://desbeers.nl
 github_url: https://github.com/desbeers/kodio/
-min_acl: internal
+min_acl: private
 clean: true
 theme: apple
 

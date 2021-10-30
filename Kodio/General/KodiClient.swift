@@ -8,17 +8,10 @@
 import Foundation
 
 extension KodiClient {
-    func connectToHost(host: HostItem) {
-        AppState.shared.loadingState = .none
-        if !host.ip.isEmpty {
-            logger("Connecting to Kodi on \(host.ip)")
-            connectWebSocket()
-        }
-    }
+
 }
 
-/// Connection between this application and the Kodi host
-/// - Mostly for JSON stuff
+/// Connection between Kodio and the Kodi host
 class KodiClient: ObservableObject {
     
     // MARK: Constants and Variables
@@ -60,7 +53,7 @@ class KodiClient: ObservableObject {
 
 extension KodiClient {
     
-    // MARK: sendRequest
+    // MARK: JSON stuff
     
     /// Send a POST request to Kodi
     /// - Parameters:
@@ -82,8 +75,6 @@ extension KodiClient {
     struct BaseResponse<T: Decodable>: Decodable {
         var result: T
     }
-
-    // MARK: sendMessage
     
     /// Send a message to the host, not caring about the response
     /// - Parameter request: The full URL request
@@ -92,11 +83,6 @@ extension KodiClient {
     ) {
         urlSession.dataTask(with: message.urlRequest).resume()
     }
-}
-
-extension KodiClient {
-    
-    // MARK: APIError
     
     /// List of possible errors
     enum APIError: Error {

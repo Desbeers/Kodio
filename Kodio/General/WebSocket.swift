@@ -51,17 +51,24 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
     }
 }
 
-// MARK: - WebSocket related stuff (KodiClient extension)
-
 extension KodiClient {
     
-    // MARK: connectWebSocket (function)
+    // MARK: - WebSocket related stuff
     
-    /// Connect to the Kodi WebSocket
+    /// Connect to the Kodi host
+    /// - Parameter host: an ``HostItem``
+    func connectToHost(host: HostItem) {
+        AppState.shared.loadingState = .none
+        if !host.ip.isEmpty {
+            logger("Connecting to Kodi on \(host.ip)")
+            connectWebSocket()
+        }
+    }
+    
+    /// Connect the WebSocket
     /// - Note:
     ///     On iOS, disconnect before going to the background or else Apple will be really upset.
     ///     I use `@Environment(\.scenePhase)` to keep an eye on that
-    
     func connectWebSocket() {
         let url = URL(string: "ws://\(selectedHost.ip):\(selectedHost.tcp)/jsonrpc")!
         let webSocketDelegate = WebSocket()
@@ -71,15 +78,10 @@ extension KodiClient {
         receiveNotification()
     }
     
-    // MARK: disconnectWebSocket (function)
-    
     /// Disconnect from the the Kodi WebSocket
-    
     func disconnectWebSocket() {
         webSocketTask?.cancel(with: .normalClosure, reason: nil)
     }
-    
-    // MARK: receiveNotification (function)
     
     /// Recieve a notification from the Kodi WebSocket
     /// - Note:
@@ -108,7 +110,13 @@ extension KodiClient {
         }
     }
 
-    /// Do an action when we receive a notification from Kodi via the WbSocket
+    /// The notification item
+    /// - Note: - I'm only interested in the method
+    struct NotificationItem: Decodable {
+        var method: String
+    }
+    
+    /// Do an action when we receive a notification from Kodi via the WebSocket
     /// - Parameters:
     ///   - method: The received notification method
     func notificationAction(method: Method) {
@@ -143,12 +151,4 @@ extension KodiClient {
             logger("No action after notification")
         }
     }
-}
-
-// MARK: - Decode Notification (struct)
-
-/// The notification item
-/// - Note: - I'm only interested in the method
-struct NotificationItem: Decodable {
-    var method: String
 }

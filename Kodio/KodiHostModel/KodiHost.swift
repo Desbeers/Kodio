@@ -23,7 +23,10 @@ class KodiHost: ObservableObject {
     var properties = Properties()
     /// The volume of the Kodi host; published because it is used in a Swift View
     @Published var volume: Double = 0
-    /// Init the class
+    
+    // MARK: Init
+    
+    /// Private init to make sure we have only one instance
     private init() {
         /// Get the properties of the Kodi host
         Task {

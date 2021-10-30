@@ -7,28 +7,27 @@
 
 import SwiftUI
 
-/// The UI state of this application
+/// The state of Kodio
 class AppState: ObservableObject {
     
     // MARK: Constants and Variables
     
     /// The shared instance of this AppState class
     static let shared = AppState()
-    /// Show or hide a SwiftUI (custom) Sheet
-    /// - Note: I don't use 'real' sheets because they are ugly on macOS and the iOS sheets are too static
+    /// Bool to show or hide a SwiftUI sheet
     @Published var showSheet: Bool = false
-    /// Define what sheet to show
+    /// Define what kind of sheet to show
     @Published var activeSheet: SheetTypes = .queue
-    /// The struct for a SwiftUI Alert
+    /// The struct for a SwiftUI Alert item
     @Published var alertItem: AlertItem?
-    /// The state of the application
+    /// The loading state of the application
     @Published var loadingState: LoadingState = .none {
         didSet {
             loadingActions(state: loadingState)
         }
     }
     /// To Mac or nor to Mac?
-    /// The iOS app thingy will override if not mac...
+    /// - Note:The iOS app thingy will override if not mac...
     var userInterface: UserInterface = .macOS
     
     // MARK: Init
@@ -38,6 +37,28 @@ class AppState: ObservableObject {
 }
 
 extension AppState {
+    
+    // MARK: Sheets
+    
+    /// The different kind of sheets
+    enum SheetTypes {
+        /// Show the playing queue view
+        case queue
+        /// Show the settings view
+        case settings
+        /// Show the about view
+        case about
+        /// Show the help view
+        case help
+    }
+}
+
+extension AppState {
+    
+    // MARK: State of library loading
+    
+    /// Actions when the loading state of Kodio is changing
+    /// - Parameter state: the current ``LoadingState``
     func loadingActions(state: LoadingState) {
         switch state {
         case .connected:
@@ -61,22 +82,25 @@ extension AppState {
             break
         }
     }
-}
-
-extension AppState {
     
-    // MARK: Sheets
-    
-    /// The different kind of sheets
-    enum SheetTypes {
-        /// Show the playing queue view
-        case queue
-        /// Show the settings view
-        case settings
-        /// Show the about view
-        case about
-        /// Show the help view
-        case help
+    /// The state of the library loading
+    enum LoadingState {
+        /// Not connected and no host
+        case none
+        /// Connected to the host
+        case connected
+        /// Loading the library
+        case loading
+        /// Library loaded
+        case loaded
+        /// App is sleeping
+        case sleeping
+        /// App wakeup
+        case wakeup
+        /// An error when loading the library or a lost of connection
+        case failure
+        /// Not configured
+        case noConfig
     }
 }
 
@@ -97,35 +121,7 @@ extension AppState {
         /// The buttons to show to dismiss the alert
         var dismiss: Alert.Button?
     }
-}
-
-extension AppState {
     
-    // MARK: State of the Application
-    
-    /// The state of the library
-    /// - loading
-    /// - loaded
-    /// - failure
-    enum LoadingState {
-        /// Not connected and no host
-        case none
-        /// Connected to the host
-        case connected
-        /// Loading the library
-        case loading
-        /// Library loaded
-        case loaded
-        /// App is sleeping
-        case sleeping
-        /// App wakeup
-        case wakeup
-        /// An error when loading the library or a lost of connection
-        case failure
-        /// Not configured
-        case noConfig
-    }
-
     /// The alert that pops-up when the library is outdated
     var alertOutdatedLibrary: AlertItem {
         var alert = AlertItem()
@@ -200,9 +196,11 @@ extension AppState {
     
     /// Is this a mac, iPad or iPhone application?
     enum UserInterface: String {
-        /// The available platforms
+        /// macOS
         case macOS
+        /// iPadOS
         case iPad
+        /// iOS
         case iPhone
     }
     

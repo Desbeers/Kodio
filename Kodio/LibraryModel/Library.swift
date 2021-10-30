@@ -5,28 +5,10 @@
 //  © 2021 Nick Berendsen
 //
 
-import SwiftUI
+import Foundation
 import Combine
 
-// MARK: - LibraryItem (protocol)
-
-/// An item in the library: artist, album, song, playlist etc.
-
-protocol LibraryItem: Codable, Identifiable, Hashable {
-    var media: Library.MediaType { get }
-    var title: String { get }
-    var subtitle: String { get }
-    var description: String { get }
-    var icon: String { get }
-    var thumbnail: String { get }
-    var fanart: String { get }
-    
-}
-
-// MARK: - Library model (class)
-
 /// Library model
-
 class Library: ObservableObject {
     
     // MARK: Constants and Variables

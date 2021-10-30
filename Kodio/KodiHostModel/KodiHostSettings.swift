@@ -37,7 +37,7 @@ extension KodiHost {
         struct Response: Decodable { }
     }
     
-    /// Kodi host settings
+    /// Kodi host setting ID
     enum SettingID: String {
         /// ReplayGain (off, track or album)
         case musicPlayerReplayGainType = "musicplayer.replaygaintype"
