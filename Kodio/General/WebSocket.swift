@@ -38,10 +38,9 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError: Error?) {
-        
-        if task.error != nil {
+        let appState: AppState = .shared
+        if appState.loadingState != .sleeping {
             logger("WebSocket error from \(KodiClient.shared.selectedHost.ip)...")
-            let appState: AppState = .shared
             DispatchQueue.main.async {
                 appState.loadingState = .failure
                 appState.alertItem = appState.alertNotAvailable
