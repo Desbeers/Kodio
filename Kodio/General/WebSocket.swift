@@ -144,9 +144,9 @@ extension KodiClient {
         /// Get the properties and current item of the player
         case .playerOnPlay, .playerOnStop:
             Task {
-                await Player.shared.getProperties()
-                await Player.shared.getItem()
                 await Queue.shared.getItems()
+                await Player.shared.getItem()
+                await Player.shared.getProperties()
             }
         /// Reload smart lists
         case .audioLibraryOnUpdate:
