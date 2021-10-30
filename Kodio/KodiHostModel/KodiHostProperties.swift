@@ -60,13 +60,6 @@ extension KodiHost {
             var major: Int = 0
             var minor: Int = 0
         }
-        /// Computed info string with name and version number
-        var info: String {
-            if !name.isEmpty {
-                return "\(self.name) \(String(self.version.major)).\(String(self.version.minor))"
-            }
-            return "No Kodi selected"
-        }
         /// The coding keys for the Kodi properties
         enum CodingKeys: String, CodingKey {
             case name, version, volume, muted

@@ -87,7 +87,6 @@ class Library: ObservableObject {
     var neverPlayedSongs: [SongItem] = []
     var mostPlayedSongs: [SongItem] = []
     var recentlyPlayedSongs: [SongItem] = []
-    var favoriteSongs: [SongItem] = []
     
     var allSmartLists = [SmartListItem]()
     var selectedSmartList = SmartListItem()
@@ -188,8 +187,6 @@ extension Library {
         var smartItems: Bool = false
         var playlists: Bool = false
         var genres: Bool = false
-        var playerProperties: Bool = false
-        var playerItem: Bool = false
         var queue: Bool = false
         var upToDate: Bool = false
         /// Function to reset all vars to initial value
@@ -256,7 +253,7 @@ extension Library {
             async let genres = filterGenres(songList: songs)
             /// Update the UI
             await updateLibraryView(
-                filter:
+                content:
                     FilteredContent(
                         genres: await genres,
                         artists: await artists,
@@ -267,14 +264,14 @@ extension Library {
         }
     }
     
-    func updateLibraryView(filter: FilteredContent) async {
+    func updateLibraryView(content: FilteredContent) async {
         logger("Update library UI")
         Task { @MainActor in
             filteredContent = FilteredContent(
-                genres: filter.genres,
-                artists: filter.artists,
-                albums: filter.albums,
-                songs: filter.songs)
+                genres: content.genres,
+                artists: content.artists,
+                albums: content.albums,
+                songs: content.songs)
         }
     }
 }

@@ -310,10 +310,10 @@ extension Library {
         /// The request struct
         struct Params: Encodable {
             var sort = SortFields()
-            var limits = Limits()
+            let limits = Limits()
             struct Limits: Encodable {
                 let start = 0
-                let end = 25
+                let end = 50
             }
         }
         /// The response struct

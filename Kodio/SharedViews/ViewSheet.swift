@@ -11,8 +11,6 @@ import SwiftUI
 struct ViewSheet: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState
-    /// Bool if the player is playing or not
-    @State private var playing: Bool = false
     /// The view
     var body: some View {
         ZStack {

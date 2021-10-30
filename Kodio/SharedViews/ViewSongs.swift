@@ -15,8 +15,6 @@ struct ViewSongs: View {
     @EnvironmentObject var library: Library
     /// The Player model
     @EnvironmentObject var player: Player
-    /// The AppState model
-    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
         VStack {

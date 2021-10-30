@@ -109,26 +109,3 @@ extension Player {
         }
     }
 }
-
-extension Player {
-
-    // MARK: getIcon (function)
-
-    /// Get an icon for the row in a SwiftUI songlist
-    /// - Parameter itemID: The ID of the song
-    /// - Returns: A 'SF symbol' string that can be used for a SwiftUI image
-
-    func getIcon(for song: Library.SongItem) -> String {
-        /// Standard icon
-        var icon = song.rating == 0 ? "music.note" : "heart"
-        /// Overrule if needed
-        if song.songID == self.item.songID {
-            if self.properties.speed == 0 {
-                icon = "pause.fill"
-            } else {
-                icon = "play.fill"
-            }
-        }
-        return icon
-    }
-}

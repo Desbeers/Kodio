@@ -11,10 +11,6 @@ import SwiftUI
 
 /// View the whole library
 struct ViewLibrary: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
-    /// The AppState model
-    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
         VStack(spacing: 0) {
@@ -44,8 +40,6 @@ struct ViewLibraryTop: View {
 
 /// View the bottom of the library: details and the songs
 struct ViewLibraryBottom: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
     /// The view
     var body: some View {
         HStack(spacing: 0) {

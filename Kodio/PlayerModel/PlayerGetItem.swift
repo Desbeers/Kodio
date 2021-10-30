@@ -51,18 +51,15 @@ extension Player {
     /// The struct for the player item
     struct PlayerItem: Decodable, Equatable {
         /// The fields that we ask for
-        var properties = ["title", "artist", "thumbnail", "fanart", "mediapath"]
+        var properties = ["title", "artist", "mediapath"]
         /// The fields from above
         var songID: Int?
         var title: String?
         var artist: [String]?
-        var label: String = ""
-        var thumbnail: String = ""
-        var fanart: String = ""
         var mediapath: String = ""
         var type: String = ""
         enum CodingKeys: String, CodingKey {
-            case label, title, artist, thumbnail, fanart, mediapath, type
+            case title, artist, mediapath, type
             case songID = "id"
         }
     }

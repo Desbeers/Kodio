@@ -1,0 +1,6 @@
+project: Kodio.xcodeproj
+retain_public: true
+schemes:
+- Kodio (macOS)
+targets:
+- Kodio (macOS)

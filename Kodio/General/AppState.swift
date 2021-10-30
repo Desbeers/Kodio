@@ -145,17 +145,6 @@ extension AppState {
     }
 
     /// The alert that pops-up when the host is not available
-    var alertAboutKodio: AlertItem {
-        var alert = AlertItem()
-        alert.title = Text("Kodio")
-        alert.message = Text("Version")
-        alert.dismiss = .default(
-            Text("Thanks!")
-        )
-        return alert
-    }
-    
-    /// The alert that pops-up when the host is not available
     var alertNotAvailable: AlertItem {
         var alert = AlertItem()
         alert.title = Text("\(KodiClient.shared.selectedHost.description) is not available")
@@ -174,9 +163,6 @@ extension AppState {
         var alert = AlertItem()
         alert.title = Text("Welcome to Kodio!")
         alert.message = Text("Please add a Kodi host.")
-//        alert.dismiss = .cancel(
-//            Text("Fuck off")
-//        )
         alert.dismiss = .default(
             Text("\(AppState.shared.userInterface == .macOS ? "Open preferences" : "Add a host")"),
             action: {

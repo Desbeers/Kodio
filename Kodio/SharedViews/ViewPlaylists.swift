@@ -23,13 +23,6 @@ struct ViewPlaylist: View {
                     },
                     label: {
                         Label(playlist.title, systemImage: playlist.icon)
-//                        HStack {
-//                            Image(systemName: playlist.icon)
-//                                .foregroundColor(.accentColor)
-//                                .frame(width: 16)
-//                            Text(playlist.title)
-//                            Spacer()
-//                        }
                     }
                 )
                     .disabled(playlist == library.selectedSmartList)

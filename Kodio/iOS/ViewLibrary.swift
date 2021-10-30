@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ViewLibrary: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
     /// The view
     var body: some View {
             VStack(spacing: 0) {

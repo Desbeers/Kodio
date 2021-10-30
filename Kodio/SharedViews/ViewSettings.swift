@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ViewSettings: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
+    /// The view
     var body: some View {
         #if os (macOS)
         TabView {

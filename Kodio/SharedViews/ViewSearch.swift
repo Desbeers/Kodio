@@ -35,8 +35,6 @@ struct ViewSearchButton: View {
 struct ViewModifierSearch: ViewModifier {
     /// The Library model
     @EnvironmentObject var library: Library
-    /// The AppState model
-    @EnvironmentObject var appState: AppState
     /// The Combine thingy so it is not searching after every typed letter
     @StateObject var searchObserver: SearchObserver = .shared
     /// The view

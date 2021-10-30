@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ViewAbout: View {
-    /// State of this application
-    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
         VStack {

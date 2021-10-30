@@ -18,7 +18,7 @@ struct ViewRadio: View {
             ForEach(library.radioStations) { channel in
                 Button(
                     action: {
-                        Player.shared.playRadio(stream: channel.stream)
+                        player.playRadio(stream: channel.stream)
                     },
                     label: {
                         ViewRadioLabel(channel: channel)

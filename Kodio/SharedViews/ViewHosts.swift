@@ -34,13 +34,6 @@ struct ViewHostsEdit: View {
                                 },
                                 label: {
                                     Label(host.description, systemImage: host == kodiClient.selectedHost ? "k.circle.fill" : "k.circle")
-//                                    HStack {
-//                                        Image(systemName: host == kodiClient.selectedHost ? "k.circle.fill" : "k.circle")
-//                                            .foregroundColor(.accentColor)
-//                                            .frame(width: 16)
-//                                        Text(host.description)
-//                                        Spacer()
-//                                    }
                                 }
                             )
                                 .disabled(host == selectedHost)

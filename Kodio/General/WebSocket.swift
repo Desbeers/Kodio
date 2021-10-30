@@ -79,22 +79,6 @@ extension KodiClient {
         webSocketTask?.cancel(with: .normalClosure, reason: nil)
     }
     
-    // MARK: sendToWebSocket (function)
-    
-    /// Send a message to the websocket
-    /// - Parameters:
-    ///     - text: A prepared JSON string
-    /// - Returns: An 'OK' notification to the websocket
-    func sendToWebSocket(text: String) {
-        webSocketTask?.send(.string(text)) { error in
-            if let error = error {
-                logger("Error sending message to WebSocket: \(error)")
-            } else {
-                logger("Message sent to WebSocket")
-            }
-        }
-    }
-    
     // MARK: receiveNotification (function)
     
     /// Recieve a notification from the Kodi WebSocket
@@ -116,7 +100,7 @@ extension KodiClient {
                         return
                     }
                     logger("Notification: \(notification.method)")
-                    self.notificationAction(method: method, notification: notification)
+                    self.notificationAction(method: method)
                 }
             case .failure:
                 break
@@ -127,8 +111,7 @@ extension KodiClient {
     /// Do an action when we receive a notification from Kodi via the WbSocket
     /// - Parameters:
     ///   - method: The received notification method
-    ///   - notification: The received notification message
-    func notificationAction(method: Method, notification: NotificationItem ) {
+    func notificationAction(method: Method) {
         switch method {
         /// Set the slider in the UI
         case .applicationOnVolumeChanged:

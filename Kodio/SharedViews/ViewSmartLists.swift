@@ -22,28 +22,12 @@ struct ViewSmartLists: View {
                     },
                     label: {
                         Label(list.title, systemImage: list.icon)
-//                        HStack {
-//                            Image(systemName: list.icon)
-//                                .foregroundColor(.accentColor)
-//                                .frame(width: 16)
-//                            Text(list.title)
-//                            Spacer()
-//                        }
                     }
                 )
                     .disabled(list == library.selectedSmartList)
                     .animation(nil, value: library.media)
             }
             ViewSearchButton()
-        }
-    }
-}
-
-struct ViewSmartListsHeader: View {
-    /// The view
-    var body: some View {
-        HStack {
-            ViewAppStateStatus()
         }
     }
 }

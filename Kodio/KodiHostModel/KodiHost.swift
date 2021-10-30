@@ -17,12 +17,8 @@ class KodiHost: ObservableObject {
     
     /// The shared instance of this KodiHost class
     static let shared = KodiHost()
-    /// Combine subscription container
-    private var anyCancellable = Set<AnyCancellable>()
     /// The shared KodiClient class
     let kodiClient = KodiClient.shared
-    /// A timer to keep an eye on the Kodi host
-    var timer: Timer?
     /// The properties of the Kodi host
     var properties = Properties()
     /// The volume of the Kodi host; published because it is used in a Swift View

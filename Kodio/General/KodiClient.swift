@@ -82,29 +82,7 @@ extension KodiClient {
     struct BaseResponse<T: Decodable>: Decodable {
         var result: T
     }
-    
-    // MARK: responseAction
-    
-    /// Response when a request was succesfull
-    ///
-    /// - Parameters:
-    ///     - action: the method of the request
-    func responseAction(method: Method) {
-        //        switch action {
-        //        case .playerPlayPause:
-        //            getPlayerProperties(playerItem: false)
-        //        case .playerSetShuffle:
-        //            getPlayerProperties(playerItem: false)
-        //            getPlaylistQueue()
-        //        case .playerSetRepeat:
-        //            getPlayerProperties(playerItem: false)
-        //        case .playlistAdd, .playlistRemove:
-        //            getPlaylistQueue()
-        //        default:
-        //            break
-        //        }
-    }
-    
+
     // MARK: sendMessage
     
     /// Send a message to the host, not caring about the response
@@ -122,24 +100,7 @@ extension KodiClient {
     
     /// List of possible errors
     enum APIError: Error {
-        case requestFailed
-        case jsonConversionFailure
         case invalidData
         case responseUnsuccessful
-        case jsonParsingFailure
-        var localizedDescription: String {
-            switch self {
-            case .requestFailed:
-                return "Request Failed"
-            case .invalidData:
-                return "Invalid Data"
-            case .responseUnsuccessful:
-                return "Response Unsuccessful"
-            case .jsonParsingFailure:
-                return "JSON Parsing Failure"
-            case .jsonConversionFailure:
-                return "JSON Conversion Failure"
-            }
-        }
     }
 }

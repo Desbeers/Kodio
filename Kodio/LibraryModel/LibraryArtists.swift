@@ -52,7 +52,7 @@ extension Library {
             async let albums = filterAlbums(songList: songs)
             /// Update the UI
             await updateLibraryView(
-                filter:
+                content:
                     FilteredContent(
                         genres: filteredContent.genres,
                         artists: filteredContent.artists,

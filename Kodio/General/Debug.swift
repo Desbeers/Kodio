@@ -7,20 +7,25 @@
 
 import SwiftUI
 
-extension Thread {
-    class func printCurrent() {
-        print("\r⚡️: \(Thread.current)\r" + "🏭: \(OperationQueue.current?.underlyingQueue?.label ?? "None")\r")
-    }
+/// Debug messages
+func logger(_ string: String) {
+    print("\(string) \(Date())")
 }
 
-@discardableResult
-func measure<A>(name: String = "", _ block: () -> A) -> A {
-    let startTime = CACurrentMediaTime()
-    let result = block()
-    let timeElapsed = CACurrentMediaTime() - startTime
-    print("Time: \(name) - \(timeElapsed)")
-    return result
-}
+// extension Thread {
+//    class func printCurrent() {
+//        print("\r⚡️: \(Thread.current)\r" + "🏭: \(OperationQueue.current?.underlyingQueue?.label ?? "None")\r")
+//    }
+// }
+
+// @discardableResult
+// func measure<A>(name: String = "", _ block: () -> A) -> A {
+//    let startTime = CACurrentMediaTime()
+//    let result = block()
+//    let timeElapsed = CACurrentMediaTime() - startTime
+//    print("Time: \(name) - \(timeElapsed)")
+//    return result
+// }
 
 // class InstanceTracker {
 //    static var count: Int {
@@ -72,17 +77,13 @@ func measure<A>(name: String = "", _ block: () -> A) -> A {
 //    }
 // }
 
-func logger(_ string: String) {
-    print("\(string) \(Date())")
-}
-
 /// Print raw JSON to the console
-func debugJsonResponse(data: Data) {
-    do {
-        if let jsonResult = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-            print(jsonResult)
-        }
-    } catch let error {
-        print(error.localizedDescription)
-    }
-}
+// func debugJsonResponse(data: Data) {
+//    do {
+//        if let jsonResult = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
+//            print(jsonResult)
+//        }
+//    } catch let error {
+//        print(error.localizedDescription)
+//    }
+// }

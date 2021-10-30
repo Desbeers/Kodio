@@ -118,8 +118,6 @@
 		D7EA914326A93C1D0090C137 /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA913026A93C1C0090C137 /* KodioApp.swift */; };
 		D7EA914726A93C1D0090C137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EA913226A93C1D0090C137 /* Assets.xcassets */; };
 		D7EA914826A93C1D0090C137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EA913226A93C1D0090C137 /* Assets.xcassets */; };
-		D7EA916426A93D780090C137 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA916326A93D780090C137 /* Bundle.swift */; };
-		D7EA916526A93D780090C137 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA916326A93D780090C137 /* Bundle.swift */; };
 		D7EA917326A96BFC0090C137 /* ViewAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA917226A96BFC0090C137 /* ViewAlbums.swift */; };
 		D7EA917426A96BFC0090C137 /* ViewAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA917226A96BFC0090C137 /* ViewAlbums.swift */; };
 		D7EA917626A96C0C0090C137 /* ViewArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA917526A96C0C0090C137 /* ViewArtists.swift */; };
@@ -206,6 +204,7 @@
 		D7AE512726B9379600A57244 /* LibraryRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRadio.swift; sourceTree = "<group>"; };
 		D7AE512A26B9448800A57244 /* ViewRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRadio.swift; sourceTree = "<group>"; };
 		D7BBB8FF26B19BF00097D286 /* LibrarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySearch.swift; sourceTree = "<group>"; };
+		D7D95084272D57E600CC7155 /* .periphery.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .periphery.yml; sourceTree = "<group>"; };
 		D7DE9A0526AF6AE20002BC48 /* LibraryPlaylists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylists.swift; sourceTree = "<group>"; };
 		D7DE9A0826B026200002BC48 /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .jazzy.yaml; sourceTree = "<group>"; };
 		D7DE9A0926B026200002BC48 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -218,7 +217,6 @@
 		D7EA913F26A93C1D0090C137 /* Kodio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kodio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7EA914126A93C1D0090C137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7EA914226A93C1D0090C137 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		D7EA916326A93D780090C137 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		D7EA916F26A95C270090C137 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		D7EA917226A96BFC0090C137 /* ViewAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAlbums.swift; sourceTree = "<group>"; };
 		D7EA917526A96C0C0090C137 /* ViewArtists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewArtists.swift; sourceTree = "<group>"; };
@@ -322,6 +320,7 @@
 				D7678B2326D3E53D006C3AD1 /* Kodio */,
 				D7DE9A0826B026200002BC48 /* .jazzy.yaml */,
 				D7DE9A0926B026200002BC48 /* .swiftlint.yml */,
+				D7D95084272D57E600CC7155 /* .periphery.yml */,
 				D7EA913826A93C1D0090C137 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -411,7 +410,6 @@
 		D7EA916226A93D600090C137 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D7EA916326A93D780090C137 /* Bundle.swift */,
 				D70D141126AC926B0015EE82 /* Array.swift */,
 				D7F00A8626AECDEB00CEE39E /* View.swift */,
 				D7F00A9C26AEFFF100CEE39E /* String.swift */,
@@ -432,9 +430,9 @@
 				D76CF9B326B2F07900351667 /* AppState.swift */,
 				D7EA916F26A95C270090C137 /* Debug.swift */,
 				D71B92AC27185859005355CB /* RemoteArt.swift */,
+				D70191DF2727290F009332A3 /* Markdown.swift */,
 				D7EA913226A93C1D0090C137 /* Assets.xcassets */,
 				D70191DC272716C4009332A3 /* Help.md */,
-				D70191DF2727290F009332A3 /* Markdown.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -621,7 +619,6 @@
 				D72E0DA826CC44350001B47A /* ViewHosts.swift in Sources */,
 				D76B190D271326E200CEB741 /* ViewHelp.swift in Sources */,
 				D73163DB26ABEFC100CD5F7E /* LibraryAlbums.swift in Sources */,
-				D7EA916426A93D780090C137 /* Bundle.swift in Sources */,
 				D72740ED26B186EF00067D4A /* PlayerGetItem.swift in Sources */,
 				D75F765F26CAA72000165656 /* ViewSettings.swift in Sources */,
 				D7F00A8726AECDEB00CEE39E /* View.swift in Sources */,
@@ -697,7 +694,6 @@
 				D75FD8622715FF2200358BC9 /* ViewSearch.swift in Sources */,
 				D75F766026CAA72000165656 /* ViewSettings.swift in Sources */,
 				D73163DC26ABEFC100CD5F7E /* LibraryAlbums.swift in Sources */,
-				D7EA916526A93D780090C137 /* Bundle.swift in Sources */,
 				D7F00A8826AECDEB00CEE39E /* View.swift in Sources */,
 				D72E0DA926CC44350001B47A /* ViewHosts.swift in Sources */,
 				D7A9044026FA09CB0012C7B2 /* PlayerRadio.swift in Sources */,

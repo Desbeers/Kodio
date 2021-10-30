@@ -39,7 +39,6 @@ extension Queue {
     /// Get all items from playlist (Kodi API)
     struct QueueGetItems: KodiAPI {
         var method: Method = .playlistGetItems
-        let media: Library.MediaType = .playlist
         /// The JSON creator
         var parameters: Data {
             return buildParams(params: Params())
