@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - View genres
-
 /// The list of genres
 struct ViewGenres: View {
     /// The Library model
@@ -23,7 +21,7 @@ struct ViewGenres: View {
                             action: {
                                 library.toggleGenre(genre: genre)
                             }, label: {
-                                ViewGenresListRow(genre: genre)
+                                row(genre: genre)
                             })
                             .buttonStyle(ButtonStyleList(type: .genres, selected: genre == library.selectedGenre ? true: false))
                     }
@@ -36,20 +34,17 @@ struct ViewGenres: View {
 
 extension ViewGenres {
     
-    /// A genre row in the list
-    struct ViewGenresListRow: View {
-        /// The genre item
-        let genre: Library.GenreItem
-        /// The view
-        var body: some View {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(genre.title)
-                        .font(.subheadline)
-                        .padding(6.5)
-                }
-                Spacer()
+    /// Format a genre row in a list
+    /// - Parameter genre: a ``Library/GenreItem`` struct
+    /// - Returns: a formatted row
+    func row(genre: Library.GenreItem) -> some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(genre.title)
+                    .font(.subheadline)
+                    .padding(6.5)
             }
+            Spacer()
         }
     }
 }

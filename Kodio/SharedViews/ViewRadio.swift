@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 /// A list with radio channels
 struct ViewRadio: View {
     /// The Library object
@@ -34,7 +33,7 @@ struct ViewRadio: View {
 extension ViewRadio {
 
     /// Create a `Label` for a radio channel
-    /// - Parameter channel: the `RadioItem` struct
+    /// - Parameter channel: a ``Library/RadioItem`` struct
     /// - Returns: a formatted `Label`
     @ViewBuilder func radioLabel(channel: Library.RadioItem) -> some View {
         if player.item.mediapath == channel.stream {

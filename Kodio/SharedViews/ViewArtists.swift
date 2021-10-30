@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - View artists
-
 /// The list of artists
 struct ViewArtists: View {
     /// The Library model
@@ -26,7 +24,7 @@ struct ViewArtists: View {
                                 library.toggleArtist(artist: artist)
                             },
                             label: {
-                                ViewArtistsListRow(artist: artist)
+                                row(artist: artist)
                             }
                         )
                         .buttonStyle(ButtonStyleList(type: .artists, selected: artist == library.selectedArtist ? true: false))
@@ -47,23 +45,22 @@ struct ViewArtists: View {
 
 extension ViewArtists {
     
-    /// An artists in the list
-    struct ViewArtistsListRow: View {
-        let artist: Library.ArtistItem
-        var body: some View {
-            HStack {
-                ViewArtArtist(artist: artist, size: 58)
-                    .frame(width: 58, height: 58)
-                    .padding(2)
-                VStack(alignment: .leading) {
-                    Text(artist.title)
-                        .font(.headline)
-                    Text(artist.subtitle)
-                        .font(.caption)
-                        .opacity(0.6)
-                }
-                Spacer()
+    /// Format an artist row in a list
+    /// - Parameter artist: a ``Library/ArtistItem`` struct
+    /// - Returns: a formatted row
+    func row(artist: Library.ArtistItem) -> some View {
+        HStack {
+            ViewArtArtist(artist: artist, size: 58)
+                .frame(width: 58, height: 58)
+                .padding(2)
+            VStack(alignment: .leading) {
+                Text(artist.title)
+                    .font(.headline)
+                Text(artist.subtitle)
+                    .font(.caption)
+                    .opacity(0.6)
             }
+            Spacer()
         }
     }
 }
