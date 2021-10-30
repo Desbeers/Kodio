@@ -34,15 +34,14 @@ extension Library {
     
     /// Select or deselect an album in the UI
     /// - Parameters:
-    ///   - album: The selected album
-    ///   - force: Force selection; don't toggle it
-    func toggleAlbum(album: AlbumItem, force: Bool = false) {
+    ///   - album: The selected ``AlbumItem``
+    func toggleAlbum(album: AlbumItem) {
         logger("Album selected")
-        selectedAlbum = force ? album : selectedAlbum == album ? nil : album
+        selectedAlbum = selectedAlbum == album ? nil : album
         /// Set the filter
         setFilter(item: selectedAlbum)
         /// Reload songs
-        Task { @MainActor in            
+        Task {           
             let songs = await filterSongs()
             /// Update the UI
             await updateLibraryView(

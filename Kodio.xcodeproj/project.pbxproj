@@ -114,8 +114,6 @@
 		D7BBB90126B19BF00097D286 /* LibrarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBB8FF26B19BF00097D286 /* LibrarySearch.swift */; };
 		D7D95087272D807800CC7155 /* LibraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D95086272D807800CC7155 /* LibraryItem.swift */; };
 		D7D95088272D807800CC7155 /* LibraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D95086272D807800CC7155 /* LibraryItem.swift */; };
-		D7D9508A272D818100CC7155 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D95089272D818100CC7155 /* Structs.swift */; };
-		D7D9508B272D818100CC7155 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D95089272D818100CC7155 /* Structs.swift */; };
 		D7DE9A0626AF6AE20002BC48 /* LibraryPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE9A0526AF6AE20002BC48 /* LibraryPlaylists.swift */; };
 		D7DE9A0726AF6AE20002BC48 /* LibraryPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE9A0526AF6AE20002BC48 /* LibraryPlaylists.swift */; };
 		D7DE9A0D26B04B720002BC48 /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE9A0B26B04B720002BC48 /* SplitView.swift */; };
@@ -210,7 +208,6 @@
 		D7BBB8FF26B19BF00097D286 /* LibrarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySearch.swift; sourceTree = "<group>"; };
 		D7D95084272D57E600CC7155 /* .periphery.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .periphery.yml; sourceTree = "<group>"; };
 		D7D95086272D807800CC7155 /* LibraryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryItem.swift; sourceTree = "<group>"; };
-		D7D95089272D818100CC7155 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		D7DE9A0526AF6AE20002BC48 /* LibraryPlaylists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylists.swift; sourceTree = "<group>"; };
 		D7DE9A0826B026200002BC48 /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .jazzy.yaml; sourceTree = "<group>"; };
 		D7DE9A0926B026200002BC48 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -445,7 +442,6 @@
 				D76CF9B326B2F07900351667 /* AppState.swift */,
 				D7EA916F26A95C270090C137 /* Debug.swift */,
 				D71B92AC27185859005355CB /* RemoteArt.swift */,
-				D7D95089272D818100CC7155 /* Structs.swift */,
 				D70191DF2727290F009332A3 /* Markdown.swift */,
 				D7EA913226A93C1D0090C137 /* Assets.xcassets */,
 				D70191DC272716C4009332A3 /* Help.md */,
@@ -627,7 +623,6 @@
 				D74EFC4826E7C9EF00720D3C /* LibraryProperties.swift in Sources */,
 				D72740F026B187F000067D4A /* PlayerGetProperties.swift in Sources */,
 				D75FD8612715FF2200358BC9 /* ViewSearch.swift in Sources */,
-				D7D9508A272D818100CC7155 /* Structs.swift in Sources */,
 				D73DD7F626D3EC850024CB51 /* Debug.swift in Sources */,
 				D706F67326B0F5EC0068F35C /* ViewPlayer.swift in Sources */,
 				D7AEEE3F26FCA13C00335211 /* PlayerRadio.swift in Sources */,
@@ -698,7 +693,6 @@
 				D70191E12727290F009332A3 /* Markdown.swift in Sources */,
 				D7EA917A26A96C230090C137 /* ViewSongs.swift in Sources */,
 				D74C95BF272C8F3700148F93 /* ViewSongsList.swift in Sources */,
-				D7D9508B272D818100CC7155 /* Structs.swift in Sources */,
 				D7A9043A26F86E600012C7B2 /* AppDelegate.swift in Sources */,
 				D7F00A9226AEFD6A00CEE39E /* KodiClient.swift in Sources */,
 				D72740E826B1809100067D4A /* KodiHostProperties.swift in Sources */,

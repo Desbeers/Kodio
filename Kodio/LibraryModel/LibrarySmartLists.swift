@@ -12,6 +12,7 @@ extension Library {
     // MARK: - Smart lists
     
     /// Get a list of recently played and recently added songs
+    /// - Returns: true when loaded of false if the is an error
     func getSmartItems() async -> Bool {
         let recent = AudioLibraryGetSongIDs(media: .recentlyPlayed)
         let most = AudioLibraryGetSongIDs(media: .mostPlayed)
@@ -34,6 +35,9 @@ extension Library {
         }
     }
     
+    /// Change a list with song id's to a list with the actual songs
+    /// - Parameter songID: an array with ``SongIdItem`` structs
+    /// - Returns: an array with ``SongItem`` structs
     private func songIDtoSongItem(songID: [SongIdItem]) -> [SongItem] {
         var songList = [SongItem]()
         for song in songID {
@@ -45,6 +49,7 @@ extension Library {
     }
     
     /// Select or deselect a smart list and filter the library
+    /// - Parameter smartList: a ``SmartListItem`` struct
     func toggleSmartList(smartList: SmartListItem) {
         selectedSmartList = smartList
         switch smartList.media {
@@ -145,12 +150,7 @@ extension Library {
             case title
         }
     }
-}
 
-extension Library {
-    
-    // MARK: - Smart Reload
-    
     /// Reload the library when changing a smart filter
     func smartReload() {
         /// Reset selection

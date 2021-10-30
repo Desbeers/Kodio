@@ -33,7 +33,7 @@ extension Library {
     
     /// Select or deselect a genre in the UI
     /// - Parameters:
-    ///   - genre: The selected genre
+    ///   - genre: The selected  ``GenreItem``
     func toggleGenre(genre: GenreItem) {
         logger("Genre selected")
         selectedGenre = selectedGenre == genre ? nil : genre
@@ -43,7 +43,7 @@ extension Library {
         /// Set the filter
         setFilter(item: selectedGenre)
         /// Reload media
-        Task { @MainActor in
+        Task {
             /// Filter songs first; all the rest is based on it.
             let songs = await filterSongs()
             /// Now the rest

@@ -36,11 +36,10 @@ extension Library {
     
     /// Select or deselect an artist in the UI
     /// - Parameters:
-    ///   - artist: The selected artist
-    ///   - force: Force selection; don't toggle it
-    func toggleArtist(artist: ArtistItem, force: Bool = false) {
+    ///   - artist: The selected ``ArtistItem``
+    func toggleArtist(artist: ArtistItem) {
         logger("Artist selected")
-        selectedArtist = force ? artist : selectedArtist == artist ? nil : artist
+        selectedArtist = selectedArtist == artist ? nil : artist
         /// Reset selection
         selectedAlbum = nil
         /// Set the filter

@@ -71,6 +71,18 @@ extension KodiClient {
         return decoded.result
     }
     
+    /// Base for JSON parameter struct
+    struct BaseParameters<T: Encodable>: Encodable {
+        /// The JSON version
+        let jsonrpc = "2.0"
+        /// The Kodi method to use
+        var method: String
+        /// The parameters
+        var params: T
+        /// The ID
+        var id: String
+    }
+    
     /// Base for response struct
     struct BaseResponse<T: Decodable>: Decodable {
         var result: T

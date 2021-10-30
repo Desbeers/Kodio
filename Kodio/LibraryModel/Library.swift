@@ -257,3 +257,40 @@ extension Library {
         }
     }
 }
+
+// MARK: Sorting of media
+
+extension Library {
+    
+    /// The sort fields for JSON creation
+    struct SortFields: Encodable {
+        /// The method
+        var method: String = ""
+        /// The order
+        var order: String = ""
+    }
+
+    /// The available methods
+    enum SortMethod: String {
+        /// Order descending
+        case descending = "descending"
+        /// Order ascending
+        case ascending = "ascending"
+        ///  Order by last played
+        case lastPlayed = "lastplayed"
+        ///  Order by play count
+        case playCount = "playcount"
+        ///  Order by year
+        case year = "year"
+        ///  Order by track
+        case track = "track"
+        ///  Order by artist
+        case artist = "artist"
+        ///  Order by title
+        case title = "title"
+        /// Nicer that using rawValue
+        func string() -> String {
+            return self.rawValue
+        }
+    }
+}

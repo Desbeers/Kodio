@@ -1,9 +1,9 @@
-///
-/// AppState.swift
-/// Kodio (Shared)
-///
-/// © 2021 Nick Berendsen
-///
+//
+//  AppState.swift
+//  Kodio
+//
+//  © 2021 Nick Berendsen
+//
 
 import SwiftUI
 
