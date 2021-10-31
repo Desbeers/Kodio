@@ -27,36 +27,28 @@ class Library: ObservableObject {
             checkStatus(status: status)
         }
     }
-    
     /// An array containing all artist related items
     var search = Search()
-    
-    /// The library filtered by selection of smart list, genre, artist and/or song
+    /// The library filtered by selection of smart list, genre, artist and album
     @Published var filteredContent = FilteredContent()
-
     /// An array containing all artist related items
     var artists = Artists()
-
     /// An array containing all album related items
     var albums = Albums()
-    
     /// An array containing all song related items
     var songs = Songs()
-    
     /// An array containing all genre related items
     var genres = Genres()
-
     /// An array containing all smart list related items
     var smartLists = SmartLists()
-    
     /// An array containing all playlist related items
     var playlists = Playlists()
-    
     /// An array with all radio stations
     var radioStations: [RadioItem] = []
     
     // MARK: Init
     
+    /// Private init to make sure we have only one instance
     private init() {
         /// Search observer
         search.observer.objectWillChange.sink { [self] in

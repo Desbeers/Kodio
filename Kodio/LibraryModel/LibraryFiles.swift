@@ -9,7 +9,7 @@ import Foundation
 
 extension Library {
     
-    // MARK: - Files
+    // MARK: Files
     
     /// Get the directories and files in the given directory (Kodi API)
     struct FilesGetDirectory: KodiAPI {

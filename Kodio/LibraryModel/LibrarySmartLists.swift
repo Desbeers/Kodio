@@ -9,7 +9,7 @@ import Foundation
 
 extension Library {
     
-    // MARK: - Smart lists
+    // MARK: Smart lists
     
     /// A struct will all smart list related items
     struct SmartLists {
@@ -19,8 +19,8 @@ extension Library {
         var selected = SmartListItem()
     }
     
-    /// Get a list of recently played and recently added songs
-    /// - Returns: true when loaded of false if the is an error
+    /// Get a list of recently played and recently added songs from the Kodi host
+    /// - Returns: True when loaded; else false
     func getSmartItems() async -> Bool {
         let recent = AudioLibraryGetSongIDs(media: .recentlyPlayed)
         let most = AudioLibraryGetSongIDs(media: .mostPlayed)
@@ -44,8 +44,8 @@ extension Library {
     }
     
     /// Change a list with song id's to a list with the actual songs
-    /// - Parameter songID: an array with ``SongIdItem`` structs
-    /// - Returns: an array with ``SongItem`` structs
+    /// - Parameter songID: An array with ``SongIdItem`` structs
+    /// - Returns: An array with ``SongItem`` structs
     private func songIDtoSongItem(songID: [SongIdItem]) -> [SongItem] {
         var songList = [SongItem]()
         for song in songID {
@@ -57,7 +57,7 @@ extension Library {
     }
     
     /// Select or deselect a smart list and filter the library
-    /// - Parameter smartList: a ``SmartListItem`` struct
+    /// - Parameter smartList: A ``SmartListItem`` struct
     func toggleSmartList(smartList: SmartListItem) {
         smartLists.selected = smartList
         switch smartList.media {
@@ -99,7 +99,7 @@ extension Library {
         }
     }
     
-    /// Get the smart lists
+    /// Get the smart list items
     func getSmartLists() {
         var list = [SmartListItem]()
         list.append(SmartListItem(title: "Album artists",

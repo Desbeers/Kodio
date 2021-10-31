@@ -4,9 +4,8 @@ xcuserdata/
 ## Icons
 icons/
 
-## Jazzy stuff (not ready yet)
+## Jazzy stuff
 build/
-docs/
 
 ## Mac stuff
 .DS_Store

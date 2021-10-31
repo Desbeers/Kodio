@@ -7,11 +7,10 @@
 
 import Foundation
 
-// MARK: - Radio stations (extension)
 
 extension Player {
     
-    // MARK: Play a Radio Station
+    // MARK: Radio stations (extension)
 
     /// Play a radio station
     /// - Parameter stream: the audio stream to play

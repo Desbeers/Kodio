@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Player Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Player" class="dashAnchor"></a>
+    <a title="Player Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Kodio</a> (72% documented)</p>
+        <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Kodio Reference</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        Player Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppState.html">AppState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppState/SheetTypes.html">– SheetTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppState/LoadingState.html">– LoadingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppState/AlertItem.html">– AlertItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AppState/UserInterface.html">– UserInterface</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiClient.html">KodiClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiClient/BaseParameters.html">– BaseParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiClient/BaseResponse.html">– BaseResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiClient/APIError.html">– APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiClient/NotificationItem.html">– NotificationItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiHost.html">KodiHost</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiHost/SystemAction.html">– SystemAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiHost/ApplicationGetProperties.html">– ApplicationGetProperties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiHost/Properties.html">– Properties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiHost/ReplayGain.html">– ReplayGain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiHost/SettingsSetSettingValue.html">– SettingsSetSettingValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiHost/SettingID.html">– SettingID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/KodiHost/SetVolume.html">– SetVolume</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library.html">Library</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/MediaType.html">– MediaType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/SortFields.html">– SortFields</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/SortMethod.html">– SortMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/Albums.html">– Albums</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/AudioLibraryGetAlbums.html">– AudioLibraryGetAlbums</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/AlbumItem.html">– AlbumItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/Artists.html">– Artists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/AudioLibraryGetArtists.html">– AudioLibraryGetArtists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/ArtistItem.html">– ArtistItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/FilesGetDirectory.html">– FilesGetDirectory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/FileItem.html">– FileItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/FilteredContent.html">– FilteredContent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/Genres.html">– Genres</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/AudioLibraryGetGenres.html">– AudioLibraryGetGenres</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/GenreItem.html">– GenreItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/Playlists.html">– Playlists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/AudioLibraryGetProperties.html">– AudioLibraryGetProperties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/Properties.html">– Properties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/RadioItem.html">– RadioItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/Search.html">– Search</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/SmartSearchMatcher.html">– SmartSearchMatcher</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/SearchSuggestionItem.html">– SearchSuggestionItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/SmartLists.html">– SmartLists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/SmartListItem.html">– SmartListItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/Songs.html">– Songs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/AudioLibraryGetSongs.html">– AudioLibraryGetSongs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/AudioLibraryGetSongIDs.html">– AudioLibraryGetSongIDs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/AudioLibrarySetSongDetails.html">– AudioLibrarySetSongDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/SongItem.html">– SongItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/SongIdItem.html">– SongIdItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Player.html">Player</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Player/PlayerAction.html">– PlayerAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Player/PlayerGetItem.html">– PlayerGetItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Player/PlayerItem.html">– PlayerItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Player/PlayerGetProperties.html">– PlayerGetProperties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Player/Properties.html">– Properties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Queue.html">Queue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Queue/QueueAction.html">– QueueAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Queue/QueueGetItems.html">– QueueGetItems</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Queue/QueueItem.html">– QueueItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SearchObserver.html">SearchObserver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SplitViewController.html">SplitViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WebSocket.html">WebSocket</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Method.html">Method</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSTableView.html">NSTableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:5Kodio6loggeryySSF">logger(_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/KodiAPI.html">KodiAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/LibraryItem.html">LibraryItem</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ButtonStyleList.html">ButtonStyleList</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ButtonStyleList/ViewButtonStyleList.html">– ViewButtonStyleList</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ButtonStylePlayer.html">ButtonStylePlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ButtonStylePlayer/ViewButtonStylePlayer.html">– ViewButtonStylePlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ButtonStyleSidebar.html">ButtonStyleSidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ButtonStyleSidebar/ViewButtonStyleSidebar.html">– ViewButtonStyleSidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Cache.html">Cache</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FormattedMarkdown.html">FormattedMarkdown</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FormattedMarkdown/MarkdownLine.html">– MarkdownLine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/FormattedMarkdown/MarkdownType.html">– MarkdownType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/HostItem.html">HostItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Hosts.html">Hosts</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/KodioApp.html">KodioApp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/LabelStyleSidebar.html">LabelStyleSidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RemoteArt.html">RemoteArt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SidebarButtons.html">SidebarButtons</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/SplitView.html">SplitView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewAbout.html">ViewAbout</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewAlbums.html">ViewAlbums</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewAppStateStatus.html">ViewAppStateStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewArtAlbum.html">ViewArtAlbum</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewArtArtist.html">ViewArtArtist</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewArtPlayer.html">ViewArtPlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewArtSong.html">ViewArtSong</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewArtists.html">ViewArtists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewContent.html">ViewContent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewDetails.html">ViewDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewDetails/ViewDetailsMedia.html">– ViewDetailsMedia</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewDetails/ViewDetailsArtwork.html">– ViewDetailsArtwork</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewDetails/ViewDetailsStatistics.html">– ViewDetailsStatistics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewDetails/LabelStyleDetailsStatistics.html">– LabelStyleDetailsStatistics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewDropShadow.html">ViewDropShadow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewGenres.html">ViewGenres</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewHelp.html">ViewHelp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewHostsEdit.html">ViewHostsEdit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewHostsEdit/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewHostsEdit/ViewHostsEditDetails.html">– ViewHostsEditDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewHostsEdit/ViewHostsEditFooter.html">– ViewHostsEditFooter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewHostsEdit/ViewModifierForm.html">– ViewModifierForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewHostsMenu.html">ViewHostsMenu</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewLibrary.html">ViewLibrary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewLibraryBottom.html">ViewLibraryBottom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewLibraryTop.html">ViewLibraryTop</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewListHeader.html">ViewListHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewModifierSearch.html">ViewModifierSearch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewModifierToolbar.html">ViewModifierToolbar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewPlayerButtons.html">ViewPlayerButtons</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewPlayerOptions.html">ViewPlayerOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewPlayerQueueButton.html">ViewPlayerQueueButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewPlayerVolume.html">ViewPlayerVolume</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewPlaylist.html">ViewPlaylist</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewQueue.html">ViewQueue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewQueue/ViewQueueArt.html">– ViewQueueArt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewRadio.html">ViewRadio</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewRotatingRecord.html">ViewRotatingRecord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSearchButton.html">ViewSearchButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSettings.html">ViewSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSheet.html">ViewSheet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSidebar.html">ViewSidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSmartLists.html">ViewSmartLists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSongs.html">ViewSongs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSongsList.html">ViewSongsList</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSongsList/ViewSongsListRow.html">– ViewSongsListRow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSongsList/LabelStyleSongs.html">– LabelStyleSongs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSongsList/ViewModifierSongsDisc.html">– ViewModifierSongsDisc</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Player</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">Player</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Player model</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Constants%20and%20Variables"></a>
+                <a name="//apple_ref/swift/Section/Constants and Variables" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Constants%20and%20Variables"></a>
+                  <h3 class="section-name"><span>Constants and Variables</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC6sharedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC6sharedACvpZ">shared</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The shared instance of this Player class</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt">Player</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC10kodiClientAA04KodiD0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/kodiClient" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC10kodiClientAA04KodiD0Cvp">kodiClient</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The shared client class</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">kodiClient</span><span class="p">:</span> <span class="kt"><a href="../Classes/KodiClient.html">KodiClient</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC4itemAC0B4ItemVvp"></a>
+                    <a name="//apple_ref/swift/Property/item" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC4itemAC0B4ItemVvp">item</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current item in the player</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="k">var</span> <span class="nv">item</span><span class="p">:</span> <span class="kt">Player</span><span class="o">.</span><span class="kt"><a href="../Classes/Player/PlayerItem.html">PlayerItem</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC10propertiesAC10PropertiesVvp"></a>
+                    <a name="//apple_ref/swift/Property/properties" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC10propertiesAC10PropertiesVvp">properties</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The properties of the player</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="k">var</span> <span class="nv">properties</span><span class="p">:</span> <span class="kt">Player</span><span class="o">.</span><span class="kt"><a href="../Classes/Player/Properties.html">Properties</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerCACyc33_43B5F4C5BD9FF6C8B849C84343A5895ALlfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerCACyc33_43B5F4C5BD9FF6C8B849C84343A5895ALlfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Init the player class</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC5titleSSvp"></a>
+                    <a name="//apple_ref/swift/Property/title" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC5titleSSvp">title</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The song title of the player item</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC6artistSSvp"></a>
+                    <a name="//apple_ref/swift/Property/artist" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC6artistSSvp">artist</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The artist name of the player item</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">artist</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/sendSongAndPlay%20%28play%20one%20song%20from%20an%20album%20list%29"></a>
+                <a name="//apple_ref/swift/Section/sendSongAndPlay (play one song from an album list)" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/sendSongAndPlay%20%28play%20one%20song%20from%20an%20album%20list%29"></a>
+                  <h3 class="section-name"><span>sendSongAndPlay (play one song from an album list)</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC15sendSongAndPlay4songyAA7LibraryC0D4ItemV_tF"></a>
+                    <a name="//apple_ref/swift/Method/sendSongAndPlay(song:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC15sendSongAndPlay4songyAA7LibraryC0D4ItemV_tF">sendSongAndPlay(song:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>There are a few senario&rsquo;s</p>
+
+<ul>
+<li>Song is already in the queue -&gt; Jump to the song</li>
+<li>It&rsquo;s a new song, open it in a new playlist</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sendSongAndPlay</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/Library.html">Library</a></span><span class="o">.</span><span class="kt">SongItem</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/sendSongsAndPlay"></a>
+                <a name="//apple_ref/swift/Section/sendSongsAndPlay" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/sendSongsAndPlay"></a>
+                  <h3 class="section-name"><span>sendSongsAndPlay</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC16sendSongsAndPlay5songs8shuffledySayAA7LibraryC8SongItemVG_SbtF"></a>
+                    <a name="//apple_ref/swift/Method/sendSongsAndPlay(songs:shuffled:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC16sendSongsAndPlay5songs8shuffledySayAA7LibraryC8SongItemVG_SbtF">sendSongsAndPlay(songs:<wbr>shuffled:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+<ul>
+<li>Stop the player</li>
+<li>Clear the playlist</li>
+<li>Fill the playlist with songs</li>
+<li>Start the player</li>
+<li>Update the playlist viewer</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sendSongsAndPlay</span><span class="p">(</span><span class="nv">songs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/Library.html">Library</a></span><span class="o">.</span><span class="kt">SongItem</span><span class="p">],</span> <span class="nv">shuffled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Actions"></a>
+                <a name="//apple_ref/swift/Section/Actions" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Actions"></a>
+                  <h3 class="section-name"><span>Actions</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC10sendAction6method7queueID04songG04file8shuffledyAA6MethodO_S2iSSSbtF"></a>
+                    <a name="//apple_ref/swift/Method/sendAction(method:queueID:songID:file:shuffled:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC10sendAction6method7queueID04songG04file8shuffledyAA6MethodO_S2iSSSbtF">sendAction(method:<wbr>queueID:<wbr>songID:<wbr>file:<wbr>shuffled:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Send a player action to the host</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sendAction</span><span class="p">(</span>
+    <span class="nv">method</span><span class="p">:</span> <span class="kt"><a href="../Enums/Method.html">Method</a></span><span class="p">,</span>
+    <span class="nv">queueID</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nv">songID</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nv">file</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span>
+    <span class="nv">shuffled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC0B6ActionV"></a>
+                    <a name="//apple_ref/swift/Struct/PlayerAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC0B6ActionV">PlayerAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Send an action to the host (custom Kodi APi)</p>
+
+                        <a href="../Classes/Player/PlayerAction.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">PlayerAction</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/KodiAPI.html">KodiAPI</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Item"></a>
+                <a name="//apple_ref/swift/Section/Item" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Item"></a>
+                  <h3 class="section-name"><span>Item</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC7getItemyyYaF"></a>
+                    <a name="//apple_ref/swift/Method/getItem()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC7getItemyyYaF">getItem()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the currently played item</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getItem</span><span class="p">()</span> <span class="k">async</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC0B7GetItemV"></a>
+                    <a name="//apple_ref/swift/Struct/PlayerGetItem" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC0B7GetItemV">PlayerGetItem</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves the currently played item (Kodi API)</p>
+
+                        <a href="../Classes/Player/PlayerGetItem.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">PlayerGetItem</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/KodiAPI.html">KodiAPI</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC0B4ItemV"></a>
+                    <a name="//apple_ref/swift/Struct/PlayerItem" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC0B4ItemV">PlayerItem</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The struct for the player item</p>
+
+                        <a href="../Classes/Player/PlayerItem.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">PlayerItem</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/swift/Section/Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Properties"></a>
+                  <h3 class="section-name"><span>Properties</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC13getPropertiesyyYaF"></a>
+                    <a name="//apple_ref/swift/Method/getProperties()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC13getPropertiesyyYaF">getProperties()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the properties of the player</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getProperties</span><span class="p">()</span> <span class="k">async</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC0B13GetPropertiesV"></a>
+                    <a name="//apple_ref/swift/Struct/PlayerGetProperties" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC0B13GetPropertiesV">PlayerGetProperties</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves the properties of the player (Kodi API)</p>
+
+                        <a href="../Classes/Player/PlayerGetProperties.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">PlayerGetProperties</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/KodiAPI.html">KodiAPI</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC10PropertiesV"></a>
+                    <a name="//apple_ref/swift/Struct/Properties" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC10PropertiesV">Properties</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The struct for the player properties</p>
+
+                        <a href="../Classes/Player/Properties.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Properties</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/sendPlayerPlayPause%20%28No%20response%20needed%29"></a>
+                <a name="//apple_ref/swift/Section/sendPlayerPlayPause (No response needed)" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/sendPlayerPlayPause%20%28No%20response%20needed%29"></a>
+                  <h3 class="section-name"><span>sendPlayerPlayPause (No response needed)</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC04sendB9PlayPause5queueySayAA7LibraryC8SongItemVG_tF"></a>
+                    <a name="//apple_ref/swift/Method/sendPlayerPlayPause(queue:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC04sendB9PlayPause5queueySayAA7LibraryC8SongItemVG_tF">sendPlayerPlayPause(queue:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>There are a few senario&rsquo;s</p>
+
+<ul>
+<li>Playlist is paused: - &gt; do play/pause</li>
+<li>Playlist is playing: -&gt; do play/pause</li>
+<li>Playlist is stopped: -&gt; do play playlist</li>
+<li>Playlist is empty: - &gt; disable button</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">sendPlayerPlayPause</span><span class="p">(</span><span class="nv">queue</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/Library.html">Library</a></span><span class="o">.</span><span class="kt">SongItem</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Radio%20stations%20%28extension%29"></a>
+                <a name="//apple_ref/swift/Section/Radio stations (extension)" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Radio%20stations%20%28extension%29"></a>
+                  <h3 class="section-name"><span>Radio stations (extension)</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6PlayerC9playRadio6streamySS_tF"></a>
+                    <a name="//apple_ref/swift/Method/playRadio(stream:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6PlayerC9playRadio6streamySS_tF">playRadio(stream:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Play a radio station</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">playRadio</span><span class="p">(</span><span class="nv">stream</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stream</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the audio stream to play</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-10-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

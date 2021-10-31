@@ -9,7 +9,7 @@ import Foundation
 
 extension Library {
     
-    // MARK: - Albums
+    // MARK: Albums
     
     /// A struct will all album related items
     struct Albums {
@@ -19,9 +19,9 @@ extension Library {
         var selected: AlbumItem?
     }
     
-    /// get a list of all albums
+    /// Get all albums from the Kodi host
     /// - Parameter reload: Force a reload or else it will try to load it from the  cache
-    /// - Returns: True of loaded; else false
+    /// - Returns: True when loaded; else false
     func getAlbums(reload: Bool = false) async -> Bool {
         if !reload, let result = Cache.get(key: "MyAlbums", as: [AlbumItem].self) {
             albums.all = result

@@ -9,7 +9,7 @@ import Foundation
 
 extension Library {
     
-    // MARK: - Playlists
+    // MARK: Playlists
     
     /// A struct will all genre related items
     struct Playlists {
@@ -19,11 +19,11 @@ extension Library {
         var songs: [SongItem] = []
     }
     
-    /// Get a list of playlist files
+    /// Get all playlists from the Kodi host
+    /// - Returns: True when loaded; else false
     func getPlaylists() async -> Bool {
         let request = FilesGetDirectory(directory: "special://musicplaylists")
         do {
-            let result = try await KodiClient.shared.sendRequest(request: request)
             var listItems: [SmartListItem] = []
             /// Random songs
             listItems.append(SmartListItem(
@@ -39,6 +39,7 @@ extension Library {
                 icon: "minus.diamond",
                 media: .neverPlayed
             ))
+            let result = try await KodiClient.shared.sendRequest(request: request)
             for playlist in result.files {
                 listItems.append(SmartListItem(
                     title: playlist.label,

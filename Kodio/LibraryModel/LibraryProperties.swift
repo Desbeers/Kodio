@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-// MARK: - Properties (extension)
-
 extension Library {
+    
+    // MARK: Properties
     
     /// Get the date/time of the last audio database update
     /// - Parameter cache: store in the local cache or not
-    
     func getLastUpdate(cache: Bool = false) async {
         let request = AudioLibraryGetProperties()
         

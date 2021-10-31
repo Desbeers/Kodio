@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Limits Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../../../../js/jquery.min.js" defer></script>
+    <script src="../../../../js/jazzy.js" defer></script>
+    
+    <script src="../../../../js/lunr.min.js" defer></script>
+    <script src="../../../../js/typeahead.jquery.js" defer></script>
+    <script src="../../../../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Limits" class="dashAnchor"></a>
+    <a title="Limits Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../../../../index.html">Kodio</a> (72% documented)</p>
+        <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../../../../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
+          <form role="search" action="../../../../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../../../../index.html">Kodio Reference</a>
+        <img id="carat" src="../../../../img/carat.png" alt=""/>
+        Limits Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../../../../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../../../Classes/AppDelegate.html">AppDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/AppState.html">AppState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/AppState/SheetTypes.html">– SheetTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/AppState/LoadingState.html">– LoadingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/AppState/AlertItem.html">– AlertItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/AppState/UserInterface.html">– UserInterface</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiClient.html">KodiClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiClient/BaseParameters.html">– BaseParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiClient/BaseResponse.html">– BaseResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiClient/APIError.html">– APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiClient/NotificationItem.html">– NotificationItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiHost.html">KodiHost</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiHost/SystemAction.html">– SystemAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiHost/ApplicationGetProperties.html">– ApplicationGetProperties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiHost/Properties.html">– Properties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiHost/ReplayGain.html">– ReplayGain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiHost/SettingsSetSettingValue.html">– SettingsSetSettingValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiHost/SettingID.html">– SettingID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/KodiHost/SetVolume.html">– SetVolume</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library.html">Library</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/MediaType.html">– MediaType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/SortFields.html">– SortFields</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/SortMethod.html">– SortMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/Albums.html">– Albums</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/AudioLibraryGetAlbums.html">– AudioLibraryGetAlbums</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/AlbumItem.html">– AlbumItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/Artists.html">– Artists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/AudioLibraryGetArtists.html">– AudioLibraryGetArtists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/ArtistItem.html">– ArtistItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/FilesGetDirectory.html">– FilesGetDirectory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/FileItem.html">– FileItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/FilteredContent.html">– FilteredContent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/Genres.html">– Genres</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/AudioLibraryGetGenres.html">– AudioLibraryGetGenres</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/GenreItem.html">– GenreItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/Playlists.html">– Playlists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/AudioLibraryGetProperties.html">– AudioLibraryGetProperties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/Properties.html">– Properties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/RadioItem.html">– RadioItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/Search.html">– Search</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/SmartSearchMatcher.html">– SmartSearchMatcher</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/SearchSuggestionItem.html">– SearchSuggestionItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/SmartLists.html">– SmartLists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/SmartListItem.html">– SmartListItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/Songs.html">– Songs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/AudioLibraryGetSongs.html">– AudioLibraryGetSongs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/AudioLibraryGetSongIDs.html">– AudioLibraryGetSongIDs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/AudioLibrarySetSongDetails.html">– AudioLibrarySetSongDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/SongItem.html">– SongItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Library/SongIdItem.html">– SongIdItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Player.html">Player</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Player/PlayerAction.html">– PlayerAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Player/PlayerGetItem.html">– PlayerGetItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Player/PlayerItem.html">– PlayerItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Player/PlayerGetProperties.html">– PlayerGetProperties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Player/Properties.html">– Properties</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Queue.html">Queue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Queue/QueueAction.html">– QueueAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Queue/QueueGetItems.html">– QueueGetItems</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/Queue/QueueItem.html">– QueueItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/SearchObserver.html">SearchObserver</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/SplitViewController.html">SplitViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Classes/WebSocket.html">WebSocket</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../../../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../../../Enums/Method.html">Method</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../../../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../../../Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Extensions/NSTableView.html">NSTableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Extensions/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../../../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../../../Functions.html#/s:5Kodio6loggeryySSF">logger(_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../../../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../../../Protocols/KodiAPI.html">KodiAPI</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Protocols/LibraryItem.html">LibraryItem</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../../../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ButtonStyleList.html">ButtonStyleList</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ButtonStyleList/ViewButtonStyleList.html">– ViewButtonStyleList</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ButtonStylePlayer.html">ButtonStylePlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ButtonStylePlayer/ViewButtonStylePlayer.html">– ViewButtonStylePlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ButtonStyleSidebar.html">ButtonStyleSidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ButtonStyleSidebar/ViewButtonStyleSidebar.html">– ViewButtonStyleSidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/Cache.html">Cache</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/FormattedMarkdown.html">FormattedMarkdown</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/FormattedMarkdown/MarkdownLine.html">– MarkdownLine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/FormattedMarkdown/MarkdownType.html">– MarkdownType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/HostItem.html">HostItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/Hosts.html">Hosts</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/KodioApp.html">KodioApp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/LabelStyleSidebar.html">LabelStyleSidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/RemoteArt.html">RemoteArt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/SidebarButtons.html">SidebarButtons</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/SplitView.html">SplitView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewAbout.html">ViewAbout</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewAlbums.html">ViewAlbums</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewAppStateStatus.html">ViewAppStateStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewArtAlbum.html">ViewArtAlbum</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewArtArtist.html">ViewArtArtist</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewArtPlayer.html">ViewArtPlayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewArtSong.html">ViewArtSong</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewArtists.html">ViewArtists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewContent.html">ViewContent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewDetails.html">ViewDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewDetails/ViewDetailsMedia.html">– ViewDetailsMedia</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewDetails/ViewDetailsArtwork.html">– ViewDetailsArtwork</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewDetails/ViewDetailsStatistics.html">– ViewDetailsStatistics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewDetails/LabelStyleDetailsStatistics.html">– LabelStyleDetailsStatistics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewDropShadow.html">ViewDropShadow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewGenres.html">ViewGenres</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewHelp.html">ViewHelp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewHostsEdit.html">ViewHostsEdit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewHostsEdit/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewHostsEdit/ViewHostsEditDetails.html">– ViewHostsEditDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewHostsEdit/ViewHostsEditFooter.html">– ViewHostsEditFooter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewHostsEdit/ViewModifierForm.html">– ViewModifierForm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewHostsMenu.html">ViewHostsMenu</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewLibrary.html">ViewLibrary</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewLibraryBottom.html">ViewLibraryBottom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewLibraryTop.html">ViewLibraryTop</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewListHeader.html">ViewListHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewModifierSearch.html">ViewModifierSearch</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewModifierToolbar.html">ViewModifierToolbar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewPlayerButtons.html">ViewPlayerButtons</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewPlayerOptions.html">ViewPlayerOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewPlayerQueueButton.html">ViewPlayerQueueButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewPlayerVolume.html">ViewPlayerVolume</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewPlaylist.html">ViewPlaylist</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewQueue.html">ViewQueue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewQueue/ViewQueueArt.html">– ViewQueueArt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewRadio.html">ViewRadio</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewRotatingRecord.html">ViewRotatingRecord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSearchButton.html">ViewSearchButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSettings.html">ViewSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSheet.html">ViewSheet</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSidebar.html">ViewSidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSmartLists.html">ViewSmartLists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSongs.html">ViewSongs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSongsList.html">ViewSongsList</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSongsList/ViewSongsListRow.html">– ViewSongsListRow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSongsList/LabelStyleSongs.html">– LabelStyleSongs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../../Structs/ViewSongsList/ViewModifierSongsDisc.html">– ViewModifierSongsDisc</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Limits</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Limits</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV6LimitsV5startSivp"></a>
+                    <a name="//apple_ref/swift/Property/start" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV6LimitsV5startSivp">start</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">start</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV6LimitsV3endSivp"></a>
+                    <a name="//apple_ref/swift/Property/end" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV6LimitsV3endSivp">end</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">end</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-10-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

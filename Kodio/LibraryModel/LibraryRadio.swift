@@ -7,13 +7,11 @@
 
 import Foundation
 
-// MARK: - Radio stations (extension)
-
 extension Library {
 
-    /// Get the (currently hardcoded) list of radio stations
-    /// - Returns: Struct of menu items
-
+    // MARK: Radio stations
+    
+    /// Set the (currently hardcoded) list of radio stations
     func getRadioStations() {
         var list = [RadioItem]()
         list.append(RadioItem(label: "Radio 1", thumbnail: "Radio1", stream: "https://icecast.omroep.nl/radio1-bb-aac"))
