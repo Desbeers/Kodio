@@ -25,13 +25,13 @@ struct ViewAlbums: View {
                             }, label: {
                                 row(album: album)
                             })
-                            .buttonStyle(ButtonStyleList(type: .albums, selected: album == library.selectedAlbum ? true: false))
+                            .buttonStyle(ButtonStyleList(type: .album, selected: album == library.albums.selected ? true: false))
                             .id(album.albumID)
                     }
                 }
             }
             /// Scroll to the top when selecting a new smart item
-            .onChange(of: library.selectedArtist) { _ in
+            .onChange(of: library.artists.selected) { _ in
                 withAnimation(.easeInOut(duration: 1)) {
                     proxy.scrollTo("AlbumsHeader", anchor: .center)
                 }

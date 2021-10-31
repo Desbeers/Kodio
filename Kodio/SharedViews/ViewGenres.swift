@@ -23,7 +23,7 @@ struct ViewGenres: View {
                             }, label: {
                                 row(genre: genre)
                             })
-                            .buttonStyle(ButtonStyleList(type: .genres, selected: genre == library.selectedGenre ? true: false))
+                            .buttonStyle(ButtonStyleList(type: .genre, selected: genre == library.genres.selected ? true: false))
                     }
                 }
                 /// Buttons have additional .traling padding for the scrollbar

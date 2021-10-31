@@ -54,7 +54,7 @@ struct Hosts {
         }
         self.save(hosts: newHostsList)
         KodiClient.shared.hosts = newHostsList
-        Library.shared.reset()
+        Library.shared.resetLibrary()
         KodiClient.shared.selectedHost = selected
     }
 }

@@ -35,7 +35,7 @@ extension ViewSongs {
             HStack {
                 Button(
                     action: {
-                        KodiHost.shared.setReplayGain(mode: library.selectedAlbum == nil ? .track : .album)
+                        KodiHost.shared.setReplayGain(mode: library.albums.selected == nil ? .track : .album)
                         player.sendSongsAndPlay(songs: library.filteredContent.songs)
                     },
                     label: {
@@ -44,7 +44,7 @@ extension ViewSongs {
                 )
                 Button(
                     action: {
-                        KodiHost.shared.setReplayGain(mode: library.selectedAlbum == nil ? .track : .album)
+                        KodiHost.shared.setReplayGain(mode: library.albums.selected == nil ? .track : .album)
                         player.sendSongsAndPlay(songs: library.filteredContent.songs, shuffled: true)
                     },
                     label: {

@@ -139,11 +139,11 @@ private extension ButtonStyleList {
         }
         private func buttonSaturation(media: Library.MediaType) -> Double {
             switch media {
-            case .albums:
+            case .album:
                 return 0.4
-            case .artists:
+            case .artist:
                 return 0.25
-            case .genres:
+            case .genre:
                 return 0.1
             default:
                 return 1.0

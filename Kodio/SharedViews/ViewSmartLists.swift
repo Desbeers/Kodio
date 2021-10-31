@@ -15,7 +15,7 @@ struct ViewSmartLists: View {
     /// The view
     var body: some View {
         Section(header: ViewAppStateStatus()) {
-            ForEach(library.allSmartLists) { list in
+            ForEach(library.smartLists.all) { list in
                 Button(
                     action: {
                         library.toggleSmartList(smartList: list)
@@ -24,8 +24,8 @@ struct ViewSmartLists: View {
                         Label(list.title, systemImage: list.icon)
                     }
                 )
-                    .disabled(list == library.selectedSmartList)
-                    .animation(nil, value: library.media)
+                    .disabled(list == library.smartLists.selected)
+                    .animation(nil, value: library.filter)
             }
             ViewSearchButton()
         }

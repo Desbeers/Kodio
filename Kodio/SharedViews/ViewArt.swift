@@ -62,7 +62,7 @@ struct ViewArtPlayer: View {
     /// The view
     var body: some View {
         /// Songs
-        if let song = Library.shared.allSongs.first(where: { $0.songID == item.songID }) {
+        if let song = Library.shared.songs.all.first(where: { $0.songID == item.songID }) {
             RemoteArt(url: song.thumbnail, failure: Image(systemName: song.icon))
             /// Radio station
         } else if let stream = Library.shared.radioStations.first(where: { $0.stream == item.mediapath }) {

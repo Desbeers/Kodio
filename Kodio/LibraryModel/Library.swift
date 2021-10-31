@@ -19,89 +19,65 @@ class Library: ObservableObject {
     var anyCancellable = Set<AnyCancellable>()
     /// The shared client class
     let kodiClient = KodiClient.shared
-    /// The shared search observer
-    var searchObserver = SearchObserver.shared
-    /// The search suggestions
-    var searchSuggestions: [SearchSuggestionItem] = []
-    /// The search query
-    var query = "" {
-        didSet {
-            search()
-            makeSearchSuggestions(query: query)
-        }
-    }
     /// The current library filter
-    var media: MediaType = .albumArtists
-    /// Library state
+    var filter: MediaType = .albumArtists
+    /// The status of the library
     var status = Status() {
         didSet {
-            if status.all, AppState.shared.loadingState != .loaded {
-                logger("Library is loaded")
-                DispatchQueue.main.async {
-                    AppState.shared.loadingState = .loaded
-                }
-            }
+            checkStatus(status: status)
         }
     }
     
+    /// An array containing all artist related items
+    var search = Search()
+    
+    /// The library filtered by selection of smart list, genre, artist and/or song
     @Published var filteredContent = FilteredContent()
-    
-    struct FilteredContent: Equatable {
-        var genres: [GenreItem] = []
-        var artists: [ArtistItem] = []
-        var albums: [AlbumItem] = []
-        var songs: [SongItem] = []
-    }
 
-    var allGenres: [GenreItem] = []
-    var selectedGenre: GenreItem?
-    
-    var allArtists: [ArtistItem] = []
-    var selectedArtist: ArtistItem?
-    
-    var allAlbums: [AlbumItem] = []
-    var selectedAlbum: AlbumItem?
-    
-    var allSongs: [SongItem] = []
-    var songListID = UUID().uuidString
+    /// An array containing all artist related items
+    var artists = Artists()
 
-    var randomSongs: [SongItem] = []
-    var neverPlayedSongs: [SongItem] = []
-    var mostPlayedSongs: [SongItem] = []
-    var recentlyPlayedSongs: [SongItem] = []
+    /// An array containing all album related items
+    var albums = Albums()
     
-    var allSmartLists = [SmartListItem]()
-    var selectedSmartList = SmartListItem()
+    /// An array containing all song related items
+    var songs = Songs()
     
-    var allPlaylists: [SmartListItem] = []
-    var playlistSongs: [SongItem] = []
+    /// An array containing all genre related items
+    var genres = Genres()
+
+    /// An array containing all smart list related items
+    var smartLists = SmartLists()
     
+    /// An array containing all playlist related items
+    var playlists = Playlists()
+    
+    /// An array with all radio stations
     var radioStations: [RadioItem] = []
     
     // MARK: Init
     
     private init() {
         /// Search observer
-        searchObserver.objectWillChange.sink { [self] in
+        search.observer.objectWillChange.sink { [self] in
             DispatchQueue.main.async {
-                if searchObserver.query != query {
-                    query = searchObserver.query
+                if search.observer.query != search.query {
+                    search.query = search.observer.query
+                    searchLibrary()
+                    makeSearchSuggestions()
                 }
             }
         }.store(in: &anyCancellable)
     }
 }
 
-// MARK: - Get library (extension)
-
 extension Library {
-        
-    /// get all music items from the library
-    ///
-    /// - Parameters:
-    ///     - reload: Bool; force a reload or else it will try to load it from the  cache
-    /// - Returns: It will update the KodiClient variables
+ 
+    // MARK: - Loading library
     
+    /// Get all music items from the library
+    /// - Parameter reload: Bool; force a reload or else it will try to load it from the  cache
+    /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
         getSmartLists()
         getRadioStations()
@@ -134,135 +110,101 @@ extension Library {
             }
         }
     }
-}
-
-// MARK: Status of library (extension)
-
-extension Library {
     
-    /// Reset library to default
+    /// Check the loading status
+    /// - Parameter status: The status enum that was set
+    func checkStatus(status: Status) {
+        if status.all, AppState.shared.loadingState != .loaded {
+            logger("Library is loaded")
+            DispatchQueue.main.async {
+                AppState.shared.loadingState = .loaded
+            }
+        }
+    }
     
-    func reset() {
+    /// Reset the  library to its initial state
+    func resetLibrary() {
         status.reset()
         AppState.shared.loadingState = .none
         filteredContent = Library.FilteredContent()
-        allPlaylists = []
-        allSmartLists = []
+        playlists.all = []
+        smartLists.all = []
         radioStations = []
         Player.shared.properties = Player.Properties()
         Player.shared.item = Player.PlayerItem()
     }
 
     /// The loading states of the library items
-    
     struct Status {
-        /// Check if all items are loaded
+        /// Check if all media items are loaded
         var all: Bool {
             if artists, albums, songs, smartItems, genres, playlists {
                 return true
             }
             return false
         }
+        /// Loading state of the artists
         var artists: Bool = false
+        /// Loading state of the albums
         var albums: Bool = false
+        /// Loading state of the songs
         var songs: Bool = false
-        var smartItems: Bool = false
-        var playlists: Bool = false
+        /// Loading state of the genres
         var genres: Bool = false
+        /// Loading state of the smart items
+        var smartItems: Bool = false
+        /// Loading state of the playlists
+        var playlists: Bool = false
+        /// Loading state of the playing queue
         var queue: Bool = false
+        /// Check if the library is up to date
         var upToDate: Bool = false
-        /// Function to reset all vars to initial value
+        /// Function to reset all states to initial value
         mutating func reset() {
             self = Status()
         }
     }
-}
 
-// MARK: Media type (extension)
-
-extension Library {
-    
     /// The types of media in the library
-    
     enum MediaType: String {
+        /// An ``ArtistItem``
+        case artist = "Artists"
+        /// An ``AlbumItem``
+        case album = "Albums"
+        /// A ``SongItem``
+        case song = "Songs"
+        /// An ``GenreItem``
+        case genre = "Genres"
+        /// An ``SmartListItem`` for  songs by album artists
         case albumArtists = "Album artists"
-        case artists = "Artist"
-        case albums = "Album"
-        case songs
-        case genres
-        case playlist
-        case random = "Random songs"
-        case neverPlayed = "Never played"
-        case favorites = "Favorites"
-        case queue = "Playing queue"
-        case search = "Search library"
+        /// A ``SmartListItem`` for compilations
         case compilations = "Compilations"
+        /// A ``SmartListItem`` for random songs
+        case random = "Random songs"
+        /// A ``SmartListItem`` for never played songs
+        case neverPlayed = "Never played"
+        /// A ``SmartListItem`` for  favorite songs
+        case favorites = "Favorites"
+        /// A ``SmartListItem`` for the playing queue
+        case queue = "Playing queue"
+        /// A ``SmartListItem`` for the search results
+        case search = "Search library"
+        /// A ``SmartListItem`` for most played songs
         case mostPlayed = "Most played"
+        /// A ``SmartListItem`` for recently added songs
         case recentlyAdded = "Recently added"
+        /// A ``SmartListItem`` for recently played songs
         case recentlyPlayed = "Recently played"
-    }
-    
-    /// Set the library filter
-    
-    func setFilter<T: LibraryItem>(item: T?) {
-        if let selection = item?.media {
-            logger("Selected '\(selection.rawValue)'")
-            media = selection
-        } else {
-            logger("Deselected something")
-            /// Find the the most fillting selection
-            if let album = selectedAlbum?.media {
-                media = album
-            } else if let artist = selectedArtist?.media {
-                media = artist
-            } else if let genre = selectedGenre?.media {
-                media = genre
-            } else {
-                media = selectedSmartList.media
-            }
-        }
-    }
-    
-    /// Filter all media (genres, artists, albums and songs)
-    
-    func filterAllMedia() {
-        Task {
-            /// Filter songs first; all the rest is based on it.
-            let songs = await filterSongs()
-            /// Now the rest
-            async let albums = filterAlbums(songList: songs)
-            async let artists = filterArtists(songList: songs)
-            async let genres = filterGenres(songList: songs)
-            /// Update the UI
-            await updateLibraryView(
-                content:
-                    FilteredContent(
-                        genres: await genres,
-                        artists: await artists,
-                        albums: await albums,
-                        songs: songs
-                    )
-            )
-        }
-    }
-    
-    func updateLibraryView(content: FilteredContent) async {
-        logger("Update library UI")
-        Task { @MainActor in
-            filteredContent = FilteredContent(
-                genres: content.genres,
-                artists: content.artists,
-                albums: content.albums,
-                songs: content.songs)
-        }
+        /// A ``SmartListItem`` for playlists
+        case playlist = "Playlist"
     }
 }
 
-// MARK: Sorting of media
-
 extension Library {
+ 
+    // MARK: Sorting of media
     
-    /// The sort fields for JSON creation
+    /// The sort fields for JSON requests
     struct SortFields: Encodable {
         /// The method
         var method: String = ""
@@ -270,7 +212,7 @@ extension Library {
         var order: String = ""
     }
 
-    /// The available methods
+    /// The sort methods for JSON requests
     enum SortMethod: String {
         /// Order descending
         case descending = "descending"

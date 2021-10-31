@@ -11,6 +11,14 @@ extension Library {
     
     // MARK: - Smart lists
     
+    /// A struct will all smart list related items
+    struct SmartLists {
+        /// A list containng all smart lists
+        var all = [SmartListItem]()
+        /// The selected smart list in the UI
+        var selected = SmartListItem()
+    }
+    
     /// Get a list of recently played and recently added songs
     /// - Returns: true when loaded of false if the is an error
     func getSmartItems() async -> Bool {
@@ -19,13 +27,13 @@ extension Library {
         do {
             /// Recently played
             async let recent = KodiClient.shared.sendRequest(request: recent)
-            recentlyPlayedSongs = songIDtoSongItem(songID: try await recent.songs)
+            songs.recentlyPlayed = songIDtoSongItem(songID: try await recent.songs)
             /// Most played
             async let most = KodiClient.shared.sendRequest(request: most)
-            mostPlayedSongs = songIDtoSongItem(songID: try await most.songs)
+            songs.mostPlayed = songIDtoSongItem(songID: try await most.songs)
             logger("Smart items loaded")
             /// If this item is selected; refresh the UI
-            if media == .recentlyPlayed || media == .mostPlayed {
+            if filter == .recentlyPlayed || filter == .mostPlayed {
                 filterAllMedia()
             }
             return true
@@ -41,7 +49,7 @@ extension Library {
     private func songIDtoSongItem(songID: [SongIdItem]) -> [SongItem] {
         var songList = [SongItem]()
         for song in songID {
-            if let item = allSongs.first(where: { $0.songID == song.songID }) {
+            if let item = songs.all.first(where: { $0.songID == song.songID }) {
                 songList.append(item)
             }
         }
@@ -51,7 +59,7 @@ extension Library {
     /// Select or deselect a smart list and filter the library
     /// - Parameter smartList: a ``SmartListItem`` struct
     func toggleSmartList(smartList: SmartListItem) {
-        selectedSmartList = smartList
+        smartLists.selected = smartList
         switch smartList.media {
         case .playlist:
             let request = FilesGetDirectory(directory: smartList.file)
@@ -60,11 +68,11 @@ extension Library {
                     let result = try await KodiClient.shared.sendRequest(request: request)
                     var songList = [SongItem]()
                     for song in result.files {
-                        if let item = allSongs.first(where: { $0.songID == song.songID }) {
+                        if let item = songs.all.first(where: { $0.songID == song.songID }) {
                             songList.append(item)
                         }
                     }
-                    playlistSongs = songList
+                    playlists.songs = songList
                     /// Reload lists
                     smartReload()
                 } catch {
@@ -72,7 +80,7 @@ extension Library {
                 }
             }
         case .random:
-            randomSongs = Array(allSongs
+            songs.random = Array(songs.all
                                     .filter {!$0.title.contains("(Live)")}
                                     .filter {!$0.genre.contains("Musical")}
                                     .filter {!$0.genre.contains("Cabaret")}
@@ -80,7 +88,7 @@ extension Library {
             /// Reload lists
             smartReload()
         case .neverPlayed:
-            neverPlayedSongs = Array(allSongs
+            songs.neverPlayed = Array(songs.all
                                         .filter {$0.playCount == 0}
                                         .shuffled().prefix(100))
             /// Reload lists
@@ -128,9 +136,9 @@ extension Library {
                                   icon: "music.note.list",
                                   media: .queue
                                  ))
-        allSmartLists = list
+        smartLists.all = list
         /// Select the first item
-        selectedSmartList = list.first!
+        smartLists.selected = list.first!
     }
     
     /// The struct for a smart list item
@@ -154,11 +162,11 @@ extension Library {
     /// Reload the library when changing a smart filter
     func smartReload() {
         /// Reset selection
-        selectedGenre = nil
-        selectedArtist = nil
-        selectedAlbum = nil
+        genres.selected = nil
+        artists.selected = nil
+        albums.selected = nil
         /// Set the filter
-        setFilter(item: selectedSmartList)
+        setLibraryFilter(item: smartLists.selected)
         /// Reload all media
         filterAllMedia()
     }

@@ -10,24 +10,34 @@ import SwiftUI
 
 extension Library {
     
-    // MARK: - Search
+    // MARK: Search
+    
+    /// A struct will all search related items
+    struct Search {
+        /// The shared search observer
+        var observer = SearchObserver.shared
+        /// The search suggestions
+        var suggestions: [SearchSuggestionItem] = []
+        /// The search query
+        var query = ""
+    }
     
     /// Search the library
-    func search() {
-        if !query.isEmpty {
-            selectedSmartList = Library.searchButton
+    func searchLibrary() {
+        if !search.query.isEmpty {
+            smartLists.selected = Library.searchButton
             /// Reload lists
             smartReload()
         }
         /// Search is canceled
-        if !searchObserver.searchIsActive {
+        if !search.observer.searchIsActive {
             /// If search is still selected in de sidebar; reset the selection
-            if selectedSmartList.media == .search {
+            if smartLists.selected.media == .search {
                 /// Reset selection
-                selectedSmartList = allSmartLists.first!
+                smartLists.selected = smartLists.all.first!
             }
             /// Remove the suggestions
-            searchSuggestions = []
+            search.suggestions = []
             /// Reload UI to rove the search
             smartReload()
         }
@@ -42,28 +52,28 @@ extension Library {
         media: .search
     )
     
-    func makeSearchSuggestions(query: String) {
+    func makeSearchSuggestions() {
         
         var results: [SearchSuggestionItem] = []
         /// Only suggest when there is a query
-        if !query.isEmpty {
+        if !search.query.isEmpty {
             
-            let smartSearchMatcher = SmartSearchMatcher(searchString: query)
+            let smartSearchMatcher = SmartSearchMatcher(searchString: search.query)
 
-            let artistList = allArtists.filter { artists in
+            let artistList = artists.all.filter { artists in
                 if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(artists.artist) {
                         return true
                     }
                 return smartSearchMatcher.matches(artists.artist)
                 }
 
-            let songList = allSongs.filter { songs in
+            let songList = songs.all.filter { songs in
                     if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(songs.title) {
                         return true
                     }
                     return smartSearchMatcher.matches(songs.title)
             }
-            let albumList = allAlbums.filter { albums in
+            let albumList = albums.all.filter { albums in
                     if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(albums.title) {
                         return true
                     }
@@ -81,7 +91,7 @@ extension Library {
                 results.append(SearchSuggestionItem(title: song.title, subtitle: "Song by \(song.artist.first!)", suggestion: "\(song.artist.first!) \(song.album) \(song.title)", thumbnail: song.thumbnail))
             }
         }
-        searchSuggestions = results
+        search.suggestions = results
     }
     
     struct SmartSearchMatcher {

@@ -25,7 +25,7 @@ struct ViewSidebar: View {
             }
             .sidebarButtons()
         }
-        .animation(.default, value: library.media)
+        .animation(.default, value: library.filter)
         .transition(.move(edge: .leading))
     }
 }

@@ -56,8 +56,7 @@ extension KodiClient {
     // MARK: JSON stuff
     
     /// Send a POST request to Kodi
-    /// - Parameters:
-    ///     - request: A prepared JSON request
+    /// - Parameter request: A prepared JSON request
     /// - Returns: The decoded response
     func sendRequest<T: KodiAPI>(request: T) async throws -> T.Response {
         let (data, response) = try await urlSession.data(for: request.urlRequest)

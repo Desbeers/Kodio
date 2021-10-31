@@ -11,6 +11,14 @@ extension Library {
     
     // MARK: - Playlists
     
+    /// A struct will all genre related items
+    struct Playlists {
+        /// A list containing all the playlists
+        var all: [SmartListItem] = []
+        /// A list containng the songs of the selected playlist
+        var songs: [SongItem] = []
+    }
+    
     /// Get a list of playlist files
     func getPlaylists() async -> Bool {
         let request = FilesGetDirectory(directory: "special://musicplaylists")
@@ -42,7 +50,7 @@ extension Library {
                 )
             }
             logger("Playlists loaded")
-            allPlaylists = listItems
+            playlists.all = listItems
             return true
         } catch {
             print("Loading playlists failed with error: \(error)")

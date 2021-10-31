@@ -12,7 +12,7 @@ struct ViewSearchButton: View {
     @EnvironmentObject var library: Library
     /// The view
     var body: some View {
-        if !library.query.isEmpty {
+        if !library.search.query.isEmpty {
             Button(
                 action: {
                     library.toggleSmartList(smartList: Library.searchButton)
@@ -27,7 +27,7 @@ struct ViewSearchButton: View {
                     }
                 }
             )
-                .disabled(Library.searchButton == library.selectedSmartList)
+                .disabled(Library.searchButton == library.smartLists.selected)
         }
     }
 }
@@ -41,8 +41,8 @@ struct ViewModifierSearch: ViewModifier {
     func body(content: Content) -> some View {
         content
             .searchable(text: $searchObserver.searchText) {
-                if !library.searchSuggestions.isEmpty {
-                    ForEach(library.searchSuggestions) { suggestion in
+                if !library.search.suggestions.isEmpty {
+                    ForEach(library.search.suggestions) { suggestion in
                         HStack {
                             RemoteArt(url: suggestion.thumbnail)
                                 .frame(width: 30, height: 30)

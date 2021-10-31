@@ -9,20 +9,29 @@ import Foundation
 
 extension Library {
     
-    // MARK: - Genres
+    // MARK: Genres
     
-    /// Get a list with all genres
+    /// A struct will all genre related items
+    struct Genres {
+        /// All genres in the library
+        var all: [GenreItem] = []
+        /// The selected genre in the UI
+        var selected: GenreItem?
+    }
+    
+    /// Get all genres from the Kodi host
+    /// - Parameter reload: Force a reload or else it will try to load it from the  cache
+    /// - Returns: True when loaded; else false
     func getGenres(reload: Bool = false) async -> Bool {
-        self.status.genres = false
-        if !reload, let genres = Cache.get(key: "MyGenres", as: [GenreItem].self) {
-            allGenres = genres
+        if !reload, let result = Cache.get(key: "MyGenres", as: [GenreItem].self) {
+            genres.all = result
             return true
         } else {
             let request = AudioLibraryGetGenres()
             do {
                 let result = try await KodiClient.shared.sendRequest(request: request)
                 try Cache.set(key: "MyGenres", object: result.genres)
-                allGenres = result.genres
+                genres.all = result.genres
                 return true
             } catch {
                 print("Loading genres failed with error: \(error)")
@@ -32,16 +41,15 @@ extension Library {
     }
     
     /// Select or deselect a genre in the UI
-    /// - Parameters:
-    ///   - genre: The selected  ``GenreItem``
+    /// - Parameter genre: The selected  ``GenreItem``
     func toggleGenre(genre: GenreItem) {
         logger("Genre selected")
-        selectedGenre = selectedGenre == genre ? nil : genre
+        genres.selected = genres.selected == genre ? nil : genre
         /// Reset selection
-        selectedArtist = nil
-        selectedAlbum = nil
+        artists.selected = nil
+        albums.selected = nil
         /// Set the filter
-        setFilter(item: selectedGenre)
+        setLibraryFilter(item: genres.selected)
         /// Reload media
         Task {
             /// Filter songs first; all the rest is based on it.
@@ -61,15 +69,17 @@ extension Library {
             )
         }
     }
-    
-    /// Filter the library based on genre
+
+    /// Filter the genres
+    /// - Parameter songList: The current filtered list of songs
+    /// - Returns: An array of genre items
     func filterGenres(songList: [SongItem]) async -> [GenreItem] {
         /// Filter genres based on song list
         let filter = songList.map { song -> [Int] in
             return song.genreID
         }
-        let genres: [Int] = filter.flatMap { $0 }.removingDuplicates()
-        return allGenres.filter({genres.contains($0.genreID)})
+        let genreIDs: [Int] = filter.flatMap { $0 }.removingDuplicates()
+        return genres.all.filter({genreIDs.contains($0.genreID)})
     }
 
     /// Retrieve all genres (Kodi API)
@@ -98,7 +108,7 @@ extension Library {
     struct GenreItem: LibraryItem {
         var id = UUID()
         /// The filter type
-        let media: MediaType = .genres
+        let media: MediaType = .genre
         let icon: String = "music.quarternote.3"
         var genreID: Int = 0
         var label: String = ""

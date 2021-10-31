@@ -18,15 +18,15 @@ struct ViewDetails: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack {
-                    switch library.media {
-                    case .genres:
-                        ViewDetailsMedia(media: library.selectedGenre ?? Library.GenreItem())
-                    case .artists:
-                        ViewDetailsMedia(media: library.selectedArtist ?? Library.ArtistItem())
-                    case .albums:
-                        ViewDetailsMedia(media: library.selectedAlbum ?? Library.AlbumItem())
+                    switch library.filter {
+                    case .genre:
+                        ViewDetailsMedia(media: library.genres.selected ?? Library.GenreItem())
+                    case .artist:
+                        ViewDetailsMedia(media: library.artists.selected ?? Library.ArtistItem())
+                    case .album:
+                        ViewDetailsMedia(media: library.albums.selected ?? Library.AlbumItem())
                     default:
-                        ViewDetailsMedia(media: library.selectedSmartList)
+                        ViewDetailsMedia(media: library.smartLists.selected)
                     }
                 }
                 .id("DetailsHeader")
@@ -82,11 +82,11 @@ extension ViewDetails {
         @ViewBuilder
         var overlay: some View {
             switch media.media {
-            case .artists:
+            case .artist:
                 RemoteArt(url: media.fanart, failure: Image(systemName: media.icon))
                     .cornerRadius(2)
                     .padding(1)
-            case .albums:
+            case .album:
                 ZStack {
                     HStack(alignment: .top) {
                         ViewRotatingRecord()
@@ -120,11 +120,11 @@ extension ViewDetails {
         /// The view
         var body: some View {
             VStack {
-                switch library.media {
-                case .artists:
+                switch library.filter {
+                case .artist:
                     songsCount
                     albumsCount
-                case .albums:
+                case .album:
                     songsCount
                 default:
                     songsCount

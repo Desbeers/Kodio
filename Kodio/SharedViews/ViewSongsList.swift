@@ -19,7 +19,7 @@ struct ViewSongsList: View {
         List {
             ForEach(songs) { song in
                 ViewSongsListRow(song: song)
-                    .modifier(ViewModifierSongsDisc(song: song, selectedAlbum: library.selectedAlbum))
+                    .modifier(ViewModifierSongsDisc(song: song, selectedAlbum: library.albums.selected))
                     .contextMenu {
                         songActions(song: song)
                     }
@@ -33,7 +33,7 @@ struct ViewSongsList: View {
             }
         }
         /// Speed up iOS
-        .id(library.songListID)
+        .id(library.songs.listID)
         .listStyle(PlainListStyle())
     }
 }
@@ -70,7 +70,7 @@ extension ViewSongsList {
         /// - Note: when viewing an album it will be the track number, else album art
         @ViewBuilder
         var leading: some View {
-            if Library.shared.media == .albums, AppState.shared.showSheet == false {
+            if Library.shared.filter == .album, AppState.shared.showSheet == false {
                 Text(String(song.track))
                     .font(.headline)
                     .frame(width: 40, height: 40)

@@ -9,25 +9,40 @@ import Foundation
 
 extension Library {
     
-    // MARK: - Songs
+    // MARK: Songs
     
-    /// get a list of all songs
+    /// A struct will all song related items
+    struct Songs {
+        /// All songs in the library
+        var all: [SongItem] = []
+        /// A list containing random songs
+        var random: [SongItem] = []
+        /// A list containing songs that are never played
+        var neverPlayed: [SongItem] = []
+        /// A list containng the most played songs
+        var mostPlayed: [SongItem] = []
+        /// A list containng gecently played songs
+        var recentlyPlayed: [SongItem] = []
+        /// A song list ID for the SwiftUI List to speed-up rendering
+        var listID = UUID().uuidString
+    }
+    
+    /// Get all songs from the Kodi host
     /// - Parameter reload: Force a reload or else it will try to load it from the  cache
-    /// - Returns: True of loaded; else false
+    /// - Returns: True when loaded; else false
     func getSongs(reload: Bool = false) async -> Bool {
-        self.status.songs = false
-        if !reload, let songs = Cache.get(key: "MySongs", as: [SongItem].self) {
-            self.allSongs = songs
+        if !reload, let result = Cache.get(key: "MySongs", as: [SongItem].self) {
+            songs.all = result
             return true
         } else {
             let request = AudioLibraryGetSongs()
             do {
                 let result = try await KodiClient.shared.sendRequest(request: request)
-                allSongs = result.songs
+                songs.all = result.songs
                 /// Add some album fields to the songs
                 mergeSongsAndAlbums()
                 /// Save in the cache
-                try Cache.set(key: "MySongs", object: allSongs)
+                try Cache.set(key: "MySongs", object: songs.all)
                 /// Save the date of the last library scan in the cache
                 await getLastUpdate(cache: true)
                 return true
@@ -40,29 +55,29 @@ extension Library {
     
     /// Add some fields from the album to the song
     private func mergeSongsAndAlbums() {
-        for (index, song) in allSongs.enumerated() {
-            if let album = allAlbums.first(where: { $0.albumID == song.albumID }) {
+        for (index, song) in songs.all.enumerated() {
+            if let album = albums.all.first(where: { $0.albumID == song.albumID }) {
                 /// I like to know if the song is part of a compilation
                 /// and there is no property for that
-                allSongs[index].compilation = album.compilation
+                songs.all[index].compilation = album.compilation
                 /// Sometimes a song has a different thumbnail than the album
                 /// so you end-up with many, many items in the cache
-                allSongs[index].thumbnail = album.thumbnail
+                songs.all[index].thumbnail = album.thumbnail
                 /// Try to save on expensive queries
-                allSongs[index].albumArtist = album.artist
-                allSongs[index].albumArtistID = album.artistID
+                songs.all[index].albumArtist = album.artist
+                songs.all[index].albumArtistID = album.artistID
                 /// Create the search string
-                allSongs[index].searchString = "\(allSongs[index].artist.first ?? "") \(allSongs[index].album) \(allSongs[index].title)"
+                songs.all[index].searchString = "\(songs.all[index].artist.first ?? "") \(songs.all[index].album) \(songs.all[index].title)"
             }
         }
     }
     
     /// Filter the library based on songs
     func filterSongs() async -> [SongItem] {
-        var songList = allSongs
-        switch selectedSmartList.media {
+        var songList = songs.all
+        switch smartLists.selected.media {
         case .search:
-            let smartSearchMatcher = SmartSearchMatcher(searchString: query)
+            let smartSearchMatcher = SmartSearchMatcher(searchString: search.query)
             songList = songList.filter { songs in
                     if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(songs.searchString) {
                         return true
@@ -72,17 +87,17 @@ extension Library {
         case .compilations:
             songList = songList.filter {$0.compilation == true}.sorted {$0.artists < $1.artists}
         case .recentlyPlayed:
-            songList = recentlyPlayedSongs
+            songList = songs.recentlyPlayed
         case .recentlyAdded:
             songList = Array(songList.sorted {$0.dateAdded > $1.dateAdded}.prefix(100))
         case .mostPlayed:
-            songList = mostPlayedSongs
+            songList = songs.mostPlayed
         case .random:
-            songList = randomSongs
+            songList = songs.random
         case .neverPlayed:
-            songList = neverPlayedSongs
+            songList = songs.neverPlayed
         case .playlist:
-            songList = playlistSongs
+            songList = playlists.songs
         case .favorites:
             songList = songList.filter { $0.rating > 0 }.sorted {$0.rating > $1.rating}
         case .queue:
@@ -91,46 +106,46 @@ extension Library {
             songList = songList.filter {$0.compilation == false}
         }
         /// Filter on a genre if one is selected
-        if let genre = selectedGenre {
+        if let genre = genres.selected {
             songList = songList.filter { $0.genre.contains(genre.label)}
         }
         /// Filter on an artist if one is selected
-        if let artist = selectedArtist {
+        if let artist = artists.selected {
             songList = songList.filter {$0.artist.contains(artist.artist)}.sorted {$0.title < $1.title}
         }
         /// Filter on an album if one is selected
-        if let album = selectedAlbum {
+        if let album = albums.selected {
             /// Filter by disc and then by track
             songList = songList.filter { $0.albumID == album.albumID }
                 .sorted { $0.disc == $1.disc ? $0.track < $1.track : $0.disc < $1.disc }
         }
         /// Give the list a new ID
-        songListID = UUID().uuidString
+        songs.listID = UUID().uuidString
         /// Return the list of filtered songs
         return songList
     }
     
     /// Like or dislike a song
     func favoriteSongToggle(song: SongItem) {
-        if let index = allSongs.firstIndex(where: { $0.songID == song.songID }),
+        if let index = songs.all.firstIndex(where: { $0.songID == song.songID }),
            let list = filteredContent.songs.firstIndex(where: { $0.songID == song.songID }) {
             if song.rating == 0 {
-                allSongs[index].rating = 10
+                songs.all[index].rating = 10
                 filteredContent.songs[list].rating = 10
             } else {
-                allSongs[index].rating = 0
+                songs.all[index].rating = 0
                 filteredContent.songs[list].rating = 0
             }
             /// Save it on the host
-            setSongDetails(song: allSongs[index])
+            setSongDetails(song: songs.all[index])
             /// Save in the cache
             do {
-                try Cache.set(key: "MySongs", object: allSongs)
+                try Cache.set(key: "MySongs", object: songs.all)
             } catch {
                 logger("Error saving MySongs")
             }
             /// Reload library if viewing favorites
-            if media == .favorites {
+            if filter == .favorites {
                 filterAllMedia()
             }
             /// Reload queue if viewing queue
@@ -178,6 +193,43 @@ extension Library {
         }
     }
     
+    /// Retrieve filtered songs by ID (Kodi API)
+    struct AudioLibraryGetSongIDs: KodiAPI {
+        /// Arguments
+        var media: MediaType = .song
+        /// Method
+        var method = Method.audioLibraryGetSongs
+        /// The JSON creator
+        var parameters: Data {
+            var params = Params()
+            switch media {
+            case .recentlyPlayed:
+                params.sort.method = SortMethod.lastPlayed.string()
+                params.sort.order = SortMethod.descending.string()
+            case .mostPlayed:
+                params.sort.method = SortMethod.playCount.string()
+                params.sort.order = SortMethod.descending.string()
+            default:
+                params.sort.method = SortMethod.track.string()
+                params.sort.order = SortMethod.ascending.string()
+            }
+            return buildParams(params: params)
+        }
+        /// The request struct
+        struct Params: Encodable {
+            var sort = SortFields()
+            let limits = Limits()
+            struct Limits: Encodable {
+                let start = 0
+                let end = 50
+            }
+        }
+        /// The response struct
+        struct Response: Decodable {
+            let songs: [SongIdItem]
+        }
+    }
+    
     /// Update the given song with the given details (Kodi API)
     struct AudioLibrarySetSongDetails: KodiAPI {
         /// Arguments
@@ -205,7 +257,7 @@ extension Library {
     struct SongItem: LibraryItem {
         /// Make it indentifiable
         var id = UUID()
-        let media: MediaType = .songs
+        let media: MediaType = .song
         let icon: String = "music.note"
         /// The fields from above
         var album: String = ""
@@ -285,48 +337,11 @@ extension Library {
         }
     }
     
-    /// Retrieve filtered songs by ID (Kodi API)
-    struct AudioLibraryGetSongIDs: KodiAPI {
-        /// Arguments
-        var media: MediaType = .songs
-        /// Method
-        var method = Method.audioLibraryGetSongs
-        /// The JSON creator
-        var parameters: Data {
-            var params = Params()
-            switch media {
-            case .recentlyPlayed:
-                params.sort.method = SortMethod.lastPlayed.string()
-                params.sort.order = SortMethod.descending.string()
-            case .mostPlayed:
-                params.sort.method = SortMethod.playCount.string()
-                params.sort.order = SortMethod.descending.string()
-            default:
-                params.sort.method = SortMethod.track.string()
-                params.sort.order = SortMethod.ascending.string()
-            }
-            return buildParams(params: params)
-        }
-        /// The request struct
-        struct Params: Encodable {
-            var sort = SortFields()
-            let limits = Limits()
-            struct Limits: Encodable {
-                let start = 0
-                let end = 50
-            }
-        }
-        /// The response struct
-        struct Response: Decodable {
-            let songs: [SongIdItem]
-        }
-    }
-    
     /// The struct for a SongIdItem
     struct SongIdItem: LibraryItem {
         var id = UUID()
         var songID: Int
-        var media: MediaType = .songs
+        var media: MediaType = .song
         /// Not used, but required by protocol
         var title: String = ""
         var subtitle: String = ""

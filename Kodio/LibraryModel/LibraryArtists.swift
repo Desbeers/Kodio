@@ -9,23 +9,29 @@ import Foundation
 
 extension Library {
     
-    // MARK: - Artists
+    // MARK: Artists
     
-    /// get a list of all artists
-    /// - Parameters:
-    ///     - reload: Force a reload or else it will try to load it from the  cache
-    /// - Returns: True of loaded; else false
+    /// A struct will all artist related items
+    struct Artists {
+        /// All artists in the library
+        var all: [ArtistItem] = []
+        /// The selected artist in the UI
+        var selected: ArtistItem?
+    }
+    
+    /// Get all artists from the Kodi host
+    /// - Parameter reload: Force a reload or else it will try to load it from the  cache
+    /// - Returns: True when loaded; else false
     func getArtists(reload: Bool = false) async -> Bool {
-        self.status.artists = false
-        if !reload, let artists = Cache.get(key: "MyArtists", as: [ArtistItem].self) {
-            self.allArtists = artists
+        if !reload, let result = Cache.get(key: "MyArtists", as: [ArtistItem].self) {
+            artists.all = result
             return true
         } else {
             let request = AudioLibraryGetArtists()
             do {
                 let result = try await KodiClient.shared.sendRequest(request: request)
                 try Cache.set(key: "MyArtists", object: result.artists)
-                allArtists = result.artists
+                artists.all = result.artists
                 return true
             } catch {
                 print("Loading artists failed with error: \(error)")
@@ -35,15 +41,14 @@ extension Library {
     }
     
     /// Select or deselect an artist in the UI
-    /// - Parameters:
-    ///   - artist: The selected ``ArtistItem``
+    /// - Parameters artist: The selected ``ArtistItem``
     func toggleArtist(artist: ArtistItem) {
         logger("Artist selected")
-        selectedArtist = selectedArtist == artist ? nil : artist
+        artists.selected = artists.selected == artist ? nil : artist
         /// Reset selection
-        selectedAlbum = nil
+        albums.selected = nil
         /// Set the filter
-        setFilter(item: selectedArtist)
+        setLibraryFilter(item: artists.selected)
         /// Reload media
         Task {
             let songs = await filterSongs()
@@ -62,11 +67,13 @@ extension Library {
         }
     }
     
-    /// Filter the library based on artist
+    /// Filter the artists
+    /// - Parameter songList: The current filtered list of songs
+    /// - Returns: An array of artist items
     func filterArtists(songList: [SongItem]) async -> [ArtistItem] {
-        var artistList = allArtists
+        var artistList = artists.all
         /// Show only album artists when that is selected in the sidebar
-        if selectedSmartList.media == .albumArtists {
+        if smartLists.selected.media == .albumArtists {
             artistList = artistList.filter {$0.isAlbumArtist == true}
         }
         /// Filter artists based on songs list
@@ -109,7 +116,7 @@ extension Library {
         /// Make it identifiable
         var id = UUID()
         /// The filter type
-        let media: MediaType = .artists
+        let media: MediaType = .artist
         let icon: String = "music.mic"
         /// The fields from above
         var artist: String = ""

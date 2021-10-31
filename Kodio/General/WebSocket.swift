@@ -117,8 +117,7 @@ extension KodiClient {
     }
     
     /// Do an action when we receive a notification from Kodi via the WebSocket
-    /// - Parameters:
-    ///   - method: The received notification method
+    /// - Parameters method: The received notification method
     func notificationAction(method: Method) {
         switch method {
         /// Set the slider in the UI

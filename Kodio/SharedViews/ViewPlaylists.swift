@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - View description
-
 /// A view with a list of playlists
 struct ViewPlaylist: View {
     /// The object that has it all
@@ -16,7 +14,7 @@ struct ViewPlaylist: View {
     /// The view
     var body: some View {
         Section(header: Text("Playlists")) {
-            ForEach(library.allPlaylists) { playlist in
+            ForEach(library.playlists.all) { playlist in
                 Button(
                     action: {
                         library.toggleSmartList(smartList: playlist)
@@ -25,8 +23,8 @@ struct ViewPlaylist: View {
                         Label(playlist.title, systemImage: playlist.icon)
                     }
                 )
-                    .disabled(playlist == library.selectedSmartList)
-                    .animation(nil, value: library.media)
+                    .disabled(playlist == library.smartLists.selected)
+                    .animation(nil, value: library.filter)
             }
         }
     }

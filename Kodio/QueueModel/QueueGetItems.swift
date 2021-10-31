@@ -18,7 +18,7 @@ extension Queue {
             let result = try await KodiClient.shared.sendRequest(request: request)
             DispatchQueue.main.async {
                 var songList: [Library.SongItem] = []
-                let allSongs = Library.shared.allSongs
+                let allSongs = Library.shared.songs.all
                 for (index, song) in result.items.enumerated() {
                     if var item = allSongs.first(where: { $0.songID == song.songID }) {
                         item.queueID = index

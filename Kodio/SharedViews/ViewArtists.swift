@@ -27,14 +27,14 @@ struct ViewArtists: View {
                                 row(artist: artist)
                             }
                         )
-                        .buttonStyle(ButtonStyleList(type: .artists, selected: artist == library.selectedArtist ? true: false))
+                        .buttonStyle(ButtonStyleList(type: .artist, selected: artist == library.artists.selected ? true: false))
                         /// id must be a the bottom of the 'ForEach' or else it does not work
                         .id(artist.artistID)
                     }
                 }
             }
             /// Scroll to the top when selecting a new smart item
-            .onChange(of: library.selectedGenre) { _ in
+            .onChange(of: library.genres.selected) { _ in
                 withAnimation(.easeInOut(duration: 1)) {
                     proxy.scrollTo("ArtistsHeader", anchor: .center)
                 }

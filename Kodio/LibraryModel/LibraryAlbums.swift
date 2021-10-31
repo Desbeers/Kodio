@@ -11,19 +11,27 @@ extension Library {
     
     // MARK: - Albums
     
+    /// A struct will all album related items
+    struct Albums {
+        /// All albums in the library
+        var all: [AlbumItem] = []
+        /// The selected artist in the UI
+        var selected: AlbumItem?
+    }
+    
     /// get a list of all albums
     /// - Parameter reload: Force a reload or else it will try to load it from the  cache
     /// - Returns: True of loaded; else false
     func getAlbums(reload: Bool = false) async -> Bool {
-        if !reload, let albums = Cache.get(key: "MyAlbums", as: [AlbumItem].self) {
-            allAlbums = albums
+        if !reload, let result = Cache.get(key: "MyAlbums", as: [AlbumItem].self) {
+            albums.all = result
             return true
         } else {
             let request = AudioLibraryGetAlbums()
             do {
                 let result = try await KodiClient.shared.sendRequest(request: request)
                 try Cache.set(key: "MyAlbums", object: result.albums)
-                allAlbums = result.albums
+                albums.all = result.albums
                 return true
             } catch {
                 print("Loading albums failed with error: \(error)")
@@ -33,13 +41,12 @@ extension Library {
     }
     
     /// Select or deselect an album in the UI
-    /// - Parameters:
-    ///   - album: The selected ``AlbumItem``
+    /// - Parameters album: The selected ``AlbumItem``
     func toggleAlbum(album: AlbumItem) {
         logger("Album selected")
-        selectedAlbum = selectedAlbum == album ? nil : album
+        albums.selected = albums.selected == album ? nil : album
         /// Set the filter
-        setFilter(item: selectedAlbum)
+        setLibraryFilter(item: albums.selected)
         /// Reload songs
         Task {           
             let songs = await filterSongs()
@@ -56,16 +63,18 @@ extension Library {
         }
     }
     
-    /// Filter the albums based on songlist
+    /// Filter the albums
+    /// - Parameter songList: The current filtered list of songs
+    /// - Returns: An array of album items
     func filterAlbums(songList: [SongItem]) async -> [AlbumItem] {
-        let albumList = allAlbums
+        let albumList = albums.all
         /// Filter albums based on songs list
         let allAlbums = songList.map { song -> Int in
             return song.albumID
         }
-        let albums = allAlbums.removingDuplicates()
+        let albumIDs = allAlbums.removingDuplicates()
         return albumList
-            .filter({albums.contains($0.albumID)})
+            .filter({albumIDs.contains($0.albumID)})
             .sorted { $0.artist == $1.artist ? $0.year < $1.year : $0.artist.first! < $1.artist.first! }
     }
     
@@ -99,7 +108,7 @@ extension Library {
         /// Make it identifiable
         var id = UUID()
         /// The filter type
-        let media: MediaType = .albums
+        let media: MediaType = .album
         let icon: String = "square.stack"
         /// The fields from above
         var albumID: Int = 0
