@@ -64,7 +64,6 @@ class Library: ObservableObject {
                 if search.observer.query != search.query {
                     search.query = search.observer.query
                     searchLibrary()
-                    makeSearchSuggestions()
                 }
             }
         }.store(in: &anyCancellable)

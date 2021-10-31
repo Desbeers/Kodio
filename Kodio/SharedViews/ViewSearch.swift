@@ -50,7 +50,7 @@ struct ViewModifierSearch: ViewModifier {
                                 Text(suggestion.title)
                                 Text(suggestion.subtitle)
                                     .font(.caption)
-                                    .foregroundColor(.primary)
+                                    .opacity(0.8)
                             }
                         }
                         .searchCompletion(suggestion.suggestion)

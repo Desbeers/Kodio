@@ -77,13 +77,7 @@ extension Library {
         var songList = songs.all
         switch smartLists.selected.media {
         case .search:
-            let smartSearchMatcher = SmartSearchMatcher(searchString: search.query)
-            songList = songList.filter { songs in
-                    if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(songs.searchString) {
-                        return true
-                    }
-                    return smartSearchMatcher.matches(songs.searchString)
-                }
+            songList = search.results
         case .compilations:
             songList = songList.filter {$0.compilation == true}.sorted {$0.artists < $1.artists}
         case .recentlyPlayed:
