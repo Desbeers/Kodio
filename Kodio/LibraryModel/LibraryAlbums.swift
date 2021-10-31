@@ -102,15 +102,16 @@ extension Library {
     
     /// The struct for an album item
     struct AlbumItem: LibraryItem {
-        /// The fields that we ask for
+        /// /// The properties that we ask from Kodi
         var properties = ["artistid", "artist", "description", "title", "year", "playcount", "totaldiscs",
                           "genre", "thumbnail", "compilation", "dateadded", "lastplayed"]
         /// Make it identifiable
         var id = UUID()
-        /// The filter type
+        /// The media type
         let media: MediaType = .album
+        /// The SF symbol for this media item
         let icon: String = "square.stack"
-        /// The fields from above
+        /// The properties (and defaults)
         var albumID: Int = 0
         var artist: [String] = [""]
         var artistID: [Int] = [0]

@@ -40,6 +40,7 @@ extension Library {
         var file: String
         var songID: Int
         let label: String
+        /// The media type
         let media: MediaType = .playlist
         var icon: String {
             var sfSymbol = "music.note.list"

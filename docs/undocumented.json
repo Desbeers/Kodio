@@ -380,175 +380,175 @@
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 115,
+      "line": 116,
       "symbol": "Library.AlbumItem.artist",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 116,
+      "line": 117,
       "symbol": "Library.AlbumItem.artistID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 117,
+      "line": 118,
       "symbol": "Library.AlbumItem.compilation",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 118,
+      "line": 119,
       "symbol": "Library.AlbumItem.dateAdded",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 119,
+      "line": 120,
       "symbol": "Library.AlbumItem.lastPlayed",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 120,
+      "line": 121,
       "symbol": "Library.AlbumItem.genre",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 122,
+      "line": 123,
       "symbol": "Library.AlbumItem.playCount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 123,
+      "line": 124,
       "symbol": "Library.AlbumItem.totalDiscs",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 126,
+      "line": 127,
       "symbol": "Library.AlbumItem.year",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 131,
+      "line": 132,
       "symbol": "Library.AlbumItem.details",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 138,
+      "line": 139,
       "symbol": "Library.AlbumItem.search",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 143,
+      "line": 144,
       "symbol": "Library.AlbumItem.CodingKeys",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 144,
+      "line": 145,
       "symbol": "Library.AlbumItem.CodingKeys.artist",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 144,
+      "line": 145,
       "symbol": "Library.AlbumItem.CodingKeys.compilation",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 144,
+      "line": 145,
       "symbol": "Library.AlbumItem.CodingKeys.description",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 144,
+      "line": 145,
       "symbol": "Library.AlbumItem.CodingKeys.genre",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 144,
+      "line": 145,
       "symbol": "Library.AlbumItem.CodingKeys.thumbnail",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 144,
+      "line": 145,
       "symbol": "Library.AlbumItem.CodingKeys.title",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 144,
+      "line": 145,
       "symbol": "Library.AlbumItem.CodingKeys.year",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 145,
+      "line": 146,
       "symbol": "Library.AlbumItem.CodingKeys.albumID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 146,
+      "line": 147,
       "symbol": "Library.AlbumItem.CodingKeys.artistID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 147,
+      "line": 148,
       "symbol": "Library.AlbumItem.CodingKeys.dateAdded",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 148,
+      "line": 149,
       "symbol": "Library.AlbumItem.CodingKeys.lastPlayed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 149,
+      "line": 150,
       "symbol": "Library.AlbumItem.CodingKeys.playCount",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryAlbums.swift",
-      "line": 150,
+      "line": 151,
       "symbol": "Library.AlbumItem.CodingKeys.totalDiscs",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
@@ -611,119 +611,119 @@
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 123,
+      "line": 124,
       "symbol": "Library.ArtistItem.artistID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 124,
+      "line": 125,
       "symbol": "Library.ArtistItem.isAlbumArtist",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 128,
+      "line": 129,
       "symbol": "Library.ArtistItem.songGenres",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 139,
+      "line": 140,
       "symbol": "Library.ArtistItem.genres",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 150,
+      "line": 151,
       "symbol": "Library.ArtistItem.SongGenres.genreID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 151,
+      "line": 152,
       "symbol": "Library.ArtistItem.SongGenres.title",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 152,
+      "line": 153,
       "symbol": "Library.ArtistItem.SongGenres.CodingKeys",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 153,
+      "line": 154,
       "symbol": "Library.ArtistItem.SongGenres.CodingKeys.title",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 154,
+      "line": 155,
       "symbol": "Library.ArtistItem.SongGenres.CodingKeys.genreID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 157,
+      "line": 158,
       "symbol": "Library.ArtistItem.CodingKeys",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 158,
+      "line": 159,
       "symbol": "Library.ArtistItem.CodingKeys.artist",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 158,
+      "line": 159,
       "symbol": "Library.ArtistItem.CodingKeys.description",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 158,
+      "line": 159,
       "symbol": "Library.ArtistItem.CodingKeys.fanart",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 158,
+      "line": 159,
       "symbol": "Library.ArtistItem.CodingKeys.thumbnail",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 159,
+      "line": 160,
       "symbol": "Library.ArtistItem.CodingKeys.artistID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 160,
+      "line": 161,
       "symbol": "Library.ArtistItem.CodingKeys.isAlbumArtist",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryArtists.swift",
-      "line": 161,
+      "line": 162,
       "symbol": "Library.ArtistItem.CodingKeys.songGenres",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
@@ -772,28 +772,28 @@
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryFiles.swift",
-      "line": 64,
+      "line": 65,
       "symbol": "Library.FileItem.CodingKeys",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryFiles.swift",
-      "line": 65,
+      "line": 66,
       "symbol": "Library.FileItem.CodingKeys.file",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryFiles.swift",
-      "line": 65,
+      "line": 66,
       "symbol": "Library.FileItem.CodingKeys.label",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryFiles.swift",
-      "line": 66,
+      "line": 67,
       "symbol": "Library.FileItem.CodingKeys.songID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
@@ -835,35 +835,35 @@
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryGernes.swift",
-      "line": 113,
+      "line": 114,
       "symbol": "Library.GenreItem.genreID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryGernes.swift",
-      "line": 114,
+      "line": 115,
       "symbol": "Library.GenreItem.label",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryGernes.swift",
-      "line": 123,
+      "line": 124,
       "symbol": "Library.GenreItem.CodingKeys",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryGernes.swift",
-      "line": 124,
+      "line": 125,
       "symbol": "Library.GenreItem.CodingKeys.label",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryGernes.swift",
-      "line": 125,
+      "line": 126,
       "symbol": "Library.GenreItem.CodingKeys.genreID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
@@ -1031,287 +1031,287 @@
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 258,
+      "line": 261,
       "symbol": "Library.SongItem.albumID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 259,
+      "line": 262,
       "symbol": "Library.SongItem.albumArtist",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 260,
+      "line": 263,
       "symbol": "Library.SongItem.albumArtistID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 261,
+      "line": 264,
       "symbol": "Library.SongItem.artist",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 262,
+      "line": 265,
       "symbol": "Library.SongItem.artistID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 263,
+      "line": 266,
       "symbol": "Library.SongItem.dateAdded",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 264,
+      "line": 267,
       "symbol": "Library.SongItem.genre",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 265,
+      "line": 268,
       "symbol": "Library.SongItem.genreID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 266,
+      "line": 269,
       "symbol": "Library.SongItem.lastPlayed",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 267,
+      "line": 270,
       "symbol": "Library.SongItem.playCount",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 268,
+      "line": 271,
       "symbol": "Library.SongItem.songID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 269,
+      "line": 272,
       "symbol": "Library.SongItem.rating",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 272,
+      "line": 275,
       "symbol": "Library.SongItem.disc",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 273,
+      "line": 276,
       "symbol": "Library.SongItem.track",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 274,
+      "line": 277,
       "symbol": "Library.SongItem.year",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 275,
+      "line": 278,
       "symbol": "Library.SongItem.duration",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 287,
+      "line": 290,
       "symbol": "Library.SongItem.artists",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.album",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.artist",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.compilation",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.disc",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.duration",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.genre",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.searchString",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.thumbnail",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.title",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.track",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 294,
+      "line": 297,
       "symbol": "Library.SongItem.CodingKeys.year",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 295,
+      "line": 298,
       "symbol": "Library.SongItem.CodingKeys.albumID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 296,
+      "line": 299,
       "symbol": "Library.SongItem.CodingKeys.artistID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 297,
+      "line": 300,
       "symbol": "Library.SongItem.CodingKeys.albumArtist",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 298,
+      "line": 301,
       "symbol": "Library.SongItem.CodingKeys.albumArtistID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 299,
+      "line": 302,
       "symbol": "Library.SongItem.CodingKeys.dateAdded",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 300,
+      "line": 303,
       "symbol": "Library.SongItem.CodingKeys.genreID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 301,
+      "line": 304,
       "symbol": "Library.SongItem.CodingKeys.lastPlayed",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 302,
+      "line": 305,
       "symbol": "Library.SongItem.CodingKeys.playCount",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 303,
+      "line": 306,
       "symbol": "Library.SongItem.CodingKeys.songID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 304,
+      "line": 307,
       "symbol": "Library.SongItem.CodingKeys.rating",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 337,
+      "line": 340,
       "symbol": "Library.SongIdItem.songID",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 347,
+      "line": 350,
       "symbol": "Library.SongIdItem.CodingKeys",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySongs.swift",
-      "line": 348,
+      "line": 351,
       "symbol": "Library.SongIdItem.CodingKeys.songID",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"

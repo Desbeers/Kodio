@@ -175,7 +175,7 @@ extension Library {
         }
         /// The request struct
         struct Params: Encodable {
-            /// The fields that we ask for
+            /// /// The properties that we ask from Kodi
             let properties = ["title", "artist", "artistid", "year", "playcount", "albumid",
                               "track", "disc", "lastplayed", "album", "genreid",
                               "dateadded", "genre", "duration", "userrating"]
@@ -239,7 +239,7 @@ extension Library {
         }
         /// The request struct
         struct Params: Encodable {
-            /// The fields that we ask for
+            /// /// The properties that we ask from Kodi
             var songid: Int = 0
             var userrating: Int = 0
         }
@@ -251,15 +251,23 @@ extension Library {
     struct SongItem: LibraryItem {
         /// Make it indentifiable
         var id = UUID()
+        /// The media type
         let media: MediaType = .song
+        /// The SF symbol for this media item
         let icon: String = "music.note"
-        /// The fields from above
+        /// Name of the album
         var album: String = ""
+        /// ID of the album
         var albumID: Int = 0
+        /// Array of Album Artists
         var albumArtist: [String] = []
+        /// Array of Album ArtistsIDs
         var albumArtistID: [Int] = []
+        /// Array of Artists
         var artist: [String] = []
+        /// Array of ArtistID's
         var artistID: [Int] = []
+        /// The date this ong was added
         var dateAdded: String = ""
         var genre: [String] = []
         var genreID: [Int] = []
@@ -340,8 +348,8 @@ extension Library {
         var title: String = ""
         var subtitle: String = ""
         var description: String = ""
+        /// The SF symbol for this media item
         let icon: String = "music.note"
-        /// Not needed, but required by protocol
         let thumbnail: String = ""
         let fanart: String = ""
         enum CodingKeys: String, CodingKey {

@@ -17,7 +17,7 @@ protocol LibraryItem: Codable, Identifiable, Hashable {
     var subtitle: String { get }
     /// The decription of the item
     var description: String { get }
-    /// The SF symbol icon for this type
+    /// The SF symbol for this media item icon for this type
     var icon: String { get }
     /// The thumbnail for the item
     var thumbnail: String { get }

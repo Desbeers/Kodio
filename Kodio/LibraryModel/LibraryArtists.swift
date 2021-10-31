@@ -111,14 +111,15 @@ extension Library {
     
     /// The struct for an artist item
     struct ArtistItem: LibraryItem {
-        /// The fields that we ask for
+        /// /// The properties that we ask from Kodi
         var properties = ["fanart", "thumbnail", "description", "isalbumartist", "songgenres"]
         /// Make it identifiable
         var id = UUID()
-        /// The filter type
+        /// The media type
         let media: MediaType = .artist
+        /// The SF symbol for this media item
         let icon: String = "music.mic"
-        /// The fields from above
+        /// The properties (and defaults)
         var artist: String = ""
         var artistID: Int = 0
         var isAlbumArtist: Bool = false

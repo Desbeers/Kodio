@@ -50,9 +50,9 @@ extension Player {
 
     /// The struct for the player item
     struct PlayerItem: Decodable, Equatable {
-        /// The fields that we ask for
+        /// /// The properties that we ask from Kodi
         var properties = ["title", "artist", "mediapath"]
-        /// The fields from above
+        /// The properties (and defaults)
         var songID: Int?
         var title: String?
         var artist: [String]?

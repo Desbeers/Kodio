@@ -107,8 +107,9 @@ extension Library {
     /// The struct for a genre item
     struct GenreItem: LibraryItem {
         var id = UUID()
-        /// The filter type
+        /// The media type
         let media: MediaType = .genre
+        /// The SF symbol for this media item
         let icon: String = "music.quarternote.3"
         var genreID: Int = 0
         var label: String = ""
