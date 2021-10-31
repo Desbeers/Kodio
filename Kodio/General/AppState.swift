@@ -20,14 +20,14 @@ class AppState: ObservableObject {
     @Published var activeSheet: SheetTypes = .queue
     /// The struct for a SwiftUI Alert item
     @Published var alertItem: AlertItem?
-    /// The loading state of the application
-    @Published var loadingState: LoadingState = .none {
+    /// The state of Kodio
+    @Published var state: State = .none {
         didSet {
-            loadingActions(state: loadingState)
+            stateAction(state: state)
         }
     }
-    /// To Mac or nor to Mac?
-    /// - Note:The iOS app thingy will override if not mac...
+    /// Check if Kodio is running on a Mac or on an iOS device
+    /// - Note:The iOS app thingy will override this `var` if not on Mac
     var userInterface: UserInterface = .macOS
     
     // MARK: Init
@@ -40,30 +40,51 @@ extension AppState {
     
     // MARK: Sheets
     
-    /// The different kind of sheets
+    /// The different kind of sheets Kodio will present
     enum SheetTypes {
-        /// Show the playing queue view
+        /// Show the `Playing Queue` sheet
         case queue
-        /// Show the settings view
+        /// Show the `Settings` sheet
+        /// - Note: only in use for iOS, macOS has its native `Preferences`
         case settings
-        /// Show the about view
+        /// Show the `About` sheet
         case about
-        /// Show the help view
+        /// Show the `Help` sheet
         case help
     }
 }
 
 extension AppState {
     
-    // MARK: State of library loading
+    // MARK: State of Kodio
     
-    /// Actions when the loading state of Kodio is changing
-    /// - Parameter state: the current ``LoadingState``
-    func loadingActions(state: LoadingState) {
+    /// The state of Kodio
+    enum State {
+        /// Not connected and no host
+        case none
+        /// Connected to the Kodi host
+        case connectedToHost
+        /// Loading the library
+        case loadingLibrary
+        /// The library is  loaded
+        case loadedLibrary
+        /// Kodio is sleeping
+        case sleeping
+        /// Kodio is waking up
+        case wakeup
+        /// An error when loading the library or a lost of connection
+        case failure
+        /// Kodio has no host configuration
+        case noHostConfig
+    }
+    
+    /// Action when the  state of Kodio is changed
+    /// - Parameter state: the current ``State``
+    func stateAction(state: State) {
         switch state {
-        case .connected:
+        case .connectedToHost:
             Library.shared.getLibrary()
-        case .loaded:
+        case .loadedLibrary:
             /// Get the properties of the player
             Task {
                 await Player.shared.getProperties()
@@ -81,26 +102,6 @@ extension AppState {
         default:
             break
         }
-    }
-    
-    /// The state of the library loading
-    enum LoadingState {
-        /// Not connected and no host
-        case none
-        /// Connected to the host
-        case connected
-        /// Loading the library
-        case loading
-        /// Library loaded
-        case loaded
-        /// App is sleeping
-        case sleeping
-        /// App wakeup
-        case wakeup
-        /// An error when loading the library or a lost of connection
-        case failure
-        /// Not configured
-        case noConfig
     }
 }
 

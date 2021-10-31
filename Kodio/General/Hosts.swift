@@ -35,7 +35,7 @@ struct Hosts {
         let hosts = self.get()
         guard let host = hosts.first(where: { $0.selected == true }) else {
             let appState: AppState = .shared
-            appState.loadingState = .noConfig
+            appState.state = .noHostConfig
             appState.alertItem = appState.alertNoHosts
             /// Return default host
             return HostItem()

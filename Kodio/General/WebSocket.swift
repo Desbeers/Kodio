@@ -24,7 +24,7 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
         let appState: AppState = .shared
         
         DispatchQueue.main.async {
-            appState.loadingState = appState.loadingState == .wakeup ? .loaded : .connected
+            appState.state = appState.state == .wakeup ? .loadedLibrary : .connectedToHost
         }
     }
     /// Websocket notification when the connection stops
@@ -39,10 +39,10 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError: Error?) {
         let appState: AppState = .shared
-        if appState.loadingState != .sleeping {
+        if appState.state != .sleeping {
             logger("WebSocket error from \(KodiClient.shared.selectedHost.ip)...")
             DispatchQueue.main.async {
-                appState.loadingState = .failure
+                appState.state = .failure
                 appState.alertItem = appState.alertNotAvailable
             }
         } else {
@@ -58,7 +58,7 @@ extension KodiClient {
     /// Connect to the Kodi host
     /// - Parameter host: an ``HostItem``
     func connectToHost(host: HostItem) {
-        AppState.shared.loadingState = .none
+        AppState.shared.state = .none
         if !host.ip.isEmpty {
             logger("Connecting to Kodi on \(host.ip)")
             connectWebSocket()

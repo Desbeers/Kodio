@@ -49,7 +49,7 @@
                 <a href="../Classes/AppState/SheetTypes.html">– SheetTypes</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AppState/LoadingState.html">– LoadingState</a>
+                <a href="../Classes/AppState/State.html">– State</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/AppState/AlertItem.html">– AlertItem</a>
@@ -619,9 +619,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio8AppStateC07loadingC0AC07LoadingC0Ovp"></a>
-                    <a name="//apple_ref/swift/Property/loadingState" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio8AppStateC07loadingC0AC07LoadingC0Ovp">loadingState</a>
+                    <a name="/s:5Kodio8AppStateC5stateAC0C0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio8AppStateC5stateAC0C0Ovp">state</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -629,7 +629,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The loading state of the application</p>
+                        <p>The state of Kodio</p>
 
                       </div>
                       <div class="declaration">
@@ -637,7 +637,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@Published</span>
-<span class="k">var</span> <span class="nv">loadingState</span><span class="p">:</span> <span class="kt"><a href="../Classes/AppState/LoadingState.html">LoadingState</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+<span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Classes/AppState/State.html">State</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -657,10 +657,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>To Mac or nor to Mac?</p>
+                        <p>Check if Kodio is running on a Mac or on an iOS device</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    Note:The iOS app thingy will override if not mac&hellip;
+    Note:The iOS app thingy will override this <code>var</code> if not on Mac
 
 </div>
 
@@ -742,7 +742,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The different kind of sheets</p>
+                        <p>The different kind of sheets Kodio will present</p>
 
                         <a href="../Classes/AppState/SheetTypes.html" class="slightly-smaller">See more</a>
                       </div>
@@ -761,11 +761,11 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/State%20of%20library%20loading"></a>
-                <a name="//apple_ref/swift/Section/State of library loading" class="dashAnchor"></a>
+                <a name="/State%20of%20Kodio"></a>
+                <a name="//apple_ref/swift/Section/State of Kodio" class="dashAnchor"></a>
                 <div class="section-name-container">
-                  <a class="section-name-link" href="#/State%20of%20library%20loading"></a>
-                  <h3 class="section-name"><span>State of library loading</span>
+                  <a class="section-name-link" href="#/State%20of%20Kodio"></a>
+                  <h3 class="section-name"><span>State of Kodio</span>
 </h3>
                 </div>
               </div>
@@ -773,9 +773,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio8AppStateC14loadingActions5stateyAC07LoadingC0O_tF"></a>
-                    <a name="//apple_ref/swift/Method/loadingActions(state:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio8AppStateC14loadingActions5stateyAC07LoadingC0O_tF">loadingActions(state:<wbr>)</a>
+                    <a name="/s:5Kodio8AppStateC0C0O"></a>
+                    <a name="//apple_ref/swift/Enum/State" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio8AppStateC0C0O">State</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -783,14 +783,42 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Actions when the loading state of Kodio is changing</p>
+                        <p>The state of Kodio</p>
+
+                        <a href="../Classes/AppState/State.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">State</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio8AppStateC11stateAction0D0yAC0C0O_tF"></a>
+                    <a name="//apple_ref/swift/Method/stateAction(state:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio8AppStateC11stateAction0D0yAC0C0O_tF">stateAction(state:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Action when the  state of Kodio is changed</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">loadingActions</span><span class="p">(</span><span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Classes/AppState/LoadingState.html">LoadingState</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stateAction</span><span class="p">(</span><span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../Classes/AppState/State.html">State</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -806,40 +834,12 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the current <code><a href="../Classes/AppState/LoadingState.html">LoadingState</a></code></p>
+                                  <p>the current <code><a href="../Classes/AppState/State.html">State</a></code></p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio8AppStateC07LoadingC0O"></a>
-                    <a name="//apple_ref/swift/Enum/LoadingState" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio8AppStateC07LoadingC0O">LoadingState</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The state of the library loading</p>
-
-                        <a href="../Classes/AppState/LoadingState.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">LoadingState</span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>

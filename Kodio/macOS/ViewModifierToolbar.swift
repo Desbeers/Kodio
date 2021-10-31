@@ -30,6 +30,6 @@ struct ViewModifierToolbar: ViewModifier {
                         .frame(width: 160)
                 }
             }
-            .disabled(appState.loadingState != .loaded)
+            .disabled(appState.state != .loadedLibrary)
     }
 }

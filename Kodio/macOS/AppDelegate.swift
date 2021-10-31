@@ -11,7 +11,9 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     /// Some settings after the application is started
-    func applicationDidFinishLaunching(_ notification: Notification) {
+    ///  - Disallow window tabbing
+    ///  - Add a notification for sleeping and wakeup
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         /// Disallow window tabbing
         NSWindow.allowsAutomaticWindowTabbing = false
         /// Notifications
@@ -20,12 +22,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(sleepListener(_:)),
                                                           name: NSWorkspace.didWakeNotification, object: nil)
     }
-    /// What to do when the mac goes to sleep and wakeup
+    /// What to do when the Mac goes to sleep and wakeup again
     @objc private func sleepListener(_ aNotification: Notification) {
         if aNotification.name == NSWorkspace.willSleepNotification {
-            AppState.shared.loadingState = .sleeping
+            AppState.shared.state = .sleeping
         } else if aNotification.name == NSWorkspace.didWakeNotification {
-            AppState.shared.loadingState = .wakeup
+            AppState.shared.state = .wakeup
         }
     }
 }

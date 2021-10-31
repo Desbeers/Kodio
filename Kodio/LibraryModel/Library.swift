@@ -73,7 +73,7 @@ extension Library {
         getSmartLists()
         getRadioStations()
         DispatchQueue.main.async {
-            AppState.shared.loadingState = .loading
+            AppState.shared.state = .loadingLibrary
         }
         /// get media items
         Task {
@@ -105,10 +105,10 @@ extension Library {
     /// Check the loading status
     /// - Parameter status: The status enum that was set
     func checkStatus(status: Status) {
-        if status.all, AppState.shared.loadingState != .loaded {
+        if status.all, AppState.shared.state != .loadedLibrary {
             logger("Library is loaded")
             DispatchQueue.main.async {
-                AppState.shared.loadingState = .loaded
+                AppState.shared.state = .loadedLibrary
             }
         }
     }
@@ -116,7 +116,7 @@ extension Library {
     /// Reset the  library to its initial state
     func resetLibrary() {
         status.reset()
-        AppState.shared.loadingState = .none
+        AppState.shared.state = .none
         filteredContent = Library.FilteredContent()
         playlists.all = []
         smartLists.all = []

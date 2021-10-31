@@ -53,7 +53,7 @@ import SwiftUI
                 ViewHostsMenu().environmentObject(kodiClient).environmentObject(appState)
             }
             CommandMenu("Host") {
-                if appState.loadingState == .loaded {
+                if appState.state == .loadedLibrary {
                     Button("Scan library on '\(kodiClient.selectedHost.description)'") {
                         withAnimation {
                             kodiHost.scanAudioLibrary()
