@@ -17,45 +17,34 @@ extension Queue {
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
             if result.items != queueItems {
-                DispatchQueue.main.async {
-                    logger("Queue has changed")
-                    /// Save the query for later
-                    self.queueItems = result.items
-                    /// Find the songs in the database
-                    var songList: [Library.SongItem] = []
-                    let allSongs = Library.shared.songs.all
-                    for (index, song) in result.items.enumerated() {
-                        if var item = allSongs.first(where: { $0.songID == song.songID }) {
-                            item.queueID = index
-                            songList.append(item)
-                        }
-                    }
-                    self.songs = songList
-                }
+                logger("Queue has changed")
+                /// Save the query for later
+                self.queueItems = result.items
+                /// Find the songs in the database{
+                getSongs(queue: result.items)
             }
-//
-//            print(result.items)
-//
-//            DispatchQueue.main.async {
-//                var songList: [Library.SongItem] = []
-//                let allSongs = Library.shared.songs.all
-//                for (index, song) in result.items.enumerated() {
-//                    if var item = allSongs.first(where: { $0.songID == song.songID }) {
-//                        item.queueID = index
-//                        songList.append(item)
-//                    }
-//                }
-//                if songList != self.songs {
-//                    logger("Queue has changed")
-//                    self.songs = songList
-//                }
-//            }
             Library.shared.status.queue = true
         } catch {
             Library.shared.status.queue = false
             DispatchQueue.main.async {
                 self.songs = []
             }
+        }
+    }
+    
+    /// Get the songs from the database to add to the queue list
+    /// - Parameter queue: A array with Song ID's
+    private func getSongs(queue: [QueueItem]) {
+        var songList: [Library.SongItem] = []
+        let allSongs = Library.shared.songs.all
+        for (index, song) in queue.enumerated() {
+            if var item = allSongs.first(where: { $0.songID == song.songID }) {
+                item.queueID = index
+                songList.append(item)
+            }
+        }
+        DispatchQueue.main.async {
+            self.songs = songList
         }
     }
     
