@@ -25,7 +25,10 @@ extension Queue {
                         songList.append(item)
                     }
                 }
-                self.songs = songList
+                if songList != self.songs {
+                    logger("Queue has changed")
+                    self.songs = songList
+                }
             }
             Library.shared.status.queue = true
         } catch {
