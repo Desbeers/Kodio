@@ -86,7 +86,7 @@ extension AppState {
             Library.shared.getLibrary()
         case .loadedLibrary:
             /// Get the properties of the player
-            Task {
+            Task(priority: .high) {
                 await Player.shared.getProperties()
                 /// Get the current item loaded into the player
                 await Player.shared.getItem()

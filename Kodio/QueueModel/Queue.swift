@@ -19,6 +19,8 @@ class Queue: ObservableObject {
     let kodiClient = KodiClient.shared
     /// Songs in the queue
     @Published var songs: [Library.SongItem] = []
+    /// Song ID's in queue
+    var queueItems: [QueueItem] = []
     /// Count of items in the queue
     var items: Int {
         /// Kodi counts from zero

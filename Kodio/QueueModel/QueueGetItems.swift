@@ -16,20 +16,40 @@ extension Queue {
         let request = QueueGetItems()
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
-            DispatchQueue.main.async {
-                var songList: [Library.SongItem] = []
-                let allSongs = Library.shared.songs.all
-                for (index, song) in result.items.enumerated() {
-                    if var item = allSongs.first(where: { $0.songID == song.songID }) {
-                        item.queueID = index
-                        songList.append(item)
-                    }
-                }
-                if songList != self.songs {
+            if result.items != queueItems {
+                DispatchQueue.main.async {
                     logger("Queue has changed")
+                    /// Save the query for later
+                    self.queueItems = result.items
+                    /// Find the songs in the database
+                    var songList: [Library.SongItem] = []
+                    let allSongs = Library.shared.songs.all
+                    for (index, song) in result.items.enumerated() {
+                        if var item = allSongs.first(where: { $0.songID == song.songID }) {
+                            item.queueID = index
+                            songList.append(item)
+                        }
+                    }
                     self.songs = songList
                 }
             }
+//
+//            print(result.items)
+//
+//            DispatchQueue.main.async {
+//                var songList: [Library.SongItem] = []
+//                let allSongs = Library.shared.songs.all
+//                for (index, song) in result.items.enumerated() {
+//                    if var item = allSongs.first(where: { $0.songID == song.songID }) {
+//                        item.queueID = index
+//                        songList.append(item)
+//                    }
+//                }
+//                if songList != self.songs {
+//                    logger("Queue has changed")
+//                    self.songs = songList
+//                }
+//            }
             Library.shared.status.queue = true
         } catch {
             Library.shared.status.queue = false
@@ -57,8 +77,7 @@ extension Queue {
     }
     
     /// The struct for a queue item
-    struct QueueItem: Codable, Identifiable, Hashable {
-        var id = UUID()
+    struct QueueItem: Codable, Equatable {
         let songID: Int
         enum CodingKeys: String, CodingKey {
             case songID = "id"

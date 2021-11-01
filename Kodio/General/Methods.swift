@@ -54,6 +54,7 @@ enum Method: String {
     case playerOnResume = "Player.OnResume"
     case playerOnPause = "Player.OnPause"
     case playerOnAVStart = "Player.OnAVStart"
+    case playlistOnAdd = "Playlist.OnAdd"
 
     /// Playlist
     case playlistClear = "Playlist.Clear"

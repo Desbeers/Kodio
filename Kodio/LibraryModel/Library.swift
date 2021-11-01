@@ -76,7 +76,7 @@ extension Library {
             AppState.shared.state = .loadingLibrary
         }
         /// get media items
-        Task {
+        Task(priority: .high) {
             /// Check if the library is still up to date
             await getLastUpdate()
             /// Artists
