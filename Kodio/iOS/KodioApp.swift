@@ -48,12 +48,12 @@ struct KodioApp: App {
                         logger("Inactive (iOS)")
                     } else if newPhase == .active {
                         logger("Active (iOS)")
-                        if appState.loadingState == .sleeping {
-                            appState.loadingState = .wakeup
+                        if appState.state == .sleeping {
+                            appState.state = .wakeup
                         }
                     } else if newPhase == .background {
                         logger("Background (iOS)")
-                        appState.loadingState = .sleeping
+                        appState.state = .sleeping
                     }
                 }
         }

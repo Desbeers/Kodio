@@ -42,6 +42,6 @@ struct ViewModifierToolbar: ViewModifier {
                     .scaleEffect(0.9)
                 }
             }
-            .disabled(appState.loadingState != .loaded)
+            .disabled(appState.state != .loadedLibrary)
     }
 }
