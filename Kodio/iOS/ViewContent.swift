@@ -23,10 +23,8 @@ struct ViewContent: View {
                             ViewHostsMenu()
                             Divider()
                             Button("Edit hosts") {
-                                withAnimation {
-                                    appState.activeSheet = .settings
-                                    appState.showSheet = true
-                                }
+                                appState.activeSheet = .settings
+                                appState.showSheet = true
                             }
                             Button(
                                 action: {

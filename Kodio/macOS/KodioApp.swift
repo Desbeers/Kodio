@@ -55,9 +55,7 @@ import SwiftUI
             CommandMenu("Host") {
                 if appState.state == .loadedLibrary {
                     Button("Scan library on '\(kodiClient.selectedHost.description)'") {
-                        withAnimation {
-                            kodiHost.scanAudioLibrary()
-                        }
+                        kodiHost.scanAudioLibrary()
                     }
                 }
             }

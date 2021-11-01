@@ -46,9 +46,7 @@ struct ViewSheet: View {
         /// Make this 'sheet' closable with a swipe. Normal on iOS but now also works on macOS
         .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .global)
                     .onEnded { _ in
-            withAnimation {
-                appState.showSheet = false
-            }
+            appState.showSheet = false
         })
     }
 }
