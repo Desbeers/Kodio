@@ -75,8 +75,8 @@
 		D745126626B37C9D00A99889 /* QueueGetItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745126426B37C9D00A99889 /* QueueGetItems.swift */; };
 		D745126826B37FDA00A99889 /* QueueActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745126726B37FDA00A99889 /* QueueActions.swift */; };
 		D745126926B37FDA00A99889 /* QueueActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745126726B37FDA00A99889 /* QueueActions.swift */; };
-		D74C95BE272C8F3700148F93 /* ViewSongsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C95BD272C8F3700148F93 /* ViewSongsList.swift */; };
-		D74C95BF272C8F3700148F93 /* ViewSongsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C95BD272C8F3700148F93 /* ViewSongsList.swift */; };
+		D74C95BE272C8F3700148F93 /* ViewSongsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C95BD272C8F3700148F93 /* ViewSongsListRow.swift */; };
+		D74C95BF272C8F3700148F93 /* ViewSongsListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C95BD272C8F3700148F93 /* ViewSongsListRow.swift */; };
 		D74D6FBB271AFC7500F5D28D /* ViewAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D6FBA271AFC7500F5D28D /* ViewAppState.swift */; };
 		D74D6FBC271AFC7500F5D28D /* ViewAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D6FBA271AFC7500F5D28D /* ViewAppState.swift */; };
 		D74EFC4826E7C9EF00720D3C /* LibraryProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74EFC4726E7C9EF00720D3C /* LibraryProperties.swift */; };
@@ -188,7 +188,7 @@
 		D745126026B32AB900A99889 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		D745126426B37C9D00A99889 /* QueueGetItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueGetItems.swift; sourceTree = "<group>"; };
 		D745126726B37FDA00A99889 /* QueueActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueActions.swift; sourceTree = "<group>"; };
-		D74C95BD272C8F3700148F93 /* ViewSongsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongsList.swift; sourceTree = "<group>"; };
+		D74C95BD272C8F3700148F93 /* ViewSongsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongsListRow.swift; sourceTree = "<group>"; };
 		D74D6FBA271AFC7500F5D28D /* ViewAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAppState.swift; sourceTree = "<group>"; };
 		D74EFC4726E7C9EF00720D3C /* LibraryProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryProperties.swift; sourceTree = "<group>"; };
 		D75F765826CA863700165656 /* KodiHostSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHostSettings.swift; sourceTree = "<group>"; };
@@ -349,7 +349,7 @@
 				D7EA917526A96C0C0090C137 /* ViewArtists.swift */,
 				D7EA917226A96BFC0090C137 /* ViewAlbums.swift */,
 				D7EA917826A96C230090C137 /* ViewSongs.swift */,
-				D74C95BD272C8F3700148F93 /* ViewSongsList.swift */,
+				D74C95BD272C8F3700148F93 /* ViewSongsListRow.swift */,
 				D73163E626AC0D3A00CD5F7E /* ViewSmartLists.swift */,
 				D7F37E6B26AD9F6400EFE6F1 /* ViewDetails.swift */,
 				D7EA917B26A9822D0090C137 /* ViewParts.swift */,
@@ -615,7 +615,7 @@
 				D73163E426AC018200CD5F7E /* LibrarySmartLists.swift in Sources */,
 				D706F66A26B08AED0068F35C /* LibraryFiles.swift in Sources */,
 				D75F765C26CAA41A00165656 /* ViewSheet.swift in Sources */,
-				D74C95BE272C8F3700148F93 /* ViewSongsList.swift in Sources */,
+				D74C95BE272C8F3700148F93 /* ViewSongsListRow.swift in Sources */,
 				D7EA917926A96C230090C137 /* ViewSongs.swift in Sources */,
 				D73163DE26ABF31000CD5F7E /* LibrarySongs.swift in Sources */,
 				D706F66D26B08F100068F35C /* ViewPlaylists.swift in Sources */,
@@ -698,7 +698,7 @@
 				D73163E526AC018200CD5F7E /* LibrarySmartLists.swift in Sources */,
 				D70191E12727290F009332A3 /* Markdown.swift in Sources */,
 				D7EA917A26A96C230090C137 /* ViewSongs.swift in Sources */,
-				D74C95BF272C8F3700148F93 /* ViewSongsList.swift in Sources */,
+				D74C95BF272C8F3700148F93 /* ViewSongsListRow.swift in Sources */,
 				D7A9043A26F86E600012C7B2 /* AppDelegate.swift in Sources */,
 				D7F00A9226AEFD6A00CEE39E /* KodiClient.swift in Sources */,
 				D72740E826B1809100067D4A /* KodiHostProperties.swift in Sources */,

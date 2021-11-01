@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - View songs
-
 /// The list of songs
 struct ViewSongs: View {
     /// The Library model
@@ -19,17 +17,17 @@ struct ViewSongs: View {
     var body: some View {
         VStack {
             if !library.filteredContent.songs.isEmpty {
-                songsHeader
+                header
             }
-            ViewSongsList(songs: library.filteredContent.songs)
+            list
         }
     }
 }
 
 extension ViewSongs {
+    
     /// The header above the list of songs
-    @ViewBuilder
-    var songsHeader: some View {
+    @ViewBuilder var header: some View {
         let count = library.filteredContent.songs.count
         VStack(alignment: .leading) {
             HStack {
@@ -56,5 +54,43 @@ extension ViewSongs {
             .buttonStyle(.bordered)
         }
         .padding()
+    }
+    
+    /// The list of songs
+    var list: some View {
+        List {
+            ForEach(library.filteredContent.songs) { song in
+                ViewSongsListRow(song: song)
+                    .modifier(ViewModifierSongs(song: song, selectedAlbum: library.albums.selected))
+#if os(macOS)
+                Divider()
+#endif
+            }
+        }
+        /// Speed up iOS
+        .id(library.songs.listID)
+        .listStyle(PlainListStyle())
+    }
+    
+    /// Display disc number only once and only when an album is selected that has more than one disc
+    struct ViewModifierSongs: ViewModifier {
+        /// The song item
+        let song: Library.SongItem
+        /// The optional selected album
+        let selectedAlbum: Library.AlbumItem?
+        /// The view
+        func body(content: Content) -> some View {
+            if let album = selectedAlbum, album.totalDiscs > 1, song.disc != 0, song.track == 1 {
+                HStack {
+                    Image(systemName: "\(song.disc).square")
+                        .font(.title)
+                    Spacer()
+                }
+                .padding(.bottom)
+                content
+            } else {
+                content
+            }
+        }
     }
 }

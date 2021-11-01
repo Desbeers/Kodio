@@ -10,23 +10,25 @@ import SwiftUI
 struct ViewQueue: View {
     /// The Queue model
     @EnvironmentObject var queue: Queue
+    /// The Player model
+    @EnvironmentObject var player: Player
     /// The view
     var body: some View {
 #if os(macOS)
         HStack {
             VStack {
-                ViewQueueArt()
+                art
                 ViewPlayerButtons()
                 Spacer(minLength: 100)
             }
-            ViewSongsList(songs: queue.songs)
-                .frame(minWidth: 400)
+            list
+                .frame(minWidth: 400, minHeight: 600)
         }
 #endif
 #if os(iOS)
         VStack {
-            ViewQueueArt()
-            ViewSongsList(songs: queue.songs)
+            art
+            list
                 .padding(.horizontal)
             ViewPlayerButtons()
                 .padding(40)
@@ -37,35 +39,61 @@ struct ViewQueue: View {
 
 extension ViewQueue {
     
-    struct ViewQueueArt: View {
-        /// The Player model
-        @EnvironmentObject var player: Player
-        /// The view
-        var body: some View {
-            VStack {
-                Text("Playing queue")
-                    .font(.title)
-                    .padding()
-                ZStack {
-                    if player.properties.playing {
-                        HStack(alignment: .top) {
-                            ViewRotatingRecord()
-                                .frame(width: 150, height: 150)
-                                .padding(.leading, 68)
-                            Spacer()
-                        }
-                    }
-                    HStack(alignment: .center) {
-                        ViewArtPlayer(item: player.item, size: 300)
+    /// The current artwork of the player
+    var art: some View {
+        VStack {
+            Text("Playing queue")
+                .font(.title)
+                .padding()
+            ZStack {
+                if player.properties.playing {
+                    HStack(alignment: .top) {
+                        ViewRotatingRecord()
                             .frame(width: 150, height: 150)
-                            .cornerRadius(2)
+                            .padding(.leading, 68)
                         Spacer()
                     }
                 }
-                .animation(.default, value: player.properties.playing)
-                .transition(.move(edge: .leading))
-                .frame(width: 218)
-                .padding()
+                HStack(alignment: .center) {
+                    ViewArtPlayer(item: player.item, size: 300)
+                        .frame(width: 150, height: 150)
+                        .cornerRadius(2)
+                    Spacer()
+                }
+            }
+            .animation(.default, value: player.properties.playing)
+            .transition(.move(edge: .leading))
+            .frame(width: 218)
+            .padding()
+        }
+    }
+    
+    /// The list of songs in the queue
+    var list: some View {
+        VStack {
+            ScrollViewReader { proxy in
+                ScrollView {
+                    LazyVStack {
+                        Spacer(minLength: 30)
+                        ForEach(queue.songs) { song in
+                            ViewSongsListRow(song: song)
+                                .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
+                            Divider()
+                        }
+                    }
+                }
+                /// Scroll to the item that is playing
+                .task {
+                    withAnimation(.linear(duration: 1)) {
+                        proxy.scrollTo(player.item.songID, anchor: .center)
+                    }
+                }
+                /// Scroll to the active song when it changed
+                .onChange(of: player.item) { item in
+                    withAnimation(.linear(duration: 1)) {
+                        proxy.scrollTo(item.songID, anchor: .center)
+                    }
+                }
             }
         }
     }
