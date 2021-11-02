@@ -11,17 +11,25 @@ import SwiftUI
 struct ViewSidebar: View {
     /// The Library model
     @EnvironmentObject var library: Library
+    /// The AppState model
+    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
         VStack(spacing: 0) {
             List {
-                ViewSmartLists()
-                    .listRowInsets(EdgeInsets())
-                
-                ViewPlaylist()
-                    .listRowInsets(EdgeInsets())
-                ViewRadio()
-                    .listRowInsets(EdgeInsets())
+                if appState.state == .loadedLibrary {
+                    ViewSmartLists()
+                        .listRowInsets(EdgeInsets())
+                    
+                    ViewPlaylist()
+                        .listRowInsets(EdgeInsets())
+                    ViewRadio()
+                        .listRowInsets(EdgeInsets())
+                } else {
+                    Section(header: ViewAppStateStatus()) {
+                        EmptyView()
+                    }
+                }
             }
             .sidebarButtons()
         }

@@ -87,11 +87,14 @@ extension AppState {
         case .loadedLibrary:
             /// Get the properties of the player
             Task(priority: .high) {
+                /// Get the properties of the player
                 await Player.shared.getProperties()
                 /// Get the current item loaded into the player
                 await Player.shared.getItem()
                 /// Get the song queue
                 await Queue.shared.getItems()
+                /// Filter the library and view it
+                Library.shared.filterAllMedia()
             }
         case .sleeping:
             logger("Kodio sleeping (\(userInterface))")

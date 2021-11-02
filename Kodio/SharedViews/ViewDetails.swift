@@ -56,7 +56,9 @@ extension ViewDetails {
                     .font(.caption)
                 ViewDetailsArtwork(media: media)
                 Text(media.description)
-                ViewDetailsStatistics(media: media)
+                if AppState.shared.state == .loadedLibrary {
+                    ViewDetailsStatistics(media: media)
+                }
                 Spacer()
             }
             .padding()

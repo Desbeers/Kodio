@@ -96,8 +96,6 @@ extension Library {
                 status.songs = await getSongs(reload: reload)
                 /// Now load stuff depending on the songs
                 status.smartItems = await getSmartItems()
-                /// Filter the library
-                filterAllMedia()
             }
         }
     }
