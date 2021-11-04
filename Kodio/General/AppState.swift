@@ -17,15 +17,16 @@ class AppState: ObservableObject {
     /// Bool to show or hide a SwiftUI sheet
     @Published var showSheet: Bool = false
     /// Define what kind of sheet to show
-    @Published var activeSheet: SheetTypes = .queue
+    var activeSheet: SheetTypes = .queue
     /// The struct for a SwiftUI Alert item
-    @Published var alertItem: AlertItem?
+    var alertItem: AlertItem?
     /// The state of Kodio
     @Published var state: State = .none {
         didSet {
             stateAction(state: state)
         }
     }
+    
     /// Check if Kodio is running on a Mac or on an iOS device
     /// - Note:The iOS app thingy will override this `var` if not on Mac
     var userInterface: UserInterface = .macOS
@@ -85,7 +86,6 @@ extension AppState {
         case .connectedToHost:
             Library.shared.getLibrary()
         case .loadedLibrary:
-            /// Get the properties of the player
             Task(priority: .high) {
                 /// Get the properties of the player
                 await Player.shared.getProperties()
@@ -186,6 +186,7 @@ extension AppState {
         alert.button = .default(
             Text("Reload"),
             action: {
+                Library.shared.resetLibrary()
                 Library.shared.getLibrary(reload: true)
             }
         )

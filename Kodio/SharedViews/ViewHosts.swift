@@ -279,7 +279,7 @@ struct ViewHostsMenu: View {
         ForEach(kodiClient.hosts.filter { $0.selected == false }) { host in
             Button(
                 action: {
-                    Hosts.selectHost(selected: host)
+                    Hosts.switchHost(selected: host)
                 },
                 label: {
                     Label(host.description, systemImage: "k.circle")

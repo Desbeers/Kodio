@@ -70,8 +70,8 @@ extension Library {
     /// - Parameter reload: Bool; force a reload or else it will try to load it from the  cache
     /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
-        getSmartLists()
         getRadioStations()
+        getSmartLists()
         DispatchQueue.main.async {
             AppState.shared.state = .loadingLibrary
         }
@@ -114,10 +114,10 @@ extension Library {
     /// Reset the  library to its initial state
     func resetLibrary() {
         status.reset()
-        AppState.shared.state = .none
         filteredContent = Library.FilteredContent()
         playlists.all = []
         smartLists.all = []
+        smartLists.selected = SmartListItem()
         radioStations = []
         Player.shared.properties = Player.Properties()
         Player.shared.item = Player.PlayerItem()

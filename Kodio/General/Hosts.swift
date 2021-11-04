@@ -43,6 +43,12 @@ struct Hosts {
         return host
     }
     
+    static func switchHost(selected: HostItem) {
+        Library.shared.resetLibrary()
+        AppState.shared.state = .none
+        selectHost(selected: selected)
+    }
+    
     /// Select a host from the list of available hosts and save the selection
     /// - Parameter selected: A struct of the selected host
     static func selectHost(selected: HostItem) {
@@ -54,7 +60,6 @@ struct Hosts {
         }
         self.save(hosts: newHostsList)
         KodiClient.shared.hosts = newHostsList
-        Library.shared.resetLibrary()
         KodiClient.shared.selectedHost = selected
     }
 }
