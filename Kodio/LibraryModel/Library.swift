@@ -27,8 +27,10 @@ class Library: ObservableObject {
             checkStatus(status: status)
         }
     }
-    /// An array containing all artist related items
+    /// An array containing all search related items
     var search = Search()
+    /// The search query
+    @Published var query = ""
     /// The library filtered by selection of smart list, genre, artist and album
     @Published var filteredContent = FilteredContent()
     /// An array containing all artist related items
@@ -53,8 +55,8 @@ class Library: ObservableObject {
         /// Search observer
         search.observer.objectWillChange.sink { [self] in
             DispatchQueue.main.async {
-                if search.observer.query != search.query {
-                    search.query = search.observer.query
+                if search.observer.query != query {
+                    query = search.observer.query
                     searchLibrary()
                 }
             }
@@ -71,7 +73,8 @@ extension Library {
     /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
         getRadioStations()
-        getSmartLists()
+        smartLists.all = getSmartLists()
+        smartLists.selected = smartLists.all.first!
         DispatchQueue.main.async {
             AppState.shared.state = .loadingLibrary
         }

@@ -7,31 +7,6 @@
 
 import SwiftUI
 
-struct ViewSearchButton: View {
-    /// The object that has it all
-    @EnvironmentObject var library: Library
-    /// The view
-    var body: some View {
-        if !library.search.query.isEmpty {
-            Button(
-                action: {
-                    library.toggleSmartList(smartList: Library.searchButton)
-                },
-                label: {
-                    HStack {
-                        Image(systemName: Library.searchButton.icon)
-                            .foregroundColor(.accentColor)
-                            .frame(width: 16)
-                        Text("Search results")
-                        Spacer()
-                    }
-                }
-            )
-                .disabled(Library.searchButton == library.smartLists.selected)
-        }
-    }
-}
-
 struct ViewModifierSearch: ViewModifier {
     /// The Library model
     @EnvironmentObject var library: Library

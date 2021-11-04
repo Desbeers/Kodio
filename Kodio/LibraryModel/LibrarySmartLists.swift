@@ -100,7 +100,7 @@ extension Library {
     }
     
     /// Get the smart list items
-    func getSmartLists() {
+    func getSmartLists() -> [SmartListItem] {
         var list = [SmartListItem]()
         list.append(SmartListItem(title: "Album artists",
                                   subtitle: "All your album artists",
@@ -134,21 +134,37 @@ extension Library {
         list.append(SmartListItem(title: "Playing queue",
                                   subtitle: "This is in your current playlist",
                                   icon: "music.note.list",
-                                  media: .queue
+                                  media: .queue,
+                                  visible: !Queue.shared.songs.isEmpty
                                  ))
+        list.append(SmartListItem(title: "Search",
+                                  subtitle: "Results for '\(query)'",
+                                  icon: "magnifyingglass",
+                                  media: .search,
+                                  visible: !query.isEmpty
+                                 ))
+        /// Save the list
         smartLists.all = list
-        /// Select the first item
-        smartLists.selected = list.first!
+        /// Select default if selected item is not visible
+        if let selection = list.first(where: { $0.media == filter }), !selection.visible {
+            logger("Select first item in the sidebar")
+            toggleSmartList(smartList: list.first!)
+        }
+        return list
     }
     
     /// The struct for a smart list item
     struct SmartListItem: LibraryItem {
-        var id = UUID()
+        var id: String {
+            return title
+        }
         var title: String = "Kodio"
         var subtitle = "Loading your library"
         var description: String = ""
         var icon: String = "k.circle"
         var media: MediaType = .albumArtists
+        /// Visibility of item
+        var visible: Bool = true
         /// Used for Kodi playlist files
         var file: String = ""
         /// Not needed, but required by protocol
