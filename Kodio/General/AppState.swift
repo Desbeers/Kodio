@@ -19,7 +19,7 @@ class AppState: ObservableObject {
     /// Define what kind of sheet to show
     var activeSheet: SheetTypes = .queue
     /// The struct for a SwiftUI Alert item
-    var alertItem: AlertItem?
+    @Published var alertItem: AlertItem?
     /// The state of Kodio
     @Published var state: State = .none {
         didSet {
