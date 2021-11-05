@@ -52,7 +52,7 @@ struct ViewSidebar: View {
     /// View playlists
     var playlists: some View {
         Section(header: Text("Playlists")) {
-            ForEach(library.playlists.all) { item in
+            ForEach(library.playlists.files) { item in
                 sidebarButton(item: item)
             }
         }

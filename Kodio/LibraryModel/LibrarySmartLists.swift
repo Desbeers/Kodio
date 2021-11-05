@@ -62,22 +62,9 @@ extension Library {
         smartLists.selected = smartList
         switch smartList.media {
         case .playlist:
-            let request = FilesGetDirectory(directory: smartList.file)
             Task {
-                do {
-                    let result = try await KodiClient.shared.sendRequest(request: request)
-                    var songList = [SongItem]()
-                    for song in result.files {
-                        if let item = songs.all.first(where: { $0.songID == song.songID }) {
-                            songList.append(item)
-                        }
-                    }
-                    playlists.songs = songList
-                    /// Reload lists
-                    smartReload()
-                } catch {
-                    print(error)
-                }
+                let songList = await getPlaylistSongs(file: smartList.file)
+                playlists.songs = songList
             }
         case .random:
             songs.random = Array(songs.all
@@ -85,18 +72,15 @@ extension Library {
                                     .filter {!$0.genre.contains("Musical")}
                                     .filter {!$0.genre.contains("Cabaret")}
                                     .shuffled().prefix(100))
-            /// Reload lists
-            smartReload()
         case .neverPlayed:
             songs.neverPlayed = Array(songs.all
                                         .filter {$0.playCount == 0}
                                         .shuffled().prefix(100))
-            /// Reload lists
-            smartReload()
         default:
-            /// Reload lists
-            smartReload()
+            break
         }
+        /// Reload lists
+        smartReload()
     }
     
     /// Get the smart list items

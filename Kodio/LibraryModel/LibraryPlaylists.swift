@@ -13,15 +13,15 @@ extension Library {
     
     /// A struct will all genre related items
     struct Playlists {
-        /// A list containing all the playlists
-        var all: [SmartListItem] = []
+        /// A list containing all the playlist files
+        var files: [SmartListItem] = []
         /// A list containng the songs of the selected playlist
         var songs: [SongItem] = []
     }
     
-    /// Get all playlists from the Kodi host
+    /// Get all playlist files from the Kodi host
     /// - Returns: True when loaded; else false
-    func getPlaylists() async -> Bool {
+    func getPlaylistsFiles() async -> Bool {
         let request = FilesGetDirectory(directory: "special://musicplaylists")
         do {
             var listItems: [SmartListItem] = []
@@ -51,11 +51,28 @@ extension Library {
                 )
             }
             logger("Playlists loaded")
-            playlists.all = listItems
+            playlists.files = listItems
             return true
         } catch {
             print("Loading playlists failed with error: \(error)")
             return false
+        }
+    }
+    
+    func getPlaylistSongs(file: String) async -> [SongItem] {
+        let request = FilesGetDirectory(directory: file)
+        var songList = [SongItem]()
+        do {
+            let result = try await KodiClient.shared.sendRequest(request: request)
+            for song in result.files {
+                if let item = songs.all.first(where: { $0.songID == song.songID }) {
+                    songList.append(item)
+                }
+            }
+            return songList
+        } catch {
+            print(error)
+            return songList
         }
     }
 }

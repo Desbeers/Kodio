@@ -92,7 +92,7 @@ extension Library {
             async let genres = getGenres(reload: reload)
             status.genres = await genres
             /// Playlists
-            async let playlists = getPlaylists()
+            async let playlists = getPlaylistsFiles()
             status.playlists = await playlists
             /// Songs
             if await albums {
@@ -118,7 +118,7 @@ extension Library {
     func resetLibrary() {
         status.reset()
         filteredContent = Library.FilteredContent()
-        playlists.all = []
+        playlists.files = []
         smartLists.all = []
         smartLists.selected = SmartListItem()
         radioStations = []
