@@ -146,7 +146,7 @@ extension Library {
         /// Save the list
         smartLists.all = list
         /// Select default if selected item is not visible
-        if let selection = list.first(where: { $0.media == filter }), !selection.visible {
+        if let selection = list.first(where: { $0.media == smartLists.selected.media }), !selection.visible {
             logger("Select first item in the sidebar")
             toggleSmartList(smartList: list.first!)
         }
