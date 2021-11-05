@@ -20,7 +20,7 @@ struct ViewSidebar: View {
         VStack(spacing: 0) {
             List {
                 if appState.state == .loadedLibrary {
-                    smartLists
+                    libraryLists
                         .listRowInsets(EdgeInsets())
                     playlists
                         .listRowInsets(EdgeInsets())
@@ -39,10 +39,10 @@ struct ViewSidebar: View {
         .animation(.default, value: library.filter)
         .animation(.default, value: queue.songs)
     }
-    /// View smart lists
-    var smartLists: some View {
+    /// View library lists
+    var libraryLists: some View {
         Section(header: Text("Music on '\(KodiClient.shared.selectedHost.description)'")) {
-            ForEach(library.getSmartLists()) { item in
+            ForEach(library.getLibraryLists()) { item in
                 if item.visible {
                     sidebarButton(item: item)
                 }
@@ -58,16 +58,16 @@ struct ViewSidebar: View {
         }
     }
     /// A button in the sidebar
-    func sidebarButton(item: Library.SmartListItem) -> some View {
+    func sidebarButton(item: Library.LibraryListItem) -> some View {
         Button(
             action: {
-                library.toggleSmartList(smartList: item)
+                library.selectLibraryList(libraryList: item)
             },
             label: {
                 Label(item.title, systemImage: item.icon)
             }
         )
-            .disabled(item.id == library.smartLists.selected.id)
+            .disabled(item.id == library.libraryLists.selected.id)
             .animation(nil, value: library.filter)
     }
 }

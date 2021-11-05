@@ -73,7 +73,7 @@ extension Library {
     func filterArtists(songList: [SongItem]) async -> [ArtistItem] {
         var artistList = artists.all
         /// Show only album artists when that is selected in the sidebar
-        if smartLists.selected.media == .albumArtists {
+        if libraryLists.selected.media == .albumArtists {
             artistList = artistList.filter {$0.isAlbumArtist == true}
         }
         /// Filter artists based on songs list

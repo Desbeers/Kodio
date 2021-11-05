@@ -1,5 +1,5 @@
 //
-//  LibrarySmartLists.swift
+//  LibraryLists.swift
 //  Kodio
 //
 //  © 2021 Nick Berendsen
@@ -9,19 +9,19 @@ import Foundation
 
 extension Library {
     
-    // MARK: Smart lists
+    // MARK: Library lists
     
-    /// A struct will all smart list related items
-    struct SmartLists {
-        /// A list containng all smart lists
-        var all = [SmartListItem]()
-        /// The selected smart list in the UI
-        var selected = SmartListItem()
+    /// A struct with all library list related items
+    struct LibraryLists {
+        /// A list containing all library list items
+        var all = [LibraryListItem]()
+        /// The selected libray list in the UI
+        var selected = LibraryListItem()
     }
     
     /// Get a list of recently played and recently added songs from the Kodi host
     /// - Returns: True when loaded; else false
-    func getSmartItems() async -> Bool {
+    func getLibraryListItems() async -> Bool {
         let recent = AudioLibraryGetSongIDs(media: .recentlyPlayed)
         let most = AudioLibraryGetSongIDs(media: .mostPlayed)
         do {
@@ -31,14 +31,14 @@ extension Library {
             /// Most played
             async let most = KodiClient.shared.sendRequest(request: most)
             songs.mostPlayed = songIDtoSongItem(songID: try await most.songs)
-            logger("Smart items loaded")
+            logger("Library lists loaded")
             /// If this item is selected; refresh the UI
             if filter == .recentlyPlayed || filter == .mostPlayed {
                 filterAllMedia()
             }
             return true
         } catch {
-            print("Loading smart items failed with error: \(error)")
+            print("Loading library items failed with error: \(error)")
             return false
         }
     }
@@ -56,14 +56,14 @@ extension Library {
         return songList
     }
     
-    /// Select or deselect a smart list and filter the library
-    /// - Parameter smartList: A ``SmartListItem`` struct
-    func toggleSmartList(smartList: SmartListItem) {
-        smartLists.selected = smartList
-        switch smartList.media {
+    /// Select a library list and filter the library
+    /// - Parameter libraryList: A ``LibraryListItem`` struct
+    func selectLibraryList(libraryList: LibraryListItem) {
+        libraryLists.selected = libraryList
+        switch libraryList.media {
         case .playlist:
             Task {
-                let songList = await getPlaylistSongs(file: smartList.file)
+                let songList = await getPlaylistSongs(file: libraryList.file)
                 playlists.songs = songList
             }
         case .random:
@@ -79,66 +79,66 @@ extension Library {
         default:
             break
         }
-        /// Reload lists
-        smartReload()
+        /// Reload the library
+        libraryReload()
     }
     
-    /// Get the smart list items
-    func getSmartLists() -> [SmartListItem] {
-        var list = [SmartListItem]()
-        list.append(SmartListItem(title: "Album artists",
+    /// Get the library list items
+    func getLibraryLists() -> [LibraryListItem] {
+        var list = [LibraryListItem]()
+        list.append(LibraryListItem(title: "Album artists",
                                   subtitle: "All your album artists",
                                   icon: "music.mic",
                                   media: .albumArtists))
-        list.append(SmartListItem(title: "Compilations",
+        list.append(LibraryListItem(title: "Compilations",
                                   subtitle: "All your compilations",
                                   icon: "person.2",
                                   media: .compilations
                                  ))
-        list.append(SmartListItem(title: "Recently added",
+        list.append(LibraryListItem(title: "Recently added",
                                   subtitle: "What's new in you library",
                                   icon: "clock",
                                   media: .recentlyAdded
                                  ))
-        list.append(SmartListItem(title: "Most played",
+        list.append(LibraryListItem(title: "Most played",
                                   subtitle: "The songs that you play the most",
                                   icon: "infinity",
                                   media: .mostPlayed
                                  ))
-        list.append(SmartListItem(title: "Recently played",
+        list.append(LibraryListItem(title: "Recently played",
                                   subtitle: "Your last played songs",
                                   icon: "gobackward",
                                   media: .recentlyPlayed
                                  ))
-        list.append(SmartListItem(title: "Favorites",
+        list.append(LibraryListItem(title: "Favorites",
                                   subtitle: "Your favorite songs",
                                   icon: "star",
                                   media: .favorites
                                  ))
-        list.append(SmartListItem(title: "Playing queue",
+        list.append(LibraryListItem(title: "Playing queue",
                                   subtitle: "This is in your current playlist",
                                   icon: "music.note.list",
                                   media: .queue,
                                   visible: !Queue.shared.songs.isEmpty
                                  ))
-        list.append(SmartListItem(title: "Search",
+        list.append(LibraryListItem(title: "Search",
                                   subtitle: "Results for '\(query)'",
                                   icon: "magnifyingglass",
                                   media: .search,
                                   visible: !query.isEmpty
                                  ))
         /// Save the list
-        smartLists.all = list
+        libraryLists.all = list
         /// Select default if selected item is not visible
-        if let selection = list.first(where: { $0.media == smartLists.selected.media }), !selection.visible {
+        if let selection = list.first(where: { $0.media == libraryLists.selected.media }), !selection.visible {
             logger("Select first item in the sidebar")
-            toggleSmartList(smartList: list.first!)
+            selectLibraryList(libraryList: list.first!)
         }
         return list
     }
     
-    /// The struct for a smart list item
-    struct SmartListItem: LibraryItem {
+    /// The struct for a library list item
+    struct LibraryListItem: LibraryItem {
         var id: String {
             return title
         }
@@ -159,14 +159,14 @@ extension Library {
         }
     }
 
-    /// Reload the library when changing a smart filter
-    func smartReload() {
+    /// Reload the library when changing a library filter
+    func libraryReload() {
         /// Reset selection
         genres.selected = nil
         artists.selected = nil
         albums.selected = nil
         /// Set the filter
-        setLibraryFilter(item: smartLists.selected)
+        setLibraryFilter(item: libraryLists.selected)
         /// Reload all media
         filterAllMedia()
     }

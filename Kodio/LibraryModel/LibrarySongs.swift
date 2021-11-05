@@ -75,7 +75,7 @@ extension Library {
     /// Filter the library based on songs
     func filterSongs() async -> [SongItem] {
         var songList = songs.all
-        switch smartLists.selected.media {
+        switch libraryLists.selected.media {
         case .search:
             songList = search.results
         case .compilations:

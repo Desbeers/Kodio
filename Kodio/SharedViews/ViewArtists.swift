@@ -33,7 +33,7 @@ struct ViewArtists: View {
                     }
                 }
             }
-            /// Scroll to the top when selecting a new smart item
+            /// Scroll to the top when selecting a new genre
             .onChange(of: library.genres.selected) { _ in
                 withAnimation(.easeInOut(duration: 1)) {
                     proxy.scrollTo("ArtistsHeader", anchor: .center)

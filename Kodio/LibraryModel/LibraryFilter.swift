@@ -39,7 +39,7 @@ extension Library {
             } else if let genre = genres.selected?.media {
                 filter = genre
             } else {
-                filter = smartLists.selected.media
+                filter = libraryLists.selected.media
             }
         }
     }

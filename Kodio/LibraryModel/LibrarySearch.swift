@@ -31,8 +31,8 @@ extension Library {
                 async let suggestions = makeSearchSuggestions()
                 search.results = await results
                 search.suggestions = await suggestions
-                if let button = smartLists.all.first(where: { $0.media == .search}) {
-                    Library.shared.toggleSmartList(smartList: button)
+                if let button = libraryLists.all.first(where: { $0.media == .search}) {
+                    Library.shared.selectLibraryList(libraryList: button)
                 }
             }
         }

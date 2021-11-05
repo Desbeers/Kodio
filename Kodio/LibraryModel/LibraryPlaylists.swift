@@ -14,7 +14,7 @@ extension Library {
     /// A struct will all genre related items
     struct Playlists {
         /// A list containing all the playlist files
-        var files: [SmartListItem] = []
+        var files: [LibraryListItem] = []
         /// A list containng the songs of the selected playlist
         var songs: [SongItem] = []
     }
@@ -24,16 +24,16 @@ extension Library {
     func getPlaylistsFiles() async -> Bool {
         let request = FilesGetDirectory(directory: "special://musicplaylists")
         do {
-            var listItems: [SmartListItem] = []
+            var listItems: [LibraryListItem] = []
             /// Random songs
-            listItems.append(SmartListItem(
+            listItems.append(LibraryListItem(
                 title: "Random songs",
                 subtitle: "100 random songs from your library",
                 icon: "sparkles",
                 media: .random
             ))
             /// Never played
-            listItems.append(SmartListItem(
+            listItems.append(LibraryListItem(
                 title: "Never played",
                 subtitle: "Songs you never played",
                 icon: "minus.diamond",
@@ -41,7 +41,7 @@ extension Library {
             ))
             let result = try await KodiClient.shared.sendRequest(request: request)
             for playlist in result.files {
-                listItems.append(SmartListItem(
+                listItems.append(LibraryListItem(
                     title: playlist.label,
                     subtitle: playlist.description,
                     icon: playlist.icon,

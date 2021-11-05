@@ -30,7 +30,7 @@ struct ViewAlbums: View {
                     }
                 }
             }
-            /// Scroll to the top when selecting a new smart item
+            /// Scroll to the top when selecting a new artist
             .onChange(of: library.artists.selected) { _ in
                 withAnimation(.easeInOut(duration: 1)) {
                     proxy.scrollTo("AlbumsHeader", anchor: .center)

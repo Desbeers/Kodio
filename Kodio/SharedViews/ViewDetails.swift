@@ -26,7 +26,7 @@ struct ViewDetails: View {
                     case .album:
                         ViewDetailsMedia(media: library.albums.selected ?? Library.AlbumItem())
                     default:
-                        ViewDetailsMedia(media: library.smartLists.selected)
+                        ViewDetailsMedia(media: library.libraryLists.selected)
                     }
                 }
                 .id("DetailsHeader")

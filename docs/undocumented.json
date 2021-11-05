@@ -23,49 +23,56 @@
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/Hosts.swift",
-      "line": 65,
+      "line": 46,
+      "symbol": "Hosts.switchHost(selected:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/Hosts.swift",
+      "line": 70,
       "symbol": "HostItem.description",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/Hosts.swift",
-      "line": 66,
+      "line": 71,
       "symbol": "HostItem.ip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/Hosts.swift",
-      "line": 67,
+      "line": 72,
       "symbol": "HostItem.port",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/Hosts.swift",
-      "line": 68,
+      "line": 73,
       "symbol": "HostItem.tcp",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/Hosts.swift",
-      "line": 69,
+      "line": 74,
       "symbol": "HostItem.username",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/Hosts.swift",
-      "line": 70,
+      "line": 75,
       "symbol": "HostItem.password",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/Hosts.swift",
-      "line": 71,
+      "line": 76,
       "symbol": "HostItem.selected",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -876,6 +883,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryPlaylists.swift",
+      "line": 62,
+      "symbol": "Library.getPlaylistSongs(file:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryProperties.swift",
       "line": 51,
       "symbol": "Library.AudioLibraryGetProperties.Params.properties",
@@ -926,35 +940,35 @@
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySearch.swift",
-      "line": 155,
+      "line": 137,
       "symbol": "Library.SmartSearchMatcher.searchTokens",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySearch.swift",
-      "line": 161,
+      "line": 143,
       "symbol": "Library.SearchSuggestionItem.title",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySearch.swift",
-      "line": 162,
+      "line": 144,
       "symbol": "Library.SearchSuggestionItem.subtitle",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySearch.swift",
-      "line": 163,
+      "line": 145,
       "symbol": "Library.SearchSuggestionItem.suggestion",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySearch.swift",
-      "line": 164,
+      "line": 146,
       "symbol": "Library.SearchSuggestionItem.thumbnail",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -962,14 +976,14 @@
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySmartLists.swift",
       "line": 157,
-      "symbol": "Library.SmartListItem.CodingKeys",
+      "symbol": "Library.LibraryListItem.CodingKeys",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySmartLists.swift",
       "line": 158,
-      "symbol": "Library.SmartListItem.CodingKeys.title",
+      "symbol": "Library.LibraryListItem.CodingKeys.title",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -1640,21 +1654,21 @@
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewDetails.swift",
-      "line": 69,
+      "line": 71,
       "symbol": "ViewDetails.ViewDetailsArtwork.media",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewDetails.swift",
-      "line": 83,
+      "line": 85,
       "symbol": "ViewDetails.ViewDetailsArtwork.overlay",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewDetails.swift",
-      "line": 117,
+      "line": 119,
       "symbol": "ViewDetails.ViewDetailsStatistics.media",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -1801,7 +1815,7 @@
     },
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewPlayer.swift",
-      "line": 143,
+      "line": 141,
       "symbol": "ButtonStylePlayer.ViewButtonStylePlayer",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -1823,13 +1837,6 @@
     {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewSearch.swift",
       "line": 10,
-      "symbol": "ViewSearchButton",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewSearch.swift",
-      "line": 35,
       "symbol": "ViewModifierSearch",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
@@ -1838,13 +1845,6 @@
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewSettings.swift",
       "line": 10,
       "symbol": "ViewSettings",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewSmartLists.swift",
-      "line": 12,
-      "symbol": "ViewSmartLists",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },

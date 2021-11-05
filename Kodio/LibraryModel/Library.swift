@@ -31,7 +31,7 @@ class Library: ObservableObject {
     var search = Search()
     /// The search query
     @Published var query = ""
-    /// The library filtered by selection of smart list, genre, artist and album
+    /// The library filtered by selection of library list, genre, artist and album
     @Published var filteredContent = FilteredContent()
     /// An array containing all artist related items
     var artists = Artists()
@@ -41,8 +41,8 @@ class Library: ObservableObject {
     var songs = Songs()
     /// An array containing all genre related items
     var genres = Genres()
-    /// An array containing all smart list related items
-    var smartLists = SmartLists()
+    /// An array containing all library list related items
+    var libraryLists = LibraryLists()
     /// An array containing all playlist related items
     var playlists = Playlists()
     /// An array with all radio stations
@@ -73,8 +73,8 @@ extension Library {
     /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
         getRadioStations()
-        smartLists.all = getSmartLists()
-        smartLists.selected = smartLists.all.first!
+        libraryLists.all = getLibraryLists()
+        libraryLists.selected = libraryLists.all.first!
         DispatchQueue.main.async {
             AppState.shared.state = .loadingLibrary
         }
@@ -98,7 +98,7 @@ extension Library {
             if await albums {
                 status.songs = await getSongs(reload: reload)
                 /// Now load stuff depending on the songs
-                status.smartItems = await getSmartItems()
+                status.libraryLists = await getLibraryListItems()
             }
         }
     }
@@ -119,8 +119,8 @@ extension Library {
         status.reset()
         filteredContent = Library.FilteredContent()
         playlists.files = []
-        smartLists.all = []
-        smartLists.selected = SmartListItem()
+        libraryLists.all = []
+        libraryLists.selected = LibraryListItem()
         radioStations = []
         Player.shared.properties = Player.Properties()
         Player.shared.item = Player.PlayerItem()
@@ -130,7 +130,7 @@ extension Library {
     struct Status {
         /// Check if all media items are loaded
         var all: Bool {
-            if artists, albums, songs, smartItems, genres, playlists {
+            if artists, albums, songs, libraryLists, genres, playlists {
                 return true
             }
             return false
@@ -143,8 +143,8 @@ extension Library {
         var songs: Bool = false
         /// Loading state of the genres
         var genres: Bool = false
-        /// Loading state of the smart items
-        var smartItems: Bool = false
+        /// Loading state of the library list items
+        var libraryLists: Bool = false
         /// Loading state of the playlists
         var playlists: Bool = false
         /// Loading state of the playing queue
@@ -167,27 +167,27 @@ extension Library {
         case song = "Songs"
         /// An ``GenreItem``
         case genre = "Genres"
-        /// An ``SmartListItem`` for  songs by album artists
+        /// An ``LibrayListItem`` for  songs by album artists
         case albumArtists = "Album artists"
-        /// A ``SmartListItem`` for compilations
+        /// A ``LibrayListItem`` for compilations
         case compilations = "Compilations"
-        /// A ``SmartListItem`` for random songs
+        /// A ``LibrayListItem`` for random songs
         case random = "Random songs"
-        /// A ``SmartListItem`` for never played songs
+        /// A ``LibrayListItem`` for never played songs
         case neverPlayed = "Never played"
-        /// A ``SmartListItem`` for  favorite songs
+        /// A ``LibrayListItem`` for  favorite songs
         case favorites = "Favorites"
-        /// A ``SmartListItem`` for the playing queue
+        /// A ``LibrayListItem`` for the playing queue
         case queue = "Playing queue"
-        /// A ``SmartListItem`` for the search results
+        /// A ``LibrayListItem`` for the search results
         case search = "Search library"
-        /// A ``SmartListItem`` for most played songs
+        /// A ``LibrayListItem`` for most played songs
         case mostPlayed = "Most played"
-        /// A ``SmartListItem`` for recently added songs
+        /// A ``LibrayListItem`` for recently added songs
         case recentlyAdded = "Recently added"
-        /// A ``SmartListItem`` for recently played songs
+        /// A ``LibrayListItem`` for recently played songs
         case recentlyPlayed = "Recently played"
-        /// A ``SmartListItem`` for playlists
+        /// A ``LibrayListItem`` for playlists
         case playlist = "Playlist"
     }
 }

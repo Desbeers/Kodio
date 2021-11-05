@@ -137,10 +137,10 @@ extension KodiClient {
                 await Player.shared.getItem()
                 await Player.shared.getProperties()
             }
-        /// Reload smart lists
+        /// Reload library lists
         case .audioLibraryOnUpdate:
             Task {
-                await Library.shared.getSmartItems()
+                await Library.shared.getLibraryListItems()
             }
         case .playerOnSpeedChanged:
             Task {
