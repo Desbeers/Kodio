@@ -123,6 +123,8 @@
 		D7E1EA562736DA320087EA69 /* AppStateActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EA542736DA320087EA69 /* AppStateActions.swift */; };
 		D7E1EA582736DD750087EA69 /* AppStateAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EA572736DD750087EA69 /* AppStateAlerts.swift */; };
 		D7E1EA592736DD750087EA69 /* AppStateAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EA572736DD750087EA69 /* AppStateAlerts.swift */; };
+		D7E1EA5B2736F37A0087EA69 /* LibraryLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EA5A2736F37A0087EA69 /* LibraryLoad.swift */; };
+		D7E1EA5C2736F37A0087EA69 /* LibraryLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1EA5A2736F37A0087EA69 /* LibraryLoad.swift */; };
 		D7EA914326A93C1D0090C137 /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA913026A93C1C0090C137 /* KodioApp.swift */; };
 		D7EA914726A93C1D0090C137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EA913226A93C1D0090C137 /* Assets.xcassets */; };
 		D7EA914826A93C1D0090C137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EA913226A93C1D0090C137 /* Assets.xcassets */; };
@@ -221,6 +223,7 @@
 		D7E1EA512736D9680087EA69 /* AppStateSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateSheets.swift; sourceTree = "<group>"; };
 		D7E1EA542736DA320087EA69 /* AppStateActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateActions.swift; sourceTree = "<group>"; };
 		D7E1EA572736DD750087EA69 /* AppStateAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateAlerts.swift; sourceTree = "<group>"; };
+		D7E1EA5A2736F37A0087EA69 /* LibraryLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryLoad.swift; sourceTree = "<group>"; };
 		D7EA913026A93C1C0090C137 /* KodioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
 		D7EA913126A93C1C0090C137 /* ViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewContent.swift; sourceTree = "<group>"; };
 		D7EA913226A93C1D0090C137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -437,6 +440,7 @@
 				D7AE512726B9379600A57244 /* LibraryRadio.swift */,
 				D74EFC4726E7C9EF00720D3C /* LibraryProperties.swift */,
 				D7D9508C272E878D00CC7155 /* LibraryFilter.swift */,
+				D7E1EA5A2736F37A0087EA69 /* LibraryLoad.swift */,
 			);
 			path = LibraryModel;
 			sourceTree = "<group>";
@@ -650,6 +654,7 @@
 				D72740E426B17C2100067D4A /* PlayerActions.swift in Sources */,
 				D72E0DA826CC44350001B47A /* ViewHosts.swift in Sources */,
 				D76B190D271326E200CEB741 /* ViewHelp.swift in Sources */,
+				D7E1EA5B2736F37A0087EA69 /* LibraryLoad.swift in Sources */,
 				D73163DB26ABEFC100CD5F7E /* LibraryAlbums.swift in Sources */,
 				D72740ED26B186EF00067D4A /* PlayerGetItem.swift in Sources */,
 				D75F765F26CAA72000165656 /* ViewSettings.swift in Sources */,
@@ -717,6 +722,7 @@
 				D7EA917A26A96C230090C137 /* ViewSongs.swift in Sources */,
 				D74C95BF272C8F3700148F93 /* ViewSongsListRow.swift in Sources */,
 				D7A9043A26F86E600012C7B2 /* AppDelegate.swift in Sources */,
+				D7E1EA5C2736F37A0087EA69 /* LibraryLoad.swift in Sources */,
 				D7E1EA562736DA320087EA69 /* AppStateActions.swift in Sources */,
 				D7F00A9226AEFD6A00CEE39E /* KodiClient.swift in Sources */,
 				D72740E826B1809100067D4A /* KodiHostProperties.swift in Sources */,

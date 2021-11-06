@@ -9,7 +9,7 @@ import Foundation
 
 extension Library {
     
-    // MARK: Filter content
+    // MARK: Filter the library
     
     /// A struct with the filtered genres, artists, albums and songs
     struct FilteredContent: Equatable {
@@ -23,7 +23,98 @@ extension Library {
         var songs: [SongItem] = []
     }
     
-    /// Set the library selection
+    /// Filter the genres
+    /// - Parameter songList: The current filtered list of songs
+    /// - Returns: An array of genre items
+    func filterGenres(songList: [SongItem]) async -> [GenreItem] {
+        /// Filter genres based on song list
+        let filter = songList.map { song -> [Int] in
+            return song.genreID
+        }
+        let genreIDs: [Int] = filter.flatMap { $0 }.removingDuplicates()
+        return genres.all.filter({genreIDs.contains($0.genreID)})
+    }
+    
+    /// Filter the artists
+    /// - Parameter songList: The current filtered list of songs
+    /// - Returns: An array of artist items
+    func filterArtists(songList: [SongItem]) async -> [ArtistItem] {
+        var artistList = artists.all
+        /// Show only album artists when that is selected in the sidebar
+        if libraryLists.selected.media == .albumArtists {
+            artistList = artistList.filter {$0.isAlbumArtist == true}
+        }
+        /// Filter artists based on songs list
+        let filter = songList.map { song -> [Int] in
+            return song.artistID
+        }
+        let artists: [Int] = filter.flatMap { $0 }.removingDuplicates()
+        return artistList.filter({artists.contains($0.artistID)}).sorted {$0.artist < $1.artist}
+    }
+    
+    /// Filter the albums
+    /// - Parameter songList: The current filtered list of songs
+    /// - Returns: An array of album items
+    func filterAlbums(songList: [SongItem]) async -> [AlbumItem] {
+        let albumList = albums.all
+        /// Filter albums based on songs list
+        let allAlbums = songList.map { song -> Int in
+            return song.albumID
+        }
+        let albumIDs = allAlbums.removingDuplicates()
+        return albumList
+            .filter({albumIDs.contains($0.albumID)})
+            .sorted { $0.artist == $1.artist ? $0.year < $1.year : $0.artist.first! < $1.artist.first! }
+    }
+    
+    /// Filter the songs
+    func filterSongs() async -> [SongItem] {
+        var songList = songs.all
+        switch libraryLists.selected.media {
+        case .search:
+            songList = search.results
+        case .compilations:
+            songList = songList.filter {$0.compilation == true}.sorted {$0.artists < $1.artists}
+        case .recentlyPlayed:
+            songList = songs.recentlyPlayed
+        case .recentlyAdded:
+            songList = Array(songList.sorted {$0.dateAdded > $1.dateAdded}.prefix(100))
+        case .mostPlayed:
+            songList = songs.mostPlayed
+        case .random:
+            songList = songs.random
+        case .neverPlayed:
+            songList = songs.neverPlayed
+        case .playlist:
+            songList = playlists.songs
+        case .favorites:
+            songList = songList.filter { $0.rating > 0 }.sorted {$0.rating > $1.rating}
+        case .queue:
+            songList = Queue.shared.songs
+        default:
+            songList = songList.filter {$0.compilation == false}
+        }
+        /// Filter on a genre if one is selected
+        if let genre = genres.selected {
+            songList = songList.filter { $0.genre.contains(genre.label)}
+        }
+        /// Filter on an artist if one is selected
+        if let artist = artists.selected {
+            songList = songList.filter {$0.artist.contains(artist.artist)}.sorted {$0.title < $1.title}
+        }
+        /// Filter on an album if one is selected
+        if let album = albums.selected {
+            /// Filter by disc and then by track
+            songList = songList.filter { $0.albumID == album.albumID }
+                .sorted { $0.disc == $1.disc ? $0.track < $1.track : $0.disc < $1.disc }
+        }
+        /// Give the list a new ID
+        songs.listID = UUID().uuidString
+        /// Return the list of filtered songs
+        return songList
+    }
+    
+    /// Set the library filetr selection
     /// - Parameter item: The selected ``LibraryItem``
     func setLibrarySelection<T: LibraryItem>(item: T?) {
         if let selected = item {

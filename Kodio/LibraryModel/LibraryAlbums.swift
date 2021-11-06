@@ -63,21 +63,6 @@ extension Library {
         }
     }
     
-    /// Filter the albums
-    /// - Parameter songList: The current filtered list of songs
-    /// - Returns: An array of album items
-    func filterAlbums(songList: [SongItem]) async -> [AlbumItem] {
-        let albumList = albums.all
-        /// Filter albums based on songs list
-        let allAlbums = songList.map { song -> Int in
-            return song.albumID
-        }
-        let albumIDs = allAlbums.removingDuplicates()
-        return albumList
-            .filter({albumIDs.contains($0.albumID)})
-            .sorted { $0.artist == $1.artist ? $0.year < $1.year : $0.artist.first! < $1.artist.first! }
-    }
-    
     /// Retrieve all albums (Kodi API)
     struct AudioLibraryGetAlbums: KodiAPI {
         /// Method

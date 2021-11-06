@@ -67,23 +67,6 @@ extension Library {
         }
     }
     
-    /// Filter the artists
-    /// - Parameter songList: The current filtered list of songs
-    /// - Returns: An array of artist items
-    func filterArtists(songList: [SongItem]) async -> [ArtistItem] {
-        var artistList = artists.all
-        /// Show only album artists when that is selected in the sidebar
-        if libraryLists.selected.media == .albumArtists {
-            artistList = artistList.filter {$0.isAlbumArtist == true}
-        }
-        /// Filter artists based on songs list
-        let filter = songList.map { song -> [Int] in
-            return song.artistID
-        }
-        let artists: [Int] = filter.flatMap { $0 }.removingDuplicates()
-        return artistList.filter({artists.contains($0.artistID)}).sorted {$0.artist < $1.artist}
-    }
-    
     /// Retrieve all artists (Kodi API)
     struct AudioLibraryGetArtists: KodiAPI {
         /// Method

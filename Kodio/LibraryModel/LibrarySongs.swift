@@ -72,53 +72,6 @@ extension Library {
         }
     }
     
-    /// Filter the library based on songs
-    func filterSongs() async -> [SongItem] {
-        var songList = songs.all
-        switch libraryLists.selected.media {
-        case .search:
-            songList = search.results
-        case .compilations:
-            songList = songList.filter {$0.compilation == true}.sorted {$0.artists < $1.artists}
-        case .recentlyPlayed:
-            songList = songs.recentlyPlayed
-        case .recentlyAdded:
-            songList = Array(songList.sorted {$0.dateAdded > $1.dateAdded}.prefix(100))
-        case .mostPlayed:
-            songList = songs.mostPlayed
-        case .random:
-            songList = songs.random
-        case .neverPlayed:
-            songList = songs.neverPlayed
-        case .playlist:
-            songList = playlists.songs
-        case .favorites:
-            songList = songList.filter { $0.rating > 0 }.sorted {$0.rating > $1.rating}
-        case .queue:
-            songList = Queue.shared.songs
-        default:
-            songList = songList.filter {$0.compilation == false}
-        }
-        /// Filter on a genre if one is selected
-        if let genre = genres.selected {
-            songList = songList.filter { $0.genre.contains(genre.label)}
-        }
-        /// Filter on an artist if one is selected
-        if let artist = artists.selected {
-            songList = songList.filter {$0.artist.contains(artist.artist)}.sorted {$0.title < $1.title}
-        }
-        /// Filter on an album if one is selected
-        if let album = albums.selected {
-            /// Filter by disc and then by track
-            songList = songList.filter { $0.albumID == album.albumID }
-                .sorted { $0.disc == $1.disc ? $0.track < $1.track : $0.disc < $1.disc }
-        }
-        /// Give the list a new ID
-        songs.listID = UUID().uuidString
-        /// Return the list of filtered songs
-        return songList
-    }
-    
     /// Like or dislike a song
     func favoriteSongToggle(song: SongItem) {
         if let index = songs.all.firstIndex(where: { $0.songID == song.songID }),

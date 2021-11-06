@@ -70,18 +70,6 @@ extension Library {
         }
     }
 
-    /// Filter the genres
-    /// - Parameter songList: The current filtered list of songs
-    /// - Returns: An array of genre items
-    func filterGenres(songList: [SongItem]) async -> [GenreItem] {
-        /// Filter genres based on song list
-        let filter = songList.map { song -> [Int] in
-            return song.genreID
-        }
-        let genreIDs: [Int] = filter.flatMap { $0 }.removingDuplicates()
-        return genres.all.filter({genreIDs.contains($0.genreID)})
-    }
-
     /// Retrieve all genres (Kodi API)
     struct AudioLibraryGetGenres: KodiAPI {
         /// Method
