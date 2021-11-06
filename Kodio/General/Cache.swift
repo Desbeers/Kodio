@@ -7,18 +7,17 @@
 
 import Foundation
 
+/// Get and set structs to the cache directory
 struct Cache {
-
-    // MARK: Cache
 
     /// Get a struct from the cache
     /// - Parameters:
-    ///   - key: the name of the item in the cache
-    ///   - as: the struct to use for decoding
-    ///   - root: save it in the root folder; if false, it will save in the Host IP folder
+    ///   - key: The name of the item in the cache
+    ///   - as: The struct to use for decoding
+    ///   - root: Get it from the root folder; if false, it will get it from the Host IP folder
     /// - Returns: decoded cache item
     static func get<T: Codable>(key: String, as: T.Type, root: Bool = false) -> T? {
-        let file = self.cachePath(for: key, root: root)
+        let file = self.path(for: key, root: root)
         guard let data = try? Data(contentsOf: file) else {
             return nil
         }
@@ -32,21 +31,23 @@ struct Cache {
     
     /// Save a struct into the cache
     /// - Parameters:
-    ///   - key: the name for the item in the cache
-    ///   - object: the struct to save
-    ///   - root: save it in the root folder; if false, it will save in the Host IP folder
+    ///   - key: The name for the item in the cache
+    ///   - object:Tthe struct to save
+    ///   - root: Store it in the root folder; if false, it will store it in the Host IP folder
     /// - Throws: an error if it can't be saved
     static func set<T: Codable>(key: String, object: T, root: Bool = false) throws {
-        let file = self.cachePath(for: key, root: root)
+        let file = self.path(for: key, root: root)
         let archivedValue = try JSONEncoder().encode(object)
         try archivedValue.write(to: file)
         logger("'\(key)' stored in cache")
     }
 
-    /// The path to the cache directory
-    /// - Parameter key: the name of the cache item
-    /// - Returns: the full URL to the path; including file name
-    static private func cachePath(for key: String, root: Bool) -> URL {
+    /// Get the path to the cache directory
+    /// - Parameters:
+    ///   - key: The name of the cache item
+    ///   - root: Get the root path or the library host path
+    /// - Returns: A full ``URL`` to the cache direcory
+    static private func path(for key: String, root: Bool) -> URL {
         let manager = FileManager.default
         let rootFolderURL = manager.urls(
             for: .cachesDirectory,

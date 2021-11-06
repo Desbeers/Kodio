@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View an 'About' sheet
 struct ViewAbout: View {
     /// The view
     var body: some View {

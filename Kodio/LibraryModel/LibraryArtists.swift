@@ -94,24 +94,32 @@ extension Library {
         }
         /// The request struct
         struct Params: Encodable {
+            /// Get all artists
             let albumartistsonly = false
+            /// The properties
             let properties = ArtistItem().properties
+            /// Sort order
             let sort = Sort()
+            /// Sort order struct
             struct Sort: Encodable {
+                /// Sort by artist sort name
                 let useartistsortname = true
+                /// Sort order
                 let order = SortMethod.ascending.string()
+                /// Sort method
                 let method = SortMethod.artist.string()
             }
         }
         /// The response struct
         struct Response: Decodable {
+            /// The list or artists
             let artists: [ArtistItem]
         }
     }
     
     /// The struct for an artist item
     struct ArtistItem: LibraryItem, Identifiable, Hashable {
-        /// /// The properties that we ask from Kodi
+        /// The properties that we ask for
         var properties = ["fanart", "thumbnail", "description", "isalbumartist", "songgenres"]
         /// Make it identifiable
         var id = UUID().uuidString
@@ -119,46 +127,66 @@ extension Library {
         let media: MediaType = .artist
         /// The SF symbol for this media item
         let icon: String = "music.mic"
-        /// The properties (and defaults)
+        /// The name of the artist
         var artist: String = ""
+        /// The ID of the artist
         var artistID: Int = 0
+        /// Is this an album artist?
         var isAlbumArtist: Bool = false
+        /// Fanart for the artist
         var fanart: String = ""
+        /// Description of the artist
         var description: String = ""
+        /// Thumbnail for the artist
         var thumbnail: String = ""
+        /// An array with genres for this artist
         var songGenres = [SongGenres]()
-        /// Computed stuff
+        /// The search string
         var search: String {
             return artist
         }
+        /// Name of the artist
         var title: String {
             return artist
         }
+        /// Subtitle for the artist
         var subtitle: String {
             return genres.joined(separator: " · ")
         }
+        /// An array with genres for this artist
         var genres: [String] {
+            /// Make a genre list
             var genres: [String] = []
             for genre in songGenres {
                 genres.append(genre.title)
             }
             return genres
         }
-        /// Song genres
+        /// Song genres struct
         struct SongGenres: Codable, Identifiable, Hashable {
             /// Make it identifiable
             var id = UUID()
+            /// The genre ID
             var genreID: Int = 0
+            /// Title of the genre
             var title: String = ""
+            /// Coding keys
             enum CodingKeys: String, CodingKey {
+                /// The keys
                 case title
+                /// lowerCamelCase
                 case genreID = "genreid"
             }
         }
+        /// The coding keys
         enum CodingKeys: String, CodingKey {
+            /// The keys
             case artist, fanart, description, thumbnail
+            /// lowerCamelCase
             case artistID = "artistid"
+            /// lowerCamelCase
             case isAlbumArtist = "isalbumartist"
+            /// lowerCamelCase
             case songGenres = "songgenres"
         }
     }

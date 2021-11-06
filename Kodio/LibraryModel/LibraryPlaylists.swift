@@ -59,8 +59,13 @@ extension Library {
         }
     }
     
+    /// Get the songs of a playlist
+    /// - Parameter file: The playlist file
+    /// - Returns: An array of song items
     func getPlaylistSongs(file: String) async -> [SongItem] {
+        /// The request
         let request = FilesGetDirectory(directory: file)
+        /// The list of songs
         var songList = [SongItem]()
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)

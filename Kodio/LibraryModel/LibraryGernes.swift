@@ -92,14 +92,19 @@ extension Library {
         }
         /// The request struct
         struct Params: Encodable {
+            /// Sort order
             let sort = Sort()
+            /// The sort order struct
             struct Sort: Encodable {
+                /// Sort order
                 let order = "ascending"
+                /// Sort method
                 let method = "label"
             }
         }
         /// The response struct
         struct Response: Decodable {
+            /// A list with genres
             let genres: [GenreItem]
         }
     }
@@ -111,18 +116,30 @@ extension Library {
         let media: MediaType = .genre
         /// The SF symbol for this media item
         let icon: String = "music.quarternote.3"
+        /// The genre ID
         var genreID: Int = 0
+        /// Label of the genre
         var label: String = ""
+        /// Title of the genre
         var title: String {
             return label
         }
+        /// Subtitle of the genre
         var subtitle: String = "All songs in this genre"
+        /// Description of the genre
+        /// - Note: Not needed, but required by protocol
         var description: String = ""
-        /// Not needed, but required by protocol
+        /// Thumbnail of the genre
+        /// - Note: Not needed, but required by protocol
         let thumbnail: String = ""
+        /// Fanart of the genre
+        /// - Note: Not needed, but required by protocol
         let fanart: String = ""
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// The keys
             case label
+            /// lowerCamelCase
             case genreID = "genreid"
         }
     }

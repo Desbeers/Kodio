@@ -37,7 +37,9 @@ extension Player {
         }
         /// The request struct
         struct GetProperties: Encodable {
+            /// The player ID
             let playerid = 0
+            /// The properties we ask for
             let properties = ["speed", "position", "shuffled", "repeat", "percentage"]
         }
         /// The response struct
@@ -46,15 +48,21 @@ extension Player {
 
     /// The struct for the player properties
     struct Properties: Decodable, Equatable {
+        /// The queue ID
         var queueID: Int = -1
+        /// Repeat status
         var repeating: String = ""
+        /// Shuffle status
         var shuffled: Bool = false
+        /// Speed of the player
         var speed: Int = 0
+        /// Convert speed to a Bool
         var playing: Bool {
             return speed == 0 ? false : true
         }
+        /// The icon to show for 'repeat'
         var repeatingIcon: String {
-            /// Standard icon
+            /// Standard icon for 'repeat'
             var icon = "repeat"
             /// Overrule if needed
             if repeating == "one" {
@@ -62,9 +70,13 @@ extension Player {
             }
             return icon
         }
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// The keys
             case shuffled, speed
+            /// A bit more logic word
             case queueID = "position"
+            /// Repeat is a reserved word
             case repeating = "repeat"
         }
     }

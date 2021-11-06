@@ -138,6 +138,8 @@ struct ButtonStylePlayer: ButtonStyle {
 
 /// The view for a button style
 private extension ButtonStylePlayer {
+    
+    /// The style of a player button
     struct ViewButtonStylePlayer: View {
         /// Tracks if the button is enabled or not
         @Environment(\.isEnabled) var isEnabled

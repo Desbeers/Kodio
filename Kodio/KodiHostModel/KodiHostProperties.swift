@@ -39,6 +39,7 @@ extension KodiHost {
         }
         /// The request struct
         struct Params: Encodable {
+            /// The requested properties
             let properties = ["volume", "muted", "name", "version", "sorttokens", "language"]
         }
         /// The response struct
@@ -57,11 +58,14 @@ extension KodiHost {
         var version = Version()
         /// The version struct (major and minor number)
         struct Version: Codable, Equatable {
+            /// Major version number
             var major: Int = 0
+            /// Minor version number
             var minor: Int = 0
         }
         /// The coding keys for the Kodi properties
         enum CodingKeys: String, CodingKey {
+            /// The cases
             case name, version, volume, muted
         }
     }

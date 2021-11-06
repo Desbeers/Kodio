@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+/// View a 'Help' sheet
 struct ViewHelp: View {
+    /// The help text; dynamic loaded
     @State var help: String = ""
-    
+    /// The view
     var body: some View {
         VStack {
             Text("Kodio help")

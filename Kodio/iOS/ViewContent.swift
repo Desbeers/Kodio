@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-// MARK: - View content (iOS)
-
+/// The main view for Kodio
 struct ViewContent: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState

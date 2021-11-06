@@ -33,6 +33,7 @@ extension KodiHost {
         }
         /// The request struct
         struct Params: Encodable {
+            /// Volume
             var volume: Int = 0
         }
         /// The response struct

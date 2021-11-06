@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View the whole library
 struct ViewLibrary: View {
     /// The view
     var body: some View {

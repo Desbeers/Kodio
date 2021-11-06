@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - View content
-
 /// View the whole library
 struct ViewLibrary: View {
     /// The view

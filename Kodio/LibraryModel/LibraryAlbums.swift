@@ -91,11 +91,14 @@ extension Library {
         }
         /// The request struct
         struct Params: Encodable {
+            /// The properties
             let properties = AlbumItem().properties
+            /// Sort order
             var sort = SortFields()
         }
         /// The response struct
         struct Response: Decodable {
+            /// The list of albums
             let albums: [AlbumItem]
         }
     }
@@ -111,24 +114,37 @@ extension Library {
         let media: MediaType = .album
         /// The SF symbol for this media item
         let icon: String = "square.stack"
-        /// The properties (and defaults)
+        /// The ID of an album
         var albumID: Int = 0
+        /// An array with artist names
         var artist: [String] = [""]
+        /// An array with artist ID's
         var artistID: [Int] = [0]
+        /// Is this a compilation album?
         var compilation: Bool = false
+        /// Date that the album is added
         var dateAdded: String = ""
+        /// Date that the album is last played
         var lastPlayed: String = ""
+        /// An array with thee album genres
         var genre: [String] = [""]
+        /// Description of the album
         var description: String = ""
+        /// Play count of the album
         var playCount: Int = 0
+        /// Total disks for this album
         var totalDiscs: Int = 0
+        /// The tumbnail for the album
         var thumbnail: String = ""
+        /// The album title
         var title: String = ""
+        /// Year of the album
         var year: Int = 0
-        /// Computed stuff
+        /// Subtitle for the album
         var subtitle: String {
             return artist.joined(separator: " & ")
         }
+        /// Details of the album
         var details: String {
             var details: [String] = []
             if year > 0 {
@@ -136,18 +152,28 @@ extension Library {
             }
             return (details + genre).joined(separator: "・")
         }
+        /// Search string
         var search: String {
             return "\(artist) \(title)"
         }
-        /// Not needed, but required by protocol
+        /// Album fanart
+        /// - Note: Not needed, but required by protocol
         let fanart: String = ""
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// The keys
             case artist, compilation, description, genre, thumbnail, title, year
+            /// lowerCamelCase
             case albumID = "albumid"
+            /// lowerCamelCase
             case artistID = "artistid"
+            /// lowerCamelCase
             case dateAdded = "dateadded"
+            /// lowerCamelCase
             case lastPlayed = "lastplayed"
+            /// lowerCamelCase
             case playCount = "playcount"
+            /// lowerCamelCase
             case totalDiscs = "totaldiscs"
         }
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Host related functions
 struct Hosts {
     
     /// Get a list of hosts
@@ -43,6 +44,7 @@ struct Hosts {
         return host
     }
     
+    /// Switch to a new host
     static func switchHost(selected: HostItem) {
         Library.shared.resetLibrary()
         AppState.shared.state = .none
@@ -66,12 +68,20 @@ struct Hosts {
 
 /// The struct of a host item
 struct HostItem: Codable, Identifiable, Hashable {
+    /// Give it an ID
     var id = UUID()
+    /// Description of the host
     var description: String = ""
+    /// IP of the host
     var ip: String = ""
+    /// Port of the host
     var port: String = "8080"
+    /// TCP of the host
     var tcp: String = "9090"
+    /// Username of the host
     var username: String = "kodi"
+    /// Password of the host
     var password: String = "kodi"
+    /// Is this host selected?
     var selected: Bool = false
 }

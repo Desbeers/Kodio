@@ -168,6 +168,7 @@ extension Library {
         var method = Method.audioLibraryGetSongs
         /// The JSON creator
         var parameters: Data {
+            /// The parameters we ask for
             var params = Params()
             params.sort.method = SortMethod.artist.string()
             params.sort.order = SortMethod.ascending.string()
@@ -175,14 +176,16 @@ extension Library {
         }
         /// The request struct
         struct Params: Encodable {
-            /// /// The properties that we ask from Kodi
+            /// The properties that we ask from Kodi
             let properties = ["title", "artist", "artistid", "year", "playcount", "albumid",
                               "track", "disc", "lastplayed", "album", "genreid",
                               "dateadded", "genre", "duration", "userrating"]
+            /// The sort order
             var sort = SortFields()
         }
         /// The response struct
         struct Response: Decodable {
+            /// The list of songs
             let songs: [SongItem]
         }
     }
@@ -195,6 +198,7 @@ extension Library {
         var method = Method.audioLibraryGetSongs
         /// The JSON creator
         var parameters: Data {
+            /// The parameters we ask for
             var params = Params()
             switch media {
             case .recentlyPlayed:
@@ -211,15 +215,21 @@ extension Library {
         }
         /// The request struct
         struct Params: Encodable {
+            /// Sort order
             var sort = SortFields()
+            /// Limits for the result
             let limits = Limits()
+            /// The limits struct
             struct Limits: Encodable {
+                /// Start limit
                 let start = 0
+                /// End limit
                 let end = 50
             }
         }
         /// The response struct
         struct Response: Decodable {
+            /// The list of songs
             let songs: [SongIdItem]
         }
     }
@@ -232,15 +242,18 @@ extension Library {
         var method = Method.audioLibrarySetSongDetails
         /// The JSON creator
         var parameters: Data {
+            /// The parameters
             var params = Params()
             params.songid = song.songID
             params.userrating = song.rating
             return buildParams(params: params)
         }
         /// The request struct
+        /// - Note: The properties we want to set
         struct Params: Encodable {
-            /// /// The properties that we ask from Kodi
+            /// The song ID
             var songid: Int = 0
+            /// The rating of the song
             var userrating: Int = 0
         }
         /// The response struct
@@ -267,48 +280,75 @@ extension Library {
         var artist: [String] = []
         /// Array of ArtistID's
         var artistID: [Int] = []
-        /// The date this ong was added
+        /// The date this song was added
         var dateAdded: String = ""
+        /// An array with song genres
         var genre: [String] = []
+        /// An array of song genre ID's
         var genreID: [Int] = []
+        /// Date of last played
         var lastPlayed: String = ""
+        /// Play count of the song
         var playCount: Int = 0
+        /// The song ID
         var songID: Int = 0
+        /// Rating of the song
         var rating: Int = 0
+        /// Thumbnail of the song
         var thumbnail: String = ""
+        /// Title of the song
         var title: String = ""
+        /// Disk number of the song
         var disc: Int = 0
+        /// Track number of the song
         var track: Int = 0
+        /// Year of the song
         var year: Int = 0
+        /// Duration of the song
         var duration: Int = 0
-        /// Not a Kodi property, so manualy added
+        /// Part of a compilation?
+        /// - Note: Not a Kodi property, so manualy added
         var compilation: Bool = false
         /// This is for the player queue and its not a 'property'
         var queueID = -1
         /// Search string; will be filled-in later
         var searchString: String = ""
-        /// Computed stuff
+        /// Subtitle of the song
         var subtitle: String {
             return artist.joined(separator: " & ")
         }
+        /// Description of the song
         var description: String = ""
+        /// Artists for this song
         var artists: String {
             return artist.joined(separator: " & ")
         }
-        /// Not needed, but required by protocol
+        /// Fanart of the song
+        /// - Note: Not needed, but required by protocol
         let fanart: String = ""
-        /// JSON coding keys
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// The keys
             case album, artist, genre, thumbnail, title, track, disc, year, duration, compilation, searchString
+            /// lowerCamelCase
             case albumID = "albumid"
+            /// lowerCamelCase
             case artistID = "artistid"
+            /// lowerCamelCase
             case albumArtist = "albumartist"
+            /// lowerCamelCase
             case albumArtistID = "albumartistid"
+            /// lowerCamelCase
             case dateAdded = "dateadded"
+            /// lowerCamelCase
             case genreID = "genreid"
+            /// lowerCamelCase
             case lastPlayed = "lastplayed"
+            /// lowerCamelCase
             case playCount = "playcount"
+            /// lowerCamelCase
             case songID = "songid"
+            /// lowerCamelCase
             case rating = "userrating"
         }
         /// Custom init because fields from albums will be merged and without below
@@ -340,19 +380,14 @@ extension Library {
     }
     
     /// The struct for a SongIdItem
-    struct SongIdItem: LibraryItem {
+    struct SongIdItem: Decodable {
+        /// Make it indentifiable
         var id = UUID().uuidString
+        /// The ID of the song
         var songID: Int
-        var media: MediaType = .song
-        /// Not used, but required by protocol
-        var title: String = ""
-        var subtitle: String = ""
-        var description: String = ""
-        /// The SF symbol for this media item
-        let icon: String = "music.note"
-        let thumbnail: String = ""
-        let fanart: String = ""
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// lowerCamelCase
             case songID = "songid"
         }
     }

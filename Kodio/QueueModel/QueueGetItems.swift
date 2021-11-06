@@ -50,25 +50,31 @@ extension Queue {
     
     /// Get all items from playlist (Kodi API)
     struct QueueGetItems: KodiAPI {
-        var method: Method = .playlistGetItems
+        /// The method to use
+        let method: Method = .playlistGetItems
         /// The JSON creator
         var parameters: Data {
             return buildParams(params: Params())
         }
         /// The request struct
         struct Params: Encodable {
+            /// The playlist ID
             let playlistid = 0
         }
         /// The response struct
         struct Response: Decodable {
+            /// The items in the queue
             let items: [QueueItem]
         }
     }
     
     /// The struct for a queue item
     struct QueueItem: Codable, Equatable {
+        /// The song ID
         let songID: Int
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// ID is a reserved word
             case songID = "id"
         }
     }

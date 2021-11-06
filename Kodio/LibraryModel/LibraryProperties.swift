@@ -48,6 +48,7 @@ extension Library {
         }
         /// The request struct
         struct Params: Encodable {
+            /// The properties we ask for
             let properties = ["librarylastupdated"]
         }
         /// The response struct
@@ -56,8 +57,11 @@ extension Library {
 
     /// The struct for the library properties
     struct Properties: Codable {
+        /// Last update
         var libraryLastUpdated: String = ""
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// lowerCamelCase
             case libraryLastUpdated = "librarylastupdated"
         }
     }

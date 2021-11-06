@@ -134,15 +134,21 @@ extension Library {
             // If we match every `searchToken` against the candidate string tokens, `candidateString` is a match
             return true
         }
+        /// The tokens to search for
         private(set) var searchTokens: [String.SubSequence]
     }
     
     /// The struct for a search suggestion item
     struct SearchSuggestionItem: Identifiable {
+        /// Make it indentifiable
         var id = UUID()
+        /// The title for the suggestion
         var title: String
+        /// The subtitle for the suggestion
         var subtitle: String = ""
+        /// The suggested search text
         var suggestion: String
+        /// The thumbnail for the suggestion
         var thumbnail: String
     }
 }

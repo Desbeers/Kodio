@@ -84,6 +84,7 @@ extension KodiClient {
     
     /// Base for response struct
     struct BaseResponse<T: Decodable>: Decodable {
+        /// The result variable of a response
         var result: T
     }
     
@@ -97,7 +98,9 @@ extension KodiClient {
     
     /// List of possible errors
     enum APIError: Error {
+        /// Invalid data
         case invalidData
+        /// Unsuccesfull response
         case responseUnsuccessful
     }
 }

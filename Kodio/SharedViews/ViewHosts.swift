@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-// MARK: - ViewHostsEdit (view)
-
 /// A view to edit the list of Kodi hosts
 struct ViewHostsEdit: View {
     /// The KodiClient model
     @EnvironmentObject var kodiClient: KodiClient
     /// The currently selected host
     @State var selectedHost = HostItem()
+    /// The values in the form
     @State var values = HostItem()
+    /// The status of the host that is edited
     @State var status: Status = .new
     /// The view
     var body: some View {
@@ -60,7 +60,7 @@ struct ViewHostsEdit: View {
             }
             .background(.thinMaterial)
             VStack {
-                ViewHostsEditDetails(selectedHost: $selectedHost, values: $values, status: $status)
+                ViewDetails(selectedHost: $selectedHost, values: $values, status: $status)
             }
             .padding()
             .frame(minWidth: 500)
@@ -78,18 +78,21 @@ struct ViewHostsEdit: View {
 
 extension  ViewHostsEdit {
     
+    /// The status of the host currently edited
     enum Status {
-        case new
-        case selected
-        case edit
+        /// The status cases of the host currently edited
+        case new, selected, edit
     }
     
     /// Edit the details of a Kodi hist
-    struct ViewHostsEditDetails: View {
-        /// The object that has it all
+    struct ViewDetails: View {
+        /// The KodiClient model
         @EnvironmentObject var kodiClient: KodiClient
+        /// The host to edit
         @Binding var selectedHost: HostItem
+        /// The values of the form
         @Binding var values: HostItem
+        /// The status of the host currently editing
         @Binding var status: Status
         /// The view
         var body: some View {
@@ -106,15 +109,15 @@ extension  ViewHostsEdit {
                 }
                 .font(.title)
                 Form {
-                    Section(footer: ViewHostsEditFooter(text: "The name of your Kodi")) {
+                    Section(footer: footer(text: "The name of your Kodi")) {
                         TextField("Name", text: $values.description)
                             .frame(width: 220)
                     }
-                    Section(footer: ViewHostsEditFooter(text: "The ip address of your Kodi")) {
+                    Section(footer: footer(text: "The ip address of your Kodi")) {
                         TextField("127.0.0.1", text: $values.ip)
                             .frame(width: 220)
                     }
-                    Section(footer: ViewHostsEditFooter(text: "The TCP and UDP ports")) {
+                    Section(footer: footer(text: "The TCP and UDP ports")) {
                         HStack(spacing: 10) {
                             TextField("8080", text: $values.port)
                                 .frame(width: 100)
@@ -122,7 +125,7 @@ extension  ViewHostsEdit {
                                 .frame(width: 100)
                         }
                     }
-                    Section(footer: ViewHostsEditFooter(text: "Your username and password")) {
+                    Section(footer: footer(text: "Your username and password")) {
                         HStack(spacing: 10) {
                             TextField("username", text: $values.username)
                                 .frame(width: 100)
@@ -206,7 +209,9 @@ extension  ViewHostsEdit {
             }
             .foregroundColor(.red)
         }
-        /// Validate form
+        /// Validate the form with the HostItem
+        /// - Parameter host: The ``HostItem`` currenly editing
+        /// - Returns: True or false
         private func validateForm(host: HostItem) -> Bool {
             var status = true
             if host.description.isEmpty {
@@ -217,18 +222,18 @@ extension  ViewHostsEdit {
             }
             return status
         }
-        /// Validate IP
+        /// Validate the IP address in the form with the HostItem
+        /// - Parameter address: The IP address
+        /// - Returns: True or false
         private func isValidIP(address: String) -> Bool {
             let parts = address.components(separatedBy: ".")
             let nums = parts.compactMap { Int($0) }
             return parts.count == 4 && nums.count == 4 && nums.filter { $0 >= 0 && $0 < 256}.count == 4
         }
-    }
-    
-    /// The footer of a form section
-    struct ViewHostsEditFooter: View {
-        let text: String
-        var body: some View {
+        /// The text underneath a form item
+        /// - Parameter text: The text to display
+        /// - Returns: A ``Text`` view
+        func footer(text: String) -> some View {
             Text(text)
                 .font(.caption)
                 .padding(.bottom, 6)

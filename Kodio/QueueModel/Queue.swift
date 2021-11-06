@@ -7,9 +7,8 @@
 
 import Foundation
 
+/// Queue Model
 class Queue: ObservableObject {
-    
-    // MARK: - Queue
     
     // MARK: Constants and Variables
     
@@ -26,5 +25,9 @@ class Queue: ObservableObject {
         /// Kodi counts from zero
         return songs.count - 1
     }
+    
+    // MARK: Init
+    
+    /// Private init to make sure we have only one instance
     private init() {}
 }

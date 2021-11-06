@@ -8,5 +8,4 @@ clean: true
 theme: apple
 
 # Command line for doc generation:
-
-# jazzy --xcodebuild-arguments -target,"Kodio2 (macOS)",-sdk,macosx
+# jazzy --xcodebuild-arguments -target,"Kodio (macOS)"

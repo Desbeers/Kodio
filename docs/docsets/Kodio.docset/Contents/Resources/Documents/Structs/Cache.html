@@ -17,7 +17,7 @@
     <a title="Cache Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Kodio</a> (73% documented)</p>
+        <p><a href="../index.html">Kodio</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
@@ -226,9 +226,6 @@
                 <a href="../Classes/SearchObserver.html">SearchObserver</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/SplitViewController.html">SplitViewController</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/WebSocket.html">WebSocket</a>
               </li>
             </ul>
@@ -332,6 +329,9 @@
                 <a href="../Structs/SplitView.html">SplitView</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/SplitView/SplitViewController.html">– SplitViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/ViewAbout.html">ViewAbout</a>
               </li>
               <li class="nav-group-task">
@@ -389,10 +389,7 @@
                 <a href="../Structs/ViewHostsEdit/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewHostsEditDetails.html">– ViewHostsEditDetails</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewHostsEditFooter.html">– ViewHostsEditFooter</a>
+                <a href="../Structs/ViewHostsEdit/ViewDetails.html">– ViewDetails</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewHostsEdit/ViewModifierForm.html">– ViewModifierForm</a>
@@ -475,20 +472,11 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Get and set structs to the cache directory</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Cache"></a>
-                <a name="//apple_ref/swift/Section/Cache" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Cache"></a>
-                  <h3 class="section-name"><span>Cache</span>
-</h3>
-                </div>
-              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -526,7 +514,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the item in the cache</p>
+                                  <p>The name of the item in the cache</p>
                                 </div>
                               </td>
                             </tr>
@@ -538,7 +526,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the struct to use for decoding</p>
+                                  <p>The struct to use for decoding</p>
                                 </div>
                               </td>
                             </tr>
@@ -550,7 +538,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>save it in the root folder; if false, it will save in the Host IP folder</p>
+                                  <p>Get it from the root folder; if false, it will get it from the Host IP folder</p>
                                 </div>
                               </td>
                             </tr>
@@ -605,7 +593,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the name for the item in the cache</p>
+                                  <p>The name for the item in the cache</p>
                                 </div>
                               </td>
                             </tr>
@@ -617,7 +605,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the struct to save</p>
+                                  <p>Tthe struct to save</p>
                                 </div>
                               </td>
                             </tr>
@@ -629,7 +617,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>save it in the root folder; if false, it will save in the Host IP folder</p>
+                                  <p>Store it in the root folder; if false, it will store it in the Host IP folder</p>
                                 </div>
                               </td>
                             </tr>
@@ -642,9 +630,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio5CacheV9cachePath33_4BC8DE0F18701246A7C5D75F86683FD4LL3for4root10Foundation3URLVSS_SbtFZ"></a>
-                    <a name="//apple_ref/swift/Method/cachePath(for:root:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio5CacheV9cachePath33_4BC8DE0F18701246A7C5D75F86683FD4LL3for4root10Foundation3URLVSS_SbtFZ">cachePath(for:<wbr>root:<wbr>)</a>
+                    <a name="/s:5Kodio5CacheV4path33_4BC8DE0F18701246A7C5D75F86683FD4LL3for4root10Foundation3URLVSS_SbtFZ"></a>
+                    <a name="//apple_ref/swift/Method/path(for:root:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio5CacheV4path33_4BC8DE0F18701246A7C5D75F86683FD4LL3for4root10Foundation3URLVSS_SbtFZ">path(for:<wbr>root:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -652,14 +640,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The path to the cache directory</p>
+                        <p>Get the path to the cache directory</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">cachePath</span><span class="p">(</span><span class="k">for</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">root</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">URL</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">path</span><span class="p">(</span><span class="k">for</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">root</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">URL</span></code></pre>
 
                         </div>
                       </div>
@@ -675,7 +663,19 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the name of the cache item</p>
+                                  <p>The name of the cache item</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>root</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Get the root path or the library host path</p>
                                 </div>
                               </td>
                             </tr>
@@ -684,7 +684,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>the full URL to the path; including file name</p>
+                        <p>A full <code>URL</code> to the cache direcory</p>
                       </div>
                     </section>
                   </div>

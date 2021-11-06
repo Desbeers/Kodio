@@ -8,19 +8,25 @@
 import Foundation
 import Combine
 
-/// Library model
+/// SearchObserver model
 class SearchObserver: ObservableObject {
     
     // MARK: Constants and Variables
     
     /// Create a shared instance
     static let shared = SearchObserver()
-    /// The search string
+    /// The search string in the UI
     @Published var searchText = ""
+    /// The search query
     @Published var query = ""
+    /// Are we searching?
     var searchIsActive: Bool = false
-    /// Magic stuff
+    /// The Combine container
     private var subscriptions = Set<AnyCancellable>()
+    
+    // MARK: Init
+    
+    /// Private init to make sure we have only one instance
     private init() {
         $searchText
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)

@@ -17,7 +17,7 @@
     <a title="Library Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Kodio</a> (73% documented)</p>
+        <p><a href="../index.html">Kodio</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
@@ -226,9 +226,6 @@
                 <a href="../Classes/SearchObserver.html">SearchObserver</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/SplitViewController.html">SplitViewController</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/WebSocket.html">WebSocket</a>
               </li>
             </ul>
@@ -332,6 +329,9 @@
                 <a href="../Structs/SplitView.html">SplitView</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/SplitView/SplitViewController.html">– SplitViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/ViewAbout.html">ViewAbout</a>
               </li>
               <li class="nav-group-task">
@@ -389,10 +389,7 @@
                 <a href="../Structs/ViewHostsEdit/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewHostsEditDetails.html">– ViewHostsEditDetails</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewHostsEditFooter.html">– ViewHostsEditFooter</a>
+                <a href="../Structs/ViewHostsEdit/ViewDetails.html">– ViewDetails</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewHostsEdit/ViewModifierForm.html">– ViewModifierForm</a>
@@ -2483,7 +2480,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Get the songs of a playlist</p>
 
                       </div>
                       <div class="declaration">
@@ -2493,6 +2490,29 @@
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getPlaylistSongs</span><span class="p">(</span><span class="nv">file</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/Library/SongItem.html">SongItem</a></span><span class="p">]</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>file</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The playlist file</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of song items</p>
                       </div>
                     </section>
                   </div>
@@ -3218,7 +3238,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SongIdItem</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SongIdItem</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
 
                         </div>
                       </div>

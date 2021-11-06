@@ -26,8 +26,11 @@ struct ViewDropShadow: View {
     }
 }
 
+/// View a header above a list
 struct ViewListHeader: View {
+    /// The title of the header
     let title: String
+    /// The view
     var body: some View {
         Text(title)
             .font(.subheadline)
@@ -92,10 +95,12 @@ struct SidebarButtons: ViewModifier {
     }
 }
 
+/// Extend View with a shortcut
 extension View {
+    /// Shortcut for sidebar buttons
+    /// - Returns: A ``View`` modifier
     func sidebarButtons() -> some View {
         modifier(SidebarButtons())
-        
     }
 }
 
@@ -120,8 +125,9 @@ private extension ButtonStyleList {
     struct ViewButtonStyleList: View {
         /// Tracks the pressed state
         let configuration: ButtonStyleList.Configuration
-        /// Arguments
+        /// The type of the button
         let type: Library.MediaType
+        /// Is the button selected or not?
         let selected: Bool
         /// The view
         var body: some View {
@@ -137,6 +143,10 @@ private extension ButtonStyleList {
                 .padding(.vertical, 2)
                 .padding(.trailing, 8)
         }
+        
+        /// Saturate a button
+        /// - Parameter media: The media type
+        /// - Returns: A saturation value
         private func buttonSaturation(media: Library.MediaType) -> Double {
             switch media {
             case .album:
@@ -154,12 +164,16 @@ private extension ButtonStyleList {
 
 // MARK: - Rotating record
 
+/// View a rotating record
 struct ViewRotatingRecord: View {
+    /// The animation
     var foreverAnimation: Animation {
         Animation.linear(duration: 3.6)
             .repeatForever(autoreverses: false)
     }
+    /// The state of the animation
     @State var rotate: Bool = false
+    /// The view
     var body: some View {
         Image("Record")
             .resizable()

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - View modifiers (macOS)
-
 /// The toolbar
 struct ViewModifierToolbar: ViewModifier {
     /// The AppState model

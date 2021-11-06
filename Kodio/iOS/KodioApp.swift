@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-@main
-struct KodioApp: App {
+/// The startpoint of the iOS application
+@main struct KodioApp: App {
     /// The AppState model
     @StateObject var appState: AppState = .shared
     /// The KodiHost model

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View the status of Kodio
 struct ViewAppStateStatus: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View the Kodio settings
 struct ViewSettings: View {
     /// The view
     var body: some View {

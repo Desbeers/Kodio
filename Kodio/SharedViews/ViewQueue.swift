@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// View the song queue
 struct ViewQueue: View {
     /// The Queue model
     @EnvironmentObject var queue: Queue

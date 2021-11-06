@@ -17,7 +17,7 @@
     <a title="SongIdItem Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../../index.html">Kodio</a> (73% documented)</p>
+        <p><a href="../../index.html">Kodio</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../../search.json">
@@ -226,9 +226,6 @@
                 <a href="../../Classes/SearchObserver.html">SearchObserver</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Classes/SplitViewController.html">SplitViewController</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../../Classes/WebSocket.html">WebSocket</a>
               </li>
             </ul>
@@ -332,6 +329,9 @@
                 <a href="../../Structs/SplitView.html">SplitView</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../Structs/SplitView/SplitViewController.html">– SplitViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Structs/ViewAbout.html">ViewAbout</a>
               </li>
               <li class="nav-group-task">
@@ -389,10 +389,7 @@
                 <a href="../../Structs/ViewHostsEdit/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Structs/ViewHostsEdit/ViewHostsEditDetails.html">– ViewHostsEditDetails</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/ViewHostsEdit/ViewHostsEditFooter.html">– ViewHostsEditFooter</a>
+                <a href="../../Structs/ViewHostsEdit/ViewDetails.html">– ViewDetails</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/ViewHostsEdit/ViewModifierForm.html">– ViewModifierForm</a>
@@ -471,7 +468,7 @@
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SongIdItem</span> <span class="p">:</span> <span class="kt"><a href="../../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SongIdItem</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
 
                 </div>
               </div>
@@ -484,9 +481,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio11LibraryItemP2idSSvp"></a>
+                    <a name="/s:5Kodio7LibraryC10SongIdItemV2idSSvp"></a>
                     <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11LibraryItemP2idSSvp">id</a>
+                    <a class="token" href="#/s:5Kodio7LibraryC10SongIdItemV2idSSvp">id</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -494,7 +491,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Make it indentifiable</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -520,7 +518,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The ID of the song</p>
 
                       </div>
                       <div class="declaration">
@@ -528,190 +526,6 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">songID</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio11LibraryItemP5mediaAA0B0C9MediaTypeOvp"></a>
-                    <a name="//apple_ref/swift/Property/media" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11LibraryItemP5mediaAA0B0C9MediaTypeOvp">media</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">media</span><span class="p">:</span> <span class="kt"><a href="../../Classes/Library/MediaType.html">MediaType</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio7LibraryC10SongIdItemV5titleSSvp"></a>
-                    <a name="//apple_ref/swift/Property/title" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC10SongIdItemV5titleSSvp">title</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Not used, but required by protocol</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio11LibraryItemP8subtitleSSvp"></a>
-                    <a name="//apple_ref/swift/Property/subtitle" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11LibraryItemP8subtitleSSvp">subtitle</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">subtitle</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio11LibraryItemP11descriptionSSvp"></a>
-                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11LibraryItemP11descriptionSSvp">description</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio7LibraryC10SongIdItemV4iconSSvp"></a>
-                    <a name="//apple_ref/swift/Property/icon" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC10SongIdItemV4iconSSvp">icon</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The SF symbol for this media item</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">icon</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio11LibraryItemP9thumbnailSSvp"></a>
-                    <a name="//apple_ref/swift/Property/thumbnail" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11LibraryItemP9thumbnailSSvp">thumbnail</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">thumbnail</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio11LibraryItemP6fanartSSvp"></a>
-                    <a name="//apple_ref/swift/Property/fanart" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11LibraryItemP6fanartSSvp">fanart</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">fanart</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -731,7 +545,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Coding keys</p>
 
                         <a href="../../Classes/Library/SongIdItem/CodingKeys.html" class="slightly-smaller">See more</a>
                       </div>

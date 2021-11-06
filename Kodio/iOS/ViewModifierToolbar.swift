@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// The toolbar
 struct ViewModifierToolbar: ViewModifier {
     /// The Player model
     @EnvironmentObject var player: Player

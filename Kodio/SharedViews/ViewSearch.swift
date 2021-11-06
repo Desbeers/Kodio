@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A ``ViewModifier`` to add the search field
 struct ViewModifierSearch: ViewModifier {
     /// The Library model
     @EnvironmentObject var library: Library

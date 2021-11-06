@@ -140,22 +140,33 @@ extension Library {
     
     /// The struct for a library list item
     struct LibraryListItem: LibraryItem, Identifiable, Hashable {
+        /// Make it indentifiable
         var id: String {
             return title
         }
+        /// Ttitle of the item
         var title: String = "Kodio"
+        /// Subtitle of the item
         var subtitle = "Loading your library"
+        /// Description of the item
         var description: String = ""
+        /// The SF symbol for this media item
         var icon: String = "k.circle"
+        /// Media type of this item
         var media: MediaType = .none
         /// Visibility of item
         var visible: Bool = true
         /// Used for Kodi playlist files
         var file: String = ""
-        /// Not needed, but required by protocol
+        /// Thumbnail of this item
+        /// - Note: Not needed, but required by protocol
         let thumbnail: String = ""
+        /// Fanart of this item
+        /// - Note: Not needed, but required by protocol
         let fanart: String = ""
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// The keys
             case title
         }
     }

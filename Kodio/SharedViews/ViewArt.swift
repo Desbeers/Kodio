@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - View art
-
 /// View artist art
 struct ViewArtArtist: View {
     /// The artist object

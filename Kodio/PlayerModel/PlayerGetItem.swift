@@ -39,27 +39,37 @@ extension Player {
         }
         /// The request struct
         struct GetItem: Encodable {
+            /// The player ID
             let playerid = 0
+            /// The properties we ask for
             let properties = PlayerItem().properties
         }
         /// The response struct
         struct Response: Decodable {
+            /// The item in the player
             var item = PlayerItem()
         }
     }
 
     /// The struct for the player item
     struct PlayerItem: Decodable, Equatable {
-        /// /// The properties that we ask from Kodi
+        /// The properties that we ask for
         var properties = ["title", "artist", "mediapath"]
-        /// The properties (and defaults)
+        /// The ID of the song if the item is a song
         var songID: Int?
+        /// The title of the item if the item is a song
         var title: String?
+        /// The artist of the item if the item is a song
         var artist: [String]?
+        /// The path of the item
         var mediapath: String = ""
+        /// The type of the item
         var type: String = ""
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// The keys
             case title, artist, mediapath, type
+            /// ID is a reserved word
             case songID = "id"
         }
     }

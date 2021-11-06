@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A view that displays remote art
 struct RemoteArt: View {
     /// The remote url for the image
     let url: String

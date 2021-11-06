@@ -10,6 +10,7 @@ import SwiftUI
 /// List a song in a row
 /// - Note: Shared by ``ViewSongs`` and ``ViewQueue``
 struct ViewSongsListRow: View {
+    /// The song in this row
     let song: Library.SongItem
     /// The Player model
     @EnvironmentObject var player: Player

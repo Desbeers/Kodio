@@ -36,7 +36,7 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
     ) {
         logger("WebSocket disconnected from \(KodiClient.shared.selectedHost.ip)")
     }
-    
+    /// Websocket notification when the connection has an error
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError: Error?) {
         let appState: AppState = .shared
         if appState.state != .sleeping {
@@ -113,6 +113,7 @@ extension KodiClient {
     /// The notification item
     /// - Note: - I'm only interested in the method
     struct NotificationItem: Decodable {
+        /// The method
         var method: String
     }
     

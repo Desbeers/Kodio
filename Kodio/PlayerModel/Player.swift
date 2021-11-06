@@ -20,13 +20,11 @@ class Player: ObservableObject {
     @Published var item = PlayerItem()
     /// The properties of the player
     @Published var properties = Properties()
-    /// Init the player class
-    private init() {
-//        /// Get the properties of the player
-//        getProperties()
-//        /// Get the current item loaded into the player
-//        getItem()
-    }
+    
+    // MARK: Init
+    
+    /// Private init to make sure we have only one instance
+    private init() {}
     /// The song title of the player item
     var title: String {
         var title = "Kodio"

@@ -19,29 +19,38 @@ extension Library {
         var method = Method.filesGetDirectory
         /// The JSON creator
         var parameters: Data {
+            /// The parameters
             var params = Params()
             params.directory = directory
             return buildParams(params: params)
         }
         /// The request struct
         struct Params: Encodable {
+            /// The direcory we ask for
             var directory = ""
+            /// Media type we ask for
             let media = "music"
         }
         /// The response struct
         struct Response: Decodable {
+            /// The list with files
             let files: [FileItem]
         }
     }
     
     /// The struct for a file item
     struct FileItem: LibraryItem {
+        /// Make it identifiable
         var id = UUID().uuidString
+        /// Name of the file
         var file: String
+        /// Song ID
         var songID: Int
+        /// Label of the file
         let label: String
         /// The media type
         let media: MediaType = .playlist
+        /// The SF symbol for this media item
         var icon: String {
             var sfSymbol = "music.note.list"
             if file.hasSuffix(".xsp") {
@@ -49,26 +58,36 @@ extension Library {
             }
             return sfSymbol
         }
+        /// Title of the file
         var title: String {
             return label
         }
+        /// Subtitle of the file
         var subtitle: String {
             return description
         }
+        /// Description of the file
         var description: String {
+            /// Description
             var text = "A Kodi playlist"
             if file.hasSuffix(".xsp") {
                 text = "A Kodi smart playlist"
             }
             return text
         }
+        /// Coding keys
         enum CodingKeys: String, CodingKey {
+            /// The keys
             case file, label
+            /// lowerCamelCase
             case songID = "id"
         }
-        /// Not needed, but required by protocol
+        /// - Note: Not needed, but required by protocol
+        /// Thumbnail of the file
         let thumbnail: String = ""
+        /// Fanart of the file
         let fanart: String = ""
+        /// Custom init
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             file = try container.decode(String.self, forKey: .file)
