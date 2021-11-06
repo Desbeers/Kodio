@@ -159,6 +159,8 @@ extension Library {
 
     /// The types of media in the library
     enum MediaType: String {
+        /// An empty type
+        case none = "None"
         /// An ``ArtistItem``
         case artist = "Artists"
         /// An ``AlbumItem``

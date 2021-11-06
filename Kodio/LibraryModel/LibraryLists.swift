@@ -147,7 +147,7 @@ extension Library {
         var subtitle = "Loading your library"
         var description: String = ""
         var icon: String = "k.circle"
-        var media: MediaType = .albumArtists
+        var media: MediaType = .none
         /// Visibility of item
         var visible: Bool = true
         /// Used for Kodi playlist files

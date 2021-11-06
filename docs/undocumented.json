@@ -883,6 +883,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryLists.swift",
+      "line": 158,
+      "symbol": "Library.LibraryListItem.CodingKeys",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryLists.swift",
+      "line": 159,
+      "symbol": "Library.LibraryListItem.CodingKeys.title",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibraryPlaylists.swift",
       "line": 62,
       "symbol": "Library.getPlaylistSongs(file:)",
@@ -971,20 +985,6 @@
       "line": 146,
       "symbol": "Library.SearchSuggestionItem.thumbnail",
       "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySmartLists.swift",
-      "line": 157,
-      "symbol": "Library.LibraryListItem.CodingKeys",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/LibraryModel/LibrarySmartLists.swift",
-      "line": 158,
-      "symbol": "Library.LibraryListItem.CodingKeys.title",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
@@ -1643,34 +1643,6 @@
       "line": 10,
       "symbol": "ViewAppStateStatus",
       "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewDetails.swift",
-      "line": 50,
-      "symbol": "ViewDetails.ViewDetailsMedia.media",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewDetails.swift",
-      "line": 71,
-      "symbol": "ViewDetails.ViewDetailsArtwork.media",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewDetails.swift",
-      "line": 85,
-      "symbol": "ViewDetails.ViewDetailsArtwork.overlay",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewDetails.swift",
-      "line": 119,
-      "symbol": "ViewDetails.ViewDetailsStatistics.media",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {

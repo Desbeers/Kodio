@@ -17,7 +17,7 @@
     <a title="ViewDetails Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Kodio</a> (72% documented)</p>
+        <p><a href="../index.html">Kodio</a> (73% documented)</p>
         <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
@@ -148,6 +148,12 @@
                 <a href="../Classes/Library/GenreItem.html">– GenreItem</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/Library/LibraryLists.html">– LibraryLists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/LibraryListItem.html">– LibraryListItem</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/Library/Playlists.html">– Playlists</a>
               </li>
               <li class="nav-group-task">
@@ -167,12 +173,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Library/SearchSuggestionItem.html">– SearchSuggestionItem</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Library/LibraryLists.html">– LibraryLists</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Library/LibraryListItem.html">– LibraryListItem</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Library/Songs.html">– Songs</a>
@@ -362,16 +362,16 @@
                 <a href="../Structs/ViewDetails.html">ViewDetails</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewDetails/ViewDetailsMedia.html">– ViewDetailsMedia</a>
+                <a href="../Structs/ViewDetails/ViewMedia.html">– ViewMedia</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewDetails/ViewDetailsArtwork.html">– ViewDetailsArtwork</a>
+                <a href="../Structs/ViewDetails/ViewArtwork.html">– ViewArtwork</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewDetails/ViewDetailsStatistics.html">– ViewDetailsStatistics</a>
+                <a href="../Structs/ViewDetails/ViewStatistics.html">– ViewStatistics</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewDetails/LabelStyleDetailsStatistics.html">– LabelStyleDetailsStatistics</a>
+                <a href="../Structs/ViewDetails/LabelStyleStatistics.html">– LabelStyleStatistics</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewDropShadow.html">ViewDropShadow</a>
@@ -475,7 +475,7 @@
 
                 </div>
               </div>
-            <p>View details</p>
+            <p>View details about the selected media</p>
 
           </section>
           <section class="section task-group-section">
@@ -536,25 +536,12 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/View%20details"></a>
-                <a name="//apple_ref/swift/Section/View details" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/View%20details"></a>
-                  <h3 class="section-name"><span>View details</span>
-</h3>
-                </div>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio11ViewDetailsV0bC5MediaV"></a>
-                    <a name="//apple_ref/swift/Struct/ViewDetailsMedia" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11ViewDetailsV0bC5MediaV">ViewDetailsMedia</a>
+                    <a name="/s:5Kodio11ViewDetailsV0B5MediaV"></a>
+                    <a name="//apple_ref/swift/Struct/ViewMedia" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio11ViewDetailsV0B5MediaV">ViewMedia</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -562,15 +549,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>View details for the selected media</p>
+                        <p>View details about the selected media</p>
 
-                        <a href="../Structs/ViewDetails/ViewDetailsMedia.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/ViewDetails/ViewMedia.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewDetailsMedia</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">View</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewMedia</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                         </div>
                       </div>
@@ -580,9 +567,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio11ViewDetailsV0bC7ArtworkV"></a>
-                    <a name="//apple_ref/swift/Struct/ViewDetailsArtwork" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11ViewDetailsV0bC7ArtworkV">ViewDetailsArtwork</a>
+                    <a name="/s:5Kodio11ViewDetailsV0B7ArtworkV"></a>
+                    <a name="//apple_ref/swift/Struct/ViewArtwork" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio11ViewDetailsV0B7ArtworkV">ViewArtwork</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -592,13 +579,13 @@
                       <div class="abstract">
                         <p>View artwork for the selected media</p>
 
-                        <a href="../Structs/ViewDetails/ViewDetailsArtwork.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/ViewDetails/ViewArtwork.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewDetailsArtwork</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">View</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewArtwork</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                         </div>
                       </div>
@@ -608,9 +595,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio11ViewDetailsV0bC10StatisticsV"></a>
-                    <a name="//apple_ref/swift/Struct/ViewDetailsStatistics" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11ViewDetailsV0bC10StatisticsV">ViewDetailsStatistics</a>
+                    <a name="/s:5Kodio11ViewDetailsV0B10StatisticsV"></a>
+                    <a name="//apple_ref/swift/Struct/ViewStatistics" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio11ViewDetailsV0B10StatisticsV">ViewStatistics</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -618,15 +605,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>View statistics for the current selection of the library</p>
+                        <p>View statistics for the current library view</p>
 
-                        <a href="../Structs/ViewDetails/ViewDetailsStatistics.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/ViewDetails/ViewStatistics.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewDetailsStatistics</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">View</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewStatistics</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                         </div>
                       </div>
@@ -636,9 +623,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio11ViewDetailsV010LabelStyleC10StatisticsV"></a>
-                    <a name="//apple_ref/swift/Struct/LabelStyleDetailsStatistics" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio11ViewDetailsV010LabelStyleC10StatisticsV">LabelStyleDetailsStatistics</a>
+                    <a name="/s:5Kodio11ViewDetailsV20LabelStyleStatisticsV"></a>
+                    <a name="//apple_ref/swift/Struct/LabelStyleStatistics" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio11ViewDetailsV20LabelStyleStatisticsV">LabelStyleStatistics</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -646,15 +633,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Give the icon of a Label a fixed width</p>
+                        <p>The style for a &lsquo;statistic&rsquo; label</p>
 
-                        <a href="../Structs/ViewDetails/LabelStyleDetailsStatistics.html" class="slightly-smaller">See more</a>
+                        <a href="../Structs/ViewDetails/LabelStyleStatistics.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">LabelStyleDetailsStatistics</span> <span class="p">:</span> <span class="kt">LabelStyle</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">LabelStyleStatistics</span> <span class="p">:</span> <span class="kt">LabelStyle</span></code></pre>
 
                         </div>
                       </div>
@@ -666,7 +653,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-05)</p>
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

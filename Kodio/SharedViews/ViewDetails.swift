@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-// MARK: - View details
-
-/// View details
+/// View details about the selected media
 struct ViewDetails: View {
     /// The Library model
     @EnvironmentObject var library: Library
@@ -18,17 +16,17 @@ struct ViewDetails: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack {
-                    ViewDetailsMedia(media: library.selection)
+                    ViewMedia(media: library.selection)
                 }
                 .id("DetailsHeader")
             }
             /// Scroll to the top when content changed
-            .onChange(of: library.filteredContent) { _ in
+            .onChange(of: library.selection.id) { _ in
                 withAnimation(.easeInOut(duration: 1)) {
                     proxy.scrollTo("DetailsHeader", anchor: .top)
                 }
             }
-            .animation(.default, value: library.filteredContent)
+            .animation(.default, value: library.selection.id)
             .transition(.move(edge: .leading))
         }
     }
@@ -36,20 +34,20 @@ struct ViewDetails: View {
 
 extension ViewDetails {
     
-    /// View details for the selected media
-    struct ViewDetailsMedia: View {
+    /// View details about the selected media
+    struct ViewMedia: View {
+        /// The selected media item
         let media: LibraryItem
+        /// The view
         var body: some View {
             VStack {
                 Text(media.title)
                     .font(.title2)
                 Text(media.subtitle)
                     .font(.caption)
-                ViewDetailsArtwork(media: media)
+                ViewArtwork(media: media)
                 Text(media.description)
-                if AppState.shared.state == .loadedLibrary {
-                    ViewDetailsStatistics(media: media)
-                }
+                ViewStatistics(media: media)
                 Spacer()
             }
             .padding()
@@ -58,8 +56,10 @@ extension ViewDetails {
     }
     
     /// View artwork for the selected media
-    struct ViewDetailsArtwork: View {
+    struct ViewArtwork: View {
+        /// The selected media item
         let media: LibraryItem
+        /// The view
         var body: some View {
             VStack {
                 RadialGradient(gradient: Gradient(colors: [.accentColor, .black]), center: .center, startRadius: 0, endRadius: 280)
@@ -72,8 +72,8 @@ extension ViewDetails {
             .cornerRadius(3)
             .frame(width: 256, height: 144)
         }
-        @ViewBuilder
-        var overlay: some View {
+        /// Overlay the base artwork
+        @ViewBuilder var overlay: some View {
             switch media.media {
             case .artist:
                 RemoteArt(url: media.fanart, failure: Image(systemName: media.icon))
@@ -105,8 +105,9 @@ extension ViewDetails {
         }
     }
     
-    /// View statistics for the current selection of the library
-    struct ViewDetailsStatistics: View {
+    /// View statistics for the current library view
+    struct ViewStatistics: View {
+        /// The selected media item
         let media: LibraryItem
         /// The Library model
         @EnvironmentObject var library: Library
@@ -114,6 +115,8 @@ extension ViewDetails {
         var body: some View {
             VStack {
                 switch media.media {
+                case .none:
+                    EmptyView()
                 case .artist:
                     songsCount
                     albumsCount
@@ -125,10 +128,9 @@ extension ViewDetails {
                     artistsCount
                 }
             }
-            .labelStyle(LabelStyleDetailsStatistics())
+            .labelStyle(LabelStyleStatistics())
         }
-        /// Songs
-        @ViewBuilder
+        /// Songs in the current library view
         var songsCount: some View {
             Label {
                 let songs = library.filteredContent.songs.count
@@ -137,8 +139,7 @@ extension ViewDetails {
                 Image(systemName: "music.quarternote.3")
             }
         }
-        /// Albums
-        @ViewBuilder
+        /// Albums in the current library view
         var albumsCount: some View {
             Label {
                 let albums = library.filteredContent.albums.count
@@ -147,8 +148,7 @@ extension ViewDetails {
                 Image(systemName: "square.stack")
             }
         }
-        /// Artists
-        @ViewBuilder
+        /// Artists in the current library view
         var artistsCount: some View {
             Label {
                 let artists = library.filteredContent.artists.count
@@ -159,8 +159,8 @@ extension ViewDetails {
         }
     }
     
-    /// Give the icon of a Label a fixed width
-    struct LabelStyleDetailsStatistics: LabelStyle {
+    /// The style for a 'statistic' label
+    struct LabelStyleStatistics: LabelStyle {
         func makeBody(configuration: Configuration) -> some View {
             HStack {
                 configuration.icon
