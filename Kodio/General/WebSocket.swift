@@ -43,7 +43,7 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
             logger("WebSocket error from \(KodiClient.shared.selectedHost.ip)...")
             DispatchQueue.main.async {
                 appState.state = .failure
-                appState.alertItem = appState.alertNotAvailable
+                appState.alert = appState.alertNotAvailable
             }
         } else {
             logger("Disconnected...")

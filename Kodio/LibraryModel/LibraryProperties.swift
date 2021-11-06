@@ -29,7 +29,7 @@ extension Library {
                     logger("Library is out of date.")
                     let appState: AppState = .shared
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        appState.alertItem = appState.alertOutdatedLibrary
+                        appState.alert = appState.alertOutdatedLibrary
                     }
                 }
             }

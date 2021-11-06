@@ -273,7 +273,7 @@ struct ViewHostsMenu: View {
         if !kodiClient.selectedHost.ip.isEmpty {
             Button(
                 action: {
-                    appState.alertItem = appState.alertScanLibrary
+                    appState.alert = appState.alertScanLibrary
                 },
                 label: {
                     Label("Reload \(kodiClient.selectedHost.description)", systemImage: "arrow.clockwise")
