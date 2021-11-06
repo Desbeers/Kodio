@@ -36,7 +36,7 @@ struct ViewSidebar: View {
             .sidebarButtons()
             Spacer()
         }
-        .animation(.default, value: library.filter)
+        .animation(.default, value: library.selection.id)
         .animation(.default, value: queue.songs)
     }
     /// View library lists
@@ -68,6 +68,6 @@ struct ViewSidebar: View {
             }
         )
             .disabled(item.id == library.libraryLists.selected.id)
-            .animation(nil, value: library.filter)
+            .animation(nil, value: library.libraryLists.selected)
     }
 }

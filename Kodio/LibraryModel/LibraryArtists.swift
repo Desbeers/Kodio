@@ -47,8 +47,8 @@ extension Library {
         artists.selected = artists.selected == artist ? nil : artist
         /// Reset selection
         albums.selected = nil
-        /// Set the filter
-        setLibraryFilter(item: artists.selected)
+        /// Set the selection
+        setLibrarySelection(item: artists.selected)
         /// Reload media
         Task {
             let songs = await filterSongs()
@@ -110,11 +110,11 @@ extension Library {
     }
     
     /// The struct for an artist item
-    struct ArtistItem: LibraryItem {
+    struct ArtistItem: LibraryItem, Identifiable, Hashable {
         /// /// The properties that we ask from Kodi
         var properties = ["fanart", "thumbnail", "description", "isalbumartist", "songgenres"]
         /// Make it identifiable
-        var id = UUID()
+        var id = UUID().uuidString
         /// The media type
         let media: MediaType = .artist
         /// The SF symbol for this media item

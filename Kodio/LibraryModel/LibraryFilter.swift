@@ -23,23 +23,23 @@ extension Library {
         var songs: [SongItem] = []
     }
     
-    /// Set the library filter
+    /// Set the library selection
     /// - Parameter item: The selected ``LibraryItem``
-    func setLibraryFilter<T: LibraryItem>(item: T?) {
-        if let selection = item?.media {
-            logger("Selected '\(selection.rawValue)'")
-            filter = selection
+    func setLibrarySelection<T: LibraryItem>(item: T?) {
+        if let selected = item {
+            logger("Selected '\(selection.media.rawValue)'")
+            selection = selected
         } else {
             logger("Deselected something")
             /// Find the the most fillting selection
-            if let album = albums.selected?.media {
-                filter = album
-            } else if let artist = artists.selected?.media {
-                filter = artist
-            } else if let genre = genres.selected?.media {
-                filter = genre
+            if let album = albums.selected {
+                selection = album
+            } else if let artist = artists.selected {
+                selection = artist
+            } else if let genre = genres.selected {
+                selection = genre
             } else {
-                filter = libraryLists.selected.media
+                selection = libraryLists.selected
             }
         }
     }

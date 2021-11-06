@@ -139,7 +139,7 @@ extension Library {
                 logger("Error saving MySongs")
             }
             /// Reload library if viewing favorites
-            if filter == .favorites {
+            if selection.media == .favorites {
                 filterAllMedia()
             }
             /// Reload queue if viewing queue
@@ -248,9 +248,9 @@ extension Library {
     }
     
     /// The struct for a song item
-    struct SongItem: LibraryItem {
+    struct SongItem: LibraryItem, Identifiable, Hashable {
         /// Make it indentifiable
-        var id = UUID()
+        var id = UUID().uuidString
         /// The media type
         let media: MediaType = .song
         /// The SF symbol for this media item
@@ -341,7 +341,7 @@ extension Library {
     
     /// The struct for a SongIdItem
     struct SongIdItem: LibraryItem {
-        var id = UUID()
+        var id = UUID().uuidString
         var songID: Int
         var media: MediaType = .song
         /// Not used, but required by protocol

@@ -8,7 +8,9 @@
 import Foundation
 
 /// A protocol to define an item in the library: artist, album, song, playlist etc.
-protocol LibraryItem: Codable, Identifiable, Hashable {
+protocol LibraryItem: Codable {
+    /// The ID of the item
+    var id: String { get }
     /// The kind of ``Library/MediaType``
     var media: Library.MediaType { get }
     /// The title of the item

@@ -36,7 +36,7 @@ extension Library {
     
     /// The struct for a file item
     struct FileItem: LibraryItem {
-        var id = UUID()
+        var id = UUID().uuidString
         var file: String
         var songID: Int
         let label: String

@@ -49,7 +49,7 @@ extension ViewSongsListRow {
     /// Art or track number at the start of a row
     /// - Note: when viewing an album it will be the track number, else album art
     @ViewBuilder var leading: some View {
-        if Library.shared.filter == .album, AppState.shared.showSheet == false, song.track > 0 {
+        if Library.shared.selection.media == .album, AppState.shared.showSheet == false, song.track > 0 {
             Text(String(song.track))
                 .font(.headline)
                 .frame(width: 40, height: 40)

@@ -94,6 +94,7 @@ extension AppState {
                 /// Get the song queue
                 await Queue.shared.getItems()
                 /// Filter the library and view it
+                Library.shared.selection = Library.shared.libraryLists.all.first!
                 Library.shared.filterAllMedia()
             }
         case .sleeping:

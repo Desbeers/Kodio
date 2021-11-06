@@ -48,8 +48,8 @@ extension Library {
         /// Reset selection
         artists.selected = nil
         albums.selected = nil
-        /// Set the filter
-        setLibraryFilter(item: genres.selected)
+        /// Set the selection
+        setLibrarySelection(item: genres.selected)
         /// Reload media
         Task {
             /// Filter songs first; all the rest is based on it.
@@ -105,8 +105,8 @@ extension Library {
     }
     
     /// The struct for a genre item
-    struct GenreItem: LibraryItem {
-        var id = UUID()
+    struct GenreItem: LibraryItem, Identifiable, Hashable {
+        var id = UUID().uuidString
         /// The media type
         let media: MediaType = .genre
         /// The SF symbol for this media item

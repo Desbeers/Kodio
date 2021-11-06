@@ -18,16 +18,7 @@ struct ViewDetails: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack {
-                    switch library.filter {
-                    case .genre:
-                        ViewDetailsMedia(media: library.genres.selected ?? Library.GenreItem())
-                    case .artist:
-                        ViewDetailsMedia(media: library.artists.selected ?? Library.ArtistItem())
-                    case .album:
-                        ViewDetailsMedia(media: library.albums.selected ?? Library.AlbumItem())
-                    default:
-                        ViewDetailsMedia(media: library.libraryLists.selected)
-                    }
+                    ViewDetailsMedia(media: library.selection)
                 }
                 .id("DetailsHeader")
             }
@@ -46,8 +37,8 @@ struct ViewDetails: View {
 extension ViewDetails {
     
     /// View details for the selected media
-    struct ViewDetailsMedia<T: LibraryItem>: View {
-        let media: T
+    struct ViewDetailsMedia: View {
+        let media: LibraryItem
         var body: some View {
             VStack {
                 Text(media.title)
@@ -67,8 +58,8 @@ extension ViewDetails {
     }
     
     /// View artwork for the selected media
-    struct ViewDetailsArtwork<T: LibraryItem>: View {
-        let media: T
+    struct ViewDetailsArtwork: View {
+        let media: LibraryItem
         var body: some View {
             VStack {
                 RadialGradient(gradient: Gradient(colors: [.accentColor, .black]), center: .center, startRadius: 0, endRadius: 280)
@@ -77,7 +68,7 @@ extension ViewDetails {
                         overlay
                     )
             }
-            .animation(.none, value: media)
+            .animation(.none, value: media.id)
             .cornerRadius(3)
             .frame(width: 256, height: 144)
         }
@@ -115,14 +106,14 @@ extension ViewDetails {
     }
     
     /// View statistics for the current selection of the library
-    struct ViewDetailsStatistics<T: LibraryItem>: View {
-        let media: T
+    struct ViewDetailsStatistics: View {
+        let media: LibraryItem
         /// The Library model
         @EnvironmentObject var library: Library
         /// The view
         var body: some View {
             VStack {
-                switch library.filter {
+                switch media.media {
                 case .artist:
                     songsCount
                     albumsCount

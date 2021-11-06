@@ -45,8 +45,8 @@ extension Library {
     func toggleAlbum(album: AlbumItem) {
         logger("Album selected")
         albums.selected = albums.selected == album ? nil : album
-        /// Set the filter
-        setLibraryFilter(item: albums.selected)
+        /// Set the selection
+        setLibrarySelection(item: albums.selected)
         /// Reload songs
         Task {           
             let songs = await filterSongs()
@@ -101,12 +101,12 @@ extension Library {
     }
     
     /// The struct for an album item
-    struct AlbumItem: LibraryItem {
+    struct AlbumItem: LibraryItem, Identifiable, Hashable {
         /// /// The properties that we ask from Kodi
         var properties = ["artistid", "artist", "description", "title", "year", "playcount", "totaldiscs",
                           "genre", "thumbnail", "compilation", "dateadded", "lastplayed"]
         /// Make it identifiable
-        var id = UUID()
+        var id = UUID().uuidString
         /// The media type
         let media: MediaType = .album
         /// The SF symbol for this media item

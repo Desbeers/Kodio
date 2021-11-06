@@ -19,8 +19,8 @@ class Library: ObservableObject {
     var anyCancellable = Set<AnyCancellable>()
     /// The shared client class
     let kodiClient = KodiClient.shared
-    /// The current library filter
-    var filter: MediaType = .albumArtists
+    /// The current library selection
+    var selection: LibraryItem = LibraryListItem()
     /// The status of the library
     var status = Status() {
         didSet {

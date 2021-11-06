@@ -33,7 +33,7 @@ extension Library {
             songs.mostPlayed = songIDtoSongItem(songID: try await most.songs)
             logger("Library lists loaded")
             /// If this item is selected; refresh the UI
-            if filter == .recentlyPlayed || filter == .mostPlayed {
+            if selection.media == Library.MediaType.recentlyPlayed || selection.media == Library.MediaType.mostPlayed {
                 filterAllMedia()
             }
             return true
@@ -63,8 +63,9 @@ extension Library {
         switch libraryList.media {
         case .playlist:
             Task {
-                let songList = await getPlaylistSongs(file: libraryList.file)
-                playlists.songs = songList
+                async let songList = getPlaylistSongs(file: libraryList.file)
+                playlists.songs = await songList
+                libraryReload()
             }
         case .random:
             songs.random = Array(songs.all
@@ -72,15 +73,15 @@ extension Library {
                                     .filter {!$0.genre.contains("Musical")}
                                     .filter {!$0.genre.contains("Cabaret")}
                                     .shuffled().prefix(100))
+            libraryReload()
         case .neverPlayed:
             songs.neverPlayed = Array(songs.all
                                         .filter {$0.playCount == 0}
                                         .shuffled().prefix(100))
+            libraryReload()
         default:
-            break
+            libraryReload()
         }
-        /// Reload the library
-        libraryReload()
     }
     
     /// Get the library list items
@@ -138,7 +139,7 @@ extension Library {
     }
     
     /// The struct for a library list item
-    struct LibraryListItem: LibraryItem {
+    struct LibraryListItem: LibraryItem, Identifiable, Hashable {
         var id: String {
             return title
         }
@@ -165,8 +166,8 @@ extension Library {
         genres.selected = nil
         artists.selected = nil
         albums.selected = nil
-        /// Set the filter
-        setLibraryFilter(item: libraryLists.selected)
+        /// Set the selection
+        setLibrarySelection(item: libraryLists.selected)
         /// Reload all media
         filterAllMedia()
     }
