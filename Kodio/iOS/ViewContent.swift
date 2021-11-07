@@ -56,7 +56,7 @@ struct ViewContent: View {
         .sheet(isPresented: $appState.showSheet) {
             ViewSheet()
         }
-        .alert(item: $appState.alertItem) { alertItem in
+        .alert(item: $appState.alert) { alertItem in
             return alertContent(content: alertItem)
         }
     }

@@ -15,6 +15,9 @@ extension Library {
     /// - Parameter reload: Bool; force a reload or else it will try to load it from the  cache
     /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
+        if reload {
+            resetLibrary()
+        }
         getRadioStations()
         libraryLists.all = getLibraryLists()
         libraryLists.selected = libraryLists.all.first!
@@ -23,8 +26,6 @@ extension Library {
         }
         /// get media items
         Task(priority: .high) {
-            /// Check if the library is still up to date
-            await getLastUpdate()
             /// Artists
             async let artists = getArtists(reload: reload)
             status.artists = await artists
@@ -42,6 +43,10 @@ extension Library {
                 status.songs = await getSongs(reload: reload)
                 /// Now load stuff depending on the songs
                 status.libraryLists = await getLibraryListItems()
+                /// Check if the library is still up to date
+                if !reload {
+                    await getLastUpdate()
+                }
             }
         }
     }
@@ -60,7 +65,8 @@ extension Library {
     /// Reset the  library to its initial state
     func resetLibrary() {
         status.reset()
-        filteredContent = Library.FilteredContent()
+        selection = LibraryListItem()
+        filteredContent = FilteredContent()
         playlists.files = []
         libraryLists.all = []
         libraryLists.selected = LibraryListItem()
