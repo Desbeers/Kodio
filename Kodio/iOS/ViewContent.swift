@@ -22,13 +22,15 @@ struct ViewContent: View {
                             ViewHostsMenu()
                             Divider()
                             Button("Edit hosts") {
-                                appState.activeSheet = .settings
-                                appState.showSheet = true
+                                Task {
+                                    appState.viewSheet(type: .settings)
+                                }
                             }
                             Button(
                                 action: {
-                                    appState.activeSheet = .help
-                                    appState.showSheet = true
+                                    Task {
+                                        appState.viewSheet(type: .help)
+                                    }
                                 },
                                 label: {
                                     Text("Help")
@@ -36,8 +38,9 @@ struct ViewContent: View {
                             )
                             Button(
                                 action: {
-                                    appState.activeSheet = .about
-                                    appState.showSheet = true
+                                    Task {
+                                        appState.viewSheet(type: .about)
+                                    }
                                 },
                                 label: {
                                     Text("About Kodio")

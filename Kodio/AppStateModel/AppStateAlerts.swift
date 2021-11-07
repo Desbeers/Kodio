@@ -11,9 +11,9 @@ extension AppState {
     
     // MARK: Alerts for Kodio
 
-    /// Show a SwiftUI alert
+    /// View a SwiftUI alert
     /// - Parameter type: An ``AlertItem``.
-    @MainActor func showAlert(type: AlertItems) {
+    @MainActor func viewAlert(type: AlertItems) {
         alert = type.show()
     }
     
@@ -63,8 +63,9 @@ extension AppState {
                             NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
 #endif
 #if os(iOS)
-                            AppState.shared.activeSheet = .settings
-                            AppState.shared.showSheet = true
+                            Task {
+                                await AppState.shared.viewSheet(type: .settings)
+                            }
 #endif
                         }
                     )

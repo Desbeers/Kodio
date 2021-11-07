@@ -38,7 +38,7 @@ struct Hosts {
             let appState: AppState = .shared
             appState.state = .noHostConfig
             Task {
-                await appState.showAlert(type: .noHosts)
+                await appState.viewAlert(type: .noHosts)
             }
             /// Return default host
             return HostItem()

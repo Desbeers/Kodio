@@ -39,14 +39,16 @@ import SwiftUI
         .commands {
             CommandGroup(replacing: CommandGroupPlacement.help) {
                 Button("Kodio Help") {
-                    appState.activeSheet = .help
-                    appState.showSheet = true
+                    Task {
+                        appState.viewSheet(type: .help)
+                    }
                 }
             }
             CommandGroup(replacing: CommandGroupPlacement.appInfo) {
                 Button("About Kodio") {
-                    appState.activeSheet = .about
-                    appState.showSheet = true
+                    Task {
+                        appState.viewSheet(type: .about)
+                    }
                 }
             }
             CommandGroup(replacing: CommandGroupPlacement.newItem) {

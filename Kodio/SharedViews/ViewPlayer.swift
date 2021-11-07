@@ -68,8 +68,7 @@ struct ViewPlayerQueueButton: View {
     var body: some View {
         Button(
             action: {
-                appState.activeSheet = .queue
-                appState.showSheet.toggle()
+                appState.viewSheet(type: .queue)
             },
             label: {
                 ViewArtPlayer(item: player.item, size: artSize)

@@ -11,6 +11,13 @@ extension AppState {
     
     // MARK: Sheets for Kodio
     
+    /// View a SwiftUI sheet
+    /// - Parameter type: One of the ``Sheets``.
+    @MainActor func viewSheet(type: Sheets) {
+        activeSheet = type
+        showSheet = true
+    }
+    
     /// The different kind of sheets Kodio can present
     enum Sheets {
         /// Show the `Playing Queue` sheet
