@@ -13,15 +13,14 @@ extension KodiHost {
     
     /// Get the properties of the Kodi host
     func getProperties() async {
-        /// Check connection and load the selected Kodi host if not yet done
         let request = ApplicationGetProperties()
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
             if properties != result {
-                logger("Kodi properties changed")
-                properties = result
-                DispatchQueue.main.async {
-                    self.volume = result.volume
+                await MainActor.run {
+                    logger("Host properties changed")
+                    properties = result
+                    volume = result.volume
                 }
             }
         } catch {

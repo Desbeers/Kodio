@@ -17,9 +17,9 @@ extension Player {
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
             if properties != result {
-                logger("Player properties changed")
-                DispatchQueue.main.async {
-                    self.properties = result
+                await MainActor.run {
+                    logger("Player properties changed")
+                    properties = result
                 }
             }
         } catch {

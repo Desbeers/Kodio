@@ -14,14 +14,12 @@ extension Player {
     /// Get the currently played item
     func getItem() async {
         let request = PlayerGetItem()
-        
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
-
             if item != result.item {
-                logger("Player item changed")
-                DispatchQueue.main.async {
-                    self.item = result.item
+                await MainActor.run {
+                    logger("Player item changed")
+                    item = result.item
                 }
             }
         } catch {

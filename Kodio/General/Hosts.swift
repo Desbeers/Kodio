@@ -13,6 +13,7 @@ struct Hosts {
     /// Get a list of hosts
     /// - Returns: An array of host items
     static func get() -> [HostItem] {
+        logger("Get the list of hosts")
         if let hosts = Cache.get(key: "MyHosts", as: [HostItem].self, root: true) {
             return hosts
         } else {
@@ -32,8 +33,8 @@ struct Hosts {
     
     /// Get the active host from the list of available hosts
     /// - Returns: A stuct with the active host
-    static func active() -> HostItem {
-        let hosts = self.get()
+    static func active(hosts: [HostItem]) -> HostItem {
+        logger("Get the active hosts")
         guard let host = hosts.first(where: { $0.selected == true }) else {
             let appState: AppState = .shared
             Task {
@@ -50,8 +51,8 @@ struct Hosts {
         Library.shared.resetLibrary()
         Task {
             await AppState.shared.setState(current: .none)
+            selectHost(selected: selected)
         }
-        selectHost(selected: selected)
     }
     
     /// Select a host from the list of available hosts and save the selection

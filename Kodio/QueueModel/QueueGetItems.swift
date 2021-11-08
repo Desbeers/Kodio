@@ -17,22 +17,27 @@ extension Queue {
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
             if result.items != queueItems {
-                logger("Queue has changed")
                 /// Save the query for later
-                self.queueItems = result.items
+                queueItems = result.items
                 /// Find the songs in the database{
-                getSongs(queue: result.items)
+                let songList = await getSongsForQueue(queue: result.items)
+                await MainActor.run {
+                    logger("Queue has changed")
+                    songs = songList
+                }
             }
         } catch {
-            DispatchQueue.main.async {
-                self.songs = []
+            await MainActor.run {
+                logger("Queue is empty")
+                songs = []
             }
         }
     }
     
     /// Get the songs from the database to add to the queue list
     /// - Parameter queue: A array with Song ID's
-    private func getSongs(queue: [QueueItem]) {
+    /// - Returns: An array of song items
+    private func getSongsForQueue(queue: [QueueItem]) async -> [Library.SongItem] {
         var songList: [Library.SongItem] = []
         let allSongs = Library.shared.songs.all
         for (index, song) in queue.enumerated() {
@@ -41,9 +46,7 @@ extension Queue {
                 songList.append(item)
             }
         }
-        DispatchQueue.main.async {
-            self.songs = songList
-        }
+        return songList
     }
     
     /// Get all items from playlist (Kodi API)

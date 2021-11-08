@@ -25,7 +25,7 @@ struct Cache {
             logger("Can't decode '\(key)'")
             return nil
         }
-        logger("'\(key)' loaded from cache")
+        logger("Loaded '\(key)' from cache")
         return decoded
     }
     
@@ -39,7 +39,7 @@ struct Cache {
         let file = self.path(for: key, root: root)
         let archivedValue = try JSONEncoder().encode(object)
         try archivedValue.write(to: file)
-        logger("'\(key)' stored in cache")
+        logger("Stored '\(key)' in cache")
     }
 
     /// Get the path to the cache directory

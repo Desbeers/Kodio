@@ -44,14 +44,14 @@ extension Library {
     /// - Parameter genre: The selected  ``GenreItem``
     func toggleGenre(genre: GenreItem) {
         logger("Genre selected")
-        genres.selected = genres.selected == genre ? nil : genre
-        /// Reset selection
-        artists.selected = nil
-        albums.selected = nil
-        /// Set the selection
-        setLibrarySelection(item: genres.selected)
-        /// Reload media
-        Task {
+        /// Reload artists, albums and songs
+        Task(priority: .userInitiated) {
+            genres.selected = genres.selected == genre ? nil : genre
+            /// Reset selection
+            artists.selected = nil
+            albums.selected = nil
+            /// Set the selection
+            setLibrarySelection(item: genres.selected)
             /// Filter songs first; all the rest is based on it.
             let songs = await filterSongs()
             /// Now the rest

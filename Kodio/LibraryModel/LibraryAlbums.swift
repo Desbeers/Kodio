@@ -44,11 +44,11 @@ extension Library {
     /// - Parameters album: The selected ``AlbumItem``
     func toggleAlbum(album: AlbumItem) {
         logger("Album selected")
-        albums.selected = albums.selected == album ? nil : album
-        /// Set the selection
-        setLibrarySelection(item: albums.selected)
         /// Reload songs
-        Task {           
+        Task(priority: .userInitiated) {
+            albums.selected = albums.selected == album ? nil : album
+            /// Set the selection
+            setLibrarySelection(item: albums.selected)
             let songs = await filterSongs()
             /// Update the UI
             await updateLibraryView(

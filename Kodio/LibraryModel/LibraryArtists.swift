@@ -44,13 +44,13 @@ extension Library {
     /// - Parameters artist: The selected ``ArtistItem``
     func toggleArtist(artist: ArtistItem) {
         logger("Artist selected")
-        artists.selected = artists.selected == artist ? nil : artist
-        /// Reset selection
-        albums.selected = nil
-        /// Set the selection
-        setLibrarySelection(item: artists.selected)
-        /// Reload media
-        Task {
+        /// Reload albums and songs
+        Task(priority: .userInitiated) {
+            artists.selected = artists.selected == artist ? nil : artist
+            /// Reset selection
+            albums.selected = nil
+            /// Set the selection
+            setLibrarySelection(item: artists.selected)
             let songs = await filterSongs()
             /// Now the albums
             async let albums = filterAlbums(songList: songs)

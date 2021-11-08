@@ -9,7 +9,11 @@ import SwiftUI
 
 /// Debug messages
 func logger(_ string: String) {
-    print("\(string) \(Date())")
+    var message: String = ""
+    if OperationQueue.current?.underlyingQueue?.label != nil {
+        message = "👀 "
+    }
+    print("\(message)\(string) \(Date())")
 }
 
 // extension Thread {

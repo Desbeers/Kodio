@@ -11,13 +11,17 @@ extension AppState {
     
     // MARK: The state of Kodio
     
+    /// Set the state of Kodio and act on it
     @MainActor func setState(current: State) {
+        logger("Kodio status: \(current.rawValue)")
         state = current
-        action(state: current)
+        DispatchQueue.global(qos: .background).async {
+            self.action(state: current)
+        }
     }
     
     /// The state of Kodio
-    enum State {
+    enum State: String {
         /// Not connected and no host
         case none
         /// Connected to the Kodi host
@@ -59,9 +63,6 @@ extension AppState {
         case .sleeping:
             logger("Kodio sleeping (\(system))")
             KodiClient.shared.disconnectWebSocket()
-//            Task {
-//                await KodiClient.shared.disconnectWebSocket()
-//            }
         case .wakeup:
             logger("Kodio awake (\(system))")
             KodiClient.shared.connectWebSocket()

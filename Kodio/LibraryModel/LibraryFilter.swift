@@ -27,6 +27,7 @@ extension Library {
     /// - Parameter songList: The current filtered list of songs
     /// - Returns: An array of genre items
     func filterGenres(songList: [SongItem]) async -> [GenreItem] {
+        logger("Filter genres")
         /// Filter genres based on song list
         let filter = songList.map { song -> [Int] in
             return song.genreID
@@ -39,6 +40,7 @@ extension Library {
     /// - Parameter songList: The current filtered list of songs
     /// - Returns: An array of artist items
     func filterArtists(songList: [SongItem]) async -> [ArtistItem] {
+        logger("Filter artists")
         var artistList = artists.all
         /// Show only album artists when that is selected in the sidebar
         if libraryLists.selected.media == .albumArtists {
@@ -56,6 +58,7 @@ extension Library {
     /// - Parameter songList: The current filtered list of songs
     /// - Returns: An array of album items
     func filterAlbums(songList: [SongItem]) async -> [AlbumItem] {
+        logger("Filter albums")
         let albumList = albums.all
         /// Filter albums based on songs list
         let allAlbums = songList.map { song -> Int in
@@ -69,6 +72,7 @@ extension Library {
     
     /// Filter the songs
     func filterSongs() async -> [SongItem] {
+        logger("Filter songs")
         var songList = songs.all
         switch libraryLists.selected.media {
         case .search:
@@ -118,10 +122,8 @@ extension Library {
     /// - Parameter item: The selected ``LibraryItem``
     func setLibrarySelection<T: LibraryItem>(item: T?) {
         if let selected = item {
-            logger("Selected '\(selection.media.rawValue)'")
             selection = selected
         } else {
-            logger("Deselected something")
             /// Find the the most fillting selection
             if let album = albums.selected {
                 selection = album
@@ -133,6 +135,7 @@ extension Library {
                 selection = libraryLists.selected
             }
         }
+        logger("Selected \(selection.media.rawValue)")
     }
     
     /// Filter all media (genres, artists, albums and songs)
@@ -160,8 +163,8 @@ extension Library {
     /// Update the SwiftUI View
     /// - Parameter content: An array of filtered content
     func updateLibraryView(content: FilteredContent) async {
-        logger("Update library UI")
         Task { @MainActor in
+            logger("Update library UI")
             filteredContent = FilteredContent(
                 genres: content.genres,
                 artists: content.artists,

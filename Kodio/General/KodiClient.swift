@@ -29,7 +29,9 @@ class KodiClient: ObservableObject {
     /// A struct with selected host information
     @Published var selectedHost = HostItem() {
         didSet {
-            connectToHost(host: selectedHost)
+            Task {
+                await connectToHost(host: selectedHost)
+            }
         }
     }
     
@@ -43,7 +45,7 @@ class KodiClient: ObservableObject {
         configuration.timeoutIntervalForResource = 120
         self.urlSession = URLSession(configuration: configuration)
         self.hosts = Hosts.get()
-        self.selectedHost = Hosts.active()
+        self.selectedHost = Hosts.active(hosts: self.hosts)
     }
     /// Black magic
     convenience init() {

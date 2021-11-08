@@ -31,7 +31,7 @@ extension Library {
             /// Most played
             async let most = KodiClient.shared.sendRequest(request: most)
             songs.mostPlayed = songIDtoSongItem(songID: try await most.songs)
-            logger("Library lists loaded")
+            logger("Recently and most played songs loaded from host")
             /// If this item is selected; refresh the UI
             if selection.media == Library.MediaType.recentlyPlayed || selection.media == Library.MediaType.mostPlayed {
                 filterAllMedia()
