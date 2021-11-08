@@ -36,9 +36,8 @@ struct Hosts {
         let hosts = self.get()
         guard let host = hosts.first(where: { $0.selected == true }) else {
             let appState: AppState = .shared
-            appState.state = .noHostConfig
             Task {
-                await appState.viewAlert(type: .noHosts)
+                await appState.setState(current: .noHostConfig)
             }
             /// Return default host
             return HostItem()
@@ -49,7 +48,9 @@ struct Hosts {
     /// Switch to a new host
     static func switchHost(selected: HostItem) {
         Library.shared.resetLibrary()
-        AppState.shared.state = .none
+        Task {
+            await AppState.shared.setState(current: .none)
+        }
         selectHost(selected: selected)
     }
     

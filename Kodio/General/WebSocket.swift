@@ -20,13 +20,13 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
         didOpenWithProtocol protocol: String?
     ) {
         logger("Kodio connected to \(KodiClient.shared.selectedHost.ip)")
-        
+        KodiClient.shared.ping()
         let appState: AppState = .shared
-        
-        DispatchQueue.main.async {
-            appState.state = appState.state == .wakeup ? .loadedLibrary : .connectedToHost
+        Task {
+            await appState.setState(current: appState.state == .wakeup ? .loadedLibrary : .connectedToHost)
         }
     }
+    
     /// Websocket notification when the connection stops
     func urlSession(
         _ session: URLSession,
@@ -36,19 +36,15 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
     ) {
         logger("WebSocket disconnected from \(KodiClient.shared.selectedHost.ip)")
     }
+    
     /// Websocket notification when the connection has an error
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError: Error?) {
-        let appState: AppState = .shared
-        if appState.state != .sleeping {
-            logger("WebSocket error from \(KodiClient.shared.selectedHost.ip)...")
+        if let error = didCompleteWithError {
+            logger("Network error: \(error.localizedDescription)")
+            let appState: AppState = .shared
             Task {
-                await appState.viewAlert(type: .hostNotAvailable)
+                await appState.setState(current: .failure)
             }
-            DispatchQueue.main.async {
-                appState.state = .failure
-            }
-        } else {
-            logger("Disconnected...")
         }
     }
 }
@@ -60,7 +56,6 @@ extension KodiClient {
     /// Connect to the Kodi host
     /// - Parameter host: an ``HostItem``
     func connectToHost(host: HostItem) {
-        AppState.shared.state = .none
         if !host.ip.isEmpty {
             logger("Connecting to Kodi on \(host.ip)")
             connectWebSocket()
@@ -77,6 +72,7 @@ extension KodiClient {
         let session = URLSession(configuration: .default, delegate: webSocketDelegate, delegateQueue: OperationQueue())
         webSocketTask = session.webSocketTask(with: url)
         webSocketTask?.resume()
+        /// Recieve notifications
         receiveNotification()
     }
     
@@ -85,13 +81,22 @@ extension KodiClient {
         webSocketTask?.cancel(with: .normalClosure, reason: nil)
     }
     
+    /// Check if Kodi is still alive
+    func ping() {
+        webSocketTask?.send(.string("ping")) { error in
+        if let error = error {
+            print("Error when sending PING \(error.localizedDescription)")
+        } else {
+            DispatchQueue.global().asyncAfter(deadline: .now() + 5) {
+                self.ping()
+            }
+        }
+      }
+    }
+    
     /// Recieve a notification from the Kodi WebSocket
-    /// - Note:
-    ///     Notifications when sending a message to the WebSocket are ignored
     func receiveNotification() {
         webSocketTask?.receive { result in
-            /// Call ourself again to receive the next notice
-            self.receiveNotification()
             switch result {
             case .success(let message):
                 if case .string(let text) = message, self.notificate {
@@ -106,7 +111,10 @@ extension KodiClient {
                     logger("Notification: \(notification.method)")
                     self.notificationAction(method: method)
                 }
+                /// Call ourself again to receive the next notice
+                self.receiveNotification()
             case .failure:
+                /// Failures are handled by the delegate
                 break
             }
         }

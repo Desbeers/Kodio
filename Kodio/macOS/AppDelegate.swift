@@ -24,10 +24,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     /// What to do when the Mac goes to sleep and wakeup again
     @objc private func sleepListener(_ aNotification: Notification) {
+        let appState: AppState = .shared
         if aNotification.name == NSWorkspace.willSleepNotification {
-            AppState.shared.state = .sleeping
+            Task {
+                await appState.setState(current: .sleeping)
+            }
         } else if aNotification.name == NSWorkspace.didWakeNotification {
-            AppState.shared.state = .wakeup
+            Task {
+                await appState.setState(current: .wakeup)
+            }
         }
     }
 }

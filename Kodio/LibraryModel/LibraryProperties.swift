@@ -21,11 +21,9 @@ extension Library {
             /// Save if cache is true
             if cache {
                 try Cache.set(key: "LibraryLastUpdated", object: result)
-                status.upToDate = true
             } else {
                 if let cache = Cache.get(key: "LibraryLastUpdated", as: Properties.self),
                    cache.libraryLastUpdated < result.libraryLastUpdated {
-                    status.upToDate = false
                     logger("Library is out of date.")
                     let appState: AppState = .shared
                     await appState.viewAlert(type: .outdatedLibrary)

@@ -27,12 +27,7 @@ class AppState: ObservableObject {
     /// The struct for a SwiftUI Alert item
     @Published var alert: AlertItem?
     /// The state of Kodio
-    @Published var state: State = .none {
-        didSet {
-            /// React on the change of state
-            action(state: state)
-        }
-    }
+    @Published var state: State = .none
     /// Check if Kodio is running on a Mac or on an iOS device
     /// - Note:The iOS app thingy will override this `var` if Kodio is not running on a Mac
     var system: System = .macOS

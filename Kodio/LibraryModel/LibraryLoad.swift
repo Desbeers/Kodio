@@ -15,17 +15,17 @@ extension Library {
     /// - Parameter reload: Bool; force a reload or else it will try to load it from the  cache
     /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
+        let appSate: AppState = .shared
         if reload {
             resetLibrary()
         }
         getRadioStations()
         libraryLists.all = getLibraryLists()
         libraryLists.selected = libraryLists.all.first!
-        DispatchQueue.main.async {
-            AppState.shared.state = .loadingLibrary
-        }
         /// get media items
         Task(priority: .high) {
+            /// Set loading state
+            await appSate.setState(current: .loadingLibrary)
             /// Artists
             async let artists = getArtists(reload: reload)
             status.artists = await artists
@@ -52,12 +52,11 @@ extension Library {
     }
     
     /// Check the loading status
-    /// - Parameter status: The status enum that was set
-    func checkStatus(status: Status) {
-        if status.all, AppState.shared.state != .loadedLibrary {
+    func checkStatus() {
+        if status.all {
             logger("Library is loaded")
-            DispatchQueue.main.async {
-                AppState.shared.state = .loadedLibrary
+            Task {
+                await AppState.shared.setState(current: .loadedLibrary)
             }
         }
     }
@@ -96,10 +95,6 @@ extension Library {
         var libraryLists: Bool = false
         /// Loading state of the playlists
         var playlists: Bool = false
-        /// Loading state of the playing queue
-        var queue: Bool = false
-        /// Check if the library is up to date
-        var upToDate: Bool = false
         /// Function to reset all states to initial value
         mutating func reset() {
             self = Status()

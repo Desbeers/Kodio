@@ -23,9 +23,7 @@ extension Queue {
                 /// Find the songs in the database{
                 getSongs(queue: result.items)
             }
-            Library.shared.status.queue = true
         } catch {
-            Library.shared.status.queue = false
             DispatchQueue.main.async {
                 self.songs = []
             }

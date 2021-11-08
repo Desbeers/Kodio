@@ -46,14 +46,21 @@ import SwiftUI
                 .onChange(of: scenePhase) { newPhase in
                     if newPhase == .inactive {
                         logger("Inactive (iOS)")
+                        Task {
+                            appState.setState(current: .sleeping)
+                        }
                     } else if newPhase == .active {
                         logger("Active (iOS)")
                         if appState.state == .sleeping {
-                            appState.state = .wakeup
+                            Task {
+                                appState.setState(current: .wakeup)
+                            }
                         }
                     } else if newPhase == .background {
                         logger("Background (iOS)")
-                        appState.state = .sleeping
+//                        Task {
+//                            appState.setState(current: .sleeping)
+//                        }
                     }
                 }
         }

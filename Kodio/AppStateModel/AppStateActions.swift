@@ -11,7 +11,12 @@ extension AppState {
     
     // MARK: The state of Kodio
     
-    /// The states of Kodio
+    @MainActor func setState(current: State) {
+        state = current
+        action(state: current)
+    }
+    
+    /// The state of Kodio
     enum State {
         /// Not connected and no host
         case none
@@ -33,7 +38,7 @@ extension AppState {
     
     /// The actions when the  state of Kodio is changed
     /// - Parameter state: the current ``State``
-    func action(state: State) {
+    private func action(state: State) {
         switch state {
         case .connectedToHost:
             Library.shared.getLibrary()
@@ -45,16 +50,29 @@ extension AppState {
                 await Player.shared.getItem()
                 /// Get the song queue
                 await Queue.shared.getItems()
-                /// Filter the library and view it
-                Library.shared.selection = Library.shared.libraryLists.all.first!
-                Library.shared.filterAllMedia()
+                /// Filter the library and view it if we are just starting
+                if Library.shared.selection.media == .none {
+                    Library.shared.selection = Library.shared.libraryLists.all.first!
+                    Library.shared.filterAllMedia()
+                }
             }
         case .sleeping:
             logger("Kodio sleeping (\(system))")
             KodiClient.shared.disconnectWebSocket()
+//            Task {
+//                await KodiClient.shared.disconnectWebSocket()
+//            }
         case .wakeup:
             logger("Kodio awake (\(system))")
             KodiClient.shared.connectWebSocket()
+        case .failure:
+            Task {
+                await viewAlert(type: .hostNotAvailable)
+            }
+        case .noHostConfig:
+            Task {
+                await viewAlert(type: .noHosts)
+            }
         default:
             break
         }

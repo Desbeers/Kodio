@@ -28,7 +28,7 @@ class Library: ObservableObject {
     /// The status of the library
     var status = Status() {
         didSet {
-            checkStatus(status: status)
+            checkStatus()
         }
     }
     /// An array containing all search related items
