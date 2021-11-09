@@ -73,16 +73,16 @@ extension ViewQueue {
     var list: some View {
         VStack {
             ScrollViewReader { proxy in
-                ScrollView {
-                    LazyVStack {
-                        Spacer(minLength: 30)
-                        ForEach(library.getSongsFromQueue()) { song in
-                            ViewSongsListRow(song: song, selectedAlbum: nil)
-                                .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
-                            Divider()
-                        }
+                List {
+                    ForEach(library.getSongsFromQueue()) { song in
+                        ViewSongsListRow(song: song, selectedAlbum: nil)
+                        /// - Note: Give it a fixed height, or else macOS does not scroll correct
+                            .frame(height: 50)
+                            .id(song.songID)
+                            .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
                     }
                 }
+                .listStyle(PlainListStyle())
                 /// Scroll to the item that is playing
                 .task {
                     withAnimation(.linear(duration: 1)) {

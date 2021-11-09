@@ -43,7 +43,6 @@ struct ViewSongsListRow: View {
         .swipeActions(edge: .leading) {
             songActions(song: song)
         }
-        .id(song.songID)
     }
 }
 
