@@ -24,6 +24,7 @@ extension Queue {
             }
         } catch {
             logger("Queue is empty")
+            queueItems = []
         }
         /// Update view or sidebar
         if viewingQueue {
