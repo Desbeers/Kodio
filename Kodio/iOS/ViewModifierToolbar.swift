@@ -11,8 +11,6 @@ import SwiftUI
 struct ViewModifierToolbar: ViewModifier {
     /// The Player model
     @EnvironmentObject var player: Player
-    /// The AppState model
-    @EnvironmentObject var appState: AppState
     /// The view
     func body(content: Content) -> some View {
         content
@@ -43,6 +41,6 @@ struct ViewModifierToolbar: ViewModifier {
                     .scaleEffect(0.9)
                 }
             }
-            .disabled(appState.state != .loadedLibrary)
+            .disabled(AppState.shared.state != .loadedLibrary)
     }
 }

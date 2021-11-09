@@ -266,14 +266,12 @@ extension  ViewHostsEdit {
 struct ViewHostsMenu: View {
     /// The KodiClient model that has the hosts information
     @EnvironmentObject var kodiClient: KodiClient
-    /// The AppState model
-    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
         if !kodiClient.selectedHost.ip.isEmpty {
             Button(
                 action: {
-                    appState.viewAlert(type: .scanLibrary)
+                    AppState.shared.viewAlert(type: .scanLibrary)
                 },
                 label: {
                     Label("Reload \(kodiClient.selectedHost.description)", systemImage: "arrow.clockwise")

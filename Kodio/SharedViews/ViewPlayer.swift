@@ -15,11 +15,9 @@ struct ViewPlayerButtons: View {
     @EnvironmentObject var player: Player
     /// The Queue model
     @EnvironmentObject var queue: Queue
-    /// The Appstate model
-    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        HStack(spacing: appState.system == .macOS ? 6 : 20) {
+        HStack(spacing: AppState.shared.system == .macOS ? 6 : 20) {
             Button(
                 action: {
                     player.sendAction(method: .playerGoTo,
@@ -62,13 +60,11 @@ struct ViewPlayerQueueButton: View {
     var artSize: CGFloat
     /// The Player model
     @EnvironmentObject var player: Player
-    /// The AppState model
-    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
         Button(
             action: {
-                appState.viewSheet(type: .queue)
+                AppState.shared.viewSheet(type: .queue)
             },
             label: {
                 ViewArtPlayer(item: player.item, size: artSize)
