@@ -9,8 +9,8 @@ import SwiftUI
 
 /// View the song queue
 struct ViewQueue: View {
-    /// The Queue model
-    @EnvironmentObject var queue: Queue
+    /// The Library model
+    @EnvironmentObject var library: Library
     /// The Player model
     @EnvironmentObject var player: Player
     /// The view
@@ -76,7 +76,7 @@ extension ViewQueue {
                 ScrollView {
                     LazyVStack {
                         Spacer(minLength: 30)
-                        ForEach(queue.songs) { song in
+                        ForEach(library.getSongsFromQueue()) { song in
                             ViewSongsListRow(song: song, selectedAlbum: nil)
                                 .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
                             Divider()

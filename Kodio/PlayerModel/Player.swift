@@ -52,15 +52,15 @@ extension Player {
     /// - It's a new song, open it in a new playlist
 
     func sendSongAndPlay(song: Library.SongItem) {
-        let queue = Queue.shared.songs
-        if let index = queue.firstIndex(where: { $0.songID == song.songID }) {
+        let queueSongs = Library.shared.getSongsFromQueue()
+        if let index = queueSongs.firstIndex(where: { $0.songID == song.songID }) {
             /// Song is in the playlist, let's jump if the player is already playing
             if properties.speed == 1 {
-                sendAction(method: .playerGoTo, queueID: queue[index].queueID)
+                sendAction(method: .playerGoTo, queueID: queueSongs[index].queueID)
             }
             /// Player is stopped; start at the playlist position
             else {
-                sendAction(method: .playerOpen, queueID: queue[index].queueID)
+                sendAction(method: .playerOpen, queueID: queueSongs[index].queueID)
             }
         }
         /// Song is not in the playlist; just open it in a new playlist

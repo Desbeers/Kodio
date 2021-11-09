@@ -94,7 +94,7 @@ extension Library {
         case .favorites:
             songList = songList.filter { $0.rating > 0 }.sorted {$0.rating > $1.rating}
         case .queue:
-            songList = Queue.shared.songs
+            songList = getSongsFromQueue()
         default:
             songList = songList.filter {$0.compilation == false}
         }

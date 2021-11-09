@@ -18,28 +18,17 @@ extension Queue {
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
             if result.items != queueItems {
+                logger("Queue has changed")
                 /// Save the query for later
                 queueItems = result.items
-                /// Find the songs in the database{
-                let songList = await getSongsForQueue(queue: result.items)
-                await MainActor.run {
-                    logger("Queue has changed")
-                    songs = songList
-                }
             }
         } catch {
-            /// The queue is empty
-            if !songs.isEmpty {
-                await MainActor.run {
-                    logger("Queue is empty")
-                    songs = []
-                }
-            }
+            logger("Queue is empty")
         }
         /// Update view or sidebar
         if viewingQueue {
             let library: Library = .shared
-            if songs.isEmpty {
+            if queueItems.isEmpty {
                 logger("Select first item in the sidebar")
                 library.selectLibraryList(libraryList: library.libraryLists.all.first!)
             } else {
@@ -51,21 +40,6 @@ extension Queue {
                    AppState.shared.updateSidebar()
             }
         }
-    }
-    
-    /// Get the songs from the database to add to the queue list
-    /// - Parameter queue: A array with Song ID's
-    /// - Returns: An array of song items
-    private func getSongsForQueue(queue: [QueueItem]) async -> [Library.SongItem] {
-        var songList: [Library.SongItem] = []
-        let allSongs = Library.shared.songs.all
-        for (index, song) in queue.enumerated() {
-            if var item = allSongs.first(where: { $0.songID == song.songID }) {
-                item.queueID = index
-                songList.append(item)
-            }
-        }
-        return songList
     }
     
     /// Get all items from playlist (Kodi API)

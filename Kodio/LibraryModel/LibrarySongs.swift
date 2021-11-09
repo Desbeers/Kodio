@@ -72,6 +72,20 @@ extension Library {
         }
     }
     
+    /// Get the songs from the database to add to the queue list
+    /// - Returns: An array of song items
+    func getSongsFromQueue() -> [Library.SongItem] {
+        var songList: [Library.SongItem] = []
+        let allSongs = Library.shared.songs.all
+        for (index, song) in Queue.shared.queueItems.enumerated() {
+            if var item = allSongs.first(where: { $0.songID == song.songID }) {
+                item.queueID = index
+                songList.append(item)
+            }
+        }
+        return songList
+    }
+    
     /// Like or dislike a song
     func favoriteSongToggle(song: SongItem) {
         if let index = songs.all.firstIndex(where: { $0.songID == song.songID }),
@@ -90,16 +104,6 @@ extension Library {
                 try Cache.set(key: "MySongs", object: songs.all)
             } catch {
                 logger("Error saving MySongs")
-            }
-            /// Reload library if viewing favorites
-            if selection.media == .favorites {
-                filterAllMedia()
-            }
-            /// Reload queue if viewing queue
-            if AppState.shared.activeSheet == .queue {
-                Task {
-                    await Queue.shared.getItems()
-                }
             }
             /// Refresh UI
             DispatchQueue.main.async {

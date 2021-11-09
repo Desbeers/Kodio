@@ -123,7 +123,7 @@ extension Library {
                                   subtitle: "This is in your current playlist",
                                   icon: "music.note.list",
                                   media: .queue,
-                                  visible: !Queue.shared.songs.isEmpty
+                                  visible: !Queue.shared.queueItems.isEmpty
                                  ))
         list.append(LibraryListItem(title: "Search",
                                     subtitle: "Results for '\(query)'",

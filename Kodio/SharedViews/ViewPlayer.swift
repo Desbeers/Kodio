@@ -30,7 +30,7 @@ struct ViewPlayerButtons: View {
             .disabled(player.item.songID == nil || player.properties.queueID == 0)
             Button(
                 action: {
-                    player.sendPlayerPlayPause(queue: queue.songs)
+                    player.sendPlayerPlayPause(queue: Library.shared.getSongsFromQueue())
                 },
                 label: {
                     Image(systemName: player.properties.speed == 1 ? "pause.fill" : "play.fill")

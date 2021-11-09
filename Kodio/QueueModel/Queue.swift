@@ -16,14 +16,12 @@ class Queue: ObservableObject {
     static let shared = Queue()
     /// The shared client class
     let kodiClient = KodiClient.shared
-    /// Songs in the queue
-    @Published var songs: [Library.SongItem] = []
     /// Song ID's in queue
     var queueItems: [QueueItem] = []
     /// Count of items in the queue
     var items: Int {
         /// Kodi counts from zero
-        return songs.count - 1
+        return queueItems.count - 1
     }
     
     // MARK: Init
