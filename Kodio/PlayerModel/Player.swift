@@ -82,22 +82,20 @@ extension Player {
     func sendSongsAndPlay(songs: [Library.SongItem], shuffled: Bool = false) {
         /// Get the shared Queue class
         let queue = Queue.shared
-        /// # Stop the player
-        sendAction(method: .playerStop)
-        /// # Clear the playlist
+        /// Clear the playlist
         queue.sendAction(method: .playlistClear)
-        /// # Collect the songs to add
+        /// Collect the songs to add
         var songList: [Int] = []
         for song in songs {
             songList.append(song.songID)
         }
-        /// # Add the songs
+        /// Add the songs
         let request = Queue.QueueAction(method: .playlistAdd, songList: songList)
         
         Task {
             do {
                 _ = try await KodiClient.shared.sendRequest(request: request)
-                /// # Start playing
+                /// Start playing
                 sendAction(method: .playerOpen, queueID: 0, shuffled: shuffled)
             } catch {
                 print(error)
