@@ -36,7 +36,7 @@ struct ViewPlayerButtons: View {
                     Image(systemName: player.properties.speed == 1 ? "pause.fill" : "play.fill")
                 }
             )
-            .disabled(player.item.type != "song")
+                .disabled(player.item.type != "song" && queue.queueItems.isEmpty)
             Button(
                 action: {
                     player.sendAction(method: .playerGoTo,
