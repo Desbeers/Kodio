@@ -13,8 +13,6 @@ extension Library {
     
     /// A struct will all search related items
     struct Search {
-        /// The shared search observer
-        var observer = SearchObserver.shared
         /// The search results
         var results: [SongItem] = []
         /// The search suggestions
@@ -22,30 +20,38 @@ extension Library {
     }
     
     /// Search the library, create suggestion and view the result
-    func searchLibrary() {
+    func searchLibrary(query: String) {
         if !query.isEmpty {
-            Task {
+            Task(priority: .userInitiated) {
                 /// Get search results
-                async let results = getSearchResults()
+                async let results = getSearchResults(query: query)
                 /// Make a list of suggestions
-                async let suggestions = makeSearchSuggestions()
+                search.suggestions = await makeSearchSuggestions(query: query)
+                /// Select 'Search' in the sidebar
+
                 search.results = await results
-                search.suggestions = await suggestions
+                
                 if let button = libraryLists.all.first(where: { $0.media == .search}) {
                     Library.shared.selectLibraryList(libraryList: button)
                 }
+
             }
-        }
-        /// Search is canceled
-        if !search.observer.searchIsActive {
-            /// Remove the suggestions
-            search.suggestions = []
+        } else {
+            search = Search()
+            /// Select default if selected item is still search
+            if libraryLists.selected.media == .search {
+                Task(priority: .userInitiated) {
+                    logger("Select first item in the sidebar")
+                    selectLibraryList(libraryList: libraryLists.all.first!)
+                }
+            }
         }
     }
     
     /// Get a list of songs matching the search query
     /// - Returns: An arry of song items
-    private func getSearchResults() async -> [SongItem] {
+    private func getSearchResults(query: String) async -> [SongItem] {
+        logger("Search library")
         let smartSearchMatcher = SmartSearchMatcher(searchString: query)
         return songs.all.filter { songs in
                 if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(songs.searchString) {
@@ -57,7 +63,8 @@ extension Library {
     
     /// Make a list of search suggestions
     /// - Returns: An array of search suggestion items
-    private func makeSearchSuggestions() async -> [SearchSuggestionItem] {
+    private func makeSearchSuggestions(query: String) async -> [SearchSuggestionItem] {
+        logger("Make search suggestions")
         var results: [SearchSuggestionItem] = []
         let smartSearchMatcher = SmartSearchMatcher(searchString: query)
         /// Artists

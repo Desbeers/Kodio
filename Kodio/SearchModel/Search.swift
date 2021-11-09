@@ -15,12 +15,8 @@ class SearchObserver: ObservableObject {
     
     /// Create a shared instance
     static let shared = SearchObserver()
-    /// The search string in the UI
-    @Published var searchText = ""
     /// The search query
-    @Published var query = ""
-    /// Are we searching?
-    var searchIsActive: Bool = false
+    @Published var query: String = ""
     /// The Combine container
     private var subscriptions = Set<AnyCancellable>()
     
@@ -28,17 +24,19 @@ class SearchObserver: ObservableObject {
     
     /// Private init to make sure we have only one instance
     private init() {
-        $searchText
+        $query
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
-            .sink(receiveValue: { text in
-                self.query = text
-                if text.isEmpty {
-                    self.searchIsActive = false
+            .sink(receiveValue: { query in
+                if Library.shared.query != query {
+                    Library.shared.query = query
                 }
-                if !self.searchIsActive, !text.isEmpty {
-                    /// Start the search
-                    self.searchIsActive = true
-                }
+//                if query.isEmpty {
+//                    Library.shared.search = Library.Search()
+//                    //Library.shared.selection = Library.shared.libraryLists.all.first!
+//                    //Library.shared.filterAllMedia()
+//                } else {
+//                    Library.shared.searchLibrary(query: query)
+//                }
             })
             .store(in: &subscriptions)
     }

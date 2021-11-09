@@ -16,7 +16,7 @@ struct ViewModifierSearch: ViewModifier {
     /// The view
     func body(content: Content) -> some View {
         content
-            .searchable(text: $searchObserver.searchText) {
+            .searchable(text: $searchObserver.query) {
                 if !library.search.suggestions.isEmpty {
                     ForEach(library.search.suggestions) { suggestion in
                         HStack {

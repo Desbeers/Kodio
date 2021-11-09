@@ -34,7 +34,11 @@ class Library: ObservableObject {
     /// An array containing all search related items
     var search = Search()
     /// The search query
-    @Published var query = ""
+    @Published var query = "" {
+        didSet {
+            searchLibrary(query: query)
+        }
+    }
     /// The library filtered by selection of library list, genre, artist and album
     @Published var filteredContent = FilteredContent()
     /// An array containing all artist related items
@@ -55,17 +59,7 @@ class Library: ObservableObject {
     // MARK: Init the Library class
     
     /// Private init to make sure we have only one instance
-    private init() {
-        /// Search observer
-        search.observer.objectWillChange.sink { [self] in
-            DispatchQueue.main.async {
-                if search.observer.query != query {
-                    query = search.observer.query
-                    searchLibrary()
-                }
-            }
-        }.store(in: &anyCancellable)
-    }
+    private init() {}
 }
 
 extension Library {

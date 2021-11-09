@@ -123,18 +123,13 @@ extension Library {
                                   visible: !Queue.shared.songs.isEmpty
                                  ))
         list.append(LibraryListItem(title: "Search",
-                                  subtitle: "Results for '\(query)'",
-                                  icon: "magnifyingglass",
-                                  media: .search,
-                                  visible: !query.isEmpty
-                                 ))
-        /// Save the list
+                                    subtitle: "Results for '\(SearchObserver.shared.query)'",
+                                    icon: "magnifyingglass",
+                                    media: .search,
+                                    visible: !query.isEmpty
+                                   ))
+        /// Save the list and return it
         libraryLists.all = list
-        /// Select default if selected item is not visible
-        if let selection = list.first(where: { $0.media == libraryLists.selected.media }), !selection.visible {
-            logger("Select first item in the sidebar")
-            selectLibraryList(libraryList: list.first!)
-        }
         return list
     }
     

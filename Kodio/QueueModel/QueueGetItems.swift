@@ -27,6 +27,14 @@ extension Queue {
                 }
             }
         } catch {
+            let library: Library = .shared
+            /// Select default if selected item is still queue
+            if library.libraryLists.selected.media == .queue {
+                Task(priority: .userInitiated) {
+                    logger("Select first item in the sidebar")
+                    library.selectLibraryList(libraryList: library.libraryLists.all.first!)
+                }
+            }
             await MainActor.run {
                 logger("Queue is empty")
                 songs = []
