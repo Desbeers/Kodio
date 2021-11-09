@@ -9,34 +9,28 @@ import SwiftUI
 
 /// The list of artists
 struct ViewArtists: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
+    /// The list of artists
+    let artists: [Library.ArtistItem]
+    /// The optional selected artist
+    let selected: Library.ArtistItem?
     /// The view
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    ViewListHeader(title: "Artists")
-                        .id("ArtistsHeader")
-                    ForEach(library.filteredContent.artists) { artist in
-                        Button(
-                            action: {
-                                library.toggleArtist(artist: artist)
-                            },
-                            label: {
-                                row(artist: artist)
-                            }
-                        )
-                        .buttonStyle(ButtonStyleList(type: .artist, selected: artist == library.artists.selected ? true: false))
-                        /// id must be a the bottom of the 'ForEach' or else it does not work
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ViewListHeader(title: "Artists")
+                    .id("ArtistsHeader")
+                ForEach(artists) { artist in
+                    Button(
+                        action: {
+                            Library.shared.toggleArtist(artist: artist)
+                        },
+                        label: {
+                            row(artist: artist)
+                        }
+                    )
+                        .buttonStyle(ButtonStyleList(type: .artist, selected: artist == selected ? true: false))
+                    /// id must be a the bottom of the 'ForEach' or else it does not work
                         .id(artist.artistID)
-                    }
-                }
-            }
-            /// Scroll to the top when selecting a new genre
-            .onChange(of: library.genres.selected) { _ in
-                withAnimation(.easeInOut(duration: 1)) {
-                    proxy.scrollTo("ArtistsHeader", anchor: .center)
                 }
             }
         }

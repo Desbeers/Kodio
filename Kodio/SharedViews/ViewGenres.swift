@@ -9,21 +9,23 @@ import SwiftUI
 
 /// The list of genres
 struct ViewGenres: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
+    /// The list of genres
+    let genres: [Library.GenreItem]
+    /// The optional selected genre
+    let selected: Library.GenreItem?
     /// The view
     var body: some View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ViewListHeader(title: "Genres")
-                    ForEach(library.filteredContent.genres) { genre in
+                    ForEach(genres) { genre in
                         Button(
                             action: {
-                                library.toggleGenre(genre: genre)
+                                Library.shared.toggleGenre(genre: genre)
                             }, label: {
                                 row(genre: genre)
                             })
-                            .buttonStyle(ButtonStyleList(type: .genre, selected: genre == library.genres.selected ? true: false))
+                            .buttonStyle(ButtonStyleList(type: .genre, selected: genre == selected ? true: false))
                     }
                 }
                 /// Buttons have additional .traling padding for the scrollbar

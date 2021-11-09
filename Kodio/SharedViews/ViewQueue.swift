@@ -77,7 +77,7 @@ extension ViewQueue {
                     LazyVStack {
                         Spacer(minLength: 30)
                         ForEach(queue.songs) { song in
-                            ViewSongsListRow(song: song)
+                            ViewSongsListRow(song: song, selectedAlbum: nil)
                                 .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
                             Divider()
                         }

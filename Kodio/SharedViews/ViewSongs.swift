@@ -9,14 +9,14 @@ import SwiftUI
 
 /// The list of songs
 struct ViewSongs: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
-    /// The Player model
-    @EnvironmentObject var player: Player
+    /// The list of songs
+    let songs: [Library.SongItem]
+    /// The optional selected album
+    let selectedAlbum: Library.AlbumItem?
     /// The view
     var body: some View {
         VStack {
-            if !library.filteredContent.songs.isEmpty {
+            if !songs.isEmpty {
                 header
             }
             list
@@ -28,13 +28,13 @@ extension ViewSongs {
     
     /// The header above the list of songs
     @ViewBuilder var header: some View {
-        let count = library.filteredContent.songs.count
+        let count = songs.count
         VStack(alignment: .leading) {
             HStack {
                 Button(
                     action: {
-                        KodiHost.shared.setReplayGain(mode: library.albums.selected == nil ? .track : .album)
-                        player.sendSongsAndPlay(songs: library.filteredContent.songs)
+                        KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
+                        Player.shared.sendSongsAndPlay(songs: songs)
                     },
                     label: {
                         Label("Play \(count == 1 ? "song" : "songs")", systemImage: "play.fill")
@@ -42,8 +42,8 @@ extension ViewSongs {
                 )
                 Button(
                     action: {
-                        KodiHost.shared.setReplayGain(mode: library.albums.selected == nil ? .track : .album)
-                        player.sendSongsAndPlay(songs: library.filteredContent.songs, shuffled: true)
+                        KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
+                        Player.shared.sendSongsAndPlay(songs: songs, shuffled: true)
                     },
                     label: {
                         Label("Shuffle \(count == 1 ? "song" : "songs")", systemImage: "shuffle")
@@ -59,16 +59,16 @@ extension ViewSongs {
     /// The list of songs
     var list: some View {
         List {
-            ForEach(library.filteredContent.songs) { song in
-                ViewSongsListRow(song: song)
-                    .modifier(ViewModifierSongs(song: song, selectedAlbum: library.albums.selected))
+            ForEach(songs) { song in
+                ViewSongsListRow(song: song, selectedAlbum: selectedAlbum)
+                    .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))
 #if os(macOS)
                 Divider()
 #endif
             }
         }
         /// Speed up iOS
-        .id(library.songs.listID)
+        .id(Library.shared.songs.listID)
         .listStyle(PlainListStyle())
     }
     

@@ -22,13 +22,15 @@ struct ViewLibrary: View {
 
 /// View the top of the library: genres, artists and songs
 struct ViewLibraryTop: View {
+    /// The Library model
+    @EnvironmentObject var library: Library
     /// The view
     var body: some View {
         HStack(spacing: 0) {
-            ViewGenres()
+            ViewGenres(genres: library.filteredContent.genres, selected: library.genres.selected)
                 .frame(width: 150)
-            ViewArtists()
-            ViewAlbums()
+            ViewArtists(artists: library.filteredContent.artists, selected: library.artists.selected)
+            ViewAlbums(albums: library.filteredContent.albums, selected: library.albums.selected)
         }
         .overlay(
             ViewDropShadow()
@@ -38,12 +40,14 @@ struct ViewLibraryTop: View {
 
 /// View the bottom of the library: details and the songs
 struct ViewLibraryBottom: View {
+    /// The Library model
+    @EnvironmentObject var library: Library
     /// The view
     var body: some View {
         HStack(spacing: 0) {
             ViewDetails()
             Divider()
-            ViewSongs()
+            ViewSongs(songs: library.filteredContent.songs, selectedAlbum: library.albums.selected)
         }
     }
 }

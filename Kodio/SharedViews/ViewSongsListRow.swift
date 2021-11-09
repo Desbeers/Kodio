@@ -12,6 +12,8 @@ import SwiftUI
 struct ViewSongsListRow: View {
     /// The song in this row
     let song: Library.SongItem
+    /// The optional selected album
+    let selectedAlbum: Library.AlbumItem?
     /// The Player model
     @EnvironmentObject var player: Player
     /// The view
@@ -50,7 +52,7 @@ extension ViewSongsListRow {
     /// Art or track number at the start of a row
     /// - Note: when viewing an album it will be the track number, else album art
     @ViewBuilder var leading: some View {
-        if Library.shared.selection.media == .album, AppState.shared.showSheet == false, song.track > 0 {
+        if selectedAlbum != nil, AppState.shared.showSheet == false, song.track > 0 {
             Text(String(song.track))
                 .font(.headline)
                 .frame(width: 40, height: 40)
