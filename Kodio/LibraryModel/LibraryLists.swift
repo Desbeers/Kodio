@@ -60,6 +60,9 @@ extension Library {
     /// - Parameter libraryList: A ``LibraryListItem`` struct
     func selectLibraryList(libraryList: LibraryListItem) {
         libraryLists.selected = libraryList
+        Task { @MainActor in
+            AppState.shared.updateSidebar()
+        }
         switch libraryList.media {
         case .playlist:
             Task {
@@ -123,7 +126,7 @@ extension Library {
                                   visible: !Queue.shared.songs.isEmpty
                                  ))
         list.append(LibraryListItem(title: "Search",
-                                    subtitle: "Results for '\(SearchObserver.shared.query)'",
+                                    subtitle: "Results for '\(query)'",
                                     icon: "magnifyingglass",
                                     media: .search,
                                     visible: !query.isEmpty
@@ -159,6 +162,10 @@ extension Library {
         /// Fanart of this item
         /// - Note: Not needed, but required by protocol
         let fanart: String = ""
+        /// Is this item selected?
+        var selected: Bool {
+            return Library.shared.libraryLists.selected.id == self.id ? true : false
+        }
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys

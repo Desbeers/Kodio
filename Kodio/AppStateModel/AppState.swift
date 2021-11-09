@@ -28,6 +28,8 @@ class AppState: ObservableObject {
     @Published var alert: AlertItem?
     /// The state of Kodio
     @Published var state: State = .none
+    /// The sidebar items
+    @Published var sidebarItems: [Library.LibraryListItem] = []
     /// Check if Kodio is running on a Mac or on an iOS device
     /// - Note:The iOS app thingy will override this `var` if Kodio is not running on a Mac
     var system: System = .macOS

@@ -142,9 +142,14 @@ extension KodiClient {
                 await Player.shared.getProperties()
             }
         /// Get the properties and current item of the player
-        case .playerOnPlay, .playerOnStop:
+        case .playerOnPlay:
             Task {
                 await Queue.shared.getItems()
+                await Player.shared.getItem()
+                await Player.shared.getProperties()
+            }
+        case .playerOnStop:
+            Task {
                 await Player.shared.getItem()
                 await Player.shared.getProperties()
             }

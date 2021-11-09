@@ -19,8 +19,6 @@ class Library: ObservableObject {
     
     /// The shared instance of this Library class
     static let shared = Library()
-    /// Combine subscription container
-    var anyCancellable = Set<AnyCancellable>()
     /// The shared client class
     let kodiClient = KodiClient.shared
     /// The current library selection
@@ -34,7 +32,7 @@ class Library: ObservableObject {
     /// An array containing all search related items
     var search = Search()
     /// The search query
-    @Published var query = "" {
+    var query = "" {
         didSet {
             searchLibrary(query: query)
         }

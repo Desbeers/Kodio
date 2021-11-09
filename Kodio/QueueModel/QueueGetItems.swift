@@ -13,6 +13,7 @@ extension Queue {
     
     /// Get a lists of songs in the queue
     func getItems() async {
+        let viewingQueue: Bool = Library.shared.libraryLists.selected.media == .queue ? true : false
         let request = QueueGetItems()
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
@@ -27,17 +28,27 @@ extension Queue {
                 }
             }
         } catch {
-            let library: Library = .shared
-            /// Select default if selected item is still queue
-            if library.libraryLists.selected.media == .queue {
-                Task(priority: .userInitiated) {
-                    logger("Select first item in the sidebar")
-                    library.selectLibraryList(libraryList: library.libraryLists.all.first!)
+            /// The queue is empty
+            if !songs.isEmpty {
+                await MainActor.run {
+                    logger("Queue is empty")
+                    songs = []
                 }
             }
-            await MainActor.run {
-                logger("Queue is empty")
-                songs = []
+        }
+        /// Update view or sidebar
+        if viewingQueue {
+            let library: Library = .shared
+            if songs.isEmpty {
+                logger("Select first item in the sidebar")
+                library.selectLibraryList(libraryList: library.libraryLists.all.first!)
+            } else {
+                logger("Reload queue view")
+                library.selectLibraryList(libraryList: library.libraryLists.selected)
+            }
+        } else {
+            Task { @MainActor in
+                   AppState.shared.updateSidebar()
             }
         }
     }

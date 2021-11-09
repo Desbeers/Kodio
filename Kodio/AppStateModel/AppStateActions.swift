@@ -10,6 +10,12 @@ import Foundation
 extension AppState {
     
     // MARK: The state of Kodio
+
+    /// Update the sidebar
+    @MainActor func updateSidebar() {
+        logger("Update sidebar")
+        sidebarItems = Library.shared.getLibraryLists()
+    }
     
     /// Set the state of Kodio and act on it
     @MainActor func setState(current: State) {
@@ -54,10 +60,11 @@ extension AppState {
                 await Player.shared.getItem()
                 /// Get the song queue
                 await Queue.shared.getItems()
+                /// Update the sidebar
+                await updateSidebar()
                 /// Filter the library and view it if we are just starting
                 if Library.shared.selection.media == .none {
-                    Library.shared.selection = Library.shared.libraryLists.all.first!
-                    Library.shared.filterAllMedia()
+                    Library.shared.selectLibraryList(libraryList: Library.shared.libraryLists.all.first!)
                 }
             }
         case .sleeping:

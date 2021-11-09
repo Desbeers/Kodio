@@ -9,12 +9,8 @@ import SwiftUI
 
 /// The sidebar
 struct ViewSidebar: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
     /// The AppState model
     @EnvironmentObject var appState: AppState
-    /// The Queue model
-    @EnvironmentObject var queue: Queue
     /// The view
     var body: some View {
         VStack(spacing: 0) {
@@ -34,15 +30,13 @@ struct ViewSidebar: View {
                 }
             }
             .sidebarButtons()
-            Spacer()
         }
-        .animation(.default, value: library.selection.id)
-        .animation(.default, value: queue.songs)
+        .animation(.default, value: appState.sidebarItems)
     }
     /// View library lists
     var libraryLists: some View {
         Section(header: Text("Music on '\(KodiClient.shared.selectedHost.description)'")) {
-            ForEach(library.getLibraryLists()) { item in
+            ForEach(appState.sidebarItems) { item in
                 if item.visible {
                     sidebarButton(item: item)
                 }
@@ -52,7 +46,7 @@ struct ViewSidebar: View {
     /// View playlists
     var playlists: some View {
         Section(header: Text("Playlists")) {
-            ForEach(library.playlists.files) { item in
+            ForEach(Library.shared.playlists.files) { item in
                 sidebarButton(item: item)
             }
         }
@@ -61,13 +55,12 @@ struct ViewSidebar: View {
     func sidebarButton(item: Library.LibraryListItem) -> some View {
         Button(
             action: {
-                library.selectLibraryList(libraryList: item)
+                Library.shared.selectLibraryList(libraryList: item)
             },
             label: {
                 Label(item.title, systemImage: item.icon)
             }
         )
-            .disabled(item.id == library.libraryLists.selected.id)
-            .animation(nil, value: library.libraryLists.selected)
+            .disabled(item.selected)
     }
 }

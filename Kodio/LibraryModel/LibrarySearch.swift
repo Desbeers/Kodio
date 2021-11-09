@@ -25,13 +25,11 @@ extension Library {
             Task(priority: .userInitiated) {
                 /// Get search results
                 async let results = getSearchResults(query: query)
+                search.results = await results
                 /// Make a list of suggestions
                 search.suggestions = await makeSearchSuggestions(query: query)
                 /// Select 'Search' in the sidebar
-
-                search.results = await results
-                
-                if let button = libraryLists.all.first(where: { $0.media == .search}) {
+                if let button = getLibraryLists().first(where: { $0.media == .search}) {
                     Library.shared.selectLibraryList(libraryList: button)
                 }
 

@@ -97,8 +97,6 @@ extension Player {
         Task {
             do {
                 _ = try await KodiClient.shared.sendRequest(request: request)
-                /// # Update the playlist queue
-                await queue.getItems()
                 /// # Start playing
                 sendAction(method: .playerOpen, queueID: 0, shuffled: shuffled)
             } catch {
