@@ -27,16 +27,16 @@ struct ViewPlayerButtons: View {
                     Image(systemName: "backward.fill")
                 }
             )
-            .disabled(player.item.songID == nil || player.properties.queueID == 0)
+            .disabled(player.properties.queueID <= 0)
             Button(
                 action: {
                     player.sendPlayerPlayPause(queue: Library.shared.getSongsFromQueue())
                 },
                 label: {
-                    Image(systemName: player.properties.speed == 1 ? "pause.fill" : "play.fill")
+                    Image(systemName: player.properties.queueID >= 0 && player.properties.speed == 1 ? "pause.fill" : "play.fill")
                 }
             )
-                .disabled(player.item.type != "song" && queue.queueItems.isEmpty)
+                .disabled(player.properties.queueID == -1 && queue.items == 0)
             Button(
                 action: {
                     player.sendAction(method: .playerGoTo,
@@ -46,7 +46,7 @@ struct ViewPlayerButtons: View {
                     Image(systemName: "forward.fill")
                 }
             )
-            .disabled(player.item.songID == nil || player.properties.queueID == queue.items)
+            .disabled(player.properties.queueID == -1 || player.properties.queueID >= queue.items)
         }
         /// Button style for enabled or disabled styling
         /// Colors are in mac style; black is enabled; grey disabled
@@ -144,7 +144,7 @@ private extension ButtonStylePlayer {
         var body: some View {
             return configuration.label
             /// change the text color if the button is disabled
-            .foregroundColor(isEnabled ? .primary : .secondary.opacity(0.8))
+            .foregroundColor(isEnabled ? .primary : .secondary.opacity(0.6))
             /// Make them slightly bigger on macOS
             #if os(macOS)
                 .scaleEffect(1.2)
