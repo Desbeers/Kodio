@@ -20,8 +20,9 @@ struct ViewQueue: View {
             VStack {
                 art
                 ViewPlayerButtons()
-                Spacer(minLength: 100)
+                Spacer()
             }
+            .frame(minWidth: 300, minHeight: 600)
             list
                 .frame(minWidth: 400, minHeight: 600)
         }
@@ -47,24 +48,16 @@ extension ViewQueue {
                 .font(.title)
                 .padding()
             ZStack {
-                if player.properties.playing {
-                    HStack(alignment: .top) {
-                        ViewRotatingRecord()
-                            .frame(width: 150, height: 150)
-                            .padding(.leading, 68)
-                        Spacer()
-                    }
-                }
-                HStack(alignment: .center) {
-                    ViewArtPlayer(item: player.item, size: 300)
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(2)
-                    Spacer()
-                }
+                ViewRotatingRecord()
+                    .frame(width: 150, height: 150)
+                    .padding(.leading, player.properties.playing ? 80 : 0)
+                ViewArtPlayer(item: player.item, size: 150, fallback: "QueueAlbum")
+                    .frame(width: 150, height: 150)
+                    .padding(.trailing, player.properties.playing ? 60 : 0)
+                    .cornerRadius(2)
             }
             .animation(.default, value: player.properties.playing)
             .transition(.move(edge: .leading))
-            .frame(width: 218)
             .padding()
         }
     }
