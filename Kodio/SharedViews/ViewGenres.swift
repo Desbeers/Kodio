@@ -15,9 +15,11 @@ struct ViewGenres: View {
     let selected: Library.GenreItem?
     /// The view
     var body: some View {
+        ScrollViewReader { proxy in
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ViewListHeader(title: "Genres")
+                        .id("GenresHeader")
                     ForEach(genres) { genre in
                         Button(
                             action: {
@@ -28,9 +30,11 @@ struct ViewGenres: View {
                             .buttonStyle(ButtonStyleList(type: .genre, selected: genre == selected ? true: false))
                     }
                 }
-                /// Buttons have additional .traling padding for the scrollbar
-                .padding(.leading, 8)
+                .onChange(of: genres) { _ in
+                    proxy.scrollTo("GenresHeader", anchor: .top)
+                }
             }
+        }
     }
 }
 

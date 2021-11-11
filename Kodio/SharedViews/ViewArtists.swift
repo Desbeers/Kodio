@@ -15,22 +15,26 @@ struct ViewArtists: View {
     let selected: Library.ArtistItem?
     /// The view
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 0) {
-                ViewListHeader(title: "Artists")
-                    .id("ArtistsHeader")
-                ForEach(artists) { artist in
-                    Button(
-                        action: {
-                            Library.shared.toggleArtist(artist: artist)
-                        },
-                        label: {
-                            row(artist: artist)
-                        }
-                    )
-                        .buttonStyle(ButtonStyleList(type: .artist, selected: artist == selected ? true: false))
-                    /// id must be a the bottom of the 'ForEach' or else it does not work
-                        .id(artist.artistID)
+        ScrollViewReader { proxy in
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    ViewListHeader(title: "Artists")
+                        .id("ArtistsHeader")
+                    ForEach(artists) { artist in
+                        Button(
+                            action: {
+                                Library.shared.toggleArtist(artist: artist)
+                            },
+                            label: {
+                                row(artist: artist)
+                            }
+                        )
+                            .buttonStyle(ButtonStyleList(type: .artist, selected: artist == selected ? true: false))
+                            .frame(height: 66)
+                    }
+                }
+                .onChange(of: artists) { _ in
+                    proxy.scrollTo("ArtistsHeader", anchor: .top)
                 }
             }
         }

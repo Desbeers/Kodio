@@ -15,19 +15,25 @@ struct ViewAlbums: View {
     let selected: Library.AlbumItem?
     /// The view
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 0) {
-                ViewListHeader(title: "Albums")
-                    .id("AlbumsHeader")
-                ForEach(albums) { album in
-                    Button(
-                        action: {
-                            Library.shared.toggleAlbum(album: album)
-                        }, label: {
-                            row(album: album)
-                        })
-                        .buttonStyle(ButtonStyleList(type: .album, selected: album == selected ? true: false))
-                        .id(album.albumID)
+        ScrollViewReader { proxy in
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    ViewListHeader(title: "Albums")
+                        .id("AlbumsHeader")
+                    ForEach(albums) { album in
+                        Button(
+                            action: {
+                                Library.shared.toggleAlbum(album: album)
+                            }, label: {
+                                row(album: album)
+                            })
+                            .frame(height: 88)
+                            .buttonStyle(ButtonStyleList(type: .album, selected: album == selected ? true: false))
+                            .id(album.albumID)
+                    }
+                }
+                .onChange(of: albums) { _ in
+                    proxy.scrollTo("AlbumsHeader", anchor: .top)
                 }
             }
         }
