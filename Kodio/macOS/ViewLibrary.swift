@@ -44,7 +44,7 @@ struct ViewLibraryBottom: View {
     /// The view
     var body: some View {
         HStack(spacing: 0) {
-            ViewDetails()
+            ViewDetails(item: library.selection)
             Divider()
             ViewSongs(songs: library.filteredContent.songs, selectedAlbum: library.albums.selected)
         }

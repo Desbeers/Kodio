@@ -9,24 +9,24 @@ import SwiftUI
 
 /// View details about the selected media
 struct ViewDetails: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
+    /// The ``LibraryItem`` to show
+    let item: LibraryItem
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack {
-                    ViewMedia(media: library.selection)
+                    ViewMedia(media: item)
                 }
                 .id("DetailsHeader")
             }
             /// Scroll to the top when content changed
-            .onChange(of: library.selection.id) { _ in
+            .onChange(of: item.id) { _ in
                 withAnimation(.easeInOut(duration: 1)) {
                     proxy.scrollTo("DetailsHeader", anchor: .top)
                 }
             }
-            .animation(.default, value: library.selection.id)
+            .animation(.default, value: item.id)
             .transition(.move(edge: .leading))
         }
     }
@@ -47,7 +47,7 @@ extension ViewDetails {
                     .font(.caption)
                 ViewArtwork(media: media)
                 Text(media.description)
-                ViewStatistics(media: media)
+                //statistics(library: library)
                 Spacer()
             }
             .padding()
@@ -102,74 +102,6 @@ extension ViewDetails {
                     .foregroundColor(.white)
                     .shadow(radius: 20)
             }
-        }
-    }
-    
-    /// View statistics for the current library view
-    struct ViewStatistics: View {
-        /// The selected media item
-        let media: LibraryItem
-        /// The Library model
-        @EnvironmentObject var library: Library
-        /// The view
-        var body: some View {
-            VStack {
-                switch media.media {
-                case .none:
-                    EmptyView()
-                case .artist:
-                    songsCount
-                    albumsCount
-                case .album:
-                    songsCount
-                default:
-                    songsCount
-                    albumsCount
-                    artistsCount
-                }
-            }
-            .labelStyle(LabelStyleStatistics())
-        }
-        /// Songs in the current library view
-        var songsCount: some View {
-            Label {
-                let songs = library.filteredContent.songs.count
-                Text("\(songs) " + (songs == 1 ? "song" : "songs"))
-            } icon: {
-                Image(systemName: "music.quarternote.3")
-            }
-        }
-        /// Albums in the current library view
-        var albumsCount: some View {
-            Label {
-                let albums = library.filteredContent.albums.count
-                Text("\(albums) " + (albums == 1 ? "album" : "albums"))
-            } icon: {
-                Image(systemName: "square.stack")
-            }
-        }
-        /// Artists in the current library view
-        var artistsCount: some View {
-            Label {
-                let artists = library.filteredContent.artists.count
-                Text("\(artists) " + (artists == 1 ? "artist" : "artists"))
-            } icon: {
-                Image(systemName: "person.2")
-            }
-        }
-    }
-    
-    /// The style for a 'statistic' label
-    struct LabelStyleStatistics: LabelStyle {
-        func makeBody(configuration: Configuration) -> some View {
-            HStack {
-                configuration.icon
-                    .frame(width: 20, alignment: .center)
-                    .foregroundColor(.accentColor)
-                configuration.title
-                    .frame(maxWidth: 100, alignment: .leading)
-            }
-            .padding(.vertical, 2)
         }
     }
 }
