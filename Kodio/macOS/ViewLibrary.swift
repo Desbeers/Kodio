@@ -14,7 +14,6 @@ struct ViewLibrary: View {
         VStack(spacing: 0) {
             SplitView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
         }
         .frame(maxWidth: .infinity, minHeight: 500, maxHeight: .infinity)
     }

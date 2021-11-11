@@ -13,14 +13,19 @@ struct ViewSongs: View {
     let songs: [Library.SongItem]
     /// The optional selected album
     let selectedAlbum: Library.AlbumItem?
+    /// The songList
+    @State private var songList = [Library.SongItem]()
+    /// The current page in the view
+    @State private var currentPage: Int = 0
     /// The view
     var body: some View {
         VStack {
             if !songs.isEmpty {
                 header
+                list
             }
-            list
         }
+        .frame(maxWidth: .infinity)
     }
 }
 
@@ -59,15 +64,28 @@ extension ViewSongs {
     /// The list of songs
     var list: some View {
         List {
-            ForEach(songs) { song in
+            ForEach(songList) { song in
                 ViewSongsListRow(song: song, selectedAlbum: selectedAlbum)
                     .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))
+                    .task {
+                        /// Check if we have more songs to load
+                        if song == songList.last && songList.count < songs.count {
+                            currentPage += 1
+                            songList += await Library.pager(items: songs, page: currentPage)
+                        }
+                    }
 #if os(macOS)
                 Divider()
 #endif
             }
         }
-        /// Speed up iOS
+        .task {
+            /// Reset the page counter
+            currentPage = 0
+            /// Get the first page of songs
+            songList = await Library.pager(items: songs)
+        }
+        /// Give it a new ID every time the list is refreshed; that will fire the `task`
         .id(Library.shared.songs.listID)
         .listStyle(PlainListStyle())
     }

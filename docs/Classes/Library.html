@@ -1760,6 +1760,76 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio7LibraryC5pager5items4pageSayxGAG_SitYaAA0B4ItemRzlFZ"></a>
+                    <a name="//apple_ref/swift/Method/pager(items:page:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC5pager5items4pageSayxGAG_SitYaAA0B4ItemRzlFZ">pager(items:<wbr>page:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A pager when listng library items</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This needs <code>tasks</code> on SwiftUI List and List rows
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="n">pager</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">],</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">T</span><span class="p">]</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>items</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of <code><a href="../Protocols/LibraryItem.html">LibraryItem</a></code> structs</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>page</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The page number to show</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A reduced array of <code><a href="../Protocols/LibraryItem.html">LibraryItem</a></code> structs</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -3017,6 +3087,37 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Kodio7LibraryC17getSongsFromQueueSayAC8SongItemVGyF"></a>
+                    <a name="//apple_ref/swift/Method/getSongsFromQueue()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC17getSongsFromQueueSayAC8SongItemVGyF">getSongsFromQueue()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the songs from the database to add to the queue list</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSongsFromQueue</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Library</span><span class="o">.</span><span class="kt"><a href="../Classes/Library/SongItem.html">SongItem</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of song items</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Kodio7LibraryC18favoriteSongToggle4songyAC0D4ItemV_tF"></a>
                     <a name="//apple_ref/swift/Method/favoriteSongToggle(song:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Kodio7LibraryC18favoriteSongToggle4songyAC0D4ItemV_tF">favoriteSongToggle(song:<wbr>)</a>
@@ -3213,7 +3314,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-09)</p>
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-11)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

@@ -172,4 +172,24 @@ extension Library {
                 songs: content.songs)
         }
     }
+
+    /// A pager when listng library items
+    /// - Note: This needs `tasks` on SwiftUI List and List rows
+    /// - Parameters:
+    ///   - items: An array of ``LibraryItem`` structs
+    ///   - page: The page number to show
+    /// - Returns: A reduced array of ``LibraryItem`` structs
+    static func pager<T: LibraryItem>(items: [T], page: Int = 0) async -> [T] {
+        /// The total items we have
+        let totalItems = items.count
+        /// The total amount of songs per page
+        let amount = 20
+        /// Calculate the start range
+        let pageStart = page * amount
+        /// Calculate the end range
+        /// - Note: Reduce with 1 because the array starts at 0
+        let pageEnd = (pageStart + amount < totalItems ? pageStart + amount  : totalItems) - 1
+        /// Return the range of songs
+        return Array(items[pageStart...pageEnd])
+    }
 }
