@@ -27,7 +27,7 @@ struct ViewLibrary: View {
                     ViewDropShadow()
                 )
                 HStack(spacing: 0) {
-                    ViewDetails()
+                    ViewDetails(item: library.selection)
                     ViewSongs(songs: library.filteredContent.songs, selectedAlbum: library.albums.selected)
                 }
             }
