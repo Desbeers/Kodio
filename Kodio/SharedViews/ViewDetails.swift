@@ -16,8 +16,17 @@ struct ViewDetails: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack {
-                    ViewMedia(media: item)
+                    Text(item.title)
+                        .font(.title2)
+                    Text(item.subtitle)
+                        .font(.caption)
+                    ViewArtwork(media: item)
+                    Text(item.description)
+                    ViewStatistics(item: item)
+                    Spacer()
                 }
+                .padding()
+                .frame(width: 300)
                 .id("DetailsHeader")
             }
             /// Scroll to the top when content changed
@@ -33,27 +42,6 @@ struct ViewDetails: View {
 }
 
 extension ViewDetails {
-    
-    /// View details about the selected media
-    struct ViewMedia: View {
-        /// The selected media item
-        let media: LibraryItem
-        /// The view
-        var body: some View {
-            VStack {
-                Text(media.title)
-                    .font(.title2)
-                Text(media.subtitle)
-                    .font(.caption)
-                ViewArtwork(media: media)
-                Text(media.description)
-                //statistics(library: library)
-                Spacer()
-            }
-            .padding()
-            .frame(width: 300)
-        }
-    }
     
     /// View artwork for the selected media
     struct ViewArtwork: View {
