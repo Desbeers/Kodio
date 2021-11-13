@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// View details about the selected media
+/// View details about the selected ``LibraryItem``
 struct ViewDetails: View {
     /// The ``LibraryItem`` to show
     let item: LibraryItem
@@ -20,7 +20,7 @@ struct ViewDetails: View {
                         .font(.title2)
                     Text(item.subtitle)
                         .font(.caption)
-                    ViewArtwork(media: item)
+                    ViewArtwork(item: item)
                     Text(item.description)
                     ViewStatistics(item: item)
                     Spacer()
@@ -45,8 +45,8 @@ extension ViewDetails {
     
     /// View artwork for the selected media
     struct ViewArtwork: View {
-        /// The selected media item
-        let media: LibraryItem
+        /// The selected ``LibraryItem``
+        let item: LibraryItem
         /// The view
         var body: some View {
             VStack {
@@ -56,15 +56,15 @@ extension ViewDetails {
                         overlay
                     )
             }
-            .animation(.none, value: media.id)
+            .animation(.none, value: item.id)
             .cornerRadius(3)
             .frame(width: 256, height: 144)
         }
         /// Overlay the base artwork
         @ViewBuilder var overlay: some View {
-            switch media.media {
+            switch item.media {
             case .artist:
-                ViewRemoteArt(item: media, art: .fanart)
+                ViewRemoteArt(item: item, art: .fanart)
                     .cornerRadius(2)
                     .padding(1)
             case .album:
@@ -76,7 +76,7 @@ extension ViewDetails {
                         Spacer()
                     }
                     HStack(alignment: .center) {
-                        ViewRemoteArt(item: media, art: .thumbnail)
+                        ViewRemoteArt(item: item, art: .thumbnail)
                             .frame(width: 142, height: 142)
                             .cornerRadius(2)
                         Spacer()
@@ -85,7 +85,7 @@ extension ViewDetails {
                 .cornerRadius(2)
                 .padding(1)
             default:
-                Image(systemName: media.icon)
+                Image(systemName: item.icon)
                     .font(.system(size: 80))
                     .foregroundColor(.white)
                     .shadow(radius: 20)
