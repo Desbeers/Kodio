@@ -79,8 +79,8 @@ Kodio is written in SwiftUI; very enjoyable, however, far from perfect; especial
 ## General
 
 - `Navigationlinks` are terrible; I use my own implementation. The result is that the `sidebar` buttons don't feel completely *native*.
-- The *thumbnails* are not `cached`. I tried, but `AsyncImage` is a mysterious SwiftUI beast... It seems to work alright without so I don't bother too much...
 - Disconnecting from the `WebSocket` always gives an error. I just ignore it. I have to disconnect on iOS when going to the *background* or else Apple is very upset to me, hehe...
+- Radio channels are hard-coded at the moment...
 
 *And for your info; the rotating LP you see in the background is turning at a perfect 33 1/3... Details!*
 

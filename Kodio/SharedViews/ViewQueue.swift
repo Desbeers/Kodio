@@ -51,7 +51,7 @@ extension ViewQueue {
                 ViewRotatingRecord()
                     .frame(width: 150, height: 150)
                     .padding(.leading, player.properties.playing ? 80 : 0)
-                ViewArtPlayer(item: player.item, size: 150, fallback: "QueueAlbum")
+                ViewPlayerArt(item: player.item, size: 150, fallback: "QueueAlbum")
                     .frame(width: 150, height: 150)
                     .padding(.trailing, player.properties.playing ? 60 : 0)
                     .cornerRadius(2)

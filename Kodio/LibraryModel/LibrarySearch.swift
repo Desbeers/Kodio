@@ -73,7 +73,7 @@ extension Library {
             return smartSearchMatcher.matches(artists.artist)
         }
         for artist in artistList {
-            results.append(SearchSuggestionItem(title: artist.artist, subtitle: "Artist in your library", suggestion: artist.artist, thumbnail: artist.thumbnail))
+            results.append(SearchSuggestionItem(title: artist.artist, subtitle: "Artist in your library", suggestion: artist.artist, icon: artist.icon))
         }
         /// Albums
         let albumList = albums.all.filter { albums in
@@ -83,7 +83,7 @@ extension Library {
             return smartSearchMatcher.matches(albums.title)
         }
         for album in albumList {
-            results.append(SearchSuggestionItem(title: album.title, subtitle: "Album from \(album.artist.first!)", suggestion: "\(album.artist.first!) \(album.title)", thumbnail: album.thumbnail))
+            results.append(SearchSuggestionItem(title: album.title, subtitle: "Album from \(album.artist.first!)", suggestion: "\(album.artist.first!) \(album.title)", icon: album.icon))
         }
         /// Songs
         let songList = songs.all.filter { songs in
@@ -93,7 +93,7 @@ extension Library {
             return smartSearchMatcher.matches(songs.title)
         }
         for song in songList {
-            results.append(SearchSuggestionItem(title: song.title, subtitle: "Song by \(song.artist.first!)", suggestion: "\(song.artist.first!) \(song.album) \(song.title)", thumbnail: song.thumbnail))
+            results.append(SearchSuggestionItem(title: song.title, subtitle: "Song by \(song.artist.first!)", suggestion: "\(song.artist.first!) \(song.album) \(song.title)", icon: song.icon))
         }
         return results
     }
@@ -153,7 +153,7 @@ extension Library {
         var subtitle: String = ""
         /// The suggested search text
         var suggestion: String
-        /// The thumbnail for the suggestion
-        var thumbnail: String
+        /// The SF image for the suggestion
+        var icon: String
     }
 }

@@ -7,50 +7,63 @@
 
 import SwiftUI
 
-/// View artist art
-struct ViewArtArtist: View {
-    /// The artist object
-    var artist: Library.ArtistItem
-    /// The size of the image
-    var size: CGFloat = 10
-    /// The view
-    var body: some View {
-        RemoteArt(url: artist.thumbnail, failure: Image(systemName: artist.icon))
-            .cornerRadius(4)
+/// View a remote art
+struct ViewRemoteArt: View {
+    /// The kind of art
+    enum ArtOptions {
+        /// Show the fanart
+        case fanart
+        /// Show the thumbnail
+        case thumbnail
     }
-}
-
-/// View album thumbnail
-struct ViewArtAlbum: View {
-    /// The album object
-    var album: Library.AlbumItem
-    /// The size of the image
-    var size: CGFloat = 10
+    /// The ``LibraryItem`` to show
+    let item: LibraryItem
+    /// The art type to show
+    let art: ArtOptions
+    /// The optional ``Image`` to show
+    @State private var image: Image?
+    /// The cached images
+    @Environment(\.remoteImages) private var remoteImages
     /// The view
     var body: some View {
-        RemoteArt(url: album.thumbnail, failure: Image(systemName: album.icon))
-            .cornerRadius(4)
+        VStack {
+            if let image = image {
+                image
+                    .resizable()
+            } else {
+                ProgressView()
+            }
+        }
+        .task(priority: .high) {
+            await loadArt(item: item)
+        }
+        .id(art == .thumbnail ? item.thumbnail : item.fanart)
     }
-}
 
-/// View song thumbnail
-/// - note: It actualy use the album thumbnail as assigned when loading the songs
-struct ViewArtSong: View {
-    /// The song object
-    let song: Library.SongItem
-    /// The size of the image
-    var size: CGFloat = 10
-    /// The view
-    var body: some View {
-        RemoteArt(url: song.thumbnail, failure: Image(systemName: song.icon))
-            .cornerRadius(2)
+    /// Fetch the art
+    /// - Parameter item: A ``LibraryItem``
+    func loadArt(item: LibraryItem) async {
+        
+        switch item.media {
+        case .song, .album, .artist:
+            do {
+                image = try await remoteImages.image(
+                    item: item,
+                    art: art == .thumbnail ? item.thumbnail : item.fanart
+                )
+            } catch {
+                print(error)
+            }
+        default:
+            image = Image(systemName: item.icon)
+        }
     }
 }
 
 /// View thumbnail for the item in the player
 /// - note: I don't use the provided thumbnail from the PlayerItem because it might be different
 ///         from the album cover. Song cover is not always album cover and I don't want to cache them all.
-struct ViewArtPlayer: View {
+struct ViewPlayerArt: View {
     /// The item in the player
     let item: Player.PlayerItem
     /// The size of the image
@@ -61,7 +74,7 @@ struct ViewArtPlayer: View {
     var body: some View {
         /// Songs
         if let song = Library.shared.songs.all.first(where: { $0.songID == item.songID }) {
-            RemoteArt(url: song.thumbnail, failure: Image(systemName: song.icon))
+            ViewRemoteArt(item: song, art: .thumbnail)
             /// Radio station
         } else if let stream = Library.shared.radioStations.first(where: { $0.stream == item.mediapath }) {
             Image(stream.thumbnail)

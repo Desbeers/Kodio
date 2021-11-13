@@ -67,7 +67,7 @@ struct ViewPlayerQueueButton: View {
                 AppState.shared.viewSheet(type: .queue)
             },
             label: {
-                ViewArtPlayer(item: player.item, size: artSize)
+                ViewPlayerArt(item: player.item, size: artSize)
                 .frame(width: artSize, height: artSize)
                 .cornerRadius(2)
             }

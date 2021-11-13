@@ -47,7 +47,7 @@ extension ViewAlbums {
     /// - Returns: a formatted row
     func row(album: Library.AlbumItem) -> some View {
         HStack {
-            ViewArtAlbum(album: album, size: 80)
+            ViewRemoteArt(item: album, art: .thumbnail)
                 .frame(width: 80, height: 80)
                 .padding(2.5)
             VStack(alignment: .leading) {

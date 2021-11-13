@@ -56,7 +56,7 @@ extension ViewSongsListRow {
                 .font(.headline)
                 .frame(width: 40, height: 40)
         } else {
-            ViewArtSong(song: song, size: 40)
+            ViewRemoteArt(item: song, art: .thumbnail)
                 .frame(width: 40, height: 40)
         }
     }

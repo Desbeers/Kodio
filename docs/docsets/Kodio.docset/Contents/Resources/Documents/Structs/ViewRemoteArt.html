@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RemoteArt Structure Reference</title>
+    <title>ViewRemoteArt Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/RemoteArt" class="dashAnchor"></a>
-    <a title="RemoteArt Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/ViewRemoteArt" class="dashAnchor"></a>
+    <a title="ViewRemoteArt Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Kodio</a> (100% documented)</p>
@@ -30,12 +30,23 @@
       <p id="breadcrumbs">
         <a href="../index.html">Kodio Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        RemoteArt Structure Reference
+        ViewRemoteArt Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Actors.html">Actors</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Actors/RemoteImages.html">RemoteImages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Actors/RemoteImages/CacheEntry.html">– CacheEntry</a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-group-name">
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
@@ -248,10 +259,19 @@
                 <a href="../Extensions/Array.html">Array</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/EnvironmentValues.html">EnvironmentValues</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/NSImage.html">NSImage</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/NSTableView.html">NSTableView</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImage.html">UIImage</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/View.html">View</a>
@@ -323,7 +343,7 @@
                 <a href="../Structs/LabelStyleSidebar.html">LabelStyleSidebar</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/RemoteArt.html">RemoteArt</a>
+                <a href="../Structs/RemoteImagesKey.html">RemoteImagesKey</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/SidebarButtons.html">SidebarButtons</a>
@@ -342,18 +362,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewAppStateStatus.html">ViewAppStateStatus</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewArtAlbum.html">ViewArtAlbum</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewArtArtist.html">ViewArtArtist</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewArtPlayer.html">ViewArtPlayer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewArtSong.html">ViewArtSong</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewArtists.html">ViewArtists</a>
@@ -410,6 +418,9 @@
                 <a href="../Structs/ViewModifierToolbar.html">ViewModifierToolbar</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/ViewPlayerArt.html">ViewPlayerArt</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/ViewPlayerButtons.html">ViewPlayerButtons</a>
               </li>
               <li class="nav-group-task">
@@ -426,6 +437,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewRadio.html">ViewRadio</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewRemoteArt.html">ViewRemoteArt</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewRemoteArt/ArtOptions.html">– ArtOptions</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewRotatingRecord.html">ViewRotatingRecord</a>
@@ -459,20 +476,31 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/SWIFTImage">SWIFTImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:5Kodio10SWIFTImagea">SWIFTImage</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>RemoteArt</h1>
+            <h1>ViewRemoteArt</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">RemoteArt</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewRemoteArt</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                 </div>
               </div>
-            <p>A view that displays remote art</p>
+            <p>View a remote art</p>
 
           </section>
           <section class="section task-group-section">
@@ -481,9 +509,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio9RemoteArtV3urlSSvp"></a>
-                    <a name="//apple_ref/swift/Property/url" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio9RemoteArtV3urlSSvp">url</a>
+                    <a name="/s:5Kodio13ViewRemoteArtV0D7OptionsO"></a>
+                    <a name="//apple_ref/swift/Enum/ArtOptions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewRemoteArtV0D7OptionsO">ArtOptions</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -491,14 +519,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The remote url for the image</p>
+                        <p>The kind of art</p>
 
+                        <a href="../Structs/ViewRemoteArt/ArtOptions.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">ArtOptions</span></code></pre>
 
                         </div>
                       </div>
@@ -508,9 +537,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio9RemoteArtV7failure7SwiftUI5ImageVvp"></a>
-                    <a name="//apple_ref/swift/Property/failure" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio9RemoteArtV7failure7SwiftUI5ImageVvp">failure</a>
+                    <a name="/s:5Kodio13ViewRemoteArtV4itemAA11LibraryItem_pvp"></a>
+                    <a name="//apple_ref/swift/Property/item" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewRemoteArtV4itemAA11LibraryItem_pvp">item</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -518,14 +547,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Image to show when we have a failure</p>
+                        <p>The <code><a href="../Protocols/LibraryItem.html">LibraryItem</a></code> to show</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">failure</span><span class="p">:</span> <span class="kt">Image</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
 
                         </div>
                       </div>
@@ -535,9 +564,92 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio9RemoteArtV4bodyQrvp"></a>
+                    <a name="/s:5Kodio13ViewRemoteArtV3artAC0D7OptionsOvp"></a>
+                    <a name="//apple_ref/swift/Property/art" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewRemoteArtV3artAC0D7OptionsOvp">art</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The art type to show</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">art</span><span class="p">:</span> <span class="kt"><a href="../Structs/ViewRemoteArt/ArtOptions.html">ArtOptions</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewRemoteArtV5image33_491930D8DA7B684B9CEB0D5360159433LL7SwiftUI5ImageVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/image" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewRemoteArtV5image33_491930D8DA7B684B9CEB0D5360159433LL7SwiftUI5ImageVSgvp">image</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The optional <code>Image</code> to show</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@State</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">Image</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewRemoteArtV12remoteImages33_491930D8DA7B684B9CEB0D5360159433LLAA0cF0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/remoteImages" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewRemoteArtV12remoteImages33_491930D8DA7B684B9CEB0D5360159433LLAA0cF0Cvp">remoteImages</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The cached images</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Environment</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">remoteImages</span><span class="p">:</span> <span class="kt"><a href="../Actors/RemoteImages.html">RemoteImages</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewRemoteArtV4bodyQrvp"></a>
                     <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio9RemoteArtV4bodyQrvp">body</a>
+                    <a class="token" href="#/s:5Kodio13ViewRemoteArtV4bodyQrvp">body</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -559,12 +671,61 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewRemoteArtV04loadD04itemyAA11LibraryItem_p_tYaF"></a>
+                    <a name="//apple_ref/swift/Method/loadArt(item:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewRemoteArtV04loadD04itemyAA11LibraryItem_p_tYaF">loadArt(item:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetch the art</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">loadArt</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span><span class="p">)</span> <span class="k">async</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>item</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A <code><a href="../Protocols/LibraryItem.html">LibraryItem</a></code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-12)</p>
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-13)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

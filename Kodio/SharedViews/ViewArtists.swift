@@ -48,7 +48,7 @@ extension ViewArtists {
     /// - Returns: a formatted row
     func row(artist: Library.ArtistItem) -> some View {
         HStack {
-            ViewArtArtist(artist: artist, size: 58)
+            ViewRemoteArt(item: artist, art: .thumbnail)
                 .frame(width: 58, height: 58)
                 .padding(2)
             VStack(alignment: .leading) {

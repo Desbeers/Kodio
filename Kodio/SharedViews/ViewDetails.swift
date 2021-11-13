@@ -64,7 +64,7 @@ extension ViewDetails {
         @ViewBuilder var overlay: some View {
             switch media.media {
             case .artist:
-                RemoteArt(url: media.fanart, failure: Image(systemName: media.icon))
+                ViewRemoteArt(item: media, art: .fanart)
                     .cornerRadius(2)
                     .padding(1)
             case .album:
@@ -76,7 +76,7 @@ extension ViewDetails {
                         Spacer()
                     }
                     HStack(alignment: .center) {
-                        RemoteArt(url: media.thumbnail, failure: Image(systemName: media.icon))
+                        ViewRemoteArt(item: media, art: .thumbnail)
                             .frame(width: 142, height: 142)
                             .cornerRadius(2)
                         Spacer()
