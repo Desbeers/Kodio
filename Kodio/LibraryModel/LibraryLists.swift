@@ -127,7 +127,7 @@ extension Library {
                                  ))
         list.append(LibraryListItem(title: "Search",
                                     subtitle: "Results for '\(query)'",
-                                    description: filteredContent.songs.isEmpty ? "Nothing found for your search" : "",
+                                    description: filteredContent.songs.isEmpty ? "Nothing found in your library" : "",
                                     icon: "magnifyingglass",
                                     media: .search,
                                     visible: !query.isEmpty
