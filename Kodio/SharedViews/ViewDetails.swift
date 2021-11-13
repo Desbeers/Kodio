@@ -36,7 +36,8 @@ struct ViewDetails: View {
                 }
             }
             .animation(.default, value: item.id)
-            .transition(.move(edge: .leading))
+            .animation(.default, value: item.description)
+            .transition(.slide)
         }
     }
 }

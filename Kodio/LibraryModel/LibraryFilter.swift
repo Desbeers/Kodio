@@ -170,6 +170,10 @@ extension Library {
                 artists: content.artists,
                 albums: content.albums,
                 songs: content.songs)
+            /// Update the selection
+            if let selected = getLibraryLists().first(where: { $0.media == selection.media}) {
+                selection = selected
+            }
         }
     }
 
