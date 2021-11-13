@@ -163,6 +163,9 @@ extension Library {
         /// Fanart of this item
         /// - Note: Not needed, but required by protocol
         let fanart: String = ""
+        /// Details for the artist
+        /// - Note: Not needed, but required by protocol
+        let details: String = ""
         /// Is this item selected?
         var selected: Bool {
             return Library.shared.libraryLists.selected.id == self.id ? true : false

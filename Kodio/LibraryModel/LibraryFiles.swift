@@ -82,11 +82,15 @@ extension Library {
             /// lowerCamelCase
             case songID = "id"
         }
-        /// - Note: Not needed, but required by protocol
         /// Thumbnail of the file
+        /// - Note: Not needed, but required by protocol
         let thumbnail: String = ""
-        /// Fanart of the file
+        /// Fanart for the file
+        /// - Note: Not needed, but required by protocol
         let fanart: String = ""
+        /// Details for the file
+        /// - Note: Not needed, but required by protocol
+        let details: String = ""
         /// Custom init
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)

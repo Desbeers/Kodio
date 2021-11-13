@@ -50,15 +50,16 @@ extension ViewAlbums {
             ViewRemoteArt(item: album, art: .thumbnail)
                 .frame(width: 80, height: 80)
                 .padding(2.5)
-            VStack(alignment: .leading) {
-                Text(album.title)
-                    .font(.headline)
-                Text(album.subtitle)
-                    .font(.subheadline)
-                Text(album.details)
-                    .font(.caption)
-                    .opacity(0.6)
-            }
+            ViewMediaItem(item: album)
+//            VStack(alignment: .leading) {
+//                Text(album.title)
+//                    .font(.headline)
+//                Text(album.subtitle)
+//                    .font(.subheadline)
+//                Text(album.details)
+//                    .font(.caption)
+//                    .opacity(0.6)
+//            }
             Spacer()
         }
     }

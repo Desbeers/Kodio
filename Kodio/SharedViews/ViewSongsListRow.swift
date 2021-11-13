@@ -22,14 +22,15 @@ struct ViewSongsListRow: View {
             HStack {
                 leading
                 Divider()
-                VStack(alignment: .leading) {
-                    Text(song.title)
-                        .font(.headline)
-                    Text(song.artists)
-                        .font(.subheadline)
-                    Text("\(song.album)")
-                        .font(.caption)
-                }
+                ViewMediaItem(item: song)
+//                VStack(alignment: .leading) {
+//                    Text(song.title)
+//                        .font(.headline)
+//                    Text(song.artists)
+//                        .font(.subheadline)
+//                    Text("\(song.album)")
+//                        .font(.caption)
+//                }
                 .lineLimit(1)
                 Spacer()
             }

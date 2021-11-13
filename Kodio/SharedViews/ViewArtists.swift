@@ -51,13 +51,14 @@ extension ViewArtists {
             ViewRemoteArt(item: artist, art: .thumbnail)
                 .frame(width: 58, height: 58)
                 .padding(2)
-            VStack(alignment: .leading) {
-                Text(artist.title)
-                    .font(.headline)
-                Text(artist.subtitle)
-                    .font(.caption)
-                    .opacity(0.6)
-            }
+            ViewMediaItem(item: artist)
+//            VStack(alignment: .leading) {
+//                Text(artist.title)
+//                    .font(.headline)
+//                Text(artist.subtitle)
+//                    .font(.caption)
+//                    .opacity(0.6)
+//            }
             Spacer()
         }
     }

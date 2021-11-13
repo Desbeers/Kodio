@@ -136,6 +136,9 @@ extension Library {
         var subtitle: String {
             return genres.joined(separator: " · ")
         }
+        /// Details for the artist
+        /// - Note: Not needed, but required by protocol
+        let details: String = ""
         /// An array with genres for this artist
         var genres: [String] {
             /// Make a genre list

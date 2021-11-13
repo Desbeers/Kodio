@@ -62,6 +62,8 @@
 		D73DD7F426D3E7C40024CB51 /* ViewLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73DD7F226D3E7C40024CB51 /* ViewLibrary.swift */; };
 		D73DD7F626D3EC850024CB51 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA916F26A95C270090C137 /* Debug.swift */; };
 		D73DD7F726D3EC850024CB51 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA916F26A95C270090C137 /* Debug.swift */; };
+		D73E072B27401A97009A4B03 /* ViewMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E072A27401A97009A4B03 /* ViewMediaItem.swift */; };
+		D73E072C27401A97009A4B03 /* ViewMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E072A27401A97009A4B03 /* ViewMediaItem.swift */; };
 		D73EB22026B1EAC8001314B8 /* ViewModifierToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73EB21D26B1E987001314B8 /* ViewModifierToolbar.swift */; };
 		D745125E26B31F1800A99889 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745125D26B31F1800A99889 /* Queue.swift */; };
 		D745125F26B31F1800A99889 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D745125D26B31F1800A99889 /* Queue.swift */; };
@@ -189,6 +191,7 @@
 		D73DD7EF26D3E7020024CB51 /* KodioApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
 		D73DD7F126D3E7C40024CB51 /* ViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContent.swift; sourceTree = "<group>"; };
 		D73DD7F226D3E7C40024CB51 /* ViewLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLibrary.swift; sourceTree = "<group>"; };
+		D73E072A27401A97009A4B03 /* ViewMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMediaItem.swift; sourceTree = "<group>"; };
 		D73EB21D26B1E987001314B8 /* ViewModifierToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifierToolbar.swift; sourceTree = "<group>"; };
 		D745125D26B31F1800A99889 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		D745126026B32AB900A99889 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
@@ -389,6 +392,7 @@
 				D75FD8602715FF2200358BC9 /* ViewSearch.swift */,
 				D74D6FBA271AFC7500F5D28D /* ViewAppState.swift */,
 				D7BEE94E273E5D66002C43D7 /* ViewStatistics.swift */,
+				D73E072A27401A97009A4B03 /* ViewMediaItem.swift */,
 			);
 			path = SharedViews;
 			sourceTree = "<group>";
@@ -620,6 +624,7 @@
 				D7EA917326A96BFC0090C137 /* ViewAlbums.swift in Sources */,
 				D73163E126AC001A00CD5F7E /* ViewSidebar.swift in Sources */,
 				D71989EA26E9E15500281EA1 /* KodiHostReplayGain.swift in Sources */,
+				D73E072B27401A97009A4B03 /* ViewMediaItem.swift in Sources */,
 				D73163D826ABE8EB00CD5F7E /* LibraryArtists.swift in Sources */,
 				D7F00A9426AEFEB300CEE39E /* KodiAPI.swift in Sources */,
 				D7E1EA522736D9680087EA69 /* AppStateSheets.swift in Sources */,
@@ -692,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D73E072C27401A97009A4B03 /* ViewMediaItem.swift in Sources */,
 				D73DD7F026D3E7020024CB51 /* KodioApp.swift in Sources */,
 				D72740DE26B15F0500067D4A /* KodiHost.swift in Sources */,
 				D7A9043C26F9C50C0012C7B2 /* KodiHostLibraryScan.swift in Sources */,

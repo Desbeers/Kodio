@@ -123,6 +123,9 @@ extension Library {
         /// Fanart of the genre
         /// - Note: Not needed, but required by protocol
         let fanart: String = ""
+        /// Details for the genre
+        /// - Note: Not needed, but required by protocol
+        let details: String = ""
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys

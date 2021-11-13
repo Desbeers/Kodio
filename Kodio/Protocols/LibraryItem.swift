@@ -17,6 +17,8 @@ protocol LibraryItem: Codable {
     var title: String { get }
     /// The subtitle of the item
     var subtitle: String { get }
+    /// The details of the item
+    var details: String { get }
     /// The decription of the item
     var description: String { get }
     /// The SF symbol for this media item icon for this type
