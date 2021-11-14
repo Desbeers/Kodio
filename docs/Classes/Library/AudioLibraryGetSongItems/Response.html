@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Params Structure Reference</title>
+    <title>Response Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../../../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/Params" class="dashAnchor"></a>
-    <a title="Params Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/Response" class="dashAnchor"></a>
+    <a title="Response Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../../index.html">Kodio</a> (100% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../../../index.html">Kodio Reference</a>
         <img id="carat" src="../../../img/carat.png" alt=""/>
-        Params Structure Reference
+        Response Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -162,6 +162,12 @@
                 <a href="../../../Classes/Library/LibraryListItem.html">– LibraryListItem</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../../Classes/Library/AudioLibraryGetSongItems.html">– AudioLibraryGetSongItems</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../../Classes/Library/SongListItem.html">– SongListItem</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../../Classes/Library/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
@@ -195,16 +201,10 @@
                 <a href="../../../Classes/Library/AudioLibraryGetSongs.html">– AudioLibraryGetSongs</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../../Classes/Library/AudioLibraryGetSongIDs.html">– AudioLibraryGetSongIDs</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../../../Classes/Library/AudioLibrarySetSongDetails.html">– AudioLibrarySetSongDetails</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../../Classes/Library/SongItem.html">– SongItem</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../../Classes/Library/SongIdItem.html">– SongIdItem</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../../Classes/Player.html">Player</a>
@@ -498,15 +498,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Params</h1>
+            <h1>Response</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Params</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Response</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
 
                 </div>
               </div>
-            <p>The request struct</p>
+            <p>The response struct</p>
 
           </section>
           <section class="section task-group-section">
@@ -515,9 +515,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV4sortAC10SortFieldsVvp"></a>
-                    <a name="//apple_ref/swift/Property/sort" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV4sortAC10SortFieldsVvp">sort</a>
+                    <a name="/s:5Kodio7LibraryC05AudioB12GetSongItemsV8ResponseV5songsSayAC0E8ListItemVGvp"></a>
+                    <a name="//apple_ref/swift/Property/songs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB12GetSongItemsV8ResponseV5songsSayAC0E8ListItemVGvp">songs</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -525,69 +525,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Sort order</p>
+                        <p>The list of songs</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">sort</span><span class="p">:</span> <span class="kt"><a href="../../../Classes/Library.html">Library</a></span><span class="o">.</span><span class="kt"><a href="../../../Classes/Library/SortFields.html">SortFields</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV6limitsAG6LimitsVvp"></a>
-                    <a name="//apple_ref/swift/Property/limits" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV6limitsAG6LimitsVvp">limits</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Limits for the result</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">limits</span><span class="p">:</span> <span class="kt"><a href="../../../Classes/Library.html">Library</a></span><span class="o">.</span><span class="kt"><a href="../../../Classes/Library/AudioLibraryGetSongIDs.html">AudioLibraryGetSongIDs</a></span><span class="o">.</span><span class="kt">Params</span><span class="o">.</span><span class="kt"><a href="../../../Classes/Library/AudioLibraryGetSongIDs/Params/Limits.html">Limits</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV6LimitsV"></a>
-                    <a name="//apple_ref/swift/Struct/Limits" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB10GetSongIDsV6ParamsV6LimitsV">Limits</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The limits struct</p>
-
-                        <a href="../../../Classes/Library/AudioLibraryGetSongIDs/Params/Limits.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Limits</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">songs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../../../Classes/Library/SongListItem.html">SongListItem</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>

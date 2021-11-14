@@ -22,8 +22,8 @@ extension Library {
     /// Get a list of recently played and recently added songs from the Kodi host
     /// - Returns: True when loaded; else false
     func getLibraryListItems() async -> Bool {
-        let recent = AudioLibraryGetSongIDs(media: .recentlyPlayed)
-        let most = AudioLibraryGetSongIDs(media: .mostPlayed)
+        let recent = AudioLibraryGetSongItems(media: .recentlyPlayed)
+        let most = AudioLibraryGetSongItems(media: .mostPlayed)
         do {
             /// Recently played
             async let recent = KodiClient.shared.sendRequest(request: recent)
@@ -45,9 +45,9 @@ extension Library {
     }
     
     /// Change a list with song id's to a list with the actual songs
-    /// - Parameter songID: An array with ``SongIdItem`` structs
+    /// - Parameter songID: An array with ``SongListItem`` structs
     /// - Returns: An array with ``SongItem`` structs
-    private func songIDtoSongItem(songID: [SongIdItem]) -> [SongItem] {
+    private func songIDtoSongItem(songID: [SongListItem]) -> [SongItem] {
         var songList = [SongItem]()
         for song in songID {
             if let item = songs.all.first(where: { $0.songID == song.songID }) {
@@ -189,7 +189,7 @@ extension Library {
     }
     
     /// Reload the library when changing a library filter
-    func libraryReload() {
+    private func libraryReload() {
         /// Reset selection
         genres.selected = nil
         artists.selected = nil
@@ -198,5 +198,60 @@ extension Library {
         setLibrarySelection(item: libraryLists.selected)
         /// Reload all media
         filterAllMedia()
+    }
+    
+    /// Retrieve filtered song ID's (Kodi API)
+    struct AudioLibraryGetSongItems: KodiAPI {
+        /// Arguments
+        var media: MediaType = .song
+        /// Method
+        var method = Method.audioLibraryGetSongs
+        /// The JSON creator
+        var parameters: Data {
+            /// The parameters we ask for
+            var params = Params()
+            switch media {
+            case .recentlyPlayed:
+                params.sort.method = SortMethod.lastPlayed.string()
+                params.sort.order = SortMethod.descending.string()
+            case .mostPlayed:
+                params.sort.method = SortMethod.playCount.string()
+                params.sort.order = SortMethod.descending.string()
+            default:
+                params.sort.method = SortMethod.track.string()
+                params.sort.order = SortMethod.ascending.string()
+            }
+            return buildParams(params: params)
+        }
+        /// The request struct
+        struct Params: Encodable {
+            /// Sort order
+            var sort = SortFields()
+            /// Limits for the result
+            let limits = Limits()
+            /// The limits struct
+            struct Limits: Encodable {
+                /// Start limit
+                let start = 0
+                /// End limit
+                let end = 50
+            }
+        }
+        /// The response struct
+        struct Response: Decodable {
+            /// The list of songs
+            let songs: [SongListItem]
+        }
+    }
+    
+    /// The struct for a SongListItem
+    struct SongListItem: Decodable, Equatable {
+        /// The ID of the song
+        var songID: Int
+        /// Coding keys
+        enum CodingKeys: String, CodingKey {
+            /// lowerCamelCase
+            case songID = "songid"
+        }
     }
 }

@@ -148,50 +148,6 @@ extension Library {
         }
     }
     
-    /// Retrieve filtered songs by ID (Kodi API)
-    struct AudioLibraryGetSongIDs: KodiAPI {
-        /// Arguments
-        var media: MediaType = .song
-        /// Method
-        var method = Method.audioLibraryGetSongs
-        /// The JSON creator
-        var parameters: Data {
-            /// The parameters we ask for
-            var params = Params()
-            switch media {
-            case .recentlyPlayed:
-                params.sort.method = SortMethod.lastPlayed.string()
-                params.sort.order = SortMethod.descending.string()
-            case .mostPlayed:
-                params.sort.method = SortMethod.playCount.string()
-                params.sort.order = SortMethod.descending.string()
-            default:
-                params.sort.method = SortMethod.track.string()
-                params.sort.order = SortMethod.ascending.string()
-            }
-            return buildParams(params: params)
-        }
-        /// The request struct
-        struct Params: Encodable {
-            /// Sort order
-            var sort = SortFields()
-            /// Limits for the result
-            let limits = Limits()
-            /// The limits struct
-            struct Limits: Encodable {
-                /// Start limit
-                let start = 0
-                /// End limit
-                let end = 50
-            }
-        }
-        /// The response struct
-        struct Response: Decodable {
-            /// The list of songs
-            let songs: [SongIdItem]
-        }
-    }
-    
     /// Update the given song with the given details (Kodi API)
     struct AudioLibrarySetSongDetails: KodiAPI {
         /// Arguments
@@ -341,17 +297,6 @@ extension Library {
             year = try container.decodeIfPresent(Int.self, forKey: .year) ?? 0
             duration = try container.decodeIfPresent(Int.self, forKey: .duration) ?? 0
             compilation = try container.decodeIfPresent(Bool.self, forKey: .compilation) ?? false
-        }
-    }
-    
-    /// The struct for a SongIdItem
-    struct SongIdItem: Decodable {
-        /// The ID of the song
-        var songID: Int
-        /// Coding keys
-        enum CodingKeys: String, CodingKey {
-            /// lowerCamelCase
-            case songID = "songid"
         }
     }
 }
