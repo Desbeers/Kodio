@@ -23,6 +23,7 @@ struct ViewSongs: View {
             header
             list
         }
+        .id(songs)
         .frame(maxWidth: .infinity)
     }
 }
@@ -83,8 +84,6 @@ extension ViewSongs {
             /// Get the first page of songs
             songList = await Library.pager(items: songs)
         }
-        /// Give it a new ID every time the list is refreshed; that will fire the `task`
-        .id(Library.shared.songs.listID)
         .listStyle(PlainListStyle())
     }
     

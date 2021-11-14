@@ -15,28 +15,22 @@ struct ViewAlbums: View {
     let selected: Library.AlbumItem?
     /// The view
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                LazyVStack(spacing: 0) {
-                    ViewListHeader(title: "Albums")
-                        .id("AlbumsHeader")
-                    ForEach(albums) { album in
-                        Button(
-                            action: {
-                                Library.shared.toggleAlbum(album: album)
-                            }, label: {
-                                row(album: album)
-                            })
-                            .frame(height: 88)
-                            .buttonStyle(ButtonStyleList(type: .album, selected: album == selected ? true: false))
-                            .id(album.albumID)
-                    }
-                }
-                .onChange(of: albums) { _ in
-                    proxy.scrollTo("AlbumsHeader", anchor: .top)
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ViewListHeader(title: "Albums")
+                ForEach(albums) { album in
+                    Button(
+                        action: {
+                            Library.shared.toggleAlbum(album: album)
+                        }, label: {
+                            row(album: album)
+                        })
+                        .frame(height: 88)
+                        .buttonStyle(ButtonStyleList(type: .album, selected: album == selected ? true: false))
                 }
             }
         }
+        .id(albums)
     }
 }
 
@@ -51,15 +45,6 @@ extension ViewAlbums {
                 .frame(width: 80, height: 80)
                 .padding(2.5)
             ViewMediaItem(item: album)
-//            VStack(alignment: .leading) {
-//                Text(album.title)
-//                    .font(.headline)
-//                Text(album.subtitle)
-//                    .font(.subheadline)
-//                Text(album.details)
-//                    .font(.caption)
-//                    .opacity(0.6)
-//            }
             Spacer()
         }
     }

@@ -19,12 +19,12 @@ struct ViewMediaItem: View {
             if !item.subtitle.isEmpty {
                 Text(item.subtitle)
                     .font(.subheadline)
-                    .opacity(0.6)
+                    .opacity(0.8)
             }
             if !item.details.isEmpty {
                 Text(item.details)
                     .font(.caption)
-                    .opacity(0.4)
+                    .opacity(0.6)
             }
         }
     }

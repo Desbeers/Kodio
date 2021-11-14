@@ -19,12 +19,10 @@ extension Library {
         var random: [SongItem] = []
         /// A list containing songs that are never played
         var neverPlayed: [SongItem] = []
-        /// A list containng the most played songs
+        /// A list containing the most played songs
         var mostPlayed: [SongItem] = []
-        /// A list containng gecently played songs
+        /// A list containing recently played songs
         var recentlyPlayed: [SongItem] = []
-        /// A song list ID for the SwiftUI List to speed-up rendering
-        var listID = UUID().uuidString
     }
     
     /// Get all songs from the Kodi host

@@ -205,7 +205,7 @@ struct ViewEmptyLibrary: View {
                 .resizable()
                 .scaledToFit()
                 .padding(40)
-                .blendMode(.overlay)
+                .opacity(0.05)
         }
         .padding(.bottom)
         .frame(maxWidth: .infinity)

@@ -112,8 +112,6 @@ extension Library {
             songList = songList.filter { $0.albumID == album.albumID }
                 .sorted { $0.disc == $1.disc ? $0.track < $1.track : $0.disc < $1.disc }
         }
-        /// Give the list a new ID
-        songs.listID = UUID().uuidString
         /// Return the list of filtered songs
         return songList
     }
