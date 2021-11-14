@@ -23,14 +23,6 @@ struct ViewSongsListRow: View {
                 leading
                 Divider()
                 ViewMediaItem(item: song)
-//                VStack(alignment: .leading) {
-//                    Text(song.title)
-//                        .font(.headline)
-//                    Text(song.artists)
-//                        .font(.subheadline)
-//                    Text("\(song.album)")
-//                        .font(.caption)
-//                }
                 .lineLimit(1)
                 Spacer()
             }

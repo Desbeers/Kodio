@@ -69,8 +69,6 @@ extension ViewQueue {
                 List {
                     ForEach(library.getSongsFromQueue()) { song in
                         ViewSongsListRow(song: song, selectedAlbum: nil)
-                        /// - Note: Give it a fixed height, or else macOS does not scroll correct
-                            .frame(height: 50)
                             .id(song.songID)
                             .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
                     }
@@ -79,6 +77,7 @@ extension ViewQueue {
                 /// Scroll to the item that is playing
                 .task {
                     withAnimation(.linear(duration: 1)) {
+                        /// - Note: This does not works correct on macOS with a long list; it partly scrolls
                         proxy.scrollTo(player.item.songID, anchor: .center)
                     }
                 }

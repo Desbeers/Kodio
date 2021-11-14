@@ -200,13 +200,15 @@ struct ViewEmptyLibrary: View {
         VStack {
             Text(item.empty)
                 .font(.title)
-                .padding()
+                .padding(.top)
             Image(systemName: item.icon)
                 .resizable()
                 .scaledToFit()
-                .padding()
-                .opacity(0.1)
+                .padding(40)
+                //.opacity(0.1)
+                .blendMode(.overlay)
         }
+        .padding(.bottom)
         .frame(maxWidth: .infinity)
         .id(item.empty)
         .transition(.move(edge: .trailing))

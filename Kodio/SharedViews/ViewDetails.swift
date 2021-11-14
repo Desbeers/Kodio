@@ -16,10 +16,14 @@ struct ViewDetails: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack {
-                    Text(item.title)
-                        .font(.title2)
-                    Text(item.subtitle)
-                        .font(.caption)
+                    Group {
+                        Text(item.title)
+                            .font(.title2)
+                            .lineLimit(1)
+                        Text(item.subtitle)
+                            .font(.caption)
+                    }
+                    .id(item.title)
                     ViewArtwork(item: item)
                     Text(item.description)
                     ViewStatistics(item: item)
