@@ -272,21 +272,11 @@ extension Library {
         var searchString: String = ""
         /// Subtitle of the song
         var subtitle: String {
-            if Library.shared.selection.media != .album {
-                return artist.joined(separator: " & ")
-            } else {
-                if albumArtistID != artistID {
-                    return artist.joined(separator: " & ")
-                }
-            }
-            return ""
+            return artist.joined(separator: " & ")
         }
         /// Details for the song
         var details: String {
-            if Library.shared.selection.media != .album {
-                return album
-            }
-            return ""
+            return album
         }
         /// Description of the song
         var description: String = ""
