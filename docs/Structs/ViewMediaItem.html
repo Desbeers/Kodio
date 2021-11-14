@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>NSTableView Extension Reference</title>
+    <title>ViewMediaItem Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Extension/NSTableView" class="dashAnchor"></a>
-    <a title="NSTableView Extension Reference"></a>
+    <a name="//apple_ref/swift/Struct/ViewMediaItem" class="dashAnchor"></a>
+    <a title="ViewMediaItem Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Kodio</a> (100% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Kodio Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        NSTableView Extension Reference
+        ViewMediaItem Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -495,15 +495,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>NSTableView</h1>
+            <h1>ViewMediaItem</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">NSTableView</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewMediaItem</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                 </div>
               </div>
-            
+            <p>View title, subtitle and details of a <code>MediaItem</code></p>
+
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -511,9 +512,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@CM@Kodio@@objc(cs)NSTableView(im)viewDidMoveToWindow"></a>
-                    <a name="//apple_ref/swift/Method/viewDidMoveToWindow()" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@CM@Kodio@@objc(cs)NSTableView(im)viewDidMoveToWindow">viewDidMoveToWindow()</a>
+                    <a name="/s:5Kodio13ViewMediaItemV4itemAA07LibraryD0_pvp"></a>
+                    <a name="//apple_ref/swift/Property/item" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewMediaItemV4itemAA07LibraryD0_pvp">item</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -521,14 +522,41 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Remove the white background from Lists on macOS</p>
+                        <p>The <code>MediaItem</code> to show</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidMoveToWindow</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewMediaItemV4bodyQrvp"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewMediaItemV4bodyQrvp">body</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The view</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>

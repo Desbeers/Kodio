@@ -8,7 +8,7 @@
 import Foundation
 
 /// Player model
-class Player: ObservableObject {
+final class Player: ObservableObject {
     
     // MARK: Constants and Variables
     

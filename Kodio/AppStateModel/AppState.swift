@@ -14,7 +14,7 @@ import SwiftUI
 /// - Checks what system is running Kodio
 /// - Showing sheets
 /// - Showing alerts
-class AppState: ObservableObject {
+final class AppState: ObservableObject {
     
     // MARK: Constants and Variables
     

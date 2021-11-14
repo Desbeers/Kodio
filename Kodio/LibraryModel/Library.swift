@@ -13,7 +13,7 @@ import Combine
 /// This class takes care of:
 /// - Loading the music libray
 /// - Filter the library based on UI selection
-class Library: ObservableObject {
+final class Library: ObservableObject {
     
     // MARK: Constants and Variables
     

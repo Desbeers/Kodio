@@ -11,7 +11,7 @@ import Combine
 // MARK: - KodiHost model
 
 /// KodiHost model
-class KodiHost: ObservableObject {
+final class KodiHost: ObservableObject {
     
     // MARK: Constants and Variables
     

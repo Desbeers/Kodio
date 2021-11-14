@@ -342,8 +342,6 @@ extension Library {
     
     /// The struct for a SongIdItem
     struct SongIdItem: Decodable {
-        /// Make it indentifiable
-        var id = UUID().uuidString
         /// The ID of the song
         var songID: Int
         /// Coding keys

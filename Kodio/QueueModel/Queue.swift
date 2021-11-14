@@ -8,7 +8,7 @@
 import Foundation
 
 /// Queue Model
-class Queue: ObservableObject {
+final class Queue: ObservableObject {
     
     // MARK: Constants and Variables
     

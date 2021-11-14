@@ -7,12 +7,8 @@
 
 import Foundation
 
-extension KodiClient {
-
-}
-
 /// Connection between Kodio and the Kodi host
-class KodiClient: ObservableObject {
+final class KodiClient: ObservableObject {
     
     // MARK: Constants and Variables
     

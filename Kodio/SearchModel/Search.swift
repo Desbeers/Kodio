@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 /// SearchObserver model
-class SearchObserver: ObservableObject {
+final class SearchObserver: ObservableObject {
     
     // MARK: Constants and Variables
     
@@ -30,13 +30,6 @@ class SearchObserver: ObservableObject {
                 if Library.shared.query != query {
                     Library.shared.query = query
                 }
-//                if query.isEmpty {
-//                    Library.shared.search = Library.Search()
-//                    //Library.shared.selection = Library.shared.libraryLists.all.first!
-//                    //Library.shared.filterAllMedia()
-//                } else {
-//                    Library.shared.searchLibrary(query: query)
-//                }
             })
             .store(in: &subscriptions)
     }

@@ -29,10 +29,10 @@ extension EnvironmentValues {
     }
 }
 
-/// The Actor holding all remotre images in a cache
+/// The Actor holding all remote images in a cache
 actor RemoteImages {
     
-    /// The state of cachinh an image
+    /// The state of caching an image
     private enum CacheEntry {
         /// The remote image is still loading
         case inProgress(Task<Image, Error>)
