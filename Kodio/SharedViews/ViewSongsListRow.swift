@@ -22,7 +22,7 @@ struct ViewSongsListRow: View {
             HStack {
                 leading
                 Divider()
-                ViewMediaItem(item: song)
+                ViewMediaItemDetails(item: song)
                 .lineLimit(1)
                 Spacer()
             }

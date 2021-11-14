@@ -23,29 +23,12 @@ struct ViewAlbums: View {
                         action: {
                             Library.shared.toggleAlbum(album: album)
                         }, label: {
-                            row(album: album)
+                            ViewMediaItemListRow(item: album, size: 80)
                         })
-                        .frame(height: 88)
                         .buttonStyle(ButtonStyleList(type: .album, selected: album == selected ? true: false))
                 }
             }
         }
         .id(albums)
-    }
-}
-
-extension ViewAlbums {
-    
-    /// Format a genre row in a list
-    /// - Parameter album: a ``Library/AlbumItem`` struct
-    /// - Returns: a formatted row
-    func row(album: Library.AlbumItem) -> some View {
-        HStack {
-            ViewRemoteArt(item: album, art: .thumbnail)
-                .frame(width: 80, height: 80)
-                .padding(2.5)
-            ViewMediaItem(item: album)
-            Spacer()
-        }
     }
 }

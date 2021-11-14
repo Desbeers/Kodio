@@ -7,8 +7,27 @@
 
 import SwiftUI
 
-/// View title, subtitle and details of a ``MediaItem``
-struct ViewMediaItem: View {
+/// View a row in an ``MediaItem`` list view
+struct ViewMediaItemListRow: View {
+    /// The ``MediaItem`` to show
+    let item: LibraryItem
+    /// The size of the thumbnail
+    let size: CGFloat
+    /// The view
+    var body: some View {
+        HStack {
+            ViewRemoteArt(item: item, art: .thumbnail)
+                .cornerRadius(4)
+                .frame(width: size, height: size)
+                .padding(2)
+            ViewMediaItemDetails(item: item)
+            Spacer()
+        }
+    }
+}
+
+/// View details for a ``MediaItem``
+struct ViewMediaItemDetails: View {
     /// The ``MediaItem`` to show
     let item: LibraryItem
     /// The view
