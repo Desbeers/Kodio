@@ -38,8 +38,9 @@ extension Library {
             }
             return true
         } catch {
+            /// There are no items in the library
             print("Loading library items failed with error: \(error)")
-            return false
+            return true
         }
     }
     
@@ -91,43 +92,50 @@ extension Library {
     func getLibraryLists() -> [LibraryListItem] {
         var list = [LibraryListItem]()
         list.append(LibraryListItem(title: "Album artists",
-                                  subtitle: "All your album artists",
-                                  icon: "music.mic",
-                                  media: .albumArtists))
+                                    subtitle: "All your album artists",
+                                    empty: "Your library has no album artists",
+                                    icon: "music.mic",
+                                    media: .albumArtists))
         list.append(LibraryListItem(title: "Compilations",
-                                  subtitle: "All your compilations",
-                                  icon: "person.2",
-                                  media: .compilations
-                                 ))
+                                    subtitle: "All your compilations",
+                                    empty: "Your library has no compilations",
+                                    icon: "person.2",
+                                    media: .compilations
+                                   ))
         list.append(LibraryListItem(title: "Recently added",
-                                  subtitle: "What's new in you library",
-                                  icon: "clock",
-                                  media: .recentlyAdded
-                                 ))
+                                    subtitle: "What's new in you library",
+                                    empty: "Your library has nothing recently added",
+                                    icon: "clock",
+                                    media: .recentlyAdded
+                                   ))
         list.append(LibraryListItem(title: "Most played",
-                                  subtitle: "The songs that you play the most",
-                                  icon: "infinity",
-                                  media: .mostPlayed
-                                 ))
+                                    subtitle: "The songs that you play the most",
+                                    empty: "Your library has no most played songs",
+                                    icon: "infinity",
+                                    media: .mostPlayed
+                                   ))
         list.append(LibraryListItem(title: "Recently played",
-                                  subtitle: "Your last played songs",
-                                  icon: "gobackward",
-                                  media: .recentlyPlayed
-                                 ))
+                                    subtitle: "Your recently played songs",
+                                    empty: "Your library has no recently played songs",
+                                    icon: "gobackward",
+                                    media: .recentlyPlayed
+                                   ))
         list.append(LibraryListItem(title: "Favorites",
-                                  subtitle: "Your favorite songs",
-                                  icon: "star",
-                                  media: .favorites
-                                 ))
+                                    subtitle: "Your favorite songs",
+                                    empty: "Your library has no favorite songs",
+                                    icon: "star",
+                                    media: .favorites
+                                   ))
         list.append(LibraryListItem(title: "Playing queue",
-                                  subtitle: "This is in your current playlist",
-                                  icon: "music.note.list",
-                                  media: .queue,
-                                  visible: !Queue.shared.queueItems.isEmpty
-                                 ))
+                                    subtitle: "This is in your current playlist",
+                                    empty: "The queue is empty",
+                                    icon: "music.note.list",
+                                    media: .queue,
+                                    visible: !Queue.shared.queueItems.isEmpty
+                                   ))
         list.append(LibraryListItem(title: "Search",
                                     subtitle: "Results for '\(query)'",
-                                    description: filteredContent.songs.isEmpty ? "Nothing found in your library" : "",
+                                    empty: "Nothing found for '\(query)' in your library",
                                     icon: "magnifyingglass",
                                     media: .search,
                                     visible: !query.isEmpty
@@ -149,6 +157,9 @@ extension Library {
         var subtitle = "Loading your library"
         /// Description of the item
         var description: String = ""
+        /// Empty item message
+        /// - Note: Not needed, but required by protocol
+        var empty: String = "Loading your library"
         /// The SF symbol for this media item
         var icon: String = "k.circle"
         /// Media type of this item
@@ -176,7 +187,7 @@ extension Library {
             case title
         }
     }
-
+    
     /// Reload the library when changing a library filter
     func libraryReload() {
         /// Reset selection

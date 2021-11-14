@@ -34,8 +34,9 @@ extension Library {
                 artists.all = result.artists
                 return true
             } catch {
+                /// There are no artists in the library
                 print("Loading artists failed with error: \(error)")
-                return false
+                return true
             }
         }
     }
@@ -139,6 +140,9 @@ extension Library {
         /// Details for the artist
         /// - Note: Not needed, but required by protocol
         let details: String = ""
+        /// Empty item message
+        /// - Note: Not needed, but required by protocol
+        let empty: String = ""
         /// An array with genres for this artist
         var genres: [String] {
             /// Make a genre list

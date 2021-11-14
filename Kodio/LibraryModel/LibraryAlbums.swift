@@ -34,8 +34,9 @@ extension Library {
                 albums.all = result.albums
                 return true
             } catch {
+                /// There are no albums in the library
                 print("Loading albums failed with error: \(error)")
-                return false
+                return true
             }
         }
     }
@@ -144,6 +145,9 @@ extension Library {
         /// Album fanart
         /// - Note: Not needed, but required by protocol
         let fanart: String = ""
+        /// Empty item message
+        /// - Note: Not needed, but required by protocol
+        let empty: String = ""
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys

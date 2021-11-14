@@ -28,8 +28,14 @@ struct ViewLibrary: View {
                 )
                 HStack(spacing: 0) {
                     ViewDetails(item: library.selection)
-                    ViewSongs(songs: library.filteredContent.songs, selectedAlbum: library.albums.selected)
+                    Divider()
+                    if library.filteredContent.songs.isEmpty {
+                        ViewEmptyLibrary(item: library.selection)
+                    } else {
+                        ViewSongs(songs: library.filteredContent.songs, selectedAlbum: library.albums.selected)
+                    }
                 }
+                .animation(.default, value: library.selection.empty)
             }
             .toolbar()
     }

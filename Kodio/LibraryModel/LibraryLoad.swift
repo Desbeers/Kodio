@@ -64,6 +64,10 @@ extension Library {
     /// Reset the  library to its initial state
     func resetLibrary() {
         status.reset()
+        genres = Genres()
+        artists = Artists()
+        albums = Albums()
+        songs = Songs()
         selection = LibraryListItem()
         filteredContent = FilteredContent()
         playlists.files = []

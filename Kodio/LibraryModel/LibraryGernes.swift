@@ -35,7 +35,7 @@ extension Library {
                 return true
             } catch {
                 print("Loading genres failed with error: \(error)")
-                return false
+                return true
             }
         }
     }
@@ -126,6 +126,9 @@ extension Library {
         /// Details for the genre
         /// - Note: Not needed, but required by protocol
         let details: String = ""
+        /// Empty item message
+        /// - Note: Not needed, but required by protocol
+        let empty: String = ""
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys

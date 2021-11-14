@@ -21,6 +21,8 @@ protocol LibraryItem: Codable {
     var details: String { get }
     /// The decription of the item
     var description: String { get }
+    /// Message to show when the library item is empty
+    var empty: String { get }
     /// The SF symbol for this media item icon for this type
     var icon: String { get }
     /// The thumbnail for the item

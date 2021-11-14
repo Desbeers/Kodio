@@ -46,7 +46,12 @@ struct ViewLibraryBottom: View {
         HStack(spacing: 0) {
             ViewDetails(item: library.selection)
             Divider()
-            ViewSongs(songs: library.filteredContent.songs, selectedAlbum: library.albums.selected)
+            if library.filteredContent.songs.isEmpty {
+                ViewEmptyLibrary(item: library.selection)
+            } else {
+                ViewSongs(songs: library.filteredContent.songs, selectedAlbum: library.albums.selected)
+            }
         }
+        .animation(.default, value: library.selection.empty)
     }
 }

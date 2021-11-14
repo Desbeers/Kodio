@@ -29,6 +29,7 @@ extension Library {
             listItems.append(LibraryListItem(
                 title: "Random songs",
                 subtitle: "100 random songs from your library",
+                empty: "Your library has no songs",
                 icon: "sparkles",
                 media: .random
             ))
@@ -36,6 +37,7 @@ extension Library {
             listItems.append(LibraryListItem(
                 title: "Never played",
                 subtitle: "Songs you never played",
+                empty: "Your library has no songs that you never played",
                 icon: "minus.diamond",
                 media: .neverPlayed
             ))
@@ -44,6 +46,7 @@ extension Library {
                 listItems.append(LibraryListItem(
                     title: playlist.label,
                     subtitle: playlist.description,
+                    empty: "The playlist '\(playlist.label)' is empty",
                     icon: playlist.icon,
                     media: .playlist,
                     file: playlist.file
@@ -76,7 +79,7 @@ extension Library {
             }
             return songList
         } catch {
-            print(error)
+            print("Error getting playlist \(error)")
             return songList
         }
     }

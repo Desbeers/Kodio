@@ -188,3 +188,27 @@ struct ViewRotatingRecord: View {
             }
     }
 }
+
+// MARK: - Empty library view
+
+/// View to show when the current library view has no items to show
+struct ViewEmptyLibrary: View {
+    /// The current media item
+    let item: LibraryItem
+    /// The view
+    var body: some View {
+        VStack {
+            Text(item.empty)
+                .font(.title)
+                .padding()
+            Image(systemName: item.icon)
+                .resizable()
+                .scaledToFit()
+                .padding()
+                .opacity(0.1)
+        }
+        .frame(maxWidth: .infinity)
+        .id(item.empty)
+        .transition(.move(edge: .trailing))
+    }
+}

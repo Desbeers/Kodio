@@ -47,8 +47,9 @@ extension Library {
                 await getLastUpdate(cache: true)
                 return true
             } catch {
+                /// There are no songs in the library
                 print("Loading songs failed with error: \(error)")
-                return false
+                return true
             }
         }
     }
@@ -287,6 +288,9 @@ extension Library {
         /// Fanart of the song
         /// - Note: Not needed, but required by protocol
         let fanart: String = ""
+        /// Empty item message
+        /// - Note: Not needed, but required by protocol
+        let empty: String = ""
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys

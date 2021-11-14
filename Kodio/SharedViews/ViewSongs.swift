@@ -20,21 +20,9 @@ struct ViewSongs: View {
     /// The view
     var body: some View {
         VStack {
-            if !songs.isEmpty {
-                header
-                list
-            } else {
-                Text(Library.shared.selection.description)
-                    .font(.title)
-                    .padding()
-                ViewRotatingRecord()
-                    .frame(width: 100)
-                    .opacity(0.8)
-                Spacer()
-            }
+            header
+            list
         }
-        .transition(.slide)
-        .animation(.default, value: songs)
         .frame(maxWidth: .infinity)
     }
 }
