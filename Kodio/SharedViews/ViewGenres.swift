@@ -26,6 +26,8 @@ struct ViewGenres: View {
                             row(genre: genre)
                         })
                         .buttonStyle(ButtonStyleList(type: .genre, selected: genre == selected ? true: false))
+                    /// Buttons have additional .traling padding for the scrollbar
+                        .padding(.leading, 8)
                 }
             }
         }
