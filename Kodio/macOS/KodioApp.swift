@@ -63,6 +63,8 @@ import SwiftUI
             }
             /// Show or hide the sidebar
             SidebarCommands()
+            /// Toolbar commands
+            ToolbarCommands()
         }
         Settings {
             ViewSettings()

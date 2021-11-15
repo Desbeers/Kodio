@@ -17,7 +17,7 @@ struct ViewPlayerButtons: View {
     @EnvironmentObject var queue: Queue
     /// The view
     var body: some View {
-        HStack(spacing: AppState.shared.system == .macOS ? 6 : 20) {
+        HStack(spacing: AppState.shared.system == .macOS ? 0 : 20) {
             Button(
                 action: {
                     player.sendAction(method: .playerGoTo,
@@ -27,13 +27,15 @@ struct ViewPlayerButtons: View {
                     Image(systemName: "backward.fill")
                 }
             )
-            .disabled(player.properties.queueID <= 0)
+                .disabled(player.properties.queueID <= 0)
             Button(
                 action: {
                     player.sendPlayerPlayPause(queue: Library.shared.getSongsFromQueue())
                 },
                 label: {
                     Image(systemName: player.properties.queueID >= 0 && player.properties.speed == 1 ? "pause.fill" : "play.fill")
+                    /// Fixed width because otherwise pause is smaller than play
+                        .frame(width: 24)
                 }
             )
                 .disabled(player.properties.queueID == -1 && queue.queueItems.isEmpty)
@@ -46,11 +48,13 @@ struct ViewPlayerButtons: View {
                     Image(systemName: "forward.fill")
                 }
             )
-            .disabled(player.properties.queueID == -1 || player.properties.queueID >= queue.items)
+                .disabled(player.properties.queueID == -1 || player.properties.queueID >= queue.items)
         }
         /// Button style for enabled or disabled styling
         /// Colors are in mac style; black is enabled; grey disabled
+#if os(iOS)
         .buttonStyle(ButtonStylePlayer())
+#endif
     }
 }
 
@@ -68,11 +72,11 @@ struct ViewPlayerQueueButton: View {
             },
             label: {
                 ViewPlayerArt(item: player.item, size: artSize)
-                .frame(width: artSize, height: artSize)
-                .cornerRadius(2)
+                    .frame(width: artSize, height: artSize)
+                    .cornerRadius(2)
             }
         )
-        .buttonStyle(PlainButtonStyle())
+            .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -82,24 +86,26 @@ struct ViewPlayerOptions: View {
     @EnvironmentObject var player: Player
     /// The view
     var body: some View {
-        Button(
-            action: {
-                player.sendAction(method: .playerSetShuffle)
-            },
-            label: {
-                Image(systemName: "shuffle")
-                    .foregroundColor(player.properties.shuffled ? .accentColor : .primary)
-            }
-        )
-        Button(
-            action: {
-                player.sendAction(method: .playerSetRepeat)
-            },
-            label: {
-                Image(systemName: player.properties.repeatingIcon)
-                    .foregroundColor(player.properties.repeating != "off"  ? .accentColor : .primary)
-            }
-        )
+        HStack(spacing: AppState.shared.system == .macOS ? 0 : 20) {
+            Button(
+                action: {
+                    player.sendAction(method: .playerSetShuffle)
+                },
+                label: {
+                    Image(systemName: "shuffle")
+                        .foregroundColor(player.properties.shuffled ? .accentColor : .primary)
+                }
+            )
+            Button(
+                action: {
+                    player.sendAction(method: .playerSetRepeat)
+                },
+                label: {
+                    Image(systemName: player.properties.repeatingIcon)
+                        .foregroundColor(player.properties.repeating != "off"  ? .accentColor : .primary)
+                }
+            )
+        }
     }
 }
 
@@ -115,16 +121,16 @@ struct ViewPlayerVolume: View {
             ///         and not when programmaticly changing its value after a notification.
             Slider(value: $kodiHost.volume, in: 0...100,
                    onEditingChanged: { _ in
-                    logger("Volume changed: \(kodiHost.volume)")
-                    kodiHost.setVolume(volume: kodiHost.volume)
-                   })
+                logger("Volume changed: \(kodiHost.volume)")
+                kodiHost.setVolume(volume: kodiHost.volume)
+            })
         }
     }
 }
 
 // MARK: - Button styles
 
-/// Button style for a player item
+/// Button style for a player item on iOS
 struct ButtonStylePlayer: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         ViewButtonStylePlayer(configuration: configuration)
@@ -144,13 +150,9 @@ private extension ButtonStylePlayer {
         var body: some View {
             return configuration.label
             /// change the text color if the button is disabled
-            .foregroundColor(isEnabled ? .primary : .secondary.opacity(0.6))
-            /// Make them slightly bigger on macOS
-            #if os(macOS)
-                .scaleEffect(1.2)
-            #endif
-            /// Fixed width because otherwise pause is smaller than play
-                .frame(width: 24)
+                .foregroundColor(isEnabled ? .primary : .secondary.opacity(0.6))
+                .scaleEffect(1.1)
+                .brightness(configuration.isPressed ? 0.2 : 0)
         }
     }
 }

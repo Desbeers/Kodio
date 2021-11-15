@@ -70,6 +70,7 @@ Kodio is written in SwiftUI; very enjoyable, however, far from perfect; especial
 - The `About` box in macOS is something from another world. I override the option with a sheet. I know I can add a `rtf` file to give it some content but it is 2021 now.
 - Same for `Help`. Writing a *native* `Help` requires *Black Magic*. I know how to do, however, it does not feel *native* anymore.
 - `Swipes` in a `List` do not dismiss themselves. It is already a miracle that it is working on macOS...
+- If you modify the toolbar it will reset to default again. I think it's a bug. Also, showing 'text' only in the toolbar makes no sense... It's all Work in Progress!
 
 ## iOS
 
