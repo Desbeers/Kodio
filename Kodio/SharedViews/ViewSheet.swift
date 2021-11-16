@@ -35,6 +35,8 @@ struct ViewSheet: View {
                             .foregroundColor(.accentColor)
                             .font(.title)
                     }
+                    /// Close `Sheets` when pressing *return* on the keyboard
+                    .keyboardShortcut(.defaultAction)
                     .buttonStyle(PlainButtonStyle())
                     .padding()
                     Spacer()
