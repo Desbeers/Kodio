@@ -486,11 +486,51 @@
             <h1 id='kodio' class='heading'>Kodio</h1>
 <h2 id='a-macos-and-ipad-music-remote-for-a-href-https-kodi-tv-kodi-a' class='heading'>A macOS and iPad music remote for <a href="https://kodi.tv">Kodi</a></h2>
 
-<p>Kodio is written in SwiftUI 3 for macOS Monterey and iPadOS 15.</p>
+<p>Kodio is written in SwiftUI 3 for macOS Monterey and iPadOS 15. Kodi version 19 <em>Matrix</em> is required.</p>
 
 <p><img src="https://github.com/Desbeers/Kodio/raw/main/screenshot.png" alt="Screenshot"></p>
 
-<p>See <a href="https://github.com/Desbeers/Kodio/blob/main/Kodio/General/Help.md">Kodio Help</a> for general information.</p>
+<p>My goal is to share as much code between the platforms, while still make them feel as <em>native</em> as possible. Both versions have exactly the same functionalities.</p>
+
+<p>Unlike most SwiftUI programmers, my main focus is for macOS. It is a challenge because there is <em>by far</em> less information about SwiftUI on macOS. Well, part of the fun.</p>
+<h3 id='macos' class='heading'>macOS</h3>
+
+<ul>
+<li>Has a fully customisable toolbar (tough!).</li>
+<li>Has a native <code>Preferences</code> window.</li>
+<li>All <code>Menu Bar</code> items are useful; however, the <code>About</code> and <code>Help</code> are not truly 100% macOS because they still live in the early 2000&rsquo;s&hellip; I know how to make them <em>old style</em> but I think it&rsquo;s not worth it. See below.</li>
+<li>Close <code>Sheets</code> when pressing <em>return</em> on the keyboard.</li>
+</ul>
+<h3 id='performance' class='heading'>Performance</h3>
+
+<p>I spend a lot (<em>lot</em>) of time to get the performance reasonable. SwiftUI is easy, sometimes too easy, <em>Observer the whole world and it works</em>! So I learned a lot about <em>declarative</em> coding; that&rsquo;s the keyword for <em>speed</em>. I develop on a MacBook Pro from mid 2015 and my iPad is an iPad Pro from 2016. Old stuff, but the performance is pretty good in my opinion.</p>
+<h3 id='bugs-bugs-bugs' class='heading'>Bugs, bugs, bugs!</h3>
+
+<p>Yes, I know. Kodio is a bit buggy and always will be. Learning everyday something new and Kodio will always be work in progress. Part of the hobby! It is not my job. Not even close; I&rsquo;m actually a seaman with a lot of free time, haha!</p>
+<h4 id='macos' class='heading'>macOS</h4>
+
+<ul>
+<li>The <em>splitview</em> between the library and the songs can be a bit funky. SwiftUI gives us a dedicated <code>VSplitView</code> but it sucks. So, it&rsquo;s an <em>appkit</em> thing who is struggling in the SwiftUI world. Poor thing&hellip;</li>
+<li>The <code>About</code> box in macOS is something from another world. I override the option with a sheet. I know I can add an <em>rtf</em> file to give it some content but it is 2021 now.</li>
+<li>Same for <code>Help</code>. Writing a <em>native help</em> requires <em>Black Magic</em>. I know how to do, however, it does not feel <em>native</em> anymore.</li>
+<li><code>Swipes</code> in a <code>List</code> do not dismiss themselves. It is already a miracle that it is working on macOS&hellip;</li>
+</ul>
+<h4 id='ios' class='heading'>iOS</h4>
+
+<ul>
+<li>The <code>Menu</code> gives errors on the Console but seems to work normal. I don&rsquo;t know why.</li>
+<li>Lots of other <em>noise</em> in the log.</li>
+</ul>
+<h4 id='general' class='heading'>General</h4>
+
+<ul>
+<li><code>Navigationlinks</code> are terrible; I use my own implementation. The result is that the <code>sidebar</code> buttons don&rsquo;t feel completely <em>native</em>.</li>
+<li>Disconnecting from the <code><a href="Classes/WebSocket.html">WebSocket</a></code> always gives an error. I just ignore it. I have to disconnect on iOS when going to the <em>background</em> or else Apple is very upset to me, hehe&hellip;</li>
+<li>Radio channels are hard-coded at the moment&hellip;</li>
+</ul>
+<h3 id='more-information' class='heading'>More information</h3>
+
+<p>See <a href="https://github.com/Desbeers/Kodio/blob/main/Kodio/General/Help.md">Kodio Help</a> for some more general information about Kodio.</p>
 <h2 id='how-to-compile' class='heading'>How to compile</h2>
 
 <ol>

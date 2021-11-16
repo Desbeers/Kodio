@@ -12,19 +12,19 @@ Kodio is just about your music. It does not show 'playing time' or 'progress`. I
 
 Well, I think it is pretty straightforward. Maybe there is only one thing unusual; your library lists are `toggle buttons`. Select an artist or deselect it again. I like that. Same for genres and albums.
 
-Play or shuffle your songs with the buttons above the songlist.
+Start to *play* or *shuffle* your songs with the buttons above the songlist.
 
-If you swipe (or *right click*) on a song you can play it. If it is already in the queue, it will just jump to that song. If not, the queue will be emptied and the song will play.
+If you swipe (or *right click*) on a song you can play it. If it is already in the queue, it will just jump to that song. If not, the queue will be emptied and the selected song will play.
 
 There is no option to add a new song to the `queue`. See below about settings...
 
-Click (or tap) the small image in the toolbar to open the *Playing Queue*. You can jump in your Queue.
+Click (or tap) the small image in the toolbar to open the *Playing Queue*. You can jump in your Queue by *swiping* or *right click* a song.
 
 # Playlists
 
 Your Kodi playlists are loaded when Kodio is started. If you *add* or *delete* playlists; Kodio will not know until you either restart it or reload the library.
 
-Kodio is smart enough to get *the latest and greatest* for a playlist when you select it in the sidebar.
+Kodio is smart enough to get *the latest and greatest* for a playlist when you select it in the sidebar. You have to selected it again if you have changed it. Kodio is only a *little bit* smart.
 
 # ReplayGain
 
@@ -54,34 +54,26 @@ I made Kodio exactly how I want it to be so I have no need for any settings. You
 
 # Will this ever be in the Apple Store?
 
-No. See above; I wrote this application just for fun and for my own use. I share it because I think thats a fair thing to do. Thanks to *sharing* I was able to write this. I want to give something back. The charm of *Open Source*.
+I don't think so. See above; I wrote this application just for fun and for my own use. I share it because I think thats a fair thing to do. Thanks to *sharing* I was able to write this. I want to give something back. The charm of *Open Source*.
 
 Publishing an application gives responsibility. I don't want that. Also, I don't have a Developer Account, cheap as I am. Kodio expires on my iPad after a few days but I don't really care because I'm primarily a macOS user
 
 # Bugs, bugs, bugs!
 
-Yes, I know. Kodio is a bit buggy and always will be. Learning everyday something new and Kodio will always be work in progress. Part of the hobby! It is not my job.
+Yes, I know. Kodio is a bit buggy and always will be. Learning everyday something new and Kodio will always be work in progress. Part of the hobby! It is not my job. Not even close; I'm actually a seaman with a lot of free time, haha!
 
-Kodio is written in SwiftUI; very enjoyable, however, far from perfect; especially on macOS, unfortunately...
+Please report them at [Github Kodio issues](https://github.com/Desbeers/Kodio/issues).
 
-## macOS
+# Details are important
 
-- The `splitview` between the library and the songs can be a bit funky. SwiftUI gives us a dedicated `VSplitView` but it sucks. So, it's an *appkit* thing who is struggling in the SwiftUI world. Poor thing...
-- The `About` box in macOS is something from another world. I override the option with a sheet. I know I can add a `rtf` file to give it some content but it is 2021 now.
-- Same for `Help`. Writing a *native* `Help` requires *Black Magic*. I know how to do, however, it does not feel *native* anymore.
-- `Swipes` in a `List` do not dismiss themselves. It is already a miracle that it is working on macOS...
+I want to write a beautiful application. It should behave just like you would expect. It supports *Dark Mode*, *System Settings* and will adapt to the *accent colours* you prefer.
 
-## iOS
+Those are important details for me.
 
-- The 'Menu' gives errors on the Console but seems to work normal. I don't know why.
-- Lots of other *noise* in the log.
+The rotating LP you see sometimes in the background is turning at a perfect 33 1/3... Details!
 
-## General
+Is something not as expected? [Let me know](https://github.com/Desbeers/Kodio/issues)!
 
-- `Navigationlinks` are terrible; I use my own implementation. The result is that the `sidebar` buttons don't feel completely *native*.
-- Disconnecting from the `WebSocket` always gives an error. I just ignore it. I have to disconnect on iOS when going to the *background* or else Apple is very upset to me, hehe...
-- Radio channels are hard-coded at the moment...
+# Where to get it?
 
-*And for your info; the rotating LP you see in the background is turning at a perfect 33 1/3... Details!*
-
-Kodio is available on [Github](https://github.com/desbeers/kodio) with a GPL-3.0 License.
+The *source code* for Kodio is available on [Github](https://github.com/desbeers/kodio) with a GPL-3.0 License.
