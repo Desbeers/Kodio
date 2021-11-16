@@ -12,6 +12,8 @@ struct ViewLibrary: View {
     /// The view
     var body: some View {
         VStack(spacing: 0) {
+            /// A divider; else the genres, artist and albums fill scroll over the toolbar
+            Divider()
             SplitView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

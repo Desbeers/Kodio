@@ -27,14 +27,32 @@ extension View {
         )
     }
     
-    /// The toolbar
+    /// The toolbar shortcut
     /// - Note : macOS and iOS have their own modifier
-    func toolbar() -> some View {
-        modifier(ViewModifierToolbar())
+    func toolbar(basic: Bool = false) -> some View {
+        modifier(ViewToolbar(basic: basic))
     }
     
-    /// The searchbar
+    /// The searchbar shortcut
     func searchbar() -> some View {
         modifier(ViewModifierSearch())
+    }
+    
+    /// Shortcut for macOS specific modifiers
+    func macOS<Content: View>(_ modifier: (Self) -> Content) -> some View {
+        #if os(macOS)
+        return modifier(self)
+        #else
+        return self
+        #endif
+    }
+
+    /// Shortcut for iOS specific modifiers
+    func iOS<Content: View>(_ modifier: (Self) -> Content) -> some View {
+        #if os(iOS)
+        return modifier(self)
+        #else
+        return self
+        #endif
     }
 }

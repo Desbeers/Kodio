@@ -307,12 +307,6 @@
                 <a href="../Structs/ButtonStyleList/ViewButtonStyleList.html">– ViewButtonStyleList</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ButtonStylePlayer.html">ButtonStylePlayer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ButtonStylePlayer/ViewButtonStylePlayer.html">– ViewButtonStylePlayer</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/ButtonStyleSidebar.html">ButtonStyleSidebar</a>
               </li>
               <li class="nav-group-task">
@@ -424,22 +418,7 @@
                 <a href="../Structs/ViewModifierSearch.html">ViewModifierSearch</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewModifierToolbar.html">ViewModifierToolbar</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/ViewPlayerArt.html">ViewPlayerArt</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewPlayerButtons.html">ViewPlayerButtons</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewPlayerOptions.html">ViewPlayerOptions</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewPlayerQueueButton.html">ViewPlayerQueueButton</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewPlayerVolume.html">ViewPlayerVolume</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewQueue.html">ViewQueue</a>
@@ -482,6 +461,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewStatistics/LabelStyleStatistics.html">– LabelStyleStatistics</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewToolbar.html">ViewToolbar</a>
               </li>
             </ul>
           </li>
@@ -544,9 +526,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7SwiftUI4ViewP5KodioE7toolbarQryF"></a>
-                    <a name="//apple_ref/swift/Method/toolbar()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7SwiftUI4ViewP5KodioE7toolbarQryF">toolbar()</a>
+                    <a name="/s:7SwiftUI4ViewP5KodioE7toolbar5basicQrSb_tF"></a>
+                    <a name="//apple_ref/swift/Method/toolbar(basic:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftUI4ViewP5KodioE7toolbar5basicQrSb_tF">toolbar(basic:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -554,7 +536,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The toolbar</p>
+                        <p>The toolbar shortcut</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     Note : macOS and iOS have their own modifier
@@ -566,7 +548,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">toolbar</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">View</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">toolbar</span><span class="p">(</span><span class="nv">basic</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">View</span></code></pre>
 
                         </div>
                       </div>
@@ -586,7 +568,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The searchbar</p>
+                        <p>The searchbar shortcut</p>
 
                       </div>
                       <div class="declaration">
@@ -594,6 +576,60 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">searchbar</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftUI4ViewP5KodioE5macOSyQrqd__xXEAaBRd__lF"></a>
+                    <a name="//apple_ref/swift/Method/macOS(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftUI4ViewP5KodioE5macOSyQrqd__xXEAaBRd__lF">macOS(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Shortcut for macOS specific modifiers</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">macOS</span><span class="o">&lt;</span><span class="kt">Content</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">modifier</span><span class="p">:</span> <span class="p">(</span><span class="k">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Content</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">View</span> <span class="k">where</span> <span class="kt">Content</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7SwiftUI4ViewP5KodioE3iOSyQrqd__xXEAaBRd__lF"></a>
+                    <a name="//apple_ref/swift/Method/iOS(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftUI4ViewP5KodioE3iOSyQrqd__xXEAaBRd__lF">iOS(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Shortcut for iOS specific modifiers</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">iOS</span><span class="o">&lt;</span><span class="kt">Content</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">modifier</span><span class="p">:</span> <span class="p">(</span><span class="k">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Content</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">View</span> <span class="k">where</span> <span class="kt">Content</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                         </div>
                       </div>
@@ -649,7 +685,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-15)</p>
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-16)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

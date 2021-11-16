@@ -14,7 +14,7 @@ struct ViewLibrary: View {
     /// The view
     var body: some View {
             VStack(spacing: 0) {
-                /// A divider; else the artist and albums fill scroll over the toolbar
+                /// A divider; else the genres, artist and albums fill scroll over the toolbar
                 Divider()
                 HStack(spacing: 0) {
                     ViewGenres(genres: library.filteredContent.genres, selected: library.genres.selected)

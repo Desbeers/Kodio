@@ -75,13 +75,13 @@ private extension ButtonStyleSidebar {
         var body: some View {
             return configuration.label
                 .padding(8)
-            /// Smaller font for iOS
-#if os(iOS)
-                .font(.subheadline.weight(.regular))
-#endif
                 .brightness(configuration.isPressed ? 0.2 : 0)
                 .background(isEnabled ?  Color.clear : Color.secondary.opacity(0.2))
                 .cornerRadius(6)
+            /// Smaller font for iOS
+                .iOS {$0
+                .font(.subheadline.weight(.regular))
+                }
         }
     }
 }

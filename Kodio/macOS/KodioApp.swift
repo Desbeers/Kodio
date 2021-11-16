@@ -27,8 +27,6 @@ import SwiftUI
     var body: some Scene {
         WindowGroup {
             ViewContent()
-                .navigationTitle(player.title)
-                .navigationSubtitle(player.artist)
                 .environmentObject(appState)
                 .environmentObject(kodiHost)
                 .environmentObject(kodiClient)
@@ -36,6 +34,12 @@ import SwiftUI
                 .environmentObject(player)
                 .environmentObject(queue)
         }
+        /// Hide the title so we can use the whole toolbar for buttons
+        /// - Note: the buttons will become smaller
+        .windowStyle(HiddenTitleBarWindowStyle())
+        /// Below will make the button size normal again; however, will also give
+        /// the option to show only 'text' buttons and that makes no sense for Kodio
+        /// .windowToolbarStyle(UnifiedWindowToolbarStyle())
         .commands {
             CommandGroup(replacing: CommandGroupPlacement.help) {
                 Button("Kodio Help") {

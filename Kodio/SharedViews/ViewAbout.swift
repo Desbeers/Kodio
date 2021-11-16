@@ -39,8 +39,9 @@ struct ViewAbout: View {
             }
         }
         .padding()
-#if os(macOS)
+        /// Sheet size for macOS
+        .macOS {$0
         .frame(minWidth: 500, idealWidth: 500, maxWidth: 500, minHeight: 500, idealHeight: 500, maxHeight: 500, alignment: .top)
-#endif
+        }
     }
 }

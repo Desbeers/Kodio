@@ -51,7 +51,7 @@ extension Player {
         /// The queue ID
         var queueID: Int = -1
         /// Repeat status
-        var repeating: String = ""
+        var repeating: String = "off"
         /// Shuffle status
         var shuffled: Bool = false
         /// Speed of the player

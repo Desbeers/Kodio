@@ -27,9 +27,10 @@ struct ViewAppStateStatus: View {
                 Text("Loading library")
                 Spacer()
                 ProgressView()
-#if os (macOS)
+                /// Make this a bit smaller on macOS
+                    .macOS {$0
                     .scaleEffect(0.5)
-#endif
+                    }
             case .loadedLibrary, .sleeping, .wakeup:
                 Text("Music on '\(kodiClient.selectedHost.description)'")
             case .failure:

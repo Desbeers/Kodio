@@ -15,10 +15,10 @@ struct ViewContent: View {
     var body: some View {
         NavigationView {
             ViewSidebar()
+                .searchbar()
             ViewLibrary()
+                .toolbar()
         }
-        .toolbar()
-        .searchbar()
         .sheet(isPresented: $appState.showSheet) {
             ViewSheet()
         }

@@ -19,7 +19,7 @@ struct ViewQueue: View {
         HStack {
             VStack {
                 art
-                ViewPlayerButtons()
+                    .toolbar(basic: true)
                 Spacer()
             }
             .frame(minWidth: 300, minHeight: 600)
@@ -32,7 +32,7 @@ struct ViewQueue: View {
             art
             list
                 .padding(.horizontal)
-            ViewPlayerButtons()
+                .toolbar(basic: true)
                 .padding(40)
         }
 #endif
