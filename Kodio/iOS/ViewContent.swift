@@ -15,42 +15,9 @@ struct ViewContent: View {
     var body: some View {
         NavigationView {
             ViewSidebar()
+                .navigationTitle("Kodio")
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Menu {
-                            ViewHostsMenu()
-                            Divider()
-                            Button("Edit hosts") {
-                                Task {
-                                    appState.viewSheet(type: .settings)
-                                }
-                            }
-                            Button(
-                                action: {
-                                    Task {
-                                        appState.viewSheet(type: .help)
-                                    }
-                                },
-                                label: {
-                                    Text("Help")
-                                }
-                            )
-                            Button(
-                                action: {
-                                    Task {
-                                        appState.viewSheet(type: .about)
-                                    }
-                                },
-                                label: {
-                                    Text("About Kodio")
-                                }
-                            )
-                        } label: {
-                            Image(systemName: "gear")
-                        }
-                    }
-                }
+                .toolbar(content: iOStoolbar)
             ViewLibrary()
                 .navigationTitle("")
                 .navigationBarTitleDisplayMode(.inline)
@@ -61,6 +28,46 @@ struct ViewContent: View {
         }
         .alert(item: $appState.alert) { alertItem in
             return alertContent(content: alertItem)
+        }
+    }
+}
+
+extension ViewContent {
+    
+    /// The iOS toolbar for the sidebar
+    @ToolbarContentBuilder func iOStoolbar() -> some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Menu {
+                ViewHostsMenu()
+                Divider()
+                Button("Settings") {
+                    Task {
+                        appState.viewSheet(type: .settings)
+                    }
+                }
+                Button(
+                    action: {
+                        Task {
+                            appState.viewSheet(type: .help)
+                        }
+                    },
+                    label: {
+                        Text("Kodio Help")
+                    }
+                )
+                Button(
+                    action: {
+                        Task {
+                            appState.viewSheet(type: .about)
+                        }
+                    },
+                    label: {
+                        Text("About Kodio")
+                    }
+                )
+            } label: {
+                Image(systemName: "gear")
+            }
         }
     }
 }
