@@ -17,6 +17,8 @@ struct ViewHostsEdit: View {
     @State var values = HostItem()
     /// The status of the host that is edited
     @State var status: Status = .new
+    /// The setting to show the radio channels or not
+    @AppStorage("showRadio") var showRadio: Bool = false
     /// The view
     var body: some View {
         HStack(spacing: 0) {
@@ -39,7 +41,7 @@ struct ViewHostsEdit: View {
                                 .disabled(host == selectedHost)
                         }
                     }
-                    Text("New")
+                    Text("New Kodi")
                         .font(.headline)
                     Button(
                         action: {
@@ -48,10 +50,18 @@ struct ViewHostsEdit: View {
                             status = .new
                         },
                         label: {
-                            Label("Add a new Kodi", systemImage: "plus")
+                            Label("Add a host", systemImage: "plus")
                         }
                     )
                         .disabled(status == .new)
+                    Text("Radio channels")
+                        .font(.headline)
+                    Toggle(isOn: $showRadio) {
+                        Text("Show radio channels")
+                    }
+                    Text("They are currently hardcoded\nso the list is not editable.")
+                        .fixedSize(horizontal: false, vertical: true)
+                        .font(.caption)
                     Spacer()
                 }
                 .sidebarButtons()

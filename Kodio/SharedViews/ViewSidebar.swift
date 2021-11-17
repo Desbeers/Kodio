@@ -11,6 +11,8 @@ import SwiftUI
 struct ViewSidebar: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState
+    /// The setting to show the radio channels or not
+    @AppStorage("showRadio") var showRadio: Bool = false
     /// The view
     var body: some View {
         VStack(spacing: 0) {
@@ -20,8 +22,10 @@ struct ViewSidebar: View {
                         .listRowInsets(EdgeInsets())
                     playlists
                         .listRowInsets(EdgeInsets())
-                    ViewRadio()
-                        .listRowInsets(EdgeInsets())
+                    if showRadio {
+                        ViewRadio()
+                            .listRowInsets(EdgeInsets())
+                    }
                 } else {
                     Section(header: ViewAppStateStatus()) {
                         EmptyView()
