@@ -17,9 +17,9 @@ Unlike most SwiftUI programmers, my main focus is for macOS. It is a challenge b
 - All `Menu Bar` items are useful; however, the `About` and `Help` are not truly 100% macOS because they still live in the early 2000's... I know how to make them *old style* but I think it's not worth it. See below.
 - Close `Sheets` when pressing *return* on the keyboard.
 
-Here is a slideshow with screenshots from the macOS version:
+On YouTube, I have a slideshow with screenshots from the macOS version:
 
-https://github.com/Desbeers/Kodio/raw/main/slideshow.mp4
+[![Kodio screenshots](https://img.youtube.com/vi/n4VwDbXoY0M/0.jpg)](https://www.youtube.com/watch?v=n4VwDbXoY0M)
 
 ### Performance
 
