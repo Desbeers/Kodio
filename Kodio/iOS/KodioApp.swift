@@ -58,9 +58,6 @@ import SwiftUI
                         }
                     } else if newPhase == .background {
                         logger("Background (iOS)")
-//                        Task {
-//                            appState.setState(current: .sleeping)
-//                        }
                     }
                 }
         }
