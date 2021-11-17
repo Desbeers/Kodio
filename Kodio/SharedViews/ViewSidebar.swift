@@ -17,6 +17,16 @@ struct ViewSidebar: View {
     var body: some View {
         VStack(spacing: 0) {
             List {
+                if appState.scanningLibrary {
+                    HStack {
+                        ProgressView()
+                        /// Make this a bit smaller on macOS
+                            .macOS {$0
+                            .scaleEffect(0.5)
+                            }
+                        Text("Scanning the library")
+                    }
+                }
                 if appState.state == .loadedLibrary {
                     libraryLists
                         .listRowInsets(EdgeInsets())

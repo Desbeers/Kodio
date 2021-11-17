@@ -78,6 +78,8 @@
 		D74EFC4826E7C9EF00720D3C /* LibraryProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74EFC4726E7C9EF00720D3C /* LibraryProperties.swift */; };
 		D74EFC4926E7C9EF00720D3C /* LibraryProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74EFC4726E7C9EF00720D3C /* LibraryProperties.swift */; };
 		D752FF86274513E700858882 /* ViewLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F37E5E26AD8B6C00EFE6F1 /* ViewLibrary.swift */; };
+		D752FF872745556D00858882 /* KodiHostLibraryScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043B26F9C50C0012C7B2 /* KodiHostLibraryScan.swift */; };
+		D752FF88274555AB00858882 /* KodiHostActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043D26F9C86E0012C7B2 /* KodiHostActions.swift */; };
 		D75F765926CA863700165656 /* KodiHostSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765826CA863700165656 /* KodiHostSettings.swift */; };
 		D75F765A26CA863700165656 /* KodiHostSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765826CA863700165656 /* KodiHostSettings.swift */; };
 		D75F765C26CAA41A00165656 /* ViewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765B26CAA41A00165656 /* ViewSheet.swift */; };
@@ -633,6 +635,7 @@
 				D72740E726B1809100067D4A /* KodiHostProperties.swift in Sources */,
 				D7F37E6C26AD9F6400EFE6F1 /* ViewDetails.swift in Sources */,
 				D76CF9B726B2F20E00351667 /* ViewQueue.swift in Sources */,
+				D752FF88274555AB00858882 /* KodiHostActions.swift in Sources */,
 				D7F00A9726AEFEDA00CEE39E /* Methods.swift in Sources */,
 				D73163E426AC018200CD5F7E /* LibraryLists.swift in Sources */,
 				D706F66A26B08AED0068F35C /* LibraryFiles.swift in Sources */,
@@ -657,6 +660,7 @@
 				D72E0DA826CC44350001B47A /* ViewHosts.swift in Sources */,
 				D76B190D271326E200CEB741 /* ViewHelp.swift in Sources */,
 				D7E1EA5B2736F37A0087EA69 /* LibraryLoad.swift in Sources */,
+				D752FF872745556D00858882 /* KodiHostLibraryScan.swift in Sources */,
 				D73163DB26ABEFC100CD5F7E /* LibraryAlbums.swift in Sources */,
 				D72740ED26B186EF00067D4A /* PlayerGetItem.swift in Sources */,
 				D75F765F26CAA72000165656 /* ViewSettings.swift in Sources */,

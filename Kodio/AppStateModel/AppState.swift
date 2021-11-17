@@ -26,6 +26,8 @@ final class AppState: ObservableObject {
     var activeSheet: Sheets = .queue
     /// The struct for a SwiftUI Alert item
     @Published var alert: AlertItem?
+    /// Bool if we are scanning the libraray on a host
+    @Published var scanningLibrary = false
     /// The state of Kodio
     @Published var state: State = .none
     /// The sidebar items

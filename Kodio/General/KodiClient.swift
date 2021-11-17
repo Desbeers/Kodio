@@ -18,8 +18,8 @@ final class KodiClient: ObservableObject {
     let urlSession: URLSession
     /// The WebSocket task
     var webSocketTask: URLSessionWebSocketTask?
-    /// Bool to turn notifications on and off
-    var notificate = true
+    /// Bool if we are scanning the libraray on a host
+    var scanningLibrary = false
     /// An array with all Kodi hosts
     @Published var hosts: [HostItem]
     /// A struct with selected host information
@@ -63,6 +63,7 @@ extension KodiClient {
                   throw APIError.responseUnsuccessful
               }
         guard let decoded = try? JSONDecoder().decode(BaseResponse<T.Response>.self, from: data) else {
+            debugJsonResponse(data: data)
             throw APIError.invalidData
         }
         return decoded.result

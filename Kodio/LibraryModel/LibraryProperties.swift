@@ -23,7 +23,11 @@ extension Library {
                 try Cache.set(key: "LibraryLastUpdated", object: result)
             } else {
                 if let cache = Cache.get(key: "LibraryLastUpdated", as: Properties.self),
-                   cache.libraryLastUpdated < result.libraryLastUpdated {
+                   cache.songsModified == result.songsModified,
+                   cache.songsLastAdded == result.songsLastAdded,
+                   cache.albumsModified == result.albumsModified,
+                   cache.albumsLastAdded == result.albumsLastAdded {
+                } else {
                     logger("Library is out of date.")
                     let appState: AppState = .shared
                     await appState.viewAlert(type: .outdatedLibrary)
@@ -45,7 +49,7 @@ extension Library {
         /// The request struct
         struct Params: Encodable {
             /// The properties we ask for
-            let properties = ["librarylastupdated"]
+            let properties = ["songslastadded", "songsmodified", "albumslastadded", "albumsmodified"]
         }
         /// The response struct
         typealias Response = Properties
@@ -53,12 +57,24 @@ extension Library {
 
     /// The struct for the library properties
     struct Properties: Codable {
-        /// Last update
-        var libraryLastUpdated: String = ""
+        /// Last added songs
+        var songsLastAdded: String = ""
+        /// Last modified songs
+        var songsModified: String = ""
+        /// Last added albums
+        var albumsLastAdded: String = ""
+        /// Last modified albums
+        var albumsModified: String = ""
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// lowerCamelCase
-            case libraryLastUpdated = "librarylastupdated"
+            case songsLastAdded = "songslastadded"
+            /// lowerCamelCase
+            case songsModified = "songsmodified"
+            /// lowerCamelCase
+            case albumsLastAdded = "albumslastadded"
+            /// lowerCamelCase
+            case albumsModified = "albumsmodified"
         }
     }
 }

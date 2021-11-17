@@ -40,6 +40,12 @@ extension ViewContent {
             Menu {
                 ViewHostsMenu()
                 Divider()
+                if appState.state == .loadedLibrary {
+                    Button("Scan library on '\(KodiClient.shared.selectedHost.description)'") {
+                        KodiHost.shared.scanAudioLibrary()
+                    }
+                    Divider()
+                }
                 Button("Settings") {
                     Task {
                         appState.viewSheet(type: .settings)

@@ -99,19 +99,21 @@ extension KodiClient {
         webSocketTask?.receive { result in
             switch result {
             case .success(let message):
-                if case .string(let text) = message, self.notificate {
+                if case .string(let text) = message {
                     /// get the notification
                     guard let data = text.data(using: .utf8),
                           let notification = try? JSONDecoder().decode(NotificationItem.self, from: data),
                           let method = Method(rawValue: notification.method)
                     else {
                         /// Not an interesting notification
+                        /// Call ourself again to receive the next notification
+                        self.receiveNotification()
                         return
                     }
                     logger("Notification: \(notification.method)")
                     self.notificationAction(method: method)
                 }
-                /// Call ourself again to receive the next notice
+                /// Call ourself again to receive the next notification
                 self.receiveNotification()
             case .failure:
                 /// Failures are handled by the delegate
@@ -153,14 +155,36 @@ extension KodiClient {
                 await Player.shared.getItem()
                 await Player.shared.getProperties()
             }
-        /// Reload library lists
+        /// Reload library lists, but only if the host is not currently scanning
         case .audioLibraryOnUpdate:
-            Task {
-                await Library.shared.getLibraryListItems()
+            if !scanningLibrary {
+                Task {
+                    await Library.shared.getLibraryListItems()
+                }
+            } else {
+                logger("Not updating the list items, Host is scanning")
             }
         case .playerOnSpeedChanged:
             Task {
                 await Player.shared.getProperties()
+            }
+        case .audioLibraryOnScanStarted:
+            scanningLibrary = true
+            logger("Scanning library on the host")
+            /// Tell the ApppState
+            Task { @MainActor in
+                AppState.shared.scanningLibrary = true
+            }
+        case .audioLibraryOnScanFinished:
+            scanningLibrary = false
+            logger("Finished scanning library on the host")
+            /// Tell the ApppState
+            Task { @MainActor in
+                AppState.shared.scanningLibrary = false
+            }
+            Task {
+                /// See if we are still up to date
+                await Library.shared.getLastUpdate()
             }
         default:
             logger("No action after notification")
