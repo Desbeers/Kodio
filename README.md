@@ -17,6 +17,10 @@ Unlike most SwiftUI programmers, my main focus is for macOS. It is a challenge b
 - All `Menu Bar` items are useful; however, the `About` and `Help` are not truly 100% macOS because they still live in the early 2000's... I know how to make them *old style* but I think it's not worth it. See below.
 - Close `Sheets` when pressing *return* on the keyboard.
 
+Here is a slideshow with screenshots from the macOS version:
+
+https://github.com/Desbeers/Kodio/raw/main/slideshow.mp4
+
 ### Performance
 
 I spend a lot (*lot*) of time to get the performance reasonable. SwiftUI is easy, sometimes too easy, *Observer the whole world and it works*! So I learned a lot about *declarative* coding; that's the keyword for *speed*. I develop on a MacBook Pro from mid 2015 and my iPad is an iPad Pro from 2016. Old stuff, but the performance is pretty good in my opinion.
