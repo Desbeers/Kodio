@@ -20,6 +20,7 @@ struct ViewToolbar: ViewModifier {
     /// The view
     func body(content: Content) -> some View {
         if basic {
+            /// Return only the player buttons
             content
             HStack {
                 prevButton
@@ -27,19 +28,14 @@ struct ViewToolbar: ViewModifier {
                 nextButton
             }
         } else {
+            /// Return a full toolbar
+            /// - Note: The labels for the toolbar items must be fixed or else Kodio on macOS will crash
             content
-            /// - Note: The labels for the toolbar items must be fixed or else macOS Kodio will crash
                 .toolbar(id: "ToolbarButtons") {
-#if os(iOS)
-                    ToolbarItem(id: "queueButton", placement: .navigation, showsByDefault: true) {
-                        HStack {
-                            queueButton
-                            playerItem
-                        }
-                    }
-#endif
-#if os(macOS)
-                    ToolbarItem(id: "nowPlaying", placement: .automatic, showsByDefault: true) {
+                    ToolbarItem(id: "nowPlaying",
+                                placement: AppState.shared.system == .macOS ? .automatic : .navigation,
+                                showsByDefault: true
+                    ) {
                         Label {
                             Text("Now playing")
                         } icon: {
@@ -47,19 +43,23 @@ struct ViewToolbar: ViewModifier {
                                 queueButton
                                 playerItem
                             }
-                            .frame(width: 300, alignment: .leading)
+                            .frame(width: 400, alignment: .leading)
                             .background(Color.secondary.opacity(0.1))
                             .cornerRadius(2)
                             .border(Color.secondary.opacity(0.1), width: 1)
                             .animation(.default, value: player.item)
-                            
                         }
                     }
-                    ToolbarItem(id: "spacer", placement: .automatic, showsByDefault: true) {
+                    ToolbarItem(id: "spacer",
+                                placement: .automatic,
+                                showsByDefault: true
+                    ) {
                         Spacer()
                     }
-#endif
-                    ToolbarItem(id: "playerButtons", placement: .automatic, showsByDefault: true) {
+                    ToolbarItem(id: "playerButtons",
+                                placement: .automatic,
+                                showsByDefault: true
+                    ) {
                         Label {
                             Text("Player")
                         } icon: {
@@ -75,13 +75,22 @@ struct ViewToolbar: ViewModifier {
                             }
                         }
                     }
-                    ToolbarItem(id: "shuffleButton", placement: .automatic, showsByDefault: true) {
+                    ToolbarItem(id: "shuffleButton",
+                                placement: .automatic,
+                                showsByDefault: true
+                    ) {
                         shuffleButton
                     }
-                    ToolbarItem(id: "repeatButton", placement: .automatic, showsByDefault: true) {
+                    ToolbarItem(id: "repeatButton",
+                                placement: .automatic,
+                                showsByDefault: true
+                    ) {
                         repeatButton
                     }
-                    ToolbarItem(id: "volumeSlider", placement: .automatic, showsByDefault: true) {
+                    ToolbarItem(id: "volumeSlider",
+                                placement: .automatic,
+                                showsByDefault: true
+                    ) {
                         volumeSlider
                     }
                 }
