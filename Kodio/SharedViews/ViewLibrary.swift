@@ -7,19 +7,33 @@
 
 import SwiftUI
 
+#if os(macOS)
 /// View the whole library
 struct ViewLibrary: View {
     /// The view
     var body: some View {
         VStack(spacing: 0) {
-            /// A divider; else the genres, artist and albums fill scroll over the toolbar
-            Divider()
             SplitView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .frame(maxWidth: .infinity, minHeight: 500, maxHeight: .infinity)
     }
 }
+#endif
+
+#if os(iOS)
+/// View the whole library
+struct ViewLibrary: View {
+    /// The view
+    var body: some View {
+        VStack(spacing: 0) {
+            ViewLibraryTop()
+            ViewLibraryBottom()
+        }
+        .toolbar()
+    }
+}
+#endif
 
 /// View the top of the library: genres, artists and songs
 struct ViewLibraryTop: View {
@@ -27,6 +41,8 @@ struct ViewLibraryTop: View {
     @EnvironmentObject var library: Library
     /// The view
     var body: some View {
+        /// A divider; else the genres, artist and albums fill scroll over the toolbar
+        Divider()
         HStack(spacing: 0) {
             ViewGenres(genres: library.filteredContent.genres, selected: library.genres.selected)
                 .frame(width: 150)

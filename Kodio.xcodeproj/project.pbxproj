@@ -56,7 +56,6 @@
 		D73163F526AC4D2700CD5F7E /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73163F226AC4C0300CD5F7E /* Search.swift */; };
 		D73DD7F026D3E7020024CB51 /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73DD7EF26D3E7020024CB51 /* KodioApp.swift */; };
 		D73DD7F326D3E7C40024CB51 /* ViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73DD7F126D3E7C40024CB51 /* ViewContent.swift */; };
-		D73DD7F426D3E7C40024CB51 /* ViewLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73DD7F226D3E7C40024CB51 /* ViewLibrary.swift */; };
 		D73DD7F626D3EC850024CB51 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA916F26A95C270090C137 /* Debug.swift */; };
 		D73DD7F726D3EC850024CB51 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA916F26A95C270090C137 /* Debug.swift */; };
 		D73E072B27401A97009A4B03 /* ViewMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E072A27401A97009A4B03 /* ViewMediaItem.swift */; };
@@ -78,6 +77,7 @@
 		D74D6FBC271AFC7500F5D28D /* ViewAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D6FBA271AFC7500F5D28D /* ViewAppState.swift */; };
 		D74EFC4826E7C9EF00720D3C /* LibraryProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74EFC4726E7C9EF00720D3C /* LibraryProperties.swift */; };
 		D74EFC4926E7C9EF00720D3C /* LibraryProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74EFC4726E7C9EF00720D3C /* LibraryProperties.swift */; };
+		D752FF86274513E700858882 /* ViewLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F37E5E26AD8B6C00EFE6F1 /* ViewLibrary.swift */; };
 		D75F765926CA863700165656 /* KodiHostSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765826CA863700165656 /* KodiHostSettings.swift */; };
 		D75F765A26CA863700165656 /* KodiHostSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765826CA863700165656 /* KodiHostSettings.swift */; };
 		D75F765C26CAA41A00165656 /* ViewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765B26CAA41A00165656 /* ViewSheet.swift */; };
@@ -186,7 +186,6 @@
 		D73163F226AC4C0300CD5F7E /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		D73DD7EF26D3E7020024CB51 /* KodioApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
 		D73DD7F126D3E7C40024CB51 /* ViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContent.swift; sourceTree = "<group>"; };
-		D73DD7F226D3E7C40024CB51 /* ViewLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLibrary.swift; sourceTree = "<group>"; };
 		D73E072A27401A97009A4B03 /* ViewMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMediaItem.swift; sourceTree = "<group>"; };
 		D73E0F42274411A900103F9D /* ViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewToolbar.swift; sourceTree = "<group>"; };
 		D745125D26B31F1800A99889 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -369,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				D73163E026AC001A00CD5F7E /* ViewSidebar.swift */,
+				D7F37E5E26AD8B6C00EFE6F1 /* ViewLibrary.swift */,
 				D7A1E7BE26AAB4D2009643DD /* ViewGenres.swift */,
 				D7EA917526A96C0C0090C137 /* ViewArtists.swift */,
 				D7EA917226A96BFC0090C137 /* ViewAlbums.swift */,
@@ -407,7 +407,6 @@
 			children = (
 				D7EA913026A93C1C0090C137 /* KodioApp.swift */,
 				D73DD7F126D3E7C40024CB51 /* ViewContent.swift */,
-				D73DD7F226D3E7C40024CB51 /* ViewLibrary.swift */,
 				D7EA913A26A93C1D0090C137 /* Info.plist */,
 			);
 			path = iOS;
@@ -419,7 +418,6 @@
 				D73DD7EF26D3E7020024CB51 /* KodioApp.swift */,
 				D7A9043926F86E600012C7B2 /* AppDelegate.swift */,
 				D7EA913126A93C1C0090C137 /* ViewContent.swift */,
-				D7F37E5E26AD8B6C00EFE6F1 /* ViewLibrary.swift */,
 				D7DE9A0B26B04B720002BC48 /* SplitView.swift */,
 				D7EA914126A93C1D0090C137 /* Info.plist */,
 				D7EA914226A93C1D0090C137 /* macOS.entitlements */,
@@ -621,6 +619,7 @@
 				D73E072B27401A97009A4B03 /* ViewMediaItem.swift in Sources */,
 				D73163D826ABE8EB00CD5F7E /* LibraryArtists.swift in Sources */,
 				D7F00A9426AEFEB300CEE39E /* KodiAPI.swift in Sources */,
+				D752FF86274513E700858882 /* ViewLibrary.swift in Sources */,
 				D7E1EA522736D9680087EA69 /* AppStateSheets.swift in Sources */,
 				D75F766226CAACAD00165656 /* ViewAbout.swift in Sources */,
 				D73163D526ABE8A700CD5F7E /* Library.swift in Sources */,
@@ -647,7 +646,6 @@
 				D75F765926CA863700165656 /* KodiHostSettings.swift in Sources */,
 				D7F00A9126AEFD6A00CEE39E /* KodiClient.swift in Sources */,
 				D7F00A9D26AEFFF100CEE39E /* String.swift in Sources */,
-				D73DD7F426D3E7C40024CB51 /* ViewLibrary.swift in Sources */,
 				D74EFC4826E7C9EF00720D3C /* LibraryProperties.swift in Sources */,
 				D72740F026B187F000067D4A /* PlayerGetProperties.swift in Sources */,
 				D75FD8612715FF2200358BC9 /* ViewSearch.swift in Sources */,
