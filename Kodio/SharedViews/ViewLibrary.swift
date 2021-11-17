@@ -41,17 +41,19 @@ struct ViewLibraryTop: View {
     @EnvironmentObject var library: Library
     /// The view
     var body: some View {
-        /// A divider; else the genres, artist and albums fill scroll over the toolbar
-        Divider()
-        HStack(spacing: 0) {
-            ViewGenres(genres: library.filteredContent.genres, selected: library.genres.selected)
-                .frame(width: 150)
-            ViewArtists(artists: library.filteredContent.artists, selected: library.artists.selected)
-            ViewAlbums(albums: library.filteredContent.albums, selected: library.albums.selected)
+        VStack(spacing: 0) {
+            /// A divider; else the genres, artist and albums fill scroll over the toolbar
+            Divider()
+            HStack(spacing: 0) {
+                ViewGenres(genres: library.filteredContent.genres, selected: library.genres.selected)
+                    .frame(width: 150)
+                ViewArtists(artists: library.filteredContent.artists, selected: library.artists.selected)
+                ViewAlbums(albums: library.filteredContent.albums, selected: library.albums.selected)
+            }
+            .overlay(
+                ViewDropShadow()
+            )
         }
-        .overlay(
-            ViewDropShadow()
-        )
     }
 }
 
