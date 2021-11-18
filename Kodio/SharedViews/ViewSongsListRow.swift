@@ -18,14 +18,17 @@ struct ViewSongsListRow: View {
     @EnvironmentObject var player: Player
     /// The view
     var body: some View {
-        Label {
-            HStack {
-                leading
-                Divider()
-                ViewMediaItemDetails(item: song)
+        VStack(alignment: .leading) {
+            Label {
+                HStack {
+                    leading
+                    Divider()
+                    ViewMediaItemDetails(item: song)
+                }
+            } icon: {
+                icon
             }
-        } icon: {
-            icon
+            Divider()
         }
         .labelStyle(LabelStyleSongs())
         .contextMenu {
@@ -95,7 +98,7 @@ extension ViewSongsListRow {
                 Library.shared.favoriteSongToggle(song: song)
             },
             label: {
-                Label(song.rating == 0 ? "Add to favorites" : "Remove from favorites", systemImage: song.rating == 0 ? "heart" : "heart.slash")
+                Label(song.rating == 0 ? "Favorite" : "Remove", systemImage: song.rating == 0 ? "heart" : "heart.slash")
             }
         )
             .tint(.red.opacity(0.6))

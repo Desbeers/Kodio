@@ -56,7 +56,10 @@ extension ViewSongs {
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
+        } else {
+            Spacer()
         }
+        
     }
     
     /// The list of songs
@@ -73,9 +76,9 @@ extension ViewSongs {
                             songList += await Library.pager(items: songs, page: currentPage)
                         }
                     }
-#if os(macOS)
-                Divider()
-#endif
+                    .modifier(ViewModifierLists())
+                
+                
             }
         }
         .task {

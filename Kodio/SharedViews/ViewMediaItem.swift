@@ -47,3 +47,18 @@ struct ViewMediaItemDetails: View {
         }
     }
 }
+
+/// View modifier for lists
+struct ViewModifierLists: ViewModifier {
+#if os(macOS)
+    func body(content: Content) -> some View {
+        content
+    }
+#endif
+#if os(iOS)
+    func body(content: Content) -> some View {
+        content
+            .listRowSeparator(.hidden)
+    }
+#endif
+}
