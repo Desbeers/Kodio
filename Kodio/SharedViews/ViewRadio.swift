@@ -27,8 +27,14 @@ struct ViewRadio: View {
                             Image(systemName: radioIcon(channel: channel))
                                 .foregroundColor(.purple)
                                 .frame(width: 20)
-                            Text(channel.label)
-                                .lineLimit(nil)
+                            VStack(alignment: .leading) {
+                                Text(channel.title)
+                                    .lineLimit(nil)
+                                Text(channel.description)
+                                    .lineLimit(nil)
+                                    .font(.caption)
+                                    .opacity(0.5)
+                            }
                         }
                     }
                 )
