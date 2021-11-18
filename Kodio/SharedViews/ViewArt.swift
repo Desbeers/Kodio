@@ -76,7 +76,7 @@ struct ViewPlayerArt: View {
         if let song = Library.shared.songs.all.first(where: { $0.songID == item.songID }) {
             ViewRemoteArt(item: song, art: .thumbnail)
             /// Radio station
-        } else if let stream = Library.shared.radioStations.first(where: { $0.stream == item.mediapath }) {
+        } else if let stream = Library.shared.radioStations.first(where: { $0.stream == item.mediaPath }) {
             Image(stream.thumbnail)
                 .resizable()
                 .frame(width: size, height: size)

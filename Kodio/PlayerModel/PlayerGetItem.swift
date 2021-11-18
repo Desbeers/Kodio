@@ -60,11 +60,15 @@ extension Player {
         /// The artist of the item if the item is a song
         var artist: [String]?
         /// The path of the item
-        var mediapath: String = ""
+        var mediaPath: String?
+        /// The type of the item
+        var type: String?
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys
-            case title, artist, mediapath
+            case title, artist, type
+            /// lowerCamelCase
+            case mediaPath = "mediapath"
             /// ID is a reserved word
             case songID = "id"
         }

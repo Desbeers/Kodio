@@ -44,7 +44,7 @@ extension ViewRadio {
     /// - Returns: A ``String`` with the name of the SF symbol
     func radioIcon(channel: Library.RadioItem) -> String {
         var icon = "antenna.radiowaves.left.and.right"
-        if player.item.mediapath == channel.stream {
+        if player.item.mediaPath == channel.stream {
             if player.properties.speed == 0 {
                 icon = "pause.fill"
             } else {
