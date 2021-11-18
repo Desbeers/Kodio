@@ -47,7 +47,12 @@ extension Library {
         logger("Artist selected")
         /// Reload albums and songs
         Task(priority: .userInitiated) {
-            artists.selected = artists.selected == artist ? nil : artist
+            /// Remember the past for Album Artists
+            if let album = albums.selected, album.artistID.contains(artist.artistID) {
+                artists.selected = artist
+            } else {
+                artists.selected = artists.selected == artist ? nil : artist
+            }
             /// Reset selection
             albums.selected = nil
             /// Set the selection
