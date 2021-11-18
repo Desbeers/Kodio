@@ -39,15 +39,15 @@ struct ViewToolbar: ViewModifier {
                         Label {
                             Text("Now playing")
                         } icon: {
-                            HStack {
-                                queueButton
-                                playerItem
-                            }
-                            .frame(width: 400, alignment: .leading)
-                            .background(Color.secondary.opacity(0.15))
-                            .cornerRadius(2)
-                            .border(Color.secondary.opacity(0.15), width: 1)
-                            .animation(.default, value: player.item)
+                            playerItemButton
+                            /// macOS toolbar is flexible, so make this fixed. Else items might jump
+                                .macOS {$0
+                                .frame(width: 400, alignment: .leading)
+                                .background(Color.secondary.opacity(0.15))
+                                .cornerRadius(2)
+                                .border(Color.secondary.opacity(0.15), width: 1)
+                                }
+                                .animation(.default, value: player.item)
                         }
                     }
                     ToolbarItem(id: "spacer",
@@ -99,16 +99,19 @@ struct ViewToolbar: ViewModifier {
 }
 
 extension ViewToolbar {
-    /// The button to open the queue sheet
-    var queueButton: some View {
+    /// The button to open the queue sheet if any songs
+    var playerItemButton: some View {
         Button(
             action: {
-                AppState.shared.viewSheet(type: .queue)
+                if !queue.queueItems.isEmpty {
+                    AppState.shared.viewSheet(type: .queue)
+                }
             },
             label: {
                 ViewPlayerArt(item: player.item, size: 30)
                     .frame(width: 30, height: 30)
                     .cornerRadius(2)
+                playerItem
             }
         )
             .buttonStyle(PlainButtonStyle())
