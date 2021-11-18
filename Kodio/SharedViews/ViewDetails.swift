@@ -26,7 +26,8 @@ struct ViewDetails: View {
                             .font(.caption)
                     }
                     .id(item.title)
-                    ViewArtwork(item: item, width: width)
+                    ViewArtwork(item: item, width: width - 20)
+                        .padding(.horizontal, 10)
                     Text(item.description)
                     ViewStatistics(item: item)
                 }
