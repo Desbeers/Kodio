@@ -80,6 +80,7 @@
 		D752FF86274513E700858882 /* ViewLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F37E5E26AD8B6C00EFE6F1 /* ViewLibrary.swift */; };
 		D752FF872745556D00858882 /* KodiHostLibraryScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043B26F9C50C0012C7B2 /* KodiHostLibraryScan.swift */; };
 		D752FF88274555AB00858882 /* KodiHostActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043D26F9C86E0012C7B2 /* KodiHostActions.swift */; };
+		D752FF8B2746502900858882 /* NSSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D752FF892746502300858882 /* NSSearchField.swift */; };
 		D75F765926CA863700165656 /* KodiHostSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765826CA863700165656 /* KodiHostSettings.swift */; };
 		D75F765A26CA863700165656 /* KodiHostSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765826CA863700165656 /* KodiHostSettings.swift */; };
 		D75F765C26CAA41A00165656 /* ViewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765B26CAA41A00165656 /* ViewSheet.swift */; };
@@ -197,6 +198,7 @@
 		D74C95BD272C8F3700148F93 /* ViewSongsListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSongsListRow.swift; sourceTree = "<group>"; };
 		D74D6FBA271AFC7500F5D28D /* ViewAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAppState.swift; sourceTree = "<group>"; };
 		D74EFC4726E7C9EF00720D3C /* LibraryProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryProperties.swift; sourceTree = "<group>"; };
+		D752FF892746502300858882 /* NSSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSearchField.swift; sourceTree = "<group>"; };
 		D75F765826CA863700165656 /* KodiHostSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHostSettings.swift; sourceTree = "<group>"; };
 		D75F765B26CAA41A00165656 /* ViewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSheet.swift; sourceTree = "<group>"; };
 		D75F765E26CAA72000165656 /* ViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSettings.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				D7F00A8626AECDEB00CEE39E /* View.swift */,
 				D7F00A9C26AEFFF100CEE39E /* String.swift */,
 				D7241F522719A2610093E68A /* NSTableView.swift */,
+				D752FF892746502300858882 /* NSSearchField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				D7F00A9526AEFEB300CEE39E /* KodiAPI.swift in Sources */,
 				D73163D926ABE8EB00CD5F7E /* LibraryArtists.swift in Sources */,
 				D73163D626ABE8A700CD5F7E /* Library.swift in Sources */,
+				D752FF8B2746502900858882 /* NSSearchField.swift in Sources */,
 				D72740EE26B186EF00067D4A /* PlayerGetItem.swift in Sources */,
 				D7F00A8C26AEFC4200CEE39E /* Hosts.swift in Sources */,
 				D7AE512C26B9448800A57244 /* ViewRadio.swift in Sources */,

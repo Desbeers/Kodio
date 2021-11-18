@@ -18,7 +18,7 @@ struct ViewModifierSearch: ViewModifier {
         content
         /// - Note: To make it possible to change the button layout of the toolbar in macOS
         /// the 'search' **must** be in the sidebar or else it does not work
-            .searchable(text: $searchObserver.query, placement: .sidebar) {
+            .searchable(text: $searchObserver.query, placement: .sidebar, prompt: "Search library") {
                 if !library.search.suggestions.isEmpty {
                     ForEach(library.search.suggestions) { suggestion in
                         HStack {
