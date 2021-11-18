@@ -16,10 +16,21 @@ extension Player {
         let request = PlayerGetItem()
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
+            /// Only update the item when it is changed
             if item != result.item {
+                debugJsonResponse(data: result.item)
+                print(result.item)
                 Task { @MainActor in
                     logger("Player item changed")
                     item = result.item
+                }
+            }
+            /// Keep an eye on the player if it is playing but it is not a song
+            if item.songID == nil, properties.playing {
+                Task {
+                    await Task.sleep(5_000_000_000)
+                    logger("Checking the player item...")
+                    await Player.shared.getItem()
                 }
             }
         } catch {
