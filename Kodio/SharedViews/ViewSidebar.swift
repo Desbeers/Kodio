@@ -43,10 +43,14 @@ struct ViewSidebar: View {
                     .listRowInsets(EdgeInsets())
                 }
             }
-            .sidebarButtons()
+            .buttonStyle(ButtonStyleSidebar())
         }
         .animation(.default, value: appState.sidebarItems)
     }
+}
+
+extension ViewSidebar {
+    
     /// View library lists
     var libraryLists: some View {
         Section(header: Text("Music on '\(KodiClient.shared.selectedHost.description)'")) {
@@ -67,12 +71,32 @@ struct ViewSidebar: View {
     }
     /// A button in the sidebar
     func sidebarButton(item: Library.LibraryListItem) -> some View {
-        Button(
+        /// Define the color of the icon
+        var iconColor: Color {
+            switch item.media {
+            case .playlist, .random, .neverPlayed:
+                return Color.primary
+            case .favorites:
+                return Color.red
+            default:
+                /// - Note: On iOS, the accentColor for a disabled button is grey, so, force blue
+                return appState.system == .macOS ? Color.accentColor : Color.blue
+            }
+        }
+        /// Return the styled button
+        return Button(
             action: {
                 Library.shared.selectLibraryList(libraryList: item)
             },
             label: {
-                Label(item.title, systemImage: item.icon)
+                /// - Note: Not in a ``Label`` because with multi-lines the icon does not center
+                HStack {
+                    Image(systemName: item.icon)
+                        .foregroundColor(iconColor)
+                        .frame(width: 20)
+                    Text(item.title)
+                        .lineLimit(nil)
+                }
             }
         )
             .disabled(item.selected)

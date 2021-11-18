@@ -59,12 +59,12 @@ struct ViewHostsEdit: View {
                     Toggle(isOn: $showRadio) {
                         Text("Show radio channels")
                     }
-                    Text("They are currently hardcoded\nso the list is not editable.")
+                    Text("They are currently hardcoded so the list is not editable.")
                         .fixedSize(horizontal: false, vertical: true)
                         .font(.caption)
                     Spacer()
                 }
-                .sidebarButtons()
+                .buttonStyle(ButtonStyleSidebar())
                 .padding()
                 .frame(maxWidth: 200)
             }

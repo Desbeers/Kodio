@@ -22,7 +22,14 @@ struct ViewRadio: View {
                         player.playRadio(stream: channel.stream)
                     },
                     label: {
-                        radioLabel(channel: channel)
+                        /// - Note: Not in a ``Label`` because with multi-lines the icon does not center
+                        HStack {
+                            Image(systemName: radioIcon(channel: channel))
+                                .foregroundColor(.purple)
+                                .frame(width: 20)
+                            Text(channel.label)
+                                .lineLimit(nil)
+                        }
                     }
                 )
             }
@@ -32,18 +39,18 @@ struct ViewRadio: View {
 
 extension ViewRadio {
 
-    /// Create a `Label` for a radio channel
-    /// - Parameter channel: a ``Library/RadioItem`` struct
-    /// - Returns: a formatted `Label`
-    @ViewBuilder func radioLabel(channel: Library.RadioItem) -> some View {
+    /// The SF symbol for the radio item
+    /// - Parameter channel: A ``Library/RadioItem`` struct
+    /// - Returns: A ``String`` with the name of the SF symbol
+    func radioIcon(channel: Library.RadioItem) -> String {
+        var icon = "antenna.radiowaves.left.and.right"
         if player.item.mediapath == channel.stream {
             if player.properties.speed == 0 {
-                Label(channel.label, systemImage: "pause.fill")
+                icon = "pause.fill"
             } else {
-                Label(channel.label, systemImage: "play.fill")
+                icon = "play.fill"
             }
-        } else {
-            Label(channel.label, systemImage: "antenna.radiowaves.left.and.right")
         }
+        return icon
     }
 }

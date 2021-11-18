@@ -105,7 +105,7 @@ extension Library {
         list.append(LibraryListItem(title: "Recently added",
                                     subtitle: "What's new in you library",
                                     empty: "Your library has nothing recently added",
-                                    icon: "clock",
+                                    icon: "star",
                                     media: .recentlyAdded
                                    ))
         list.append(LibraryListItem(title: "Most played",
@@ -123,7 +123,7 @@ extension Library {
         list.append(LibraryListItem(title: "Favorites",
                                     subtitle: "Your favorite songs",
                                     empty: "Your library has no favorite songs",
-                                    icon: "star",
+                                    icon: "heart",
                                     media: .favorites
                                    ))
         list.append(LibraryListItem(title: "Playing queue",

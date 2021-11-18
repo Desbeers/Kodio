@@ -41,23 +41,10 @@ struct ViewListHeader: View {
 
 // MARK: - Style for an item in the sidebar
 
-/// - Note: - This is a combination of Label and Button
-
-/// Label style for a sidebar item
-struct LabelStyleSidebar: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        HStack {
-            configuration.icon.foregroundColor(.accentColor).frame(width: 24)
-            configuration.title
-            Spacer()
-        }
-    }
-}
-
 /// Button style for a sidebar item
 struct ButtonStyleSidebar: ButtonStyle {
     /// The style
-    func makeBody(configuration: Self.Configuration) -> some View {
+    func makeBody(configuration: Configuration) -> some View {
         ViewButtonStyleSidebar(configuration: configuration)
     }
 }
@@ -74,33 +61,17 @@ private extension ButtonStyleSidebar {
         /// The view
         var body: some View {
             return configuration.label
-                .padding(8)
+                .padding(.horizontal, 4)
+                .padding(.vertical, 6)
                 .brightness(configuration.isPressed ? 0.2 : 0)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .background(isEnabled ?  Color.clear : Color.secondary.opacity(0.2))
                 .cornerRadius(6)
-            /// Smaller font for iOS
+            /// A bit more padding for iOS
                 .iOS {$0
-                .font(.subheadline.weight(.regular))
+                .padding(.horizontal, 6)
                 }
         }
-    }
-}
-
-/// Shortcut for the combined sidebar item style
-struct SidebarButtons: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .labelStyle(LabelStyleSidebar())
-            .buttonStyle(ButtonStyleSidebar())
-    }
-}
-
-/// Extend View with a shortcut
-extension View {
-    /// Shortcut for sidebar buttons
-    /// - Returns: A ``View`` modifier
-    func sidebarButtons() -> some View {
-        modifier(SidebarButtons())
     }
 }
 
