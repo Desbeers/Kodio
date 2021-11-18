@@ -11,6 +11,8 @@ import SwiftUI
 struct ViewDetails: View {
     /// The ``LibraryItem`` to show
     let item: LibraryItem
+    /// The width of this view
+    var width: CGFloat = 400
     /// The view
     var body: some View {
         ScrollViewReader { proxy in
@@ -24,12 +26,12 @@ struct ViewDetails: View {
                             .font(.caption)
                     }
                     .id(item.title)
-                    ViewArtwork(item: item)
+                    ViewArtwork(item: item, width: width)
                     Text(item.description)
                     ViewStatistics(item: item)
                 }
                 .padding()
-                .frame(width: 300)
+                .frame(width: width)
                 .id("DetailsHeader")
             }
             /// Scroll to the top when content changed
@@ -51,6 +53,8 @@ extension ViewDetails {
     struct ViewArtwork: View {
         /// The selected ``LibraryItem``
         let item: LibraryItem
+        /// The width of this view
+        let width: CGFloat
         /// The view
         var body: some View {
             VStack {
@@ -62,7 +66,7 @@ extension ViewDetails {
             }
             .animation(.none, value: item.id)
             .cornerRadius(3)
-            .frame(width: 256, height: 144)
+            .frame(width: width - 6, height: width / 16 * 9 - 6)
         }
         /// Overlay the base artwork
         @ViewBuilder var overlay: some View {
@@ -74,11 +78,13 @@ extension ViewDetails {
             case .album:
                 ZStack {
                     ViewRotatingRecord()
-                        .frame(width: 175, height: 145, alignment: .trailing)
+                        .padding()
+                        .frame(width: width, alignment: .trailing)
                     ViewRemoteArt(item: item, art: .thumbnail)
                         .scaledToFit()
                         .cornerRadius(2)
-                        .frame(width: 254, height: 142, alignment: .leading)
+                        .padding(.leading, 3)
+                        .frame(width: width - 2, alignment: .leading)
                 }
                 .cornerRadius(2)
                 .padding(1)

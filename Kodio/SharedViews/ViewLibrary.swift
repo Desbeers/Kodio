@@ -63,14 +63,16 @@ struct ViewLibraryBottom: View {
     @EnvironmentObject var library: Library
     /// The view
     var body: some View {
+        GeometryReader { geometry in
         HStack(spacing: 0) {
-            ViewDetails(item: library.selection)
+            ViewDetails(item: library.selection, width: geometry.size.width * 0.35)
             Divider()
             if library.filteredContent.songs.isEmpty {
                 ViewEmptyLibrary(item: library.selection)
             } else {
                 ViewSongs(songs: library.filteredContent.songs, selectedAlbum: library.albums.selected)
             }
+        }
         }
         .animation(.default, value: library.selection.empty)
     }
