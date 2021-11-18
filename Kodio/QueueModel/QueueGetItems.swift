@@ -18,13 +18,17 @@ extension Queue {
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
             if result.items != queueItems {
-                logger("Queue has changed")
-                /// Save the query for later
-                queueItems = result.items
+                if result.items.first?.songID != nil {
+                    /// Save the query for later
+                    logger("Queue has changed")
+                    queueItems = result.items
+                } else {
+                    logger("Queue is empty")
+                    queueItems = []
+                }
             }
         } catch {
-            logger("Queue is empty")
-            queueItems = []
+            print(error)
         }
         /// Update view or sidebar
         if viewingQueue {
@@ -66,7 +70,7 @@ extension Queue {
     /// The struct for a queue item
     struct QueueItem: Codable, Equatable {
         /// The song ID
-        let songID: Int
+        let songID: Int?
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// ID is a reserved word
