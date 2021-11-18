@@ -25,22 +25,6 @@ final class Player: ObservableObject {
     
     /// Private init to make sure we have only one instance
     private init() {}
-    /// The song title of the player item
-    var title: String {
-        var title = "Kodio"
-        if let label = item.title, !label.isEmpty {
-            title = label
-        }
-        return title
-    }
-    /// The artist name of the player item
-    var artist: String {
-        var title = "Play your own music"
-        if let artist = item.artist?.first, !artist.isEmpty {
-            title = artist
-        }
-        return title
-    }
 }
 
 extension Player {

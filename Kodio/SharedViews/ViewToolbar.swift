@@ -44,9 +44,9 @@ struct ViewToolbar: ViewModifier {
                                 playerItem
                             }
                             .frame(width: 400, alignment: .leading)
-                            .background(Color.secondary.opacity(0.1))
+                            .background(Color.secondary.opacity(0.15))
                             .cornerRadius(2)
-                            .border(Color.secondary.opacity(0.1), width: 1)
+                            .border(Color.secondary.opacity(0.15), width: 1)
                             .animation(.default, value: player.item)
                         }
                     }
@@ -116,13 +116,22 @@ extension ViewToolbar {
     /// The current item in the player
     var playerItem: some View {
         VStack(alignment: .leading) {
-            Text(player.title)
+            Text(player.item.title ?? "Kodio")
                 .font(.headline)
-            Text(player.artist)
-                .font(.subheadline)
+            if !player.item.subtitle.isEmpty {
+                Text(player.item.subtitle)
+                    .font(.subheadline)
+            } else if !player.properties.playing {
+                Text("Play your own music")
+                    .font(.subheadline)
+            }
         }
         .padding(.horizontal, 2)
-        .id(player.item.songID)
+        .id(player.item)
+        .iOS {$0
+        .scaleEffect(0.9)
+        .frame(height: 34)
+        }
     }
     /// The play/pause button
     var playButton: some View {

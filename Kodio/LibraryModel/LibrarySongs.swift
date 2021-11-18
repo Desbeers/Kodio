@@ -278,7 +278,7 @@ extension Library {
             albumID = try container.decodeIfPresent(Int.self, forKey: .albumID) ?? 0
             albumArtist = try container.decodeIfPresent([String].self, forKey: .albumArtist) ?? [""]
             albumArtistID = try container.decodeIfPresent([Int].self, forKey: .albumArtistID) ?? []
-            artist = try container.decodeIfPresent([String].self, forKey: .artist) ?? ["Play your own music"]
+            artist = try container.decodeIfPresent([String].self, forKey: .artist) ?? [""]
             artistID = try container.decodeIfPresent([Int].self, forKey: .artistID) ?? []
             dateAdded = try container.decodeIfPresent(String.self, forKey: .dateAdded) ?? ""
             genre = try container.decodeIfPresent([String].self, forKey: .genre) ?? [""]

@@ -18,18 +18,15 @@ extension Player {
             let result = try await KodiClient.shared.sendRequest(request: request)
             /// Only update the item when it is changed
             if item != result.item {
-                debugJsonResponse(data: result.item)
-                print(result.item)
                 Task { @MainActor in
                     logger("Player item changed")
                     item = result.item
                 }
             }
-            /// Keep an eye on the player if it is playing but it is not a song
-            if item.songID == nil, properties.playing {
+            /// Keep an eye on the player if it is not a song
+            if item.songID == nil {
                 Task {
                     await Task.sleep(5_000_000_000)
-                    logger("Checking the player item...")
                     await Player.shared.getItem()
                 }
             }
@@ -61,14 +58,18 @@ extension Player {
     }
 
     /// The struct for the player item
-    struct PlayerItem: Decodable, Equatable {
+    struct PlayerItem: Decodable, Equatable, Hashable {
         /// The properties that we ask for
         var properties = ["title", "artist", "mediapath"]
         /// The ID of the song if the item is a song
         var songID: Int?
-        /// The title of the item if the item is a song
+        /// The title of the item
         var title: String?
-        /// The artist of the item if the item is a song
+        /// The subtitle of the item
+        var subtitle: String {
+            return artist?.joined(separator: " & ") ?? ""
+        }
+        /// The artist of the item
         var artist: [String]?
         /// The path of the item
         var mediaPath: String?
