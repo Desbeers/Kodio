@@ -27,7 +27,6 @@ struct ViewDetails: View {
                     ViewArtwork(item: item)
                     Text(item.description)
                     ViewStatistics(item: item)
-                    Spacer()
                 }
                 .padding()
                 .frame(width: 300)
@@ -74,18 +73,12 @@ extension ViewDetails {
                     .padding(1)
             case .album:
                 ZStack {
-                    HStack(alignment: .top) {
-                        ViewRotatingRecord()
-                            .frame(width: 150, height: 150)
-                            .padding(.leading, 68)
-                        Spacer()
-                    }
-                    HStack(alignment: .center) {
-                        ViewRemoteArt(item: item, art: .thumbnail)
-                            .frame(width: 142, height: 142)
-                            .cornerRadius(2)
-                        Spacer()
-                    }
+                    ViewRotatingRecord()
+                        .frame(width: 175, height: 145, alignment: .trailing)
+                    ViewRemoteArt(item: item, art: .thumbnail)
+                        .scaledToFit()
+                        .cornerRadius(2)
+                        .frame(width: 254, height: 142, alignment: .leading)
                 }
                 .cornerRadius(2)
                 .padding(1)

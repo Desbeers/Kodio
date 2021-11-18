@@ -33,31 +33,30 @@ extension ViewSongs {
     /// The header above the list of songs
     @ViewBuilder var header: some View {
         let count = songs.count
-        VStack(alignment: .leading) {
-            HStack {
-                Button(
-                    action: {
-                        KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
-                        Player.shared.sendSongsAndPlay(songs: songs)
-                    },
-                    label: {
-                        Label("Play \(count == 1 ? "song" : "songs")", systemImage: "play.fill")
-                    }
-                )
-                Button(
-                    action: {
-                        KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
-                        Player.shared.sendSongsAndPlay(songs: songs, shuffled: true)
-                    },
-                    label: {
-                        Label("Shuffle \(count == 1 ? "song" : "songs")", systemImage: "shuffle")
-                    }
-                )
-                Spacer()
-            }
-            .buttonStyle(.bordered)
+        HStack {
+            Button(
+                action: {
+                    KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
+                    Player.shared.sendSongsAndPlay(songs: songs)
+                },
+                label: {
+                    Label("Play \(count == 1 ? "song" : "songs")", systemImage: "play.fill")
+                }
+            )
+            Button(
+                action: {
+                    KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
+                    Player.shared.sendSongsAndPlay(songs: songs, shuffled: true)
+                },
+                label: {
+                    Label("Shuffle \(count == 1 ? "song" : "songs")", systemImage: "shuffle")
+                }
+            )
         }
-        .padding()
+        .padding(.top)
+        .padding(.leading)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .buttonStyle(.bordered)
     }
     
     /// The list of songs
@@ -96,12 +95,9 @@ extension ViewSongs {
         /// The view
         func body(content: Content) -> some View {
             if let album = selectedAlbum, album.totalDiscs > 1, song.disc != 0, song.track == 1 {
-                HStack {
-                    Image(systemName: "\(song.disc).square")
-                        .font(.title)
-                    Spacer()
-                }
-                .padding(.bottom)
+                Image(systemName: "\(song.disc).square")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 content
             } else {
                 content

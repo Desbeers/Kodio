@@ -21,14 +21,13 @@ struct ViewHelp: View {
                 ViewRotatingRecord()
                     .padding()
                     .opacity(0.05)
-            ScrollView {
-                VStack {
-                    FormattedMarkdown(markdown: help)
-                        .padding(.horizontal)
+                ScrollView {
+                    VStack {
+                        FormattedMarkdown(markdown: help)
+                            .padding(.horizontal)
+                    }
+                    .padding()
                 }
-                .padding()
-            }
-            Spacer()
             }
         }
         .frame(minWidth: 500, minHeight: 600)

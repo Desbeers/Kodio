@@ -21,7 +21,7 @@ struct ViewHostsEdit: View {
     @AppStorage("showRadio") var showRadio: Bool = false
     /// The view
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .top, spacing: 0) {
             ScrollView {
                 VStack(alignment: .leading) {
                     if !kodiClient.hosts.isEmpty {
@@ -62,7 +62,6 @@ struct ViewHostsEdit: View {
                     Text("They are currently hardcoded so the list is not editable.")
                         .fixedSize(horizontal: false, vertical: true)
                         .font(.caption)
-                    Spacer()
                 }
                 .buttonStyle(ButtonStyleSidebar())
                 .padding()

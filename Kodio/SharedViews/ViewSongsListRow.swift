@@ -23,8 +23,6 @@ struct ViewSongsListRow: View {
                 leading
                 Divider()
                 ViewMediaItemDetails(item: song)
-                .lineLimit(1)
-                Spacer()
             }
         } icon: {
             icon

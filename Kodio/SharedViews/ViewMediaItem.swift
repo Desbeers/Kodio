@@ -21,7 +21,6 @@ struct ViewMediaItemListRow: View {
                 .frame(width: size, height: size)
                 .padding(2)
             ViewMediaItemDetails(item: item)
-            Spacer()
         }
     }
 }

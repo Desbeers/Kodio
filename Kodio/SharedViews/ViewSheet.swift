@@ -13,7 +13,7 @@ struct ViewSheet: View {
     @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topLeading) {
             /// Show the correct 'sheet'
             switch appState.activeSheet {
             case .queue:
@@ -26,23 +26,17 @@ struct ViewSheet: View {
                 ViewHelp()
             }
 #if os(macOS)
-            VStack {
-                HStack {
-                    Button {
-                        appState.showSheet = false
-                    } label: {
-                        Image(systemName: "xmark.circle")
-                            .foregroundColor(.accentColor)
-                            .font(.title)
-                    }
-                    /// Close `Sheets` when pressing *return* on the keyboard
-                    .keyboardShortcut(.defaultAction)
-                    .buttonStyle(PlainButtonStyle())
-                    .padding()
-                    Spacer()
-                }
-                Spacer()
+            Button {
+                appState.showSheet = false
+            } label: {
+                Image(systemName: "xmark.circle")
+                    .foregroundColor(.accentColor)
+                    .font(.title)
             }
+            /// Close `Sheets` when pressing *return* on the keyboard
+            .keyboardShortcut(.defaultAction)
+            .buttonStyle(PlainButtonStyle())
+            .padding()
 #endif
         }
     }

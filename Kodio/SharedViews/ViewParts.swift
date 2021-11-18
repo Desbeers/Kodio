@@ -12,17 +12,13 @@ import SwiftUI
 /// View a drop shadow
 struct ViewDropShadow: View {
     var body: some View {
-        VStack {
-            Spacer()
-            LinearGradient(gradient: Gradient(colors: [
-                Color.black.opacity(0.25),
-                Color.black.opacity(0.025),
-                .clear]),
-                           startPoint: .bottom, endPoint: .top)
-                .frame(height: 200)
-                .blendMode(.multiply)
-        }
-        .allowsHitTesting(false)
+        LinearGradient(gradient: Gradient(stops: [
+            Gradient.Stop(color: Color.black.opacity(0.25), location: 0),
+            Gradient.Stop(color: Color.black.opacity(0.025), location: 0.2),
+            Gradient.Stop(color: Color.clear, location: 1)
+        ]), startPoint: .bottom, endPoint: .top)
+            .blendMode(.multiply)
+            .allowsHitTesting(false)
     }
 }
 
@@ -103,6 +99,7 @@ private extension ButtonStyleList {
         /// The view
         var body: some View {
             return configuration.label
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.white)
                 .background(
                     VStack {

@@ -20,9 +20,8 @@ struct ViewQueue: View {
             VStack {
                 art
                     .toolbar(basic: true)
-                Spacer()
             }
-            .frame(minWidth: 300, minHeight: 600)
+            .frame(minWidth: 300, minHeight: 600, alignment: .top)
             list
                 .frame(minWidth: 400, minHeight: 600)
         }

@@ -24,19 +24,17 @@ struct ViewAppStateStatus: View {
             case .connectedToHost:
                 Text("Connected to '\(kodiClient.selectedHost.description)'")
             case .loadingLibrary:
-                Text("Loading library")
-                Spacer()
                 ProgressView()
                 /// Make this a bit smaller on macOS
                     .macOS {$0
                     .scaleEffect(0.5)
                     }
+                Text("Loading library")
             case .loadedLibrary, .sleeping, .wakeup:
                 Text("Music on '\(kodiClient.selectedHost.description)'")
             case .failure:
                 Text("'\(kodiClient.selectedHost.description)' is not available")
             }
-            Spacer()
         }
         .frame(height: 20)
     }

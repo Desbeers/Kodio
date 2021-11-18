@@ -41,13 +41,9 @@ extension ViewGenres {
     /// - Parameter genre: a ``Library/GenreItem`` struct
     /// - Returns: a formatted row
     func row(genre: Library.GenreItem) -> some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(genre.title)
-                    .font(.subheadline)
-                    .padding(6.5)
-            }
-            Spacer()
-        }
+        Text(genre.title)
+            .font(.subheadline)
+            .padding(6.5)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
