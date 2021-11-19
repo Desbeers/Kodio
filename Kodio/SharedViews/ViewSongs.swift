@@ -54,7 +54,7 @@ extension ViewSongs {
                     }
                 )
             }
-            .padding()
+            .padding(.vertical)
             .frame(maxWidth: .infinity, alignment: .leading)
             /// - Note: iOS doesn't like two buttons in a listrow unless it's in plain style
             .iOS {$0
