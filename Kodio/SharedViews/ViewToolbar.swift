@@ -122,9 +122,11 @@ extension ViewToolbar {
             if !player.item.maintitle.isEmpty {
                 Text(player.item.maintitle)
                     .font(.headline)
+                    .lineLimit(1)
             } else {
                 Text("Kodio")
                     .font(.headline)
+                    .lineLimit(1)
             }
             if !player.item.subtitle.isEmpty {
                 Text(player.item.subtitle)
