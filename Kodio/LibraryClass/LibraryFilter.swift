@@ -21,6 +21,8 @@ extension Library {
         var albums: [AlbumItem] = []
         /// Songs
         var songs: [SongItem] = []
+        /// Search suggestions
+        var searchSuggestions: [SearchSuggestionItem] = []
     }
     
     /// Filter the genres
@@ -116,7 +118,7 @@ extension Library {
         return songList
     }
     
-    /// Set the library filetr selection
+    /// Set the library filter selection
     /// - Parameter item: The selected ``LibraryItem``
     func setLibrarySelection<T: LibraryItem>(item: T?) {
         if let selected = item {
@@ -139,35 +141,26 @@ extension Library {
     /// Filter all media (genres, artists, albums and songs)
     func filterAllMedia() {
         Task {
-            /// Filter songs first; all the rest is based on it
-            let songs = await filterSongs()
+            /// Filter the songs
+            filteredContent.songs = await filterSongs()
             /// Now the rest
-            async let albums = filterAlbums(songList: songs)
-            async let artists = filterArtists(songList: songs)
-            async let genres = filterGenres(songList: songs)
+            async let albums = filterAlbums(songList: filteredContent.songs)
+            filteredContent.albums = await albums
+            async let artists = filterArtists(songList: filteredContent.songs)
+            filteredContent.artists = await artists
+            async let genres = filterGenres(songList: filteredContent.songs)
+            filteredContent.genres = await genres
             /// Update the View
-            await updateLibraryView(
-                content:
-                    FilteredContent(
-                        genres: await genres,
-                        artists: await artists,
-                        albums: await albums,
-                        songs: songs
-                    )
-            )
+            await updateLibraryView()
         }
     }
     
     /// Update the SwiftUI View
     /// - Parameter content: An array of filtered content
-    func updateLibraryView(content: FilteredContent) async {
+    func updateLibraryView() async {
         Task { @MainActor in
             logger("Update library UI")
-            filteredContent = FilteredContent(
-                genres: content.genres,
-                artists: content.artists,
-                albums: content.albums,
-                songs: content.songs)
+            AppState.shared.filteredContent = filteredContent
             /// Update the selection
             if let selected = getLibraryLists().first(where: { $0.media == selection.media}) {
                 selection = selected

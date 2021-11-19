@@ -27,7 +27,7 @@ extension Library {
                 async let results = getSearchResults(query: query)
                 search.results = await results
                 /// Make a list of suggestions
-                search.suggestions = await makeSearchSuggestions(query: query)
+                filteredContent.searchSuggestions = await makeSearchSuggestions(query: query)
                 /// Select 'Search' in the sidebar
                 if let button = getLibraryLists().first(where: { $0.media == .search}) {
                     selectLibraryList(libraryList: button)
@@ -144,7 +144,7 @@ extension Library {
     }
     
     /// The struct for a search suggestion item
-    struct SearchSuggestionItem: Identifiable {
+    struct SearchSuggestionItem: Identifiable, Hashable {
         /// Make it indentifiable
         var id = UUID()
         /// The title for the suggestion

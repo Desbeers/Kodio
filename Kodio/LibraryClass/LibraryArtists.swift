@@ -57,19 +57,13 @@ extension Library {
             albums.selected = nil
             /// Set the selection
             setLibrarySelection(item: artists.selected)
-            let songs = await filterSongs()
+            /// Filter the songs
+            filteredContent.songs = await filterSongs()
             /// Now the albums
-            async let albums = filterAlbums(songList: songs)
+            async let albums = filterAlbums(songList: filteredContent.songs)
+            filteredContent.albums = await albums
             /// Update the UI
-            await updateLibraryView(
-                content:
-                    FilteredContent(
-                        genres: filteredContent.genres,
-                        artists: filteredContent.artists,
-                        albums: await albums,
-                        songs: songs
-                    )
-            )
+            await updateLibraryView()
         }
     }
     

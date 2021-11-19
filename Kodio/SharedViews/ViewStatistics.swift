@@ -11,11 +11,11 @@ import SwiftUI
 struct ViewStatistics: View {
     /// The current ``LibraryItem``
     let item: LibraryItem
-    /// The Library model
-    @EnvironmentObject var library: Library
+    /// The AppState model
+    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        if !library.filteredContent.songs.isEmpty {
+        if !appState.filteredContent.songs.isEmpty {
             VStack {
                 switch item.media {
                 case .none:
@@ -39,7 +39,7 @@ struct ViewStatistics: View {
     /// Songs in the current library view
     var songsCount: some View {
         Label {
-            let songs = library.filteredContent.songs.count
+            let songs = appState.filteredContent.songs.count
             Text("\(songs) " + (songs == 1 ? "song" : "songs"))
         } icon: {
             Image(systemName: "music.quarternote.3")
@@ -48,7 +48,7 @@ struct ViewStatistics: View {
     /// Albums in the current library view
     var albumsCount: some View {
         Label {
-            let albums = library.filteredContent.albums.count
+            let albums = appState.filteredContent.albums.count
             Text("\(albums) " + (albums == 1 ? "album" : "albums"))
         } icon: {
             Image(systemName: "square.stack")
@@ -57,7 +57,7 @@ struct ViewStatistics: View {
     /// Artists in the current library view
     var artistsCount: some View {
         Label {
-            let artists = library.filteredContent.artists.count
+            let artists = appState.filteredContent.artists.count
             Text("\(artists) " + (artists == 1 ? "artist" : "artists"))
         } icon: {
             Image(systemName: "person.2")

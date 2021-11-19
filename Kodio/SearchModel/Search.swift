@@ -16,6 +16,7 @@ final class SearchObserver: ObservableObject {
     /// Create a shared instance
     static let shared = SearchObserver()
     /// The search query
+    /// - Note: Used in a SwiftUI View
     @Published var query: String = ""
     /// The Combine container
     private var subscriptions = Set<AnyCancellable>()

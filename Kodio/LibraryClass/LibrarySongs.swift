@@ -106,7 +106,7 @@ extension Library {
             }
             /// Refresh UI
             DispatchQueue.main.async {
-                self.objectWillChange.send()
+                AppState.shared.objectWillChange.send()
             }
             
         }

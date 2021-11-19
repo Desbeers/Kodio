@@ -49,6 +49,8 @@ final class AppState: ObservableObject {
             }
         }
     }
+    /// The library filtered by selection of library list, genre, artist and album
+    @Published var filteredContent = Library.FilteredContent()
     
     // MARK: Init
     

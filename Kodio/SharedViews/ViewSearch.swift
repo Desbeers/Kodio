@@ -9,8 +9,8 @@ import SwiftUI
 
 /// A ``ViewModifier`` to add the search field
 struct ViewModifierSearch: ViewModifier {
-    /// The Library model
-    @EnvironmentObject var library: Library
+    /// The AppState model
+    @EnvironmentObject var appState: AppState
     /// The Combine thingy so it is not searching after every typed letter
     @StateObject var searchObserver: SearchObserver = .shared
     /// The view
@@ -19,8 +19,8 @@ struct ViewModifierSearch: ViewModifier {
         /// - Note: To make it possible to change the button layout of the toolbar in macOS
         /// the 'search' **must** be in the sidebar or else it does not work
             .searchable(text: $searchObserver.query, placement: .sidebar, prompt: "Search library") {
-                if !library.search.suggestions.isEmpty {
-                    ForEach(library.search.suggestions) { suggestion in
+                if !appState.filteredContent.searchSuggestions.isEmpty {
+                    ForEach(appState.filteredContent.searchSuggestions) { suggestion in
                         HStack {
                             VStack(alignment: .leading) {
                                 Label(suggestion.title, systemImage: suggestion.icon)
