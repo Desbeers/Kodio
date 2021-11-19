@@ -56,6 +56,10 @@ extension ViewSongs {
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
+            /// - Note: iOS doesn't like two buttons in a listrow unless it's in plain style
+            .iOS {$0
+            .buttonStyle(.plain)
+            }
         } else {
             Spacer()
         }
