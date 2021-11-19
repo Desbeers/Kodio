@@ -8,10 +8,14 @@
 import Foundation
 import Combine
 
-// MARK: - KodiHost model
-
-/// KodiHost model
-final class KodiHost: ObservableObject {
+/// The KodiHost class
+///
+/// This class takes care of:
+/// - Getting the properties from the host
+/// - Get and set volume
+/// - Fiddling with *ReplayGain*
+/// - Scanning the library on request
+final class KodiHost {
     
     // MARK: Constants and Variables
     
@@ -21,16 +25,9 @@ final class KodiHost: ObservableObject {
     let kodiClient = KodiClient.shared
     /// The properties of the Kodi host
     var properties = Properties()
-    /// The volume of the Kodi host; published because it is used in a Swift View
-    @Published var volume: Double = 0
     
     // MARK: Init
     
     /// Private init to make sure we have only one instance
-    private init() {
-        /// Get the properties of the Kodi host
-        Task {
-            await getProperties()
-        }
-    }
+    private init() { }
 }

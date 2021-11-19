@@ -13,8 +13,6 @@ struct ViewToolbar: ViewModifier {
     @EnvironmentObject var player: Player
     /// The Queue model
     @EnvironmentObject var queue: Queue
-    /// The KodiHost model
-    @EnvironmentObject var kodiHost: KodiHost
     /// Send only basic buttons or a full toolbar
     var basic: Bool = false
     /// The view
@@ -248,10 +246,10 @@ extension ViewToolbar {
                     .font(.caption)
                 /// - Note: Using 'onEditingChanged' because that will only be trickered when using the slider
                 ///         and not when programmaticly changing its value after a notification.
-                Slider(value: $kodiHost.volume, in: 0...100,
+                Slider(value: $player.volume, in: 0...100,
                        onEditingChanged: { _ in
-                    logger("Volume changed: \(kodiHost.volume)")
-                    kodiHost.setVolume(volume: kodiHost.volume)
+                    logger("Volume changed: \(player.volume)")
+                    KodiHost.shared.setVolume(volume: player.volume)
                 })
                 Image(systemName: "speaker.wave.3.fill")
                     .font(.caption)

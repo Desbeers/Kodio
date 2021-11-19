@@ -51,6 +51,9 @@ extension AppState {
     private func action(state: State) {
         switch state {
         case .connectedToHost:
+            Task {
+                await KodiHost.shared.getProperties()
+            }
             Library.shared.getLibrary()
         case .loadedLibrary:
             Task(priority: .high) {

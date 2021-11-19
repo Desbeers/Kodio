@@ -17,10 +17,11 @@ extension KodiHost {
         do {
             let result = try await KodiClient.shared.sendRequest(request: request)
             if properties != result {
-                await MainActor.run {
+                Task { @MainActor in
                     logger("Host properties changed")
                     properties = result
-                    volume = result.volume
+                    /// - Note: Stuff it in the Player class because that is observed
+                    Player.shared.volume = result.volume
                 }
             }
         } catch {
@@ -39,7 +40,14 @@ extension KodiHost {
         /// The request struct
         struct Params: Encodable {
             /// The requested properties
-            let properties = ["volume", "muted", "name", "version", "sorttokens", "language"]
+            let properties = [
+                "volume",
+                "muted",
+                "name",
+                "version",
+                "sorttokens",
+                "language"
+            ]
         }
         /// The response struct
         typealias Response = Properties

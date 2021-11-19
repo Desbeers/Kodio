@@ -11,8 +11,6 @@ import SwiftUI
 @main struct KodioApp: App {
     /// The AppState model
     @StateObject var appState: AppState = .shared
-    /// The KodiHost model
-    @StateObject var kodiHost: KodiHost = .shared
     /// The Library model
     @StateObject var library: Library = .shared
     /// The Player model
@@ -26,7 +24,6 @@ import SwiftUI
         WindowGroup {
             ViewContent()
                 .environmentObject(appState)
-                .environmentObject(kodiHost)
                 .environmentObject(library)
                 .environmentObject(player)
                 .environmentObject(queue)
@@ -58,7 +55,7 @@ import SwiftUI
             CommandMenu("Host") {
                 if appState.state == .loadedLibrary {
                     Button("Scan library on '\(appState.selectedHost.description)'") {
-                        kodiHost.scanAudioLibrary()
+                        KodiHost.shared.scanAudioLibrary()
                     }
                 }
             }

@@ -20,6 +20,8 @@ final class Player: ObservableObject {
     @Published var item = PlayerItem()
     /// The properties of the player
     @Published var properties = Properties()
+    /// The volume of the player
+    @Published var volume: Double = 0
     
     // MARK: Init
     
