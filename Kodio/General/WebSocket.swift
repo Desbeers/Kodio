@@ -20,9 +20,9 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
         didOpenWithProtocol protocol: String?
     ) {
         logger("Kodio connected to \(KodiClient.shared.selectedHost.ip)")
-        KodiClient.shared.ping()
         let appState: AppState = .shared
         Task {
+            await KodiClient.shared.ping()
             await appState.setState(current: appState.state == .wakeup ? .loadedLibrary : .connectedToHost)
         }
     }
@@ -82,13 +82,15 @@ extension KodiClient {
     }
     
     /// Check if Kodi is still alive
-    func ping() {
+    /// - Note: Failure will be handled by the delegate
+    func ping() async {
         webSocketTask?.send(.string("ping")) { error in
         if let error = error {
-            print("Error when sending PING \(error.localizedDescription)")
+            print("Error pinging host \(error.localizedDescription)")
         } else {
-            DispatchQueue.global().asyncAfter(deadline: .now() + 5) {
-                self.ping()
+            Task {
+                await Task.sleep(5_000_000_000)
+                await self.ping()
             }
         }
       }
