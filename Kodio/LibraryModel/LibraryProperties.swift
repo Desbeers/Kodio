@@ -22,11 +22,10 @@ extension Library {
             if cache {
                 try Cache.set(key: "LibraryLastUpdated", object: result)
             } else {
-                if let cache = Cache.get(key: "LibraryLastUpdated", as: Properties.self),
-                   cache.songsModified == result.songsModified,
-                   cache.songsLastAdded == result.songsLastAdded,
-                   cache.albumsModified == result.albumsModified,
-                   cache.albumsLastAdded == result.albumsLastAdded {
+                if let lastUpdate = Cache.get(key: "LibraryLastUpdated", as: Properties.self),
+                   lastUpdate.songsLastAdded == result.songsLastAdded,
+                   lastUpdate.albumsModified == result.albumsModified,
+                   lastUpdate.albumsLastAdded == result.albumsLastAdded {
                 } else {
                     logger("Library is out of date.")
                     let appState: AppState = .shared
@@ -49,7 +48,14 @@ extension Library {
         /// The request struct
         struct Params: Encodable {
             /// The properties we ask for
-            let properties = ["songslastadded", "songsmodified", "albumslastadded", "albumsmodified"]
+            let properties = [
+                "songslastadded",
+                "songsmodified",
+                "albumslastadded",
+                "albumsmodified",
+                "librarylastcleaned",
+                "librarylastupdated"
+            ]
         }
         /// The response struct
         typealias Response = Properties
@@ -65,6 +71,11 @@ extension Library {
         var albumsLastAdded: String = ""
         /// Last modified albums
         var albumsModified: String = ""
+        /// Last cleaning of library
+        var libraryLastCleaned: String = ""
+        /// Last library scan
+        /// - Note: That's *not* the last actual update; a bit misleading
+        var libraryLastUpdated: String = ""
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// lowerCamelCase
@@ -75,6 +86,10 @@ extension Library {
             case albumsLastAdded = "albumslastadded"
             /// lowerCamelCase
             case albumsModified = "albumsmodified"
+            /// lowerCamelCase
+            case libraryLastCleaned = "librarylastcleaned"
+            /// lowerCamelCase
+            case libraryLastUpdated = "librarylastupdated"
         }
     }
 }
