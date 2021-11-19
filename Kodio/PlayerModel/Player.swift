@@ -14,7 +14,7 @@ final class Player: ObservableObject {
     
     /// The shared instance of this Player class
     static let shared = Player()
-    /// The shared client class
+    /// The shared KodiClient class
     let kodiClient = KodiClient.shared
     /// The current item in the player
     @Published var item = PlayerItem()
@@ -87,7 +87,7 @@ extension Player {
         
         Task {
             do {
-                _ = try await KodiClient.shared.sendRequest(request: request)
+                _ = try await kodiClient.sendRequest(request: request)
                 /// Start playing
                 sendAction(method: .playerOpen, queueID: 0, shuffled: shuffled)
             } catch {

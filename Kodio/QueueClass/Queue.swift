@@ -23,13 +23,6 @@ final class Queue {
     static let shared = Queue()
     /// The shared client class
     let kodiClient = KodiClient.shared
-//    /// Song ID's in queue
-//    @Published var queueItems: [QueueItem] = []
-//    /// Count of items in the queue
-//    var items: Int {
-//        /// Kodi counts from zero
-//        return queueItems.count - 1
-//    }
     
     // MARK: Init
     

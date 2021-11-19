@@ -15,7 +15,7 @@ extension Player {
     func getProperties() async {
         let request = PlayerGetProperties()
         do {
-            let result = try await KodiClient.shared.sendRequest(request: request)
+            let result = try await kodiClient.sendRequest(request: request)
             if properties != result {
                 Task { @MainActor in
                     logger("Player properties changed")

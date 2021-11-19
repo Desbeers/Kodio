@@ -29,7 +29,7 @@ extension Library {
         } else {
             let request = AudioLibraryGetArtists()
             do {
-                let result = try await KodiClient.shared.sendRequest(request: request)
+                let result = try await kodiClient.sendRequest(request: request)
                 try Cache.set(key: "MyArtists", object: result.artists)
                 artists.all = result.artists
                 return true

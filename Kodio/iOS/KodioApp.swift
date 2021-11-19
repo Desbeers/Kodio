@@ -20,11 +20,11 @@ import SwiftUI
     /// Init the app; check on what platform we are running
     init() {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            AppState.shared.system = .iPad
+            appState.system = .iPad
         } else if UIDevice.current.userInterfaceIdiom == .mac {
-            AppState.shared.system = .iPad
+            appState.system = .iPad
         } else {
-            AppState.shared.system = .iPhone
+            appState.system = .iPhone
         }
     }
     /// The scene

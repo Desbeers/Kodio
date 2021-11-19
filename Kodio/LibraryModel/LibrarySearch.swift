@@ -30,7 +30,7 @@ extension Library {
                 search.suggestions = await makeSearchSuggestions(query: query)
                 /// Select 'Search' in the sidebar
                 if let button = getLibraryLists().first(where: { $0.media == .search}) {
-                    Library.shared.selectLibraryList(libraryList: button)
+                    selectLibraryList(libraryList: button)
                 }
 
             }

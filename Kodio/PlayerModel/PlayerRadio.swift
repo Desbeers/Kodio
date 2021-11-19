@@ -18,7 +18,7 @@ extension Player {
         Task {
             do {
                 Queue.shared.sendAction(method: .playlistClear)
-                _ = try await KodiClient.shared.sendRequest(request: request)
+                _ = try await kodiClient.sendRequest(request: request)
                 /// # Start playing
                 Player.shared.sendAction(method: .playerOpen, queueID: 0)
             } catch {

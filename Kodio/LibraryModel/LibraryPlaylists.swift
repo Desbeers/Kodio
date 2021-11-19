@@ -41,7 +41,7 @@ extension Library {
                 icon: "minus.diamond",
                 media: .neverPlayed
             ))
-            let result = try await KodiClient.shared.sendRequest(request: request)
+            let result = try await kodiClient.sendRequest(request: request)
             for playlist in result.files {
                 listItems.append(LibraryListItem(
                     title: playlist.label,
@@ -71,7 +71,7 @@ extension Library {
         /// The list of songs
         var songList = [SongItem]()
         do {
-            let result = try await KodiClient.shared.sendRequest(request: request)
+            let result = try await kodiClient.sendRequest(request: request)
             for song in result.files {
                 if let item = songs.all.first(where: { $0.songID == song.songID }) {
                     songList.append(item)

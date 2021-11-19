@@ -29,7 +29,7 @@ extension Library {
         } else {
             let request = AudioLibraryGetAlbums()
             do {
-                let result = try await KodiClient.shared.sendRequest(request: request)
+                let result = try await kodiClient.sendRequest(request: request)
                 try Cache.set(key: "MyAlbums", object: result.albums)
                 albums.all = result.albums
                 return true

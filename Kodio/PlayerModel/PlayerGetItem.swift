@@ -15,7 +15,7 @@ extension Player {
     func getItem() async {
         let request = PlayerGetItem()
         do {
-            let result = try await KodiClient.shared.sendRequest(request: request)
+            let result = try await kodiClient.sendRequest(request: request)
             /// Only update the item when it is changed
             if item != result.item {
                 Task { @MainActor in

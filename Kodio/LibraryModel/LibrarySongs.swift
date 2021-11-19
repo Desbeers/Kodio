@@ -35,7 +35,7 @@ extension Library {
         } else {
             let request = AudioLibraryGetSongs()
             do {
-                let result = try await KodiClient.shared.sendRequest(request: request)
+                let result = try await kodiClient.sendRequest(request: request)
                 songs.all = result.songs
                 /// Add some album fields to the songs
                 mergeSongsAndAlbums()
@@ -75,7 +75,7 @@ extension Library {
     /// - Returns: An array of song items
     func getSongsFromQueue() -> [Library.SongItem] {
         var songList: [Library.SongItem] = []
-        let allSongs = Library.shared.songs.all
+        let allSongs = songs.all
         for (index, song) in Player.shared.queueItems.enumerated() {
             if var item = allSongs.first(where: { $0.songID == song.songID }) {
                 item.queueID = index

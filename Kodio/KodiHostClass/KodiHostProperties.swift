@@ -15,7 +15,7 @@ extension KodiHost {
     func getProperties() async {
         let request = ApplicationGetProperties()
         do {
-            let result = try await KodiClient.shared.sendRequest(request: request)
+            let result = try await kodiClient.sendRequest(request: request)
             if properties != result {
                 Task { @MainActor in
                     logger("Host properties changed")

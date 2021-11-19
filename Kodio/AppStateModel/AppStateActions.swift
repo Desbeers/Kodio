@@ -72,10 +72,10 @@ extension AppState {
             }
         case .sleeping:
             logger("Kodio sleeping (\(system))")
-            KodiClient.shared.disconnectWebSocket()
+            kodiClient.disconnectWebSocket()
         case .wakeup:
             logger("Kodio awake (\(system))")
-            KodiClient.shared.connectWebSocket()
+            kodiClient.connectWebSocket()
         case .failure:
             Task {
                 await viewAlert(type: .hostNotAvailable)

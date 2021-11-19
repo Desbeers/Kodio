@@ -29,7 +29,7 @@ extension Library {
         } else {
             let request = AudioLibraryGetGenres()
             do {
-                let result = try await KodiClient.shared.sendRequest(request: request)
+                let result = try await kodiClient.sendRequest(request: request)
                 try Cache.set(key: "MyGenres", object: result.genres)
                 genres.all = result.genres
                 return true

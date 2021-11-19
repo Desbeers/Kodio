@@ -19,7 +19,7 @@ final class Library: ObservableObject {
     
     /// The shared instance of this Library class
     static let shared = Library()
-    /// The shared client class
+    /// The shared KodiClient class
     let kodiClient = KodiClient.shared
     /// The current library selection
     var selection: LibraryItem = LibraryListItem()

@@ -278,7 +278,7 @@ struct ViewHostsMenu: View {
         if !appState.selectedHost.ip.isEmpty {
             Button(
                 action: {
-                    AppState.shared.viewAlert(type: .scanLibrary)
+                    appState.viewAlert(type: .scanLibrary)
                 },
                 label: {
                     Label("Reload \(appState.selectedHost.description)", systemImage: "arrow.clockwise")

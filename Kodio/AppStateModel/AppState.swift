@@ -21,6 +21,8 @@ final class AppState: ObservableObject {
     
     /// The shared instance of this AppState class
     static let shared = AppState()
+    /// The shared KodiClient class
+    let kodiClient = KodiClient.shared
     /// Bool to show or hide a SwiftUI sheet
     @Published var showSheet: Bool = false
     /// Define what kind of sheet to show
@@ -43,7 +45,7 @@ final class AppState: ObservableObject {
     @Published var selectedHost = HostItem() {
         didSet {
             Task {
-                await KodiClient.shared.connectToHost(host: selectedHost)
+                await kodiClient.connectToHost(host: selectedHost)
             }
         }
     }

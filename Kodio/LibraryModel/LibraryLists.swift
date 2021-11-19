@@ -26,10 +26,10 @@ extension Library {
         let most = AudioLibraryGetSongItems(media: .mostPlayed)
         do {
             /// Recently played
-            async let recent = KodiClient.shared.sendRequest(request: recent)
+            async let recent = kodiClient.sendRequest(request: recent)
             songs.recentlyPlayed = songIDtoSongItem(songID: try await recent.songs)
             /// Most played
-            async let most = KodiClient.shared.sendRequest(request: most)
+            async let most = kodiClient.sendRequest(request: most)
             songs.mostPlayed = songIDtoSongItem(songID: try await most.songs)
             logger("Recently and most played songs loaded from host")
             /// If this item is selected; refresh the UI

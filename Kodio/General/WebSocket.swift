@@ -22,7 +22,7 @@ class WebSocket: NSObject, URLSessionWebSocketDelegate {
         let appState: AppState = .shared
         logger("Kodio connected to \(appState.selectedHost.ip)")
         Task {
-            await KodiClient.shared.ping()
+            await appState.kodiClient.ping()
             await appState.setState(current: appState.state == .wakeup ? .loadedLibrary : .connectedToHost)
         }
     }

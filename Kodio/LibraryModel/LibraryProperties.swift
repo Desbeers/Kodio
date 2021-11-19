@@ -17,7 +17,7 @@ extension Library {
         let request = AudioLibraryGetProperties()
         
         do {
-            let result = try await KodiClient.shared.sendRequest(request: request)
+            let result = try await kodiClient.sendRequest(request: request)
             /// Save if cache is true
             if cache {
                 try Cache.set(key: "LibraryLastUpdated", object: result)
