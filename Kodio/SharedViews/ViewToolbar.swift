@@ -119,8 +119,13 @@ extension ViewToolbar {
     /// The current item in the player
     var playerItem: some View {
         VStack(alignment: .leading) {
-            Text(player.item.title ?? "Kodio")
-                .font(.headline)
+            if !player.item.maintitle.isEmpty {
+                Text(player.item.maintitle)
+                    .font(.headline)
+            } else {
+                Text("Kodio")
+                    .font(.headline)
+            }
             if !player.item.subtitle.isEmpty {
                 Text(player.item.subtitle)
                     .font(.subheadline)

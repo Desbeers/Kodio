@@ -65,7 +65,7 @@ struct ViewLibraryBottom: View {
     var body: some View {
         GeometryReader { geometry in
         HStack(spacing: 0) {
-            ViewDetails(item: library.selection, width: geometry.size.width * 0.35)
+            ViewDetails(item: library.selection, width: geometry.size.width * 0.40)
             Divider()
             if library.filteredContent.songs.isEmpty {
                 ViewEmptyLibrary(item: library.selection)

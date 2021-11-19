@@ -65,6 +65,10 @@ extension Player {
         var songID: Int?
         /// The title of the item
         var title: String?
+        /// The main title to display
+        var maintitle: String {
+            return title ?? ""
+        }
         /// The subtitle of the item
         var subtitle: String {
             return artist?.joined(separator: " & ") ?? ""
