@@ -15,8 +15,6 @@ import SwiftUI
     @StateObject var library: Library = .shared
     /// The Player model
     @StateObject var player: Player = .shared
-    /// The Queue model
-    @StateObject var queue: Queue = .shared
     /// Keep an eye of our state; iOS doesn't like to go into the background while we have a websocket connection
     @Environment(\.scenePhase) var scenePhase
     /// Init the app; check on what platform we are running
@@ -36,7 +34,6 @@ import SwiftUI
                 .environmentObject(appState)
                 .environmentObject(library)
                 .environmentObject(player)
-                .environmentObject(queue)
                 .onChange(of: scenePhase) { newPhase in
                     if newPhase == .inactive {
                         logger("Inactive (iOS)")

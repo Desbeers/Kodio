@@ -131,7 +131,7 @@ extension Library {
                                     empty: "The queue is empty",
                                     icon: "music.note.list",
                                     media: .queue,
-                                    visible: !Queue.shared.queueItems.isEmpty
+                                    visible: !Player.shared.queueItems.isEmpty
                                    ))
         list.append(LibraryListItem(title: "Search",
                                     subtitle: "Results for '\(query)'",

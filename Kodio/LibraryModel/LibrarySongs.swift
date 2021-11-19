@@ -76,7 +76,7 @@ extension Library {
     func getSongsFromQueue() -> [Library.SongItem] {
         var songList: [Library.SongItem] = []
         let allSongs = Library.shared.songs.all
-        for (index, song) in Queue.shared.queueItems.enumerated() {
+        for (index, song) in Player.shared.queueItems.enumerated() {
             if var item = allSongs.first(where: { $0.songID == song.songID }) {
                 item.queueID = index
                 songList.append(item)

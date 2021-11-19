@@ -16,15 +16,15 @@ extension Queue {
         let viewingQueue: Bool = Library.shared.libraryLists.selected.media == .queue ? true : false
         let request = QueueGetItems()
         do {
-            let result = try await KodiClient.shared.sendRequest(request: request)
-            if result.items != queueItems {
+            let result = try await kodiClient.sendRequest(request: request)
+            if result.items != Player.shared.queueItems {
                 if result.items.first?.songID != nil {
                     /// Save the query for later
                     logger("Queue has changed")
-                    queueItems = result.items
+                    Player.shared.queueItems = result.items
                 } else {
                     logger("Queue is empty")
-                    queueItems = []
+                    Player.shared.queueItems = []
                 }
             }
         } catch {
@@ -33,7 +33,7 @@ extension Queue {
         /// Update view or sidebar
         if viewingQueue {
             let library: Library = .shared
-            if queueItems.isEmpty {
+            if Player.shared.queueItems.isEmpty {
                 logger("Select first item in the sidebar")
                 library.selectLibraryList(libraryList: library.libraryLists.all.first!)
             } else {

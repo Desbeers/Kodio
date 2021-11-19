@@ -11,8 +11,6 @@ import SwiftUI
 struct ViewToolbar: ViewModifier {
     /// The Player model
     @EnvironmentObject var player: Player
-    /// The Queue model
-    @EnvironmentObject var queue: Queue
     /// Send only basic buttons or a full toolbar
     var basic: Bool = false
     /// The view
@@ -101,7 +99,7 @@ extension ViewToolbar {
     var playerItemButton: some View {
         Button(
             action: {
-                if !queue.queueItems.isEmpty {
+                if !player.queueItems.isEmpty {
                     AppState.shared.viewSheet(type: .queue)
                 }
             },
@@ -152,7 +150,7 @@ extension ViewToolbar {
                 Image(systemName: playing ? "pause.fill" : "play.fill")
             }
         )
-            .disabled(player.properties.queueID == -1 && queue.queueItems.isEmpty)
+            .disabled(player.properties.queueID == -1 && player.queueItems.isEmpty)
     }
     /// The next song button
     var prevButton: some View {
@@ -182,7 +180,7 @@ extension ViewToolbar {
                 
             }
         )
-            .disabled(player.properties.queueID == -1 || player.properties.queueID >= queue.items)
+            .disabled(player.properties.queueID == -1 || player.properties.queueID >= player.items)
     }
     /// The shuffle button
     var shuffleButton: some View {

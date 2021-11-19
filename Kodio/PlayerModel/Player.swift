@@ -22,6 +22,13 @@ final class Player: ObservableObject {
     @Published var properties = Properties()
     /// The volume of the player
     @Published var volume: Double = 0
+    /// Song ID's in the queue
+    @Published var queueItems: [Queue.QueueItem] = []
+    /// Count of items in the queue
+    var items: Int {
+        /// Kodi counts from zero
+        return queueItems.count - 1
+    }
     
     // MARK: Init
     

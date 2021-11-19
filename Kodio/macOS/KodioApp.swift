@@ -15,8 +15,6 @@ import SwiftUI
     @StateObject var library: Library = .shared
     /// The Player model
     @StateObject var player: Player = .shared
-    /// The Queue model
-    @StateObject var queue: Queue = .shared
     /// App delegate
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     /// The scene
@@ -26,7 +24,6 @@ import SwiftUI
                 .environmentObject(appState)
                 .environmentObject(library)
                 .environmentObject(player)
-                .environmentObject(queue)
         }
         /// Hide the title so we can use the whole toolbar for buttons
         /// - Note: the buttons will become smaller

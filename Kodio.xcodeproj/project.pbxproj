@@ -293,7 +293,7 @@
 			path = PlayerModel;
 			sourceTree = "<group>";
 		};
-		D72740DF26B1630100067D4A /* KodiHostModel */ = {
+		D72740DF26B1630100067D4A /* KodiHostClass */ = {
 			isa = PBXGroup;
 			children = (
 				D72740DC26B15F0500067D4A /* KodiHost.swift */,
@@ -304,17 +304,17 @@
 				D7A9043D26F9C86E0012C7B2 /* KodiHostActions.swift */,
 				D7A9043B26F9C50C0012C7B2 /* KodiHostLibraryScan.swift */,
 			);
-			path = KodiHostModel;
+			path = KodiHostClass;
 			sourceTree = "<group>";
 		};
-		D745126326B3702D00A99889 /* QueueModel */ = {
+		D745126326B3702D00A99889 /* QueueClass */ = {
 			isa = PBXGroup;
 			children = (
 				D745125D26B31F1800A99889 /* Queue.swift */,
 				D745126426B37C9D00A99889 /* QueueGetItems.swift */,
 				D745126726B37FDA00A99889 /* QueueActions.swift */,
 			);
-			path = QueueModel;
+			path = QueueClass;
 			sourceTree = "<group>";
 		};
 		D752FF932747D3C100858882 /* KodiClientClass */ = {
@@ -334,11 +334,11 @@
 				D7F00A8926AEFC2700CEE39E /* General */,
 				D7D95085272D804300CC7155 /* Protocols */,
 				D752FF932747D3C100858882 /* KodiClientClass */,
+				D72740DF26B1630100067D4A /* KodiHostClass */,
+				D745126326B3702D00A99889 /* QueueClass */,
 				D7E1EA4D2736D7430087EA69 /* AppStateModel */,
-				D72740DF26B1630100067D4A /* KodiHostModel */,
 				D7EA915E26A93CCC0090C137 /* LibraryModel */,
 				D706F67526B0F87C0068F35C /* PlayerModel */,
-				D745126326B3702D00A99889 /* QueueModel */,
 				D7BBB8FE26B199FA0097D286 /* SearchModel */,
 				D7EA916226A93D600090C137 /* Extensions */,
 				D7EA912F26A93C1C0090C137 /* SharedViews */,

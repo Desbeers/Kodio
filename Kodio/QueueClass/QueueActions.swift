@@ -9,7 +9,7 @@ import Foundation
 
 extension Queue {
     
-    // MARK: sendAction (No response needed)
+    // MARK: sendAction
     
     /// Send an action to Kodi; not caring about the response
     /// - Parameters:

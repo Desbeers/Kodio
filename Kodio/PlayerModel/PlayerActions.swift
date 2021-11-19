@@ -9,7 +9,7 @@ import Foundation
 
 extension Player {
     
-    // MARK: - Actions
+    // MARK: Actions
     
     /// Send a player action to the host
     func sendAction(
