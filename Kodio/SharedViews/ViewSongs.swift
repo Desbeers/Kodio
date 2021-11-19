@@ -77,8 +77,6 @@ extension ViewSongs {
                         }
                     }
                     .modifier(ViewModifierLists())
-                
-                
             }
         }
         .task {

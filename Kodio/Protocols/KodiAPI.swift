@@ -35,7 +35,7 @@ extension KodiAPI {
     
     /// Build the URL request
     var urlRequest: URLRequest {
-        let host = KodiClient.shared.selectedHost
+        let host = AppState.shared.selectedHost
         var request = URLRequest(
             url: URL(string: "http://\(host.username):\(host.password)@\(host.ip):\(host.port)/jsonrpc")!
         )

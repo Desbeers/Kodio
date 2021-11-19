@@ -53,7 +53,7 @@ extension ViewSidebar {
     
     /// View library lists
     var libraryLists: some View {
-        Section(header: Text("Music on '\(KodiClient.shared.selectedHost.description)'")) {
+        Section(header: Text("Music on '\(appState.selectedHost.description)'")) {
             ForEach(appState.sidebarItems) { item in
                 if item.visible {
                     sidebarButton(item: item)

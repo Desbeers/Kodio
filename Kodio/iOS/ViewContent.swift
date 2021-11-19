@@ -41,7 +41,7 @@ extension ViewContent {
                 ViewHostsMenu()
                 Divider()
                 if appState.state == .loadedLibrary {
-                    Button("Scan library on '\(KodiClient.shared.selectedHost.description)'") {
+                    Button("Scan library on '\(appState.selectedHost.description)'") {
                         KodiHost.shared.scanAudioLibrary()
                     }
                     Divider()

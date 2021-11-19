@@ -16,7 +16,7 @@ extension String {
     /// Convert image path to a full URL
     /// - Returns: A string representing the full image URL
     func kodiImageUrl() -> String {
-        let host = KodiClient.shared.selectedHost
+        let host = AppState.shared.selectedHost
         /// Encoding
         var allowed = CharacterSet.alphanumerics
         allowed.insert(charactersIn: "-._~") /// as per RFC 3986

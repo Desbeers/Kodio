@@ -59,14 +59,14 @@ struct Hosts {
     /// - Parameter selected: A struct of the selected host
     static func selectHost(selected: HostItem) {
         var newHostsList = [HostItem]()
-        KodiClient.shared.hosts.enumerated().forEach { index, element in
-            var host = KodiClient.shared.hosts[index]
+        AppState.shared.hosts.enumerated().forEach { index, element in
+            var host = AppState.shared.hosts[index]
             host.selected = (element == selected ? true : false)
             newHostsList.append(host)
         }
         self.save(hosts: newHostsList)
-        KodiClient.shared.hosts = newHostsList
-        KodiClient.shared.selectedHost = selected
+        AppState.shared.hosts = newHostsList
+        AppState.shared.selectedHost = selected
     }
 }
 

@@ -33,7 +33,7 @@ extension AppState {
             case .outdatedLibrary:
                 return AlertItem(
                     title: Text("Reload Library"),
-                    message: Text("Your library is not in sync with \(KodiClient.shared.selectedHost.description)."),
+                    message: Text("Your library is not in sync with \(AppState.shared.selectedHost.description)."),
                     button: .default(
                         Text("Reload"),
                         action: {
@@ -43,7 +43,7 @@ extension AppState {
                 )
             case .hostNotAvailable:
                 return AlertItem(
-                    title: Text("\(KodiClient.shared.selectedHost.description) is not available"),
+                    title: Text("\(AppState.shared.selectedHost.description) is not available"),
                     message: Text("Kodi is not available or the connection is lost."),
                     button: .default(
                         Text("Retry"),
@@ -73,7 +73,7 @@ extension AppState {
             case .scanLibrary:
                 return AlertItem(
                     title: Text("Reload Library"),
-                    message: Text("Are you sure you want to reload the library on  \(KodiClient.shared.selectedHost.description)?\n\nThis might take some time..."),
+                    message: Text("Are you sure you want to reload the library on  \(AppState.shared.selectedHost.description)?\n\nThis might take some time..."),
                     button: .default(
                         Text("Reload"),
                         action: {

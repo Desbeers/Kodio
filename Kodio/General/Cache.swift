@@ -55,7 +55,7 @@ struct Cache {
         )
         var nestedFolderURL = rootFolderURL[0]
         if !root {
-            nestedFolderURL = rootFolderURL[0].appendingPathComponent(KodiClient.shared.selectedHost.ip)
+            nestedFolderURL = rootFolderURL[0].appendingPathComponent(AppState.shared.selectedHost.ip)
             if !manager.fileExists(atPath: nestedFolderURL.relativePath) {
                 do {
                     try manager.createDirectory(

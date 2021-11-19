@@ -11,6 +11,7 @@ import SwiftUI
 ///
 /// This class takes care of:
 /// - The state of Kodio
+/// - Connect to a selected host
 /// - Checks what system is running Kodio
 /// - Showing sheets
 /// - Showing alerts
@@ -35,9 +36,23 @@ final class AppState: ObservableObject {
     /// Check if Kodio is running on a Mac or on an iOS device
     /// - Note:The iOS app thingy will override this `var` if Kodio is not running on a Mac
     var system: System = .macOS
+    /// An array with all Kodi hosts
+    @Published var hosts: [HostItem]
+    /// A struct with selected host information
+    /// - Note: This will make the connection when set or changed
+    @Published var selectedHost = HostItem() {
+        didSet {
+            Task {
+                await KodiClient.shared.connectToHost(host: selectedHost)
+            }
+        }
+    }
     
-    // MARK: Init the AppState class
+    // MARK: Init
     
     /// Do a private init to make sure we have only one instance of the AppState class
-    private init() {}
+    private init() {
+        self.hosts = Hosts.get()
+        self.selectedHost = Hosts.active(hosts: self.hosts)
+    }
 }

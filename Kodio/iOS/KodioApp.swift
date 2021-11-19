@@ -13,8 +13,6 @@ import SwiftUI
     @StateObject var appState: AppState = .shared
     /// The KodiHost model
     @StateObject var kodiHost: KodiHost = .shared
-    /// The KodiClient model
-    @StateObject var kodiClient: KodiClient = .shared
     /// The Library model
     @StateObject var library: Library = .shared
     /// The Player model
@@ -41,7 +39,6 @@ import SwiftUI
                 .environmentObject(kodiHost)
                 .environmentObject(library)
                 .environmentObject(player)
-                .environmentObject(kodiClient)
                 .environmentObject(queue)
                 .onChange(of: scenePhase) { newPhase in
                     if newPhase == .inactive {

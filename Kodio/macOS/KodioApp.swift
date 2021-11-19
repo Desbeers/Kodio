@@ -13,8 +13,6 @@ import SwiftUI
     @StateObject var appState: AppState = .shared
     /// The KodiHost model
     @StateObject var kodiHost: KodiHost = .shared
-    /// The KodiClient model
-    @StateObject var kodiClient: KodiClient = .shared
     /// The Library model
     @StateObject var library: Library = .shared
     /// The Player model
@@ -29,7 +27,6 @@ import SwiftUI
             ViewContent()
                 .environmentObject(appState)
                 .environmentObject(kodiHost)
-                .environmentObject(kodiClient)
                 .environmentObject(library)
                 .environmentObject(player)
                 .environmentObject(queue)
@@ -56,11 +53,11 @@ import SwiftUI
                 }
             }
             CommandGroup(replacing: CommandGroupPlacement.newItem) {
-                ViewHostsMenu().environmentObject(kodiClient).environmentObject(appState)
+                ViewHostsMenu().environmentObject(appState)
             }
             CommandMenu("Host") {
                 if appState.state == .loadedLibrary {
-                    Button("Scan library on '\(kodiClient.selectedHost.description)'") {
+                    Button("Scan library on '\(appState.selectedHost.description)'") {
                         kodiHost.scanAudioLibrary()
                     }
                 }
@@ -71,8 +68,9 @@ import SwiftUI
             ToolbarCommands()
         }
         Settings {
+            /// - Note: The settings view does not 'get' the environment automatic
             ViewSettings()
-                .environmentObject(kodiClient)
+                .environmentObject(appState)
         }
     }
 }

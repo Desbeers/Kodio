@@ -9,8 +9,8 @@ import SwiftUI
 
 /// A view to edit the list of Kodi hosts
 struct ViewHostsEdit: View {
-    /// The KodiClient model
-    @EnvironmentObject var kodiClient: KodiClient
+    /// The AppState model
+    @EnvironmentObject var appState: AppState
     /// The currently selected host
     @State var selectedHost = HostItem()
     /// The values in the form
@@ -24,18 +24,18 @@ struct ViewHostsEdit: View {
         HStack(alignment: .top, spacing: 0) {
             ScrollView {
                 VStack(alignment: .leading) {
-                    if !kodiClient.hosts.isEmpty {
+                    if !appState.hosts.isEmpty {
                         Text("Your Kodi's")
                             .font(.headline)
-                        ForEach(kodiClient.hosts) { host in
+                        ForEach(appState.hosts) { host in
                             Button(
                                 action: {
                                     selectedHost = host
                                     values = host
-                                    status = host == kodiClient.selectedHost ? .selected : .edit
+                                    status = host == appState.selectedHost ? .selected : .edit
                                 },
                                 label: {
-                                    Label(host.description, systemImage: host == kodiClient.selectedHost ? "k.circle.fill" : "k.circle")
+                                    Label(host.description, systemImage: host == appState.selectedHost ? "k.circle.fill" : "k.circle")
                                 }
                             )
                                 .disabled(host == selectedHost)
@@ -76,10 +76,10 @@ struct ViewHostsEdit: View {
         }
         .task {
             /// Select active host if we have one
-            if !kodiClient.hosts.isEmpty {
-                selectedHost = kodiClient.selectedHost
-                values = kodiClient.selectedHost
-                status = kodiClient.selectedHost.selected ? .selected : .edit
+            if !appState.hosts.isEmpty {
+                selectedHost = appState.selectedHost
+                values = appState.selectedHost
+                status = appState.selectedHost.selected ? .selected : .edit
             }
         }
     }
@@ -95,8 +95,6 @@ extension  ViewHostsEdit {
     
     /// Edit the details of a Kodi hist
     struct ViewDetails: View {
-        /// The KodiClient model
-        @EnvironmentObject var kodiClient: KodiClient
         /// The host to edit
         @Binding var selectedHost: HostItem
         /// The values of the form
@@ -167,8 +165,8 @@ extension  ViewHostsEdit {
         var addHost: some View {
             Button("Add") {
                 logger("Add host")
-                kodiClient.hosts.append(values)
-                Hosts.save(hosts: kodiClient.hosts)
+                AppState.shared.hosts.append(values)
+                Hosts.save(hosts: AppState.shared.hosts)
                 selectedHost = values
                 status = .edit
             }
@@ -180,13 +178,13 @@ extension  ViewHostsEdit {
         var updateHost: some View {
             Button("Update") {
                 logger("Update host")
-                if let index = kodiClient.hosts.firstIndex(of: selectedHost) {
-                    kodiClient.hosts[index] = values
-                    Hosts.save(hosts: kodiClient.hosts)
+                if let index = AppState.shared.hosts.firstIndex(of: selectedHost) {
+                    AppState.shared.hosts[index] = values
+                    Hosts.save(hosts: AppState.shared.hosts)
                     selectedHost = values
                     /// Reload if this host is selected
                     if status == .selected {
-                        kodiClient.selectedHost = values
+                        AppState.shared.selectedHost = values
                     }
                 }
             }
@@ -208,11 +206,11 @@ extension  ViewHostsEdit {
         var deleteHost: some View {
             Button("Delete", role: .destructive) {
                 logger("Delete host")
-                if let index = kodiClient.hosts.firstIndex(of: selectedHost) {
-                    KodiClient.shared.hosts.remove(at: index)
-                    Hosts.save(hosts: kodiClient.hosts)
-                    selectedHost = kodiClient.selectedHost
-                    values = kodiClient.selectedHost
+                if let index = AppState.shared.hosts.firstIndex(of: selectedHost) {
+                    AppState.shared.hosts.remove(at: index)
+                    Hosts.save(hosts: AppState.shared.hosts)
+                    selectedHost = AppState.shared.selectedHost
+                    values = AppState.shared.selectedHost
                     status = .selected
                 }
             }
@@ -273,22 +271,22 @@ extension  ViewHostsEdit {
 
 /// The Kodi host selector in a menu
 struct ViewHostsMenu: View {
-    /// The KodiClient model that has the hosts information
-    @EnvironmentObject var kodiClient: KodiClient
+    /// The AppState model that has the hosts information
+    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        if !kodiClient.selectedHost.ip.isEmpty {
+        if !appState.selectedHost.ip.isEmpty {
             Button(
                 action: {
                     AppState.shared.viewAlert(type: .scanLibrary)
                 },
                 label: {
-                    Label("Reload \(kodiClient.selectedHost.description)", systemImage: "arrow.clockwise")
+                    Label("Reload \(appState.selectedHost.description)", systemImage: "arrow.clockwise")
                 }
             )
             Divider()
         }
-        ForEach(kodiClient.hosts.filter { $0.selected == false }) { host in
+        ForEach(appState.hosts.filter { $0.selected == false }) { host in
             Button(
                 action: {
                     Hosts.switchHost(selected: host)

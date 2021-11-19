@@ -11,8 +11,6 @@ import SwiftUI
 struct ViewAppStateStatus: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState
-    /// The KodiClient model
-    @EnvironmentObject var kodiClient: KodiClient
     /// The view
     var body: some View {
         HStack {
@@ -22,7 +20,7 @@ struct ViewAppStateStatus: View {
             case .none:
                 Text("No host selected")
             case .connectedToHost:
-                Text("Connected to '\(kodiClient.selectedHost.description)'")
+                Text("Connected to '\(appState.selectedHost.description)'")
             case .loadingLibrary:
                 ProgressView()
                 /// Make this a bit smaller on macOS
@@ -31,9 +29,9 @@ struct ViewAppStateStatus: View {
                     }
                 Text("Loading library")
             case .loadedLibrary, .sleeping, .wakeup:
-                Text("Music on '\(kodiClient.selectedHost.description)'")
+                Text("Music on '\(appState.selectedHost.description)'")
             case .failure:
-                Text("'\(kodiClient.selectedHost.description)' is not available")
+                Text("'\(appState.selectedHost.description)' is not available")
             }
         }
         .frame(height: 20)
