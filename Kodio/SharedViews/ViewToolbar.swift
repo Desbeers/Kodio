@@ -104,10 +104,12 @@ extension ViewToolbar {
                 }
             },
             label: {
-                ViewPlayerArt(item: player.item, size: 30)
-                    .frame(width: 30, height: 30)
-                    .cornerRadius(2)
-                playerItem
+                HStack(spacing: 0) {
+                    ViewPlayerArt(item: player.item, size: 30)
+                        .frame(width: 30, height: 30)
+                        .cornerRadius(2)
+                    playerItem
+                }
             }
         )
             .buttonStyle(PlainButtonStyle())
@@ -132,12 +134,15 @@ extension ViewToolbar {
                     .font(.subheadline)
             }
         }
-        .padding(.horizontal, 2)
-        .id(player.item)
-        .iOS {$0
-        .scaleEffect(0.9)
-        .frame(height: 34)
+        /// A bit of padding for macOS
+        .macOS {$0
+        .padding(.horizontal, 6)
         }
+        /// A bit smaller for iOS
+        .iOS {$0
+        .scaleEffect(0.85)
+        }
+        .id(player.item)
     }
     /// The play/pause button
     var playButton: some View {
