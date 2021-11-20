@@ -112,7 +112,7 @@ extension ViewToolbar {
                 }
             }
         )
-            .buttonStyle(PlainButtonStyle())
+            .buttonStyle(.plain)
     }
     /// The current item in the player
     var playerItem: some View {

@@ -70,7 +70,7 @@ extension ViewQueue {
                             .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
                     }
                 }
-                .listStyle(PlainListStyle())
+                .listStyle(.plain)
                 /// Scroll to the item that is playing
                 .task {
                     withAnimation(.linear(duration: 1)) {

@@ -35,7 +35,7 @@ struct ViewSheet: View {
             }
             /// Close `Sheets` when pressing *return* on the keyboard
             .keyboardShortcut(.defaultAction)
-            .buttonStyle(PlainButtonStyle())
+            .buttonStyle(.plain)
             .padding()
 #endif
         }

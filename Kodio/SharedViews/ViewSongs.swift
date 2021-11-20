@@ -56,9 +56,9 @@ extension ViewSongs {
             }
             .padding(.vertical)
             .frame(maxWidth: .infinity, alignment: .leading)
-            /// - Note: iOS doesn't like two buttons in a listrow unless it's in plain style
+            /// - Note: iOS doesn't like two buttons in a listrow unless you give it a style
             .iOS {$0
-            .buttonStyle(.plain)
+            .buttonStyle(.bordered)
             }
         } else {
             Spacer()
@@ -89,7 +89,7 @@ extension ViewSongs {
             /// Get the first page of songs
             songList = await Library.pager(items: songs)
         }
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
     }
     
     /// Display disc number only once and only when an album is selected that has more than one disc
