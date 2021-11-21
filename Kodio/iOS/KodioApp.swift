@@ -11,6 +11,8 @@ import SwiftUI
 @main struct KodioApp: App {
     /// The AppState model
     @StateObject var appState: AppState = .shared
+    /// The Library model
+     @StateObject var library: Library = .shared
     /// The Player model
     @StateObject var player: Player = .shared
     /// Keep an eye of our state; iOS doesn't like to go into the background while we have a websocket connection
@@ -30,6 +32,7 @@ import SwiftUI
         WindowGroup {
             ViewContent()
                 .environmentObject(appState)
+                .environmentObject(library)
                 .environmentObject(player)
                 .onChange(of: scenePhase) { newPhase in
                     if newPhase == .inactive {

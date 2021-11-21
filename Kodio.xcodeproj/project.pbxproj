@@ -335,9 +335,9 @@
 				D7D95085272D804300CC7155 /* Protocols */,
 				D752FF932747D3C100858882 /* KodiClientClass */,
 				D72740DF26B1630100067D4A /* KodiHostClass */,
-				D7EA915E26A93CCC0090C137 /* LibraryClass */,
 				D745126326B3702D00A99889 /* QueueClass */,
 				D7E1EA4D2736D7430087EA69 /* AppStateModel */,
+				D7EA915E26A93CCC0090C137 /* LibraryModel */,
 				D706F67526B0F87C0068F35C /* PlayerModel */,
 				D7BBB8FE26B199FA0097D286 /* SearchModel */,
 				D7EA916226A93D600090C137 /* Extensions */,
@@ -450,7 +450,7 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
-		D7EA915E26A93CCC0090C137 /* LibraryClass */ = {
+		D7EA915E26A93CCC0090C137 /* LibraryModel */ = {
 			isa = PBXGroup;
 			children = (
 				D73163D426ABE8A700CD5F7E /* Library.swift */,
@@ -467,7 +467,7 @@
 				D7D9508C272E878D00CC7155 /* LibraryFilter.swift */,
 				D7E1EA5A2736F37A0087EA69 /* LibraryLoad.swift */,
 			);
-			path = LibraryClass;
+			path = LibraryModel;
 			sourceTree = "<group>";
 		};
 		D7EA916226A93D600090C137 /* Extensions */ = {
@@ -937,8 +937,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio3;
 				PRODUCT_NAME = Kodio;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -963,6 +963,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio3;
 				PRODUCT_NAME = Kodio;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

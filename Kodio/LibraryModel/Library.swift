@@ -8,12 +8,12 @@
 import Foundation
 import Combine
 
-/// The Library class
+/// The Library model
 ///
 /// This class takes care of:
 /// - Loading the music libray
 /// - Filter the library based on UI selection
-final class Library {
+final class Library: ObservableObject {
     
     // MARK: Constants and Variables
     
@@ -38,7 +38,7 @@ final class Library {
         }
     }
     /// The library filtered by selection of library list, genre, artist and album
-    var filteredContent = FilteredContent()
+    @Published var filteredContent = FilteredContent()
     /// An array containing all artist related items
     var artists = Artists()
     /// An array containing all album related items

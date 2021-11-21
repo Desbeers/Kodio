@@ -9,6 +9,8 @@ import SwiftUI
 
 /// View the song queue
 struct ViewQueue: View {
+    /// The Library model
+     @EnvironmentObject var library: Library
     /// The Player model
     @EnvironmentObject var player: Player
     /// The view
@@ -64,7 +66,7 @@ extension ViewQueue {
         VStack {
             ScrollViewReader { proxy in
                 List {
-                    ForEach(Library.shared.getSongsFromQueue()) { song in
+                    ForEach(library.getSongsFromQueue()) { song in
                         ViewSongsListRow(song: song, selectedAlbum: nil)
                             .id(song.songID)
                             .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)

@@ -40,21 +40,32 @@ extension Library {
             }
         }
     }
-    
+
     /// Select or deselect an album in the UI
-    /// - Parameters album: The selected ``AlbumItem``
-    func toggleAlbum(album: AlbumItem) {
+    /// - Parameter album: The selected ``AlbumItem``
+    /// - Returns: False when done to enable the buttons again in the view
+    func toggleAlbum(album: AlbumItem) async -> Bool {
         logger("Album selected")
         /// Reload songs
-        Task(priority: .userInitiated) {
-            albums.selected = albums.selected == album ? nil : album
-            /// Set the selection
-            setLibrarySelection(item: albums.selected)
-            /// Filter the songs
-            filteredContent.songs = await filterSongs()
-            /// Update the UI
-            await updateLibraryView()
-        }
+        albums.selected = albums.selected == album ? nil : album
+        /// Set the selection
+        setLibrarySelection(item: albums.selected)
+        /// Filter the songs
+        let songs = await filterSongs()
+        /// Update the UI
+        await updateLibraryView(
+            content:
+                FilteredContent(
+                    genres: filteredContent.genres,
+                    artists: filteredContent.artists,
+                    albums: filteredContent.albums,
+                    songs: songs
+                )
+        )
+        /// Sleep for a moment before enable the button again
+        await Task.sleep(500_000_000)
+        /// Return the filtering state to the view
+        return false
     }
     
     /// Retrieve all albums (Kodi API)

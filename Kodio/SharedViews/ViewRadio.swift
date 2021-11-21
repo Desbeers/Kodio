@@ -9,12 +9,14 @@ import SwiftUI
 
 /// A list with radio channels
 struct ViewRadio: View {
+    /// The Library object
+     @EnvironmentObject var library: Library
     /// The player object
     @EnvironmentObject var player: Player
     /// The view
     var body: some View {
         Section(header: Text("Radio stations")) {
-            ForEach(Library.shared.radioStations) { channel in
+            ForEach(library.radioStations) { channel in
                 Button(
                     action: {
                         player.playRadio(stream: channel.stream)

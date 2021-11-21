@@ -11,6 +11,8 @@ import SwiftUI
 @main struct KodioApp: App {
     /// The AppState model
     @StateObject var appState: AppState = .shared
+    /// The Library model
+     @StateObject var library: Library = .shared
     /// The Player model
     @StateObject var player: Player = .shared
     /// App delegate
@@ -20,6 +22,7 @@ import SwiftUI
         WindowGroup {
             ViewContent()
                 .environmentObject(appState)
+                .environmentObject(library)
                 .environmentObject(player)
         }
         /// Hide the title so we can use the whole toolbar for buttons

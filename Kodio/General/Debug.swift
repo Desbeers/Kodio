@@ -13,7 +13,7 @@ func logger(_ string: String) {
     if OperationQueue.current?.underlyingQueue?.label != nil {
         message = "👀 "
     }
-    print("\(message)\(string) \(Date())")
+    //print("\(message)\(string) \(Date())")
 }
 
 /// Print raw JSON to the console

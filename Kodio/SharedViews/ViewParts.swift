@@ -103,7 +103,12 @@ private extension ButtonStyleList {
                 .foregroundColor(.white)
                 .background(
                     VStack {
-                        Color.accentColor
+                        /// - Note: On iOS, the accentColor for a disabled button is grey, so, force blue
+                        if AppState.shared.system == .macOS {
+                            Color.accentColor
+                        } else {
+                            Color.blue
+                        }
                     }.saturation(selected ? 1 : buttonSaturation(media: type))
                 )
                 .cornerRadius(6)

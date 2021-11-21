@@ -37,20 +37,18 @@ struct ViewLibrary: View {
 
 /// View the top of the library: genres, artists and songs
 struct ViewLibraryTop: View {
-    /// The AppState model
-    @EnvironmentObject var appState: AppState
-    /// The libraray class
-    private let library: Library = .shared
+    /// The Library model
+    @EnvironmentObject var library: Library
     /// The view
     var body: some View {
         VStack(spacing: 0) {
             /// A divider; else the genres, artist and albums fill scroll over the toolbar
             Divider()
             HStack(spacing: 0) {
-                ViewGenres(genres: appState.filteredContent.genres, selected: library.genres.selected)
+                ViewGenres(genres: library.filteredContent.genres, selected: library.genres.selected)
                     .frame(width: 150)
-                ViewArtists(artists: appState.filteredContent.artists, selected: library.artists.selected)
-                ViewAlbums(albums: appState.filteredContent.albums, selected: library.albums.selected)
+                ViewArtists(artists: library.filteredContent.artists, selected: library.artists.selected)
+                ViewAlbums(albums: library.filteredContent.albums, selected: library.albums.selected)
             }
             .overlay(
                 ViewDropShadow()
@@ -61,22 +59,20 @@ struct ViewLibraryTop: View {
 
 /// View the bottom of the library: details and the songs
 struct ViewLibraryBottom: View {
-    /// The AppState model
-    @EnvironmentObject var appState: AppState
-    /// The libraray class
-    private let library: Library = .shared
+    /// The Library model
+    @EnvironmentObject var library: Library
     /// The view
     var body: some View {
         GeometryReader { geometry in
-        HStack(spacing: 0) {
-            ViewDetails(item: library.selection, width: geometry.size.width * 0.40)
-            Divider()
-            if appState.filteredContent.songs.isEmpty {
-                ViewEmptyLibrary(item: library.selection)
-            } else {
-                ViewSongs(songs: appState.filteredContent.songs, selectedAlbum: library.albums.selected)
+            HStack(spacing: 0) {
+                ViewDetails(item: library.selection, width: geometry.size.width * 0.40)
+                Divider()
+                if library.filteredContent.songs.isEmpty {
+                    ViewEmptyLibrary(item: library.selection)
+                } else {
+                    ViewSongs(selectedAlbum: library.albums.selected)
+                }
             }
-        }
         }
         .animation(.default, value: library.selection.empty)
     }

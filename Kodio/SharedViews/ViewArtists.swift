@@ -13,6 +13,8 @@ struct ViewArtists: View {
     let artists: [Library.ArtistItem]
     /// The optional selected artist
     let selected: Library.ArtistItem?
+    /// State of filtering the library
+    @State var filtering = false
     /// The view
     var body: some View {
         ScrollView {
@@ -21,7 +23,10 @@ struct ViewArtists: View {
                 ForEach(artists) { artist in
                     Button(
                         action: {
-                            Library.shared.toggleArtist(artist: artist)
+                            Task {
+                                filtering = true
+                                filtering = await Library.shared.toggleArtist(artist: artist)
+                            }
                         },
                         label: {
                             ViewMediaItemListRow(item: artist, size: 58)
@@ -31,6 +36,8 @@ struct ViewArtists: View {
                 }
             }
         }
+        /// Disable the view while filtering
+        .disabled(filtering)
         .id(artists)
     }
 }

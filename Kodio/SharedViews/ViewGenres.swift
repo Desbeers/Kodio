@@ -13,6 +13,8 @@ struct ViewGenres: View {
     let genres: [Library.GenreItem]
     /// The optional selected genre
     let selected: Library.GenreItem?
+    /// State of filtering the library
+    @State var filtering = false
     /// The view
     var body: some View {
         ScrollView {
@@ -21,8 +23,12 @@ struct ViewGenres: View {
                 ForEach(genres) { genre in
                     Button(
                         action: {
-                            Library.shared.toggleGenre(genre: genre)
-                        }, label: {
+                            Task {
+                                filtering = true
+                                filtering = await Library.shared.toggleGenre(genre: genre)
+                            }
+                        },
+                        label: {
                             row(genre: genre)
                         })
                         .buttonStyle(ButtonStyleList(type: .genre, selected: genre == selected ? true: false))
@@ -31,6 +37,8 @@ struct ViewGenres: View {
                 }
             }
         }
+        /// Disable the view while filtering
+        .disabled(filtering)
         .id(genres)
     }
 }

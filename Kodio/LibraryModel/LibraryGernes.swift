@@ -42,26 +42,35 @@ extension Library {
     
     /// Select or deselect a genre in the UI
     /// - Parameter genre: The selected  ``GenreItem``
-    func toggleGenre(genre: GenreItem) {
+    /// - Returns: False when done to enable the buttons again in the view
+    func toggleGenre(genre: GenreItem) async -> Bool {
         logger("Genre selected")
         /// Reload artists, albums and songs
-        Task(priority: .userInitiated) {
-            genres.selected = genres.selected == genre ? nil : genre
-            /// Reset selection
-            artists.selected = nil
-            albums.selected = nil
-            /// Set the selection
-            setLibrarySelection(item: genres.selected)            
-            /// Filter the songs
-            filteredContent.songs = await filterSongs()
-            /// Now the rest
-            async let albums = filterAlbums(songList: filteredContent.songs)
-            filteredContent.albums = await albums
-            async let artists = filterArtists(songList: filteredContent.songs)
-            filteredContent.artists = await artists
-            /// Update the UI
-            await updateLibraryView()
-        }
+        genres.selected = genres.selected == genre ? nil : genre
+        /// Reset selection
+        artists.selected = nil
+        albums.selected = nil
+        /// Set the selection
+        setLibrarySelection(item: genres.selected)            
+        /// Filter the songs
+        let songs = await filterSongs()
+        /// Now the rest
+        async let albums = filterAlbums(songList: songs)
+        async let artists = filterArtists(songList: songs)
+        /// Update the UI
+        await updateLibraryView(
+            content:
+                FilteredContent(
+                    genres: filteredContent.genres,
+                    artists: await artists,
+                    albums: await albums,
+                    songs: songs
+                )
+        )
+        /// Sleep for a moment before enable the button again
+        await Task.sleep(500_000_000)
+        /// Return the filtering state to the view
+        return false
     }
 
     /// Retrieve all genres (Kodi API)

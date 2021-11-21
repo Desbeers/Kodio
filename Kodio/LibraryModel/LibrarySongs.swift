@@ -104,10 +104,10 @@ extension Library {
             } catch {
                 logger("Error saving MySongs")
             }
-            /// Refresh UI
-            DispatchQueue.main.async {
-                AppState.shared.objectWillChange.send()
-            }
+//            /// Refresh UI
+//            DispatchQueue.main.async {
+//                self.objectWillChange.send()
+//            }
             
         }
     }

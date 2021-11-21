@@ -43,28 +43,38 @@ extension Library {
     
     /// Select or deselect an artist in the UI
     /// - Parameters artist: The selected ``ArtistItem``
-    func toggleArtist(artist: ArtistItem) {
+    /// - Returns: False when done to enable the buttons again in the view
+    func toggleArtist(artist: ArtistItem) async -> Bool {
         logger("Artist selected")
         /// Reload albums and songs
-        Task(priority: .userInitiated) {
-            /// Remember the past for Album Artists
-            if let album = albums.selected, album.artistID.contains(artist.artistID) {
-                artists.selected = artist
-            } else {
-                artists.selected = artists.selected == artist ? nil : artist
-            }
-            /// Reset selection
-            albums.selected = nil
-            /// Set the selection
-            setLibrarySelection(item: artists.selected)
-            /// Filter the songs
-            filteredContent.songs = await filterSongs()
-            /// Now the albums
-            async let albums = filterAlbums(songList: filteredContent.songs)
-            filteredContent.albums = await albums
-            /// Update the UI
-            await updateLibraryView()
+        /// Remember the past for Album Artists
+        if let album = albums.selected, album.artistID.contains(artist.artistID) {
+            artists.selected = artist
+        } else {
+            artists.selected = artists.selected == artist ? nil : artist
         }
+        /// Reset selection
+        albums.selected = nil
+        /// Set the selection
+        setLibrarySelection(item: artists.selected)
+        /// Filter the songs
+        let songs = await filterSongs()
+        /// Now the albums
+        async let albums = filterAlbums(songList: songs)
+        /// Update the UI
+        await updateLibraryView(
+            content:
+                FilteredContent(
+                    genres: filteredContent.genres,
+                    artists: filteredContent.artists,
+                    albums: await albums,
+                    songs: songs
+                )
+        )
+        /// Sleep for a moment before enable the button again
+        await Task.sleep(500_000_000)
+        /// Return the filtering state to the view
+        return false
     }
     
     /// Retrieve all artists (Kodi API)

@@ -21,8 +21,8 @@ extension Library {
         var albums: [AlbumItem] = []
         /// Songs
         var songs: [SongItem] = []
-        /// Search suggestions
-        var searchSuggestions: [SearchSuggestionItem] = []
+        /// The list ID
+        var listID = UUID()
     }
     
     /// Filter the genres
@@ -114,6 +114,8 @@ extension Library {
             songList = songList.filter { $0.albumID == album.albumID }
                 .sorted { $0.disc == $1.disc ? $0.track < $1.track : $0.disc < $1.disc }
         }
+        /// Give the list a new ID
+        filteredContent.listID = UUID()
         /// Return the list of filtered songs
         return songList
     }
@@ -142,29 +144,35 @@ extension Library {
     func filterAllMedia() {
         Task {
             /// Filter the songs
-            filteredContent.songs = await filterSongs()
+            let songs = await filterSongs()
             /// Now the rest
-            async let albums = filterAlbums(songList: filteredContent.songs)
-            filteredContent.albums = await albums
-            async let artists = filterArtists(songList: filteredContent.songs)
-            filteredContent.artists = await artists
-            async let genres = filterGenres(songList: filteredContent.songs)
-            filteredContent.genres = await genres
+            async let albums = filterAlbums(songList: songs)
+            async let artists = filterArtists(songList: songs)
+            async let genres = filterGenres(songList: songs)
             /// Update the View
-            await updateLibraryView()
+            await updateLibraryView(
+                content:
+                    FilteredContent(
+                        genres: await genres,
+                        artists: await artists,
+                        albums: await albums,
+                        songs: songs
+                    )
+            )
         }
     }
     
     /// Update the SwiftUI View
-    /// - Parameter content: An array of filtered content
-    func updateLibraryView() async {
-        Task { @MainActor in
-            logger("Update library UI")
-            AppState.shared.filteredContent = filteredContent
-            /// Update the selection
-            if let selected = getLibraryLists().first(where: { $0.media == selection.media}) {
-                selection = selected
-            }
+    @MainActor func updateLibraryView(content: FilteredContent) {
+        logger("Update library UI")
+        filteredContent = FilteredContent(
+             genres: content.genres,
+             artists: content.artists,
+             albums: content.albums,
+             songs: content.songs)
+        /// Update the selection
+        if let selected = getLibraryLists().first(where: { $0.media == selection.media}) {
+            selection = selected
         }
     }
 
@@ -174,13 +182,13 @@ extension Library {
     ///   - items: An array of ``LibraryItem`` structs
     ///   - page: The page number to show
     /// - Returns: A reduced array of ``LibraryItem`` structs
-    static func pager<T: LibraryItem>(items: [T], page: Int = 0) async -> [T] {
+    static func pager<T: LibraryItem>(items: [T], page: Int = 0, all: Bool = false) async -> [T] {
         /// The total items we have
         let totalItems = items.count
         /// The total amount of songs per page
         let amount = 20
         /// Calculate the start range
-        let pageStart = page * amount
+        let pageStart = all ? 0 : page * amount
         /// Calculate the end range
         /// - Note: Reduce with 1 because the array starts at 0
         let pageEnd = (pageStart + amount < totalItems ? pageStart + amount  : totalItems) - 1

@@ -9,8 +9,8 @@ import SwiftUI
 
 /// The list of songs
 struct ViewSongs: View {
-    /// The list of songs
-    let songs: [Library.SongItem]
+    /// The Library model
+    @EnvironmentObject var library: Library
     /// The optional selected album
     let selectedAlbum: Library.AlbumItem?
     /// The songList
@@ -22,7 +22,7 @@ struct ViewSongs: View {
         VStack {
             list
         }
-        .id(songs)
+        .id(library.filteredContent.songs)
         .frame(maxWidth: .infinity)
     }
 }
@@ -31,14 +31,14 @@ extension ViewSongs {
     
     /// The header above the list of songs
     @ViewBuilder var header: some View {
-        let count = songs.count
+        let count = library.filteredContent.songs.count
         /// - Note: Don't add more than 200 songs to the queue; that makes no sense
         if count <= 200 {
             HStack {
                 Button(
                     action: {
                         KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
-                        Player.shared.sendSongsAndPlay(songs: songs)
+                        Player.shared.sendSongsAndPlay(songs: library.filteredContent.songs)
                     },
                     label: {
                         Label("Play \(count == 1 ? "song" : "songs")", systemImage: "play.fill")
@@ -47,7 +47,7 @@ extension ViewSongs {
                 Button(
                     action: {
                         KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
-                        Player.shared.sendSongsAndPlay(songs: songs, shuffled: true)
+                        Player.shared.sendSongsAndPlay(songs: library.filteredContent.songs, shuffled: true)
                     },
                     label: {
                         Label("Shuffle \(count == 1 ? "song" : "songs")", systemImage: "shuffle")
@@ -75,9 +75,9 @@ extension ViewSongs {
                     .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))
                     .task {
                         /// Check if we have more songs to load
-                        if song == songList.last && songList.count < songs.count {
+                        if song == songList.last && songList.count < library.filteredContent.songs.count {
                             currentPage += 1
-                            songList += await Library.pager(items: songs, page: currentPage)
+                            songList += await Library.pager(items: library.filteredContent.songs, page: currentPage)
                         }
                     }
                     .modifier(ViewModifierLists())
@@ -87,7 +87,7 @@ extension ViewSongs {
             /// Reset the page counter
             currentPage = 0
             /// Get the first page of songs
-            songList = await Library.pager(items: songs)
+            songList = await Library.pager(items: library.filteredContent.songs)
         }
         .listStyle(.plain)
     }
