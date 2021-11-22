@@ -98,9 +98,9 @@ extension Library {
                 /// Sort by artist sort name
                 let useartistsortname = true
                 /// Sort order
-                let order = SortMethod.ascending.string()
+                let order = KodiClient.SortMethod.ascending.string()
                 /// Sort method
-                let method = SortMethod.artist.string()
+                let method = KodiClient.SortMethod.artist.string()
             }
         }
         /// The response struct

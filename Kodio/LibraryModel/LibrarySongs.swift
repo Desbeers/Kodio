@@ -141,8 +141,8 @@ extension Library {
         var parameters: Data {
             /// The parameters we ask for
             var params = Params()
-            params.sort.method = SortMethod.artist.string()
-            params.sort.order = SortMethod.ascending.string()
+            params.sort.method = KodiClient.SortMethod.artist.string()
+            params.sort.order = KodiClient.SortMethod.ascending.string()
             return buildParams(params: params)
         }
         /// The request struct
@@ -152,7 +152,7 @@ extension Library {
                               "track", "disc", "lastplayed", "album", "genreid",
                               "dateadded", "genre", "duration", "userrating"]
             /// The sort order
-            var sort = SortFields()
+            var sort = KodiClient.SortFields()
         }
         /// The response struct
         struct Response: Decodable {

@@ -75,8 +75,8 @@ extension Library {
         /// The JSON creator
         var parameters: Data {
             var params = Params()
-            params.sort.method = SortMethod.artist.string()
-            params.sort.order = SortMethod.ascending.string()
+            params.sort.method = KodiClient.SortMethod.artist.string()
+            params.sort.order = KodiClient.SortMethod.ascending.string()
             return buildParams(params: params)
         }
         /// The request struct
@@ -84,7 +84,7 @@ extension Library {
             /// The properties
             let properties = AlbumItem().properties
             /// Sort order
-            var sort = SortFields()
+            var sort = KodiClient.SortFields()
         }
         /// The response struct
         struct Response: Decodable {
