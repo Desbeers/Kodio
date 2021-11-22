@@ -22,7 +22,7 @@ struct ViewSongs: View {
         VStack {
             list
         }
-        .id(library.filteredContent.songs)
+        .id(library.filteredContent.listID)
         .frame(maxWidth: .infinity)
     }
 }
@@ -88,6 +88,10 @@ extension ViewSongs {
             currentPage = 0
             /// Get the first page of songs
             songList = await Library.pager(items: library.filteredContent.songs)
+        }
+        /// The songlist will change when you toggle the 'favorite' button
+        .onChange(of: library.filteredContent.songs) {newSongs in
+            songList = Array(newSongs[0...(songList.count - 1)])
         }
         .listStyle(.plain)
     }

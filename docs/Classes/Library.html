@@ -162,12 +162,6 @@
                 <a href="../Classes/Library/LibraryListItem.html">– LibraryListItem</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/Library/AudioLibraryGetSongItems.html">– AudioLibraryGetSongItems</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Library/SongListItem.html">– SongListItem</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/Library/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
@@ -201,7 +195,13 @@
                 <a href="../Classes/Library/AudioLibraryGetSongs.html">– AudioLibraryGetSongs</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/Library/AudioLibraryGetSongDetails.html">– AudioLibraryGetSongDetails</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/Library/AudioLibrarySetSongDetails.html">– AudioLibrarySetSongDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Library/AudioLibraryGetUpdatedSongs.html">– AudioLibraryGetUpdatedSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Library/SongItem.html">– SongItem</a>
@@ -1079,7 +1079,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>True when loaded; else false</p>
+                        <p>True when done</p>
                       </div>
                     </section>
                   </div>
@@ -1282,7 +1282,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>True when loaded; else false</p>
+                        <p>True when done</p>
                       </div>
                     </section>
                   </div>
@@ -1780,9 +1780,40 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio7LibraryC5pager5items4pageSayxGAG_SitYaAA0B4ItemRzlFZ"></a>
-                    <a name="//apple_ref/swift/Method/pager(items:page:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC5pager5items4pageSayxGAG_SitYaAA0B4ItemRzlFZ">pager(items:<wbr>page:<wbr>)</a>
+                    <a name="/s:5Kodio7LibraryC17getSongsFromQueueSayAC8SongItemVGyF"></a>
+                    <a name="//apple_ref/swift/Method/getSongsFromQueue()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC17getSongsFromQueueSayAC8SongItemVGyF">getSongsFromQueue()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the songs from the database to add to the queue list</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSongsFromQueue</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Library</span><span class="o">.</span><span class="kt"><a href="../Classes/Library/SongItem.html">SongItem</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An array of song items</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio7LibraryC5pager5items4page3allSayxGAH_SiSbtYaAA0B4ItemRzlFZ"></a>
+                    <a name="//apple_ref/swift/Method/pager(items:page:all:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC5pager5items4page3allSayxGAH_SiSbtYaAA0B4ItemRzlFZ">pager(items:<wbr>page:<wbr>all:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -1805,7 +1836,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="n">pager</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">],</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">T</span><span class="p">]</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="n">pager</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">],</span> <span class="nv">page</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">all</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">T</span><span class="p">]</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span></code></pre>
 
                         </div>
                       </div>
@@ -2094,90 +2125,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio7LibraryC03getB9ListItemsSbyYaF"></a>
-                    <a name="//apple_ref/swift/Method/getLibraryListItems()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC03getB9ListItemsSbyYaF">getLibraryListItems()</a>
-                    </code>
-                      <span class="declaration-note">
-                        Asynchronous
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Get a list of recently played and recently added songs from the Kodi host</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getLibraryListItems</span><span class="p">()</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>True when loaded; else false</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio7LibraryC16songIDtoSongItem33_FAC31F890136A9429178301C1FA94057LL0C2IDSayAC0eF0VGSayAC0e4ListF0VG_tF"></a>
-                    <a name="//apple_ref/swift/Method/songIDtoSongItem(songID:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC16songIDtoSongItem33_FAC31F890136A9429178301C1FA94057LL0C2IDSayAC0eF0VGSayAC0e4ListF0VG_tF">songIDtoSongItem(songID:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Change a list with song id&rsquo;s to a list with the actual songs</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">songIDtoSongItem</span><span class="p">(</span><span class="nv">songID</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/Library/SongListItem.html">SongListItem</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/Library/SongItem.html">SongItem</a></span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>songID</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>An array with <code><a href="../Classes/Library/SongListItem.html">SongListItem</a></code> structs</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>An array with <code><a href="../Classes/Library/SongItem.html">SongItem</a></code> structs</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:5Kodio7LibraryC06selectB4List07libraryD0yAC0bD4ItemV_tF"></a>
                     <a name="//apple_ref/swift/Method/selectLibraryList(libraryList:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Kodio7LibraryC06selectB4List07libraryD0yAC0bD4ItemV_tF">selectLibraryList(libraryList:<wbr>)</a>
@@ -2297,62 +2244,6 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">libraryReload</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio7LibraryC05AudioB12GetSongItemsV"></a>
-                    <a name="//apple_ref/swift/Struct/AudioLibraryGetSongItems" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB12GetSongItemsV">AudioLibraryGetSongItems</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Retrieve filtered song ID&rsquo;s (Kodi API)</p>
-
-                        <a href="../Classes/Library/AudioLibraryGetSongItems.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AudioLibraryGetSongItems</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/KodiAPI.html">KodiAPI</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio7LibraryC12SongListItemV"></a>
-                    <a name="//apple_ref/swift/Struct/SongListItem" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC12SongListItemV">SongListItem</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The struct for a SongListItem</p>
-
-                        <a href="../Classes/Library/SongListItem.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SongListItem</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
 
                         </div>
                       </div>
@@ -3069,7 +2960,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A struct will all song related items</p>
+                        <p>A struct with all song related items</p>
 
                         <a href="../Classes/Library/Songs.html" class="slightly-smaller">See more</a>
                       </div>
@@ -3132,7 +3023,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>True when loaded; else false</p>
+                        <p>True when done</p>
                       </div>
                     </section>
                   </div>
@@ -3140,57 +3031,48 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio7LibraryC19mergeSongsAndAlbums33_6F2A8FE97AC519032FA972AA5BB81367LLyyF"></a>
-                    <a name="//apple_ref/swift/Method/mergeSongsAndAlbums()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC19mergeSongsAndAlbums33_6F2A8FE97AC519032FA972AA5BB81367LLyyF">mergeSongsAndAlbums()</a>
+                    <a name="/s:5Kodio7LibraryC15getUpdatedSongs4dateySS_tYaF"></a>
+                    <a name="//apple_ref/swift/Method/getUpdatedSongs(date:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC15getUpdatedSongs4dateySS_tYaF">getUpdatedSongs(date:<wbr>)</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Add some fields from the album to the song</p>
+                        <p>Get a list of song ID&rsquo;s that are updated since last update</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">mergeSongsAndAlbums</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio7LibraryC17getSongsFromQueueSayAC8SongItemVGyF"></a>
-                    <a name="//apple_ref/swift/Method/getSongsFromQueue()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC17getSongsFromQueueSayAC8SongItemVGyF">getSongsFromQueue()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Get the songs from the database to add to the queue list</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSongsFromQueue</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Library</span><span class="o">.</span><span class="kt"><a href="../Classes/Library/SongItem.html">SongItem</a></span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getUpdatedSongs</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">async</span></code></pre>
 
                         </div>
                       </div>
                       <div>
-                        <h4>Return Value</h4>
-                        <p>An array of song items</p>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>date</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The date of the last update</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -3198,26 +3080,60 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio7LibraryC18favoriteSongToggle4songyAC0D4ItemV_tF"></a>
-                    <a name="//apple_ref/swift/Method/favoriteSongToggle(song:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC18favoriteSongToggle4songyAC0D4ItemV_tF">favoriteSongToggle(song:<wbr>)</a>
+                    <a name="/s:5Kodio7LibraryC14getSongDetails6songID5cacheySi_SbtYaF"></a>
+                    <a name="//apple_ref/swift/Method/getSongDetails(songID:cache:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC14getSongDetails6songID5cacheySi_SbtYaF">getSongDetails(songID:<wbr>cache:<wbr>)</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Like or dislike a song</p>
+                        <p>Get the details from one song</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">favoriteSongToggle</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/Library/SongItem.html">SongItem</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getSongDetails</span><span class="p">(</span><span class="nv">songID</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">cache</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="k">async</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>songID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ID of the song</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cache</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Update view and cache or not. This function is also just to update the library on start</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -3235,7 +3151,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Save the song details in the database</p>
+                        <p>Save the song details into the database</p>
 
                       </div>
                       <div class="declaration">
@@ -3245,6 +3161,74 @@
                           <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">setSongDetails</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/Library/SongItem.html">SongItem</a></span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>song</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/Library/SongItem.html">SongItem</a></code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio7LibraryC18favoriteSongToggle4songyAC0D4ItemV_tYaF"></a>
+                    <a name="//apple_ref/swift/Method/favoriteSongToggle(song:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC18favoriteSongToggle4songyAC0D4ItemV_tYaF">favoriteSongToggle(song:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Favorite a song or not</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">favoriteSongToggle</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/Library/SongItem.html">SongItem</a></span><span class="p">)</span> <span class="k">async</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>song</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/Library/SongItem.html">SongItem</a></code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -3280,6 +3264,34 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Kodio7LibraryC05AudioB14GetSongDetailsV"></a>
+                    <a name="//apple_ref/swift/Struct/AudioLibraryGetSongDetails" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB14GetSongDetailsV">AudioLibraryGetSongDetails</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve details of one song (Kodi API)</p>
+
+                        <a href="../Classes/Library/AudioLibraryGetSongDetails.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AudioLibraryGetSongDetails</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/KodiAPI.html">KodiAPI</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Kodio7LibraryC05AudioB14SetSongDetailsV"></a>
                     <a name="//apple_ref/swift/Struct/AudioLibrarySetSongDetails" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Kodio7LibraryC05AudioB14SetSongDetailsV">AudioLibrarySetSongDetails</a>
@@ -3299,6 +3311,34 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AudioLibrarySetSongDetails</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/KodiAPI.html">KodiAPI</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio7LibraryC05AudioB15GetUpdatedSongsV"></a>
+                    <a name="//apple_ref/swift/Struct/AudioLibraryGetUpdatedSongs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB15GetUpdatedSongsV">AudioLibraryGetUpdatedSongs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieve filtered song ID&rsquo;s (Kodi API)</p>
+
+                        <a href="../Classes/Library/AudioLibraryGetUpdatedSongs.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AudioLibraryGetUpdatedSongs</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/KodiAPI.html">KodiAPI</a></span></code></pre>
 
                         </div>
                       </div>
@@ -3338,7 +3378,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-21)</p>
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-22)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

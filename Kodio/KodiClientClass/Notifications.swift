@@ -19,16 +19,16 @@ extension KodiClient {
                 if case .string(let text) = message {
                     /// get the notification
                     guard let data = text.data(using: .utf8),
-                          let notification = try? JSONDecoder().decode(NotificationItem.self, from: data),
-                          let method = Method(rawValue: notification.method)
+                          let notification = try? JSONDecoder().decode(NotificationItem.self, from: data)
                     else {
                         /// Not an interesting notification
+                        print(message)
                         /// Call ourself again to receive the next notification
                         self.receiveNotification()
                         return
                     }
                     logger("Notification: \(notification.method)")
-                    self.notificationAction(method: method)
+                    self.notificationAction(notification: notification)
                 }
                 /// Call ourself again to receive the next notification
                 self.receiveNotification()
@@ -41,7 +41,8 @@ extension KodiClient {
     
     /// Do an action when we receive a notification from Kodi via the WebSocket
     /// - Parameters method: The received notification method
-    func notificationAction(method: Method) {
+    func notificationAction(notification: NotificationItem) {
+        let method = Method(rawValue: notification.method)
         switch method {
             /// Set the slider in the UI
         case .applicationOnVolumeChanged:
@@ -69,10 +70,8 @@ extension KodiClient {
         case .audioLibraryOnUpdate:
             if !scanningLibrary {
                 Task {
-                    await Library.shared.getLibraryListItems()
+                    await Library.shared.getSongDetails(songID: notification.params.data?.itemID ?? 0)
                 }
-            } else {
-                logger("Not updating the list items, Host is scanning")
             }
         case .playerOnSpeedChanged:
             Task {
@@ -81,7 +80,7 @@ extension KodiClient {
         case .audioLibraryOnScanStarted:
             scanningLibrary = true
             logger("Scanning library on the host")
-            /// Tell the ApppState
+            /// Tell the AppState
             Task { @MainActor in
                 AppState.shared.scanningLibrary = true
             }
@@ -102,9 +101,29 @@ extension KodiClient {
     }
     
     /// The notification item
-    /// - Note: - I'm only interested in the method
     struct NotificationItem: Decodable {
         /// The method
         var method: String
+        /// The params
+        var params = Params()
+        /// The params struct
+        struct Params: Decodable {
+            /// The optional data from the notice
+            var data: DataItem?
+        }
+        /// The struct for the notification data
+        struct DataItem: Decodable {
+            /// The item ID
+            var itemID: Int?
+            /// The type of item
+            var type: String?
+            /// Coding keys
+            enum CodingKeys: String, CodingKey {
+                /// The keys
+                case type
+                /// ID is a reserved word
+                case itemID = "id"
+            }
+        }
     }
 }

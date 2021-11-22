@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SongListItem Structure Reference</title>
+    <title>AudioLibraryGetSongDetails Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/SongListItem" class="dashAnchor"></a>
-    <a title="SongListItem Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/AudioLibraryGetSongDetails" class="dashAnchor"></a>
+    <a title="AudioLibraryGetSongDetails Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../index.html">Kodio</a> (100% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../../index.html">Kodio Reference</a>
         <img id="carat" src="../../img/carat.png" alt=""/>
-        SongListItem Structure Reference
+        AudioLibraryGetSongDetails Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -162,12 +162,6 @@
                 <a href="../../Classes/Library/LibraryListItem.html">– LibraryListItem</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Classes/Library/AudioLibraryGetSongItems.html">– AudioLibraryGetSongItems</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Classes/Library/SongListItem.html">– SongListItem</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../../Classes/Library/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
@@ -201,7 +195,13 @@
                 <a href="../../Classes/Library/AudioLibraryGetSongs.html">– AudioLibraryGetSongs</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../Classes/Library/AudioLibraryGetSongDetails.html">– AudioLibraryGetSongDetails</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Classes/Library/AudioLibrarySetSongDetails.html">– AudioLibrarySetSongDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/Library/AudioLibraryGetUpdatedSongs.html">– AudioLibraryGetUpdatedSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Classes/Library/SongItem.html">– SongItem</a>
@@ -472,15 +472,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>SongListItem</h1>
+            <h1>AudioLibraryGetSongDetails</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SongListItem</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AudioLibraryGetSongDetails</span> <span class="p">:</span> <span class="kt"><a href="../../Protocols/KodiAPI.html">KodiAPI</a></span></code></pre>
 
                 </div>
               </div>
-            <p>The struct for a SongListItem</p>
+            <p>Retrieve details of one song (Kodi API)</p>
 
           </section>
           <section class="section task-group-section">
@@ -489,9 +489,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio7LibraryC12SongListItemV6songIDSivp"></a>
+                    <a name="/s:5Kodio7LibraryC05AudioB14GetSongDetailsV6songIDSivp"></a>
                     <a name="//apple_ref/swift/Property/songID" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC12SongListItemV6songIDSivp">songID</a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB14GetSongDetailsV6songIDSivp">songID</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -499,7 +499,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The ID of the song</p>
+                        <p>Argument: the song we ask for</p>
 
                       </div>
                       <div class="declaration">
@@ -516,9 +516,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio7LibraryC12SongListItemV10CodingKeysO"></a>
-                    <a name="//apple_ref/swift/Enum/CodingKeys" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio7LibraryC12SongListItemV10CodingKeysO">CodingKeys</a>
+                    <a name="/s:5Kodio7LibraryC05AudioB14GetSongDetailsV6methodAA6MethodOvp"></a>
+                    <a name="//apple_ref/swift/Property/method" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB14GetSongDetailsV6methodAA6MethodOvp">method</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -526,15 +526,97 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Coding keys</p>
+                        <p>Method</p>
 
-                        <a href="../../Classes/Library/SongListItem/CodingKeys.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">CodingKeys</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">CodingKey</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">method</span><span class="p">:</span> <span class="kt"><a href="../../Enums/Method.html">Method</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio7LibraryC05AudioB14GetSongDetailsV10parameters10Foundation4DataVvp"></a>
+                    <a name="//apple_ref/swift/Property/parameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB14GetSongDetailsV10parameters10Foundation4DataVvp">parameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The JSON creator</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Data</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio7LibraryC05AudioB14GetSongDetailsV6ParamsV"></a>
+                    <a name="//apple_ref/swift/Struct/Params" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB14GetSongDetailsV6ParamsV">Params</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The request struct</p>
+
+                        <a href="../../Classes/Library/AudioLibraryGetSongDetails/Params.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Params</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio7LibraryC05AudioB14GetSongDetailsV8ResponseV"></a>
+                    <a name="//apple_ref/swift/Struct/Response" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio7LibraryC05AudioB14GetSongDetailsV8ResponseV">Response</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The response struct</p>
+
+                        <a href="../../Classes/Library/AudioLibraryGetSongDetails/Response.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Response</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
 
                         </div>
                       </div>
@@ -546,7 +628,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-21)</p>
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-22)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

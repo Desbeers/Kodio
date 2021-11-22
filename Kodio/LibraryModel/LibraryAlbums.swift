@@ -21,7 +21,7 @@ extension Library {
     
     /// Get all albums from the Kodi host
     /// - Parameter reload: Force a reload or else it will try to load it from the  cache
-    /// - Returns: True when loaded; else false
+    /// - Returns: True when done
     func getAlbums(reload: Bool = false) async -> Bool {
         if !reload, let result = Cache.get(key: "MyAlbums", as: [AlbumItem].self) {
             albums.all = result

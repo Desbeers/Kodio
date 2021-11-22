@@ -34,6 +34,8 @@ enum Method: String {
     case audioLibraryGetAlbums = "AudioLibrary.GetAlbums"
     /// Get songs from the host
     case audioLibraryGetSongs = "AudioLibrary.GetSongs"
+    /// Get details of one song from the host
+    case audioLibraryGetSongDetails = "AudioLibrary.GetSongDetails"
     /// Set details of a song on the host
     case audioLibrarySetSongDetails = "AudioLibrary.SetSongDetails"
     /// Get genres from the host

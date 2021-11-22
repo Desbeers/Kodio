@@ -95,10 +95,12 @@ extension ViewSongsListRow {
         /// Button to add or remove a song from favorites
         Button(
             action: {
-                Library.shared.favoriteSongToggle(song: song)
+                Task {
+                    await Library.shared.favoriteSongToggle(song: song)
+                }
             },
             label: {
-                Label(song.rating == 0 ? "Favorite" : "Remove", systemImage: song.rating == 0 ? "heart" : "heart.slash")
+                Label(song.rating == 0 ? "Favorite" : "Unfavorite", systemImage: song.rating == 0 ? "heart" : "heart.slash")
             }
         )
             .tint(.red.opacity(0.6))

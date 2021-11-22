@@ -82,11 +82,11 @@ extension Library {
         case .compilations:
             songList = songList.filter {$0.compilation == true}.sorted {$0.artists < $1.artists}
         case .recentlyPlayed:
-            songList = songs.recentlyPlayed
+            songList = Array(songList.sorted {$0.lastPlayed > $1.lastPlayed}.prefix(100))
         case .recentlyAdded:
             songList = Array(songList.sorted {$0.dateAdded > $1.dateAdded}.prefix(100))
         case .mostPlayed:
-            songList = songs.mostPlayed
+            songList = Array(songList.sorted {$0.playCount > $1.playCount}.prefix(100))
         case .random:
             songList = songs.random
         case .neverPlayed:
@@ -114,8 +114,6 @@ extension Library {
             songList = songList.filter { $0.albumID == album.albumID }
                 .sorted { $0.disc == $1.disc ? $0.track < $1.track : $0.disc < $1.disc }
         }
-        /// Give the list a new ID
-        filteredContent.listID = UUID()
         /// Return the list of filtered songs
         return songList
     }
@@ -169,11 +167,27 @@ extension Library {
              genres: content.genres,
              artists: content.artists,
              albums: content.albums,
-             songs: content.songs)
+             songs: content.songs,
+             listID: UUID()
+        )
         /// Update the selection
         if let selected = getLibraryLists().first(where: { $0.media == selection.media}) {
             selection = selected
         }
+    }
+    
+    /// Get the songs from the database to add to the queue list
+    /// - Returns: An array of song items
+    func getSongsFromQueue() -> [Library.SongItem] {
+        var songList: [Library.SongItem] = []
+        let allSongs = songs.all
+        for (index, song) in Player.shared.queueItems.enumerated() {
+            if var item = allSongs.first(where: { $0.songID == song.songID }) {
+                item.queueID = index
+                songList.append(item)
+            }
+        }
+        return songList
     }
 
     /// A pager when listng library items

@@ -21,7 +21,7 @@ extension Library {
     
     /// Get all artists from the Kodi host
     /// - Parameter reload: Force a reload or else it will try to load it from the  cache
-    /// - Returns: True when loaded; else false
+    /// - Returns: True when done
     func getArtists(reload: Bool = false) async -> Bool {
         if !reload, let result = Cache.get(key: "MyArtists", as: [ArtistItem].self) {
             artists.all = result

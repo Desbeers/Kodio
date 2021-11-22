@@ -30,6 +30,11 @@ extension Library {
                     logger("Library is out of date.")
                     let appState: AppState = .shared
                     await appState.viewAlert(type: .outdatedLibrary)
+                    return
+                }
+                if let lastUpdate = Cache.get(key: "LibraryLastUpdated", as: Properties.self),
+                   lastUpdate.songsModified != result.songsModified {
+                    await getUpdatedSongs(date: lastUpdate.songsModified)
                 }
             }
         } catch {

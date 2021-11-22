@@ -11,7 +11,7 @@ extension Library {
     
     // MARK: Songs
     
-    /// A struct will all song related items
+    /// A struct with all song related items
     struct Songs {
         /// All songs in the library
         var all: [SongItem] = []
@@ -19,15 +19,11 @@ extension Library {
         var random: [SongItem] = []
         /// A list containing songs that are never played
         var neverPlayed: [SongItem] = []
-        /// A list containing the most played songs
-        var mostPlayed: [SongItem] = []
-        /// A list containing recently played songs
-        var recentlyPlayed: [SongItem] = []
     }
     
     /// Get all songs from the Kodi host
     /// - Parameter reload: Force a reload or else it will try to load it from the  cache
-    /// - Returns: True when loaded; else false
+    /// - Returns: True when done
     func getSongs(reload: Bool = false) async -> Bool {
         if !reload, let result = Cache.get(key: "MySongs", as: [SongItem].self) {
             songs.all = result
@@ -37,8 +33,22 @@ extension Library {
             do {
                 let result = try await kodiClient.sendRequest(request: request)
                 songs.all = result.songs
-                /// Add some album fields to the songs
-                mergeSongsAndAlbums()
+                /// Add some additional fields to the songs
+                for (index, song) in songs.all.enumerated() {
+                    if let album = albums.all.first(where: { $0.albumID == song.albumID }) {
+                        /// I like to know if the song is part of a compilation
+                        /// and there is no property for that
+                        songs.all[index].compilation = album.compilation
+                        /// Sometimes a song has a different thumbnail than the album
+                        /// so you end-up with many, many items in the cache
+                        songs.all[index].thumbnail = album.thumbnail
+                        /// Try to save on expensive queries
+                        songs.all[index].albumArtist = album.artist
+                        songs.all[index].albumArtistID = album.artistID
+                        /// Create the search string
+                        songs.all[index].searchString = "\(songs.all[index].artist.first ?? "") \(songs.all[index].album) \(songs.all[index].title)"
+                    }
+                }
                 /// Save in the cache
                 try Cache.set(key: "MySongs", object: songs.all)
                 /// Save the date of the last library scan in the cache
@@ -51,71 +61,76 @@ extension Library {
             }
         }
     }
-    
-    /// Add some fields from the album to the song
-    private func mergeSongsAndAlbums() {
-        for (index, song) in songs.all.enumerated() {
-            if let album = albums.all.first(where: { $0.albumID == song.albumID }) {
-                /// I like to know if the song is part of a compilation
-                /// and there is no property for that
-                songs.all[index].compilation = album.compilation
-                /// Sometimes a song has a different thumbnail than the album
-                /// so you end-up with many, many items in the cache
-                songs.all[index].thumbnail = album.thumbnail
-                /// Try to save on expensive queries
-                songs.all[index].albumArtist = album.artist
-                songs.all[index].albumArtistID = album.artistID
-                /// Create the search string
-                songs.all[index].searchString = "\(songs.all[index].artist.first ?? "") \(songs.all[index].album) \(songs.all[index].title)"
+
+    /// Get a list of song ID's that are updated since last update
+    /// - Parameter date: The date of the last update
+    func getUpdatedSongs(date: String) async {
+        logger("Updating songs")
+        let request = AudioLibraryGetUpdatedSongs(date: date)
+        do {
+            let result = try await kodiClient.sendRequest(request: request)
+            for song in result.songs {
+                await getSongDetails(songID: song.songID, cache: false)
             }
-        }
-    }
-    
-    /// Get the songs from the database to add to the queue list
-    /// - Returns: An array of song items
-    func getSongsFromQueue() -> [Library.SongItem] {
-        var songList: [Library.SongItem] = []
-        let allSongs = songs.all
-        for (index, song) in Player.shared.queueItems.enumerated() {
-            if var item = allSongs.first(where: { $0.songID == song.songID }) {
-                item.queueID = index
-                songList.append(item)
-            }
-        }
-        return songList
-    }
-    
-    /// Like or dislike a song
-    func favoriteSongToggle(song: SongItem) {
-        if let index = songs.all.firstIndex(where: { $0.songID == song.songID }),
-           let list = filteredContent.songs.firstIndex(where: { $0.songID == song.songID }) {
-            if song.rating == 0 {
-                songs.all[index].rating = 10
-                filteredContent.songs[list].rating = 10
-            } else {
-                songs.all[index].rating = 0
-                filteredContent.songs[list].rating = 0
-            }
-            /// Save it on the host
-            setSongDetails(song: songs.all[index])
             /// Save in the cache
             do {
                 try Cache.set(key: "MySongs", object: songs.all)
             } catch {
                 logger("Error saving MySongs")
             }
-//            /// Refresh UI
-//            DispatchQueue.main.async {
-//                self.objectWillChange.send()
-//            }
-            
+            /// Save the date of the last library scan in the cache
+            await getLastUpdate(cache: true)
+        } catch {
+            print(error)
         }
     }
-    
-    /// Save the song details in the database
+
+    /// Get the details from one song
+    /// - Parameters:
+    ///   - songID: The ID of the song
+    ///   - cache: Update view and cache or not. This function is also just to update the library on start
+    func getSongDetails(songID: Int, cache: Bool = true) async {
+        let request = AudioLibraryGetSongDetails(songID: songID)
+        do {
+            let result = try await kodiClient.sendRequest(request: request)
+            /// Update the fiields in the song list
+            if let index = songs.all.firstIndex(where: { $0.songID == songID }) {
+                songs.all[index].rating = result.songdetails.rating
+                songs.all[index].playCount = result.songdetails.playCount
+                songs.all[index].lastPlayed = result.songdetails.lastPlayed
+                if cache {
+                    /// If the song is currently viewed; update it
+                    if let list = filteredContent.songs.firstIndex(where: { $0.songID == songID }) {
+                        filteredContent.songs[list] = songs.all[index]
+                    }
+                    /// Save in the cache
+                    do {
+                        try Cache.set(key: "MySongs", object: songs.all)
+                    } catch {
+                        logger("Error saving MySongs")
+                    }
+                    /// Save the date of the last library scan in the cache
+                    await getLastUpdate(cache: true)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+
+    /// Save the song details into the database
+    /// - Parameter song: The ``SongItem``
     private func setSongDetails(song: SongItem) {
         let message = AudioLibrarySetSongDetails(song: song)
         kodiClient.sendMessage(message: message)
+    }
+    
+    /// Favorite a song or not
+    /// - Parameter song: The ``SongItem``
+    func favoriteSongToggle(song: SongItem) async {
+        var favorite = song
+        favorite.rating = favorite.rating == 0 ? 10 : 0
+        setSongDetails(song: favorite)
     }
     
     /// Retrieve all songs (Kodi API)
@@ -145,6 +160,35 @@ extension Library {
             let songs: [SongItem]
         }
     }
+
+    /// Retrieve details of one song (Kodi API)
+    struct AudioLibraryGetSongDetails: KodiAPI {
+        /// Argument: the song we ask for
+        var songID: Int
+        /// Method
+        var method = Method.audioLibraryGetSongDetails
+        /// The JSON creator
+        var parameters: Data {
+            /// The parameters we ask for
+            var params = Params()
+            params.songid = songID
+            return buildParams(params: params)
+        }
+        /// The request struct
+        struct Params: Encodable {
+            /// The properties that we ask from Kodi
+            let properties = ["title", "artist", "artistid", "year", "playcount", "albumid",
+                              "track", "disc", "lastplayed", "album", "genreid",
+                              "dateadded", "genre", "duration", "userrating"]
+            /// The ID of the song
+            var songid: Int = 0
+        }
+        /// The response struct
+        struct Response: Decodable {
+            /// The details of the song
+            var songdetails: SongItem
+        }
+    }
     
     /// Update the given song with the given details (Kodi API)
     struct AudioLibrarySetSongDetails: KodiAPI {
@@ -170,6 +214,57 @@ extension Library {
         }
         /// The response struct
         struct Response: Decodable { }
+    }
+    
+    /// Retrieve filtered song ID's (Kodi API)
+    struct AudioLibraryGetUpdatedSongs: KodiAPI {
+        /// Arguments
+        var date: String = ""
+        /// Method
+        let method = Method.audioLibraryGetSongs
+        /// The JSON creator
+        var parameters: Data {
+            /// The parameters we ask for
+            var params = Params()
+            params.filter.value = date
+            return buildParams(params: params)
+        }
+        /// The request struct
+        struct Params: Encodable {
+            /// Filter
+            var filter = Filter()
+            /// The limits struct
+            struct Filter: Encodable {
+                /// The field of the filter
+                let field = "datemodified"
+                /// The operator of the filter
+                let operate = "greaterthan"
+                /// The value for the filter
+                var value: String = ""
+                /// The coding keys
+                enum CodingKeys: String, CodingKey {
+                    /// The keys
+                    case field, value
+                    /// operator is a reserved word
+                    case operate = "operator"
+                }
+            }
+        }
+        /// The response struct
+        struct Response: Decodable {
+            /// The list of songs
+            let songs: [SongID]
+            /// The struct for a SongIdITem
+            struct SongID: Decodable, Equatable {
+                /// The ID of the song
+                var songID: Int
+                /// Coding keys
+                enum CodingKeys: String, CodingKey {
+                    /// lowerCamelCase
+                    case songID = "songid"
+                }
+            }
+        }
     }
     
     /// The struct for a song item

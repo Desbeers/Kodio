@@ -18,45 +18,7 @@ extension Library {
         /// The selected libray list in the UI
         var selected = LibraryListItem()
     }
-    
-    /// Get a list of recently played and recently added songs from the Kodi host
-    /// - Returns: True when loaded; else false
-    func getLibraryListItems() async -> Bool {
-        let recent = AudioLibraryGetSongItems(media: .recentlyPlayed)
-        let most = AudioLibraryGetSongItems(media: .mostPlayed)
-        do {
-            /// Recently played
-            async let recent = kodiClient.sendRequest(request: recent)
-            songs.recentlyPlayed = songIDtoSongItem(songID: try await recent.songs)
-            /// Most played
-            async let most = kodiClient.sendRequest(request: most)
-            songs.mostPlayed = songIDtoSongItem(songID: try await most.songs)
-            logger("Recently and most played songs loaded from host")
-            /// If this item is selected; refresh the UI
-            if selection.media == Library.MediaType.recentlyPlayed || selection.media == Library.MediaType.mostPlayed {
-                filterAllMedia()
-            }
-            return true
-        } catch {
-            /// There are no items in the library
-            print("Loading library items failed with error: \(error)")
-            return true
-        }
-    }
-    
-    /// Change a list with song id's to a list with the actual songs
-    /// - Parameter songID: An array with ``SongListItem`` structs
-    /// - Returns: An array with ``SongItem`` structs
-    private func songIDtoSongItem(songID: [SongListItem]) -> [SongItem] {
-        var songList = [SongItem]()
-        for song in songID {
-            if let item = songs.all.first(where: { $0.songID == song.songID }) {
-                songList.append(item)
-            }
-        }
-        return songList
-    }
-    
+
     /// Select a library list and filter the library
     /// - Parameter libraryList: A ``LibraryListItem`` struct
     func selectLibraryList(libraryList: LibraryListItem) {
@@ -198,60 +160,5 @@ extension Library {
         setLibrarySelection(item: libraryLists.selected)
         /// Reload all media
         filterAllMedia()
-    }
-    
-    /// Retrieve filtered song ID's (Kodi API)
-    struct AudioLibraryGetSongItems: KodiAPI {
-        /// Arguments
-        var media: MediaType = .song
-        /// Method
-        var method = Method.audioLibraryGetSongs
-        /// The JSON creator
-        var parameters: Data {
-            /// The parameters we ask for
-            var params = Params()
-            switch media {
-            case .recentlyPlayed:
-                params.sort.method = SortMethod.lastPlayed.string()
-                params.sort.order = SortMethod.descending.string()
-            case .mostPlayed:
-                params.sort.method = SortMethod.playCount.string()
-                params.sort.order = SortMethod.descending.string()
-            default:
-                params.sort.method = SortMethod.track.string()
-                params.sort.order = SortMethod.ascending.string()
-            }
-            return buildParams(params: params)
-        }
-        /// The request struct
-        struct Params: Encodable {
-            /// Sort order
-            var sort = SortFields()
-            /// Limits for the result
-            let limits = Limits()
-            /// The limits struct
-            struct Limits: Encodable {
-                /// Start limit
-                let start = 0
-                /// End limit
-                let end = 50
-            }
-        }
-        /// The response struct
-        struct Response: Decodable {
-            /// The list of songs
-            let songs: [SongListItem]
-        }
-    }
-    
-    /// The struct for a SongListItem
-    struct SongListItem: Decodable, Equatable {
-        /// The ID of the song
-        var songID: Int
-        /// Coding keys
-        enum CodingKeys: String, CodingKey {
-            /// lowerCamelCase
-            case songID = "songid"
-        }
     }
 }

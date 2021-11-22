@@ -41,8 +41,6 @@ extension Library {
             /// Songs
             if await albums {
                 status.songs = await getSongs(reload: reload)
-                /// Now load stuff depending on the songs
-                status.libraryLists = await getLibraryListItems()
                 /// Check if the library is still up to date
                 if !reload {
                     await getLastUpdate()
@@ -82,7 +80,7 @@ extension Library {
     struct Status {
         /// Check if all media items are loaded
         var all: Bool {
-            if artists, albums, songs, libraryLists, genres, playlists {
+            if artists, albums, songs, genres, playlists {
                 return true
             }
             return false
@@ -95,8 +93,6 @@ extension Library {
         var songs: Bool = false
         /// Loading state of the genres
         var genres: Bool = false
-        /// Loading state of the library list items
-        var libraryLists: Bool = false
         /// Loading state of the playlists
         var playlists: Bool = false
         /// Function to reset all states to initial value
