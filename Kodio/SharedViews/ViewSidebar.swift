@@ -86,7 +86,9 @@ extension ViewSidebar {
         /// Return the styled button
         return Button(
             action: {
-                Library.shared.selectLibraryList(libraryList: item)
+                Task {
+                    await Library.shared.selectLibraryList(libraryList: item)
+                }
             },
             label: {
                 /// - Note: Not in a ``Label`` because with multi-lines the icon does not center

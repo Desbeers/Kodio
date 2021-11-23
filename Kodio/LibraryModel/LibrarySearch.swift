@@ -20,28 +20,24 @@ extension Library {
     }
     
     /// Search the library, create suggestion and view the result
-    func searchLibrary(query: String) {
+    func searchLibrary(query: String) async {
         if !query.isEmpty {
-            Task(priority: .userInitiated) {
-                /// Get search results
-                async let results = getSearchResults(query: query)
-                search.results = await results
-                /// Make a list of suggestions
-                search.suggestions = await makeSearchSuggestions(query: query)
-                /// Select 'Search' in the sidebar
-                if let button = getLibraryLists().first(where: { $0.media == .search}) {
-                    selectLibraryList(libraryList: button)
-                }
-
+            /// Get search results
+            async let results = getSearchResults(query: query)
+            search.results = await results
+            /// Make a list of suggestions
+            search.suggestions = await getSearchSuggestions(query: query)
+            /// Select 'Search' in the sidebar
+            if let button = getLibraryLists().first(where: { $0.media == .search}) {
+                await selectLibraryList(libraryList: button)
             }
         } else {
             search = Search()
-            /// Select default if selected item is still search
+            /// Select default if selected item is still search or else just update the sidebar to remove the search button
             if libraryLists.selected.media == .search {
-                Task(priority: .userInitiated) {
-                    logger("Select first item in the sidebar")
-                    selectLibraryList(libraryList: libraryLists.all.first!)
-                }
+                await selectLibraryList(libraryList: libraryLists.all.first!)
+            } else {
+                await AppState.shared.updateSidebar()
             }
         }
     }
@@ -50,47 +46,47 @@ extension Library {
     /// - Returns: An arry of song items
     private func getSearchResults(query: String) async -> [SongItem] {
         logger("Search library")
-        let smartSearchMatcher = SmartSearchMatcher(searchString: query)
+        let searchMatcher = SearchMatcher(query: query)
         return songs.all.filter { songs in
-                if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(songs.searchString) {
+                if searchMatcher.searchTokens.count == 1 && searchMatcher.matches(songs.searchString) {
                     return true
                 }
-                return smartSearchMatcher.matches(songs.searchString)
+                return searchMatcher.matches(songs.searchString)
             }
     }
     
     /// Make a list of search suggestions
     /// - Returns: An array of search suggestion items
-    private func makeSearchSuggestions(query: String) async -> [SearchSuggestionItem] {
+    private func getSearchSuggestions(query: String) async -> [SearchSuggestionItem] {
         logger("Make search suggestions")
         var results: [SearchSuggestionItem] = []
-        let smartSearchMatcher = SmartSearchMatcher(searchString: query)
+        let searchMatcher = SearchMatcher(query: query)
         /// Artists
         let artistList = artists.all.filter { artists in
-            if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(artists.artist) {
+            if searchMatcher.searchTokens.count == 1 && searchMatcher.matches(artists.artist) {
                 return true
             }
-            return smartSearchMatcher.matches(artists.artist)
+            return searchMatcher.matches(artists.artist)
         }
         for artist in artistList {
             results.append(SearchSuggestionItem(title: artist.artist, subtitle: "Artist in your library", suggestion: artist.artist, icon: artist.icon))
         }
         /// Albums
         let albumList = albums.all.filter { albums in
-            if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(albums.title) {
+            if searchMatcher.searchTokens.count == 1 && searchMatcher.matches(albums.title) {
                 return true
             }
-            return smartSearchMatcher.matches(albums.title)
+            return searchMatcher.matches(albums.title)
         }
         for album in albumList {
             results.append(SearchSuggestionItem(title: album.title, subtitle: "Album from \(album.artist.first!)", suggestion: "\(album.artist.first!) \(album.title)", icon: album.icon))
         }
         /// Songs
         let songList = songs.all.filter { songs in
-            if smartSearchMatcher.searchTokens.count == 1 && smartSearchMatcher.matches(songs.title) {
+            if searchMatcher.searchTokens.count == 1 && searchMatcher.matches(songs.title) {
                 return true
             }
-            return smartSearchMatcher.matches(songs.title)
+            return searchMatcher.matches(songs.title)
         }
         for song in songList {
             results.append(SearchSuggestionItem(title: song.title, subtitle: "Song by \(song.artist.first!)", suggestion: "\(song.artist.first!) \(song.album) \(song.title)", icon: song.icon))
@@ -100,11 +96,11 @@ extension Library {
     
     /// Do a smart search in the library
     /// - Note: Based on code from https://github.com/hacknicity/SmartSearchExample
-    private struct SmartSearchMatcher {
-        /// Creates a new instance for testing matches against `searchString`.
-        public init(searchString: String) {
-            /// Split `searchString` into tokens by whitespace and sort them by decreasing length
-            searchTokens = searchString.split(whereSeparator: { $0.isWhitespace }).sorted { $0.count > $1.count }
+    private struct SearchMatcher {
+        /// Creates a new instance for testing matches against `query`.
+        public init(query: String) {
+            /// Split `query` into tokens by whitespace and sort them by decreasing length
+            searchTokens = query.split(whereSeparator: { $0.isWhitespace }).sorted { $0.count > $1.count }
         }
         /// Check if `candidateString` matches `searchString`.
         func matches(_ candidateString: String) -> Bool {

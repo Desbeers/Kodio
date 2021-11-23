@@ -122,7 +122,7 @@ extension Library {
 
     /// Save the song details into the database
     /// - Parameter song: The ``SongItem``
-    private func setSongDetails(song: SongItem) {
+    private func setSongDetails(song: SongItem) async {
         let message = AudioLibrarySetSongDetails(song: song)
         kodiClient.sendMessage(message: message)
     }
@@ -132,7 +132,7 @@ extension Library {
     func favoriteSongToggle(song: SongItem) async {
         var favorite = song
         favorite.rating = favorite.rating == 0 ? 10 : 0
-        setSongDetails(song: favorite)
+        await setSongDetails(song: favorite)
     }
     
     /// Retrieve all songs (Kodi API)

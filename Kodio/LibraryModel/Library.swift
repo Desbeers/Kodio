@@ -34,7 +34,9 @@ final class Library: ObservableObject {
     /// The search query
     var query = "" {
         didSet {
-            searchLibrary(query: query)
+            Task {
+                await searchLibrary(query: query)
+            }
         }
     }
     /// The library filtered by selection of library list, genre, artist and album

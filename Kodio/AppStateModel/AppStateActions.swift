@@ -67,7 +67,7 @@ extension AppState {
                 await updateSidebar()
                 /// Filter the library and view it if we are just starting
                 if Library.shared.selection.media == .none {
-                    Library.shared.selectLibraryList(libraryList: Library.shared.libraryLists.all.first!)
+                    await Library.shared.selectLibraryList(libraryList: Library.shared.libraryLists.all.first!)
                 }
             }
         case .sleeping:

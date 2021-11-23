@@ -21,18 +21,14 @@ extension Library {
 
     /// Select a library list and filter the library
     /// - Parameter libraryList: A ``LibraryListItem`` struct
-    func selectLibraryList(libraryList: LibraryListItem) {
+    func selectLibraryList(libraryList: LibraryListItem) async {
         libraryLists.selected = libraryList
-        Task { @MainActor in
-            AppState.shared.updateSidebar()
-        }
+        await AppState.shared.updateSidebar()
         switch libraryList.media {
         case .playlist:
-            Task {
-                async let songList = getPlaylistSongs(file: libraryList.file)
-                playlists.songs = await songList
-                libraryReload()
-            }
+            async let songList = getPlaylistSongs(file: libraryList.file)
+            playlists.songs = await songList
+            libraryReload()
         case .random:
             songs.random = Array(songs.all
                                     .filter {!$0.title.contains("(Live)")}

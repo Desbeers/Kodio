@@ -39,10 +39,10 @@ extension Queue {
             let library: Library = .shared
             if Player.shared.queueItems.isEmpty {
                 logger("Select first item in the sidebar")
-                library.selectLibraryList(libraryList: library.libraryLists.all.first!)
+                await library.selectLibraryList(libraryList: library.libraryLists.all.first!)
             } else {
                 logger("Reload queue view")
-                library.selectLibraryList(libraryList: library.libraryLists.selected)
+                await library.selectLibraryList(libraryList: library.libraryLists.selected)
             }
         } else {
             Task { @MainActor in
