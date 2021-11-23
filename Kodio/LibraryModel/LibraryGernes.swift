@@ -67,8 +67,6 @@ extension Library {
                     songs: songs
                 )
         )
-        /// Sleep for a moment before enable the button again
-        await Task.sleep(500_000_000)
         /// Return the filtering state to the view
         return false
     }
