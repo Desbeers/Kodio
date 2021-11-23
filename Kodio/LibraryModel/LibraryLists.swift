@@ -92,11 +92,11 @@ extension Library {
                                     visible: !Player.shared.queueItems.isEmpty
                                    ))
         list.append(LibraryListItem(title: "Search",
-                                    subtitle: "Results for '\(query)'",
-                                    empty: "Nothing found for '\(query)' in your library",
+                                    subtitle: "Results for '\(search.query)'",
+                                    empty: "Nothing found for '\(search.query)' in your library",
                                     icon: "magnifyingglass",
                                     media: .search,
-                                    visible: !query.isEmpty
+                                    visible: !search.query.isEmpty
                                    ))
         /// Save the list and return it
         libraryLists.all = list

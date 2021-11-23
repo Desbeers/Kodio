@@ -31,14 +31,6 @@ final class Library: ObservableObject {
     }
     /// An array containing all search related items
     var search = Search()
-    /// The search query
-    var query = "" {
-        didSet {
-            Task {
-                await searchLibrary(query: query)
-            }
-        }
-    }
     /// The library filtered by selection of library list, genre, artist and album
     @Published var filteredContent = FilteredContent()
     /// An array containing all artist related items

@@ -482,6 +482,15 @@
               </div>
             <p>SearchObserver model</p>
 
+<p>The only reason for this class is to keep the search a bit calm.
+It will debounce the typing in the searchfield to an acceptable time.
+The <code>query</code> is observed by a <code>view</code>, so I want to keep it away from any other observed classes</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    I tried to make this more <code>async</code> alike but found out this just works best
+
+</div>
+
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -508,7 +517,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Create a shared instance</p>
+                        <p>Create a shared instance of the <code>SearchObserver</code> class</p>
 
                       </div>
                       <div class="declaration">
@@ -568,7 +577,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The Combine container</p>
+                        <p>The Combine container for the debouncing</p>
 
                       </div>
                       <div class="declaration">

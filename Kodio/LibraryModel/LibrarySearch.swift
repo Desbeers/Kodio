@@ -17,10 +17,16 @@ extension Library {
         var results: [SongItem] = []
         /// The search suggestions
         var suggestions: [SearchSuggestionItem] = []
+        /// The search query
+        var query = ""
     }
     
     /// Search the library, create suggestion and view the result
+    /// - Parameter query: The search query
     func searchLibrary(query: String) async {
+        /// Save the query; some views need to know
+        search.query = query
+        /// Only search when there is a query
         if !query.isEmpty {
             /// Get search results
             async let results = getSearchResults(query: query)
@@ -32,8 +38,9 @@ extension Library {
                 await selectLibraryList(libraryList: button)
             }
         } else {
+            /// Reset the search
             search = Search()
-            /// Select default if selected item is still search or else just update the sidebar to remove the search button
+            /// Select the first item in the sidebar if search is still selected or else just update the sidebar to remove the search button
             if libraryLists.selected.media == .search {
                 await selectLibraryList(libraryList: libraryLists.all.first!)
             } else {
@@ -41,31 +48,26 @@ extension Library {
             }
         }
     }
-    
+
     /// Get a list of songs matching the search query
-    /// - Returns: An arry of song items
+    /// - Parameter query: The search query
+    /// - Returns: An array of `SongItem`s
     private func getSearchResults(query: String) async -> [SongItem] {
         logger("Search library")
         let searchMatcher = SearchMatcher(query: query)
         return songs.all.filter { songs in
-                if searchMatcher.searchTokens.count == 1 && searchMatcher.matches(songs.searchString) {
-                    return true
-                }
                 return searchMatcher.matches(songs.searchString)
             }
     }
-    
-    /// Make a list of search suggestions
-    /// - Returns: An array of search suggestion items
+    /// Get a list of search suggestions
+    /// - Parameter query: The search query
+    /// - Returns: An array of `SearchSuggestionItem`s
     private func getSearchSuggestions(query: String) async -> [SearchSuggestionItem] {
         logger("Make search suggestions")
         var results: [SearchSuggestionItem] = []
         let searchMatcher = SearchMatcher(query: query)
         /// Artists
         let artistList = artists.all.filter { artists in
-            if searchMatcher.searchTokens.count == 1 && searchMatcher.matches(artists.artist) {
-                return true
-            }
             return searchMatcher.matches(artists.artist)
         }
         for artist in artistList {
@@ -73,9 +75,6 @@ extension Library {
         }
         /// Albums
         let albumList = albums.all.filter { albums in
-            if searchMatcher.searchTokens.count == 1 && searchMatcher.matches(albums.title) {
-                return true
-            }
             return searchMatcher.matches(albums.title)
         }
         for album in albumList {
@@ -83,9 +82,6 @@ extension Library {
         }
         /// Songs
         let songList = songs.all.filter { songs in
-            if searchMatcher.searchTokens.count == 1 && searchMatcher.matches(songs.title) {
-                return true
-            }
             return searchMatcher.matches(songs.title)
         }
         for song in songList {
@@ -94,7 +90,7 @@ extension Library {
         return results
     }
     
-    /// Do a smart search in the library
+    /// A struct for searching the library a bit smart
     /// - Note: Based on code from https://github.com/hacknicity/SmartSearchExample
     private struct SearchMatcher {
         /// Creates a new instance for testing matches against `query`.
@@ -131,7 +127,6 @@ extension Library {
                     return false
                 }
             }
-            
             // If we match every `searchToken` against the candidate string tokens, `candidateString` is a match
             return true
         }
@@ -146,7 +141,7 @@ extension Library {
         /// The title for the suggestion
         var title: String
         /// The subtitle for the suggestion
-        var subtitle: String = ""
+        var subtitle: String
         /// The suggested search text
         var suggestion: String
         /// The SF image for the suggestion
