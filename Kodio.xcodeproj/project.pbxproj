@@ -544,7 +544,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					D7EA913626A93C1D0090C137 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -937,8 +937,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio3;
 				PRODUCT_NAME = Kodio;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = singlefile;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -963,8 +963,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio3;
 				PRODUCT_NAME = Kodio;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = singlefile;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

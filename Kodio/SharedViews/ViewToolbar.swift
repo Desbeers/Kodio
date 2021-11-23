@@ -134,14 +134,7 @@ extension ViewToolbar {
                     .font(.subheadline)
             }
         }
-        /// A bit of padding for macOS
-        .macOS {$0
         .padding(.horizontal, 6)
-        }
-        /// A bit smaller for iOS
-        .iOS {$0
-        .scaleEffect(0.85)
-        }
         .id(player.item)
     }
     /// The play/pause button
