@@ -33,8 +33,8 @@ extension ViewSongs {
     /// The header above the list of songs
     @ViewBuilder var header: some View {
         let count = library.filteredContent.songs.count
-        /// - Note: Don't add more than 200 songs to the queue; that makes no sense
-        if count <= 200 {
+        /// - Note: Don't add more than 500 songs to the queue; that makes no sense
+        if count <= 500 {
             HStack {
                 Button(
                     action: {
