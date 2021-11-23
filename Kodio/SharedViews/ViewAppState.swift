@@ -27,6 +27,10 @@ struct ViewAppStateStatus: View {
                     .macOS {$0
                     .scaleEffect(0.5)
                     }
+                /// And a bit of padding for iOS
+                    .iOS {$0
+                    .padding(.trailing, 4)
+                    }
                 Text("Loading library")
             case .loadedLibrary, .sleeping, .wakeup:
                 Text("Music on '\(appState.selectedHost.description)'")

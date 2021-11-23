@@ -51,7 +51,7 @@ extension Library {
         /// Set the selection
         setLibrarySelection(item: albums.selected)
         /// Filter the songs
-        let songs = await filterSongs()
+        async let songs = filterSongs()
         /// Update the UI
         await updateLibraryView(
             content:
@@ -59,7 +59,7 @@ extension Library {
                     genres: filteredContent.genres,
                     artists: filteredContent.artists,
                     albums: filteredContent.albums,
-                    songs: songs
+                    songs: await songs
                 )
         )
         /// Sleep for a moment before enable the button again

@@ -12,7 +12,7 @@ import SwiftUI
     /// The AppState model
     @StateObject var appState: AppState = .shared
     /// The Library model
-     @StateObject var library: Library = .shared
+    @StateObject var library: Library = .shared
     /// The Player model
     @StateObject var player: Player = .shared
     /// Keep an eye of our state; iOS doesn't like to go into the background while we have a websocket connection
@@ -20,11 +20,11 @@ import SwiftUI
     /// Init the app; check on what platform we are running
     init() {
         if UIDevice.current.userInterfaceIdiom == .pad {
-            appState.system = .iPad
+            AppState.shared.system = .iPad
         } else if UIDevice.current.userInterfaceIdiom == .mac {
-            appState.system = .iPad
+            AppState.shared.system = .iPad
         } else {
-            appState.system = .iPhone
+            AppState.shared.system = .iPhone
         }
     }
     /// The scene

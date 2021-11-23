@@ -45,6 +45,7 @@ struct ViewMediaItemDetails: View {
                     .opacity(0.6)
             }
         }
+        .lineLimit(1)
     }
 }
 

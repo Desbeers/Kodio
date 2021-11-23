@@ -101,7 +101,9 @@ extension Library {
                 if cache {
                     /// If the song is currently viewed; update it
                     if let list = filteredContent.songs.firstIndex(where: { $0.songID == songID }) {
-                        filteredContent.songs[list] = songs.all[index]
+                        Task { @MainActor in
+                            filteredContent.songs[list] = songs.all[index]
+                        }
                     }
                     /// Save in the cache
                     do {

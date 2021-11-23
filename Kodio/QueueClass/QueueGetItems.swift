@@ -21,10 +21,14 @@ extension Queue {
                 if result.items.first?.songID != nil {
                     /// Save the query for later
                     logger("Queue has changed")
-                    Player.shared.queueItems = result.items
+                    Task { @MainActor in
+                        Player.shared.queueItems = result.items
+                    }
                 } else {
                     logger("Queue is empty")
-                    Player.shared.queueItems = []
+                    Task { @MainActor in
+                        Player.shared.queueItems = []
+                    }
                 }
             }
         } catch {

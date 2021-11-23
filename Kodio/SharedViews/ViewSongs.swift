@@ -20,6 +20,7 @@ struct ViewSongs: View {
     /// The view
     var body: some View {
         VStack {
+            header
             list
         }
         .id(library.filteredContent.listID)
@@ -54,7 +55,8 @@ extension ViewSongs {
                     }
                 )
             }
-            .padding(.vertical)
+            .padding(.top)
+            .padding(.leading)
             .frame(maxWidth: .infinity, alignment: .leading)
             /// - Note: iOS doesn't like two buttons in a listrow unless you give it a style
             .iOS {$0
@@ -69,7 +71,6 @@ extension ViewSongs {
     /// The list of songs
     var list: some View {
         List {
-            header
             ForEach(songList) { song in
                 ViewSongsListRow(song: song, selectedAlbum: selectedAlbum)
                     .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))

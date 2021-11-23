@@ -23,8 +23,8 @@ struct ViewArtists: View {
                 ForEach(artists) { artist in
                     Button(
                         action: {
+                            filtering = true
                             Task {
-                                filtering = true
                                 filtering = await Library.shared.toggleArtist(artist: artist)
                             }
                         },

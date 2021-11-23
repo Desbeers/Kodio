@@ -23,8 +23,8 @@ struct ViewGenres: View {
                 ForEach(genres) { genre in
                     Button(
                         action: {
+                            filtering = true
                             Task {
-                                filtering = true
                                 filtering = await Library.shared.toggleGenre(genre: genre)
                             }
                         },
