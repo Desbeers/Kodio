@@ -23,7 +23,7 @@ struct ViewSongsListRow: View {
                 HStack {
                     leading
                     Divider()
-                    ViewMediaItemDetails(item: song)
+                    ViewLibraryItemDetails(item: song)
                 }
             } icon: {
                 icon

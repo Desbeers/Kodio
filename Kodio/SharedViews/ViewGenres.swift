@@ -11,8 +11,6 @@ import SwiftUI
 struct ViewGenres: View {
     /// The list of genres
     let genres: [Library.GenreItem]
-    /// The optional selected genre
-    let selected: Library.GenreItem?
     /// State of filtering the library
     @State var filtering = false
     /// The view
@@ -31,7 +29,7 @@ struct ViewGenres: View {
                         label: {
                             row(genre: genre)
                         })
-                        .buttonStyle(ButtonStyleList(type: .genre, selected: genre == selected ? true: false))
+                        .buttonStyle(ButtonStyleLibraryItem(item: genre, selected: genre.selected()))
                     /// Buttons have additional .traling padding for the scrollbar
                         .padding(.leading, 8)
                 }

@@ -101,6 +101,6 @@ extension ViewSidebar {
                 }
             }
         )
-            .disabled(item.selected)
+            .disabled(item.selected())
     }
 }

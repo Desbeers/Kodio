@@ -58,8 +58,8 @@
 		D73DD7F326D3E7C40024CB51 /* ViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73DD7F126D3E7C40024CB51 /* ViewContent.swift */; };
 		D73DD7F626D3EC850024CB51 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA916F26A95C270090C137 /* Debug.swift */; };
 		D73DD7F726D3EC850024CB51 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EA916F26A95C270090C137 /* Debug.swift */; };
-		D73E072B27401A97009A4B03 /* ViewMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E072A27401A97009A4B03 /* ViewMediaItem.swift */; };
-		D73E072C27401A97009A4B03 /* ViewMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E072A27401A97009A4B03 /* ViewMediaItem.swift */; };
+		D73E072B27401A97009A4B03 /* ViewLibraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E072A27401A97009A4B03 /* ViewLibraryItem.swift */; };
+		D73E072C27401A97009A4B03 /* ViewLibraryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E072A27401A97009A4B03 /* ViewLibraryItem.swift */; };
 		D73E0F43274411A900103F9D /* ViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E0F42274411A900103F9D /* ViewToolbar.swift */; };
 		D73E0F44274411A900103F9D /* ViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E0F42274411A900103F9D /* ViewToolbar.swift */; };
 		D73E0F452744140200103F9D /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE9A0B26B04B720002BC48 /* SplitView.swift */; };
@@ -195,7 +195,7 @@
 		D73163F226AC4C0300CD5F7E /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		D73DD7EF26D3E7020024CB51 /* KodioApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
 		D73DD7F126D3E7C40024CB51 /* ViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewContent.swift; sourceTree = "<group>"; };
-		D73E072A27401A97009A4B03 /* ViewMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMediaItem.swift; sourceTree = "<group>"; };
+		D73E072A27401A97009A4B03 /* ViewLibraryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLibraryItem.swift; sourceTree = "<group>"; };
 		D73E0F42274411A900103F9D /* ViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewToolbar.swift; sourceTree = "<group>"; };
 		D745125D26B31F1800A99889 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		D745126026B32AB900A99889 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
@@ -412,7 +412,7 @@
 				D75FD8602715FF2200358BC9 /* ViewSearch.swift */,
 				D74D6FBA271AFC7500F5D28D /* ViewAppState.swift */,
 				D7BEE94E273E5D66002C43D7 /* ViewStatistics.swift */,
-				D73E072A27401A97009A4B03 /* ViewMediaItem.swift */,
+				D73E072A27401A97009A4B03 /* ViewLibraryItem.swift */,
 				D73E0F42274411A900103F9D /* ViewToolbar.swift */,
 			);
 			path = SharedViews;
@@ -641,7 +641,7 @@
 				D7EA917326A96BFC0090C137 /* ViewAlbums.swift in Sources */,
 				D73163E126AC001A00CD5F7E /* ViewSidebar.swift in Sources */,
 				D71989EA26E9E15500281EA1 /* KodiHostReplayGain.swift in Sources */,
-				D73E072B27401A97009A4B03 /* ViewMediaItem.swift in Sources */,
+				D73E072B27401A97009A4B03 /* ViewLibraryItem.swift in Sources */,
 				D73163D826ABE8EB00CD5F7E /* LibraryArtists.swift in Sources */,
 				D7F00A9426AEFEB300CEE39E /* KodiAPI.swift in Sources */,
 				D752FF86274513E700858882 /* ViewLibrary.swift in Sources */,
@@ -718,7 +718,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D73E072C27401A97009A4B03 /* ViewMediaItem.swift in Sources */,
+				D73E072C27401A97009A4B03 /* ViewLibraryItem.swift in Sources */,
 				D73DD7F026D3E7020024CB51 /* KodioApp.swift in Sources */,
 				D72740DE26B15F0500067D4A /* KodiHost.swift in Sources */,
 				D7A9043C26F9C50C0012C7B2 /* KodiHostLibraryScan.swift in Sources */,
@@ -937,8 +937,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio3;
 				PRODUCT_NAME = Kodio;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = singlefile;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -963,8 +963,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio3;
 				PRODUCT_NAME = Kodio;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = singlefile;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

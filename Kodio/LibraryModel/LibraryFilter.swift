@@ -118,48 +118,6 @@ extension Library {
         return songList
     }
     
-    /// Set the library filter selection
-    /// - Parameter item: The selected ``LibraryItem``
-    func setLibrarySelection<T: LibraryItem>(item: T?) {
-        if let selected = item {
-            selection = selected
-        } else {
-            /// Find the the most fillting selection
-            if let album = albums.selected {
-                selection = album
-            } else if let artist = artists.selected {
-                selection = artist
-            } else if let genre = genres.selected {
-                selection = genre
-            } else {
-                selection = libraryLists.selected
-            }
-        }
-        logger("Selected \(selection.media.rawValue)")
-    }
-    
-    /// Filter all media (genres, artists, albums and songs)
-    func filterAllMedia() {
-        Task {
-            /// Filter the songs
-            let songs = await filterSongs()
-            /// Now the rest
-            async let albums = filterAlbums(songList: songs)
-            async let artists = filterArtists(songList: songs)
-            async let genres = filterGenres(songList: songs)
-            /// Update the View
-            await updateLibraryView(
-                content:
-                    FilteredContent(
-                        genres: await genres,
-                        artists: await artists,
-                        albums: await albums,
-                        songs: songs
-                    )
-            )
-        }
-    }
-    
     /// Update the SwiftUI View
     @MainActor func updateLibraryView(content: FilteredContent) {
         logger("Update library UI")

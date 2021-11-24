@@ -22,28 +22,43 @@ extension Library {
     /// Select a library list and filter the library
     /// - Parameter libraryList: A ``LibraryListItem`` struct
     func selectLibraryList(libraryList: LibraryListItem) async {
-        libraryLists.selected = libraryList
+        /// Set the selection
+        libraryList.set()
+        /// Update dynamic lists
         await AppState.shared.updateSidebar()
         switch libraryList.media {
         case .playlist:
             async let songList = getPlaylistSongs(file: libraryList.file)
             playlists.songs = await songList
-            libraryReload()
         case .random:
             songs.random = Array(songs.all
                                     .filter {!$0.title.contains("(Live)")}
                                     .filter {!$0.genre.contains("Musical")}
                                     .filter {!$0.genre.contains("Cabaret")}
                                     .shuffled().prefix(100))
-            libraryReload()
         case .neverPlayed:
             songs.neverPlayed = Array(songs.all
                                         .filter {$0.playCount == 0}
                                         .shuffled().prefix(100))
-            libraryReload()
         default:
-            libraryReload()
+            break
         }
+        /// Filter the songs
+        let songs = await filterSongs()
+        /// Now the rest
+        async let albums = filterAlbums(songList: songs)
+        async let artists = filterArtists(songList: songs)
+        async let genres = filterGenres(songList: songs)
+        /// Update the View
+        await updateLibraryView(
+            content:
+                FilteredContent(
+                    genres: await genres,
+                    artists: await artists,
+                    albums: await albums,
+                    songs: songs
+                )
+        )
     }
     
     /// Get the library list items
@@ -135,26 +150,10 @@ extension Library {
         /// Details for the artist
         /// - Note: Not needed, but required by protocol
         let details: String = ""
-        /// Is this item selected?
-        var selected: Bool {
-            return Library.shared.libraryLists.selected.id == self.id ? true : false
-        }
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys
             case title
         }
-    }
-    
-    /// Reload the library when changing a library filter
-    private func libraryReload() {
-        /// Reset selection
-        genres.selected = nil
-        artists.selected = nil
-        albums.selected = nil
-        /// Set the selection
-        setLibrarySelection(item: libraryLists.selected)
-        /// Reload all media
-        filterAllMedia()
     }
 }

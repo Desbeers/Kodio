@@ -11,8 +11,6 @@ import SwiftUI
 struct ViewAlbums: View {
     /// The list of albums
     let albums: [Library.AlbumItem]
-    /// The optional selected album
-    let selected: Library.AlbumItem?
     /// State of filtering the library
     @State var filtering = false
     /// The view
@@ -29,9 +27,9 @@ struct ViewAlbums: View {
                             }
                         },
                         label: {
-                            ViewMediaItemListRow(item: album, size: 80)
+                            ViewLibraryItemListRow(item: album, size: 80)
                         })
-                        .buttonStyle(ButtonStyleList(type: .album, selected: album == selected ? true: false))
+                        .buttonStyle(ButtonStyleLibraryItem(item: album, selected: album.selected()))
                 }
             }
         }

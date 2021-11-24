@@ -45,18 +45,8 @@ extension Library {
     /// - Parameters artist: The selected ``ArtistItem``
     /// - Returns: False when done to enable the buttons again in the view
     func toggleArtist(artist: ArtistItem) async -> Bool {
-        logger("Artist selected")
-        /// Reload albums and songs
-        /// Remember the past for Album Artists
-        if let album = albums.selected, album.artistID.contains(artist.artistID) {
-            artists.selected = artist
-        } else {
-            artists.selected = artists.selected == artist ? nil : artist
-        }
-        /// Reset selection
-        albums.selected = nil
         /// Set the selection
-        setLibrarySelection(item: artists.selected)
+        artist.set()
         /// Filter the songs
         let songs = await filterSongs()
         /// Now the albums

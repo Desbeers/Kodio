@@ -45,10 +45,10 @@ struct ViewLibraryTop: View {
             /// A divider; else the genres, artist and albums fill scroll over the toolbar
             Divider()
             HStack(spacing: 0) {
-                ViewGenres(genres: library.filteredContent.genres, selected: library.genres.selected)
+                ViewGenres(genres: library.filteredContent.genres)
                     .frame(width: 150)
-                ViewArtists(artists: library.filteredContent.artists, selected: library.artists.selected)
-                ViewAlbums(albums: library.filteredContent.albums, selected: library.albums.selected)
+                ViewArtists(artists: library.filteredContent.artists)
+                ViewAlbums(albums: library.filteredContent.albums)
             }
             .overlay(
                 ViewDropShadow()

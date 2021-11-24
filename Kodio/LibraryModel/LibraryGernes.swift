@@ -44,14 +44,8 @@ extension Library {
     /// - Parameter genre: The selected  ``GenreItem``
     /// - Returns: False when done to enable the buttons again in the view
     func toggleGenre(genre: GenreItem) async -> Bool {
-        logger("Genre selected")
-        /// Reload artists, albums and songs
-        genres.selected = genres.selected == genre ? nil : genre
-        /// Reset selection
-        artists.selected = nil
-        albums.selected = nil
         /// Set the selection
-        setLibrarySelection(item: genres.selected)            
+        genre.set()
         /// Filter the songs
         let songs = await filterSongs()
         /// Now the rest
