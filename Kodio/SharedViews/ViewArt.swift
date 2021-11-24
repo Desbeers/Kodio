@@ -23,7 +23,7 @@ struct ViewRemoteArt: View {
     /// The optional ``Image`` to show
     @State private var image: Image?
     /// The cached images
-    @Environment(\.remoteImages) private var remoteImages
+    @Environment(\.remoteArt) private var remoteArt
     /// The view
     var body: some View {
         VStack {
@@ -47,7 +47,7 @@ struct ViewRemoteArt: View {
         switch item.media {
         case .song, .album, .artist:
             do {
-                image = try await remoteImages.image(
+                image = try await remoteArt.image(
                     item: item,
                     art: art == .thumbnail ? item.thumbnail : item.fanart
                 )

@@ -7,37 +7,37 @@
 
 import SwiftUI
 
-/// The key for our ``RemoteImages`` for the SwiftUI environment
-struct RemoteImagesKey: EnvironmentKey {
-    static let defaultValue = RemoteImages()
+/// The key for our ``RemoteArt`` for the SwiftUI environment
+struct RemoteArtKey: EnvironmentKey {
+    static let defaultValue = RemoteArt()
 }
 
 extension EnvironmentValues {
-    /// Keep an eye on the remote images in the environment
-    var remoteImages: RemoteImages {
-        get { self[RemoteImagesKey.self] }
-        set { self[RemoteImagesKey.self ] = newValue}
+    /// Keep an eye on the remote art in the environment
+    var remoteArt: RemoteArt {
+        get { self[RemoteArtKey.self] }
+        set { self[RemoteArtKey.self ] = newValue}
     }
 }
 
-/// The Actor holding all remote images in a cache
-actor RemoteImages {
+/// The Actor holding all remote art in a cache
+actor RemoteArt {
     
-    /// The state of caching an image
+    /// The state of caching art
     private enum CacheEntry {
-        /// The remote image is still loading
+        /// The remote art is still loading
         case inProgress(Task<Image, Error>)
-        /// The remote image is cached
+        /// The remote art is cached
         case ready(Image)
     }
 
-    /// The cache of images
+    /// The cache of art
     private var cache: [URL: CacheEntry] = [:]
 
-    /// Fetch a remote image
+    /// Fetch remote art
     /// - Parameters:
     ///   - item: A ``LibraryItem``
-    ///   - art: The kind of art to show; a thumbnail or fanart
+    ///   - art: The kind of art to fetch; a thumbnail or fanart
     /// - Returns: An SwiftUI ``Image``
     func image(item: LibraryItem, art: String) async throws -> Image? {
         let url = URL(string: art.kodiImageUrl())!
@@ -65,10 +65,10 @@ actor RemoteImages {
         }
     }
     
-    /// Download a remote image
+    /// Download remote art
     /// - Parameters:
     ///   - item: A ``LibraryItem``
-    ///   - from: the ``URL`` of the image
+    ///   - from: the ``URL`` of the art
     /// - Returns: An ``Image``
     private func downloadImage(item: LibraryItem, from: URL) async throws -> Image {
         let (data, _) = try await URLSession.shared.data(from: from)
