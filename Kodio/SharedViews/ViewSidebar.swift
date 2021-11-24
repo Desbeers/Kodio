@@ -86,7 +86,7 @@ extension ViewSidebar {
         /// Return the styled button
         return Button(
             action: {
-                Task {
+                Task.detached(priority: .userInitiated) {
                     await Library.shared.selectLibraryList(libraryList: item)
                 }
             },

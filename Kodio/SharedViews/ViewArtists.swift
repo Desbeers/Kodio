@@ -22,7 +22,7 @@ struct ViewArtists: View {
                     Button(
                         action: {
                             filtering = true
-                            Task {
+                            Task.detached(priority: .userInitiated) {
                                 filtering = await Library.shared.toggleArtist(artist: artist)
                             }
                         },

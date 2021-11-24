@@ -22,7 +22,7 @@ struct ViewGenres: View {
                     Button(
                         action: {
                             filtering = true
-                            Task {
+                            Task.detached(priority: .userInitiated) {
                                 filtering = await Library.shared.toggleGenre(genre: genre)
                             }
                         },
