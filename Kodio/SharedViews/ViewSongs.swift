@@ -96,8 +96,10 @@ extension ViewSongs {
         }
         /// The songlist will change when you toggle the 'favorite' button
         .onChange(of: library.filteredContent.songs) {newSongs in
-            songList = Array(newSongs[0...(songList.count - 1)])
-            logger("Updated songlist")
+            Task { @MainActor in
+                songList = await Library.pager(items: newSongs, page: currentPage, all: true)
+                logger("Updated songlist")
+            }
         }
         .listStyle(.plain)
     }

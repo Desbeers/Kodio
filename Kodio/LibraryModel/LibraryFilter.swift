@@ -128,10 +128,6 @@ extension Library {
              songs: content.songs,
              listID: UUID()
         )
-        /// Update the selection
-        if let selected = getLibraryLists().first(where: { $0.media == selection.media}) {
-            selection = selected
-        }
     }
     
     /// Get the songs from the database to add to the queue list
@@ -148,23 +144,30 @@ extension Library {
         return songList
     }
 
-    /// A pager when listng library items
+    /// A pager when listing library items
     /// - Note: This needs `tasks` on SwiftUI List and List rows
     /// - Parameters:
     ///   - items: An array of ``LibraryItem`` structs
     ///   - page: The page number to show
+    ///   - all: Load all items up to the page end; this is to refresh a list instead of just extending
     /// - Returns: A reduced array of ``LibraryItem`` structs
     static func pager<T: LibraryItem>(items: [T], page: Int = 0, all: Bool = false) async -> [T] {
+        logger("All: \(all)")
         /// The total items we have
         let totalItems = items.count
-        /// The total amount of songs per page
-        let amount = 20
-        /// Calculate the start range
-        let pageStart = all ? 0 : page * amount
-        /// Calculate the end range
-        /// - Note: Reduce with 1 because the array starts at 0
-        let pageEnd = (pageStart + amount < totalItems ? pageStart + amount  : totalItems) - 1
-        /// Return the range of songs
-        return Array(items[pageStart...pageEnd])
+        /// If an item is removed; the list can be empty
+        if totalItems != 0 {
+            /// The total amount of songs per page
+            let amount = 20
+            /// Calculate the start range
+            let pageStart = all ? 0 : (page * amount)
+            /// Calculate the end range
+            /// - Note: Reduce with 1 because the array starts at 0
+            let pageEnd = (pageStart + amount < totalItems ? pageStart + amount  : totalItems) - 1
+            /// Return the range of songs
+            return Array(items[pageStart...pageEnd])
+        } else {
+            return []
+        }
     }
 }

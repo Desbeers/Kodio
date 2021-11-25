@@ -70,7 +70,7 @@ extension Library {
         do {
             let result = try await kodiClient.sendRequest(request: request)
             for song in result.songs {
-                await getSongDetails(songID: song.songID, cache: false)
+                await getSongDetails(songID: song.songID, publish: false)
             }
             /// Save in the cache
             do {
@@ -88,8 +88,8 @@ extension Library {
     /// Get the details from one song
     /// - Parameters:
     ///   - songID: The ID of the song
-    ///   - cache: Update view and cache or not. This function is also just to update the library on start
-    func getSongDetails(songID: Int, cache: Bool = true) async {
+    ///   - publish: Update view and cache or not. This function is also just to update the library on start
+    func getSongDetails(songID: Int, publish: Bool = true) async {
         let request = AudioLibraryGetSongDetails(songID: songID)
         do {
             let result = try await kodiClient.sendRequest(request: request)
@@ -99,12 +99,10 @@ extension Library {
                 songs.all[index].playCount = result.songdetails.playCount
                 songs.all[index].lastPlayed = result.songdetails.lastPlayed
                 logger("Updated `\(result.songdetails.title)`")
-                if cache {
-                    /// If the song is currently viewed; update it
-                    if let list = filteredContent.songs.firstIndex(where: { $0.songID == songID }) {
-                        Task { @MainActor in
-                            filteredContent.songs[list] = songs.all[index]
-                        }
+                if publish {
+                    /// Update UI
+                    Task { @MainActor in
+                        filteredContent.songs = await filterSongs()
                     }
                     /// Save in the cache
                     do {
