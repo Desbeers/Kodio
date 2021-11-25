@@ -30,10 +30,10 @@ struct ViewGenres: View {
                             row(genre: genre)
                         })
                         .buttonStyle(ButtonStyleLibraryItem(item: genre, selected: genre.selected()))
-                    /// Buttons have additional .traling padding for the scrollbar
-                        .padding(.leading, 8)
                 }
             }
+            /// Buttons have additional .traling padding for the scrollbar
+            .padding(.leading, 8)
         }
         /// Disable the view while filtering
         .disabled(filtering)

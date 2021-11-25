@@ -49,21 +49,6 @@ struct ViewLibraryItemDetails: View {
     }
 }
 
-/// View modifier for lists
-struct ViewModifierLists: ViewModifier {
-#if os(macOS)
-    func body(content: Content) -> some View {
-        content
-    }
-#endif
-#if os(iOS)
-    func body(content: Content) -> some View {
-        content
-            .listRowSeparator(.hidden)
-    }
-#endif
-}
-
 /// Button style for a library item
 struct ButtonStyleLibraryItem: ButtonStyle {
     /// The library item
@@ -72,56 +57,38 @@ struct ButtonStyleLibraryItem: ButtonStyle {
     let selected: Bool
     /// The style
     func makeBody(configuration: Self.Configuration) -> some View {
-        ViewButtonStyleLibraryItem(item: item, selected: selected, configuration: configuration)
+        configuration.label
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundColor(.white)
+            .background(
+                VStack {
+                    /// - Note: On iOS, the accentColor for a disabled button is grey, so, force blue
+                    if AppState.shared.system == .macOS {
+                        Color.accentColor
+                    } else {
+                        Color.blue
+                    }
+                }.saturation(selected ? 1 : buttonSaturation(item: item))
+            )
+            .cornerRadius(6)
+            .brightness(configuration.isPressed ? 0.1 : 0)
+            .padding(.vertical, 2)
+            .padding(.trailing, 8)
     }
-}
-
-private extension ButtonStyleLibraryItem {
     
-    /// The view for the button style in a list
-    /// - Note: private extension becasue it is part of the 'ButtenStyleList' ButtonStyle
-    struct ViewButtonStyleLibraryItem: View {
-        /// The library item
-        let item: LibraryItem
-        /// Bool if selected or not
-        let selected: Bool
-        /// Tracks the pressed state
-        let configuration: ButtonStyleLibraryItem.Configuration
-        /// The view
-        var body: some View {
-            return configuration.label
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .foregroundColor(.white)
-                .background(
-                    VStack {
-                        /// - Note: On iOS, the accentColor for a disabled button is grey, so, force blue
-                        if AppState.shared.system == .macOS {
-                            Color.accentColor
-                        } else {
-                            Color.blue
-                        }
-                    }.saturation(selected ? 1 : buttonSaturation(item: item))
-                )
-                .cornerRadius(6)
-                .brightness(configuration.isPressed ? 0.1 : 0)
-                .padding(.vertical, 2)
-                .padding(.trailing, 8)
-        }
-        
-        /// Saturate a button
-        /// - Parameter media: The media type
-        /// - Returns: A saturation value
-        private func buttonSaturation(item: LibraryItem) -> Double {
-            switch item.media {
-            case .album:
-                return 0.4
-            case .artist:
-                return 0.25
-            case .genre:
-                return 0.1
-            default:
-                return 1.0
-            }
+    /// Saturate a button
+    /// - Parameter media: The media type
+    /// - Returns: A saturation value
+    private func buttonSaturation(item: LibraryItem) -> Double {
+        switch item.media {
+        case .album:
+            return 0.4
+        case .artist:
+            return 0.25
+        case .genre:
+            return 0.1
+        default:
+            return 1.0
         }
     }
 }

@@ -39,35 +39,21 @@ struct ViewListHeader: View {
 
 /// Button style for a sidebar item
 struct ButtonStyleSidebar: ButtonStyle {
+    /// Tracks if the button is enabled or not
+    @Environment(\.isEnabled) var isEnabled
     /// The style
     func makeBody(configuration: Configuration) -> some View {
-        ViewButtonStyleSidebar(configuration: configuration)
-    }
-}
-
-private extension ButtonStyleSidebar {
-    
-    /// The view for the button style in a list
-    /// - Note: private extension becasue it is part of the 'ButtenStyleSidebar' ButtonStyle
-    struct ViewButtonStyleSidebar: View {
-        /// Tracks if the button is enabled or not
-        @Environment(\.isEnabled) var isEnabled
-        /// Tracks the pressed state
-        let configuration: ButtonStyleSidebar.Configuration
-        /// The view
-        var body: some View {
-            return configuration.label
-                .padding(.horizontal, 4)
-                .padding(.vertical, 6)
-                .brightness(configuration.isPressed ? 0.2 : 0)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(isEnabled ?  Color.clear : Color.secondary.opacity(0.2))
-                .cornerRadius(6)
-            /// A bit more padding for iOS
-                .iOS {$0
-                .padding(.horizontal, 6)
-                }
-        }
+        return configuration.label
+            .padding(.horizontal, 4)
+            .padding(.vertical, 6)
+            .brightness(configuration.isPressed ? 0.2 : 0)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(isEnabled ?  Color.clear : Color.secondary.opacity(0.2))
+            .cornerRadius(6)
+        /// A bit more padding for iOS
+            .iOS {$0
+            .padding(.horizontal, 6)
+            }
     }
 }
 

@@ -81,7 +81,7 @@ extension ViewSongs {
                             songList += await Library.pager(items: library.filteredContent.songs, page: currentPage)
                         }
                     }
-                    .modifier(ViewModifierLists())
+                    .modifier(ViewModifierSongItem())
             }
         }
         .task {
@@ -93,6 +93,7 @@ extension ViewSongs {
         /// The songlist will change when you toggle the 'favorite' button
         .onChange(of: library.filteredContent.songs) {newSongs in
             songList = Array(newSongs[0...(songList.count - 1)])
+            logger("Updated songlist")
         }
         .listStyle(.plain)
     }

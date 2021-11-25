@@ -98,6 +98,7 @@ extension Library {
                 songs.all[index].rating = result.songdetails.rating
                 songs.all[index].playCount = result.songdetails.playCount
                 songs.all[index].lastPlayed = result.songdetails.lastPlayed
+                logger("Updated `\(result.songdetails.title)`")
                 if cache {
                     /// If the song is currently viewed; update it
                     if let list = filteredContent.songs.firstIndex(where: { $0.songID == songID }) {
