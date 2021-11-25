@@ -12,8 +12,20 @@ extension AppState {
     // MARK: The state of Kodio
 
     /// Update the sidebar
-    @MainActor func updateSidebar() {
+    @MainActor func updateSidebar() async {
         logger("Update sidebar")
+        let library: Library = .shared
+        let list = library.getLibraryLists()
+        /// Check the selected item
+        if let selected = list.first(where: { $0.media == library.selection.media}) {
+            if selected.visible {
+                /// Update the selection
+                library.selection = selected
+            } else {
+                /// Select the first item in the sidebar
+                await library.selectLibraryList(libraryList: list.first!)
+            }
+        }
         sidebarItems = Library.shared.getLibraryLists()
     }
     

@@ -40,12 +40,8 @@ extension Library {
         } else {
             /// Reset the search
             search = Search()
-            /// Select the first item in the sidebar if search is still selected or else just update the sidebar to remove the search button
-            if libraryLists.selected.media == .search {
-                await selectLibraryList(libraryList: libraryLists.all.first!)
-            } else {
-                await AppState.shared.updateSidebar()
-            }
+            /// Update the sidebar
+            await AppState.shared.updateSidebar()
         }
     }
 

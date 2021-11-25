@@ -23,31 +23,25 @@ extension Queue {
                     logger("Queue has changed")
                     Task { @MainActor in
                         Player.shared.queueItems = result.items
+                        /// Select 'Queue' in the sidebar again to reload it
+                        if viewingQueue, let button = Library.shared.getLibraryLists().first(where: { $0.media == .queue}) {
+                            await Library.shared.selectLibraryList(libraryList: button)
+                        } else {
+                            /// Update the sidebar to make sure we have a button
+                            await AppState.shared.updateSidebar()
+                        }
                     }
                 } else {
                     logger("Queue is empty")
                     Task { @MainActor in
                         Player.shared.queueItems = []
+                        /// Update the sidebar to make sure there is no queue button
+                        await AppState.shared.updateSidebar()
                     }
                 }
             }
         } catch {
             print(error)
-        }
-        /// Update view or sidebar
-        if viewingQueue {
-            let library: Library = .shared
-            if Player.shared.queueItems.isEmpty {
-                logger("Select first item in the sidebar")
-                await library.selectLibraryList(libraryList: library.libraryLists.all.first!)
-            } else {
-                logger("Reload queue view")
-                await library.selectLibraryList(libraryList: library.libraryLists.selected)
-            }
-        } else {
-            Task { @MainActor in
-                   AppState.shared.updateSidebar()
-            }
         }
     }
     
