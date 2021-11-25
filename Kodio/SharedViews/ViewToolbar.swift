@@ -142,50 +142,52 @@ extension ViewToolbar {
         let playing: Bool = player.properties.queueID >= 0 && player.properties.speed == 1 ? true : false
         return Button(
             action: {
-                player.sendPlayerPlayPause(queue: Library.shared.getSongsFromQueue())
+                Task.detached(priority: .userInitiated) {
+                    await player.playPause()
+                }
             },
             label: {
                 Image(systemName: playing ? "pause.fill" : "play.fill")
             }
         )
-            .disabled(player.properties.queueID == -1 && player.queueItems.isEmpty)
+            .disabled(player.queueEmpty)
     }
     /// The next song button
     var prevButton: some View {
         Button(
             action: {
-                player.sendAction(method: .playerGoTo,
-                                  queueID: player.properties.queueID - 1)
+                Task.detached(priority: .userInitiated) {
+                    await player.playPrevious()
+                }
             },
-            
             label: {
                 Image(systemName: "backward.fill")
             }
         )
-            .disabled(player.properties.queueID <= 0)
+            .disabled(player.queueFirst)
     }
     /// The previous song button
     var nextButton: some View {
         Button(
             action: {
-                player.sendAction(method: .playerGoTo,
-                                  queueID: player.properties.queueID + 1)
+                Task.detached(priority: .userInitiated) {
+                    await player.playNext()
+                }
             },
-            
             label: {
-                
                 Image(systemName: "forward.fill")
-                
             }
         )
-            .disabled(player.properties.queueID == -1 || player.properties.queueID >= player.items)
+            .disabled(player.queueLast)
     }
     /// The shuffle button
     var shuffleButton: some View {
         let shuffled: Bool = player.properties.shuffled ? true : false
         return Button(
             action: {
-                player.sendAction(method: .playerSetShuffle)
+                Task.detached(priority: .userInitiated) {
+                    await player.toggleShuffle()
+                }
             },
             label: {
                 Label {
@@ -212,7 +214,9 @@ extension ViewToolbar {
         let repeating: Bool = player.properties.repeating == "off" ? false : true
         return Button(
             action: {
-                player.sendAction(method: .playerSetRepeat)
+                Task.detached(priority: .userInitiated) {
+                    await player.toggleRepeat()
+                }
             },
             label: {
                 Label {
@@ -245,7 +249,9 @@ extension ViewToolbar {
                 Slider(value: $player.volume, in: 0...100,
                        onEditingChanged: { _ in
                     logger("Volume changed: \(player.volume)")
-                    KodiHost.shared.setVolume(volume: player.volume)
+                    Task.detached(priority: .userInitiated) {
+                        await player.setVolume(volume: player.volume)
+                    }
                 })
                 Image(systemName: "speaker.wave.3.fill")
                     .font(.caption)

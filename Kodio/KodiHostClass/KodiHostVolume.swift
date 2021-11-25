@@ -13,7 +13,7 @@ extension KodiHost {
     
     /// Set the host volume
     /// - Parameter volume: value between 0 and 100
-    func setVolume(volume: Double) {
+    func setVolume(volume: Double) async {
         logger("Set volume")
         let message = SetVolume(volume: volume)
         kodiClient.sendMessage(message: message)

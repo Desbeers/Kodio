@@ -38,8 +38,10 @@ extension ViewSongs {
             HStack {
                 Button(
                     action: {
-                        KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
-                        Player.shared.sendSongsAndPlay(songs: library.filteredContent.songs)
+                        Task.detached(priority: .userInitiated) {
+                            await KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
+                            await Player.shared.playPlaylist(songs: library.filteredContent.songs)
+                        }
                     },
                     label: {
                         Label("Play \(count == 1 ? "song" : "songs")", systemImage: "play.fill")
@@ -47,8 +49,10 @@ extension ViewSongs {
                 )
                 Button(
                     action: {
-                        KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
-                        Player.shared.sendSongsAndPlay(songs: library.filteredContent.songs, shuffled: true)
+                        Task.detached(priority: .userInitiated) {
+                            await KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
+                            await Player.shared.playPlaylist(songs: library.filteredContent.songs, shuffled: true)
+                        }
                     },
                     label: {
                         Label("Shuffle \(count == 1 ? "song" : "songs")", systemImage: "shuffle")

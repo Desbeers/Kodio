@@ -17,10 +17,10 @@ extension KodiHost {
         do {
             let result = try await kodiClient.sendRequest(request: request)
             if properties != result {
+                logger("Host properties changed")
+                properties = result
                 Task { @MainActor in
-                    logger("Host properties changed")
-                    properties = result
-                    /// - Note: Stuff it in the Player class because that is observed
+                    /// - Note: Stuff it in the Player class because that is observed for the volume slider in the UI
                     Player.shared.volume = result.volume
                 }
             }

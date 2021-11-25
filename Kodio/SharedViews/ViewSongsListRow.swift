@@ -85,7 +85,9 @@ extension ViewSongsListRow {
         /// Button to play this song
         Button(
             action: {
-                Player.shared.sendSongAndPlay(song: song)
+                Task.detached(priority: .userInitiated) {
+                    await player.playSong(song: song)
+                }
             },
             label: {
                 Label("Play", systemImage: "play")

@@ -18,7 +18,7 @@ extension Queue {
         do {
             let result = try await kodiClient.sendRequest(request: request)
             if result.items != Player.shared.queueItems {
-                if result.items.first?.songID != nil {
+                if !result.items.isEmpty {
                     /// Save the query for later
                     logger("Queue has changed")
                     Task { @MainActor in

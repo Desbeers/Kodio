@@ -13,11 +13,11 @@ extension KodiHost {
     
     /// Set Kodi ReplainGain setting
     ///
-    /// When playing from a selected album; ReplayGain will be set to 'album' mode so the album is played as intended.
-    /// When playing random songs; ReplayGain will be set to 'track' so all songs are played at the same level.
+    /// - When playing from a selected album; ReplayGain will be set to 'album' mode so the album is played as intended.
+    /// - When playing random songs; ReplayGain will be set to 'track' so all songs are played at the same level.
     /// 
-    /// - Parameter mode: the ``ReplayGain`` mode to use
-    func setReplayGain(mode: ReplayGain) {
+    /// - Parameter mode: The ``ReplayGain`` mode to use
+    func setReplayGain(mode: ReplayGain) async {
         logger("Set ReplayGain")
         let message = SettingsSetSettingValue(setting: .musicPlayerReplayGainType, value: mode.rawValue)
         kodiClient.sendMessage(message: message)

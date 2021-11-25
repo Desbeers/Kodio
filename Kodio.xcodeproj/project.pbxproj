@@ -24,8 +24,8 @@
 		D7241F542719A2610093E68A /* NSTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7241F522719A2610093E68A /* NSTableView.swift */; };
 		D72740DD26B15F0500067D4A /* KodiHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72740DC26B15F0500067D4A /* KodiHost.swift */; };
 		D72740DE26B15F0500067D4A /* KodiHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72740DC26B15F0500067D4A /* KodiHost.swift */; };
-		D72740E126B17BC000067D4A /* PlayerPlayPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72740E026B17BC000067D4A /* PlayerPlayPause.swift */; };
-		D72740E226B17BC000067D4A /* PlayerPlayPause.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72740E026B17BC000067D4A /* PlayerPlayPause.swift */; };
+		D72740E126B17BC000067D4A /* PlayerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72740E026B17BC000067D4A /* PlayerButtons.swift */; };
+		D72740E226B17BC000067D4A /* PlayerButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72740E026B17BC000067D4A /* PlayerButtons.swift */; };
 		D72740E426B17C2100067D4A /* PlayerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72740E326B17C2100067D4A /* PlayerActions.swift */; };
 		D72740E526B17C2100067D4A /* PlayerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72740E326B17C2100067D4A /* PlayerActions.swift */; };
 		D72740E726B1809100067D4A /* KodiHostProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72740E626B1809100067D4A /* KodiHostProperties.swift */; };
@@ -110,12 +110,10 @@
 		D7A9043A26F86E600012C7B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043926F86E600012C7B2 /* AppDelegate.swift */; };
 		D7A9043C26F9C50C0012C7B2 /* KodiHostLibraryScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043B26F9C50C0012C7B2 /* KodiHostLibraryScan.swift */; };
 		D7A9043E26F9C86E0012C7B2 /* KodiHostActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043D26F9C86E0012C7B2 /* KodiHostActions.swift */; };
-		D7A9044026FA09CB0012C7B2 /* PlayerRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043F26FA09CB0012C7B2 /* PlayerRadio.swift */; };
 		D7AE512826B9379600A57244 /* LibraryRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE512726B9379600A57244 /* LibraryRadio.swift */; };
 		D7AE512926B9379600A57244 /* LibraryRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE512726B9379600A57244 /* LibraryRadio.swift */; };
 		D7AE512B26B9448800A57244 /* ViewRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE512A26B9448800A57244 /* ViewRadio.swift */; };
 		D7AE512C26B9448800A57244 /* ViewRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE512A26B9448800A57244 /* ViewRadio.swift */; };
-		D7AEEE3F26FCA13C00335211 /* PlayerRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043F26FA09CB0012C7B2 /* PlayerRadio.swift */; };
 		D7BBB90026B19BF00097D286 /* LibrarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBB8FF26B19BF00097D286 /* LibrarySearch.swift */; };
 		D7BBB90126B19BF00097D286 /* LibrarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBB8FF26B19BF00097D286 /* LibrarySearch.swift */; };
 		D7BEE94F273E5D66002C43D7 /* ViewStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEE94E273E5D66002C43D7 /* ViewStatistics.swift */; };
@@ -178,7 +176,7 @@
 		D71B92AC27185859005355CB /* RemoteArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteArt.swift; sourceTree = "<group>"; };
 		D7241F522719A2610093E68A /* NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableView.swift; sourceTree = "<group>"; };
 		D72740DC26B15F0500067D4A /* KodiHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHost.swift; sourceTree = "<group>"; };
-		D72740E026B17BC000067D4A /* PlayerPlayPause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlayPause.swift; sourceTree = "<group>"; };
+		D72740E026B17BC000067D4A /* PlayerButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerButtons.swift; sourceTree = "<group>"; };
 		D72740E326B17C2100067D4A /* PlayerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerActions.swift; sourceTree = "<group>"; };
 		D72740E626B1809100067D4A /* KodiHostProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHostProperties.swift; sourceTree = "<group>"; };
 		D72740E926B1821E00067D4A /* KodiHostVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHostVolume.swift; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 		D7A9043926F86E600012C7B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7A9043B26F9C50C0012C7B2 /* KodiHostLibraryScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHostLibraryScan.swift; sourceTree = "<group>"; };
 		D7A9043D26F9C86E0012C7B2 /* KodiHostActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHostActions.swift; sourceTree = "<group>"; };
-		D7A9043F26FA09CB0012C7B2 /* PlayerRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRadio.swift; sourceTree = "<group>"; };
 		D7AE512726B9379600A57244 /* LibraryRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRadio.swift; sourceTree = "<group>"; };
 		D7AE512A26B9448800A57244 /* ViewRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRadio.swift; sourceTree = "<group>"; };
 		D7BBB8FF26B19BF00097D286 /* LibrarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySearch.swift; sourceTree = "<group>"; };
@@ -284,11 +281,10 @@
 			isa = PBXGroup;
 			children = (
 				D706F67626B0F8930068F35C /* Player.swift */,
-				D72740E026B17BC000067D4A /* PlayerPlayPause.swift */,
+				D72740E026B17BC000067D4A /* PlayerButtons.swift */,
 				D72740EC26B186EF00067D4A /* PlayerGetItem.swift */,
 				D72740EF26B187F000067D4A /* PlayerGetProperties.swift */,
 				D72740E326B17C2100067D4A /* PlayerActions.swift */,
-				D7A9043F26FA09CB0012C7B2 /* PlayerRadio.swift */,
 			);
 			path = PlayerModel;
 			sourceTree = "<group>";
@@ -652,7 +648,7 @@
 				D70191E02727290F009332A3 /* Markdown.swift in Sources */,
 				D745126126B32AB900A99889 /* Cache.swift in Sources */,
 				D73DD7F326D3E7C40024CB51 /* ViewContent.swift in Sources */,
-				D72740E126B17BC000067D4A /* PlayerPlayPause.swift in Sources */,
+				D72740E126B17BC000067D4A /* PlayerButtons.swift in Sources */,
 				D7D95087272D807800CC7155 /* LibraryItem.swift in Sources */,
 				D7F00A8B26AEFC4200CEE39E /* Hosts.swift in Sources */,
 				D72740E726B1809100067D4A /* KodiHostProperties.swift in Sources */,
@@ -676,7 +672,6 @@
 				D72740F026B187F000067D4A /* PlayerGetProperties.swift in Sources */,
 				D75FD8612715FF2200358BC9 /* ViewSearch.swift in Sources */,
 				D73DD7F626D3EC850024CB51 /* Debug.swift in Sources */,
-				D7AEEE3F26FCA13C00335211 /* PlayerRadio.swift in Sources */,
 				D71B92AD27185859005355CB /* RemoteArt.swift in Sources */,
 				D7EA917C26A9822D0090C137 /* ViewParts.swift in Sources */,
 				D72740E426B17C2100067D4A /* PlayerActions.swift in Sources */,
@@ -764,7 +759,7 @@
 				D7E1EA532736D9680087EA69 /* AppStateSheets.swift in Sources */,
 				D75F766326CAACAD00165656 /* ViewAbout.swift in Sources */,
 				D73163DF26ABF31000CD5F7E /* LibrarySongs.swift in Sources */,
-				D72740E226B17BC000067D4A /* PlayerPlayPause.swift in Sources */,
+				D72740E226B17BC000067D4A /* PlayerButtons.swift in Sources */,
 				D72740F126B187F000067D4A /* PlayerGetProperties.swift in Sources */,
 				D706F66B26B08AED0068F35C /* LibraryFiles.swift in Sources */,
 				D7EA917D26A9822D0090C137 /* ViewParts.swift in Sources */,
@@ -776,7 +771,6 @@
 				D7F00A8826AECDEB00CEE39E /* View.swift in Sources */,
 				D7BEE950273E5D66002C43D7 /* ViewStatistics.swift in Sources */,
 				D72E0DA926CC44350001B47A /* ViewHosts.swift in Sources */,
-				D7A9044026FA09CB0012C7B2 /* PlayerRadio.swift in Sources */,
 				D752FF922747D27D00858882 /* Notifications.swift in Sources */,
 				D7E1EA592736DD750087EA69 /* AppStateAlerts.swift in Sources */,
 				D7DE9A0726AF6AE20002BC48 /* LibraryPlaylists.swift in Sources */,

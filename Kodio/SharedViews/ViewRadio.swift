@@ -19,7 +19,9 @@ struct ViewRadio: View {
             ForEach(library.radioStations) { channel in
                 Button(
                     action: {
-                        player.playRadio(stream: channel.stream)
+                        Task.detached(priority: .userInitiated) {
+                            await player.playRadio(stream: channel.stream)
+                        }
                     },
                     label: {
                         /// - Note: Not in a ``Label`` because with multi-lines the icon does not center
