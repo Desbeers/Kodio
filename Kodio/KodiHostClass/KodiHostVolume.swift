@@ -19,6 +19,13 @@ extension KodiHost {
         kodiClient.sendMessage(message: message)
     }
     
+    /// Toggle the mute on  the host
+    func toggleMute() async {
+        logger("Toggle mute")
+        let message = ToggleMute()
+        kodiClient.sendMessage(message: message)
+    }
+    
     /// Set the current volume (Kodi API)
     struct SetVolume: KodiAPI {
         /// Arguments
@@ -35,6 +42,23 @@ extension KodiHost {
         struct Params: Encodable {
             /// Volume
             var volume: Int = 0
+        }
+        /// The response struct
+        struct Response: Decodable { }
+    }
+    
+    /// Toggle the mute (Kodi API)
+    struct ToggleMute: KodiAPI {
+        // Method
+        var method: Method = .applicationSetMute
+        /// The JSON creator
+        var parameters: Data {
+            return buildParams(params: Params())
+        }
+        /// The request struct
+        struct Params: Encodable {
+            /// Toggle the mute
+            let mute = "toggle"
         }
         /// The response struct
         struct Response: Decodable { }

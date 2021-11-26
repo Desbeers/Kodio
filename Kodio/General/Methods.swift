@@ -20,6 +20,8 @@ enum Method: String {
     case applicationSetVolume = "Application.SetVolume"
     /// Notification that the volume has changed
     case applicationOnVolumeChanged = "Application.OnVolumeChanged"
+    /// Toggle the mute
+    case applicationSetMute = "Application.SetMute"
 
     /// Set a setting on the host
     case settingsSetSettingvalue = "Settings.SetSettingvalue"

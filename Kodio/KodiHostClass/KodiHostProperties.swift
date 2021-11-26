@@ -22,6 +22,7 @@ extension KodiHost {
                 Task { @MainActor in
                     /// - Note: Stuff it in the Player class because that is observed for the volume slider in the UI
                     Player.shared.volume = result.volume
+                    Player.shared.muted = result.muted
                 }
             }
         } catch {

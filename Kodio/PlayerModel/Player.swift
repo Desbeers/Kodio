@@ -22,6 +22,8 @@ final class Player: ObservableObject {
     @Published var properties = Properties()
     /// The volume of the player
     @Published var volume: Double = 0
+    /// Bool if the volume is muted or not
+    @Published var muted: Bool = false
     /// Song ID's in the queue
     @Published var queueItems: [Queue.QueueItem] = []
     /// Bool if the queue is empty
@@ -39,7 +41,7 @@ final class Player: ObservableObject {
     ///     - Used to disable the 'play next' button in the UI
     ///     - Kodi counts from zero, so one less from the `queueItems` count
     var queueLast: Bool {
-        return (queueEmpty || properties.queueID == queueItems.count - 1) ? true : false
+        return (queueEmpty || properties.queueID == -1 || properties.queueID == queueItems.count - 1) ? true : false
     }
     
     // MARK: Init

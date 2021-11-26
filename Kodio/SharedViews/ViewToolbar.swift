@@ -242,7 +242,17 @@ extension ViewToolbar {
             Text("Volume")
         } icon: {
             HStack {
-                Image(systemName: "speaker.fill")
+                Button(
+                    action: {
+                        Task.detached(priority: .userInitiated) {
+                            await player.toggleMute()
+                        }
+                    },
+                    label: {
+                        Image(systemName: player.muted ? "speaker.slash.fill" : "speaker.fill")
+                            .foregroundColor(player.muted ? .red : .primary)
+                    }
+                )
                     .font(.caption)
                 /// - Note: Using 'onEditingChanged' because that will only be trickered when using the slider
                 ///         and not when programmaticly changing its value after a notification.

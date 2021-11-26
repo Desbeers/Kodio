@@ -124,4 +124,9 @@ extension Player {
     func setVolume(volume: Double) async {
         await KodiHost.shared.setVolume(volume: volume)
     }
+    
+    /// Toggle the mute on  the host
+    func toggleMute() async {
+        await KodiHost.shared.toggleMute()
+    }
 }
