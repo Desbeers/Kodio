@@ -149,10 +149,9 @@ extension Library {
     /// - Parameters:
     ///   - items: An array of ``LibraryItem`` structs
     ///   - page: The page number to show
-    ///   - all: Load all items up to the page end; this is to refresh a list instead of just extending
+    ///   - all: Load all items up to the page end; this is to refresh a list instead of just extending it
     /// - Returns: A reduced array of ``LibraryItem`` structs
     static func pager<T: LibraryItem>(items: [T], page: Int = 0, all: Bool = false) async -> [T] {
-        logger("All: \(all)")
         /// The total items we have
         let totalItems = items.count
         /// If an item is removed; the list can be empty

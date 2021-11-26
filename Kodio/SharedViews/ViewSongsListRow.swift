@@ -94,6 +94,18 @@ extension ViewSongsListRow {
             }
         )
             .tint(.accentColor)
+        /// Button to reset the play count
+        Button(
+            action: {
+                Task.detached(priority: .userInitiated) {
+                    await Library.shared.resetSong(song: song)
+                }
+            },
+            label: {
+                Label("Reset", systemImage: "gobackward.minus")
+            }
+        )
+            .tint(.green.opacity(0.6))
         /// Button to add or remove a song from favorites
         Button(
             action: {

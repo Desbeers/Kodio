@@ -119,21 +119,6 @@ extension Library {
         }
     }
 
-    /// Save the song details into the database
-    /// - Parameter song: The ``SongItem``
-    private func setSongDetails(song: SongItem) async {
-        let message = AudioLibrarySetSongDetails(song: song)
-        kodiClient.sendMessage(message: message)
-    }
-    
-    /// Favorite a song or not
-    /// - Parameter song: The ``SongItem``
-    func favoriteSongToggle(song: SongItem) async {
-        var favorite = song
-        favorite.rating = favorite.rating == 0 ? 10 : 0
-        await setSongDetails(song: favorite)
-    }
-    
     /// Retrieve all songs (Kodi API)
     struct AudioLibraryGetSongs: KodiAPI {
         /// Method
@@ -203,6 +188,8 @@ extension Library {
             var params = Params()
             params.songid = song.songID
             params.userrating = song.rating
+            params.playcount = song.playCount
+            params.lastplayed = song.lastPlayed
             return buildParams(params: params)
         }
         /// The request struct
@@ -212,6 +199,10 @@ extension Library {
             var songid: Int = 0
             /// The rating of the song
             var userrating: Int = 0
+            /// The play count of the song
+            var playcount: Int = 0
+            /// The last played date
+            var lastplayed: String = ""
         }
         /// The response struct
         struct Response: Decodable { }

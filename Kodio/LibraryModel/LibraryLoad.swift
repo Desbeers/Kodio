@@ -2,14 +2,14 @@
 //  LibraryLoad.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 06/11/2021.
+//  © 2021 Nick Berendsen
 //
 
 import Foundation
 
 extension Library {
  
-    // MARK: - Loading library
+    // MARK: Loading library
     
     /// Get all music items from the library
     /// - Parameter reload: Bool; force a reload or else it will try to load it from the  cache
