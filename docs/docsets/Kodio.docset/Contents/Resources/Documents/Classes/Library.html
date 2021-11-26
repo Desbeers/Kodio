@@ -364,6 +364,18 @@
                 <a href="../Structs/ViewDropShadow.html">ViewDropShadow</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts.html">ViewEditHosts</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts/ViewDetails.html">– ViewDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts/ViewModifierForm.html">– ViewModifierForm</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/ViewEmptyLibrary.html">ViewEmptyLibrary</a>
               </li>
               <li class="nav-group-task">
@@ -373,19 +385,7 @@
                 <a href="../Structs/ViewHelp.html">ViewHelp</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit.html">ViewHostsEdit</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewDetails.html">– ViewDetails</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewModifierForm.html">– ViewModifierForm</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsMenu.html">ViewHostsMenu</a>
+                <a href="../Structs/ViewHostSelector.html">ViewHostSelector</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewLibrary.html">ViewLibrary</a>
@@ -442,16 +442,16 @@
                 <a href="../Structs/ViewSidebar.html">ViewSidebar</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/ViewSong.html">ViewSong</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSong/LabelStyleSongs.html">– LabelStyleSongs</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/ViewSongs.html">ViewSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewSongs/ViewModifierSongs.html">– ViewModifierSongs</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewSongsListRow.html">ViewSongsListRow</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewSongsListRow/LabelStyleSongs.html">– LabelStyleSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewStatistics.html">ViewStatistics</a>
@@ -477,13 +477,15 @@
 
                 </div>
               </div>
-            <p>The Library model</p>
+            <p>The Library class</p>
 
 <p>This class takes care of:</p>
 
 <ul>
 <li>Loading the music libray</li>
 <li>Filter the library based on UI selection</li>
+<li>Pass filtered content to the UI</li>
+<li>Do actions on <code><a href="../Protocols/LibraryItem.html">LibraryItem</a></code>s</li>
 </ul>
 
           </section>

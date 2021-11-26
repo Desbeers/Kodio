@@ -47,7 +47,7 @@ import SwiftUI
                 }
             }
             CommandGroup(replacing: CommandGroupPlacement.newItem) {
-                ViewHostsMenu().environmentObject(appState)
+                ViewHostSelector().environmentObject(appState)
             }
             CommandMenu("Host") {
                 if appState.state == .loadedLibrary {

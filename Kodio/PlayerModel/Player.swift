@@ -7,7 +7,11 @@
 
 import Foundation
 
-/// Player model
+/// The Player class
+///
+/// This class takes care of:
+/// - Keeping an eye of the player state
+/// - Send actions to the player on the host, like 'play', 'next', 'previous' etc.
 final class Player: ObservableObject {
     
     // MARK: Constants and Variables

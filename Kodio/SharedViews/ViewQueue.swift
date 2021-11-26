@@ -67,7 +67,7 @@ extension ViewQueue {
             ScrollViewReader { proxy in
                 List {
                     ForEach(library.getSongsFromQueue()) { song in
-                        ViewSongsListRow(song: song, selectedAlbum: nil)
+                        ViewSong(song: song, selectedAlbum: nil)
                             .id(song.songID)
                             .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
                     }

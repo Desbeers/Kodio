@@ -76,7 +76,7 @@ extension ViewSongs {
     var list: some View {
         List {
             ForEach(songList) { song in
-                ViewSongsListRow(song: song, selectedAlbum: selectedAlbum)
+                ViewSong(song: song, selectedAlbum: selectedAlbum)
                     .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))
                     .task {
                         /// Check if we have more songs to load

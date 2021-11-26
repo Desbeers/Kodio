@@ -364,6 +364,18 @@
                 <a href="../Structs/ViewDropShadow.html">ViewDropShadow</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts.html">ViewEditHosts</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts/ViewDetails.html">– ViewDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts/ViewModifierForm.html">– ViewModifierForm</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/ViewEmptyLibrary.html">ViewEmptyLibrary</a>
               </li>
               <li class="nav-group-task">
@@ -373,19 +385,7 @@
                 <a href="../Structs/ViewHelp.html">ViewHelp</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit.html">ViewHostsEdit</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewDetails.html">– ViewDetails</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewModifierForm.html">– ViewModifierForm</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsMenu.html">ViewHostsMenu</a>
+                <a href="../Structs/ViewHostSelector.html">ViewHostSelector</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewLibrary.html">ViewLibrary</a>
@@ -442,16 +442,16 @@
                 <a href="../Structs/ViewSidebar.html">ViewSidebar</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/ViewSong.html">ViewSong</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSong/LabelStyleSongs.html">– LabelStyleSongs</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/ViewSongs.html">ViewSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewSongs/ViewModifierSongs.html">– ViewModifierSongs</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewSongsListRow.html">ViewSongsListRow</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewSongsListRow/LabelStyleSongs.html">– LabelStyleSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewStatistics.html">ViewStatistics</a>
@@ -477,7 +477,7 @@
 
                 </div>
               </div>
-            <p>The Actor holding all remote art in a cache</p>
+            <p>An Actor holding all remote art in a cache</p>
 
           </section>
           <section class="section task-group-section">
@@ -524,7 +524,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The cache of art</p>
+                        <p>The cache with the art</p>
 
                       </div>
                       <div class="declaration">
@@ -541,9 +541,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio9RemoteArtC5image4item3art7SwiftUI5ImageVSgAA11LibraryItem_p_SStYaKF"></a>
-                    <a name="//apple_ref/swift/Method/image(item:art:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio9RemoteArtC5image4item3art7SwiftUI5ImageVSgAA11LibraryItem_p_SStYaKF">image(item:<wbr>art:<wbr>)</a>
+                    <a name="/s:5Kodio9RemoteArtC03getC04item3art7SwiftUI5ImageVSgAA11LibraryItem_p_SStYaKF"></a>
+                    <a name="//apple_ref/swift/Method/getArt(item:art:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9RemoteArtC03getC04item3art7SwiftUI5ImageVSgAA11LibraryItem_p_SStYaKF">getArt(item:<wbr>art:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -554,14 +554,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Fetch remote art</p>
+                        <p>Get remote art from the Kodi host</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">image</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span><span class="p">,</span> <span class="nv">art</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Image</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getArt</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span><span class="p">,</span> <span class="nv">art</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Image</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -606,9 +606,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio9RemoteArtC13downloadImage33_DBE5AF5AE53355B17B5DEF37B090C076LL4item4from7SwiftUI0E0VAA11LibraryItem_p_10Foundation3URLVtYaKF"></a>
-                    <a name="//apple_ref/swift/Method/downloadImage(item:from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio9RemoteArtC13downloadImage33_DBE5AF5AE53355B17B5DEF37B090C076LL4item4from7SwiftUI0E0VAA11LibraryItem_p_10Foundation3URLVtYaKF">downloadImage(item:<wbr>from:<wbr>)</a>
+                    <a name="/s:5Kodio9RemoteArtC08downloadC033_DBE5AF5AE53355B17B5DEF37B090C076LL4item4from7SwiftUI5ImageVAA11LibraryItem_p_10Foundation3URLVtYaKF"></a>
+                    <a name="//apple_ref/swift/Method/downloadArt(item:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9RemoteArtC08downloadC033_DBE5AF5AE53355B17B5DEF37B090C076LL4item4from7SwiftUI5ImageVAA11LibraryItem_p_10Foundation3URLVtYaKF">downloadArt(item:<wbr>from:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -626,7 +626,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">downloadImage</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Image</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">downloadArt</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Protocols/LibraryItem.html">LibraryItem</a></span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Image</span></code></pre>
 
                         </div>
                       </div>

@@ -8,6 +8,8 @@
 import SwiftUI
 
 /// App delegate class for macOS
+///
+/// Not everything is possible in 'pure' SwiftUI yet; I hope one day this class is not needed anymore
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     /// Some settings after the application is started

@@ -8,11 +8,13 @@
 import Foundation
 import Combine
 
-/// The Library model
+/// The Library class
 ///
 /// This class takes care of:
 /// - Loading the music libray
 /// - Filter the library based on UI selection
+/// - Pass filtered content to the UI
+/// - Do actions on ``LibraryItem``s
 final class Library: ObservableObject {
     
     // MARK: Constants and Variables

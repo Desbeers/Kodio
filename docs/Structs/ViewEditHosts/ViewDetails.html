@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ViewModifierForm Structure Reference</title>
+    <title>ViewDetails Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/ViewModifierForm" class="dashAnchor"></a>
-    <a title="ViewModifierForm Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/ViewDetails" class="dashAnchor"></a>
+    <a title="ViewDetails Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../index.html">Kodio</a> (100% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../../index.html">Kodio Reference</a>
         <img id="carat" src="../../img/carat.png" alt=""/>
-        ViewModifierForm Structure Reference
+        ViewDetails Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -364,6 +364,18 @@
                 <a href="../../Structs/ViewDropShadow.html">ViewDropShadow</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../Structs/ViewEditHosts.html">ViewEditHosts</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ViewEditHosts/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ViewEditHosts/ViewDetails.html">– ViewDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ViewEditHosts/ViewModifierForm.html">– ViewModifierForm</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Structs/ViewEmptyLibrary.html">ViewEmptyLibrary</a>
               </li>
               <li class="nav-group-task">
@@ -373,19 +385,7 @@
                 <a href="../../Structs/ViewHelp.html">ViewHelp</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Structs/ViewHostsEdit.html">ViewHostsEdit</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/ViewHostsEdit/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/ViewHostsEdit/ViewDetails.html">– ViewDetails</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/ViewHostsEdit/ViewModifierForm.html">– ViewModifierForm</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/ViewHostsMenu.html">ViewHostsMenu</a>
+                <a href="../../Structs/ViewHostSelector.html">ViewHostSelector</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/ViewLibrary.html">ViewLibrary</a>
@@ -442,16 +442,16 @@
                 <a href="../../Structs/ViewSidebar.html">ViewSidebar</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../Structs/ViewSong.html">ViewSong</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ViewSong/LabelStyleSongs.html">– LabelStyleSongs</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Structs/ViewSongs.html">ViewSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/ViewSongs/ViewModifierSongs.html">– ViewModifierSongs</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/ViewSongsListRow.html">ViewSongsListRow</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/ViewSongsListRow/LabelStyleSongs.html">– LabelStyleSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/ViewStatistics.html">ViewStatistics</a>
@@ -469,15 +469,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>ViewModifierForm</h1>
+            <h1>ViewDetails</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewModifierForm</span> <span class="p">:</span> <span class="kt">ViewModifier</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewDetails</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                 </div>
               </div>
-            <p>View modifier for host fields</p>
+            <p>Edit the details of a Kodi hist</p>
 
           </section>
           <section class="section task-group-section">
@@ -486,9 +486,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7SwiftUI12ViewModifierP4body7content4BodyQzAA01_cD8_ContentVyxG_tF"></a>
-                    <a name="//apple_ref/swift/Method/body(content:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7SwiftUI12ViewModifierP4body7content4BodyQzAA01_cD8_ContentVyxG_tF">body(content:<wbr>)</a>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV12selectedHostAA0G4ItemVvp"></a>
+                    <a name="//apple_ref/swift/Property/selectedHost" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV12selectedHostAA0G4ItemVvp">selectedHost</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -496,13 +496,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>The host to edit</p>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">body</span><span class="p">(</span><span class="nv">content</span><span class="p">:</span> <span class="kt">Content</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">View</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@Binding</span>
+<span class="k">var</span> <span class="nv">selectedHost</span><span class="p">:</span> <span class="kt"><a href="../../Structs/HostItem.html">HostItem</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -512,9 +514,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/body(content:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">body(content:<wbr>)</a>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV6valuesAA8HostItemVvp"></a>
+                    <a name="//apple_ref/swift/Property/values" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV6valuesAA8HostItemVvp">values</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -522,8 +524,334 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Labels look terrible on macOS</p>
+                        <p>The values of the form</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Binding</span>
+<span class="k">var</span> <span class="nv">values</span><span class="p">:</span> <span class="kt"><a href="../../Structs/HostItem.html">HostItem</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV6statusAC6StatusOvp"></a>
+                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV6statusAC6StatusOvp">status</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The status of the host currently editing</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Binding</span>
+<span class="k">var</span> <span class="nv">status</span><span class="p">:</span> <span class="kt"><a href="../../Structs/ViewEditHosts/Status.html">Status</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV4bodyQrvp"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV4bodyQrvp">body</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The view</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV7addHostQrvp"></a>
+                    <a name="//apple_ref/swift/Property/addHost" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV7addHostQrvp">addHost</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add a host</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@ViewBuilder</span>
+<span class="k">var</span> <span class="nv">addHost</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV10updateHostQrvp"></a>
+                    <a name="//apple_ref/swift/Property/updateHost" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV10updateHostQrvp">updateHost</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Update a host</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@ViewBuilder</span>
+<span class="k">var</span> <span class="nv">updateHost</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV10selectHostQrvp"></a>
+                    <a name="//apple_ref/swift/Property/selectHost" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV10selectHostQrvp">selectHost</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Select a host</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@ViewBuilder</span>
+<span class="k">var</span> <span class="nv">selectHost</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV10deleteHostQrvp"></a>
+                    <a name="//apple_ref/swift/Property/deleteHost" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV10deleteHostQrvp">deleteHost</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a host</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@ViewBuilder</span>
+<span class="k">var</span> <span class="nv">deleteHost</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV12validateForm33_A62DC6201F435F24EE7D09281176A1E5LL4hostSbAA8HostItemV_tF"></a>
+                    <a name="//apple_ref/swift/Method/validateForm(host:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV12validateForm33_A62DC6201F435F24EE7D09281176A1E5LL4hostSbAA8HostItemV_tF">validateForm(host:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Validate the form with the HostItem</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">validateForm</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="kt"><a href="../../Structs/HostItem.html">HostItem</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>host</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../../Structs/HostItem.html">HostItem</a></code> currenly editing</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True or false</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV9isValidIP33_A62DC6201F435F24EE7D09281176A1E5LL7addressSbSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/isValidIP(address:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV9isValidIP33_A62DC6201F435F24EE7D09281176A1E5LL7addressSbSS_tF">isValidIP(address:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Validate the IP address in the form with the HostItem</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">isValidIP</span><span class="p">(</span><span class="nv">address</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>address</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The IP address</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True or false</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV6footer4textQrSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/footer(text:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV6footer4textQrSS_tF">footer(text:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The text underneath a form item</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">footer</span><span class="p">(</span><span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>text</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The text to display</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Text</code> view</p>
                       </div>
                     </section>
                   </div>

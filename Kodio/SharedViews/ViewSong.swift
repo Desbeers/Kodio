@@ -1,5 +1,5 @@
 //
-//  ViewSongsListRow.swift
+//  ViewSong.swift
 //  Kodio
 //
 //  © 2021 Nick Berendsen
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-/// List a song in a row
-/// - Note: Shared by ``ViewSongs`` and ``ViewQueue``
-struct ViewSongsListRow: View {
+/// View one song
+/// - Note: Shared by ``ViewSongs`` and ``ViewQueue`` in their lists
+struct ViewSong: View {
     /// The song in this row
     let song: Library.SongItem
     /// The optional selected album
@@ -40,7 +40,7 @@ struct ViewSongsListRow: View {
     }
 }
 
-extension ViewSongsListRow {
+extension ViewSong {
     
     /// Art or track number at the start of a row
     /// - Note: when viewing an album it will be the track number, else album art

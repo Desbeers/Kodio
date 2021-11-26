@@ -13,14 +13,14 @@ struct RemoteArtKey: EnvironmentKey {
 }
 
 extension EnvironmentValues {
-    /// Keep an eye on the remote art in the environment
+    /// Have all remote art available in the SwiftUI environment
     var remoteArt: RemoteArt {
         get { self[RemoteArtKey.self] }
         set { self[RemoteArtKey.self ] = newValue}
     }
 }
 
-/// The Actor holding all remote art in a cache
+/// An Actor holding all remote art in a cache
 actor RemoteArt {
     
     /// The state of caching art
@@ -31,15 +31,16 @@ actor RemoteArt {
         case ready(Image)
     }
 
-    /// The cache of art
+    /// The cache with the art
     private var cache: [URL: CacheEntry] = [:]
 
-    /// Fetch remote art
+    /// Get remote art from the Kodi host
     /// - Parameters:
     ///   - item: A ``LibraryItem``
     ///   - art: The kind of art to fetch; a thumbnail or fanart
     /// - Returns: An SwiftUI ``Image``
-    func image(item: LibraryItem, art: String) async throws -> Image? {
+    func getArt(item: LibraryItem, art: String) async throws -> Image? {
+        /// Convert image path to a full URL
         let url = URL(string: art.kodiImageUrl())!
         if let cached = cache[url] {
             switch cached {
@@ -50,15 +51,15 @@ actor RemoteArt {
             }
         }
         let task = Task {
-            try await downloadImage(item: item, from: url)
+            try await downloadArt(item: item, from: url)
         }
-
+        /// Set the state of loading in the cache
         cache[url] = .inProgress(task)
-
+        /// Download the art
         do {
-            let image = try await task.value
-            cache[url] = .ready(image)
-            return image
+            let art = try await task.value
+            cache[url] = .ready(art)
+            return art
         } catch {
             cache[url] = nil
             throw error
@@ -70,7 +71,7 @@ actor RemoteArt {
     ///   - item: A ``LibraryItem``
     ///   - from: the ``URL`` of the art
     /// - Returns: An ``Image``
-    private func downloadImage(item: LibraryItem, from: URL) async throws -> Image {
+    private func downloadArt(item: LibraryItem, from: URL) async throws -> Image {
         let (data, _) = try await URLSession.shared.data(from: from)
 
 #if os(macOS)

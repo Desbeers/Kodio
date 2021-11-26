@@ -1,6 +1,6 @@
 //
 //  ViewLibrary.swift
-//  Kodio (macOS)
+//  Kodio
 //
 //  © 2021 Nick Berendsen
 //

@@ -1,6 +1,6 @@
 //
-//  ViewHosts.swift
-//  Kodio (shared)
+//  ViewEditHosts.swift
+//  Kodio
 //
 //  © 2021 Nick Berendsen
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// A view to edit the list of Kodi hosts
-struct ViewHostsEdit: View {
+struct ViewEditHosts: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState
     /// The currently selected host
@@ -85,7 +85,7 @@ struct ViewHostsEdit: View {
     }
 }
 
-extension  ViewHostsEdit {
+extension  ViewEditHosts {
     
     /// The status of the host currently edited
     enum Status {
@@ -264,37 +264,5 @@ extension  ViewHostsEdit {
                 .autocapitalization(.none)
         }
 #endif
-    }
-}
-
-// MARK: - ViewKodiHostsMenu (view)
-
-/// The Kodi host selector in a menu
-struct ViewHostsMenu: View {
-    /// The AppState model that has the hosts information
-    @EnvironmentObject var appState: AppState
-    /// The view
-    var body: some View {
-        if !appState.selectedHost.ip.isEmpty {
-            Button(
-                action: {
-                    appState.viewAlert(type: .scanLibrary)
-                },
-                label: {
-                    Label("Reload \(appState.selectedHost.description)", systemImage: "arrow.clockwise")
-                }
-            )
-            Divider()
-        }
-        ForEach(appState.hosts.filter { $0.selected == false }) { host in
-            Button(
-                action: {
-                    Hosts.switchHost(selected: host)
-                },
-                label: {
-                    Label(host.description, systemImage: "k.circle")
-                }
-            )
-        }
     }
 }

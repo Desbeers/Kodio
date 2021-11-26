@@ -47,7 +47,7 @@ struct ViewRemoteArt: View {
         switch item.media {
         case .song, .album, .artist:
             do {
-                image = try await remoteArt.image(
+                image = try await remoteArt.getArt(
                     item: item,
                     art: art == .thumbnail ? item.thumbnail : item.fanart
                 )

@@ -364,6 +364,18 @@
                 <a href="../Structs/ViewDropShadow.html">ViewDropShadow</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts.html">ViewEditHosts</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts/ViewDetails.html">– ViewDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewEditHosts/ViewModifierForm.html">– ViewModifierForm</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/ViewEmptyLibrary.html">ViewEmptyLibrary</a>
               </li>
               <li class="nav-group-task">
@@ -373,19 +385,7 @@
                 <a href="../Structs/ViewHelp.html">ViewHelp</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit.html">ViewHostsEdit</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/Status.html">– Status</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewDetails.html">– ViewDetails</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsEdit/ViewModifierForm.html">– ViewModifierForm</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewHostsMenu.html">ViewHostsMenu</a>
+                <a href="../Structs/ViewHostSelector.html">ViewHostSelector</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewLibrary.html">ViewLibrary</a>
@@ -442,16 +442,16 @@
                 <a href="../Structs/ViewSidebar.html">ViewSidebar</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/ViewSong.html">ViewSong</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewSong/LabelStyleSongs.html">– LabelStyleSongs</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/ViewSongs.html">ViewSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewSongs/ViewModifierSongs.html">– ViewModifierSongs</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewSongsListRow.html">ViewSongsListRow</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/ViewSongsListRow/LabelStyleSongs.html">– LabelStyleSongs</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewStatistics.html">ViewStatistics</a>
@@ -828,7 +828,11 @@
 <ul>
 <li>When playing from a selected album; ReplayGain will be set to &lsquo;album&rsquo; mode so the album is played as intended.</li>
 <li><p>When playing random songs; ReplayGain will be set to &lsquo;track&rsquo; so all songs are played at the same level.</p></li>
-</ul>
+</ul><div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>This wil alter the Kodi host settings and when quitting Kodio it will not be set back!</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -874,7 +878,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Modes of ReplayGain</p>
+                        <p>An <code>enum</code> with the modes of ReplayGain; track based or album based</p>
 
                         <a href="../Classes/KodiHost/ReplayGain.html" class="slightly-smaller">See more</a>
                       </div>

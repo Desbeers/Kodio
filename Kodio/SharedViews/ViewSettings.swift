@@ -1,6 +1,6 @@
 //
 //  ViewSettings.swift
-//  Kodio (shared)
+//  Kodio
 //
 //  © 2021 Nick Berendsen
 //
@@ -13,14 +13,14 @@ struct ViewSettings: View {
     var body: some View {
         #if os (macOS)
         TabView {
-            ViewHostsEdit()
+            ViewEditHosts()
             .tabItem {
                 Label("Hosts", systemImage: "list.dash")
             }
         }
         #endif
         #if os (iOS)
-        ViewHostsEdit()
+        ViewEditHosts()
         #endif
     }
 }

@@ -1,13 +1,13 @@
 //
 //  ViewAbout.swift
-//  Kodio (shared)
+//  Kodio
 //
 //  © 2021 Nick Berendsen
 //
 
 import SwiftUI
 
-/// View an 'About' sheet
+/// View an 'About Kodio'
 struct ViewAbout: View {
     /// The view
     var body: some View {

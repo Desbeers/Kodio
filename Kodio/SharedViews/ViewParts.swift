@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - View bits and pieces
+// MARK: View bits and pieces
 
 /// View a drop shadow
 struct ViewDropShadow: View {
@@ -35,9 +35,10 @@ struct ViewListHeader: View {
     }
 }
 
-// MARK: - Style for an item in the sidebar
+// MARK: Style for an item in the sidebar
 
 /// Button style for a sidebar item
+/// - Note: Shared by ``ViewSidebar`` and ``ViewHostsEdit`` in their lists
 struct ButtonStyleSidebar: ButtonStyle {
     /// Tracks if the button is enabled or not
     @Environment(\.isEnabled) var isEnabled
@@ -57,7 +58,7 @@ struct ButtonStyleSidebar: ButtonStyle {
     }
 }
 
-// MARK: - Rotating record
+// MARK: Rotating record
 
 /// View a rotating record
 struct ViewRotatingRecord: View {
@@ -84,7 +85,7 @@ struct ViewRotatingRecord: View {
     }
 }
 
-// MARK: - Empty library view
+// MARK: Empty library view
 
 /// View to show when the current library view has no items to show
 struct ViewEmptyLibrary: View {
@@ -106,5 +107,37 @@ struct ViewEmptyLibrary: View {
         .frame(maxWidth: .infinity)
         .id(item.empty)
         .transition(.move(edge: .trailing))
+    }
+}
+
+// MARK: View a Kodi host selector
+
+/// View a Kodi host selector
+struct ViewHostSelector: View {
+    /// The AppState model that has the hosts information
+    @EnvironmentObject var appState: AppState
+    /// The view
+    var body: some View {
+        if !appState.selectedHost.ip.isEmpty {
+            Button(
+                action: {
+                    appState.viewAlert(type: .scanLibrary)
+                },
+                label: {
+                    Label("Reload \(appState.selectedHost.description)", systemImage: "arrow.clockwise")
+                }
+            )
+            Divider()
+        }
+        ForEach(appState.hosts.filter { $0.selected == false }) { host in
+            Button(
+                action: {
+                    Hosts.switchHost(selected: host)
+                },
+                label: {
+                    Label(host.description, systemImage: "k.circle")
+                }
+            )
+        }
     }
 }

@@ -1,6 +1,6 @@
 //
 //  ViewSheet.swift
-//  Kodio (shared)
+//  Kodio
 //
 //  © 2021 Nick Berendsen
 //

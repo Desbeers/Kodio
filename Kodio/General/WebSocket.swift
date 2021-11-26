@@ -11,7 +11,7 @@ import Foundation
 
 /// The Delegate for the WebSocket connection
 ///
-/// This will be called when connecting/disconnecting to the socket
+/// - This will be called when connecting/disconnecting to the socket and when there is an error
 class WebSocket: NSObject, URLSessionWebSocketDelegate {
     /// Websocket notification when the connection starts
     func urlSession(

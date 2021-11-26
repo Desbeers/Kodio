@@ -38,7 +38,7 @@ extension ViewContent {
     @ToolbarContentBuilder func iOStoolbar() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Menu {
-                ViewHostsMenu()
+                ViewHostSelector()
                 Divider()
                 if appState.state == .loadedLibrary {
                     Button("Scan library on '\(appState.selectedHost.description)'") {
