@@ -13,7 +13,6 @@ extension AppState {
 
     /// Update the sidebar
     @MainActor func updateSidebar() async {
-        logger("Update sidebar")
         let library: Library = .shared
         let list = library.getLibraryLists()
         /// Check the selected item
@@ -26,7 +25,8 @@ extension AppState {
                 await library.selectLibraryList(libraryList: list.first!)
             }
         }
-        sidebarItems = Library.shared.getLibraryLists()
+        logger("Update sidebar")
+        sidebarItems = library.getLibraryLists()
     }
     
     /// Set the state of Kodio and act on it

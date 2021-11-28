@@ -24,8 +24,6 @@ extension Library {
     func selectLibraryList(libraryList: LibraryListItem) async {
         /// Set the selection
         libraryList.set()
-        /// Update dynamic lists
-        await AppState.shared.updateSidebar()
         switch libraryList.media {
         case .playlist:
             async let songList = getPlaylistSongs(file: libraryList.file)
@@ -49,6 +47,8 @@ extension Library {
         async let albums = filterAlbums(songList: songs)
         async let artists = filterArtists(songList: songs)
         async let genres = filterGenres(songList: songs)
+        /// Update dynamic lists
+        await AppState.shared.updateSidebar()
         /// Update the View
         await updateLibraryView(
             content:
