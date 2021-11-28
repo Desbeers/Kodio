@@ -30,7 +30,7 @@ struct ViewLibrary: View {
             ViewLibraryTop()
             ViewLibraryBottom()
         }
-        .toolbar()
+        .toolbarButtons()
     }
 }
 #endif

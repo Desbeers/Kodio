@@ -90,6 +90,9 @@
                 <a href="../Classes/KodiClient/SortMethod.html">– SortMethod</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/KodiClient/SendNotification.html">– SendNotification</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/KodiClient/NotificationItem.html">– NotificationItem</a>
               </li>
               <li class="nav-group-task">
@@ -412,9 +415,6 @@
                 <a href="../Structs/ViewModifierSearch.html">ViewModifierSearch</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewModifierSongItem.html">ViewModifierSongItem</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/ViewPlayerArt.html">ViewPlayerArt</a>
               </li>
               <li class="nav-group-task">
@@ -542,6 +542,34 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Kodio9ViewQueueV5queueSayAA7LibraryC8SongItemVGvp"></a>
+                    <a name="//apple_ref/swift/Property/queue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9ViewQueueV5queueSayAA7LibraryC8SongItemVGvp">queue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current queue list</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@State</span>
+<span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/Library.html">Library</a></span><span class="o">.</span><span class="kt">SongItem</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Kodio9ViewQueueV4bodyQrvp"></a>
                     <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Kodio9ViewQueueV4bodyQrvp">body</a>
@@ -562,6 +590,48 @@
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Property/mode" class="dashAnchor"></a>
+                    <a class="token" href="#/">mode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The edit mode is a bit unstable; this will keep an eye on it
+
+</div>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/">body</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The view</p>
+
                       </div>
                     </section>
                   </div>
@@ -620,12 +690,98 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9ViewQueueV4move4from2toy10Foundation8IndexSetV_SitF"></a>
+                    <a name="//apple_ref/swift/Method/move(from:to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9ViewQueueV4move4from2toy10Foundation8IndexSetV_SitF">move(from:<wbr>to:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Move a song to a different location of the queue</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">move</span><span class="p">(</span><span class="n">from</span> <span class="nv">source</span><span class="p">:</span> <span class="kt">IndexSet</span><span class="p">,</span> <span class="n">to</span> <span class="nv">destination</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9ViewQueueV6delete4songyAA7LibraryC8SongItemV_tF"></a>
+                    <a name="//apple_ref/swift/Method/delete(song:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9ViewQueueV6delete4songyAA7LibraryC8SongItemV_tF">delete(song:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a song from the queue</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    I can&rsquo;t use <code>.onDelete(perform: )</code> because there are also other swipe actions
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/Library.html">Library</a></span><span class="o">.</span><span class="kt">SongItem</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9ViewQueueV7reorderSayAA7LibraryC8SongItemVGyF"></a>
+                    <a name="//apple_ref/swift/Method/reorder()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9ViewQueueV7reorderSayAA7LibraryC8SongItemVGyF">reorder()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reorder the songID&rsquo;s so we don&rsquo;t have to reload the whole queue</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">reorder</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/Library.html">Library</a></span><span class="o">.</span><span class="kt">SongItem</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-26)</p>
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

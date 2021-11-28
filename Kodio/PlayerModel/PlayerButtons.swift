@@ -89,6 +89,37 @@ extension Player {
             }
         }
     }
+
+    /// Update a playlist
+    ///
+    /// This will be called after reordering or deleting a song in the player queue
+    /// - Parameter songs: The current songs in the player queue
+    func updatePlaylist(songs: [Library.SongItem]) async {
+        logger("Update playlist")
+        /// Clear the queue playlist
+        Queue.shared.sendAction(method: .playlistClear)
+        /// Collect the songs to add
+        var songList: [Int] = []
+        for song in songs {
+            songList.append(song.songID)
+        }
+        /// Disable shuffle if needed
+        if properties.shuffled {
+            await toggleShuffle()
+        }
+        /// Send the new queue list
+        let request = Queue.QueueAction(method: .playlistAdd, songList: songList)
+        Task {
+            do {
+                _ = try await kodiClient.sendRequest(request: request)
+                /// Send a notification that we have a new queue
+                /// - Note: self-send notification will be ignored; the list is already updated by the queue view
+                await kodiClient.sendNotification(message: "NewQueue")
+            } catch {
+                print(error)
+            }
+        }
+    }
     
     /// Play a radio station
     /// - Parameter stream: the audio stream to play

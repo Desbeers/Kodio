@@ -27,9 +27,8 @@ extension View {
         )
     }
     
-    /// The toolbar shortcut
-    /// - Note : macOS and iOS have their own modifier
-    func toolbar(basic: Bool = false) -> some View {
+    /// The toolbar buttons shortcut
+    func toolbarButtons(basic: Bool = false) -> some View {
         modifier(ViewToolbar(basic: basic))
     }
     

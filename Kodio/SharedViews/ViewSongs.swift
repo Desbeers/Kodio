@@ -85,7 +85,6 @@ extension ViewSongs {
                             songList += await Library.pager(items: library.filteredContent.songs, page: currentPage)
                         }
                     }
-                    .modifier(ViewModifierSongItem())
             }
         }
         .task {

@@ -17,7 +17,7 @@ struct ViewContent: View {
             ViewSidebar()
                 .searchbar()
             ViewLibrary()
-                .toolbar()
+                .toolbarButtons()
         }
         .sheet(isPresented: $appState.showSheet) {
             ViewSheet()

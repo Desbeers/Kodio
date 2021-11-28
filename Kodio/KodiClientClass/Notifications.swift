@@ -10,8 +10,22 @@ import Foundation
 extension KodiClient {
     
     // MARK: Notifications stuff
-    
+
+    /// Send a notification to the host
+    /// - Note: The message will be received as a ``Method`` like 'Other.*message*'
+    /// - Parameter message: The message to send
+    func sendNotification(message: String) async {
+        let message = SendNotification(notification: message)
+        logger("Send notification: '\(message.method)'")
+        do {
+            _ = try await sendRequest(request: message)
+        } catch {
+            print(error)
+        }
+    }
+
     /// Recieve a notification from the Kodi WebSocket
+    ///  - Note: Messages send by ourself are ignored
     func receiveNotification() {
         webSocketTask?.receive { result in
             switch result {
@@ -19,15 +33,17 @@ extension KodiClient {
                 if case .string(let text) = message {
                     /// get the notification
                     guard let data = text.data(using: .utf8),
-                          let notification = try? JSONDecoder().decode(NotificationItem.self, from: data)
+                          let notification = try? JSONDecoder().decode(NotificationItem.self, from: data),
+                          let method = Method(rawValue: notification.method),
+                          notification.params.sender != AppState.shared.kodioID
                     else {
                         /// Not an interesting notification
-                        print(message)
+                        /// print(message)
                         /// Call ourself again to receive the next notification
                         self.receiveNotification()
                         return
                     }
-                    logger("Notification: \(notification.method)")
+                    logger("Notification: \(method.rawValue)")
                     self.notificationAction(notification: notification)
                 }
                 /// Call ourself again to receive the next notification
@@ -95,9 +111,38 @@ extension KodiClient {
                 /// See if we are still up to date
                 await Library.shared.getLastUpdate()
             }
+        case .otherNewQueue:
+            logger("New Queue send")
+            Task {
+                await Queue.shared.getItems()
+            }
         default:
             logger("No action after notification")
         }
+    }
+    
+    /// Send a notification to the host (Kodi API)
+    struct SendNotification: KodiAPI {
+        /// The message
+        var notification: String
+        /// Method
+        let method = Method.notifyAll
+        /// The JSON creator
+        var parameters: Data {
+            /// The parameters
+            var params = Params()
+            params.message = notification
+            return buildParams(params: params)
+        }
+        /// The request struct
+        struct Params: Encodable {
+            /// Our identification so we don't respond to our own message
+            let sender = AppState.shared.kodioID
+            /// The message to send
+            var message = ""
+        }
+        /// The response struct
+        struct Response: Decodable { }
     }
     
     /// The notification item
@@ -110,6 +155,8 @@ extension KodiClient {
         struct Params: Decodable {
             /// The optional data from the notice
             var data: DataItem?
+            /// The sender of the notice
+            var sender: String = ""
         }
         /// The struct for the notification data
         struct DataItem: Decodable {

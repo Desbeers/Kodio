@@ -12,6 +12,11 @@ import Foundation
 /// Kodi methods used by KodiAPI
 enum Method: String {
     
+    /// Notify all other connected clients
+    case notifyAll = "JSONRPC.NotifyAll"
+    /// Custom notification
+    case otherNewQueue = "Other.NewQueue"
+    
     /// Get host properties
     case applicationGetProperties = "Application.GetProperties"
     /// Quit the host
@@ -81,8 +86,6 @@ enum Method: String {
     case playerOnPause = "Player.OnPause"
     /// Notification that the player starts playing on the host
     case playerOnAVStart = "Player.OnAVStart"
-    /// Notification that an item is added to the playlist on the host
-    case playlistOnAdd = "Playlist.OnAdd"
 
     /// Clear the playlist on the host
     case playlistClear = "Playlist.Clear"
@@ -94,8 +97,6 @@ enum Method: String {
     case playlistSwap = "Playlist.Swap"
     /// Get a list of items from a playlist on the host
     case playlistGetItems = "Playlist.GetItems"
-    /// Notification that the playlist is cleared on the host
-    case playlistOnClear = "Playlist.OnClear"
 
     /// Get a directory list from the host
     case filesGetDirectory = "Files.GetDirectory"

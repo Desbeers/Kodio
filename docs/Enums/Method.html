@@ -90,6 +90,9 @@
                 <a href="../Classes/KodiClient/SortMethod.html">– SortMethod</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/KodiClient/SendNotification.html">– SendNotification</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/KodiClient/NotificationItem.html">– NotificationItem</a>
               </li>
               <li class="nav-group-task">
@@ -412,9 +415,6 @@
                 <a href="../Structs/ViewModifierSearch.html">ViewModifierSearch</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewModifierSongItem.html">ViewModifierSongItem</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/ViewPlayerArt.html">ViewPlayerArt</a>
               </li>
               <li class="nav-group-task">
@@ -483,6 +483,60 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6MethodO9notifyAllyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/notifyAll" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6MethodO9notifyAllyA2CmF">notifyAll</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Notify all other connected clients</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">notifyAll</span> <span class="o">=</span> <span class="s">"JSONRPC.NotifyAll"</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio6MethodO13otherNewQueueyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/otherNewQueue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio6MethodO13otherNewQueueyA2CmF">otherNewQueue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Custom notification</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">otherNewQueue</span> <span class="o">=</span> <span class="s">"Other.NewQueue"</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -1350,33 +1404,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio6MethodO13playlistOnAddyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/playlistOnAdd" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio6MethodO13playlistOnAddyA2CmF">playlistOnAdd</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Notification that an item is added to the playlist on the host</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">playlistOnAdd</span> <span class="o">=</span> <span class="s">"Playlist.OnAdd"</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:5Kodio6MethodO13playlistClearyA2CmF"></a>
                     <a name="//apple_ref/swift/Element/playlistClear" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Kodio6MethodO13playlistClearyA2CmF">playlistClear</a>
@@ -1512,33 +1539,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio6MethodO15playlistOnClearyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/playlistOnClear" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio6MethodO15playlistOnClearyA2CmF">playlistOnClear</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Notification that the playlist is cleared on the host</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">playlistOnClear</span> <span class="o">=</span> <span class="s">"Playlist.OnClear"</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:5Kodio6MethodO17filesGetDirectoryyA2CmF"></a>
                     <a name="//apple_ref/swift/Element/filesGetDirectory" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Kodio6MethodO17filesGetDirectoryyA2CmF">filesGetDirectory</a>
@@ -1568,7 +1568,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-26)</p>
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-28)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

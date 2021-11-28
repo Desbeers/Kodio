@@ -28,7 +28,9 @@ struct ViewSong: View {
             } icon: {
                 icon
             }
+            #if os(macOS)
             Divider()
+            #endif
         }
         .labelStyle(LabelStyleSongs())
         .contextMenu {
@@ -119,20 +121,4 @@ extension ViewSong {
         )
             .tint(.red.opacity(0.6))
     }
-}
-
-/// View modifier for a `Library/SongItem`
-struct ViewModifierSongItem: ViewModifier {
-#if os(macOS)
-    func body(content: Content) -> some View {
-        content
-    }
-#endif
-#if os(iOS)
-    func body(content: Content) -> some View {
-        /// - Note: Song rows already have a `Divider` 
-        content
-            .listRowSeparator(.hidden)
-    }
-#endif
 }

@@ -49,6 +49,8 @@ final class AppState: ObservableObject {
             }
         }
     }
+    /// ID of this Kodio instance; used to send  notifications
+    var kodioID = UUID().uuidString
     
     // MARK: Init
     
