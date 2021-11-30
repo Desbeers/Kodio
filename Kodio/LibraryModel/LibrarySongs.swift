@@ -103,6 +103,7 @@ extension Library {
                     /// Update UI
                     Task { @MainActor in
                         filteredContent.songs = await filterSongs()
+                        Player.shared.queueSongs = Library.shared.getSongsFromQueue()
                     }
                     /// Save in the cache
                     do {

@@ -28,24 +28,26 @@ final class Player: ObservableObject {
     @Published var volume: Double = 0
     /// Bool if the volume is muted or not
     @Published var muted: Bool = false
-    /// Song ID's in the queue
-    @Published var queueItems: [Queue.QueueItem] = []
+    /// Songs in the queue
+    @Published var queueSongs: [Library.SongItem] = []
     /// Bool if the queue is empty
-    /// - Note: Used to disable the 'play/pause' button in the UI
+    /// - Note
+    ///     - Used to disable the 'play/pause' button in the UI
+    ///     - Look in the Queue class because there might be something else in the queue than songs
     var queueEmpty: Bool {
-        return queueItems.isEmpty ? true : false
+        return Queue.shared.queueItems.isEmpty ? true : false
     }
     /// Bool if the item in the queue is the first item
     /// - Note: Used to disable the 'play previous' button in the UI
     var queueFirst: Bool {
-        return properties.queueID <= 0 ? true : false
+        return properties.queueID <= 0 || properties.partymode ? true : false
     }
     /// Bool if the item in the queue is the last item
     /// - Note:
     ///     - Used to disable the 'play next' button in the UI
     ///     - Kodi counts from zero, so one less from the `queueItems` count
     var queueLast: Bool {
-        return (queueEmpty || properties.queueID == -1 || properties.queueID == queueItems.count - 1) ? true : false
+        return (queueEmpty || properties.queueID == -1 || properties.queueID == Queue.shared.queueItems.count - 1) ? true : false
     }
     
     // MARK: Init

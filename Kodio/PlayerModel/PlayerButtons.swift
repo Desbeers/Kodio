@@ -18,7 +18,7 @@ extension Player {
     /// - Playlist is playing: -> do method .playerPlayPause
     /// - Playlist is stopped: -> do method .playerOpen
     func playPause() async {
-        if properties.queueID == -1 && !queueItems.isEmpty {
+        if properties.queueID == -1 && !queueEmpty {
             sendAction(method: .playerOpen, queueID: 0)
         } else {
             sendAction(method: .playerPlayPause)

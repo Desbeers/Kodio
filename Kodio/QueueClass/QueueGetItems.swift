@@ -17,12 +17,13 @@ extension Queue {
         let request = QueueGetItems()
         do {
             let result = try await kodiClient.sendRequest(request: request)
-            if result.items != Player.shared.queueItems {
+            if result.items != queueItems {
                 if !result.items.isEmpty {
                     /// Save the query for later
+                    queueItems = result.items
                     logger("Queue has changed")
                     Task { @MainActor in
-                        Player.shared.queueItems = result.items
+                        Player.shared.queueSongs = Library.shared.getSongsFromQueue()
                         /// Select 'Queue' in the sidebar again to reload it
                         if viewingQueue, let button = Library.shared.getLibraryLists().first(where: { $0.media == .queue}) {
                             await Library.shared.selectLibraryList(libraryList: button)
@@ -33,8 +34,9 @@ extension Queue {
                     }
                 } else {
                     logger("Queue is empty")
+                    queueItems = []
                     Task { @MainActor in
-                        Player.shared.queueItems = []
+                        Player.shared.queueSongs = []
                         /// Update the sidebar to make sure there is no queue button
                         await AppState.shared.updateSidebar()
                     }

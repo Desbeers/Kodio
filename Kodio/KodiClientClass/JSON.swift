@@ -21,7 +21,6 @@ extension KodiClient {
                   throw APIError.responseUnsuccessful
               }
         guard let decoded = try? JSONDecoder().decode(BaseResponse<T.Response>.self, from: data) else {
-            debugJsonResponse(data: data)
             throw APIError.invalidData
         }
         return decoded.result

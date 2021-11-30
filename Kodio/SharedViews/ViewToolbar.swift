@@ -22,9 +22,7 @@ struct ViewToolbar: ViewModifier {
                 partyButton
                     .padding(.bottom)
                 HStack(spacing: 10) {
-                    if !player.properties.partymode {
-                        prevButton
-                    }
+                    prevButton
                     playButton
                     nextButton
                 }
@@ -115,7 +113,7 @@ extension ViewToolbar {
     var playerItemButton: some View {
         Button(
             action: {
-                if !player.queueItems.isEmpty {
+                if !player.queueSongs.isEmpty {
                     AppState.shared.viewSheet(type: .queue)
                 }
             },

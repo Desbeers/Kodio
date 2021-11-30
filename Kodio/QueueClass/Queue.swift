@@ -23,6 +23,8 @@ final class Queue {
     static let shared = Queue()
     /// The shared client class
     let kodiClient = KodiClient.shared
+    /// Song ID's in the queue
+    var queueItems: [QueueItem] = []
     
     // MARK: Init
     

@@ -13,8 +13,6 @@ struct ViewQueue: View {
     @EnvironmentObject var library: Library
     /// The Player model
     @EnvironmentObject var player: Player
-    /// The current queue list
-    @State var queue: [Library.SongItem] = []
 #if os(macOS)
     /// The view
     var body: some View {
@@ -82,9 +80,9 @@ extension ViewQueue {
     var list: some View {
         ScrollViewReader { proxy in
             List {
-                ForEach(queue) { song in
+                ForEach(player.queueSongs) { song in
                     ViewSong(song: song, selectedAlbum: nil)
-                        .id(song.queueID)
+                        .id(song.songID)
                         .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
                         .swipeActions(edge: .trailing) {
                             /// Button to delete an item from the queue
@@ -102,45 +100,41 @@ extension ViewQueue {
                 .onMove(perform: move)
             }
             .listStyle(.plain)
-            /// Load the songs for the queue
             .task {
-                logger("Loading queue")
-                queue = library.getSongsFromQueue()
-            }
-            /// Update the list when the queue has changed
-            .onChange(of: player.queueItems) { _ in
-                logger("Reloading queue")
-                queue = library.getSongsFromQueue()
+                 withAnimation(.linear(duration: 1)) {
+                     /// - Note: This does not works correct on macOS with a long list; it partly scrolls
+                     proxy.scrollTo(player.item.songID, anchor: .center)
+                 }
             }
             /// Scroll to the active song when it changed
-            .onChange(of: player.properties) { item in
+            .onChange(of: player.item) { item in
                 withAnimation(.linear(duration: 1)) {
-                    proxy.scrollTo(item.queueID, anchor: .center)
+                    proxy.scrollTo(item.songID, anchor: .center)
                 }
             }
         }
     }
     /// Move a song to a different location of the queue
     func move(from source: IndexSet, to destination: Int) {
-        queue.move(fromOffsets: source, toOffset: destination)
-        queue = reorder()
+        player.queueSongs.move(fromOffsets: source, toOffset: destination)
+        player.queueSongs = reorder()
         Task {
-            await player.updatePlaylist(songs: queue)
+            await player.updatePlaylist(songs: player.queueSongs)
         }
     }
     /// Delete a song from the queue
     /// - Note: I can't use ``.onDelete(perform: )`` because there are also other swipe actions
     func delete(song: Library.SongItem) {
-        queue.remove(at: song.queueID)
-        queue = reorder()
+        player.queueSongs.remove(at: song.queueID)
+        player.queueSongs = reorder()
         Task {
-            await player.updatePlaylist(songs: queue)
+            await player.updatePlaylist(songs: player.queueSongs)
         }
     }
     /// Reorder the songID's so we don't have to reload the whole queue
     func reorder() -> [Library.SongItem] {
         var newQueue: [Library.SongItem] = []
-        for (index, song) in queue.enumerated() {
+        for (index, song) in player.queueSongs.enumerated() {
             var newSong = song
             newSong.queueID = index
             newQueue.append(newSong)
