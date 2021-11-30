@@ -18,11 +18,21 @@ struct ViewToolbar: ViewModifier {
         if basic {
             /// Return only the player buttons
             content
-            HStack {
-                prevButton
-                playButton
-                nextButton
+            VStack {
+                partyButton
+                    .padding(.bottom)
+                HStack(spacing: 10) {
+                    if !player.properties.partymode {
+                        prevButton
+                    }
+                    playButton
+                    nextButton
+                }
+                .scaleEffect(1.4)
             }
+            .animation(.default, value: player.properties.partymode)
+            .buttonStyle(.plain)
+            .padding()
         } else {
             /// Return a full toolbar
             /// - Note: The labels for the toolbar items must be fixed or else Kodio on macOS will crash
@@ -197,23 +207,16 @@ extension ViewToolbar {
             },
             label: {
                 Label {
-                    Text("Party mode")
+                    Text(basic ? player.properties.partymode ? "Party mode is on" : "Party mode is off" : "Party mode")
                 } icon: {
                     Image(systemName: "wand.and.stars.inverse")
                 }
-                .macOS {
-                    $0
-                        .foregroundColor(partymode ? .red : .primary)
-                }
-                .iOS {
-                    $0
-                        .padding(2)
-                        .background(RoundedRectangle(cornerRadius: 4)
-                                        .fill(partymode ? Color.red : Color.clear))
-                        .foregroundColor(partymode ? .white : .primary)
-                }
             }
         )
+            .padding(.all, basic ? 5 : 0)
+            .background(RoundedRectangle(cornerRadius: 4)
+                            .fill(partymode ? Color.red : Color.clear))
+            .foregroundColor(partymode ? .white : .none)
     }
     /// The shuffle button
     var shuffleButton: some View {
@@ -230,19 +233,12 @@ extension ViewToolbar {
                 } icon: {
                     Image(systemName: "shuffle")
                 }
-                .macOS {
-                    $0
-                        .foregroundColor(shuffled ? .accentColor : .primary)
-                }
-                .iOS {
-                    $0
-                        .padding(2)
-                        .background(RoundedRectangle(cornerRadius: 4)
-                                        .fill(shuffled ? Color.accentColor : Color.clear))
-                        .foregroundColor(shuffled ? .white : .primary)
-                }
             }
         )
+            .background(RoundedRectangle(cornerRadius: 4)
+                            .fill(shuffled ? Color.accentColor : Color.clear))
+            .foregroundColor(shuffled ? .white : .none)
+            .disabled(player.properties.partymode)
     }
     /// The repeat button
     var repeatButton: some View {
@@ -259,17 +255,12 @@ extension ViewToolbar {
                 } icon: {
                     Image(systemName: player.properties.repeatingIcon)
                 }
-                .macOS {$0
-                .foregroundColor(repeating ? .accentColor : .primary)
-                }
-                .iOS {$0
-                .padding(2)
-                .background(RoundedRectangle(cornerRadius: 4)
-                                .fill(repeating ? Color.accentColor : Color.clear))
-                .foregroundColor(repeating ? .white : .primary)
-                }
             }
         )
+            .background(RoundedRectangle(cornerRadius: 4)
+                            .fill(repeating ? Color.accentColor : Color.clear))
+            .foregroundColor(repeating ? .white : .none)
+            .disabled(player.properties.partymode)
     }
     /// The volume slider
     var volumeSlider: some View {
