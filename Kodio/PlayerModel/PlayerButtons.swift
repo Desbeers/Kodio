@@ -128,6 +128,10 @@ extension Player {
     /// Play a radio station
     /// - Parameter stream: the audio stream to play
     func playRadio(stream: String) async {
+        /// Disable party mode if needed
+        if properties.partymode {
+            await togglePartyMode()
+        }
         let request = Queue.QueueAction(method: .playlistAdd, stream: stream)
         Task {
             do {

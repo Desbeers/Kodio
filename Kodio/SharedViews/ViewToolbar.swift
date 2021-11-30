@@ -215,6 +215,7 @@ extension ViewToolbar {
             .background(RoundedRectangle(cornerRadius: 4)
                             .fill(partymode ? Color.red : Color.clear))
             .foregroundColor(partymode ? .white : .none)
+            .help("Party mode") 
     }
     /// The shuffle button
     var shuffleButton: some View {
