@@ -75,26 +75,27 @@ extension Library {
     /// Filter the songs
     func filterSongs() async -> [SongItem] {
         logger("Filter songs")
-        var songList = songs.all
+        var songList: [SongItem] = []
         switch libraryLists.selected.media {
         case .search:
             songList = search.results
         case .compilations:
-            songList = songList.filter {$0.compilation == true}.sorted {$0.artists < $1.artists}
+            songList = songs.all.filter {$0.compilation == true}.sorted {$0.artists < $1.artists}
         case .recentlyPlayed:
-            songList = Array(songList.sorted {$0.lastPlayed > $1.lastPlayed}.prefix(100))
+            songList = Array(songs.all.sorted {$0.lastPlayed > $1.lastPlayed}.prefix(100))
         case .recentlyAdded:
-            songList = Array(songList.sorted {$0.dateAdded > $1.dateAdded}.prefix(100))
+            songList = Array(songs.all.sorted {$0.dateAdded > $1.dateAdded}.prefix(100))
         case .mostPlayed:
-            songList = Array(songList.sorted {$0.playCount > $1.playCount}.prefix(100))
+            songList = Array(songs.all.sorted {$0.playCount > $1.playCount}.prefix(100))
         case .playlist:
-            songList = playlists.songs
+            async let songs = getPlaylistSongs(file: libraryLists.selected.file)
+            songList = await songs
         case .favorites:
-            songList = songList.filter { $0.rating > 0 }.sorted {$0.rating > $1.rating}
+            songList = songs.all.filter { $0.rating > 0 }.sorted {$0.rating > $1.rating}
         case .queue:
             songList = getSongsFromQueue()
         default:
-            songList = songList.filter {$0.compilation == false}
+            songList = songs.all.filter {$0.compilation == false}
         }
         /// Filter on a genre if one is selected
         if let genre = genres.selected {

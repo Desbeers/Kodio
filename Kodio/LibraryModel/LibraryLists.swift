@@ -15,7 +15,7 @@ extension Library {
     struct LibraryLists {
         /// A list containing all library list items
         var all = [LibraryListItem]()
-        /// The selected libray list in the UI
+        /// The selected library list in the UI
         var selected = LibraryListItem()
     }
 
@@ -24,13 +24,6 @@ extension Library {
     func selectLibraryList(libraryList: LibraryListItem) async {
         /// Set the selection
         libraryList.set()
-        switch libraryList.media {
-        case .playlist:
-            async let songList = getPlaylistSongs(file: libraryList.file)
-            playlists.songs = await songList
-        default:
-            break
-        }
         /// Filter the songs
         let songs = await filterSongs()
         /// Now the rest
