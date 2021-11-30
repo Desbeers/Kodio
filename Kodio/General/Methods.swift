@@ -55,6 +55,8 @@ enum Method: String {
     /// Notification that the audio library has finnished scannning
     case audioLibraryOnScanFinished = "AudioLibrary.OnScanFinished"
 
+    /// Turn partymode on or off
+    case playerSetPartymode = "Player.SetPartymode"
     /// Set the player shuffle modus on the host
     case playerSetShuffle = "Player.SetShuffle"
     /// Set the player repeat modus on the host

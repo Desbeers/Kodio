@@ -71,6 +71,12 @@ struct ViewToolbar: ViewModifier {
                             }
                         }
                     }
+                    ToolbarItem(id: "partyButton",
+                                placement: .automatic,
+                                showsByDefault: true
+                    ) {
+                        partyButton
+                    }
                     ToolbarItem(id: "shuffleButton",
                                 placement: .automatic,
                                 showsByDefault: true
@@ -179,6 +185,35 @@ extension ViewToolbar {
             }
         )
             .disabled(player.queueLast)
+    }
+    /// The party mode button
+    var partyButton: some View {
+        let partymode: Bool = player.properties.partymode ? true : false
+        return Button(
+            action: {
+                Task.detached(priority: .userInitiated) {
+                    await player.togglePartyMode()
+                }
+            },
+            label: {
+                Label {
+                    Text("Party mode")
+                } icon: {
+                    Image(systemName: "wand.and.stars.inverse")
+                }
+                .macOS {
+                    $0
+                        .foregroundColor(partymode ? .red : .primary)
+                }
+                .iOS {
+                    $0
+                        .padding(2)
+                        .background(RoundedRectangle(cornerRadius: 4)
+                                        .fill(partymode ? Color.red : Color.clear))
+                        .foregroundColor(partymode ? .white : .primary)
+                }
+            }
+        )
     }
     /// The shuffle button
     var shuffleButton: some View {

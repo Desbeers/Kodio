@@ -40,7 +40,7 @@ extension Player {
             /// The player ID
             let playerid = 0
             /// The properties we ask for
-            let properties = ["speed", "position", "shuffled", "repeat", "percentage"]
+            let properties = ["speed", "position", "shuffled", "repeat", "percentage", "partymode"]
         }
         /// The response struct
         typealias Response = Properties
@@ -60,6 +60,8 @@ extension Player {
         var playing: Bool {
             return speed == 0 ? false : true
         }
+        /// Party mode status
+        var partymode: Bool = false
         /// The icon to show for 'repeat'
         var repeatingIcon: String {
             /// Standard icon for 'repeat'
@@ -73,7 +75,7 @@ extension Player {
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys
-            case shuffled, speed
+            case shuffled, speed, partymode
             /// A bit more logic word
             case queueID = "position"
             /// Repeat is a reserved word

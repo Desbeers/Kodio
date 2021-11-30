@@ -87,9 +87,16 @@ extension ViewQueue {
                         .id(song.queueID)
                         .opacity(song.queueID < player.properties.queueID ? 0.5 : 1)
                         .swipeActions(edge: .trailing) {
-                            Button(role: .destructive, action: { delete(song: song) } ) {
-                                Label("Delete", systemImage: "trash")
-                            }
+                            /// Button to delete an item from the queue
+                            Button(
+                                role: .destructive,
+                                action: {
+                                    delete(song: song)
+                                },
+                                label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            )
                         }
                 }
                 .onMove(perform: move)

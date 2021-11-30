@@ -25,22 +25,6 @@ extension Library {
         let request = FilesGetDirectory(directory: "special://musicplaylists")
         do {
             var listItems: [LibraryListItem] = []
-            /// Random songs
-            listItems.append(LibraryListItem(
-                title: "Random songs",
-                subtitle: "100 random songs from your library",
-                empty: "Your library has no songs",
-                icon: "sparkles",
-                media: .random
-            ))
-            /// Never played
-            listItems.append(LibraryListItem(
-                title: "Never played",
-                subtitle: "Songs you never played",
-                empty: "Your library has no songs that you never played",
-                icon: "minus.diamond",
-                media: .neverPlayed
-            ))
             let result = try await kodiClient.sendRequest(request: request)
             for playlist in result.files {
                 listItems.append(LibraryListItem(

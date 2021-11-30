@@ -28,16 +28,6 @@ extension Library {
         case .playlist:
             async let songList = getPlaylistSongs(file: libraryList.file)
             playlists.songs = await songList
-        case .random:
-            songs.random = Array(songs.all
-                                    .filter {!$0.title.contains("(Live)")}
-                                    .filter {!$0.genre.contains("Musical")}
-                                    .filter {!$0.genre.contains("Cabaret")}
-                                    .shuffled().prefix(100))
-        case .neverPlayed:
-            songs.neverPlayed = Array(songs.all
-                                        .filter {$0.playCount == 0}
-                                        .shuffled().prefix(100))
         default:
             break
         }

@@ -62,11 +62,15 @@ extension ViewSidebar {
         }
     }
     /// View playlists
-    var playlists: some View {
-        Section(header: Text("Playlists")) {
-            ForEach(Library.shared.playlists.files) { item in
-                sidebarButton(item: item)
+    @ViewBuilder var playlists: some View {
+        if !Library.shared.playlists.files.isEmpty {
+            Section(header: Text("Playlists")) {
+                ForEach(Library.shared.playlists.files) { item in
+                    sidebarButton(item: item)
+                }
             }
+        } else {
+            EmptyView()
         }
     }
     /// A button in the sidebar
@@ -74,7 +78,7 @@ extension ViewSidebar {
         /// Define the color of the icon
         var iconColor: Color {
             switch item.media {
-            case .playlist, .random, .neverPlayed:
+            case .playlist:
                 return Color.primary
             case .favorites:
                 return Color.red

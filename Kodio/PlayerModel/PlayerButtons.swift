@@ -72,6 +72,10 @@ extension Player {
     func playPlaylist(songs: [Library.SongItem], shuffled: Bool = false) async {
         /// Clear the queue playlist
         Queue.shared.sendAction(method: .playlistClear)
+        /// Disable party mode if needed
+        if properties.partymode {
+            await togglePartyMode()
+        }
         /// Collect the songs to add
         var songList: [Int] = []
         for song in songs {
@@ -145,6 +149,11 @@ extension Player {
     /// Toggle the 'shuffle' button of the player
     func toggleShuffle() async {
         sendAction(method: .playerSetShuffle)
+    }
+
+    /// Toggle the 'party mode' button of the player
+    func togglePartyMode() async {
+        sendAction(method: .playerSetPartymode)
     }
     
     /// Set the host volume

@@ -117,10 +117,6 @@ extension Library {
         case albumArtists = "Album artists"
         /// A ``LibrayListItem`` for compilations
         case compilations = "Compilations"
-        /// A ``LibrayListItem`` for random songs
-        case random = "Random songs"
-        /// A ``LibrayListItem`` for never played songs
-        case neverPlayed = "Never played"
         /// A ``LibrayListItem`` for  favorite songs
         case favorites = "Favorites"
         /// A ``LibrayListItem`` for the playing queue

@@ -87,10 +87,6 @@ extension Library {
             songList = Array(songList.sorted {$0.dateAdded > $1.dateAdded}.prefix(100))
         case .mostPlayed:
             songList = Array(songList.sorted {$0.playCount > $1.playCount}.prefix(100))
-        case .random:
-            songList = songs.random
-        case .neverPlayed:
-            songList = songs.neverPlayed
         case .playlist:
             songList = playlists.songs
         case .favorites:

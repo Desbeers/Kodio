@@ -44,7 +44,7 @@ extension Player {
         /// The JSON creator
         var parameters: Data {
             switch method {
-            // MARK: Player.PlayPause
+                // MARK: Player.PlayPause
             case .playerPlayPause:
                 /// Struct for Play/Pause
                 struct PlayPause: Encodable {
@@ -53,7 +53,7 @@ extension Player {
                 }
                 return buildParams(params: PlayPause())
                 
-            // MARK: Player.Open
+                // MARK: Player.Open
             case .playerOpen:
                 /// Struct for OpenSong
                 struct OpenSong: Encodable {
@@ -117,7 +117,7 @@ extension Player {
                 /// Should be an unused fallback
                 return Data()
                 
-            // MARK: Player.Stop
+                // MARK: Player.Stop
             case .playerStop:
                 /// Struct for Stop
                 struct Stop: Encodable {
@@ -126,7 +126,7 @@ extension Player {
                 }
                 return buildParams(params: Stop())
                 
-            // MARK: Player.Goto
+                // MARK: Player.Goto
             case .playerGoTo:
                 /// Struct for GoTo
                 struct GoTo: Encodable {
@@ -140,7 +140,7 @@ extension Player {
                 params.to = queueID
                 return buildParams(params: params)
                 
-            // MARK: Player.SetShuffle
+                // MARK: Player.SetShuffle
             case .playerSetShuffle:
                 /// Struct for SetShuffle
                 struct SetShuffle: Encodable {
@@ -153,7 +153,20 @@ extension Player {
                 let params = SetShuffle()
                 return buildParams(params: params)
                 
-            // MARK: Player.SetRepeat
+                // MARK: Player.SetPartymode
+            case .playerSetPartymode:
+                /// Struct for SetPartymode
+                struct SetPartymode: Encodable {
+                    /// The player ID
+                    let playerid = 0
+                    /// Toggle the party mode
+                    let partymode = "toggle"
+                }
+                /// The parameters
+                let params = SetPartymode()
+                return buildParams(params: params)
+                
+                // MARK: Player.SetRepeat
             case .playerSetRepeat:
                 /// Struct for SetRepeat
                 struct SetRepeat: Encodable {
