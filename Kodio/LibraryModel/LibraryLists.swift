@@ -47,30 +47,30 @@ extension Library {
     /// Get the library list items
     func getLibraryLists() -> [LibraryListItem] {
         var list = [LibraryListItem]()
-        list.append(LibraryListItem(title: "Album artists",
-                                    subtitle: "All your album artists",
+        list.append(LibraryListItem(title: "Album Artists",
+                                    subtitle: "All songs from your album artists",
                                     empty: "Your library has no album artists",
                                     icon: "music.mic",
                                     media: .albumArtists))
         list.append(LibraryListItem(title: "Compilations",
-                                    subtitle: "All your compilations",
+                                    subtitle: "All songs from your compilation albums",
                                     empty: "Your library has no compilations",
                                     icon: "person.2",
                                     media: .compilations
                                    ))
-        list.append(LibraryListItem(title: "Recently added",
+        list.append(LibraryListItem(title: "Recently Added",
                                     subtitle: "What's new in you library",
                                     empty: "Your library has nothing recently added",
                                     icon: "star",
                                     media: .recentlyAdded
                                    ))
-        list.append(LibraryListItem(title: "Most played",
+        list.append(LibraryListItem(title: "Most Played",
                                     subtitle: "The songs that you play the most",
                                     empty: "Your library has no most played songs",
                                     icon: "infinity",
                                     media: .mostPlayed
                                    ))
-        list.append(LibraryListItem(title: "Recently played",
+        list.append(LibraryListItem(title: "Recently Played",
                                     subtitle: "Your recently played songs",
                                     empty: "Your library has no recently played songs",
                                     icon: "gobackward",
@@ -82,9 +82,9 @@ extension Library {
                                     icon: "heart",
                                     media: .favorites
                                    ))
-        list.append(LibraryListItem(title: "Playing queue",
-                                    subtitle: "This is in your current playlist",
-                                    empty: "The queue is empty",
+        list.append(LibraryListItem(title: "Playing Queue",
+                                    subtitle: "This is in your current playing queue",
+                                    empty: "The playing queue is empty",
                                     icon: "music.note.list",
                                     media: .queue,
                                     visible: !getSongsFromQueue().isEmpty

@@ -15,7 +15,7 @@ struct ViewRadio: View {
     @EnvironmentObject var player: Player
     /// The view
     var body: some View {
-        Section(header: Text("Radio stations")) {
+        Section(header: Text("Radio Stations")) {
             ForEach(library.radioStations) { channel in
                 Button(
                     action: {
