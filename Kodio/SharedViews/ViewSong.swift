@@ -74,7 +74,7 @@ extension ViewSong {
     struct LabelStyleSongs: LabelStyle {
         func makeBody(configuration: Configuration) -> some View {
             HStack {
-                configuration.icon.foregroundColor(.accentColor).frame(width: 24)
+                configuration.icon.foregroundColor(.primary).frame(width: 24)
                 configuration.title
             }
         }

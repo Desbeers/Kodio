@@ -27,26 +27,26 @@ import SwiftUI
         }
         /// Hide the title so we can use the whole toolbar for buttons
         /// - Note: the buttons will become smaller
-        .windowStyle(HiddenTitleBarWindowStyle())
+        .windowStyle(.hiddenTitleBar)
         /// Below will make the button size normal again; however, will also give
         /// the option to show only 'text' buttons and that makes no sense for Kodio
-        /// .windowToolbarStyle(UnifiedWindowToolbarStyle())
+        /// .windowToolbarStyle(.unified)
         .commands {
-            CommandGroup(replacing: CommandGroupPlacement.help) {
+            CommandGroup(replacing: .help) {
                 Button("Kodio Help") {
                     Task {
                         appState.viewSheet(type: .help)
                     }
                 }
             }
-            CommandGroup(replacing: CommandGroupPlacement.appInfo) {
+            CommandGroup(replacing: .appInfo) {
                 Button("About Kodio") {
                     Task {
                         appState.viewSheet(type: .about)
                     }
                 }
             }
-            CommandGroup(replacing: CommandGroupPlacement.newItem) {
+            CommandGroup(replacing: .newItem) {
                 ViewHostSelector().environmentObject(appState)
             }
             CommandMenu("Host") {

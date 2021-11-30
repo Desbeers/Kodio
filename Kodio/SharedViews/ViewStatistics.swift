@@ -72,8 +72,9 @@ extension ViewStatistics {
         func makeBody(configuration: Configuration) -> some View {
             HStack {
                 configuration.icon
-                    .frame(width: 20, alignment: .center)
-                    .foregroundColor(.accentColor)
+                    .font(.caption)
+                    .frame(width: 15, alignment: .center)
+                    .foregroundColor(.primary.opacity(0.6))
                 configuration.title
                     .frame(maxWidth: 100, alignment: .leading)
             }

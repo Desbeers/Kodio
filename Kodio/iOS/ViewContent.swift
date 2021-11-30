@@ -15,7 +15,7 @@ struct ViewContent: View {
     var body: some View {
         NavigationView {
             ViewSidebar()
-                .navigationTitle("Kodio")
+                .navigationTitle("")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar(content: iOStoolbar)
             ViewLibrary()

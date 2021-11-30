@@ -69,8 +69,6 @@ extension ViewSidebar {
                     sidebarButton(item: item)
                 }
             }
-        } else {
-            EmptyView()
         }
     }
     /// A button in the sidebar

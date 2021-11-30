@@ -113,7 +113,8 @@ extension ViewToolbar {
     var playerItemButton: some View {
         Button(
             action: {
-                if !player.queueSongs.isEmpty {
+                /// Check if there is anything in the queue
+                if !Queue.shared.queueItems.isEmpty {
                     AppState.shared.viewSheet(type: .queue)
                 }
             },
