@@ -206,13 +206,13 @@ extension ViewToolbar {
             },
             label: {
                 Label {
-                    Text(basic ? player.properties.partymode ? "Party mode is on" : "Party mode is off" : "Party mode")
+                    Text("Party Mode")
                 } icon: {
                     Image(systemName: "wand.and.stars.inverse")
                 }
             }
         )
-            .padding(.all, basic ? 5 : 0)
+            .padding(.all, basic ? 10 : 0)
             .background(RoundedRectangle(cornerRadius: 4)
                             .fill(partymode ? Color.red : Color.clear))
             .foregroundColor(partymode ? .white : .none)
