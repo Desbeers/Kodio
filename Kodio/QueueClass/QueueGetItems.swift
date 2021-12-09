@@ -24,8 +24,10 @@ extension Queue {
                     logger("Queue has changed")
                     Task { @MainActor in
                         Player.shared.queueSongs = Library.shared.getSongsFromQueue()
-                        /// Select 'Queue' in the sidebar again to reload it
-                        if viewingQueue, let button = Library.shared.getLibraryLists().first(where: { $0.media == .queue}) {
+                        /// Select 'Queue' in the sidebar again to reload it (if there are song items)
+                        if !Player.shared.queueSongs.isEmpty,
+                           viewingQueue,
+                           let button = Library.shared.getLibraryLists().first(where: { $0.media == .queue}) {
                             await Library.shared.selectLibraryList(libraryList: button)
                         } else {
                             /// Update the sidebar to make sure we have a button

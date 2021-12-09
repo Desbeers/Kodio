@@ -35,6 +35,21 @@ final class AppState: ObservableObject {
     @Published var state: State = .none
     /// The sidebar items
     @Published var sidebarItems: [Library.LibraryListItem] = []
+    /// The selection in the sidebar
+    @Published var sidebarSelection: Library.LibraryListItem? {
+        didSet {
+            Task { @MainActor in
+                /// An item is manual selected in the sidebar
+                if sidebarSelection != Library.shared.libraryLists.selected, sidebarSelection != nil {
+                    await Library.shared.selectLibraryList(libraryList: self.sidebarSelection!)
+                }
+                /// iOS makes this sometimes nill for no good reason
+                if sidebarSelection == nil, AppState.shared.system  != .iPhone {
+                    sidebarSelection = Library.shared.libraryLists.selected
+                }
+            }
+        }
+    }
     /// Check if Kodio is running on a Mac or on an iOS device
     /// - Note:The iOS app thingy will override this `var` if Kodio is not running on a Mac
     var system: System = .macOS

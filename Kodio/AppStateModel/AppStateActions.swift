@@ -20,6 +20,7 @@ extension AppState {
             if selected.visible {
                 /// Update the selection
                 library.selection = selected
+                sidebarSelection = selected
             } else {
                 /// Select the first item in the sidebar
                 await library.selectLibraryList(libraryList: list.first!)

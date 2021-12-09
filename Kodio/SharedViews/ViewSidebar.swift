@@ -16,7 +16,7 @@ struct ViewSidebar: View {
     /// The view
     var body: some View {
         VStack(spacing: 0) {
-            List {
+            List(selection: $appState.sidebarSelection) {
                 if appState.scanningLibrary {
                     HStack {
                         ProgressView()
@@ -29,21 +29,16 @@ struct ViewSidebar: View {
                 }
                 if appState.state == .loadedLibrary {
                     libraryLists
-                        .listRowInsets(EdgeInsets())
                     playlists
-                        .listRowInsets(EdgeInsets())
                     if showRadio {
                         ViewRadio()
-                            .listRowInsets(EdgeInsets())
                     }
                 } else {
                     Section(header: ViewAppStateStatus()) {
                         EmptyView()
                     }
-                    .listRowInsets(EdgeInsets())
                 }
             }
-            .buttonStyle(ButtonStyleSidebar())
         }
         .animation(.default, value: appState.sidebarItems)
     }
@@ -51,12 +46,24 @@ struct ViewSidebar: View {
 
 extension ViewSidebar {
     
+    /// An item in the sidebar
+    @ViewBuilder func sidebarItem(item: Library.LibraryListItem) -> some View {
+#if os(macOS)
+        Label(item.title, systemImage: item.icon)
+#endif
+#if os(iOS)
+        NavigationLink(destination: ViewLibrary().navigationBarTitleDisplayMode(.inline), tag: item, selection: $appState.sidebarSelection) {
+            Label(item.title, systemImage: item.icon)
+        }
+#endif
+    }
+    
     /// View library lists
     var libraryLists: some View {
         Section(header: Text("Music on '\(appState.selectedHost.description)'")) {
-            ForEach(appState.sidebarItems) { item in
+            ForEach(appState.sidebarItems, id: \.self) { item in
                 if item.visible {
-                    sidebarButton(item: item)
+                    sidebarItem(item: item)
                 }
             }
         }
@@ -65,44 +72,10 @@ extension ViewSidebar {
     @ViewBuilder var playlists: some View {
         if !Library.shared.playlists.files.isEmpty {
             Section(header: Text("Playlists")) {
-                ForEach(Library.shared.playlists.files) { item in
-                    sidebarButton(item: item)
+                ForEach(Library.shared.playlists.files, id: \.self) { item in
+                    sidebarItem(item: item)
                 }
             }
         }
-    }
-    /// A button in the sidebar
-    func sidebarButton(item: Library.LibraryListItem) -> some View {
-        /// Define the color of the icon
-        var iconColor: Color {
-            switch item.media {
-            case .playlist:
-                return Color.primary
-            case .favorites:
-                return Color.red
-            default:
-                /// - Note: On iOS, the accentColor for a disabled button is grey, so, force blue
-                return appState.system == .macOS ? Color.accentColor : Color.blue
-            }
-        }
-        /// Return the styled button
-        return Button(
-            action: {
-                Task.detached(priority: .userInitiated) {
-                    await Library.shared.selectLibraryList(libraryList: item)
-                }
-            },
-            label: {
-                /// - Note: Not in a ``Label`` because with multi-lines the icon does not center
-                HStack {
-                    Image(systemName: item.icon)
-                        .foregroundColor(iconColor)
-                        .frame(width: 20)
-                    Text(item.title)
-                        .lineLimit(nil)
-                }
-            }
-        )
-            .disabled(item.selected())
     }
 }

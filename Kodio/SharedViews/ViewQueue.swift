@@ -34,7 +34,9 @@ struct ViewQueue: View {
     var body: some View {
         NavigationView {
             VStack {
-                art
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    art
+                }
                 list
                     .toolbarButtons(basic: true)
                     .padding()

@@ -10,7 +10,7 @@ import SwiftUI
 /// A list with radio channels
 struct ViewRadio: View {
     /// The Library object
-     @EnvironmentObject var library: Library
+    @EnvironmentObject var library: Library
     /// The player object
     @EnvironmentObject var player: Player
     /// The view
@@ -24,11 +24,7 @@ struct ViewRadio: View {
                         }
                     },
                     label: {
-                        /// - Note: Not in a ``Label`` because with multi-lines the icon does not center
-                        HStack {
-                            Image(systemName: radioIcon(channel: channel))
-                                .foregroundColor(.purple)
-                                .frame(width: 20)
+                        Label {
                             VStack(alignment: .leading) {
                                 Text(channel.title)
                                     .lineLimit(nil)
@@ -37,11 +33,15 @@ struct ViewRadio: View {
                                     .font(.caption)
                                     .opacity(0.5)
                             }
+                        } icon: {
+                            Image(systemName: radioIcon(channel: channel))
+                                .foregroundColor(.purple)
                         }
                     }
                 )
             }
         }
+        .buttonStyle(.plain)
     }
 }
 
