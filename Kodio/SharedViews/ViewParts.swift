@@ -35,29 +35,6 @@ struct ViewListHeader: View {
     }
 }
 
-// MARK: Style for an item in the sidebar
-
-/// Button style for a sidebar item
-/// - Note: Shared by ``ViewSidebar`` and ``ViewHostsEdit`` in their lists
-struct ButtonStyleSidebar: ButtonStyle {
-    /// Tracks if the button is enabled or not
-    @Environment(\.isEnabled) var isEnabled
-    /// The style
-    func makeBody(configuration: Configuration) -> some View {
-        return configuration.label
-            .padding(.horizontal, 4)
-            .padding(.vertical, 6)
-            .brightness(configuration.isPressed ? 0.2 : 0)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(isEnabled ?  Color.clear : Color.secondary.opacity(0.2))
-            .cornerRadius(6)
-        /// A bit more padding for iOS
-            .iOS {$0
-            .padding(.horizontal, 6)
-            }
-    }
-}
-
 // MARK: Rotating record
 
 /// View a rotating record

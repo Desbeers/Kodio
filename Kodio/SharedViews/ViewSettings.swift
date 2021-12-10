@@ -15,7 +15,7 @@ struct ViewSettings: View {
         TabView {
             ViewEditHosts()
             .tabItem {
-                Label("Hosts", systemImage: "list.dash")
+                Label("Preferences", systemImage: "gear")
             }
         }
         #endif

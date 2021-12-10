@@ -310,9 +310,6 @@
                 <a href="../Structs/ButtonStyleLibraryItem.html">ButtonStyleLibraryItem</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ButtonStyleSidebar.html">ButtonStyleSidebar</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/Cache.html">Cache</a>
               </li>
               <li class="nav-group-task">
@@ -370,10 +367,10 @@
                 <a href="../Structs/ViewEditHosts.html">ViewEditHosts</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewEditHosts/Status.html">– Status</a>
+                <a href="../Structs/ViewEditHosts/ViewForm.html">– ViewForm</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/ViewEditHosts/ViewDetails.html">– ViewDetails</a>
+                <a href="../Structs/ViewEditHosts/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewEditHosts/ViewModifierForm.html">– ViewModifierForm</a>
@@ -514,9 +511,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio13ViewEditHostsV12selectedHostAA0F4ItemVvp"></a>
+                    <a name="/s:5Kodio13ViewEditHostsV12selectedHostAA0F4ItemVSgvp"></a>
                     <a name="//apple_ref/swift/Property/selectedHost" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio13ViewEditHostsV12selectedHostAA0F4ItemVvp">selectedHost</a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV12selectedHostAA0F4ItemVSgvp">selectedHost</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -524,7 +521,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The currently selected host</p>
+                        <p>The currently selected host that we want to edit</p>
 
                       </div>
                       <div class="declaration">
@@ -532,63 +529,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@State</span>
-<span class="k">var</span> <span class="nv">selectedHost</span><span class="p">:</span> <span class="kt"><a href="../Structs/HostItem.html">HostItem</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio13ViewEditHostsV6valuesAA8HostItemVvp"></a>
-                    <a name="//apple_ref/swift/Property/values" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio13ViewEditHostsV6valuesAA8HostItemVvp">values</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The values in the form</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@State</span>
-<span class="k">var</span> <span class="nv">values</span><span class="p">:</span> <span class="kt"><a href="../Structs/HostItem.html">HostItem</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio13ViewEditHostsV6statusAC6StatusOvp"></a>
-                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio13ViewEditHostsV6statusAC6StatusOvp">status</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The status of the host that is edited</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@State</span>
-<span class="k">var</span> <span class="nv">status</span><span class="p">:</span> <span class="kt"><a href="../Structs/ViewEditHosts/Status.html">Status</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+<span class="k">var</span> <span class="nv">selectedHost</span><span class="p">:</span> <span class="kt"><a href="../Structs/HostItem.html">HostItem</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -626,6 +567,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:5Kodio13ViewEditHostsV3newAA8HostItemVvp"></a>
+                    <a name="//apple_ref/swift/Property/new" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV3newAA8HostItemVvp">new</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Struct for a new host</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">new</span><span class="p">:</span> <span class="kt"><a href="../Structs/HostItem.html">HostItem</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Kodio13ViewEditHostsV4bodyQrvp"></a>
                     <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Kodio13ViewEditHostsV4bodyQrvp">body</a>
@@ -644,6 +612,34 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditHostsV0B4FormV"></a>
+                    <a name="//apple_ref/swift/Struct/ViewForm" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B4FormV">ViewForm</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A form to edit a host</p>
+
+                        <a href="../Structs/ViewEditHosts/ViewForm.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewForm</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                         </div>
                       </div>
@@ -672,34 +668,6 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Status</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio13ViewEditHostsV0B7DetailsV"></a>
-                    <a name="//apple_ref/swift/Struct/ViewDetails" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio13ViewEditHostsV0B7DetailsV">ViewDetails</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Edit the details of a Kodi hist</p>
-
-                        <a href="../Structs/ViewEditHosts/ViewDetails.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ViewDetails</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                         </div>
                       </div>
@@ -739,7 +707,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-11-30)</p>
+          <p>&copy; 2021 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2021-12-10)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
