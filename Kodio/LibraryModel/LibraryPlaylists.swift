@@ -15,8 +15,6 @@ extension Library {
     struct Playlists {
         /// A list containing all the playlist files
         var files: [LibraryListItem] = []
-        /// A list containng the songs of the selected playlist
-        var songs: [SongItem] = []
     }
     
     /// Get all playlist files from the Kodi host

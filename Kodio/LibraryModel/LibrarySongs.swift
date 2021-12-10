@@ -15,10 +15,6 @@ extension Library {
     struct Songs {
         /// All songs in the library
         var all: [SongItem] = []
-        /// A list containing random songs
-        var random: [SongItem] = []
-        /// A list containing songs that are never played
-        var neverPlayed: [SongItem] = []
     }
     
     /// Get all songs from the Kodi host

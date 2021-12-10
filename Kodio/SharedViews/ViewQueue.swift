@@ -9,8 +9,6 @@ import SwiftUI
 
 /// View the song queue
 struct ViewQueue: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
     /// The Player model
     @EnvironmentObject var player: Player
 #if os(macOS)
