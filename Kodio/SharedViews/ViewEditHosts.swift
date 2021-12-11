@@ -77,26 +77,26 @@ extension  ViewEditHosts {
                 .font(.headline)
             Form {
                 Section(footer: footer(text: "The name of your Kodi")) {
-                    TextField("Name", text: $values.description)
+                    TextField("Name", text: $values.description, prompt: Text("Name"))
                         .frame(width: 220)
                 }
                 Section(footer: footer(text: "The ip address of your Kodi")) {
-                    TextField("127.0.0.1", text: $values.ip)
+                    TextField("127.0.0.1", text: $values.ip, prompt: Text("127.0.0.1"))
                         .frame(width: 220)
                 }
                 Section(footer: footer(text: "The TCP and UDP ports")) {
                     HStack(spacing: 10) {
-                        TextField("8080", text: $values.port)
+                        TextField("8080", text: $values.port, prompt: Text("8080"))
                             .frame(width: 105)
-                        TextField("9090", text: $values.tcp)
+                        TextField("9090", text: $values.tcp, prompt: Text("9090"))
                             .frame(width: 105)
                     }
                 }
                 Section(footer: footer(text: "Your username and password")) {
                     HStack(spacing: 10) {
-                        TextField("username", text: $values.username)
+                        TextField("username", text: $values.username, prompt: Text("kodi"))
                             .frame(width: 105)
-                        TextField("password", text: $values.password)
+                        TextField("password", text: $values.password, prompt: Text("kodi"))
                             .frame(width: 105)
                     }
                 }
@@ -127,7 +127,6 @@ extension  ViewEditHosts {
                     status = .edit
                 }
             }
-            .modifier(ViewModifierForm())
         }
         /// The text underneath a form item
         /// - Parameter text: The text to display
