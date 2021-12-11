@@ -18,17 +18,17 @@ If you swipe (or *right click*) on a song you can play it. If it is already in t
 
 There is no option to add a new song to the `queue`. See below about settings...
 
-Click (or tap) the small image in the toolbar to open the *Playing Queue*. You can jump in your Queue by *swiping* or *right click* a song.
+Click (or tap) the small image in the toolbar to open the *Playing Queue*. You can jump to a song in your Queue by *swiping* or *right click* a song and you can rearrange the order with *Drag & Drop*.
 
 # Playlists
 
 Your Kodi playlists are loaded when Kodio is started. If you *add* or *delete* playlists; Kodio will not know until you either restart it or reload the library.
 
-Kodio is smart enough to get *the latest and greatest* for a playlist when you select it in the sidebar. You have to selected it again if you have changed it. Kodio is only a *little bit* smart.
+Kodio is smart enough to get *the latest and greatest* for a playlist when you select it in the sidebar. You have to select it again if you have changed it. Kodio is only a *little bit* smart.
 
 # ReplayGain
 
-Well, as a *real* lover of my own library, my music is tagged with [ReplayGain](https://en.wikipedia.org/wiki/ReplayGain) values. When I start an album, Kodi's ReplayGain setting wil be set to 'Album'. When I play a list of songs that are *not* an album, Kodio will set Kodi's ReplayGain setting to 'songs'.
+Well, as a *real* lover of my own library, my music is tagged with [ReplayGain](https://en.wikipedia.org/wiki/ReplayGain) values. When you start an album, Kodi's ReplayGain setting wil be set to 'Album'. When you play a list of songs that is *not* an album, Kodio will set Kodi's ReplayGain setting to 'songs'.
 
 **Yes, Kodio will alter your ReplayGain settings!**
 

@@ -25,7 +25,17 @@ struct ViewEditHosts: View {
                     if !appState.hosts.isEmpty {
                         ForEach(appState.hosts, id: \.self) { host in
                             NavigationLink(destination: ViewForm(host: host, selection: $selectedHost, status: host.selected ? Status.selected : Status.edit), tag: host, selection: $selectedHost) {
-                                Label(host.description, systemImage: host.selected ? "k.circle.fill" : "k.circle")
+                                Label {
+                                    VStack(alignment: .leading) {
+                                        Text(host.description)
+                                        Text(host.ip)
+                                            .font(.caption)
+                                            .opacity(0.5)
+                                    }
+                                } icon: {
+                                    Image(systemName: host.selected ? "k.circle.fill" : "k.circle")
+                                }
+                                
                             }
                         }
                     }
@@ -39,6 +49,7 @@ struct ViewEditHosts: View {
                     }
                 }
             }
+            .animation(.default, value: appState.hosts)
             .navigationTitle("Settings")
             Text("Add or edit your Kodi hosts")
         }

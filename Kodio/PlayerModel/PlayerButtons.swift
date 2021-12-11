@@ -56,7 +56,7 @@ extension Player {
         }
         /// Song is not in the playlist; just open it in a new playlist
         else {
-            await playPlaylist(songs: [song])
+            await playPlaylist(songs: [song], album: false)
         }
     }
     
@@ -68,14 +68,17 @@ extension Player {
     ///
     /// - Parameters:
     ///   - songs: A array of``Library/SongItem``s
+    ///   - album: ``Bool`` if this is an album or not; it will set ReplayGain
     ///   - shuffled: ``Bool`` if the playlist must be shuffled or not
-    func playPlaylist(songs: [Library.SongItem], shuffled: Bool = false) async {
+    func playPlaylist(songs: [Library.SongItem], album: Bool, shuffled: Bool = false) async {
         /// Clear the queue playlist
         Queue.shared.sendAction(method: .playlistClear)
         /// Disable party mode if needed
         if properties.partymode {
             await togglePartyMode()
         }
+        /// Set the ReplayGain setting
+        await KodiHost.shared.setReplayGain(mode: album ? .album : .track)
         /// Collect the songs to add
         var songList: [Int] = []
         for song in songs {
@@ -157,6 +160,10 @@ extension Player {
 
     /// Toggle the 'party mode' button of the player
     func togglePartyMode() async {
+        /// Set ReplayGain to 'tracks' if we start Party Mode
+        if !properties.partymode {
+            await KodiHost.shared.setReplayGain(mode: .track)
+        }
         sendAction(method: .playerSetPartymode)
     }
     

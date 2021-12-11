@@ -18,6 +18,7 @@ struct ViewSettings: View {
                 Label("Preferences", systemImage: "gear")
             }
         }
+        .frame(width: 700, height: 350)
         #endif
         #if os (iOS)
         ViewEditHosts()

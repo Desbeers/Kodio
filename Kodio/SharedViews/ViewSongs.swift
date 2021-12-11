@@ -39,8 +39,8 @@ extension ViewSongs {
                 Button(
                     action: {
                         Task.detached(priority: .userInitiated) {
-                            await KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
-                            await Player.shared.playPlaylist(songs: library.filteredContent.songs)
+                            await Player.shared.playPlaylist(songs: library.filteredContent.songs,
+                                                             album: selectedAlbum == nil ? false : true)
                         }
                     },
                     label: {
@@ -50,8 +50,9 @@ extension ViewSongs {
                 Button(
                     action: {
                         Task.detached(priority: .userInitiated) {
-                            await KodiHost.shared.setReplayGain(mode: selectedAlbum == nil ? .track : .album)
-                            await Player.shared.playPlaylist(songs: library.filteredContent.songs, shuffled: true)
+                            await Player.shared.playPlaylist(songs: library.filteredContent.songs,
+                                                             album: selectedAlbum == nil ? false : true,
+                                                             shuffled: true)
                         }
                     },
                     label: {
