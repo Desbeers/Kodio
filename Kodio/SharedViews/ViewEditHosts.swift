@@ -21,18 +21,16 @@ struct ViewEditHosts: View {
     var body: some View {
         NavigationView {
             List(selection: $selectedHost) {
-                if !appState.hosts.isEmpty {
-                    Section(header: Text("Your Kodi's")) {
+                Section(header: Text("Your Kodi's")) {
+                    if !appState.hosts.isEmpty {
                         ForEach(appState.hosts, id: \.self) { host in
                             NavigationLink(destination: ViewForm(host: host, selection: $selectedHost, status: host.selected ? Status.selected : Status.edit), tag: host, selection: $selectedHost) {
                                 Label(host.description, systemImage: host.selected ? "k.circle.fill" : "k.circle")
                             }
                         }
                     }
-                }
-                Section(header: Text("Add a new Kodi")) {
                     NavigationLink(destination: ViewForm(host: new, selection: $selectedHost, status: Status.new), tag: new, selection: $selectedHost) {
-                        Label("Add a new Kodi", systemImage: "plus")
+                        Label("New Kodi", systemImage: "plus")
                     }
                 }
                 Section(header: Text("Radio Stations")) {
