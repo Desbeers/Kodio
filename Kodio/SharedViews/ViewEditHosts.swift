@@ -24,22 +24,20 @@ struct ViewEditHosts: View {
                 if !appState.hosts.isEmpty {
                     Section(header: Text("Your Kodi's")) {
                         ForEach(appState.hosts, id: \.self) { host in
-                            NavigationLink(destination: ViewForm(host: host, selection: $selectedHost), tag: host, selection: $selectedHost) {
+                            NavigationLink(destination: ViewForm(host: host, selection: $selectedHost, status: host.selected ? Status.selected : Status.edit), tag: host, selection: $selectedHost) {
                                 Label(host.description, systemImage: host.selected ? "k.circle.fill" : "k.circle")
                             }
                         }
                     }
                 }
                 Section(header: Text("Add a new Kodi")) {
-                    NavigationLink(destination: ViewForm(host: new, selection: $selectedHost), tag: new, selection: $selectedHost) {
+                    NavigationLink(destination: ViewForm(host: new, selection: $selectedHost, status: Status.new), tag: new, selection: $selectedHost) {
                         Label("Add a new Kodi", systemImage: "plus")
                     }
                 }
                 Section(header: Text("Radio Stations")) {
-                    Group {
-                        Toggle(isOn: $showRadio) {
-                            Text("Show radio stations")
-                        }
+                    Toggle(isOn: $showRadio) {
+                        Text("Show radio stations")
                     }
                 }
             }
@@ -70,11 +68,11 @@ extension  ViewEditHosts {
         /// The values of the form
         @State var values = HostItem()
         /// The status of the host currently editing
-        @State var status: Status = .new
+        @State var status: Status
         /// The View
         var body: some View {
             Text(status == .new ? "Add a new Kodi" : "Edit \(host.description)")
-                .font(.headline)
+                .font(.title)
             Form {
                 Section(footer: footer(text: "The name of your Kodi")) {
                     TextField("Name", text: $values.description, prompt: Text("Name"))
@@ -88,6 +86,9 @@ extension  ViewEditHosts {
                     HStack(spacing: 10) {
                         TextField("8080", text: $values.port, prompt: Text("8080"))
                             .frame(width: 105)
+#if os(iOS)
+                        Divider()
+#endif
                         TextField("9090", text: $values.tcp, prompt: Text("9090"))
                             .frame(width: 105)
                     }
@@ -96,6 +97,9 @@ extension  ViewEditHosts {
                     HStack(spacing: 10) {
                         TextField("username", text: $values.username, prompt: Text("kodi"))
                             .frame(width: 105)
+#if os(iOS)
+                        Divider()
+#endif
                         TextField("password", text: $values.password, prompt: Text("kodi"))
                             .frame(width: 105)
                     }
@@ -120,12 +124,6 @@ extension  ViewEditHosts {
             .task {
                 /// Fill the form
                 values = host
-                /// Set status
-                if host.selected {
-                    status = .selected
-                } else if !host.ip.isEmpty {
-                    status = .edit
-                }
             }
         }
         /// The text underneath a form item
@@ -175,6 +173,8 @@ extension  ViewEditHosts {
             Button("Select") {
                 logger("Select host")
                 Hosts.selectHost(selected: host)
+                values.selected = true
+                selection = values
             }
             .disabled(host != values)
         }
@@ -183,7 +183,6 @@ extension  ViewEditHosts {
         var deleteHost: some View {
             Button("Delete", role: .destructive) {
                 logger("Delete host")
-                selection = nil
                 if let index = AppState.shared.hosts.firstIndex(of: host) {
                     AppState.shared.hosts.remove(at: index)
                     Hosts.save(hosts: AppState.shared.hosts)
