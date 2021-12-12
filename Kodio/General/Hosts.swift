@@ -36,9 +36,8 @@ struct Hosts {
     static func active(hosts: [HostItem]) -> HostItem {
         logger("Get the active hosts")
         guard let host = hosts.first(where: { $0.selected == true }) else {
-            let appState: AppState = .shared
             Task {
-                await appState.setState(current: .noHostConfig)
+                await AppState.shared.setState(current: .noHostConfig)
             }
             /// Return default host
             return HostItem()
