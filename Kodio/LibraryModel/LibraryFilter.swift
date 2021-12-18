@@ -53,7 +53,7 @@ extension Library {
             return song.artistID
         }
         let artists: [Int] = filter.flatMap { $0 }.removingDuplicates()
-        return artistList.filter({artists.contains($0.artistID)}).sorted {$0.artist < $1.artist}
+        return artistList.filter({artists.contains($0.artistID)})
     }
     
     /// Filter the albums
@@ -82,11 +82,11 @@ extension Library {
         case .compilations:
             songList = songs.all.filter {$0.compilation == true}.sorted {$0.artists < $1.artists}
         case .recentlyPlayed:
-            songList = Array(songs.all.sorted {$0.lastPlayed > $1.lastPlayed}.prefix(100))
+            songList = Array(songs.all.sorted {$0.lastPlayed > $1.lastPlayed}.prefix(500))
         case .recentlyAdded:
-            songList = Array(songs.all.sorted {$0.dateAdded > $1.dateAdded}.prefix(100))
+            songList = Array(songs.all.sorted {$0.dateAdded > $1.dateAdded}.prefix(500))
         case .mostPlayed:
-            songList = Array(songs.all.sorted {$0.playCount > $1.playCount}.prefix(100))
+            songList = Array(songs.all.sorted {$0.playCount > $1.playCount}.prefix(500))
         case .playlist:
             async let songs = getPlaylistSongs(file: libraryLists.selected.file)
             songList = await songs
