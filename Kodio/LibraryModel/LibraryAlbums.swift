@@ -30,8 +30,10 @@ extension Library {
             let request = AudioLibraryGetAlbums()
             do {
                 let result = try await kodiClient.sendRequest(request: request)
-                try Cache.set(key: "MyAlbums", object: result.albums)
-                albums.all = result.albums
+                /// - Note: Kodi can't sort on two arguments; so we do this here...
+                albums.all = result.albums.sorted { $0.artistSort == $1.artistSort ? $0.year < $1.year : $0.artistSort < $1.artistSort }
+                try Cache.set(key: "MyAlbums", object: albums.all)
+
                 return true
             } catch {
                 /// There are no albums in the library
@@ -69,9 +71,7 @@ extension Library {
         var method = Method.audioLibraryGetAlbums
         /// The JSON creator
         var parameters: Data {
-            var params = Params()
-            params.sort.method = KodiClient.SortMethod.artist.string()
-            params.sort.order = KodiClient.SortMethod.ascending.string()
+            let params = Params()
             return buildParams(params: params)
         }
         /// The request struct
@@ -79,7 +79,16 @@ extension Library {
             /// The properties
             let properties = AlbumItem().properties
             /// Sort order
-            var sort = KodiClient.SortFields()
+            let sort = Sort()
+            /// Sort order struct
+            struct Sort: Encodable {
+                /// Sort by artist sort name
+                let useartistsortname = true
+                /// Sort order
+                let order = KodiClient.SortMethod.ascending.string()
+                /// Sort method
+                let method = KodiClient.SortMethod.artist.string()
+            }
         }
         /// The response struct
         struct Response: Decodable {
@@ -91,7 +100,7 @@ extension Library {
     /// The struct for an album item
     struct AlbumItem: LibraryItem, Identifiable, Hashable {
         /// /// The properties that we ask from Kodi
-        var properties = ["artistid", "artist", "description", "title", "year", "playcount", "totaldiscs",
+        var properties = ["artistid", "artist", "sortartist", "displayartist", "description", "title", "year", "playcount", "totaldiscs",
                           "genre", "thumbnail", "compilation", "dateadded", "lastplayed"]
         /// Make it identifiable
         var id = UUID().uuidString
@@ -103,6 +112,10 @@ extension Library {
         var albumID: Int = 0
         /// An array with artist names
         var artist: [String] = [""]
+        /// A string with artist sort name; empty when not set
+        var sortArtist: String = ""
+        /// An string with artist display name
+        var displayArtist: String = ""
         /// An array with artist ID's
         var artistID: [Int] = [0]
         /// Is this a compilation album?
@@ -125,6 +138,10 @@ extension Library {
         var title: String = ""
         /// Year of the album
         var year: Int = 0
+        /// Sort artist
+        var artistSort: String {
+            return sortArtist.isEmpty ? displayArtist : sortArtist
+        }
         /// Subtitle for the album
         var subtitle: String {
             return artist.joined(separator: " & ")
@@ -151,6 +168,10 @@ extension Library {
         enum CodingKeys: String, CodingKey {
             /// The keys
             case artist, compilation, description, genre, thumbnail, title, year
+            /// lowerCamelCase
+            case sortArtist = "sortartist"
+            /// lowerCamelCase
+            case displayArtist = "displayartist"
             /// lowerCamelCase
             case albumID = "albumid"
             /// lowerCamelCase

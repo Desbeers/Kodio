@@ -74,7 +74,7 @@ extension Library {
             return searchMatcher.matches(albums.title)
         }
         for album in albumList {
-            results.append(SearchSuggestionItem(title: album.title, subtitle: "Album from \(album.artist.first!)", suggestion: "\(album.artist.first!) \(album.title)", icon: album.icon))
+            results.append(SearchSuggestionItem(title: album.title, subtitle: "Album from \(album.displayArtist)", suggestion: "\(album.displayArtist) \(album.title)", icon: album.icon))
         }
         /// Songs
         let songList = songs.all.filter { songs in

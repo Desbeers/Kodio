@@ -123,9 +123,7 @@ extension Library {
         /// The JSON creator
         var parameters: Data {
             /// The parameters we ask for
-            var params = Params()
-            params.sort.method = KodiClient.SortMethod.artist.string()
-            params.sort.order = KodiClient.SortMethod.ascending.string()
+            let params = Params()
             return buildParams(params: params)
         }
         /// The request struct
@@ -134,8 +132,17 @@ extension Library {
             let properties = ["title", "artist", "artistid", "year", "playcount", "albumid",
                               "track", "disc", "lastplayed", "album", "genreid",
                               "dateadded", "genre", "duration", "userrating"]
-            /// The sort order
-            var sort = KodiClient.SortFields()
+            /// Sort order
+            let sort = Sort()
+            /// Sort order struct
+            struct Sort: Encodable {
+                /// Sort by artist sort name
+                let useartistsortname = true
+                /// Sort order
+                let order = KodiClient.SortMethod.ascending.string()
+                /// Sort method
+                let method = KodiClient.SortMethod.artist.string()
+            }
         }
         /// The response struct
         struct Response: Decodable {

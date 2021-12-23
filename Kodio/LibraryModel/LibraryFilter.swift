@@ -69,7 +69,6 @@ extension Library {
         let albumIDs = allAlbums.removingDuplicates()
         return albumList
             .filter({albumIDs.contains($0.albumID)})
-            .sorted { $0.artist == $1.artist ? $0.year < $1.year : $0.artist.first! < $1.artist.first! }
     }
     
     /// Filter the songs
@@ -80,7 +79,7 @@ extension Library {
         case .search:
             songList = search.results
         case .compilations:
-            songList = songs.all.filter {$0.compilation == true}.sorted {$0.artists < $1.artists}
+            songList = songs.all.filter {$0.compilation == true}
         case .recentlyPlayed:
             songList = Array(songs.all.sorted {$0.lastPlayed > $1.lastPlayed}.prefix(500))
         case .recentlyAdded:
