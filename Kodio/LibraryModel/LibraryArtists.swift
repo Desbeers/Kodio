@@ -79,7 +79,7 @@ extension Library {
         struct Params: Encodable {
             /// Get all artists
             let albumartistsonly = false
-            /// The properties
+            /// The properties that we ask from Kodi
             let properties = ArtistItem().properties
             /// Sort order
             var sort = KodiClient.SortFields()
@@ -93,8 +93,14 @@ extension Library {
     
     /// The struct for an artist item
     struct ArtistItem: LibraryItem, Identifiable, Hashable {
-        /// The properties that we ask for
-        var properties = ["fanart", "thumbnail", "description", "isalbumartist", "songgenres"]
+        /// The properties that we ask from Kodi
+        let properties = [
+            "fanart",
+            "thumbnail",
+            "description",
+            "isalbumartist",
+            "songgenres"
+        ]
         /// Make it identifiable
         var id = UUID().uuidString
         /// The media type

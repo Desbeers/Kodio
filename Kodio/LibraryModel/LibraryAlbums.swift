@@ -68,7 +68,7 @@ extension Library {
     /// Retrieve all albums (Kodi API)
     struct AudioLibraryGetAlbums: KodiAPI {
         /// Method
-        var method = Method.audioLibraryGetAlbums
+        let method = Method.audioLibraryGetAlbums
         /// The JSON creator
         var parameters: Data {
             var params = Params()
@@ -92,8 +92,22 @@ extension Library {
     /// The struct for an album item
     struct AlbumItem: LibraryItem, Identifiable, Hashable {
         /// The properties that we ask from Kodi
-        var properties = ["artistid", "artist", "sortartist", "displayartist", "description", "title", "year", "playcount", "totaldiscs",
-                          "genre", "thumbnail", "compilation", "dateadded", "lastplayed"]
+        let properties = [
+            "artistid",
+            "artist",
+            "sortartist",
+            "displayartist",
+            "description",
+            "title",
+            "year",
+            "playcount",
+            "totaldiscs",
+            "genre",
+            "thumbnail",
+            "compilation",
+            "dateadded",
+            "lastplayed"
+        ]
         /// Make it identifiable
         var id = UUID().uuidString
         /// The media type

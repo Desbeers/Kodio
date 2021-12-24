@@ -8,15 +8,15 @@
 import Foundation
 
 extension Library {
-    
+
     // MARK: Songs
-    
+
     /// A struct with all song related items
     struct Songs {
         /// All songs in the library
         var all: [SongItem] = []
     }
-    
+
     /// Get all songs from the Kodi host
     /// - Parameter reload: Force a reload or else it will try to load it from the  cache
     /// - Returns: True when done
@@ -32,11 +32,9 @@ extension Library {
                 /// Add some additional fields to the songs
                 for (index, song) in songs.all.enumerated() {
                     if let album = albums.all.first(where: { $0.albumID == song.albumID }) {
-                        /// I like to know if the song is part of a compilation
-                        /// and there is no property for that
+                        /// I like to know if the song is part of a compilation and there is no property for that
                         songs.all[index].compilation = album.compilation
-                        /// Sometimes a song has a different thumbnail than the album
-                        /// so you end-up with many, many items in the cache
+                        /// Sometimes a song has a different thumbnail than the album so you end-up with many, many items in the cache
                         songs.all[index].thumbnail = album.thumbnail
                         /// Try to save on expensive queries
                         songs.all[index].albumArtist = album.artist
@@ -119,7 +117,7 @@ extension Library {
     /// Retrieve all songs (Kodi API)
     struct AudioLibraryGetSongs: KodiAPI {
         /// Method
-        var method = Method.audioLibraryGetSongs
+        let method = Method.audioLibraryGetSongs
         /// The JSON creator
         var parameters: Data {
             /// The parameters we ask for
@@ -131,9 +129,6 @@ extension Library {
         struct Params: Encodable {
             /// The properties that we ask from Kodi
             let properties = SongItem().properties
-//            let properties = ["title", "artist", "artistid", "year", "playcount", "albumid",
-//                              "track", "disc", "lastplayed", "album", "genreid",
-//                              "dateadded", "genre", "duration", "userrating"]
             /// Sort order
             var sort = KodiClient.SortFields()
         }
@@ -160,9 +155,7 @@ extension Library {
         /// The request struct
         struct Params: Encodable {
             /// The properties that we ask from Kodi
-            let properties = ["title", "artist", "artistid", "year", "playcount", "albumid",
-                              "track", "disc", "lastplayed", "album", "genreid",
-                              "dateadded", "genre", "duration", "userrating"]
+            let properties = SongItem().properties
             /// The ID of the song
             var songid: Int = 0
         }
@@ -172,7 +165,7 @@ extension Library {
             var songdetails: SongItem
         }
     }
-    
+
     /// Update the given song with the given details (Kodi API)
     struct AudioLibrarySetSongDetails: KodiAPI {
         /// Arguments
@@ -204,7 +197,7 @@ extension Library {
         /// The response struct
         struct Response: Decodable { }
     }
-    
+
     /// Retrieve filtered song ID's (Kodi API)
     struct AudioLibraryGetUpdatedSongs: KodiAPI {
         /// Arguments
@@ -243,7 +236,7 @@ extension Library {
         struct Response: Decodable {
             /// The list of songs
             let songs: [SongID]
-            /// The struct for a SongIdITem
+            /// The struct for a SongIdItem
             struct SongID: Decodable, Equatable {
                 /// The ID of the song
                 var songID: Int
@@ -255,13 +248,27 @@ extension Library {
             }
         }
     }
-    
+
     /// The struct for a song item
     struct SongItem: LibraryItem, Identifiable, Hashable {
-        /// The properties
-        let properties = ["title", "artist", "artistid", "year", "playcount", "albumid",
-                          "track", "disc", "lastplayed", "album", "genreid",
-                          "dateadded", "genre", "duration", "userrating"]
+        /// The properties that we ask from Kodi
+        let properties = [
+            "title",
+            "artist",
+            "artistid",
+            "year",
+            "playcount",
+            "albumid",
+            "track",
+            "disc",
+            "lastplayed",
+            "album",
+            "genreid",
+            "dateadded",
+            "genre",
+            "duration",
+            "userrating"
+        ]
         /// Make it indentifiable
         var id = UUID().uuidString
         /// The media type
@@ -358,31 +365,36 @@ extension Library {
             /// lowerCamelCase
             case rating = "userrating"
         }
-        /// Custom init because fields from albums will be merged and without below
-        /// we can't save/load the struct to/from the cache.
-//        init(from decoder: Decoder) throws {
-//            let container = try decoder.container(keyedBy: CodingKeys.self)
-//            album = try container.decodeIfPresent(String.self, forKey: .album) ?? ""
-//            albumID = try container.decodeIfPresent(Int.self, forKey: .albumID) ?? 0
-//            albumArtist = try container.decodeIfPresent([String].self, forKey: .albumArtist) ?? [""]
-//            albumArtistID = try container.decodeIfPresent([Int].self, forKey: .albumArtistID) ?? []
-//            artist = try container.decodeIfPresent([String].self, forKey: .artist) ?? [""]
-//            artistID = try container.decodeIfPresent([Int].self, forKey: .artistID) ?? []
-//            dateAdded = try container.decodeIfPresent(String.self, forKey: .dateAdded) ?? ""
-//            genre = try container.decodeIfPresent([String].self, forKey: .genre) ?? [""]
-//            genreID = try container.decodeIfPresent([Int].self, forKey: .genreID) ?? []
-//            lastPlayed = try container.decodeIfPresent(String.self, forKey: .lastPlayed) ?? ""
-//            playCount = try container.decodeIfPresent(Int.self, forKey: .playCount) ?? 0
-//            songID = try container.decodeIfPresent(Int.self, forKey: .songID) ?? 0
-//            disc = try container.decodeIfPresent(Int.self, forKey: .disc) ?? 0
-//            rating = try container.decodeIfPresent(Int.self, forKey: .rating) ?? 0
-//            thumbnail = try container.decodeIfPresent(String.self, forKey: .thumbnail) ?? ""
-//            searchString = try container.decodeIfPresent(String.self, forKey: .searchString) ?? ""
-//            title = try container.decodeIfPresent(String.self, forKey: .title) ?? "Kodi"
-//            track = try container.decodeIfPresent(Int.self, forKey: .track) ?? 0
-//            year = try container.decodeIfPresent(Int.self, forKey: .year) ?? 0
-//            duration = try container.decodeIfPresent(Int.self, forKey: .duration) ?? 0
-//            compilation = try container.decodeIfPresent(Bool.self, forKey: .compilation) ?? false
-//        }
+    }
+}
+
+extension Library.SongItem {
+    /// Custom init because fields from albums will be merged and without below
+    /// we can't save/load the struct to/from the cache.
+    /// In an extension so we can still use the memberwise initializer.
+    /// - Note: See https://sarunw.com/posts/how-to-preserve-memberwise-initializer/
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        album = try container.decodeIfPresent(String.self, forKey: .album) ?? ""
+        albumID = try container.decodeIfPresent(Int.self, forKey: .albumID) ?? 0
+        albumArtist = try container.decodeIfPresent([String].self, forKey: .albumArtist) ?? [""]
+        albumArtistID = try container.decodeIfPresent([Int].self, forKey: .albumArtistID) ?? []
+        artist = try container.decodeIfPresent([String].self, forKey: .artist) ?? [""]
+        artistID = try container.decodeIfPresent([Int].self, forKey: .artistID) ?? []
+        dateAdded = try container.decodeIfPresent(String.self, forKey: .dateAdded) ?? ""
+        genre = try container.decodeIfPresent([String].self, forKey: .genre) ?? [""]
+        genreID = try container.decodeIfPresent([Int].self, forKey: .genreID) ?? []
+        lastPlayed = try container.decodeIfPresent(String.self, forKey: .lastPlayed) ?? ""
+        playCount = try container.decodeIfPresent(Int.self, forKey: .playCount) ?? 0
+        songID = try container.decodeIfPresent(Int.self, forKey: .songID) ?? 0
+        disc = try container.decodeIfPresent(Int.self, forKey: .disc) ?? 0
+        rating = try container.decodeIfPresent(Int.self, forKey: .rating) ?? 0
+        thumbnail = try container.decodeIfPresent(String.self, forKey: .thumbnail) ?? ""
+        searchString = try container.decodeIfPresent(String.self, forKey: .searchString) ?? ""
+        title = try container.decodeIfPresent(String.self, forKey: .title) ?? "Kodi"
+        track = try container.decodeIfPresent(Int.self, forKey: .track) ?? 0
+        year = try container.decodeIfPresent(Int.self, forKey: .year) ?? 0
+        duration = try container.decodeIfPresent(Int.self, forKey: .duration) ?? 0
+        compilation = try container.decodeIfPresent(Bool.self, forKey: .compilation) ?? false
     }
 }
