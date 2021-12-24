@@ -71,7 +71,8 @@ extension Library {
         var method = Method.audioLibraryGetAlbums
         /// The JSON creator
         var parameters: Data {
-            let params = Params()
+            var params = Params()
+            params.sort = sort(method: .artist, order: .ascending)
             return buildParams(params: params)
         }
         /// The request struct
@@ -79,16 +80,7 @@ extension Library {
             /// The properties
             let properties = AlbumItem().properties
             /// Sort order
-            let sort = Sort()
-            /// Sort order struct
-            struct Sort: Encodable {
-                /// Sort by artist sort name
-                let useartistsortname = true
-                /// Sort order
-                let order = KodiClient.SortMethod.ascending.string()
-                /// Sort method
-                let method = KodiClient.SortMethod.artist.string()
-            }
+            var sort = KodiClient.SortFields()
         }
         /// The response struct
         struct Response: Decodable {
@@ -99,7 +91,7 @@ extension Library {
     
     /// The struct for an album item
     struct AlbumItem: LibraryItem, Identifiable, Hashable {
-        /// /// The properties that we ask from Kodi
+        /// The properties that we ask from Kodi
         var properties = ["artistid", "artist", "sortartist", "displayartist", "description", "title", "year", "playcount", "totaldiscs",
                           "genre", "thumbnail", "compilation", "dateadded", "lastplayed"]
         /// Make it identifiable

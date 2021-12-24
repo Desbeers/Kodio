@@ -71,19 +71,14 @@ extension Library {
         var method = Method.audioLibraryGetGenres
         /// The JSON creator
         var parameters: Data {
+            var params = Params()
+            params.sort = sort(method: .label, order: .ascending)
             return buildParams(params: Params())
         }
         /// The request struct
         struct Params: Encodable {
             /// Sort order
-            let sort = Sort()
-            /// The sort order struct
-            struct Sort: Encodable {
-                /// Sort order
-                let order = "ascending"
-                /// Sort method
-                let method = "label"
-            }
+            var sort = KodiClient.SortFields()
         }
         /// The response struct
         struct Response: Decodable {

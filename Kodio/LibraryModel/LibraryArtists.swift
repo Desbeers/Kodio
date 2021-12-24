@@ -71,7 +71,9 @@ extension Library {
         var method = Method.audioLibraryGetArtists
         /// The JSON creator
         var parameters: Data {
-            return buildParams(params: Params())
+            var params = Params()
+            params.sort = sort(method: .artist, order: .ascending)
+            return buildParams(params: params)
         }
         /// The request struct
         struct Params: Encodable {
@@ -80,16 +82,7 @@ extension Library {
             /// The properties
             let properties = ArtistItem().properties
             /// Sort order
-            let sort = Sort()
-            /// Sort order struct
-            struct Sort: Encodable {
-                /// Sort by artist sort name
-                let useartistsortname = true
-                /// Sort order
-                let order = KodiClient.SortMethod.ascending.string()
-                /// Sort method
-                let method = KodiClient.SortMethod.artist.string()
-            }
+            var sort = KodiClient.SortFields()
         }
         /// The response struct
         struct Response: Decodable {

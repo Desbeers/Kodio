@@ -46,3 +46,15 @@ extension KodiAPI {
         return request
     }
 }
+
+extension KodiAPI {
+    
+    /// Set the sorting for an JSON request
+    /// - Parameters:
+    ///   - method: The ``SortMethod`` for the request
+    ///   - order: The ``SortOrder`` for the request
+    /// - Returns: An constructed ``SortFields``
+    func sort(method: KodiClient.SortMethod, order: KodiClient.SortOrder) -> KodiClient.SortFields {
+        return KodiClient.SortFields(method: method.rawValue, order: order.rawValue)
+    }
+}

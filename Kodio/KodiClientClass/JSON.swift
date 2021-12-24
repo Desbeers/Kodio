@@ -10,7 +10,7 @@ import Foundation
 extension KodiClient {
     
     // MARK: JSON stuff
-    
+
     /// Send a POST request to Kodi
     /// - Parameter request: A prepared JSON request
     /// - Returns: The decoded response
@@ -25,7 +25,7 @@ extension KodiClient {
         }
         return decoded.result
     }
-    
+
     /// Send a message to the host, not caring about the response
     /// - Parameter request: The full URL request
     func sendMessage<T: KodiAPI>(
@@ -33,7 +33,7 @@ extension KodiClient {
     ) {
         urlSession.dataTask(with: message.urlRequest).resume()
     }
-    
+
     /// Base for JSON parameter struct
     struct BaseParameters<T: Encodable>: Encodable {
         /// The JSON version
@@ -51,7 +51,7 @@ extension KodiClient {
         /// The result variable of a response
         var result: T
     }
-    
+
     /// List of possible errors
     enum APIError: Error {
         /// Invalid data
@@ -59,9 +59,11 @@ extension KodiClient {
         /// Unsuccesfull response
         case responseUnsuccessful
     }
-    
+
     /// The sort fields for JSON requests
     struct SortFields: Encodable {
+        /// Sort by artist sort name
+        let useartistsortname = true
         /// The method
         var method: String = ""
         /// The order
@@ -86,10 +88,15 @@ extension KodiClient {
         case artist = "artist"
         ///  Order by title
         case title = "title"
-        /// Nicer that using rawValue
-        func string() -> String {
-            return self.rawValue
-        }
+        ///  Order by label
+        case label = "label"
     }
-    
+
+    /// The sort order for JSON requests
+    enum SortOrder: String {
+        /// Order descending
+        case descending
+        /// Order ascending
+        case ascending
+    }
 }
