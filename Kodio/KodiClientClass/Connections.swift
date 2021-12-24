@@ -48,7 +48,7 @@ extension KodiClient {
             print("Error pinging host \(error.localizedDescription)")
         } else {
             Task {
-                await Task.sleep(5_000_000_000)
+                try await Task.sleep(nanoseconds: 5_000_000_000)
                 await self.ping()
             }
         }

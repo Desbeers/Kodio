@@ -26,7 +26,7 @@ extension Player {
             /// Keep an eye on the player if it is not a song
             if item.songID == nil {
                 Task {
-                    await Task.sleep(5_000_000_000)
+                    try await Task.sleep(nanoseconds: 5_000_000_000)
                     await Player.shared.getItem()
                 }
             }
