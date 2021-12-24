@@ -73,7 +73,7 @@ extension Library {
         var parameters: Data {
             var params = Params()
             params.sort = sort(method: .label, order: .ascending)
-            return buildParams(params: Params())
+            return buildParams(params: params)
         }
         /// The request struct
         struct Params: Encodable {

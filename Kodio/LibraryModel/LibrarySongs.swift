@@ -130,9 +130,10 @@ extension Library {
         /// The request struct
         struct Params: Encodable {
             /// The properties that we ask from Kodi
-            let properties = ["title", "artist", "artistid", "year", "playcount", "albumid",
-                              "track", "disc", "lastplayed", "album", "genreid",
-                              "dateadded", "genre", "duration", "userrating"]
+            let properties = SongItem().properties
+//            let properties = ["title", "artist", "artistid", "year", "playcount", "albumid",
+//                              "track", "disc", "lastplayed", "album", "genreid",
+//                              "dateadded", "genre", "duration", "userrating"]
             /// Sort order
             var sort = KodiClient.SortFields()
         }
@@ -359,29 +360,29 @@ extension Library {
         }
         /// Custom init because fields from albums will be merged and without below
         /// we can't save/load the struct to/from the cache.
-        init(from decoder: Decoder) throws {
-            let container = try decoder.container(keyedBy: CodingKeys.self)
-            album = try container.decodeIfPresent(String.self, forKey: .album) ?? ""
-            albumID = try container.decodeIfPresent(Int.self, forKey: .albumID) ?? 0
-            albumArtist = try container.decodeIfPresent([String].self, forKey: .albumArtist) ?? [""]
-            albumArtistID = try container.decodeIfPresent([Int].self, forKey: .albumArtistID) ?? []
-            artist = try container.decodeIfPresent([String].self, forKey: .artist) ?? [""]
-            artistID = try container.decodeIfPresent([Int].self, forKey: .artistID) ?? []
-            dateAdded = try container.decodeIfPresent(String.self, forKey: .dateAdded) ?? ""
-            genre = try container.decodeIfPresent([String].self, forKey: .genre) ?? [""]
-            genreID = try container.decodeIfPresent([Int].self, forKey: .genreID) ?? []
-            lastPlayed = try container.decodeIfPresent(String.self, forKey: .lastPlayed) ?? ""
-            playCount = try container.decodeIfPresent(Int.self, forKey: .playCount) ?? 0
-            songID = try container.decodeIfPresent(Int.self, forKey: .songID) ?? 0
-            disc = try container.decodeIfPresent(Int.self, forKey: .disc) ?? 0
-            rating = try container.decodeIfPresent(Int.self, forKey: .rating) ?? 0
-            thumbnail = try container.decodeIfPresent(String.self, forKey: .thumbnail) ?? ""
-            searchString = try container.decodeIfPresent(String.self, forKey: .searchString) ?? ""
-            title = try container.decodeIfPresent(String.self, forKey: .title) ?? "Kodi"
-            track = try container.decodeIfPresent(Int.self, forKey: .track) ?? 0
-            year = try container.decodeIfPresent(Int.self, forKey: .year) ?? 0
-            duration = try container.decodeIfPresent(Int.self, forKey: .duration) ?? 0
-            compilation = try container.decodeIfPresent(Bool.self, forKey: .compilation) ?? false
-        }
+//        init(from decoder: Decoder) throws {
+//            let container = try decoder.container(keyedBy: CodingKeys.self)
+//            album = try container.decodeIfPresent(String.self, forKey: .album) ?? ""
+//            albumID = try container.decodeIfPresent(Int.self, forKey: .albumID) ?? 0
+//            albumArtist = try container.decodeIfPresent([String].self, forKey: .albumArtist) ?? [""]
+//            albumArtistID = try container.decodeIfPresent([Int].self, forKey: .albumArtistID) ?? []
+//            artist = try container.decodeIfPresent([String].self, forKey: .artist) ?? [""]
+//            artistID = try container.decodeIfPresent([Int].self, forKey: .artistID) ?? []
+//            dateAdded = try container.decodeIfPresent(String.self, forKey: .dateAdded) ?? ""
+//            genre = try container.decodeIfPresent([String].self, forKey: .genre) ?? [""]
+//            genreID = try container.decodeIfPresent([Int].self, forKey: .genreID) ?? []
+//            lastPlayed = try container.decodeIfPresent(String.self, forKey: .lastPlayed) ?? ""
+//            playCount = try container.decodeIfPresent(Int.self, forKey: .playCount) ?? 0
+//            songID = try container.decodeIfPresent(Int.self, forKey: .songID) ?? 0
+//            disc = try container.decodeIfPresent(Int.self, forKey: .disc) ?? 0
+//            rating = try container.decodeIfPresent(Int.self, forKey: .rating) ?? 0
+//            thumbnail = try container.decodeIfPresent(String.self, forKey: .thumbnail) ?? ""
+//            searchString = try container.decodeIfPresent(String.self, forKey: .searchString) ?? ""
+//            title = try container.decodeIfPresent(String.self, forKey: .title) ?? "Kodi"
+//            track = try container.decodeIfPresent(Int.self, forKey: .track) ?? 0
+//            year = try container.decodeIfPresent(Int.self, forKey: .year) ?? 0
+//            duration = try container.decodeIfPresent(Int.self, forKey: .duration) ?? 0
+//            compilation = try container.decodeIfPresent(Bool.self, forKey: .compilation) ?? false
+//        }
     }
 }
