@@ -256,6 +256,7 @@ extension Library {
             "title",
             "artist",
             "artistid",
+            "comment",
             "year",
             "playcount",
             "albumid",
@@ -287,6 +288,8 @@ extension Library {
         var artist: [String] = []
         /// Array of ArtistID's
         var artistID: [Int] = []
+        /// Comment of the song
+        var comment: String = ""
         /// The date this song was added
         var dateAdded: String = ""
         /// An array with song genres
@@ -343,7 +346,7 @@ extension Library {
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys
-            case album, artist, genre, thumbnail, title, track, disc, year, duration, compilation, searchString
+            case album, artist, comment, genre, thumbnail, title, track, disc, year, duration, compilation, searchString
             /// lowerCamelCase
             case albumID = "albumid"
             /// lowerCamelCase
@@ -381,6 +384,7 @@ extension Library.SongItem {
         albumArtistID = try container.decodeIfPresent([Int].self, forKey: .albumArtistID) ?? []
         artist = try container.decodeIfPresent([String].self, forKey: .artist) ?? [""]
         artistID = try container.decodeIfPresent([Int].self, forKey: .artistID) ?? []
+        comment = try container.decodeIfPresent(String.self, forKey: .comment) ?? ""
         dateAdded = try container.decodeIfPresent(String.self, forKey: .dateAdded) ?? ""
         genre = try container.decodeIfPresent([String].self, forKey: .genre) ?? [""]
         genreID = try container.decodeIfPresent([Int].self, forKey: .genreID) ?? []

@@ -79,7 +79,7 @@ extension Library {
         case .search:
             songList = search.results
         case .compilations:
-            songList = songs.all.filter {$0.compilation == true}
+            songList = songs.all.filter {$0.compilation == true || $0.comment.contains("[compilation]")}
         case .recentlyPlayed:
             songList = Array(songs.all.sorted {$0.lastPlayed > $1.lastPlayed}.prefix(500))
         case .recentlyAdded:
