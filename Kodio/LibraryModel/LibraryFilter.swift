@@ -43,59 +43,117 @@ extension Library {
     /// - Returns: An array of artist items
     func filterArtists(songList: [SongItem]) async -> [ArtistItem] {
         logger("Filter artists")
-        var artistList = artists.all
+        var allArtists = artists.all
+        var artistList = [ArtistItem]()
         /// Show only album artists when that is selected in the sidebar
-        if libraryLists.selected.media == .albumArtists {
-            artistList = artistList.filter {$0.isAlbumArtist == true}
+        if libraryLists.selected.media == .albumArtists || libraryLists.selected.media == .compilations {
+            allArtists = allArtists.filter {$0.isAlbumArtist == true}
         }
         /// Filter artists based on songs list
         let filter = songList.map { song -> [Int] in
             return song.artistID
         }
-        let artists: [Int] = filter.flatMap { $0 }.removingDuplicates()
-        return artistList.filter({artists.contains($0.artistID)})
+        let artistIDs: [Int] = filter.flatMap { $0 }.removingDuplicates()
+        for artistID in artistIDs {
+            if let match = allArtists.first(where: { $0.artistID == artistID }) {
+                artistList.append(match)
+            }
+        }
+        return artistList
     }
     
     /// Filter the albums
     /// - Parameter songList: The current filtered list of songs
-    /// - Returns: An array of album items
+    /// - Returns: An array of ``AlbumItem``s
     func filterAlbums(songList: [SongItem]) async -> [AlbumItem] {
         logger("Filter albums")
-        let albumList = albums.all
+        var albumList = [AlbumItem]()
         /// Filter albums based on songs list
         let allAlbums = songList.map { song -> Int in
             return song.albumID
         }
         let albumIDs = allAlbums.removingDuplicates()
+        for albumID in albumIDs {
+            if let match = albums.all.first(where: { $0.albumID == albumID }) {
+                albumList.append(match)
+            }
+        }
+        if libraryLists.selected.media == .compilations {
+            albumList = albumList.sorted {
+                $0.artistSort < $1.artistSort
+            }
+        }
         return albumList
-            .filter({albumIDs.contains($0.albumID)})
     }
-    
-    /// Filter the songs
+
+    /// Filter the songs based on current selection in the UI
+    /// - Returns: An array of filtered ``SongItem``s
     func filterSongs() async -> [SongItem] {
         logger("Filter songs")
+        /// Start with a fresh list
         var songList: [SongItem] = []
+        /// # First; filter on sidebar selection
+        /// - Note: Limited lists must be in an `Array`` because 'prefix' does not
+        ///         return an ``Array`` but an ``ArraySlice``
         switch libraryLists.selected.media {
         case .search:
             songList = search.results
         case .compilations:
-            songList = songs.all.filter {$0.compilation == true || $0.comment.contains("[compilation]")}
+            songList = songs.all
+                .filter {
+                    $0.compilation == true || $0.comment.contains("[compilation]")
+                }
         case .recentlyPlayed:
-            songList = Array(songs.all.sorted {$0.lastPlayed > $1.lastPlayed}.prefix(500))
+            songList = Array(
+                songs.all
+                    .filter {
+                        $0.playCount > 0
+                    }
+                    .sorted {
+                        $0.lastPlayed > $1.lastPlayed
+                    }
+                    .prefix(500)
+            )
         case .recentlyAdded:
-            songList = Array(songs.all.sorted {$0.dateAdded > $1.dateAdded}.prefix(500))
+            songList = Array(
+                songs.all
+                    .sorted {
+                        $0.dateAdded > $1.dateAdded
+                    }
+                    .prefix(500)
+            )
         case .mostPlayed:
-            songList = Array(songs.all.sorted {$0.playCount > $1.playCount}.prefix(500))
+            songList = Array(
+                songs.all
+                    .filter {
+                        $0.playCount > 0
+                    }
+                    .sorted {
+                        $0.playCount > $1.playCount
+                        
+                    }
+                    .prefix(500))
         case .playlist:
+            /// Playlist songs are dynamic loaded; they might be 'smart'
             async let songs = getPlaylistSongs(file: libraryLists.selected.file)
             songList = await songs
         case .favorites:
-            songList = songs.all.filter { $0.rating > 0 }.sorted {$0.rating > $1.rating}
+            songList = songs.all
+                .filter {
+                    $0.rating > 0
+                }
+                .sorted {
+                    $0.rating > $1.rating
+                }
         case .queue:
             songList = Player.shared.queueSongs
         default:
-            songList = songs.all.filter {$0.compilation == false}
+            songList = songs.all
+                .filter {
+                    $0.compilation == false
+                }
         }
+        /// # Second; filter more on library selection
         /// Filter on a genre if one is selected
         if let genre = genres.selected {
             songList = songList.filter { $0.genre.contains(genre.label)}
@@ -115,6 +173,10 @@ extension Library {
     }
     
     /// Update the SwiftUI View
+    
+    /// Update the SwiftUI View with the filtered content
+    /// - Parameter content: The filtered content
+    /// - Note: Reason to do it like this is that the View only have to update once with all new items
     @MainActor func updateLibraryView(content: FilteredContent) {
         logger("Update library UI")
         filteredContent = FilteredContent(
@@ -127,7 +189,8 @@ extension Library {
     }
     
     /// Get the songs from the database to add to the queue list
-    /// - Returns: An array of song items
+    /// - Returns: An array of ``SongItem``s in the queue
+    /// - Note: We can't ask Kodi directly for all the songs because our songs have a bit more information added during the first load
     func getSongsFromQueue() -> [Library.SongItem] {
         var songList: [Library.SongItem] = []
         let allSongs = songs.all
