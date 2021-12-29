@@ -92,7 +92,7 @@ extension Library {
         case .favorites:
             songList = songs.all.filter { $0.rating > 0 }.sorted {$0.rating > $1.rating}
         case .queue:
-            songList = getSongsFromQueue()
+            songList = Player.shared.queueSongs
         default:
             songList = songs.all.filter {$0.compilation == false}
         }

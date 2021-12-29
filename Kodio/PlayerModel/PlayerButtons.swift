@@ -43,7 +43,6 @@ extension Player {
     ///
     /// - Parameter song: A ``Library/SongItem``
     func playSong(song: Library.SongItem) async {
-        let queueSongs = Library.shared.getSongsFromQueue()
         if let index = queueSongs.firstIndex(where: { $0.songID == song.songID }) {
             /// Song is in the playlist, let's jump if the player is already playing
             if properties.speed == 1 {
