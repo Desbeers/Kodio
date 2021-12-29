@@ -72,8 +72,46 @@ extension ViewSongs {
         }
         
     }
-    
+
+#if os(macOS)
     /// The list of songs
+    ///  - Note: List is broken om macOS 12.1 and Xcode 13.2.1; it does not load the list lazy anymore...
+    var list: some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(songList) { song in
+                    ViewSong(song: song, selectedAlbum: selectedAlbum)
+                        .padding(.horizontal)
+                        .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))
+                        .task {
+                            /// Check if we have more songs to load
+                            if song == songList.last && songList.count < library.filteredContent.songs.count {
+                                currentPage += 1
+                                songList += await Library.pager(items: library.filteredContent.songs, page: currentPage)
+                            }
+                        }
+                }
+            }
+        }
+        .task {
+            /// Reset the page counter
+            currentPage = 0
+            /// Get the first page of songs
+            songList = await Library.pager(items: library.filteredContent.songs)
+        }
+        /// The songlist will change when you toggle the 'favorite' button
+        .onChange(of: library.filteredContent.songs) {newSongs in
+            Task { @MainActor in
+                songList = await Library.pager(items: newSongs, page: currentPage, all: true)
+                logger("Updated songlist")
+            }
+        }
+    }
+#endif
+    
+#if os(iOS)
+    /// The list of songs
+    ///  - Note: This is broken om macOS 12.1 and Xcode 13.2.1; it does not load the list lazy anymore...
     var list: some View {
         List {
             ForEach(songList) { song in
@@ -103,6 +141,7 @@ extension ViewSongs {
         }
         .listStyle(.plain)
     }
+#endif
     
     /// Display disc number only once and only when an album is selected that has more than one disc
     struct ViewModifierSongs: ViewModifier {
