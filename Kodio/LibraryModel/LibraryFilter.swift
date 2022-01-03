@@ -21,8 +21,6 @@ extension Library {
         var albums: [AlbumItem] = []
         /// Songs
         var songs: [SongItem] = []
-        /// The list ID
-        var listID = UUID()
     }
     
     /// Filter the genres
@@ -59,6 +57,10 @@ extension Library {
                 artistList.append(match)
             }
         }
+        /// Filter on a genre if one is selected
+        if let genre = genres.selected {
+            artistList = artistList.filter { $0.genres.contains(genre.label)}
+        }
         return artistList
     }
     
@@ -83,13 +85,19 @@ extension Library {
                 $0.artistSort < $1.artistSort
             }
         }
+        /// Filter on a genre if one is selected
+        if let genre = genres.selected {
+            albumList = albumList.filter { $0.genre.contains(genre.label)}
+        }
+        /// Filter on an artist if one is selected
+        if let artist = artists.selected {
+            albumList = albumList.filter {$0.songArtistID!.contains(artist.artistID)}
+        }
         return albumList
     }
-
-    /// Filter the songs based on current selection in the UI
-    /// - Returns: An array of filtered ``SongItem``s
-    func filterSongs() async -> [SongItem] {
-        logger("Filter songs")
+    
+    func filterSelection() async -> [SongItem] {
+        logger("Filter selected song list")
         /// Start with a fresh list
         var songList: [SongItem] = []
         /// # First; filter on sidebar selection
@@ -153,7 +161,15 @@ extension Library {
                     $0.compilation == false
                 }
         }
-        /// # Second; filter more on library selection
+        return songList
+    }
+
+    /// Filter the songs based on current selection in the UI
+    /// - Returns: An array of filtered ``SongItem``s
+    func filterSongs() async -> [SongItem] {
+        logger("Filter songs")
+        /// Start with a fresh list with all the optional songs
+        var songList: [SongItem] = songs.selection
         /// Filter on a genre if one is selected
         if let genre = genres.selected {
             songList = songList.filter { $0.genre.contains(genre.label)}
@@ -183,8 +199,7 @@ extension Library {
              genres: content.genres,
              artists: content.artists,
              albums: content.albums,
-             songs: content.songs,
-             listID: UUID()
+             songs: content.songs
         )
     }
     

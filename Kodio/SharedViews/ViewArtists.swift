@@ -11,6 +11,8 @@ import SwiftUI
 struct ViewArtists: View {
     /// The list of artists
     let artists: [Library.ArtistItem]
+    /// The ID of the artist list
+    let listID: UUID
     /// State of filtering the library
     @State var filtering = false
     /// The view
@@ -36,6 +38,7 @@ struct ViewArtists: View {
         }
         /// Disable the view while filtering
         .disabled(filtering)
-        .id(artists)
+        .id(listID)
+        .animation(.default, value: artists)
     }
 }

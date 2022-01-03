@@ -11,6 +11,8 @@ import SwiftUI
 struct ViewGenres: View {
     /// The list of genres
     let genres: [Library.GenreItem]
+    /// The ID of the genre list
+    let listID: UUID
     /// State of filtering the library
     @State var filtering = false
     /// The view
@@ -37,7 +39,8 @@ struct ViewGenres: View {
         }
         /// Disable the view while filtering
         .disabled(filtering)
-        .id(genres)
+        .id(listID)
+        .animation(.default, value: genres)
     }
 }
 

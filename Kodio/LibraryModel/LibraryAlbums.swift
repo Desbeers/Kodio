@@ -17,6 +17,8 @@ extension Library {
         var all: [AlbumItem] = []
         /// The selected artist in the UI
         var selected: AlbumItem?
+        /// The list ID
+        var listID = UUID()
     }
     
     /// Get all albums from the Kodi host
@@ -50,7 +52,7 @@ extension Library {
         /// Set the selection
         album.set()
         /// Filter the songs
-        async let songs = filterSongs()
+        async let songList = filterSongs()
         /// Update the UI
         await updateLibraryView(
             content:
@@ -58,7 +60,7 @@ extension Library {
                     genres: filteredContent.genres,
                     artists: filteredContent.artists,
                     albums: filteredContent.albums,
-                    songs: await songs
+                    songs: await songList
                 )
         )
         /// Return the filtering state to the view
@@ -124,6 +126,9 @@ extension Library {
         var displayArtist: String = ""
         /// An array with artist ID's
         var artistID: [Int] = [0]
+        /// An array with all song artist ID's
+        /// - Note: Not a Kodi property, so added later, optional because of JSON decoding
+        var songArtistID: [Int]? = [0]
         /// Is this a compilation album?
         var compilation: Bool = false
         /// Date that the album is added
@@ -173,7 +178,7 @@ extension Library {
         /// Coding keys
         enum CodingKeys: String, CodingKey {
             /// The keys
-            case artist, compilation, description, genre, thumbnail, title, year
+            case artist, compilation, description, genre, thumbnail, title, year, songArtistID
             /// lowerCamelCase
             case sortArtist = "sortartist"
             /// lowerCamelCase

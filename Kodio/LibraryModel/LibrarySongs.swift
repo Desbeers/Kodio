@@ -15,6 +15,10 @@ extension Library {
     struct Songs {
         /// All songs in the library
         var all: [SongItem] = []
+        /// All songs based on library selection
+        var selection: [SongItem] = []
+        /// The list ID
+        var listID = UUID()
     }
 
     /// Get all songs from the Kodi host
@@ -45,6 +49,16 @@ extension Library {
                 }
                 /// Save in the cache
                 try Cache.set(key: "MySongs", object: songs.all)
+                /// Add some additional fields to the albums
+                for (index, album) in albums.all.enumerated() {
+                    var list: [Int] = []
+                    for song in songs.all where song.albumID == album.albumID {
+                        list += song.artistID
+                    }
+                    albums.all[index].songArtistID = list.removingDuplicates()
+                }
+                /// Save in the cache
+                try Cache.set(key: "MyAlbums", object: albums.all)
                 /// Save the date of the last library scan in the cache
                 await getLastUpdate(cache: true)
                 return true
@@ -95,8 +109,9 @@ extension Library {
                 logger("Updated `\(result.songdetails.title)`")
                 if publish {
                     /// Update UI
+                    await selectLibraryList(libraryList: libraryLists.selected, reset: false)
+                    /// Update queue list
                     Task { @MainActor in
-                        filteredContent.songs = await filterSongs()
                         Player.shared.queueSongs = Library.shared.getSongsFromQueue()
                     }
                     /// Save in the cache

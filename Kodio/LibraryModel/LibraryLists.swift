@@ -18,28 +18,37 @@ extension Library {
         /// The selected library list in the UI
         var selected = LibraryListItem()
     }
-
-    /// Select a library list and filter the library
-    /// - Parameter libraryList: A ``LibraryListItem`` struct
-    func selectLibraryList(libraryList: LibraryListItem) async {
+    
+    /// /// Select a library list and filter the library
+    /// - Parameters:
+    ///   - libraryList: A ``LibraryListItem`` struct
+    ///   - reset: True if we want a fresh view, false if we just want to update it
+    func selectLibraryList(libraryList: LibraryListItem, reset: Bool = true) async {
         /// Set the selection
-        libraryList.set()
+        libraryList.set(reset: reset)
         /// Filter the songs
-        let songs = await filterSongs()
+        var filteredSongs = [SongItem]()
+        async let songList = filterSelection()
+        songs.selection = await songList
+        if reset {
+            filteredSongs = songs.selection
+            /// Update dynamic lists
+            await AppState.shared.updateSidebar()
+        } else {
+            filteredSongs = await filterSongs()
+        }
         /// Now the rest
-        async let albums = filterAlbums(songList: songs)
-        async let artists = filterArtists(songList: songs)
-        async let genres = filterGenres(songList: songs)
-        /// Update dynamic lists
-        await AppState.shared.updateSidebar()
+        let albums = await filterAlbums(songList: songs.selection)
+        let artists = await filterArtists(songList: songs.selection)
+        let genres = await filterGenres(songList: songs.selection)
         /// Update the View
         await updateLibraryView(
             content:
                 FilteredContent(
-                    genres: await genres,
-                    artists: await artists,
-                    albums: await albums,
-                    songs: songs
+                    genres: genres,
+                    artists: artists,
+                    albums: albums,
+                    songs: filteredSongs
                 )
         )
     }

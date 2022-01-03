@@ -34,10 +34,10 @@ protocol LibraryItem: Codable {
 extension LibraryItem {
 
     /// Set the library item as new selection
-    ///
     /// - Genres, artist and albums will be *toggled* and selections reset if needed
     /// - Library lists will always be selected
-    func set() {
+    /// - Parameter reset: True if we want a fresh view, false if we just want to update it
+    func set(reset: Bool = true) {
         let library: Library = .shared
         switch self.media {
         case .genre:
@@ -45,18 +45,34 @@ extension LibraryItem {
             library.artists.selected = nil
             library.albums.selected = nil
             library.genres.selected = selected() ? nil : self as? Library.GenreItem
+            /// Make new list ID's
+            library.artists.listID = UUID()
+            library.albums.listID = UUID()
+            library.songs.listID = UUID()
         case .artist:
             /// Reset albums
             library.albums.selected = nil
             library.artists.selected = selected() ? nil : self as? Library.ArtistItem
+            /// Make new list ID's
+            library.albums.listID = UUID()
+            library.songs.listID = UUID()
         case .album:
             library.albums.selected = selected() ? nil : self as? Library.AlbumItem
+            /// Make new list ID's
+            library.songs.listID = UUID()
         default:
             /// A `LibraryListItem`
-            /// Reset genres, artists and albums
-            library.genres.selected = nil
-            library.artists.selected = nil
-            library.albums.selected = nil
+            /// Reset genres, artists and albums if ``reset`` is true
+            if reset {
+                library.genres.selected = nil
+                library.artists.selected = nil
+                library.albums.selected = nil
+                /// Make new list ID's
+                library.genres.listID = UUID()
+                library.artists.listID = UUID()
+                library.albums.listID = UUID()
+                library.songs.listID = UUID()
+            }
             library.libraryLists.selected = self as? Library.LibraryListItem ?? library.libraryLists.all.first!
         }
         library.selection = getSelection()

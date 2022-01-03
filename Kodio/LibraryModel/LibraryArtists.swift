@@ -17,6 +17,8 @@ extension Library {
         var all: [ArtistItem] = []
         /// The selected artist in the UI
         var selected: ArtistItem?
+        /// The list ID
+        var listID = UUID()
     }
     
     /// Get all artists from the Kodi host
@@ -48,17 +50,17 @@ extension Library {
         /// Set the selection
         artist.set()
         /// Filter the songs
-        let songs = await filterSongs()
+        let songList = await filterSongs()
         /// Now the albums
-        async let albums = filterAlbums(songList: songs)
+        async let albumList = filterAlbums(songList: songList)
         /// Update the UI
         await updateLibraryView(
             content:
                 FilteredContent(
                     genres: filteredContent.genres,
                     artists: filteredContent.artists,
-                    albums: await albums,
-                    songs: songs
+                    albums: await albumList,
+                    songs: songList
                 )
         )
         /// Return the filtering state to the view

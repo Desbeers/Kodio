@@ -23,7 +23,7 @@ struct ViewSongs: View {
             header
             list
         }
-        .id(library.filteredContent.listID)
+        .id(library.songs.listID)
         .frame(maxWidth: .infinity)
     }
 }
