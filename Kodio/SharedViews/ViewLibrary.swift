@@ -45,10 +45,19 @@ struct ViewLibraryTop: View {
             /// A divider; else the genres, artist and albums fill scroll over the toolbar
             Divider()
             HStack(spacing: 0) {
-                ViewGenres(genres: library.filteredContent.genres, listID: library.genres.listID)
+                ViewGenres(
+                    genres: library.filteredContent.genres,
+                    listID: library.genres.listID
+                )
                     .frame(width: 150)
-                ViewArtists(artists: library.filteredContent.artists, listID: library.artists.listID)
-                ViewAlbums(albums: library.filteredContent.albums, listID: library.albums.listID)
+                ViewArtists(
+                    artists: library.filteredContent.artists,
+                    listID: library.artists.listID
+                )
+                ViewAlbums(
+                    albums: library.filteredContent.albums,
+                    listID: library.albums.listID
+                )
             }
             .overlay(
                 ViewDropShadow()
@@ -65,12 +74,19 @@ struct ViewLibraryBottom: View {
     var body: some View {
         GeometryReader { geometry in
             HStack(spacing: 0) {
-                ViewDetails(item: library.selection, width: geometry.size == .zero ? 400 : geometry.size.width * 0.40)
+                ViewDetails(
+                    item: library.selection,
+                    width: geometry.size == .zero ? 400 : geometry.size.width * 0.40
+                )
                 Divider()
                 if library.filteredContent.songs.isEmpty {
                     ViewEmptyLibrary(item: library.selection)
                 } else {
-                    ViewSongs(selectedAlbum: library.albums.selected)
+                    ViewSongs(
+                        songs: library.filteredContent.songs,
+                        listID: library.songs.listID,
+                        selectedAlbum: library.albums.selected
+                    )
                 }
             }
         }

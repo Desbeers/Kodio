@@ -25,6 +25,7 @@ struct ViewSong: View {
                     Divider()
                     ViewLibraryItemDetails(item: song)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             } icon: {
                 icon
             }
@@ -32,6 +33,8 @@ struct ViewSong: View {
             Divider()
             #endif
         }
+        /// Make the whole listitem clickable
+        .contentShape(Rectangle())
         .labelStyle(LabelStyleSongs())
         .contextMenu {
             songActions(song: song)

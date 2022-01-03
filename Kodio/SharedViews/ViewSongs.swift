@@ -9,21 +9,21 @@ import SwiftUI
 
 /// The list of songs
 struct ViewSongs: View {
-    /// The Library model
-    @EnvironmentObject var library: Library
+//    /// The Library model
+//    @EnvironmentObject var library: Library
+    /// The list of songs
+    let songs: [Library.SongItem]
+    /// The ID of the album list
+    let listID: UUID
     /// The optional selected album
     let selectedAlbum: Library.AlbumItem?
-    /// The songList
-    @State private var songList = [Library.SongItem]()
-    /// The current page in the view
-    @State private var currentPage: Int = 0
     /// The view
     var body: some View {
         VStack {
             header
             list
         }
-        .id(library.songs.listID)
+        .id(listID)
         .frame(maxWidth: .infinity)
     }
 }
@@ -32,14 +32,14 @@ extension ViewSongs {
     
     /// The header above the list of songs
     @ViewBuilder var header: some View {
-        let count = library.filteredContent.songs.count
+        let count = songs.count
         /// - Note: Don't add more than 500 songs to the queue; that makes no sense
         if count <= 500 {
             HStack {
                 Button(
                     action: {
                         Task.detached(priority: .userInitiated) {
-                            await Player.shared.playPlaylist(songs: library.filteredContent.songs,
+                            await Player.shared.playPlaylist(songs: songs,
                                                              album: selectedAlbum == nil ? false : true)
                         }
                     },
@@ -50,7 +50,7 @@ extension ViewSongs {
                 Button(
                     action: {
                         Task.detached(priority: .userInitiated) {
-                            await Player.shared.playPlaylist(songs: library.filteredContent.songs,
+                            await Player.shared.playPlaylist(songs: songs,
                                                              album: selectedAlbum == nil ? false : true,
                                                              shuffled: true)
                         }
@@ -73,75 +73,18 @@ extension ViewSongs {
         
     }
 
-#if os(macOS)
     /// The list of songs
-    ///  - Note: List is broken om macOS 12.1 and Xcode 13.2.1; it does not load the list lazy anymore...
     var list: some View {
         ScrollView {
             LazyVStack {
-                ForEach(songList) { song in
+                ForEach(songs) { song in
                     ViewSong(song: song, selectedAlbum: selectedAlbum)
                         .padding(.horizontal)
                         .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))
-                        .task {
-                            /// Check if we have more songs to load
-                            if song == songList.last && songList.count < library.filteredContent.songs.count {
-                                currentPage += 1
-                                songList += await Library.pager(items: library.filteredContent.songs, page: currentPage)
-                            }
-                        }
                 }
             }
         }
-        .task {
-            /// Reset the page counter
-            currentPage = 0
-            /// Get the first page of songs
-            songList = await Library.pager(items: library.filteredContent.songs)
-        }
-        /// The songlist will change when you toggle the 'favorite' button
-        .onChange(of: library.filteredContent.songs) {newSongs in
-            Task { @MainActor in
-                songList = await Library.pager(items: newSongs, page: currentPage, all: true)
-                logger("Updated songlist")
-            }
-        }
     }
-#endif
-    
-#if os(iOS)
-    /// The list of songs
-    ///  - Note: This is broken om macOS 12.1 and Xcode 13.2.1; it does not load the list lazy anymore...
-    var list: some View {
-        List {
-            ForEach(songList) { song in
-                ViewSong(song: song, selectedAlbum: selectedAlbum)
-                    .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))
-                    .task {
-                        /// Check if we have more songs to load
-                        if song == songList.last && songList.count < library.filteredContent.songs.count {
-                            currentPage += 1
-                            songList += await Library.pager(items: library.filteredContent.songs, page: currentPage)
-                        }
-                    }
-            }
-        }
-        .task {
-            /// Reset the page counter
-            currentPage = 0
-            /// Get the first page of songs
-            songList = await Library.pager(items: library.filteredContent.songs)
-        }
-        /// The songlist will change when you toggle the 'favorite' button
-        .onChange(of: library.filteredContent.songs) {newSongs in
-            Task { @MainActor in
-                songList = await Library.pager(items: newSongs, page: currentPage, all: true)
-                logger("Updated songlist")
-            }
-        }
-        .listStyle(.plain)
-    }
-#endif
     
     /// Display disc number only once and only when an album is selected that has more than one disc
     struct ViewModifierSongs: ViewModifier {
