@@ -91,7 +91,7 @@ extension Library {
         }
         /// Filter on an artist if one is selected
         if let artist = artists.selected {
-            albumList = albumList.filter {$0.songArtistID!.contains(artist.artistID)}
+            albumList = albumList.filter {$0.songArtistID!.contains(artist.artistID)}.sorted {$0.year < $1.year}
         }
         return albumList
     }
