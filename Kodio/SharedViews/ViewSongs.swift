@@ -9,8 +9,6 @@ import SwiftUI
 
 /// The list of songs
 struct ViewSongs: View {
-//    /// The Library model
-//    @EnvironmentObject var library: Library
     /// The list of songs
     let songs: [Library.SongItem]
     /// The ID of the album list
