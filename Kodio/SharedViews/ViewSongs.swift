@@ -11,7 +11,7 @@ import SwiftUI
 struct ViewSongs: View {
     /// The list of songs
     let songs: [Library.SongItem]
-    /// The ID of the album list
+    /// The ID of the song list
     let listID: UUID
     /// The optional selected album
     let selectedAlbum: Library.AlbumItem?

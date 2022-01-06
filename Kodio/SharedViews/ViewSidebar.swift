@@ -29,9 +29,6 @@ struct ViewSidebar: View {
                 }
                 if appState.state == .loadedLibrary {
                     libraryLists
-#if os(macOS)
-                    ViewLibraryTableButton()
-#endif
                     playlists
                     if showRadio {
                         ViewRadio()

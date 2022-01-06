@@ -13,6 +13,8 @@ struct ViewToolbar: ViewModifier {
     @EnvironmentObject var player: Player
     /// Send only basic buttons or a full toolbar
     var basic: Bool = false
+    /// Toggle for macOS table view of songs
+    @AppStorage("viewSongsTable") var viewSongsTable = false
     /// The view
     func body(content: Content) -> some View {
         if basic {
@@ -103,6 +105,16 @@ struct ViewToolbar: ViewModifier {
                     ) {
                         volumeSlider
                     }
+#if os(macOS)
+                    ToolbarItem(id: "tableView",
+                                placement: .automatic,
+                                showsByDefault: true
+                    ) {
+                        Toggle(isOn: $viewSongsTable) {
+                            Image(systemName: "tablecells")
+                        }
+                    }
+#endif
                 }
         }
     }

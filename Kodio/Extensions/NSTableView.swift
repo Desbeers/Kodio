@@ -13,5 +13,6 @@ extension NSTableView {
         super.viewDidMoveToWindow()
         backgroundColor = NSColor.clear
         enclosingScrollView?.drawsBackground = false
+        allowsColumnReordering = true
     }
 }

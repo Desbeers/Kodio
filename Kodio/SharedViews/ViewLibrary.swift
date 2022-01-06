@@ -70,26 +70,50 @@ struct ViewLibraryTop: View {
 struct ViewLibraryBottom: View {
     /// The Library model
     @EnvironmentObject var library: Library
+    /// Toggle for macOS table view of songs
+    @AppStorage("viewSongsTable") var viewSongsTable = false
     /// The view
     var body: some View {
-        GeometryReader { geometry in
-            HStack(spacing: 0) {
-                ViewDetails(
-                    item: library.selection,
-                    width: geometry.size == .zero ? 400 : geometry.size.width * 0.40
-                )
-                Divider()
+        if viewSongsTable {
+            Group {
                 if library.filteredContent.songs.isEmpty {
                     ViewEmptyLibrary(item: library.selection)
                 } else {
-                    ViewSongs(
+#if os(macOS)
+                    ViewSongsTable(
                         songs: library.filteredContent.songs,
-                        listID: library.songs.listID,
-                        selectedAlbum: library.albums.selected
+                        listID: library.songs.listID
                     )
+#endif
+#if os(iOS)
+                    /// iOS has no table view; below should never happen
+                    EmptyView()
+#endif
                 }
             }
+            .animation(.default, value: library.selection.empty)
+        } else {
+            GeometryReader { geometry in
+                HStack(spacing: 0) {
+                    if !viewSongsTable {
+                        ViewDetails(
+                            item: library.selection,
+                            width: geometry.size == .zero ? 400 : geometry.size.width * 0.40
+                        )
+                        Divider()
+                    }
+                    if library.filteredContent.songs.isEmpty {
+                        ViewEmptyLibrary(item: library.selection)
+                    } else {
+                        ViewSongs(
+                            songs: library.filteredContent.songs,
+                            listID: library.songs.listID,
+                            selectedAlbum: library.albums.selected
+                        )
+                    }
+                }
+            }
+            .animation(.default, value: library.selection.empty)
         }
-        .animation(.default, value: library.selection.empty)
     }
 }
