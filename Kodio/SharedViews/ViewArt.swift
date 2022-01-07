@@ -77,9 +77,18 @@ struct ViewPlayerArt: View {
             ViewRemoteArt(item: song, art: .thumbnail)
             /// Radio station
         } else if let stream = Library.shared.radioStations.first(where: { $0.stream == item.mediaPath }) {
-            Image(stream.thumbnail)
-                .resizable()
-                .frame(width: size, height: size)
+            ZStack {
+                Image(systemName: stream.icon)
+                    .resizable()
+                    .foregroundStyle(.white, stream.color)
+                Image(systemName: "dot.radiowaves.up.forward")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.white)
+                    .opacity(0.25)
+                    .padding(8)
+            }
+            .frame(width: size, height: size)
             /// Fallback
         } else {
             Image(fallback)
