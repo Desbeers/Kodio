@@ -64,7 +64,7 @@ extension AppState {
 #endif
 #if os(iOS)
                             Task {
-                                await AppState.shared.viewSheet(type: .settings)
+                                await AppState.shared.viewSheet(type: .editHosts)
                             }
 #endif
                         }

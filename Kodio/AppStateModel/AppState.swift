@@ -64,6 +64,8 @@ final class AppState: ObservableObject {
             }
         }
     }
+    /// An array with all radio stations
+    @Published var radioStations: [RadioStationItem] = []
     /// ID of this Kodio instance; used to send  notifications
     var kodioID = UUID().uuidString
     
@@ -73,5 +75,6 @@ final class AppState: ObservableObject {
     private init() {
         self.hosts = Hosts.get()
         self.selectedHost = Hosts.active(hosts: self.hosts)
+        self.radioStations = RadioStations.get()
     }
 }

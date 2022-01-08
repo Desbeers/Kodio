@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A View with songs in a table
 struct ViewSongsTable: View {
     /// The list of songs
     let songs: [Library.SongItem]
@@ -57,12 +58,16 @@ struct ViewSongsTable: View {
         }
     }
     
+    /// Convert a 'string date' to a real ``Date``
+    /// - Parameter string: A 'Kodi String Date'
+    /// - Returns: A real ``Date``
     func date(string: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.date(from: string)
     }
 
+    /// Get a sorted list of songs
     var songTable: [Library.SongItem] {
         return songs
             .sorted(using: sortOrder)

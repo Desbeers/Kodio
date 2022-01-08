@@ -95,7 +95,9 @@ extension Library {
         }
         return albumList
     }
-    
+
+    /// Filter songs based on library selection
+    /// - Returns: A struct of ``SongItem``s
     func filterSelection() async -> [SongItem] {
         logger("Filter selected song list")
         /// Start with a fresh list

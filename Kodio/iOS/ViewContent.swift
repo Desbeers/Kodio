@@ -46,9 +46,14 @@ extension ViewContent {
                     }
                     Divider()
                 }
-                Button("Settings") {
+                Button("Edit Kodi Hosts") {
                     Task {
-                        appState.viewSheet(type: .settings)
+                        appState.viewSheet(type: .editHosts)
+                    }
+                }
+                Button("Edit Radio Stations") {
+                    Task {
+                        appState.viewSheet(type: .editRadio)
                     }
                 }
                 Button(

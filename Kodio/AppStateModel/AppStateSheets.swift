@@ -22,9 +22,10 @@ extension AppState {
     enum Sheets {
         /// Show the `Playing Queue` sheet
         case queue
-        /// Show the `Settings` sheet
-        /// - Note: only in use for iOS, macOS has its native `Preferences`
-        case settings
+        /// Show the 'Edit Hosts' sheet; iOS only, for macOS it is in its native `Preferences`
+        case editHosts
+        /// Show the 'Edit Radio' sheet; iOS only, for macOS it is in its native `Preferences`
+        case editRadio
         /// Show the `About` sheet
         case about
         /// Show the `Help` sheet

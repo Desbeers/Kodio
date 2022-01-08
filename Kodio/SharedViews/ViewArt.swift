@@ -70,30 +70,41 @@ struct ViewPlayerArt: View {
     var size: CGFloat = 30
     /// The fallback image
     var fallback: String = "Record"
+    /// The AppState model
+    @EnvironmentObject var appState: AppState
     /// The view
     var body: some View {
-        /// Songs
         if let song = Library.shared.songs.all.first(where: { $0.songID == item.songID }) {
+            /// Songs
             ViewRemoteArt(item: song, art: .thumbnail)
+        } else if let station = appState.radioStations.first(where: { $0.stream == item.mediaPath }) {
             /// Radio station
-        } else if let stream = Library.shared.radioStations.first(where: { $0.stream == item.mediaPath }) {
-            ZStack {
-                Image(systemName: stream.icon)
-                    .resizable()
-                    .foregroundStyle(.white, stream.color)
-                Image(systemName: "dot.radiowaves.up.forward")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.white)
-                    .opacity(0.25)
-                    .padding(8)
-            }
-            .frame(width: size, height: size)
-            /// Fallback
+            ViewRadioStationArt(station: station)
+                .frame(width: size, height: size)
         } else {
+            /// Fallback
             Image(fallback)
                 .resizable()
                 .frame(width: size, height: size)
+        }
+    }
+}
+
+/// Compose art for a Radio Station
+struct ViewRadioStationArt: View {
+    /// The radio station that needs art
+    let station: RadioStationItem
+    /// The View
+    var body: some View {
+        ZStack {
+            Color(hexString: station.bgColor)
+            Image(systemName: station.icon)
+                .resizable()
+            /// - Note: A nice trick to get only the 'base' of a symbol
+                .foregroundStyle(
+                    Color(hexString: station.fgColor),
+                    Color.clear
+                )
         }
     }
 }

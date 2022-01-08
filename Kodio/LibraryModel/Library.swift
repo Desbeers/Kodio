@@ -47,8 +47,8 @@ final class Library: ObservableObject {
     var libraryLists = LibraryLists()
     /// An array containing all playlist related items
     var playlists = Playlists()
-    /// An array with all radio stations
-    var radioStations: [RadioItem] = []
+//    /// An array with all radio stations
+//    var radioStations: [RadioItem] = []
     
     // MARK: Init
     

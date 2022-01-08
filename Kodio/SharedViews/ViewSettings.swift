@@ -15,10 +15,14 @@ struct ViewSettings: View {
         TabView {
             ViewEditHosts()
             .tabItem {
-                Label("Preferences", systemImage: "gear")
+                Label("Kodi Hosts", systemImage: "gear")
+            }
+            ViewEditRadio()
+            .tabItem {
+                Label("Radio Stations", systemImage: "antenna.radiowaves.left.and.right")
             }
         }
-        .frame(width: 700, height: 350)
+        .frame(width: 700, height: 400)
         #endif
         #if os (iOS)
         ViewEditHosts()

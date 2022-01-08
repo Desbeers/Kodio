@@ -19,7 +19,6 @@ extension Library {
         if reload {
             resetLibrary()
         }
-        getRadioStations()
         libraryLists.all = getLibraryLists()
         libraryLists.selected = libraryLists.all.first!
         /// get media items
@@ -71,7 +70,6 @@ extension Library {
         playlists.files = []
         libraryLists.all = []
         libraryLists.selected = LibraryListItem()
-        radioStations = []
         Player.shared.properties = Player.Properties()
         Player.shared.item = Player.PlayerItem()
     }

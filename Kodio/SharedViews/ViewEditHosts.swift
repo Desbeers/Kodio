@@ -13,8 +13,6 @@ struct ViewEditHosts: View {
     @EnvironmentObject var appState: AppState
     /// The currently selected host that we want to edit
     @State var selectedHost: HostItem?
-    /// The setting to show the radio channels or not
-    @AppStorage("showRadio") var showRadio: Bool = false
     /// Struct for a new host
     let new = HostItem()
     /// The view
@@ -39,18 +37,15 @@ struct ViewEditHosts: View {
                             }
                         }
                     }
-                    NavigationLink(destination: ViewForm(host: new, selection: $selectedHost, status: Status.new), tag: new, selection: $selectedHost) {
-                        Label("New Kodi", systemImage: "plus")
-                    }
                 }
-                Section(header: Text("Radio Stations")) {
-                    Toggle(isOn: $showRadio) {
-                        Text("Show radio stations")
+                Section(header: Text("Add a new Kodi Host")) {
+                    NavigationLink(destination: ViewForm(host: new, selection: $selectedHost, status: Status.new), tag: new, selection: $selectedHost) {
+                        Label("New Kodi Host", systemImage: "plus")
                     }
                 }
             }
             .animation(.default, value: appState.hosts)
-            .navigationTitle("Settings")
+            .navigationTitle("Kodi Hosts")
             Text("Add or edit your Kodi hosts")
         }
         /// Some extra love for macOS
@@ -80,7 +75,7 @@ extension  ViewEditHosts {
         @State var status: Status
         /// The View
         var body: some View {
-            Text(status == .new ? "Add a new Kodi" : "Edit \(host.description)")
+            Text(status == .new ? "Add a new Kodi Host" : "Edit \(host.description)")
                 .font(.title)
             Form {
                 Section(footer: footer(text: "The name of your Kodi")) {

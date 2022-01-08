@@ -18,8 +18,10 @@ struct ViewSheet: View {
             switch appState.activeSheet {
             case .queue:
                 ViewQueue()
-            case .settings:
-                ViewSettings()
+            case .editHosts:
+                ViewEditHosts()
+            case .editRadio:
+                ViewEditRadio()
             case .about:
                 ViewAbout()
             case .help:

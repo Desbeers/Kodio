@@ -9,14 +9,14 @@ import SwiftUI
 
 /// A list with radio channels
 struct ViewRadio: View {
-    /// The Library object
-    @EnvironmentObject var library: Library
+    /// The AppState object
+    @EnvironmentObject var appState: AppState
     /// The player object
     @EnvironmentObject var player: Player
     /// The view
     var body: some View {
         Section(header: Text("Radio Stations")) {
-            ForEach(library.radioStations) { channel in
+            ForEach(appState.radioStations) { channel in
                 Button(
                     action: {
                         Task.detached(priority: .userInitiated) {
@@ -25,8 +25,14 @@ struct ViewRadio: View {
                     },
                     label: {
                         Label {
-                            Text(channel.title)
-                                .lineLimit(nil)
+                            VStack(alignment: .leading) {
+                                Text(channel.title)
+                                    .lineLimit(nil)
+                                Text(channel.description)
+                                    .lineLimit(nil)
+                                    .font(.caption)
+                                    .opacity(0.5)
+                            }
                         } icon: {
                             Image(systemName: radioIcon(channel: channel))
                                 .foregroundColor(.purple)
@@ -42,9 +48,9 @@ struct ViewRadio: View {
 extension ViewRadio {
 
     /// The SF symbol for the radio item
-    /// - Parameter channel: A ``Library/RadioItem`` struct
+    /// - Parameter channel: A ``RadioStationItem`` struct
     /// - Returns: A ``String`` with the name of the SF symbol
-    func radioIcon(channel: Library.RadioItem) -> String {
+    func radioIcon(channel: RadioStationItem) -> String {
         var icon = "antenna.radiowaves.left.and.right"
         if player.item.mediaPath == channel.stream {
             if player.properties.speed == 0 {

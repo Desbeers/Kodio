@@ -12,7 +12,7 @@ struct ViewSidebar: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState
     /// The setting to show the radio channels or not
-    @AppStorage("showRadio") var showRadio: Bool = false
+    @AppStorage("showRadio") var showRadio: Bool = true
     /// The view
     var body: some View {
         VStack(spacing: 0) {
