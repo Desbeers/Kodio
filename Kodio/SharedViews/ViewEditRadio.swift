@@ -128,7 +128,7 @@ extension  ViewEditRadio {
                     Section(footer: footer(text: "A description for your Radio Station")) {
                         TextField("Description", text: $values.description, prompt: Text("Description"))
                     }
-                    Section(footer: footer(text: "The stream URL for the radio station")) {
+                    Section(footer: footer(text: "The URL for your Radio Station")) {
                         TextField("Stream URL", text: $values.stream, prompt: Text("Stream URL"))
                     }
                     Section(footer: footer(text: "Create an icon for your Radio Station")) {
