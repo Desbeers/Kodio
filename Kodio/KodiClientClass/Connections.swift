@@ -15,6 +15,8 @@ extension KodiClient {
     /// - Parameter host: an ``HostItem``
     func connectToHost(host: HostItem) async {
         if !host.ip.isEmpty {
+            /// Reset library and set the selection with the new host information
+            Library.shared.resetLibrary(host: host)
             logger("Connecting to Kodi on \(host.ip)")
             connectWebSocket()
         }

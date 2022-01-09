@@ -64,8 +64,6 @@ extension AppState {
     private func action(state: State) {
         switch state {
         case .connectedToHost:
-            /// Reset library and set the selection with the new host information
-            Library.shared.resetLibrary(host: selectedHost)
             Task {
                 await KodiHost.shared.getProperties()
             }
