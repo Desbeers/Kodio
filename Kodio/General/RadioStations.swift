@@ -31,6 +31,16 @@ struct RadioStations {
         }
     }
     
+    /// Reorder the list of radio stations
+    /// - Parameters:
+    ///   - source: Move from
+    ///   - destination: Move to
+    @MainActor static func move(from source: IndexSet, to destination: Int) {
+        let appState: AppState = .shared
+        appState.radioStations.move(fromOffsets: source, toOffset: destination)
+        RadioStations.save(stations: appState.radioStations)
+    }
+    
     /// Get a list of default radio stations
     /// - Returns: An array of ``RadioStationItem``s
     static func defaultRadioStations() -> [RadioStationItem] {

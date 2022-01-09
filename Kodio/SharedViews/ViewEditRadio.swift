@@ -17,10 +17,15 @@ struct ViewEditRadio: View {
     @AppStorage("showRadio") var showRadio: Bool = true
     /// Struct for a new host
     let new = RadioStationItem()
+#if os(iOS)
+    /// Edit mode for the list
+    /// - Note: The edit mode is a bit unstable; this will keep an eye on it
+    @State var mode: EditMode = .inactive
+#endif
     /// The view
     var body: some View {
         NavigationView {
-            List(selection: $selectedStation) {
+            List {
                 Section(header: Text("Your Radio Stations")) {
                     if !appState.radioStations.isEmpty {
                         ForEach(appState.radioStations, id: \.self) { station in
@@ -37,6 +42,8 @@ struct ViewEditRadio: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
+                        .onMove(perform: move)
+                        .onDelete(perform: delete)
                     }
                 }
                 Section(header: Text("Add a new Radio Station")) {
@@ -65,12 +72,29 @@ struct ViewEditRadio: View {
             }
             .animation(.default, value: appState.radioStations)
             .navigationTitle("Radio Stations")
+#if os(iOS)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+            }
+            .environment(\.editMode, $mode)
+#endif
             Text("Add or edit your Radio Stations")
         }
         /// Some extra love for macOS
         .macOS {$0
         .listStyle(.sidebar)
         }
+    }
+    /// Move a radio station to a different location
+    private func move(from source: IndexSet, to destination: Int) {
+        RadioStations.move(from: source, to: destination)
+    }
+    /// Delete a station from the list; only works in iOS
+    private func delete(at offsets: IndexSet) {
+        appState.radioStations.remove(atOffsets: offsets)
+        RadioStations.save(stations: appState.radioStations)
     }
 }
 
@@ -194,7 +218,7 @@ extension  ViewEditRadio {
             .keyboardShortcut(.defaultAction)
             .disabled(!validateForm(station: values) || station == values)
         }
-        /// Delete a host
+        /// Delete a radio station
         @ViewBuilder
         var deleteStation: some View {
             Button("Delete", role: .destructive) {

@@ -40,8 +40,13 @@ struct ViewRadio: View {
                     }
                 )
             }
+            .onMove(perform: move)
         }
         .buttonStyle(.plain)
+    }
+    /// Move a radio station to a different location
+    private func move(from source: IndexSet, to destination: Int) {
+        RadioStations.move(from: source, to: destination)
     }
 }
 

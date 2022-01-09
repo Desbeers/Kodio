@@ -18,7 +18,7 @@ struct ViewEditHosts: View {
     /// The view
     var body: some View {
         NavigationView {
-            List(selection: $selectedHost) {
+            List {
                 Section(header: Text("Your Kodi's")) {
                     if !appState.hosts.isEmpty {
                         ForEach(appState.hosts, id: \.self) { host in

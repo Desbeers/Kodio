@@ -26,6 +26,7 @@ struct ViewQueue: View {
     }
 #endif
 #if os(iOS)
+    /// Edit mode for the list
     /// - Note: The edit mode is a bit unstable; this will keep an eye on it
     @State var mode: EditMode = .inactive
     /// The view
