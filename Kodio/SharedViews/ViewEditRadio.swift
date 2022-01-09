@@ -80,7 +80,19 @@ struct ViewEditRadio: View {
             }
             .environment(\.editMode, $mode)
 #endif
+            /// The default View when no item is selected; should not be seen on iOS
+            VStack {
             Text("Add or edit your Radio Stations")
+                    .font(.title)
+                Spacer()
+            Image(systemName: "antenna.radiowaves.left.and.right")
+                    .resizable()
+                    .foregroundColor(.secondary.opacity(0.5))
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200, height: 200, alignment: .center)
+                Spacer()
+            }
+            .padding()
         }
         /// Some extra love for macOS
         .macOS {$0
@@ -170,6 +182,7 @@ extension  ViewEditRadio {
                         }
                         .buttonStyle(.bordered)
                     }
+                    Spacer()
                 }
                 .modifier(ViewModifierForm())
             }
