@@ -2,7 +2,7 @@
 //  ViewEditHosts.swift
 //  Kodio
 //
-//  © 2021 Nick Berendsen
+//  © 2022 Nick Berendsen
 //
 
 import SwiftUI
@@ -22,7 +22,10 @@ struct ViewEditHosts: View {
                 Section(header: Text("Your Kodi's")) {
                     if !appState.hosts.isEmpty {
                         ForEach(appState.hosts, id: \.self) { host in
-                            NavigationLink(destination: ViewForm(host: host, selection: $selectedHost, status: host.selected ? Status.selected : Status.edit), tag: host, selection: $selectedHost) {
+                            NavigationLink(destination: ViewForm(host: host,
+                                                                 selection: $selectedHost,
+                                                                 status: host.selected ? Status.selected : Status.edit),
+                                           tag: host, selection: $selectedHost) {
                                 Label {
                                     VStack(alignment: .leading) {
                                         Text(host.description)
@@ -39,7 +42,10 @@ struct ViewEditHosts: View {
                     }
                 }
                 Section(header: Text("Add a new Kodi Host")) {
-                    NavigationLink(destination: ViewForm(host: new, selection: $selectedHost, status: Status.new), tag: new, selection: $selectedHost) {
+                    NavigationLink(destination: ViewForm(host: new,
+                                                         selection: $selectedHost,
+                                                         status: Status.new),
+                                   tag: new, selection: $selectedHost) {
                         Label("New Kodi Host", systemImage: "plus")
                     }
                 }
@@ -216,29 +222,9 @@ extension  ViewEditHosts {
             return parts.count == 4 && nums.count == 4 && nums.filter { $0 >= 0 && $0 < 256}.count == 4
         }
     }
-    
     /// The status of the host currently edited
     enum Status {
         /// The status cases of the host currently edited
         case new, selected, edit
-    }
-    
-    /// View modifier for host fields
-    struct ViewModifierForm: ViewModifier {
-#if os(macOS)
-        func body(content: Content) -> some View {
-            content
-                .disableAutocorrection(true)
-            /// Labels look terrible on macOS
-                .labelsHidden()
-        }
-#endif
-#if os(iOS)
-        func body(content: Content) -> some View {
-            content
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-        }
-#endif
     }
 }

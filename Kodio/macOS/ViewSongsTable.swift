@@ -2,7 +2,7 @@
 //  ViewSongsTable.swift
 //  Kodio (macOS)
 //
-//  © 2021 Nick Berendsen
+//  © 2022 Nick Berendsen
 //
 
 import SwiftUI

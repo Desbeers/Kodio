@@ -2,9 +2,8 @@
 //  RadioStations.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 08/01/2022.
+//  © 2022 Nick Berendsen
 //
-
 import Foundation
 
 /// Radio stations related functions

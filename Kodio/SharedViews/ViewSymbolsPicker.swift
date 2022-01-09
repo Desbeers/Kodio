@@ -2,7 +2,7 @@
 //  ViewSymbolsPicker.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 08/01/2022.
+//  © 2022 Nick Berendsen
 //
 
 import SwiftUI
@@ -14,13 +14,13 @@ struct ViewSymbolsPicker: View {
     /// The selected icon
     @Binding var icon: String
     /// The category of SF symbols to show
-    let category: SymbolsCategory
+    let category: String
     /// The View
     var body: some View {
         if isPresented {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))], spacing: 20) {
-                    ForEach(symbols[category.rawValue]!, id: \.hash) { icon in
+                    ForEach(symbols[category]!, id: \.hash) { icon in
                         Image(systemName: icon)
                             .font(.system(size: 25))
                             .foregroundColor(self.icon == icon ? Color.accentColor : Color.primary)
@@ -38,4 +38,43 @@ struct ViewSymbolsPicker: View {
             .frame(height: 100)
         }
     }
+    /// All the SF symbols in use for Kodio
+    let symbols: [String: [String]] = ["RadioStations":
+                                        ["a.square.fill",
+                                         "b.square.fill",
+                                         "c.square.fill",
+                                         "d.square.fill",
+                                         "e.square.fill",
+                                         "f.square.fill",
+                                         "g.square.fill",
+                                         "h.square.fill",
+                                         "i.square.fill",
+                                         "j.square.fill",
+                                         "k.square.fill",
+                                         "l.square.fill",
+                                         "m.square.fill",
+                                         "n.square.fill",
+                                         "o.square.fill",
+                                         "p.square.fill",
+                                         "q.square.fill",
+                                         "r.square.fill",
+                                         "s.square.fill",
+                                         "t.square.fill",
+                                         "u.square.fill",
+                                         "v.square.fill",
+                                         "w.square.fill",
+                                         "x.square.fill",
+                                         "y.square.fill",
+                                         "z.square.fill",
+                                         "1.square.fill",
+                                         "2.square.fill",
+                                         "3.square.fill",
+                                         "4.square.fill",
+                                         "5.square.fill",
+                                         "6.square.fill",
+                                         "7.square.fill",
+                                         "8.square.fill",
+                                         "9.square.fill"
+                                        ]
+    ]
 }

@@ -1,8 +1,8 @@
 //
 //  ViewSettings.swift
-//  Kodio
+//  Kodio (macOS)
 //
-//  © 2021 Nick Berendsen
+//  © 2022 Nick Berendsen
 //
 
 import SwiftUI
@@ -11,7 +11,6 @@ import SwiftUI
 struct ViewSettings: View {
     /// The view
     var body: some View {
-        #if os (macOS)
         TabView {
             ViewEditHosts()
             .tabItem {
@@ -23,9 +22,5 @@ struct ViewSettings: View {
             }
         }
         .frame(width: 700, height: 400)
-        #endif
-        #if os (iOS)
-        ViewEditHosts()
-        #endif
     }
 }

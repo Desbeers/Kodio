@@ -24,8 +24,6 @@
 		D710D6B7278984010027C1EA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710D6B5278984010027C1EA /* Color.swift */; };
 		D710D6B92789A2880027C1EA /* ViewSymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710D6B82789A2880027C1EA /* ViewSymbolsPicker.swift */; };
 		D710D6BA2789A2880027C1EA /* ViewSymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710D6B82789A2880027C1EA /* ViewSymbolsPicker.swift */; };
-		D710D6BC2789A3280027C1EA /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710D6BB2789A3280027C1EA /* Symbols.swift */; };
-		D710D6BD2789A3280027C1EA /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710D6BB2789A3280027C1EA /* Symbols.swift */; };
 		D710D6BF2789C3AB0027C1EA /* RadioStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710D6BE2789C3AB0027C1EA /* RadioStations.swift */; };
 		D710D6C02789C3AB0027C1EA /* RadioStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D710D6BE2789C3AB0027C1EA /* RadioStations.swift */; };
 		D71989EA26E9E15500281EA1 /* KodiHostReplayGain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71989E926E9E15500281EA1 /* KodiHostReplayGain.swift */; };
@@ -104,7 +102,6 @@
 		D75F765A26CA863700165656 /* KodiHostSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765826CA863700165656 /* KodiHostSettings.swift */; };
 		D75F765C26CAA41A00165656 /* ViewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765B26CAA41A00165656 /* ViewSheet.swift */; };
 		D75F765D26CAA41A00165656 /* ViewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765B26CAA41A00165656 /* ViewSheet.swift */; };
-		D75F765F26CAA72000165656 /* ViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765E26CAA72000165656 /* ViewSettings.swift */; };
 		D75F766026CAA72000165656 /* ViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F765E26CAA72000165656 /* ViewSettings.swift */; };
 		D75F766226CAACAD00165656 /* ViewAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F766126CAACAD00165656 /* ViewAbout.swift */; };
 		D75F766326CAACAD00165656 /* ViewAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F766126CAACAD00165656 /* ViewAbout.swift */; };
@@ -187,7 +184,6 @@
 		D710D6B2278982D60027C1EA /* ViewEditRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEditRadio.swift; sourceTree = "<group>"; };
 		D710D6B5278984010027C1EA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D710D6B82789A2880027C1EA /* ViewSymbolsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSymbolsPicker.swift; sourceTree = "<group>"; };
-		D710D6BB2789A3280027C1EA /* Symbols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		D710D6BE2789C3AB0027C1EA /* RadioStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStations.swift; sourceTree = "<group>"; };
 		D71989E926E9E15500281EA1 /* KodiHostReplayGain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHostReplayGain.swift; sourceTree = "<group>"; };
 		D71B92AC27185859005355CB /* RemoteArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteArt.swift; sourceTree = "<group>"; };
@@ -418,7 +414,6 @@
 				D76CF9B626B2F20E00351667 /* ViewQueue.swift */,
 				D7AE512A26B9448800A57244 /* ViewRadio.swift */,
 				D75F765B26CAA41A00165656 /* ViewSheet.swift */,
-				D75F765E26CAA72000165656 /* ViewSettings.swift */,
 				D75F766126CAACAD00165656 /* ViewAbout.swift */,
 				D72E0DA726CC44350001B47A /* ViewEditHosts.swift */,
 				D710D6B2278982D60027C1EA /* ViewEditRadio.swift */,
@@ -458,6 +453,7 @@
 				D73DD7EF26D3E7020024CB51 /* KodioApp.swift */,
 				D7A9043926F86E600012C7B2 /* AppDelegate.swift */,
 				D7EA913126A93C1C0090C137 /* ViewContent.swift */,
+				D75F765E26CAA72000165656 /* ViewSettings.swift */,
 				D70B105D2785ED7D00ABABCE /* ViewSongsTable.swift */,
 				D7DE9A0B26B04B720002BC48 /* SplitView.swift */,
 				D7EA914126A93C1D0090C137 /* Info.plist */,
@@ -509,7 +505,6 @@
 				D7EA916F26A95C270090C137 /* Debug.swift */,
 				D71B92AC27185859005355CB /* RemoteArt.swift */,
 				D70191DF2727290F009332A3 /* Markdown.swift */,
-				D710D6BB2789A3280027C1EA /* Symbols.swift */,
 				D710D6BE2789C3AB0027C1EA /* RadioStations.swift */,
 				D7EA913226A93C1D0090C137 /* Assets.xcassets */,
 				D70191DC272716C4009332A3 /* Help.md */,
@@ -667,7 +662,6 @@
 				D7F00A9426AEFEB300CEE39E /* KodiAPI.swift in Sources */,
 				D752FF86274513E700858882 /* ViewLibrary.swift in Sources */,
 				D7E1EA522736D9680087EA69 /* AppStateSheets.swift in Sources */,
-				D710D6BC2789A3280027C1EA /* Symbols.swift in Sources */,
 				D75F766226CAACAD00165656 /* ViewAbout.swift in Sources */,
 				D73163D526ABE8A700CD5F7E /* Library.swift in Sources */,
 				D779FDC126F4667F0023883A /* WebSocket.swift in Sources */,
@@ -709,7 +703,6 @@
 				D752FF872745556D00858882 /* KodiHostLibraryScan.swift in Sources */,
 				D73163DB26ABEFC100CD5F7E /* LibraryAlbums.swift in Sources */,
 				D72740ED26B186EF00067D4A /* PlayerGetItem.swift in Sources */,
-				D75F765F26CAA72000165656 /* ViewSettings.swift in Sources */,
 				D7F00A8726AECDEB00CEE39E /* View.swift in Sources */,
 				D72740EA26B1821E00067D4A /* KodiHostVolume.swift in Sources */,
 				D7E1EA552736DA320087EA69 /* AppStateActions.swift in Sources */,
@@ -810,7 +803,6 @@
 				D76CF9B826B2F20E00351667 /* ViewQueue.swift in Sources */,
 				D76B190E271326E200CEB741 /* ViewHelp.swift in Sources */,
 				D706F67826B0F8930068F35C /* Player.swift in Sources */,
-				D710D6BD2789A3280027C1EA /* Symbols.swift in Sources */,
 				D70D141326AC926B0015EE82 /* Array.swift in Sources */,
 				D74EFC4926E7C9EF00720D3C /* LibraryProperties.swift in Sources */,
 				D7F37E6226AD8CDA00EFE6F1 /* ViewContent.swift in Sources */,

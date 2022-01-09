@@ -44,7 +44,6 @@ Yes, I know. Kodio is a bit buggy and always will be. Learning everyday somethin
 #### General
 
 - Disconnecting from the `WebSocket` always gives an error. I just ignore it. I have to disconnect on iOS when going to the *background* or else Apple is very upset to me, hehe...
-- Radio channels are hard-coded at the moment...
 
 ### More information
 

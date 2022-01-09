@@ -24,21 +24,27 @@ struct ViewEditRadio: View {
                 Section(header: Text("Your Radio Stations")) {
                     if !appState.radioStations.isEmpty {
                         ForEach(appState.radioStations, id: \.self) { station in
-                            NavigationLink(
-                                destination: ViewForm(station: station, selection: $selectedStation, status: station.title.isEmpty ? Status.new : Status.edit), tag: station, selection: $selectedStation) {
-                                    
-                                    HStack {
-                                        ViewRadioStationArt(station: station)
-                                            .frame(width: 30, height: 30, alignment: .center)
-                                        Text(station.title)
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            NavigationLink(destination: ViewForm(station: station,
+                                                                 selection: $selectedStation,
+                                                                 status: station.title.isEmpty ? Status.new : Status.edit),
+                                           tag: station,
+                                           selection: $selectedStation) {
+                                HStack {
+                                    ViewRadioStationArt(station: station)
+                                        .frame(width: 30, height: 30, alignment: .center)
+                                    Text(station.title)
                                 }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
                         }
                     }
                 }
                 Section(header: Text("Add a new Radio Station")) {
-                    NavigationLink(destination: ViewForm(station: new, selection: $selectedStation, status: Status.new), tag: new, selection: $selectedStation) {
+                    NavigationLink(destination: ViewForm(station: new,
+                                                         selection: $selectedStation,
+                                                         status: Status.new),
+                                   tag: new,
+                                   selection: $selectedStation) {
                         Label("New Radio Station", systemImage: "plus")
                     }
                 }
@@ -126,7 +132,7 @@ extension  ViewEditRadio {
                                 .buttonStyle(.plain)
                         }
                         .labelsHidden()
-                        ViewSymbolsPicker(isPresented: $isPresented, icon: $values.icon, category: .radioStations)
+                        ViewSymbolsPicker(isPresented: $isPresented, icon: $values.icon, category: "RadioStations")
                     }
                     Section {
                         HStack {
@@ -208,32 +214,18 @@ extension  ViewEditRadio {
             if station.title.isEmpty {
                 status = false
             }
+            if station.description.isEmpty {
+                status = false
+            }
+            if station.stream.isEmpty {
+                status = false
+            }
             return status
         }
     }
-    
     /// The status cases of the radio station currently edited
     enum Status {
         /// The status cases of the radio station currently edited
         case new, edit
-    }
-    
-    /// View modifier for host fields
-    struct ViewModifierForm: ViewModifier {
-#if os(macOS)
-        func body(content: Content) -> some View {
-            content
-                .disableAutocorrection(true)
-            /// Labels look terrible on macOS
-                .labelsHidden()
-        }
-#endif
-#if os(iOS)
-        func body(content: Content) -> some View {
-            content
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-        }
-#endif
     }
 }

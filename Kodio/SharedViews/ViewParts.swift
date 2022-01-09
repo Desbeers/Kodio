@@ -2,12 +2,10 @@
 //  ViewModifiers.swift
 //  Kodio
 //
-//  © 2021 Nick Berendsen
+//  © 2022 Nick Berendsen
 //
 
 import SwiftUI
-
-// MARK: View bits and pieces
 
 /// View a drop shadow
 struct ViewDropShadow: View {
@@ -35,8 +33,6 @@ struct ViewListHeader: View {
     }
 }
 
-// MARK: Rotating record
-
 /// View a rotating record
 struct ViewRotatingRecord: View {
     /// The animation
@@ -62,8 +58,6 @@ struct ViewRotatingRecord: View {
     }
 }
 
-// MARK: Empty library view
-
 /// View to show when the current library view has no items to show
 struct ViewEmptyLibrary: View {
     /// The current media item
@@ -86,8 +80,6 @@ struct ViewEmptyLibrary: View {
         .transition(.move(edge: .trailing))
     }
 }
-
-// MARK: View a Kodi host selector
 
 /// View a Kodi host selector
 struct ViewHostSelector: View {
@@ -117,4 +109,23 @@ struct ViewHostSelector: View {
             )
         }
     }
+}
+
+/// View modifier for Form Views
+struct ViewModifierForm: ViewModifier {
+#if os(macOS)
+    func body(content: Content) -> some View {
+        content
+            .disableAutocorrection(true)
+        /// Labels look terrible on macOS
+            .labelsHidden()
+    }
+#endif
+#if os(iOS)
+    func body(content: Content) -> some View {
+        content
+            .disableAutocorrection(true)
+            .autocapitalization(.none)
+    }
+#endif
 }

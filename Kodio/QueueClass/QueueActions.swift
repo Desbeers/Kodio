@@ -2,7 +2,7 @@
 //  QueueActions.swift
 //  Kodio
 //
-//  © 2021 Nick Berendsen
+//  © 2022 Nick Berendsen
 //
 
 import Foundation
