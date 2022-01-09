@@ -47,7 +47,6 @@ struct Hosts {
     
     /// Switch to a new host
     static func switchHost(selected: HostItem) {
-        Library.shared.resetLibrary()
         Task {
             await AppState.shared.setState(current: .none)
             selectHost(selected: selected)
@@ -75,6 +74,8 @@ struct HostItem: Codable, Identifiable, Hashable {
     var id = UUID()
     /// Description of the host
     var description: String = ""
+    /// Icon of the host
+    var icon: String = "building.columns"
     /// IP of the host
     var ip: String = ""
     /// Port of the host

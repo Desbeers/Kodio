@@ -104,7 +104,7 @@ struct ViewHostSelector: View {
                     Hosts.switchHost(selected: host)
                 },
                 label: {
-                    Label(host.description, systemImage: "k.circle")
+                    Label(host.description, systemImage: host.icon)
                 }
             )
         }

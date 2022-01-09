@@ -60,7 +60,8 @@ extension Library {
                                     subtitle: "All songs from your album artists",
                                     empty: "Your library has no album artists",
                                     icon: "music.mic",
-                                    media: .albumArtists))
+                                    media: .albumArtists
+                                   ))
         list.append(LibraryListItem(title: "Compilations",
                                     subtitle: "All songs from your compilation albums",
                                     empty: "Your library has no compilations",
@@ -116,17 +117,16 @@ extension Library {
         var id: String {
             return title
         }
-        /// Ttitle of the item
+        /// Title of the item
         var title: String = "Kodio"
         /// Subtitle of the item
-        var subtitle = "Loading your library"
+        var subtitle = "Kodio has no hosts"
         /// Description of the item
         var description: String = ""
         /// Empty item message
-        /// - Note: Not needed, but required by protocol
-        var empty: String = "Loading your library"
+        var empty: String = "Please add a host to Kodio"
         /// The SF symbol for this media item
-        var icon: String = "k.circle"
+        var icon: String = "building.columns"
         /// Media type of this item
         var media: MediaType = .none
         /// Visibility of item

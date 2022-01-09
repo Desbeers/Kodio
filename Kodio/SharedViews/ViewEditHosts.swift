@@ -26,17 +26,19 @@ struct ViewEditHosts: View {
                                                                  selection: $selectedHost,
                                                                  status: host.selected ? Status.selected : Status.edit),
                                            tag: host, selection: $selectedHost) {
-                                Label {
+                                HStack {
+                                    Image(systemName: host.icon)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 20, height: 20, alignment: .center)
                                     VStack(alignment: .leading) {
                                         Text(host.description)
                                         Text(host.ip)
                                             .font(.caption)
                                             .opacity(0.5)
                                     }
-                                } icon: {
-                                    Image(systemName: host.selected ? "k.circle.fill" : "k.circle")
                                 }
-                                
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
                     }
@@ -79,6 +81,8 @@ extension  ViewEditHosts {
         @State var values = HostItem()
         /// The status of the host currently editing
         @State var status: Status
+        /// SF symbol picker
+        @State private var isPresented = false
         /// The View
         var body: some View {
             Text(status == .new ? "Add a new Kodi Host" : "Edit \(host.description)")
@@ -114,6 +118,25 @@ extension  ViewEditHosts {
                             .frame(width: 105)
                     }
                 }
+                Section(footer: footer(text: "Select an icon for your Kodi Host")) {
+                    HStack {
+                        Button(action: {
+                            withAnimation {
+                                isPresented.toggle()
+                            }
+                        }, label: {
+                            Image(systemName: values.icon)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.accentColor)
+                                .frame(width: 30, height: 30, alignment: .center)
+                        })
+                            .buttonStyle(.plain)
+                    }
+                    .labelsHidden()
+                    ViewSymbolsPicker(isPresented: $isPresented, icon: $values.icon, category: "KodiHosts")
+                        .frame(width: 220)
+                }
                 Section {
                     HStack {
                         switch status {
@@ -130,6 +153,7 @@ extension  ViewEditHosts {
                     .buttonStyle(.bordered)
                 }
             }
+            .padding()
             .modifier(ViewModifierForm())
             .task {
                 /// Fill the form

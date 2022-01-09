@@ -13,18 +13,15 @@ extension Library {
     
     /// Get all music items from the library
     /// - Parameter reload: Bool; force a reload or else it will try to load it from the  cache
-    /// - Returns: It will update the KodiClient variables
     func getLibrary(reload: Bool = false) {
-        let appSate: AppState = .shared
+        let appState: AppState = .shared
         if reload {
-            resetLibrary()
+            resetLibrary(host: appState.selectedHost)
         }
-        libraryLists.all = getLibraryLists()
-        libraryLists.selected = libraryLists.all.first!
         /// get media items
         Task(priority: .high) {
             /// Set loading state
-            await appSate.setState(current: .loadingLibrary)
+            await appState.setState(current: .loadingLibrary)
             /// Artists
             async let artists = getArtists(reload: reload)
             status.artists = await artists
@@ -58,14 +55,21 @@ extension Library {
         }
     }
     
-    /// Reset the  library to its initial state
-    func resetLibrary() {
+    /// Reset the  library to its initial state and set the host information
+    /// - Parameter host: The currently selected host
+    func resetLibrary(host: HostItem) {
+        /// Set the selection with the new host information
+        var listItem = LibraryListItem()
+        listItem.subtitle = "Loading your library on \(host.description)"
+        listItem.empty = "Loading your library"
+        listItem.icon = host.icon
+        selection = listItem
+        /// Reset everything
         status.reset()
         genres = Genres()
         artists = Artists()
         albums = Albums()
         songs = Songs()
-        selection = LibraryListItem()
         filteredContent = FilteredContent()
         playlists.files = []
         libraryLists.all = []

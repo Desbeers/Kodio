@@ -19,7 +19,7 @@ struct ViewSymbolsPicker: View {
     var body: some View {
         if isPresented {
             ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))], spacing: 20) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))], spacing: 20) {
                     ForEach(symbols[category]!, id: \.hash) { icon in
                         Image(systemName: icon)
                             .font(.system(size: 25))
@@ -75,6 +75,12 @@ struct ViewSymbolsPicker: View {
                                          "7.square.fill",
                                          "8.square.fill",
                                          "9.square.fill"
+                                        ],
+                                       "KodiHosts":
+                                        ["building.columns",
+                                         "desktopcomputer",
+                                         "laptopcomputer",
+                                         "macmini"
                                         ]
     ]
 }

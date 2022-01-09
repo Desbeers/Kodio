@@ -16,7 +16,7 @@ struct ViewAppStateStatus: View {
         HStack {
             switch appState.state {
             case .noHostConfig:
-                Text("Kodio is not configurated")
+                Text("Kodio has no hosts")
             case .none:
                 Text("No host selected")
             case .connectedToHost:
