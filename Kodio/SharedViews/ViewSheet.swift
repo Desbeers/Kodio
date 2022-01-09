@@ -26,6 +26,8 @@ struct ViewSheet: View {
                 ViewAbout()
             case .help:
                 ViewHelp()
+            case .importExport:
+                ViewImportExport()
             }
 #if os(macOS)
             Button {

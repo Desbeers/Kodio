@@ -26,6 +26,8 @@ extension AppState {
         case editHosts
         /// Show the 'Edit Radio' sheet; iOS only, for macOS it is in its native `Preferences`
         case editRadio
+        /// Show the 'Import & Export' sheet; iOS only, for macOS it is in its native `Preferences`
+        case importExport
         /// Show the `About` sheet
         case about
         /// Show the `Help` sheet

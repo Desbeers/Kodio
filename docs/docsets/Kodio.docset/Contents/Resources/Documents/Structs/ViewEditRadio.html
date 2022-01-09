@@ -17,7 +17,7 @@
     <a title="ViewEditRadio Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Kodio</a> (100% documented)</p>
+        <p><a href="../index.html">Kodio</a> (98% documented)</p>
         <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
@@ -340,6 +340,9 @@
                 <a href="../Structs/KodioApp.html">KodioApp</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/KodioDocument.html">KodioDocument</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/RadioStationItem.html">RadioStationItem</a>
               </li>
               <li class="nav-group-task">
@@ -407,6 +410,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewHostSelector.html">ViewHostSelector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewImportExport.html">ViewImportExport</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ViewImportExport/Actions.html">– Actions</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ViewLibrary.html">ViewLibrary</a>
@@ -627,6 +636,30 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Property/mode" class="dashAnchor"></a>
+                    <a class="token" href="#/">mode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Edit mode for the list</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The edit mode is a bit unstable; this will keep an eye on it
+
+</div>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:5Kodio13ViewEditRadioV4bodyQrvp"></a>
                     <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Kodio13ViewEditRadioV4bodyQrvp">body</a>
@@ -645,6 +678,60 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditRadioV4move33_DC04B0D93B8328FDB8A7DE59D950EB36LL4from2toy10Foundation8IndexSetV_SitF"></a>
+                    <a name="//apple_ref/swift/Method/move(from:to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditRadioV4move33_DC04B0D93B8328FDB8A7DE59D950EB36LL4from2toy10Foundation8IndexSetV_SitF">move(from:<wbr>to:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Move a radio station to a different location</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">move</span><span class="p">(</span><span class="n">from</span> <span class="nv">source</span><span class="p">:</span> <span class="kt">IndexSet</span><span class="p">,</span> <span class="n">to</span> <span class="nv">destination</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio13ViewEditRadioV6delete33_DC04B0D93B8328FDB8A7DE59D950EB36LL2aty10Foundation8IndexSetV_tF"></a>
+                    <a name="//apple_ref/swift/Method/delete(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio13ViewEditRadioV6delete33_DC04B0D93B8328FDB8A7DE59D950EB36LL2aty10Foundation8IndexSetV_tF">delete(at:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete a station from the list; only works in iOS</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="n">at</span> <span class="nv">offsets</span><span class="p">:</span> <span class="kt">IndexSet</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

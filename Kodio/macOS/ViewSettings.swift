@@ -20,6 +20,10 @@ struct ViewSettings: View {
             .tabItem {
                 Label("Radio Stations", systemImage: "antenna.radiowaves.left.and.right")
             }
+            ViewImportExport()
+            .tabItem {
+                Label("Import & Export", systemImage: "square.and.arrow.down")
+            }
         }
         .frame(width: 700, height: 400)
     }

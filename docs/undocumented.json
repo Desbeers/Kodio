@@ -1,6 +1,96 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/ImportExport.swift",
+      "line": 11,
+      "symbol": "KodioDocument",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/ImportExport.swift",
+      "line": 15,
+      "symbol": "KodioDocument.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/General/ImportExport.swift",
+      "line": 17,
+      "symbol": "KodioDocument.init(message:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 10,
+      "symbol": "ViewImportExport",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 13,
+      "symbol": "ViewImportExport.document",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 14,
+      "symbol": "ViewImportExport.isImporting",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 15,
+      "symbol": "ViewImportExport.isExporting",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 16,
+      "symbol": "ViewImportExport.defaultName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 17,
+      "symbol": "ViewImportExport.action",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 18,
+      "symbol": "ViewImportExport.statusBar",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 87,
+      "symbol": "ViewImportExport.exportRadioStations()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 95,
+      "symbol": "ViewImportExport.importRadioStations()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Documents/Github/Kodio/Kodio/SharedViews/ViewImportExport.swift",
+      "line": 99,
+      "symbol": "ViewImportExport.addRadioStations(stations:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/Desbeers/Documents/Github/Kodio"
 }
