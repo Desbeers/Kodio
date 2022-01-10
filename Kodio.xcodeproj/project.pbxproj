@@ -191,7 +191,7 @@
 		D710D6BE2789C3AB0027C1EA /* RadioStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStations.swift; sourceTree = "<group>"; };
 		D710D6C1278B41C90027C1EA /* ImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExport.swift; sourceTree = "<group>"; };
 		D710D6C4278B42FE0027C1EA /* ViewImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImportExport.swift; sourceTree = "<group>"; };
-		D710D6EB278B623C0027C1EA /* Kodio (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Kodio (iOS).entitlements"; sourceTree = "<group>"; };
+		D710D6EB278B623C0027C1EA /* iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS.entitlements; sourceTree = "<group>"; };
 		D71989E926E9E15500281EA1 /* KodiHostReplayGain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHostReplayGain.swift; sourceTree = "<group>"; };
 		D71B92AC27185859005355CB /* RemoteArt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteArt.swift; sourceTree = "<group>"; };
 		D7241F522719A2610093E68A /* NSTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTableView.swift; sourceTree = "<group>"; };
@@ -396,7 +396,6 @@
 		D7EA912A26A93C1C0090C137 = {
 			isa = PBXGroup;
 			children = (
-				D710D6EB278B623C0027C1EA /* Kodio (iOS).entitlements */,
 				D70191E527276791009332A3 /* README.md */,
 				D7678B2326D3E53D006C3AD1 /* Kodio */,
 				D7DE9A0826B026200002BC48 /* .jazzy.yaml */,
@@ -452,6 +451,7 @@
 				D7EA913026A93C1C0090C137 /* KodioApp.swift */,
 				D73DD7F126D3E7C40024CB51 /* ViewContent.swift */,
 				D7EA913A26A93C1D0090C137 /* Info.plist */,
+				D710D6EB278B623C0027C1EA /* iOS.entitlements */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -957,7 +957,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconiPad;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Kodio (iOS).entitlements";
+				CODE_SIGN_ENTITLEMENTS = Kodio/iOS/iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FHPCJ7396C;
 				ENABLE_PREVIEWS = YES;
@@ -984,7 +984,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconiPad;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Kodio (iOS).entitlements";
+				CODE_SIGN_ENTITLEMENTS = Kodio/iOS/iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FHPCJ7396C;
 				ENABLE_PREVIEWS = YES;
