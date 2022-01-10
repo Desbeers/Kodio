@@ -7,43 +7,72 @@
 
 import SwiftUI
 
+/// A View for importing and exporting Kiodio items
 struct ViewImportExport: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState
+    /// The Kodio document
     @State private var document: KodioDocument = KodioDocument(content: "Kodio!")
+    /// Bool to show the import document picker
     @State private var isImporting: Bool = false
+    /// Bool to show the import document picker
     @State private var isExporting: Bool = false
+    /// The name for the document
     @State private var defaultName: String = ""
+    /// The action after importing a file
     @State private var action: Actions = .none
-    @State private var statusBar: String = ""
-    
+    /// The status of import/eport
+    @State private var statusBar: String = "Ready for action!"
+    /// The View
     var body: some View {
-        VStack {
-            Text("Import and Export Kodio items")
-                .font(.title)
-            Button(
-                action: {
-                    exportRadioStations()
-                    
-                },
-                label: {
-                    Text("Export Radio Stations")
-                })
+
+            ZStack {
+                VStack(spacing: 0) {
+                    HStack {
+                        Image(systemName: "square.and.arrow.down")
+                            .resizable()
+                        Image(systemName: "square.and.arrow.up")
+                            .resizable()
+                    }
+                    .foregroundColor(.secondary.opacity(0.05))
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+                    Spacer()
+                    HStack(spacing: 0) {
+                        Spacer()
+                    Text(statusBar)
+                        .padding()
+                        Spacer()
+                    }
+                        .background(.ultraThickMaterial)
+                        .frame(width: .infinity, height: .infinity, alignment: .center)
+                }
+                
+                .frame(width: .infinity, height: .infinity, alignment: .center)
+                VStack {
+                    Text("Import and Export Kodio items")
+                        .font(.title)
+                    Button(
+                        action: {
+                            importRadioStations()
+                        },
+                        label: {
+                            Text("Import Radio Stations")
+                        })
+                        .padding()
+                    Button(
+                        action: {
+                            exportRadioStations()
+                        },
+                        label: {
+                            Text("Export Radio Stations")
+                        })
+                        .padding()
+                    Spacer()
+                }
                 .padding()
-            Button(
-                action: {
-                    importRadioStations()
-                    
-                },
-                label: {
-                    Text("Import Radio Stations")
-                })
-                .padding()
-            Spacer()
-            Text(statusBar)
-                .font(.caption)
-        }
-        .padding()
+            }
+
         .fileExporter(
             isPresented: $isExporting,
             document: document,
@@ -84,6 +113,7 @@ struct ViewImportExport: View {
             }
         }
     }
+    /// Export Radio Items
     func exportRadioStations() {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -92,10 +122,12 @@ struct ViewImportExport: View {
         document.content = String(decoding: data, as: UTF8.self)
         isExporting = true
     }
+    /// Import Radio Items
     func importRadioStations() {
         action = .radioStations
         isImporting = true
     }
+    /// Add Radio Items after import
     func addRadioStations(stations: String) {
         do {
             appState.radioStations = try JSONDecoder().decode([RadioStationItem].self, from: stations.data(using: .utf8)!)
@@ -106,9 +138,9 @@ struct ViewImportExport: View {
             print(error)
         }
     }
-    /// The status cases of the radio station currently edited
+    /// The actions that happen in this View
     enum Actions {
-        /// The status cases of the radio station currently edited
+        /// The cases
         case none, radioStations
     }
 }

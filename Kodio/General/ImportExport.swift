@@ -27,9 +27,10 @@ struct KodioDocument: FileDocument {
         }
         content = string
     }
-
+    /// The FileWrapper
+    /// - Parameter configuration: The configuration
+    /// - Returns: A ``FileWrapper``
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         return FileWrapper(regularFileWithContents: content.data(using: .utf8)!)
     }
-    
 }
