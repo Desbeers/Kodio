@@ -15,9 +15,9 @@ extension Library {
     struct Genres {
         /// All genres in the library
         var all: [GenreItem] = []
-        /// The selected genre in the UI
+        /// The optional selected genre in the UI
         var selected: GenreItem?
-        /// The list ID
+        /// The ID for the genres list
         var listID = UUID()
     }
     

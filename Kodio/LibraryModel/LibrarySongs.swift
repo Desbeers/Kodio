@@ -15,7 +15,7 @@ extension Library {
     struct Songs {
         /// All songs in the library
         var all: [SongItem] = []
-        /// All songs based on library selection
+        /// Filtered songs based on library selection
         var selection: [SongItem] = []
         /// The list ID
         var listID = UUID()

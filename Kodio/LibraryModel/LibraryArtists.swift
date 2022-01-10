@@ -15,9 +15,9 @@ extension Library {
     struct Artists {
         /// All artists in the library
         var all: [ArtistItem] = []
-        /// The selected artist in the UI
+        /// The optional selected artist in the UI
         var selected: ArtistItem?
-        /// The list ID
+        /// The ID for the artists list
         var listID = UUID()
     }
     

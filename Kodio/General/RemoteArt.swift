@@ -7,23 +7,25 @@
 
 import SwiftUI
 
-/// The key for our ``RemoteArt`` for the SwiftUI environment
+/// The key for  ``RemoteArt`` for the SwiftUI environment
 struct RemoteArtKey: EnvironmentKey {
+    /// The default value is the ``RemoteArt`` Actor
     static let defaultValue = RemoteArt()
 }
 
 extension EnvironmentValues {
-    /// Have all remote art available in the SwiftUI environment
+    /// Have all Remote Art available in the SwiftUI environment
     var remoteArt: RemoteArt {
         get { self[RemoteArtKey.self] }
         set { self[RemoteArtKey.self ] = newValue}
     }
 }
 
-/// An Actor holding all remote art in a cache
+/// An Actor holding all remote art in a memory cache
+/// - Note: Art is not cached on disk; so while browsing your library, memory usage will grow
 actor RemoteArt {
     
-    /// The state of caching art
+    /// The loading state of caching art
     private enum CacheEntry {
         /// The remote art is still loading
         case inProgress(Task<Image, Error>)
@@ -73,7 +75,6 @@ actor RemoteArt {
     /// - Returns: An ``Image``
     private func downloadArt(item: LibraryItem, from: URL) async throws -> Image {
         let (data, _) = try await URLSession.shared.data(from: from)
-
 #if os(macOS)
         if let image = NSImage(data: data) {
             return Image(nsImage: image)

@@ -11,13 +11,13 @@ extension Library {
     
     // MARK: Albums
     
-    /// A struct will all album related items
+    /// A struct with all album related items
     struct Albums {
         /// All albums in the library
         var all: [AlbumItem] = []
-        /// The selected artist in the UI
+        /// The optional selected album in the UI
         var selected: AlbumItem?
-        /// The list ID
+        /// The ID for the albums list
         var listID = UUID()
     }
     

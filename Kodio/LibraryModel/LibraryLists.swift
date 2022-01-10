@@ -134,13 +134,13 @@ extension Library {
         /// Used for Kodi playlist files
         var file: String = ""
         /// Thumbnail of this item
-        /// - Note: Not needed, but required by protocol
+        /// - Note: Not needed, but required by protocol ``LibraryItem``
         let thumbnail: String = ""
         /// Fanart of this item
-        /// - Note: Not needed, but required by protocol
+        /// - Note: Not needed, but required by protocol ``LibraryItem``
         let fanart: String = ""
-        /// Details for the artist
-        /// - Note: Not needed, but required by protocol
+        /// Details for this item
+        /// - Note: Not needed, but required by protocol ``LibraryItem``
         let details: String = ""
         /// Coding keys
         enum CodingKeys: String, CodingKey {

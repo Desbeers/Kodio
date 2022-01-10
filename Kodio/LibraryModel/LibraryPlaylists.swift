@@ -11,9 +11,9 @@ extension Library {
     
     // MARK: Playlists
     
-    /// A struct will all genre related items
+    /// A struct will all playlist related items
     struct Playlists {
-        /// A list containing all the playlist files
+        /// A array containing all the playlist items in a ``LibraryListItem`` struct
         var files: [LibraryListItem] = []
     }
     

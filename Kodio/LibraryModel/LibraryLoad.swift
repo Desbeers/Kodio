@@ -115,23 +115,23 @@ extension Library {
         case song = "Songs"
         /// An ``GenreItem``
         case genre = "Genres"
-        /// An ``LibrayListItem`` for  songs by album artists
+        /// An ``LibraryListItem`` for  songs by album artists
         case albumArtists = "Album artists"
-        /// A ``LibrayListItem`` for compilations
+        /// A ``LibraryListItem`` for compilations
         case compilations = "Compilations"
-        /// A ``LibrayListItem`` for  favorite songs
+        /// A ``LibraryListItem`` for  favorite songs
         case favorites = "Favorites"
-        /// A ``LibrayListItem`` for the playing queue
+        /// A ``LibraryListItem`` for the playing queue
         case queue = "Playing queue"
-        /// A ``LibrayListItem`` for the search results
+        /// A ``LibraryListItem`` for the search results
         case search = "Search library"
-        /// A ``LibrayListItem`` for most played songs
+        /// A ``LibraryListItem`` for most played songs
         case mostPlayed = "Most played"
-        /// A ``LibrayListItem`` for recently added songs
+        /// A ``LibraryListItem`` for recently added songs
         case recentlyAdded = "Recently added"
-        /// A ``LibrayListItem`` for recently played songs
+        /// A ``LibraryListItem`` for recently played songs
         case recentlyPlayed = "Recently played"
-        /// A ``LibrayListItem`` for playlists
+        /// A ``LibraryListItem`` for playlists
         case playlist = "Playlist"
     }
 }

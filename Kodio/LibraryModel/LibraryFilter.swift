@@ -13,19 +13,19 @@ extension Library {
     
     /// A struct with the filtered genres, artists, albums and songs
     struct FilteredContent: Equatable {
-        /// Genres
+        /// An array with filtered ``GenreItem``s
         var genres: [GenreItem] = []
-        /// Artists
+        /// An array with filtered ``ArtistItem``s
         var artists: [ArtistItem] = []
-        /// Albums
+        /// An array with filtered ``AlbumItem``s
         var albums: [AlbumItem] = []
-        /// Songs
+        /// An array with filtered ``SongItem``s
         var songs: [SongItem] = []
     }
     
     /// Filter the genres
-    /// - Parameter songList: The current filtered list of songs
-    /// - Returns: An array of genre items
+    /// - Parameter songList: An array of ``SongItem``s
+    /// - Returns: An array with filtered ``GenreItem``s
     func filterGenres(songList: [SongItem]) async -> [GenreItem] {
         logger("Filter genres")
         /// Filter genres based on song list
@@ -37,8 +37,8 @@ extension Library {
     }
     
     /// Filter the artists
-    /// - Parameter songList: The current filtered list of songs
-    /// - Returns: An array of artist items
+    /// - Parameter songList: An array of ``SongItem``s
+    /// - Returns: An array with filtered ``ArtistItem``s
     func filterArtists(songList: [SongItem]) async -> [ArtistItem] {
         logger("Filter artists")
         var allArtists = artists.all
@@ -65,8 +65,8 @@ extension Library {
     }
     
     /// Filter the albums
-    /// - Parameter songList: The current filtered list of songs
-    /// - Returns: An array of ``AlbumItem``s
+    /// - Parameter songList: An array of ``SongItem``s
+    /// - Returns: An array with filtered ``AlbumItem``s
     func filterAlbums(songList: [SongItem]) async -> [AlbumItem] {
         logger("Filter albums")
         var albumList = [AlbumItem]()
@@ -97,7 +97,7 @@ extension Library {
     }
 
     /// Filter songs based on library selection
-    /// - Returns: A struct of ``SongItem``s
+    /// - Returns: A array of ``SongItem``s
     func filterSelection() async -> [SongItem] {
         logger("Filter selected song list")
         /// Start with a fresh list
@@ -189,12 +189,10 @@ extension Library {
         /// Return the list of filtered songs
         return songList
     }
-    
-    /// Update the SwiftUI View
-    
+
     /// Update the SwiftUI View with the filtered content
     /// - Parameter content: The filtered content
-    /// - Note: Reason to do it like this is that the View only have to update once with all new items
+    /// - Note: The reason to do it like this is that the View only have to update once with all new items
     @MainActor func updateLibraryView(content: FilteredContent) {
         logger("Update library UI")
         filteredContent = FilteredContent(

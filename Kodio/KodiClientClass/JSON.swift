@@ -73,10 +73,6 @@ extension KodiClient {
 
     /// The sort methods for JSON requests
     enum SortMethod: String {
-        /// Order descending
-        case descending = "descending"
-        /// Order ascending
-        case ascending = "ascending"
         ///  Order by last played
         case lastPlayed = "lastplayed"
         ///  Order by play count
