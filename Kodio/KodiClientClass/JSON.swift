@@ -65,6 +65,8 @@ extension KodiClient {
     struct SortFields: Encodable {
         /// Sort by artist sort name
         let useartistsortname = true
+        /// Ignore articles like 'The' etc.
+        let ignorearticle = true
         /// The method
         var method: String = ""
         /// The order
