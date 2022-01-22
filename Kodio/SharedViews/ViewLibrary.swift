@@ -109,7 +109,8 @@ struct ViewLibraryBottom: View {
     var table: some View {
         ViewSongsTable(
             songs: library.filteredContent.songs,
-            listID: library.songs.listID
+            listID: library.songs.listID,
+            selectedAlbum: library.albums.selected
         )
     }
 #endif

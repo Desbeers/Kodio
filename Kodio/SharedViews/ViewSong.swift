@@ -37,10 +37,10 @@ struct ViewSong: View {
         .contentShape(Rectangle())
         .labelStyle(LabelStyleSongs())
         .contextMenu {
-            songActions(song: song)
+            ViewSongActions(song: song)
         }
         .swipeActions(edge: .leading) {
-            songActions(song: song)
+            ViewSongActions(song: song)
         }
     }
 }
@@ -82,16 +82,20 @@ extension ViewSong {
             }
         }
     }
-    
-    /// Swipe and *right click* actions.
-    /// - Parameter song: The `SongItem` struct
-    /// - Returns: A `View` with action buttons
-    @ViewBuilder func songActions(song: Library.SongItem) -> some View {
+}
+
+/// 'Swipe' or 'right-click' actions for a song
+/// - Note: Shared by ``ViewSong`` and ``ViewSongsTable``
+struct ViewSongActions: View {
+    /// The song
+    let song: Library.SongItem
+    /// The View
+    var body: some View {
         /// Button to play this song
         Button(
             action: {
                 Task.detached(priority: .userInitiated) {
-                    await player.playSong(song: song)
+                    await Player.shared.playSong(song: song)
                 }
             },
             label: {

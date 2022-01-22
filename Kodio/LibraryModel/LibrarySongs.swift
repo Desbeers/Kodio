@@ -112,7 +112,7 @@ extension Library {
                     await selectLibraryList(libraryList: libraryLists.selected, reset: false)
                     /// Update queue list
                     Task { @MainActor in
-                        Player.shared.queueSongs = Library.shared.getSongsFromQueue()
+                        Player.shared.queueSongs = getSongsFromQueue()
                     }
                     /// Save in the cache
                     do {

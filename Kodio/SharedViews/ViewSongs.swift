@@ -18,7 +18,7 @@ struct ViewSongs: View {
     /// The view
     var body: some View {
         VStack {
-            header
+            ViewSongsPlayButtons(songs: songs, selectedAlbum: selectedAlbum)
             list
         }
         .id(listID)
@@ -27,9 +27,50 @@ struct ViewSongs: View {
 }
 
 extension ViewSongs {
+
+    /// The list of songs
+    var list: some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(songs) { song in
+                    ViewSong(song: song, selectedAlbum: selectedAlbum)
+                        .padding(.horizontal)
+                        .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))
+                }
+            }
+            .padding(.top)
+        }
+    }
     
-    /// The header above the list of songs
-    @ViewBuilder var header: some View {
+    /// Display disc number only once and only when an album is selected that has more than one disc
+    struct ViewModifierSongs: ViewModifier {
+        /// The song item
+        let song: Library.SongItem
+        /// The optional selected album
+        let selectedAlbum: Library.AlbumItem?
+        /// The view
+        func body(content: Content) -> some View {
+            if let album = selectedAlbum, album.totalDiscs > 1, song.disc != 0, song.track == 1 {
+                Image(systemName: "\(song.disc).square")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                content
+            } else {
+                content
+            }
+        }
+    }
+}
+
+/// View play/shuffle buttons for current selection of songs
+/// - Note: View is shared between ``ViewSongs`` and ``ViewSongsTable``
+struct ViewSongsPlayButtons: View {
+    /// Current list of songs
+    let songs: [Library.SongItem]
+    /// The optional selected album
+    let selectedAlbum: Library.AlbumItem?
+    /// The View
+    var body: some View {
         let count = songs.count
         /// - Note: Don't add more than 500 songs to the queue; that makes no sense
         if count <= 500 {
@@ -66,40 +107,7 @@ extension ViewSongs {
             .buttonStyle(.bordered)
             }
         } else {
-            Spacer()
-        }
-        
-    }
-
-    /// The list of songs
-    var list: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(songs) { song in
-                    ViewSong(song: song, selectedAlbum: selectedAlbum)
-                        .padding(.horizontal)
-                        .modifier(ViewModifierSongs(song: song, selectedAlbum: selectedAlbum))
-                }
-            }
-        }
-    }
-    
-    /// Display disc number only once and only when an album is selected that has more than one disc
-    struct ViewModifierSongs: ViewModifier {
-        /// The song item
-        let song: Library.SongItem
-        /// The optional selected album
-        let selectedAlbum: Library.AlbumItem?
-        /// The view
-        func body(content: Content) -> some View {
-            if let album = selectedAlbum, album.totalDiscs > 1, song.disc != 0, song.track == 1 {
-                Image(systemName: "\(song.disc).square")
-                    .font(.title)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                content
-            } else {
-                content
-            }
+            EmptyView()
         }
     }
 }

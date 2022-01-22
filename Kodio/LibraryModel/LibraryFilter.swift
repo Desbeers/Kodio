@@ -156,7 +156,7 @@ extension Library {
                     $0.rating > $1.rating
                 }
         case .queue:
-            songList = Player.shared.queueSongs
+            songList = getSongsFromQueue()
         default:
             songList = songs.all
                 .filter {
