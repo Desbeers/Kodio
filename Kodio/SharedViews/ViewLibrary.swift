@@ -74,46 +74,50 @@ struct ViewLibraryBottom: View {
     @AppStorage("viewSongsTable") var viewSongsTable = false
     /// The view
     var body: some View {
-        if viewSongsTable {
-            Group {
-                if library.filteredContent.songs.isEmpty {
-                    ViewEmptyLibrary(item: library.selection)
+        Group {
+            if library.filteredContent.songs.isEmpty {
+                ViewEmptyLibrary(item: library.selection)
+            } else {
+                if viewSongsTable {
+                    table
                 } else {
-#if os(macOS)
-                    ViewSongsTable(
-                        songs: library.filteredContent.songs,
-                        listID: library.songs.listID
-                    )
-#endif
-#if os(iOS)
-                    /// iOS has no table view; below should never happen
-                    EmptyView()
-#endif
+                    list
                 }
             }
-            .animation(.default, value: library.selection.empty)
-        } else {
-            GeometryReader { geometry in
-                HStack(spacing: 0) {
-                    if !viewSongsTable {
-                        ViewDetails(
-                            item: library.selection,
-                            width: geometry.size == .zero ? 400 : geometry.size.width * 0.40
-                        )
-                        Divider()
-                    }
-                    if library.filteredContent.songs.isEmpty {
-                        ViewEmptyLibrary(item: library.selection)
-                    } else {
-                        ViewSongs(
-                            songs: library.filteredContent.songs,
-                            listID: library.songs.listID,
-                            selectedAlbum: library.albums.selected
-                        )
-                    }
-                }
+        }
+        .animation(.default, value: library.selection.empty)
+    }
+    /// The songs in a list with details on the left
+    var list: some View {
+        GeometryReader { geometry in
+            HStack(spacing: 0) {
+                ViewDetails(
+                    item: library.selection,
+                    width: geometry.size == .zero ? 400 : geometry.size.width * 0.40
+                )
+                Divider()
+                ViewSongs(
+                    songs: library.filteredContent.songs,
+                    listID: library.songs.listID,
+                    selectedAlbum: library.albums.selected
+                )
             }
-            .animation(.default, value: library.selection.empty)
         }
     }
+#if os(macOS)
+    /// The songs in a table (macOS only)
+    var table: some View {
+        ViewSongsTable(
+            songs: library.filteredContent.songs,
+            listID: library.songs.listID
+        )
+    }
+#endif
+
+#if os(iOS)
+    /// iOS has no table view so return an empty view
+    var table: some View {
+        EmptyView()
+    }
+#endif
 }

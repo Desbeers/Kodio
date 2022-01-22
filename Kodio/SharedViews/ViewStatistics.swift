@@ -12,29 +12,25 @@ struct ViewStatistics: View {
     /// The current ``LibraryItem``
     let item: LibraryItem
     /// The Library model
-     @EnvironmentObject var library: Library
+    @EnvironmentObject var library: Library
     /// The view
     var body: some View {
-        if !library.filteredContent.songs.isEmpty {
-            VStack {
-                switch item.media {
-                case .none:
-                    EmptyView()
-                case .artist:
-                    songsCount
-                    albumsCount
-                case .album:
-                    songsCount
-                default:
-                    songsCount
-                    albumsCount
-                    artistsCount
-                }
+        VStack {
+            switch item.media {
+            case .none:
+                EmptyView()
+            case .artist:
+                songsCount
+                albumsCount
+            case .album:
+                songsCount
+            default:
+                songsCount
+                albumsCount
+                artistsCount
             }
-            .labelStyle(LabelStyleStatistics())
-        } else {
-            EmptyView()
         }
+        .labelStyle(LabelStyleStatistics())
     }
     /// Songs in the current library view
     var songsCount: some View {
