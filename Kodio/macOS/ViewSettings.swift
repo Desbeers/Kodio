@@ -20,6 +20,10 @@ struct ViewSettings: View {
             .tabItem {
                 Label("Radio Stations", systemImage: "antenna.radiowaves.left.and.right")
             }
+            ViewSyncRatings()
+            .tabItem {
+                Label("Sync Ratings", systemImage: "arrow.triangle.2.circlepath")
+            }
             ViewImportExport()
             .tabItem {
                 Label("Import & Export", systemImage: "square.and.arrow.down")

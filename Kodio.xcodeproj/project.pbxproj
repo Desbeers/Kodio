@@ -117,8 +117,12 @@
 		D76CF9B526B2F07900351667 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CF9B326B2F07900351667 /* AppState.swift */; };
 		D76CF9B726B2F20E00351667 /* ViewQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CF9B626B2F20E00351667 /* ViewQueue.swift */; };
 		D76CF9B826B2F20E00351667 /* ViewQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CF9B626B2F20E00351667 /* ViewQueue.swift */; };
+		D76FE808279D76FD003C5910 /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D76FE807279D76FD003C5910 /* AppleScriptObjC.framework */; };
 		D779FDC126F4667F0023883A /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779FDC026F4667F0023883A /* WebSocket.swift */; };
 		D779FDC226F4667F0023883A /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779FDC026F4667F0023883A /* WebSocket.swift */; };
+		D7952E2D279C1FF700F992FD /* ViewSyncRatings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7952E2C279C1FB900F992FD /* ViewSyncRatings.swift */; };
+		D7952E31279C336300F992FD /* MusicBridge.applescript in Sources */ = {isa = PBXBuildFile; fileRef = D7952E2F279C336300F992FD /* MusicBridge.applescript */; };
+		D7952E32279C336300F992FD /* MusicBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7952E30279C336300F992FD /* MusicBridge.swift */; };
 		D7A1E7BF26AAB4D2009643DD /* ViewGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A1E7BE26AAB4D2009643DD /* ViewGenres.swift */; };
 		D7A1E7C026AAB4D2009643DD /* ViewGenres.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A1E7BE26AAB4D2009643DD /* ViewGenres.swift */; };
 		D7A9043A26F86E600012C7B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9043926F86E600012C7B2 /* AppDelegate.swift */; };
@@ -235,7 +239,11 @@
 		D76B190C271326E200CEB741 /* ViewHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHelp.swift; sourceTree = "<group>"; };
 		D76CF9B326B2F07900351667 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D76CF9B626B2F20E00351667 /* ViewQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewQueue.swift; sourceTree = "<group>"; };
+		D76FE807279D76FD003C5910 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		D779FDC026F4667F0023883A /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		D7952E2C279C1FB900F992FD /* ViewSyncRatings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSyncRatings.swift; sourceTree = "<group>"; };
+		D7952E2F279C336300F992FD /* MusicBridge.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = MusicBridge.applescript; sourceTree = "<group>"; };
+		D7952E30279C336300F992FD /* MusicBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicBridge.swift; sourceTree = "<group>"; };
 		D7A1E7BE26AAB4D2009643DD /* ViewGenres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGenres.swift; sourceTree = "<group>"; };
 		D7A9043926F86E600012C7B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7A9043B26F9C50C0012C7B2 /* KodiHostLibraryScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodiHostLibraryScan.swift; sourceTree = "<group>"; };
@@ -291,6 +299,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D76FE808279D76FD003C5910 /* AppleScriptObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +373,23 @@
 			path = Kodio;
 			sourceTree = "<group>";
 		};
+		D76FE806279D76FD003C5910 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D76FE807279D76FD003C5910 /* AppleScriptObjC.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D7952E2E279C331400F992FD /* MusicBridge */ = {
+			isa = PBXGroup;
+			children = (
+				D7952E2F279C336300F992FD /* MusicBridge.applescript */,
+				D7952E30279C336300F992FD /* MusicBridge.swift */,
+			);
+			path = MusicBridge;
+			sourceTree = "<group>";
+		};
 		D7BBB8FE26B199FA0097D286 /* SearchModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +428,7 @@
 				D7DE9A0926B026200002BC48 /* .swiftlint.yml */,
 				D7D95084272D57E600CC7155 /* .periphery.yml */,
 				D7EA913826A93C1D0090C137 /* Products */,
+				D76FE806279D76FD003C5910 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -459,11 +486,13 @@
 		D7EA914026A93C1D0090C137 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				D7952E2E279C331400F992FD /* MusicBridge */,
 				D73DD7EF26D3E7020024CB51 /* KodioApp.swift */,
 				D7A9043926F86E600012C7B2 /* AppDelegate.swift */,
 				D7EA913126A93C1C0090C137 /* ViewContent.swift */,
 				D75F765E26CAA72000165656 /* ViewSettings.swift */,
 				D70B105D2785ED7D00ABABCE /* ViewSongsTable.swift */,
+				D7952E2C279C1FB900F992FD /* ViewSyncRatings.swift */,
 				D7DE9A0B26B04B720002BC48 /* SplitView.swift */,
 				D7EA914126A93C1D0090C137 /* Info.plist */,
 				D7EA914226A93C1D0090C137 /* macOS.entitlements */,
@@ -812,6 +841,8 @@
 				D70B105E2785ED7D00ABABCE /* ViewSongsTable.swift in Sources */,
 				D7E1EA592736DD750087EA69 /* AppStateAlerts.swift in Sources */,
 				D7DE9A0726AF6AE20002BC48 /* LibraryPlaylists.swift in Sources */,
+				D7952E32279C336300F992FD /* MusicBridge.swift in Sources */,
+				D7952E31279C336300F992FD /* MusicBridge.applescript in Sources */,
 				D76CF9B826B2F20E00351667 /* ViewQueue.swift in Sources */,
 				D76B190E271326E200CEB741 /* ViewHelp.swift in Sources */,
 				D706F67826B0F8930068F35C /* Player.swift in Sources */,
@@ -830,6 +861,7 @@
 				D73163F526AC4D2700CD5F7E /* Search.swift in Sources */,
 				D7A1E7C026AAB4D2009643DD /* ViewGenres.swift in Sources */,
 				D74D6FBC271AFC7500F5D28D /* ViewAppState.swift in Sources */,
+				D7952E2D279C1FF700F992FD /* ViewSyncRatings.swift in Sources */,
 				D73163EB26AC202800CD5F7E /* LibraryGernes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

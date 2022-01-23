@@ -65,6 +65,7 @@ import SwiftUI
             /// - Note: The settings view does not 'get' the environment automatic
             ViewSettings()
                 .environmentObject(appState)
+                .environmentObject(library)
         }
     }
 }

@@ -31,7 +31,7 @@ extension Library {
     
     /// Save the song details into the database
     /// - Parameter song: The ``SongItem``
-    private func setSongDetails(song: SongItem) async {
+    func setSongDetails(song: SongItem) async {
         let message = AudioLibrarySetSongDetails(song: song)
         kodiClient.sendMessage(message: message)
     }
