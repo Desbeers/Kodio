@@ -54,17 +54,23 @@ struct ViewEditHosts: View {
             }
             .animation(.default, value: appState.hosts)
             .navigationTitle("Kodi Hosts")
-            Text("Add or edit your Kodi hosts")
+            /// The default View when no item is selected; should not be seen on iOS
+            VStack {
+                Text("Add or edit your Kodi hosts")
+                    .font(.title)
+                Spacer()
+                Image(systemName: "list.bullet")
+                    .resizable()
+                    .foregroundColor(.secondary.opacity(0.5))
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200, height: 200, alignment: .center)
+                Spacer()
+            }
+            .padding()
         }
         /// Some extra love for macOS
         .macOS {$0
         .listStyle(.sidebar)
-        .task {
-            /// Select active host if we have one
-            if !appState.hosts.isEmpty {
-                selectedHost = appState.selectedHost
-            }
-        }
         }
     }
 }

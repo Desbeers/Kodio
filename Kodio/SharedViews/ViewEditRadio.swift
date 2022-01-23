@@ -82,10 +82,10 @@ struct ViewEditRadio: View {
 #endif
             /// The default View when no item is selected; should not be seen on iOS
             VStack {
-            Text("Add or edit your Radio Stations")
+                Text("Add or edit your Radio Stations")
                     .font(.title)
                 Spacer()
-            Image(systemName: "antenna.radiowaves.left.and.right")
+                Image(systemName: "antenna.radiowaves.left.and.right")
                     .resizable()
                     .foregroundColor(.secondary.opacity(0.5))
                     .aspectRatio(contentMode: .fit)
