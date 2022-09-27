@@ -1,91 +1,85 @@
-///
-/// Hosts.swift
-/// Kodio
-///
-/// © 2022 Nick Berendsen
-///
+//
+//  Hosts.swift
+//  Kodio
+//
+//  Created by Nick Berendsen on 09/08/2022.
+//
 
-import Foundation
+import SwiftUI
+import SwiftlyKodiAPI
 
-/// Host related functions
-struct Hosts {
-    
-    /// Get a list of hosts
-    /// - Returns: An array of host items
-    static func get() -> [HostItem] {
-        logger("Get the list of hosts")
-        if let hosts = Cache.get(key: "MyHosts", as: [HostItem].self, root: true) {
-            return hosts
-        } else {
-            return [HostItem]()
+/// The struct for a Kodi host
+struct Host: Codable, Identifiable, Hashable {
+    /// Give it an ID
+    var id: String { details.ip }
+    /// Host details
+    var details = HostItem()
+    /// Icon of the host
+    var icon: String = "building.columns"
+    /// The status of the host
+    var status: Status = .new
+    /// The color for the icon
+    var color: Color {
+        switch status {
+        case .new:
+            return .accentColor
+        default:
+            return details.isOnline ? .green : .red
         }
     }
+    /// The status of the host
+    enum Status: String, Codable {
+        case new
+        case configured
+        case selected
+    }
+}
+
+extension Host {
+
+    /// Get the active host
+    /// - Parameter hosts: The list of hosts
+    /// - Returns: An optional ``Host``
+    static func getSelected(hosts: [Host]) -> Host? {
+        if let selected = hosts.first(where: {$0.status == .selected}) {
+            return selected
+        }
+        return nil
+    }
     
-    /// Save the host items to disk
-    /// - Parameter hosts: The array of host items
-    static func save(hosts: [HostItem]) {
+    /// Get all configured hosts
+    /// - Returns: An array of ``Host``
+    static func getAll() -> [Host] {
+        logger("Get the list of hosts")
+        if let hosts = Cache.get(key: "MyHosts", as: [Host].self, root: true) {
+            return hosts
+        }
+        /// No hosts found
+        return [Host]()
+    }
+    
+    /// Save the hosts to the cache
+    /// - Parameter hosts: The array of hosts
+    static func save(hosts: [Host]) {
         do {
             try Cache.set(key: "MyHosts", object: hosts, root: true)
         } catch {
             logger("Error saving MyHosts")
         }
     }
-    
-    /// Get the active host from the list of available hosts
-    /// - Returns: A stuct with the active host
-    static func active(hosts: [HostItem]) -> HostItem {
-        logger("Get the active hosts")
-        guard let host = hosts.first(where: { $0.selected == true }) else {
-            Task {
-                await AppState.shared.setState(current: .noHostConfig)
-            }
-            /// Return default host
-            return HostItem()
-        }
-        return host
-    }
-    
-    /// Switch to a new host
-    static func switchHost(selected: HostItem) {
-        Task {
-            await AppState.shared.setState(current: .none)
-            selectHost(selected: selected)
-        }
-    }
-    
-    /// Select a host from the list of available hosts and save the selection
-    /// - Parameter selected: A struct of the selected host
-    static func selectHost(selected: HostItem) {
-        var newHostsList = [HostItem]()
-        AppState.shared.hosts.enumerated().forEach { index, element in
-            var host = AppState.shared.hosts[index]
-            host.selected = (element == selected ? true : false)
+
+    /// Mark a host as active in the hosts list
+    /// - Parameters:
+    ///   - selected: The ``Host`` to make as active
+    ///   - hosts: The array of hosts
+    /// - Returns: A new array of hosts
+    static func selectHost(selected: Host, hosts: [Host]) -> [Host] {
+        var newHostsList = [Host]()
+        hosts.enumerated().forEach { index, element in
+            var host = hosts[index]
+            host.status = (element == selected ? Host.Status.selected : Host.Status.configured)
             newHostsList.append(host)
         }
-        self.save(hosts: newHostsList)
-        AppState.shared.hosts = newHostsList
-        AppState.shared.selectedHost = selected
+        return newHostsList
     }
-}
-
-/// The struct of a host item
-struct HostItem: Codable, Identifiable, Hashable {
-    /// Give it an ID
-    var id = UUID()
-    /// Description of the host
-    var description: String = ""
-    /// Icon of the host
-    var icon: String = "building.columns"
-    /// IP of the host
-    var ip: String = ""
-    /// Port of the host
-    var port: String = "8080"
-    /// TCP of the host
-    var tcp: String = "9090"
-    /// Username of the host
-    var username: String = "kodi"
-    /// Password of the host
-    var password: String = "kodi"
-    /// Is this host selected?
-    var selected: Bool = false
 }

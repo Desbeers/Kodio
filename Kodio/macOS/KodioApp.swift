@@ -1,71 +1,121 @@
 //
 //  KodioApp.swift
-//  Kodio (macOS)
+//  Kodio
 //
-//  © 2022 Nick Berendsen
+//  Created by Nick Berendsen on 14/07/2022.
 //
 
 import SwiftUI
+import SwiftlyKodiAPI
 
-/// The startpoint of the macOS application
+/// The Scenes for Kodio
 @main struct KodioApp: App {
     /// The AppState model
     @StateObject var appState: AppState = .shared
-    /// The Library model
-     @StateObject var library: Library = .shared
-    /// The Player model
-    @StateObject var player: Player = .shared
-    /// App delegate
-    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    /// The scene
+    /// The KodiConnector model
+    @StateObject var kodi: KodiConnector = .shared
+    /// The KodiPlayer model
+    @StateObject var player: KodiPlayer = .shared
+    /// Open new windows
+    @Environment(\.openWindow) var openWindow
+    /// The View
     var body: some Scene {
         WindowGroup {
-            ViewContent()
+            MainView()
                 .environmentObject(appState)
-                .environmentObject(library)
+                .environmentObject(kodi)
                 .environmentObject(player)
+                .task(id: appState.host) {
+                    if let host = appState.host {
+                        if kodi.state == .none {
+                            kodi.connect(host: host.details)
+                        }
+                    }
+                }
         }
-        /// Hide the title so we can use the whole toolbar for buttons
-        /// - Note: the buttons will become smaller
-        .windowStyle(.hiddenTitleBar)
-        /// Below will make the button size normal again; however, will also give
-        /// the option to show only 'text' buttons and that makes no sense for Kodio
-        /// .windowToolbarStyle(.unified)
+        .windowToolbarStyle(.unifiedCompact(showsTitle: false))
+        .windowResizability(.contentSize)
+        .defaultSize(width: 1200, height: 800)
         .commands {
-            CommandGroup(replacing: .help) {
-                Button("Kodio Help") {
-                    Task {
-                        appState.viewSheet(type: .help)
-                    }
-                }
-            }
-            CommandGroup(replacing: .appInfo) {
-                Button("About Kodio") {
-                    Task {
-                        appState.viewSheet(type: .about)
-                    }
-                }
-            }
-            CommandGroup(replacing: .newItem) {
-                ViewHostSelector().environmentObject(appState)
-            }
-            CommandMenu("Host") {
-                if appState.state == .loadedLibrary {
-                    Button("Scan library on '\(appState.selectedHost.description)'") {
-                        KodiHost.shared.scanAudioLibrary()
-                    }
-                }
-            }
             /// Show or hide the sidebar
             SidebarCommands()
             /// Toolbar commands
             ToolbarCommands()
+            /// Rplace `Help`
+            CommandGroup(replacing: .help) {
+                Button("Help") {
+                    openWindow(value: Window.help)
+                }
+            }
+            /// Replace ``About``
+            CommandGroup(replacing: .appInfo) {
+                Button("About Kodio") {
+                    openWindow(value: Window.about)
+                }
+            }
+            /// Add a `Host` menu
+            CommandMenu("Host") {
+                PartsView.HostSelector()
+                    .environmentObject(appState)
+                    .environmentObject(kodi)
+            }
         }
+        /// The Kodio Settings
         Settings {
-            /// - Note: The settings view does not 'get' the environment automatic
-            ViewSettings()
+            SettingsView()
+                .frame(width: 700, height: 500)
                 .environmentObject(appState)
-                .environmentObject(library)
+                .environmentObject(kodi)
         }
+        /// Add Kodio to the Menu Bar
+        MenuBarExtra("Kodio", systemImage: "k.square.fill") {
+            MenuBarExtraView()
+                .environmentObject(kodi)
+        }
+        .menuBarExtraStyle(.window)
+        /// Open new Windows
+        WindowGroup("Window", for: Window.self) { $item in
+            ZStack {
+                switch item {
+                case .about:
+                    AboutView()
+                case .help:
+                    HelpView()
+                case .none:
+                    EmptyView()
+                }
+            }
+            .background(Color("Window"))
+            .withHostingWindow { window in
+                if let window = window?.windowController?.window {
+                    window.setPosition(vertical: .center, horizontal: .center, padding: 0)
+                }
+            }
+        }
+        .windowResizability(.contentSize)
+        .windowToolbarStyle(.unifiedCompact(showsTitle: false))
+        .windowStyle(.hiddenTitleBar)
+        /// Open a Video Window
+        WindowGroup("Player", for: Video.Details.MusicVideo.self) { $item in
+            /// Check if `item` isn't `nil`
+            if let item = item {
+                KodiPlayerView(video: item)
+                    .withHostingWindow { window in
+                        if let window = window?.windowController?.window {
+                            window.setPosition(vertical: .center, horizontal: .center, padding: 0)
+                        }
+                    }
+            }
+        }
+        .windowStyle(.hiddenTitleBar)
+    }
+}
+
+extension KodioApp {
+    
+    /// The kind of Windows Kodio can open
+    enum Window: String, Codable {
+        case about = "About Kodio"
+        case help = "Help"
     }
 }
