@@ -117,7 +117,7 @@ extension SongsView {
         }
         /// The icon for the song item
         @ViewBuilder var icon: some View {
-            if song.songID == player.currentItem?.id && player.currentItem?.media == .song {
+            if song.id == player.currentItem?.id && player.currentItem?.media == .song {
                 if player.properties.speed == 0 {
                     Image(systemName: "pause.fill")
                 } else {
