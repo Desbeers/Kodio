@@ -259,12 +259,10 @@ extension SettingsView {
         }
         
         func formatLabel(value: Int) -> String {
+            // swiftlint:disable:next colon
             let labelRegex = /{0:d}(?<label>.+?)/
-            
             if let result = setting.control.formatLabel.wholeMatch(of: labelRegex) {
-                
                 return "\(value)\(result.label)"
-                
             } else {
                 return "\(value)"
             }

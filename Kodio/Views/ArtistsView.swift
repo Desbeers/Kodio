@@ -43,5 +43,6 @@ struct ArtistsView: View {
                 }
             }
         }
+        .id(browser.items.artists)
     }
 }

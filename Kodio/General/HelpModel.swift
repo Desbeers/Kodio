@@ -67,9 +67,8 @@ extension HelpModel {
     /// - Parameter text: The text containing the link
     /// - Returns: A SwiftUI View
     @ViewBuilder func doccLink(text: String) -> some View {
-        // swiftlint:disable operator_usage_whitespace
+        // swiftlint:disable:next colon operator_usage_whitespace
         let doccRegex = /(?<leading>.+?)?<doc:(?<docc>.+?)>(?<trailing>.+?)?/
-        // swiftlint:enable operator_usage_whitespace
         if let result = text.wholeMatch(of: doccRegex) {
             HStack {
                 if let leading = result.output.leading {

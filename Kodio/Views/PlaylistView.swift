@@ -25,23 +25,22 @@ struct PlaylistView: View {
             VStack {
                 Text(playlist.title)
                     .font(.title)
-                if state == .ready {
-                    HStack {
-                        Button(action: {
-                            KodioSettings.setPlayerSettings(setting: .track)
-                            songs.play()
-                        }, label: {
-                            Label("Play playlist", systemImage: "play.fill")
-                        })
-                        Button(action: {
-                            KodioSettings.setPlayerSettings(setting: .track)
-                            songs.play(shuffle: true)
-                        }, label: {
-                            Label("Shuffle playlist", systemImage: "shuffle")
-                        })
-                    }
-                    .buttonStyle(ButtonStyles.Play())
+                HStack {
+                    Button(action: {
+                        KodioSettings.setPlayerSettings(setting: .track)
+                        songs.play()
+                    }, label: {
+                        Label("Play playlist", systemImage: "play.fill")
+                    })
+                    Button(action: {
+                        KodioSettings.setPlayerSettings(setting: .track)
+                        songs.play(shuffle: true)
+                    }, label: {
+                        Label("Shuffle playlist", systemImage: "shuffle")
+                    })
                 }
+                .buttonStyle(ButtonStyles.Play())
+                .disabled(state != .ready)
             }
             .modifier(PartsView.ListHeader())
             
@@ -56,7 +55,11 @@ struct PlaylistView: View {
                         SongsView.Song(song: song, album: nil)
                     }
                 }
+#if os(macOS)
+                .listStyle(.inset(alternatesRowBackgrounds: true))
+#else
                 .listStyle(.plain)
+#endif
             }
         }
         .animation(.default, value: state)
@@ -70,12 +73,7 @@ struct PlaylistView: View {
                 }
             }
             songs = songList
-            if songs.isEmpty {
-                state = .empty
-            } else {
-                state = .ready
-            }
-            
+            state = songList.isEmpty ? .empty : .ready
         }
         .animation(.default, value: songs)
     }

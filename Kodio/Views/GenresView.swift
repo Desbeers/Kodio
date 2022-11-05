@@ -34,5 +34,6 @@ struct GenresView: View {
                 }
             }
         }
+        .id(browser.items.genres)
     }
 }

@@ -40,8 +40,12 @@ struct SongsView: View {
                     Song(song: song, album: browser.selection.album)
                 }
             }
+#if os(macOS)
+            .listStyle(.inset(alternatesRowBackgrounds: true))
+#else
             .listStyle(.plain)
-            .id(UUID())
+#endif
+            .id(browser.items.songs)
         }
         .id(browser.selection)
     }
@@ -80,7 +84,6 @@ extension SongsView {
                         .opacity(0.6)
                 }
             }
-            .listRowSeparator(.visible)
             .swipeActions(edge: .leading) {
                 Button(action: {
                     /// Check if this song is in the current playlist
@@ -91,7 +94,7 @@ extension SongsView {
                     song.play()
                 }, label: {
                     Label("Play", systemImage: "play")
-                    
+
                 })
                 .tint(.green)
                 Button(action: {
@@ -108,7 +111,7 @@ extension SongsView {
                     }
                 }, label: {
                     Label(song.playcount == 0 ? "Mark played" : "Mark new", systemImage: song.playcount == 0 ? "speaker" : "speaker.slash")
-                    
+
                 })
             }
             #if os(macOS)

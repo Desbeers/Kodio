@@ -44,5 +44,6 @@ struct AlbumsView: View {
                 }
             }
         }
+        .id(browser.items.albums)
     }
 }
