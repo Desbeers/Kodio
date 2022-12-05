@@ -84,7 +84,7 @@ extension HostsView {
                 } else {
                     ForEach(newBonjourHosts, id: \.name) {item in
                         /// Make a new Host
-                        hostItem(host: Host(details: HostItem(description: item.name, ip: item.ip, media: .audio), icon: "bonjour", status: .new))
+                        hostItem(host: Host(details: HostItem(ip: item.ip, media: .audio), icon: "bonjour", status: .new))
                     }
                 }
             }
@@ -147,14 +147,6 @@ extension  HostsView {
     var viewForm: some View {
         Form {
             Grid(alignment: .center, verticalSpacing: 0) {
-                GridRow {
-                    label(text: "Name")
-                    TextField("Name", text: $values.details.description, prompt: Text("Name"))
-                        .frame(width: 220)
-                        .gridCellColumns(3)
-                        .gridCellAnchor(.leading)
-                }
-                validateNameLabel
                 GridRow {
                     label(text: "IP")
                     TextField("IP", text: $values.details.ip, prompt: Text("127.0.0.1"))

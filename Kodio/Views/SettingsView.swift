@@ -35,7 +35,7 @@ struct SettingsView: View {
         }
         .animation(.default, value: selection)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        /// Stire the settings when they are changed
+        /// Store the settings when they are changed
         .onChange(of: appState.settings) { settings in
             appState.updateSettings(settings: settings)
         }
@@ -91,7 +91,7 @@ extension SettingsView {
                     Text("Change settings on you selected Kodi")
                         .font(.caption)
                     VStack(alignment: .leading) {
-                        ForEach(kodi.settings.filter({$0.parent == .unknown})) { setting in
+                        ForEach(kodi.settings.filter({$0.parent == .unknown && $0.control.controlType != .edit})) { setting in
                             KodiSetting(setting: setting)
                                 .padding(.bottom)
                         }
@@ -188,7 +188,7 @@ extension SettingsView {
         /// The View
         var body: some View {
             VStack(alignment: .leading) {
-                switch setting.control.widget {
+                switch setting.control.controlType {
                 case .list:
                     Text(setting.label)
                         .font(setting.parent == .unknown ? .title2 : .headline)
@@ -222,8 +222,8 @@ extension SettingsView {
                     Toggle(setting.label, isOn: $setting.valueBool)
                         .disabled(KodioSettings.disabled(setting: setting.id))
                 default:
-                    Text("Setting \(setting.control.widget.rawValue) is not implemented")
-                        .font(.caption)
+                        Text("Setting \(setting.control.controlType.rawValue) is not implemented")
+                            .font(.caption)
                 }
                 
                 Text(setting.help)
