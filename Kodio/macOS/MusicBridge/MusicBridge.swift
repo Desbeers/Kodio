@@ -17,12 +17,13 @@ final class MusicBridge {
         Bundle.main.loadAppleScriptObjectiveCScripts()
         //// create an instance of MusicBridge script object
         let musicBridgeClass: AnyClass = NSClassFromString("MusicBridge")!
+        // swiftlint:disable:next force_cast
         self.bridge = musicBridgeClass.alloc() as! MusicBridgeProtocol
     }
 }
 
 extension MusicBridge {
-    
+
     /// Get the AppleScript ID for a song
     /// - Parameters:
     ///   - title: The title of the song
@@ -43,15 +44,15 @@ extension MusicBridge {
     func setMusicSongRating(songID: Int, rating: Int) {
         bridge.setTrackRating(["\(songID)", "\(rating)"])
     }
-    
+
     func setMusicSongPlaycount(songID: Int, playcount: Int) {
         bridge.setTrackPlaycount(["\(songID)", "\(playcount)"])
     }
-    
+
     func setMusicSongPlayDate(songID: Int, playDate: String) {
         bridge.setTrackPlayDate(["\(songID)", playDate])
     }
-    
+
     /// Send a notification with AppleScript
     /// - Parameters:
     ///   - title: The title of the notification
@@ -67,10 +68,10 @@ extension MusicBridge {
     func setTrackRating(_ theTrack: [String])
     /// Set the playcount of a track
     func setTrackPlaycount(_ theTrack: [String])
-    
+
     /// Set the play date of a track
     func setTrackPlayDate(_ theTrack: [String])
-    
+
     /// Get the AppleScript ID of a track
     func getTrackID(_ theTrack: [String]) -> NSString
     /// Send a notification

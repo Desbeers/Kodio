@@ -14,7 +14,7 @@ struct SettingsView: View {
     @EnvironmentObject var appState: AppState
     /// The selected tab
     @State var selection: Tabs = .kodiHosts
-    /// The View    
+    /// The View
     var body: some View {
         TabView(selection: $selection) {
             HostsView()
@@ -40,7 +40,7 @@ struct SettingsView: View {
             appState.updateSettings(settings: settings)
         }
     }
-    
+
     /// The tabs of the ``SettingsView``
     enum Tabs {
         case kodiHosts
@@ -50,7 +50,7 @@ struct SettingsView: View {
 }
 
 extension SettingsView {
-    
+
     /// The Playback settings
     struct Playback: View {
         /// The AppState model
@@ -131,7 +131,7 @@ extension SettingsView {
 }
 
 extension SettingsView {
-    
+
     /// The ``SidebarView`` settings
     struct Sidebar: View {
         /// The AppState model
@@ -176,7 +176,7 @@ extension SettingsView {
 }
 
 extension SettingsView {
-    
+
     /// The View for a Kodi Setting
     struct KodiSetting: View {
         /// The AppState model
@@ -204,13 +204,13 @@ extension SettingsView {
                     Text(setting.label)
                         .font(setting.parent == .unknown ? .title2 : .headline)
                     Picker(setting.label, selection: $setting.valueInt) {
-                        
+
                         ForEach((setting.minimum...setting.maximum), id: \.self) { value in
-                            
+
                             Text(value == 0 ? setting.control.minimumLabel : formatLabel(value: value))
                                 .tag(value)
                         }
-                        
+
                         ForEach(setting.settingInt ?? [Setting.Details.SettingInt](), id: \.self) { option in
                             Text(option.label)
                                 .tag(option.value)
@@ -225,7 +225,7 @@ extension SettingsView {
                         Text("Setting \(setting.control.controlType.rawValue) is not implemented")
                             .font(.caption)
                 }
-                
+
                 Text(setting.help)
                     .font(.caption)
                     .fixedSize(horizontal: false, vertical: true)
@@ -257,7 +257,7 @@ extension SettingsView {
                 }
             }
         }
-        
+
         func formatLabel(value: Int) -> String {
             // swiftlint:disable:next colon
             let labelRegex = /{0:d}(?<label>.+?)/
@@ -266,7 +266,7 @@ extension SettingsView {
             } else {
                 return "\(value)"
             }
-            
+
         }
     }
 }

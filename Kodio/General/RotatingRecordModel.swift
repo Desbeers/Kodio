@@ -28,7 +28,7 @@ class RotatingRecordModel: ObservableObject {
         Animation.linear(duration: 3.6)
             .repeatForever(autoreverses: false)
     }
-    
+
     /// Start the rotating animation
     @MainActor func startRotating() async {
         do {
@@ -39,7 +39,7 @@ class RotatingRecordModel: ObservableObject {
             rotate = true
         } catch { }
     }
-    
+
     /// Stop the rotating animation
     /// - Note: the animation will only stop when the rotating is completed
     func stopRotating() {
@@ -48,7 +48,7 @@ class RotatingRecordModel: ObservableObject {
 }
 
 extension RotatingRecordModel {
-    
+
     /// The rotate animation
     /// - Note: A 'GeometryEffect' instead of a simple animation so we can observe it
     struct Rotate: GeometryEffect {

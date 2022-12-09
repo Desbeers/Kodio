@@ -14,7 +14,7 @@ enum PartsView {
 }
 
 extension PartsView {
-    
+
     /// Header View for the Browser View
     struct BrowserHeader: View {
         let label: String
@@ -28,7 +28,7 @@ extension PartsView {
 }
 
 extension PartsView {
-    
+
     /// Header for a List View
     struct ListHeader: ViewModifier {
         func body(content: Content) -> some View {
@@ -45,7 +45,7 @@ extension PartsView {
 }
 
 extension PartsView {
-    
+
     /// The state of a View
     struct LoadingState: View {
         let message: String
@@ -121,7 +121,7 @@ extension PartsView {
                     height: geometry.size.height,
                     alignment: .center
                 )
-                
+
                 /// The custom rotator
                 .modifier(RotatingRecordModel.Rotate(rotate: rotateModel.rotating, status: $rotateModel.status))
             }
@@ -140,7 +140,7 @@ extension PartsView {
                 }
             }
         }
-        
+
         func minSize(size: GeometryProxy) -> CGFloat {
             return size.size.width > size.size.height ? size.size.height : size.size.width
         }
@@ -148,7 +148,7 @@ extension PartsView {
 }
 
 extension PartsView {
-    
+
     /// View a  tape image that can rotate
     struct RotatingTape: View {
         /// The RotatingAnimationModel
@@ -227,7 +227,7 @@ extension PartsView {
                 }
             }
         }
-        
+
         func minSize(size: GeometryProxy) -> CGFloat {
             return size.size.width > size.size.height ? size.size.height : size.size.width
         }
@@ -235,7 +235,7 @@ extension PartsView {
 }
 
 extension PartsView {
-    
+
     /// A View to select an SF symbol
     struct SymbolsPicker: View {
         /// Show this View or not
@@ -270,7 +270,7 @@ extension PartsView {
                         isPresented.toggle()
                     }
                 }
-            
+
         }
         /// All the SF symbols in use for Kodio
         let symbols: [String: [String]] = ["RadioStations":
@@ -323,7 +323,7 @@ extension PartsView {
 }
 
 extension PartsView {
-    
+
     /// View a Kodi host selector
     struct HostSelector: View {
         /// The AppState model that has the hosts information

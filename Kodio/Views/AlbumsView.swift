@@ -10,10 +10,10 @@ import SwiftlyKodiAPI
 
 /// The Albums View
 struct AlbumsView: View {
-    
+
     /// The browser model
     @EnvironmentObject var browser: BrowserModel
-    
+
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {

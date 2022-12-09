@@ -45,7 +45,7 @@ struct MarkdownView: View {
 // MARK: Convert a Markdown string to an array
 
 extension MarkdownView {
-    
+
     /// The `struct` for a Markdown line
     struct MarkdownLine: Identifiable {
         /// ID for the struct
@@ -55,7 +55,7 @@ extension MarkdownView {
         /// The type of Markdown
         var markdownType: MarkdownType
     }
-    
+
     /// The `enum` for a Markdown type
     enum MarkdownType {
         /// Just text; not a block element
@@ -71,7 +71,7 @@ extension MarkdownView {
         /// An empty line
         case spacing
     }
-    
+
     /// Convert a Markdown string into an array of `MarkdownLine` structs
     /// - Parameter string: a markdown string
     /// - Returns: an array of `MarkdownLine` structs
@@ -107,7 +107,7 @@ extension MarkdownView {
 // MARK: Headings
 
 extension MarkdownView {
-    
+
     /// Convert a Markdown heading into seperate components
     /// - Parameter text: a `String` with a Markdown heading
     /// - Returns: a stripped text and the level of the header
@@ -124,7 +124,7 @@ extension MarkdownView {
         )
         return (heading, level)
     }
-    
+
     /// Format a heading
     /// - Parameters:
     ///   - text: the text of the heading
@@ -151,7 +151,7 @@ extension MarkdownView {
 // MARK: List items
 
 extension MarkdownView {
-    
+
     /// Format a list item
     /// - Parameter text: the text of the list item
     /// - Returns: a formatted list item in an `HStack` view
@@ -166,7 +166,7 @@ extension MarkdownView {
 // MARK: Code blocks
 
 extension MarkdownView {
-    
+
     /// Format a code block
     /// - Parameter text: the text of the code block
     /// - Returns: a formatted code block in an `HStack` view
@@ -175,7 +175,7 @@ extension MarkdownView {
             Text(text.trimmingCharacters(in: .whitespaces))
                 .multilineTextAlignment(.leading)
                 .font(.monospaced(.caption)())
-            
+
         }
         .padding(.leading)
     }
@@ -184,7 +184,7 @@ extension MarkdownView {
 // MARK: Attributed string
 
 extension MarkdownView {
-    
+
     /// Format a string if it has atributes
     /// - Parameter text: the Markdown text
     /// - Returns: the formatted text in a `Text` view
@@ -202,7 +202,7 @@ extension MarkdownView {
 // MARK: Quote
 
 extension MarkdownView {
-    
+
     /// Format a quote
     /// - Parameter text: the Markdown text
     /// - Returns: the formatted text in a `Text` view

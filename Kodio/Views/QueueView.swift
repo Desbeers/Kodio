@@ -35,7 +35,7 @@ struct QueueView: View {
             case .ready:
                 HStack(alignment: .center) {
                     VStack {
-                        
+
                         switch player.properties.playlistID {
                         case .audio:
                             PartsView.RotatingRecord(title: player.currentItem?.title,
@@ -51,7 +51,7 @@ struct QueueView: View {
                             )
                         }
                     }
-                    
+
                     switch items.count {
                     case 1:
                         queueItem(item: items.first!, single: true)
@@ -92,7 +92,7 @@ struct QueueView: View {
 }
 
 extension QueueView {
-    
+
     @ViewBuilder func queueItem(item: any KodiItem, single: Bool = false) -> some View {
         switch item {
         case let song as Audio.Details.Song:

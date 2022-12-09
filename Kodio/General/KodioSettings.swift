@@ -10,24 +10,24 @@ import SwiftlyKodiAPI
 
 /// All the Kodio Settings
 struct KodioSettings: Equatable, Codable {
-    
+
     /// ### Sidebar
-    
+
     /// Show Music Match
     var showMusicMatch = true
     /// Show Music Videos
     var showMusicVideos = true
     /// Show Radio Stations
     var showRadioStations = false
-    
+
     /// ### Player
-    
+
     /// Toggle Player Settings
     var togglePlayerSettings = false
 }
 
 extension KodioSettings {
-    
+
     /// Load the Kodio settings
     /// - Returns: The ``KodioSettings``
     static func load() -> KodioSettings {
@@ -38,7 +38,7 @@ extension KodioSettings {
         /// No settings found
         return KodioSettings()
     }
-    
+
     /// Save the Kodio settings to the cache
     /// - Parameter hosts: The array of hosts
     static func save(settings: KodioSettings) {
@@ -51,7 +51,7 @@ extension KodioSettings {
 }
 
 extension KodioSettings {
-    
+
     /// Set the Player Settings if 'togglePlayerSettings' is true
     /// - Parameter setting: The ``ReplayGain`` setting
     static func setPlayerSettings(setting: ReplayGain) {
@@ -62,7 +62,7 @@ extension KodioSettings {
             }
         }
     }
-    
+
     /// The modes of ReplayGain; track based or album based
     enum ReplayGain: Int {
         /// Use `album` mode
@@ -73,7 +73,7 @@ extension KodioSettings {
 }
 
 extension KodioSettings {
-    
+
     /// Check if a Kodi setting is disabled
     /// - Parameter setting: The setting ID
     /// - Returns: True or False

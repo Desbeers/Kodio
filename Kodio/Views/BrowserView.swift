@@ -13,16 +13,16 @@ struct BrowserView: View {
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
     @StateObject private var browser: BrowserModel
-    
+
     private let router: Router
     private let query: String
-    
+
     init(router: Router, query: String = "") {
         _browser = StateObject(wrappedValue: BrowserModel(router: router, query: query))
         self.router = router
         self.query = query
     }
-    
+
     var body: some View {
         VStack(spacing: 0) {
             #if os(iOS)

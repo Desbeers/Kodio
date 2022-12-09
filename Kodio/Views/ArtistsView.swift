@@ -12,9 +12,9 @@ import SwiftlyKodiAPI
 struct ArtistsView: View {
     /// The browser model
     @EnvironmentObject var browser: BrowserModel
-    
+
     var body: some View {
-        
+
         ScrollView {
             VStack(spacing: 0) {
                 PartsView.BrowserHeader(label: "Artists")

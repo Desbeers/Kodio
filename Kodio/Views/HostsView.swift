@@ -54,7 +54,7 @@ struct HostsView: View {
             help = HelpModel.getPage(help: .kodiSettings)
         }
     }
-    
+
     /// Find new Kodi's
     func findNewKodi() {
         var list: [KodiConnector.BonjourHost] = []
@@ -68,7 +68,7 @@ struct HostsView: View {
 // MARK: Host list items
 
 extension HostsView {
-    
+
     /// The lists of hosts
     var hostList: some View {
         List(selection: $selection) {
@@ -91,7 +91,7 @@ extension HostsView {
         }
         .listStyle(.sidebar)
     }
-    
+
     /// The View for a Host
     /// - Parameter host: The ``Host``
     /// - Returns: A View with the host information
@@ -117,7 +117,7 @@ extension HostsView {
         }
         .tag(host)
     }
-    
+
     var hostEdit: some View {
         VStack {
             if let selection = selection {
@@ -132,7 +132,7 @@ extension HostsView {
                         .background(.thinMaterial)
                         .cornerRadius(10)
                         .padding(40)
-                
+
             }
         }
         .padding()
@@ -143,7 +143,7 @@ extension HostsView {
 // MARK: Form Items
 
 extension  HostsView {
-    
+
     var viewForm: some View {
         Form {
             Grid(alignment: .center, verticalSpacing: 0) {
@@ -207,19 +207,19 @@ extension  HostsView {
                 Text("\(edit.details.description) is not online")
                     .font(.caption)
             }
-            
+
         }
         .labelsHidden()
         .animation(.default, value: values)
     }
-    
+
     /// The label for a form item
     /// - Parameter text: The text to display
     /// - Returns: A Text View
     func label(text: String) -> some View {
         Text("\(text):")
     }
-    
+
     /// The text underneath a form item
     /// - Parameter text: The text to display
     /// - Returns: A Text View
@@ -235,7 +235,7 @@ extension  HostsView {
                 .gridCellAnchor(.leading)
         }
     }
-    
+
     enum FooterType {
         case valid
         case error
@@ -307,7 +307,7 @@ extension HostsView {
 // MARK: Form validation
 
 extension HostsView {
-    
+
     /// Validate the form with the HostItem
     /// - Parameter host: The ``HostItem`` currenly editing
     /// - Returns: True or false
@@ -321,10 +321,10 @@ extension HostsView {
         }
         return status
     }
-    
+
     private var validateNameLabel: some View {
         let validate = isValidName()
-        
+
         switch validate {
         case true:
             return footer(text: "The name of your Kodi")
@@ -332,14 +332,14 @@ extension HostsView {
             return footer(text: "The name can't be empty", type: .error)
         }
     }
-    
+
     private func isValidName() -> Bool {
         return !values.details.description.isEmpty
     }
-    
+
     private var validateIPLabel: some View {
         let validate = isValidIP()
-        
+
         switch validate {
         case true:
             return footer(text: "The IP address of your Kodi")
@@ -351,7 +351,7 @@ extension HostsView {
             }
         }
     }
-    
+
     /// Validate the IP address in the form with the HostItem
     /// - Parameter address: The IP address
     /// - Returns: True or false
@@ -364,7 +364,7 @@ extension HostsView {
         }
         return false
     }
-    
+
     private func isValidIPAvailable() -> Bool {
         if edit.details.ip != values.details.ip, appState.hosts.first(where: {$0.details.ip == values.details.ip}) != nil {
             return false

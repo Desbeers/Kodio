@@ -12,10 +12,10 @@ import SwiftlyKodiAPI
 struct MenuBarExtraView: View {
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
-    
+
     /// The KodiPlayer model
     @StateObject var player: KodiPlayer = .shared
-    
+
     var body: some View {
         VStack {
             ToolbarView.NowPlaying()

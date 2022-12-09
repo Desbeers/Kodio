@@ -10,7 +10,7 @@ import SwiftlyKodiAPI
 
 /// The View for a playlist
 struct PlaylistView: View {
-    
+
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
     /// The list of songs
@@ -43,7 +43,7 @@ struct PlaylistView: View {
                 .disabled(state != .ready)
             }
             .modifier(PartsView.ListHeader())
-            
+
             switch state {
             case .loading:
                 PartsView.LoadingState(message: "Getting '\(playlist.title)' songs...")

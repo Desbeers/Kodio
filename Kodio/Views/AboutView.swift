@@ -44,10 +44,10 @@ struct AboutView: View {
                 }
             }
             if let text = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-                
+
                 HStack(spacing: 0) {
                     Text("Version \(text), GPL-3.0 License, source code on ")
-                    
+
                     Link("GitHub", destination: URL(string: "https://github.com/desbeers/kodio")!)
                 }
                 .font(.caption)

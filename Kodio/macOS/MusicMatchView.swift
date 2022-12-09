@@ -16,7 +16,7 @@ struct MusicMatchView: View {
     /// The MusicMatch model
     @StateObject var musicMatch = MusicMatchModel()
     /// Setting wich ratings will be used
-    @AppStorage("ratingAction") var ratingAction: MusicMatchModel.RatingAction = .useKodiRating    
+    @AppStorage("ratingAction") var ratingAction: MusicMatchModel.RatingAction = .useKodiRating
     /// Sort order for the table
     @State var sortOrder: [KeyPathComparator<MusicMatchModel.SongItem>] = [ .init(\.lastPlayed, order: SortOrder.reverse)]
     /// The View
@@ -115,7 +115,7 @@ struct MusicMatchView: View {
 // MARK: SwiftUI extensions
 
 extension MusicMatchView {
-    
+
     /// View the song rating with stars
     /// - Parameters:
     ///   - rating: The rating
@@ -133,7 +133,7 @@ extension MusicMatchView {
     /// - Parameter song: The ``MusicMatchModel/SongItem``
     /// - Returns: A View with playcount status
     @ViewBuilder func playcount(song: MusicMatchModel.SongItem) -> some View {
-        
+
         if let playcount = musicMatch.playcounts.first(where: {$0.id == song.id}) {
             HStack {
                 Image(systemName: playcount.synced ? "infinity" : "minus")

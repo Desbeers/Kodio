@@ -63,7 +63,7 @@ struct SidebarView: View {
         .animation(.default, value: query)
         .animation(.default, value: appState.settings)
     }
-    
+
     @ViewBuilder func sidebarItem(item: Router) -> some View {
         if appState.visible(route: item) {
             Label(item.sidebar.title, systemImage: item.sidebar.icon)

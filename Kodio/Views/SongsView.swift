@@ -10,13 +10,13 @@ import SwiftlyKodiAPI
 
 /// The Songs View
 struct SongsView: View {
-    
+
     /// The AppState model
     @EnvironmentObject var appState: AppState
-    
+
     /// The browser model
     @EnvironmentObject var browser: BrowserModel
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -52,7 +52,7 @@ struct SongsView: View {
 }
 
 extension SongsView {
-    
+
     /// The View for a song
     struct Song: View {
         /// The SceneState model

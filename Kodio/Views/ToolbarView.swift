@@ -22,21 +22,21 @@ struct ToolbarView: ViewModifier {
                 ) {
                     MediaButtons.PlayPrevious()
                 }
-                
+
                 ToolbarItem(id: "playPauseButton",
                             placement: .automatic,
                             showsByDefault: true
                 ) {
                     MediaButtons.PlayPause()
                 }
-                
+
                 ToolbarItem(id: "nextButton",
                             placement: .automatic,
                             showsByDefault: true
                 ) {
                     MediaButtons.PlayNext()
                 }
-                
+
                 ToolbarItem(id: "nowPlaying",
                             placement: .automatic,
                             showsByDefault: true
@@ -48,28 +48,28 @@ struct ToolbarView: ViewModifier {
                             .frame(maxHeight: 50)
                     }
                 }
-                
+
                 ToolbarItem(id: "shuffleButton",
                             placement: .automatic,
                             showsByDefault: true
                 ) {
                     MediaButtons.SetShuffle()
                 }
-                
+
                 ToolbarItem(id: "repeatButton",
                             placement: .automatic,
                             showsByDefault: true
                 ) {
                     MediaButtons.SetRepeat()
                 }
-                
+
                 ToolbarItem(id: "partyButton",
                             placement: .automatic,
                             showsByDefault: true
                 ) {
                     SetPartyMode()
                 }
-                
+
                 ToolbarItem(id: "volumeSlider",
                             placement: .automatic,
                             showsByDefault: true
@@ -82,7 +82,7 @@ struct ToolbarView: ViewModifier {
 }
 
 extension ToolbarView {
-    
+
     /// The 'Now Playing' View
     struct NowPlaying: View {
         /// The KodiPlayer model
@@ -121,7 +121,7 @@ extension ToolbarView {
 // MARK: Progress of the playing item
 
 extension ToolbarView {
-    
+
     struct NowPlayingProgressView: View {
         @EnvironmentObject var player: KodiPlayer
         @State var currentSeconds: Double = 0
@@ -151,7 +151,7 @@ extension ToolbarView {
             return percentage < 1 ? percentage : 1
             }
     }
-    
+
     struct ProgressTimelineView: View {
         let percentage: Double
         var body: some View {
@@ -174,7 +174,7 @@ extension ToolbarView {
 }
 
 extension ToolbarView {
-    
+
     /// Partymode button (forced to audio)
     ///
     /// - Note: This will set 'Party Mode' for audio, I don't see a use of videos for this

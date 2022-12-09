@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension MainView {
-    
+
     /// The iOS toolbar for the sidebar
     @ToolbarContentBuilder func iPadMenu() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {

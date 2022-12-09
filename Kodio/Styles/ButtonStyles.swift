@@ -14,11 +14,9 @@ enum ButtonStyles {
 }
 
 extension ButtonStyles {
-    
+
     /// The Button View for a radio station
     struct RadioStation: View {
-//        /// The KodiConnector model
-//        @EnvironmentObject var kodi: KodiConnector
         /// The KodiPlayer model
         @EnvironmentObject var player: KodiPlayer
         /// The radio channe;
@@ -58,13 +56,13 @@ extension ButtonStyles {
             }
             return icon
         }
-        
+
     }
-    
+
 }
 
 extension ButtonStyles {
-    
+
     /// Buttom style for a 'play', 'shuffle' or 'stream' button
     struct Play: ButtonStyle {
         /// The style
@@ -82,7 +80,7 @@ extension ButtonStyles {
 }
 
 extension ButtonStyles {
-    
+
     /// Buttom style for Music Video navigation
     struct MusicVideoNavigation: ButtonStyle {
         /// The style
@@ -96,7 +94,7 @@ extension ButtonStyles {
 }
 
 extension ButtonStyles {
-    
+
     /// Buttom style for a 'help' button
     struct Help: ButtonStyle {
         /// The style
@@ -114,7 +112,7 @@ extension ButtonStyles {
 }
 
 extension ButtonStyles {
-    
+
     /// Button style for the browser
     struct Browser: ButtonStyle {
         /// The kodi item
@@ -135,7 +133,7 @@ extension ButtonStyles {
                 .padding(.vertical, 2)
                 .padding(.trailing, 8)
         }
-        
+
         /// Saturate a button
         /// - Parameter media: The media type
         /// - Returns: A saturation value

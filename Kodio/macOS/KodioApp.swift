@@ -112,7 +112,7 @@ import SwiftlyKodiAPI
 }
 
 extension KodioApp {
-    
+
     /// The kind of Windows Kodio can open
     enum Window: String, Codable {
         case about = "About Kodio"

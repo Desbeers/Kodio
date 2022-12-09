@@ -42,23 +42,23 @@ extension SceneState {
 }
 
 extension SceneState {
-    
+
     // MARK: Sheets for Kodio
-    
+
     /// View a SwiftUI sheet
     /// - Parameter type: One of the ``Sheets``.
     @MainActor func viewSheet(type: Sheets) {
         activeSheet = type
         showSheet = true
     }
-    
+
     /// View a SwiftUI full screen movie
     /// - Parameter type: One of the ``Sheets``.
     func viewMusicVideo(item: any KodiItem) {
         activeMusicVideo = item
         showFullScreenCover = true
     }
-    
+
     /// The different kind of sheets Kodio can present
     enum Sheets {
         /// Show the `Settings` sheet

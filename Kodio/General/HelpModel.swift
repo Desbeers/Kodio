@@ -44,7 +44,7 @@ extension HelpModel {
 }
 
 extension HelpModel {
-    
+
     /// Get the content of a help page
     /// - Parameter help: The page
     /// - Returns: The content of the page
@@ -62,7 +62,7 @@ extension HelpModel {
 }
 
 extension HelpModel {
-    
+
     /// Convert a 'docc' link to a SwiftUI View
     /// - Parameter text: The text containing the link
     /// - Returns: A SwiftUI View

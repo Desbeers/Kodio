@@ -44,7 +44,7 @@ struct DetailsView: View {
         .padding(.top)
         .padding(.horizontal)
     }
-    
+
     /// Overlay the base artwork
     @ViewBuilder var overlay: some View {
         if let item = selectedItem {

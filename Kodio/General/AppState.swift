@@ -29,7 +29,7 @@ class AppState: ObservableObject {
 }
 
 extension AppState {
-    
+
     /// Check if a sidebar item is visible
     /// - Parameter route: The ``Router``
     /// - Returns: True or False
@@ -54,7 +54,7 @@ extension AppState {
 }
 
 extension AppState {
-    
+
     /// Select a host
     /// - Parameter host: The ``Host``
     @MainActor func selectHost(host: Host) {
@@ -63,14 +63,14 @@ extension AppState {
         self.host = host
         Host.save(hosts: hosts)
     }
-    
+
     /// Add a host
     /// - Parameter host: The ``Host``
     @MainActor func addHost(host: Host) {
         hosts.append(host)
         Host.save(hosts: hosts)
     }
-    
+
     /// Update a host
     /// - Parameters:
     ///   - old: The old ``Host`` values
@@ -89,7 +89,7 @@ extension AppState {
         /// The host was not found
         return nil
     }
-    
+
     /// Delete a host
     /// - Parameter host: The ``Host``
     @MainActor func deleteHost(host: Host) {
@@ -105,7 +105,7 @@ extension AppState {
 }
 
 extension AppState {
-    
+
     /// The state of  loading a View
     /// - Note: This `enum` is not used in this `class` but in Views that load items via a `Task`
     enum State {

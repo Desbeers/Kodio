@@ -27,7 +27,7 @@ struct MusicVideosView: View {
 }
 
 extension MusicVideosView {
-    
+
     /// The router for this ``MusicVideosView``
     enum MusicVideosRouter: Hashable {
         case all
@@ -37,7 +37,7 @@ extension MusicVideosView {
 }
 
 extension MusicVideosView {
-    
+
     /// View all artists
     struct Artists: View {
         /// The KodiConnector model
@@ -53,7 +53,7 @@ extension MusicVideosView {
                 Text("Your Music Videos")
                     .font(.title)
                     .modifier(PartsView.ListHeader())
-                
+
                 switch state {
                 case .loading:
                     PartsView.LoadingState(message: "Loading Music Videos...")
@@ -102,7 +102,7 @@ extension MusicVideosView {
             }
         }
     }
-    
+
     /// View videos and albums for one artist
     struct Artist: View {
         let artist: String
@@ -164,7 +164,7 @@ extension MusicVideosView {
             }
         }
     }
-    
+
     /// View videos from an album of an artist
     struct Album: View {
         let album: Video.Details.MusicVideo
@@ -233,7 +233,7 @@ extension MusicVideosView {
 }
 
 extension MusicVideosView {
-    
+
     static func playButtons(item: Video.Details.MusicVideo) -> some View {
         HStack {
             Button(action: {
@@ -248,7 +248,7 @@ extension MusicVideosView {
 }
 
 extension MusicVideosView {
-    
+
     struct StreamButton: View {
         let item: any KodiItem
         @Environment(\.openWindow) var openWindow
@@ -269,7 +269,7 @@ extension MusicVideosView {
 }
 
 extension MusicVideosView {
-    
+
     struct PlayAlbumButton: View {
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
@@ -279,7 +279,7 @@ extension MusicVideosView {
             Button(action: {
                 let album = kodi.library.musicVideos.filter({$0.subtitle == item.subtitle && $0.details == item.details})
                 album.play(shuffle: shuffle)
-                
+
             }, label: {
                 Label("\(shuffle ? "Shuffle" : "Play") Album", systemImage: shuffle ? "shuffle" : "play.fill")
             })
@@ -289,7 +289,7 @@ extension MusicVideosView {
 }
 
 extension MusicVideosView {
-    
+
     struct MusicVideo: View {
         /// The KodiPlayer model
         @EnvironmentObject var player: KodiPlayer
@@ -315,7 +315,7 @@ extension MusicVideosView {
                     musicVideo.play()
                 }, label: {
                     Label("Play", systemImage: "play")
-                    
+
                 })
                 .tint(.green)
             }

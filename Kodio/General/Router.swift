@@ -21,7 +21,7 @@ enum Router: Hashable {
     case musicVideos
     case search
     case musicMatch
-    
+
     var empty: String {
         switch self {
         case .start:
@@ -48,7 +48,7 @@ enum Router: Hashable {
             return "Music Match is not available"
         }
     }
-    
+
     var sidebar: Item {
         switch self {
         case .start:
@@ -117,5 +117,5 @@ enum Router: Hashable {
         let route: Router = .start
         var visible: Bool = true
     }
-    
+
 }

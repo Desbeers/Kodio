@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftlyKodiAPI
 import iTunesLibrary
 
+// swiftlint:disable file_length
+
 /// The model for ``MusicMatchView``
 class MusicMatchModel: ObservableObject {
     /// All the songs
@@ -32,7 +34,7 @@ class MusicMatchModel: ObservableObject {
 // MARK: Load and match the library
 
 extension MusicMatchModel {
-    
+
     /// Match songs between Kodi and Music
     func matchSongs() async {
         logger("Matching your songs...")
@@ -42,7 +44,7 @@ extension MusicMatchModel {
             self.songs = songs
         }
     }
-    
+
     /// Get all songs from Kodi
     /// - Returns: All songs from the Kodi database
     private func getKodiSongs() -> [SongItem] {
@@ -75,7 +77,7 @@ extension MusicMatchModel {
         let songs = iTunesLibrary.allMediaItems
         return songs
     }
-    
+
     /// Match Kodi songs with Music Songs
     /// - Returns: An updated tabel with mUsic data added
     private func getMusicMatch() async -> [SongItem] {
@@ -126,7 +128,7 @@ extension MusicMatchModel {
 // MARK: Sync all songs
 
 extension MusicMatchModel {
-    
+
     /// Sync all songs that are not in sync yet
     func syncAllSongs(ratingAction: RatingAction) async {
         /// Get all songs where the ratings are not in sync
@@ -172,7 +174,7 @@ extension MusicMatchModel {
 // MARK: Playcounts
 
 extension MusicMatchModel {
-    
+
     /// Sync a playcount
     /// - Parameter song: The song as``SongItem``
     func syncPlaycount(song: SongItem) async -> SongItem {
@@ -220,11 +222,11 @@ extension MusicMatchModel {
         song.playcountInSync = true
         song.kodiLastPlayed = song.lastPlayed
         song.musicLastPlayed = song.lastPlayed
-        
+
         /// Return the song
         return song
     }
-    
+
     /// Set a playcount in Kodi
     /// - Parameter song: The song as ``SongItem``
     func setKodiPlaycount(song: SongItem, playcount: Int) async {
@@ -236,7 +238,7 @@ extension MusicMatchModel {
             await AudioLibrary.setSongDetails(song: kodiSong)
         }
     }
-    
+
     /// Set a playcount in Music
     /// - Parameter song: The song as ``SongItem``
     func setMusicPlaycount(song: SongItem, playcount: Int) async {
@@ -250,7 +252,7 @@ extension MusicMatchModel {
             musicBridge.setMusicSongPlayDate(songID: songID, playDate: song.lastPlayed)
         }
     }
-    
+
     /// Store the Match in cache
     func setPlaycountCache() async {
         do {
@@ -264,7 +266,7 @@ extension MusicMatchModel {
 // MARK: Ratings
 
 extension MusicMatchModel {
-    
+
     /// Sync a rating
     /// - Parameter song: The song from the ``SongItem``
     func syncRating(song: SongItem, ratingAction: RatingAction) async -> SongItem {
@@ -287,7 +289,7 @@ extension MusicMatchModel {
         /// Return the updated song
         return song
     }
-    
+
     /// Set a rating in Kodi
     /// - Parameter item: The song as a``SongItem``
     func setKodiRating(song: inout SongItem) async {
@@ -299,7 +301,7 @@ extension MusicMatchModel {
             await AudioLibrary.setSongDetails(song: kodiSong)
         }
     }
-    
+
     /// Set a rating in Music
     /// - Parameter song: The song as a``SongItem``
     func setMusicRating(song: inout SongItem) async {
@@ -315,7 +317,7 @@ extension MusicMatchModel {
 // MARK: Helpers
 
 extension MusicMatchModel {
-    
+
     /// Get the AppeScript ID for the song
     /// - Parameter song: The son as a ``SongItem``
     /// - Returns: The Applescript ID of the song
@@ -325,7 +327,7 @@ extension MusicMatchModel {
                                    track: song.track
         )
     }
-    
+
     private func dateToKodiString(date: Date?) -> String {
         var string = ""
         if let date = date {
@@ -340,7 +342,7 @@ extension MusicMatchModel {
 // MARK: Struct and Enum extensions
 
 extension MusicMatchModel {
-    
+
     /// A song in the Table View
     struct SongItem: Identifiable, Codable {
         /// Make it indentifiable
@@ -367,26 +369,26 @@ extension MusicMatchModel {
         var musicLastPlayed: String = ""
         /// The last played date in Kodi
         var kodiLastPlayed: String = ""
-        
+
         /// # Calculated stuff
-        
+
         /// The status if the song rating is in sync or not
         /// - Note: Not a `Bool` because the SwiftUI `Table` does not like that
         var ratingStatus: Int {
             return musicRating == kodiRating ? 1 : 0
         }
-        
+
         /// The status if a song is matched or not
         /// - Note: Not a `Bool` because the SwiftUI `Table` does not like that
         var matchStatus: Int {
             return (musicRating == kodiRating) && playcountInSync ? 1 : 0
         }
-        
+
         /// Find the highest last plated date
         var lastPlayed: String {
             return kodiLastPlayed < musicLastPlayed ? musicLastPlayed : kodiLastPlayed
         }
-        
+
         /// Get the color for the rating view
         /// - Parameters:
         ///   - ratingAction: The ``MusicMatchModel/RatingAction``
@@ -415,7 +417,7 @@ extension MusicMatchModel {
             }
         }
     }
-    
+
     struct Playcount: Codable {
         var id: Library.id = 0
         var musicPlaycount: Int = 0
@@ -423,22 +425,22 @@ extension MusicMatchModel {
         var musicPlayed: Int = 0
         var kodiPlayed: Int = 0
         var synced = false
-        
+
         /// # Calculated stuff
-        
+
         var morePlayed: Int {
             musicPlayed + kodiPlayed
         }
-        
+
         var addToKodi: Int? {
             musicPlayed != 0 ? kodiPlaycount + morePlayed : nil
         }
-        
+
         var addToMusic: Int? {
             kodiPlayed != 0 ? musicPlaycount + morePlayed : nil
         }
     }
-    
+
     /// The status of rating matching
     enum Status: String {
         /// Not loaded
@@ -452,7 +454,7 @@ extension MusicMatchModel {
         /// Sync all ratings
         case syncAllRatings = "Syncing your songs"
     }
-    
+
     /// Which rating to use for syncing
     enum RatingAction: String, CaseIterable {
         /// Use the ratings from Kodi
@@ -462,7 +464,7 @@ extension MusicMatchModel {
         /// Use the highest rating
         case useHighestRation = "Use Highest Rating"
     }
-    
+
     /// The type of player
     enum PlayerType {
         /// Kodi
@@ -471,3 +473,5 @@ extension MusicMatchModel {
         case music
     }
 }
+
+// swiftlint:enable file_length

@@ -46,7 +46,7 @@ extension Host {
         }
         return nil
     }
-    
+
     /// Get all configured hosts
     /// - Returns: An array of ``Host``
     static func getAll() -> [Host] {
@@ -57,7 +57,7 @@ extension Host {
         /// No hosts found
         return [Host]()
     }
-    
+
     /// Save the hosts to the cache
     /// - Parameter hosts: The array of hosts
     static func save(hosts: [Host]) {

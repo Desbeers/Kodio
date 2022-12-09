@@ -16,7 +16,7 @@ class BrowserModel: ObservableObject {
     @Published var selection = Selection()
     /// The state of loading the songs
     @Published var state: AppState.State = .loading
-    
+
     /// Details for the 'highest selected item'
     var details: (any KodiItem)? {
         if let album = selection.album {
@@ -27,7 +27,7 @@ class BrowserModel: ObservableObject {
         }
         return nil
     }
-    
+
     /// All the items that are available
     var library = Media()
     /// The current ``Router`` selection
@@ -39,11 +39,11 @@ class BrowserModel: ObservableObject {
         self.router = router
         self.query = query
     }
-    
+
 }
 
 extension BrowserModel {
-    
+
     /// The media to show in the ``BrowserView``
     struct Media: Equatable {
         /// All genres
@@ -55,7 +55,7 @@ extension BrowserModel {
         /// All songs
         var songs: [Audio.Details.Song] = []
     }
-    
+
     /// The optional selection in the ``BrowserView``
     struct Selection: Equatable, Hashable {
         /// Currently selected genre
@@ -68,14 +68,14 @@ extension BrowserModel {
 }
 
 extension BrowserModel {
-    
+
     /// Filter the library by ``Router`` selection
     ///
     /// The browser library is based on songs; they are filtered first and then the rest is added
     func filterLibrary() {
 
         let start = CFAbsoluteTimeGetCurrent()
-        
+
         /// Set the state
         state = state == .ready ? .ready : .loading
         /// Get the shared KodiConnector
@@ -133,15 +133,15 @@ extension BrowserModel {
             library.albums = kodi.library.albums
                 .filter({songAlbumIDs.contains($0.albumID)})
                 .sorted { $0.displayArtist == $1.displayArtist ? $0.year < $1.year : $0.displayArtist < $1.displayArtist }
-            
+
             /// All artists in the browser
             let songArtistIDs = Set(library.songs.flatMap({ $0.albumArtistID }))
             library.artists = kodi.library.artists.filter({songArtistIDs.contains($0.artistID)}).sorted { $0.sortByTitle < $1.sortByTitle }
-            
+
             /// All genres in the browser
             let songGenreIDs = Set(library.songs.flatMap({ $0.genreID }))
             library.genres = kodi.library.audioGenres.filter({songGenreIDs.contains($0.genreID)})
-            
+
             /// Filter the browser based on selection
             filterBrowser()
             /// Set the state
@@ -150,14 +150,14 @@ extension BrowserModel {
             logger("Took \(diff) seconds")
         }
     }
-    
+
     /// Filter the ``BrowserView`` based on the optional ``BrowserModel/selection-swift.property``
     func filterBrowser() {
 
         var artists = library.artists
         var albums = library.albums
         var songs = library.songs
-        
+
         /// Filter by genre
         if let genre = selection.genre {
             songs = songs.filter({$0.genreID.contains(genre.genreID)})
@@ -165,13 +165,13 @@ extension BrowserModel {
             let songArtistIDs = Set(songs.flatMap({ $0.albumArtistID }))
             artists = artists.filter({songArtistIDs.contains($0.artistID)}).sorted { $0.title < $1.title }
         }
-        
+
         /// Filter by artist
         if let artist = selection.artist {
             songs = songs.filter({$0.albumArtistID.contains(artist.artistID)}).sorted { $0.title < $1.title }
             albums = albums.filter({$0.artistID.contains(artist.artistID)})
         }
-        
+
         /// Filter by album
         if let album = selection.album {
             songs = songs.filter({$0.albumID == album.albumID}).sorted { $0.track < $1.track }
