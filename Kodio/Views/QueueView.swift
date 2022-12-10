@@ -93,6 +93,11 @@ struct QueueView: View {
 
 extension QueueView {
 
+    /// SwiftUI View for an item in the queue
+    /// - Parameters:
+    ///   - item: The `KodiItem`
+    ///   - single: Bool if there is only one item in the queue
+    /// - Returns: A View
     @ViewBuilder func queueItem(item: any KodiItem, single: Bool = false) -> some View {
         switch item {
         case let song as Audio.Details.Song:

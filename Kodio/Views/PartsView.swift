@@ -17,7 +17,9 @@ extension PartsView {
 
     /// Header View for the Browser View
     struct BrowserHeader: View {
+        /// The label of the header
         let label: String
+        /// The body of the `View`
         var body: some View {
             Text(label)
                 .font(.subheadline)
@@ -48,8 +50,11 @@ extension PartsView {
 
     /// The state of a View
     struct LoadingState: View {
+        /// The message
         let message: String
+        /// The SF symbol
         var icon: String?
+        /// The body of the `View`
         var body: some View {
             VStack {
                 if let icon = icon {
@@ -73,13 +78,17 @@ extension PartsView {
     struct RotatingRecord: View {
         /// The RotatingAnimationModel
         @StateObject var rotateModel = RotatingRecordModel()
+        /// The optional SF symbol
         var icon: String?
+        /// The title
         var title: String? = ""
+        /// The subtitle
         var subtitle: String
+        /// The details
         var details: String
         /// Do we want to rotate or not
         @Binding var rotate: Bool
-        /// The view
+        /// The body of the `View`
         var body: some View {
             GeometryReader { geometry in
                 ZStack(alignment: .center) {
@@ -141,6 +150,9 @@ extension PartsView {
             }
         }
 
+        /// The minimum size of the record
+        /// - Parameter size: The `View` size
+        /// - Returns: The minimum size as `CGFloat`
         func minSize(size: GeometryProxy) -> CGFloat {
             return size.size.width > size.size.height ? size.size.height : size.size.width
         }
@@ -153,13 +165,17 @@ extension PartsView {
     struct RotatingTape: View {
         /// The RotatingAnimationModel
         @StateObject var rotateModel = RotatingRecordModel()
+        /// The optional icon
         var icon: String?
+        /// The title
         var title: String? = ""
+        /// The subtitle
         var subtitle: String
+        /// The details
         var details: String
         /// Do we want to rotate or not
         @Binding var rotate: Bool
-        /// The view
+        /// The body of the `View`
         var body: some View {
             GeometryReader { geometry in
                 ZStack(alignment: .center) {
@@ -228,6 +244,9 @@ extension PartsView {
             }
         }
 
+        /// The minimum size of the record
+        /// - Parameter size: The `View` size
+        /// - Returns: The minimum size as `CGFloat`
         func minSize(size: GeometryProxy) -> CGFloat {
             return size.size.width > size.size.height ? size.size.height : size.size.width
         }
@@ -244,7 +263,7 @@ extension PartsView {
         @Binding var icon: String
         /// The category of SF symbols to show
         let category: String
-        /// The View
+        /// The body of the `View`
         var body: some View {
             ScrollView(.horizontal) {
                 HStack {
@@ -258,6 +277,10 @@ extension PartsView {
                 }
             }
         }
+
+        /// Convert an SF symbol Stribg to an Image
+        /// - Parameter icon: The SF symbol String
+        /// - Returns: An Image View
         func image(icon: String) -> some View {
             Image(systemName: icon)
                 .resizable()
@@ -330,7 +353,7 @@ extension PartsView {
         @EnvironmentObject var appState: AppState
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
-        /// The view
+        /// The body of the `View`
         var body: some View {
             if let host = appState.host {
                 Button(

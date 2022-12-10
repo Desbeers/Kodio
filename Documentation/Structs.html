@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Structures  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Structures" class="dashAnchor"></a>
+    <a title="Structures  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Kodio</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
+          <form role="search" action="search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Kodio Reference</a>
+        <img id="carat" src="img/carat.png" alt=""/>
+        Structures  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/AppState.html">AppState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AppState/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BrowserModel.html">BrowserModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BrowserModel/Media.html">– Media</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BrowserModel/Selection.html">– Selection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/HelpModel.html">HelpModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/HelpModel/Page.html">– Page</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MusicBridge.html">MusicBridge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MusicMatchModel.html">MusicMatchModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MusicMatchModel/SongItem.html">– SongItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MusicMatchModel/Playcount.html">– Playcount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MusicMatchModel/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MusicMatchModel/RatingAction.html">– RatingAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MusicMatchModel/PlayerType.html">– PlayerType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RotatingRecordModel.html">RotatingRecordModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RotatingRecordModel/Rotate.html">– Rotate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SceneState.html">SceneState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SceneState/Sheets.html">– Sheets</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Global%20Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Global%20Variables.html#/s:5Kodio13radioStationsSay14SwiftlyKodiAPI5AudioO7DetailsO6StreamVGvp">radioStations</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/ButtonStyles.html">ButtonStyles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ButtonStyles/RadioStation.html">– RadioStation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ButtonStyles/Play.html">– Play</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ButtonStyles/MusicVideoNavigation.html">– MusicVideoNavigation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ButtonStyles/Help.html">– Help</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/ButtonStyles/Browser.html">– Browser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PartsView.html">PartsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PartsView/BrowserHeader.html">– BrowserHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PartsView/ListHeader.html">– ListHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PartsView/LoadingState.html">– LoadingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PartsView/RotatingRecord.html">– RotatingRecord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PartsView/RotatingTape.html">– RotatingTape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PartsView/SymbolsPicker.html">– SymbolsPicker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PartsView/HostSelector.html">– HostSelector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Router.html">Router</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/Router/Item.html">– Item</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/NSWindow.html">NSWindow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/NSWindow/Position.html">– Position</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/MusicBridgeProtocol.html">MusicBridgeProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/AboutView.html">AboutView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/AlbumsView.html">AlbumsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ArtistsView.html">ArtistsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/BrowserView.html">BrowserView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DetailsView.html">DetailsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/GenresView.html">GenresView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/HelpView.html">HelpView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Host.html">Host</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Host/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/HostingWindowFinder.html">HostingWindowFinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/HostsView.html">HostsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/HostsView/FooterType.html">– FooterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/KodioApp.html">KodioApp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/KodioApp/Window.html">– Window</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/KodioSettings.html">KodioSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/KodioSettings/ReplayGain.html">– ReplayGain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MainView.html">MainView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MarkdownView.html">MarkdownView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MarkdownView/MarkdownLine.html">– MarkdownLine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MarkdownView/MarkdownType.html">– MarkdownType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MenuBarExtraView.html">MenuBarExtraView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicMatchView.html">MusicMatchView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicVideosView.html">MusicVideosView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicVideosView/MusicVideosRouter.html">– MusicVideosRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicVideosView/Artists.html">– Artists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicVideosView/Artist.html">– Artist</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicVideosView/Album.html">– Album</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicVideosView/StreamButton.html">– StreamButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicVideosView/PlayAlbumButton.html">– PlayAlbumButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicVideosView/MusicVideo.html">– MusicVideo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/PlaylistView.html">PlaylistView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/QueueView.html">QueueView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SearchView.html">SearchView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SettingsView.html">SettingsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SettingsView/Tabs.html">– Tabs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SettingsView/Playback.html">– Playback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SettingsView/Sidebar.html">– Sidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SettingsView/KodiSetting.html">– KodiSetting</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SheetView.html">SheetView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SidebarView.html">SidebarView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SongsView.html">SongsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/SongsView/Song.html">– Song</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/StartView.html">StartView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/StatusView.html">StatusView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ToolbarView.html">ToolbarView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ToolbarView/NowPlaying.html">– NowPlaying</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ToolbarView/NowPlayingProgressView.html">– NowPlayingProgressView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ToolbarView/ProgressTimelineView.html">– ProgressTimelineView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ToolbarView/NowPlayingProgressViewStyle.html">– NowPlayingProgressViewStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/ToolbarView/SetPartyMode.html">– SetPartyMode</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Structures</h1>
+            <p>The following structures are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio4HostV"></a>
+                    <a name="//apple_ref/swift/Struct/Host" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio4HostV">Host</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The struct for a Kodi host</p>
+
+                        <a href="Structs/Host.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Host</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Identifiable</span><span class="p">,</span> <span class="kt">Hashable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio0A8SettingsV"></a>
+                    <a name="//apple_ref/swift/Struct/KodioSettings" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio0A8SettingsV">KodioSettings</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>All the Kodio Settings</p>
+
+                        <a href="Structs/KodioSettings.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">KodioSettings</span> <span class="p">:</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9AboutViewV"></a>
+                    <a name="//apple_ref/swift/Struct/AboutView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9AboutViewV">AboutView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The About Kodio View</p>
+
+                        <a href="Structs/AboutView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AboutView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio10AlbumsViewV"></a>
+                    <a name="//apple_ref/swift/Struct/AlbumsView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio10AlbumsViewV">AlbumsView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Albums View</p>
+
+                        <a href="Structs/AlbumsView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">AlbumsView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio11ArtistsViewV"></a>
+                    <a name="//apple_ref/swift/Struct/ArtistsView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio11ArtistsViewV">ArtistsView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Artists View</p>
+
+                        <a href="Structs/ArtistsView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ArtistsView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio11BrowserViewV"></a>
+                    <a name="//apple_ref/swift/Struct/BrowserView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio11BrowserViewV">BrowserView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Browser View</p>
+
+                        <a href="Structs/BrowserView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">BrowserView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio11DetailsViewV"></a>
+                    <a name="//apple_ref/swift/Struct/DetailsView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio11DetailsViewV">DetailsView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Details View for the Browser View</p>
+
+                        <a href="Structs/DetailsView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">DetailsView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio10GenresViewV"></a>
+                    <a name="//apple_ref/swift/Struct/GenresView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio10GenresViewV">GenresView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Genres View</p>
+
+                        <a href="Structs/GenresView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">GenresView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio8HelpViewV"></a>
+                    <a name="//apple_ref/swift/Struct/HelpView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio8HelpViewV">HelpView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Help View</p>
+
+                        <a href="Structs/HelpView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">HelpView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9HostsViewV"></a>
+                    <a name="//apple_ref/swift/Struct/HostsView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9HostsViewV">HostsView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The View to add, edit, delete or select Kodi hosts</p>
+
+                        <a href="Structs/HostsView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">HostsView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio8MainViewV"></a>
+                    <a name="//apple_ref/swift/Struct/MainView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio8MainViewV">MainView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Main View vor Kodio</p>
+
+                        <a href="Structs/MainView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">MainView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio12MarkdownViewV"></a>
+                    <a name="//apple_ref/swift/Struct/MarkdownView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio12MarkdownViewV">MarkdownView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The  View to show a Markdown text</p>
+
+<p>This View is used for  Help and is parsing the Documentation Catalog</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The first heading is ignored; the Views have to show it themself
+
+</div>
+
+                        <a href="Structs/MarkdownView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">MarkdownView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicVideosViewV"></a>
+                    <a name="//apple_ref/swift/Struct/MusicVideosView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicVideosViewV">MusicVideosView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Music Videos View</p>
+
+                        <a href="Structs/MusicVideosView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">MusicVideosView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio12PlaylistViewV"></a>
+                    <a name="//apple_ref/swift/Struct/PlaylistView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio12PlaylistViewV">PlaylistView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The View for a playlist</p>
+
+                        <a href="Structs/PlaylistView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">PlaylistView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9QueueViewV"></a>
+                    <a name="//apple_ref/swift/Struct/QueueView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9QueueViewV">QueueView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Queue View</p>
+
+                        <a href="Structs/QueueView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">QueueView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio10SearchViewV"></a>
+                    <a name="//apple_ref/swift/Struct/SearchView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio10SearchViewV">SearchView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Search View</p>
+
+                        <a href="Structs/SearchView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SearchView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio12SettingsViewV"></a>
+                    <a name="//apple_ref/swift/Struct/SettingsView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio12SettingsViewV">SettingsView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Settings View</p>
+
+                        <a href="Structs/SettingsView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SettingsView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9SheetViewV"></a>
+                    <a name="//apple_ref/swift/Struct/SheetView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9SheetViewV">SheetView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The View for a Sheet</p>
+
+                        <a href="Structs/SheetView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SheetView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio11SidebarViewV"></a>
+                    <a name="//apple_ref/swift/Struct/SidebarView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio11SidebarViewV">SidebarView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Sidebar View</p>
+
+                        <a href="Structs/SidebarView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SidebarView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9SongsViewV"></a>
+                    <a name="//apple_ref/swift/Struct/SongsView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9SongsViewV">SongsView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Songs View</p>
+
+                        <a href="Structs/SongsView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SongsView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9StartViewV"></a>
+                    <a name="//apple_ref/swift/Struct/StartView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9StartViewV">StartView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The View that will be shown when Kodio is starting</p>
+
+                        <a href="Structs/StartView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">StartView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio10StatusViewV"></a>
+                    <a name="//apple_ref/swift/Struct/StatusView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio10StatusViewV">StatusView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Status View; view the status of the KodiConnector</p>
+
+                        <a href="Structs/StatusView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">StatusView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio11ToolbarViewV"></a>
+                    <a name="//apple_ref/swift/Struct/ToolbarView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio11ToolbarViewV">ToolbarView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Toolbar View Modifier</p>
+
+                        <a href="Structs/ToolbarView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">ToolbarView</span> <span class="p">:</span> <span class="kt">ViewModifier</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio0A3AppV"></a>
+                    <a name="//apple_ref/swift/Struct/KodioApp" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio0A3AppV">KodioApp</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Scenes for Kodio</p>
+
+                        <a href="Structs/KodioApp.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@main</span>
+<span class="kd">struct</span> <span class="kt">KodioApp</span> <span class="p">:</span> <span class="kt">App</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio16MenuBarExtraViewV"></a>
+                    <a name="//apple_ref/swift/Struct/MenuBarExtraView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio16MenuBarExtraViewV">MenuBarExtraView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Menubar Extra View</p>
+
+                        <a href="Structs/MenuBarExtraView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">MenuBarExtraView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio14MusicMatchViewV"></a>
+                    <a name="//apple_ref/swift/Struct/MusicMatchView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio14MusicMatchViewV">MusicMatchView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The View to sync ratings and playcounts between Kodi and Music</p>
+
+                        <a href="Structs/MusicMatchView.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">MusicMatchView</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio19HostingWindowFinder33_0AF114B76DC6B607EF0EEAA0E503AD8DLLV"></a>
+                    <a name="//apple_ref/swift/Struct/HostingWindowFinder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio19HostingWindowFinder33_0AF114B76DC6B607EF0EEAA0E503AD8DLLV">HostingWindowFinder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Find the NSWindow of the scene</p>
+
+                        <a href="Structs/HostingWindowFinder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">struct</span> <span class="kt">HostingWindowFinder</span> <span class="p">:</span> <span class="kt">NSViewRepresentable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2022 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2022-12-10)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

@@ -12,17 +12,19 @@ import SwiftlyKodiAPI
 struct BrowserView: View {
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
+    /// The Browser model
     @StateObject private var browser: BrowserModel
-
+    /// The ``Router`` item
     private let router: Router
+    /// The search query
     private let query: String
-
+    /// Init the view
     init(router: Router, query: String = "") {
         _browser = StateObject(wrappedValue: BrowserModel(router: router, query: query))
         self.router = router
         self.query = query
     }
-
+    /// The body of the `View`
     var body: some View {
         VStack(spacing: 0) {
             #if os(iOS)

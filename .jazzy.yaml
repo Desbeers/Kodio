@@ -3,9 +3,13 @@ title: Kodio
 author: Nick Berendsen
 author_url: https://desbeers.nl
 github_url: https://github.com/desbeers/kodio/
+build_tool_arguments:
+ - -scheme
+ - Kodio
 min_acl: private
+output: Documentation
 clean: true
 theme: apple
 
 # Command line for doc generation:
-# jazzy --xcodebuild-arguments -target,"Kodio (macOS)"
+# jazzy

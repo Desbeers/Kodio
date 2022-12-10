@@ -29,8 +29,11 @@ struct Host: Codable, Identifiable, Hashable {
     }
     /// The status of the host
     enum Status: String, Codable {
+        /// A new host
         case new
+        /// A configured host
         case configured
+        /// Tye selected host
         case selected
     }
 }

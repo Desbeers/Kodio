@@ -19,7 +19,7 @@ struct PlaylistView: View {
     let playlist: SwiftlyKodiAPI.List.Item.File
     /// The state of loading the playlist
     @State var state: AppState.State = .loading
-    /// The View
+    /// The body of the `View`
     var body: some View {
         VStack(spacing: 0) {
             VStack {

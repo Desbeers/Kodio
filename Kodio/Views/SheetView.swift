@@ -11,7 +11,7 @@ import SwiftUI
 struct SheetView: View {
     /// The SceneState model
     @EnvironmentObject var scene: SceneState
-    /// The view
+    /// The body of the `View`
     var body: some View {
         ZStack(alignment: .topLeading) {
             /// Show the correct 'sheet'

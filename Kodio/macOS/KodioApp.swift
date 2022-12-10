@@ -18,7 +18,7 @@ import SwiftlyKodiAPI
     @StateObject var player: KodiPlayer = .shared
     /// Open new windows
     @Environment(\.openWindow) var openWindow
-    /// The View
+    /// The body of the `View`
     var body: some Scene {
         WindowGroup {
             MainView()
@@ -41,7 +41,13 @@ import SwiftlyKodiAPI
             SidebarCommands()
             /// Toolbar commands
             ToolbarCommands()
-            /// Rplace `Help`
+            /// Replace `New`
+            CommandGroup(replacing: .newItem) {
+                Button("New Window") {
+                    openWindow(id: "Main")
+                }
+            }
+            /// Replace `Help`
             CommandGroup(replacing: .help) {
                 Button("Help") {
                     openWindow(value: Window.help)
@@ -115,7 +121,9 @@ extension KodioApp {
 
     /// The kind of Windows Kodio can open
     enum Window: String, Codable {
+        /// About `View`
         case about = "About Kodio"
+        /// Help `View`
         case help = "Help"
     }
 }

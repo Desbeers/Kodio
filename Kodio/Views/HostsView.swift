@@ -27,7 +27,7 @@ struct HostsView: View {
     @State var help: String = ""
     /// SF symbol picker
     @State private var showSymbolPicker = false
-    /// The View
+    /// The body of the `View`
     var body: some View {
         HStack {
             hostList
@@ -117,7 +117,7 @@ extension HostsView {
         }
         .tag(host)
     }
-
+    /// View for editing a host
     var hostEdit: some View {
         VStack {
             if let selection = selection {
@@ -144,6 +144,7 @@ extension HostsView {
 
 extension  HostsView {
 
+    /// Form view to edit a host
     var viewForm: some View {
         Form {
             Grid(alignment: .center, verticalSpacing: 0) {
@@ -235,9 +236,11 @@ extension  HostsView {
                 .gridCellAnchor(.leading)
         }
     }
-
+    /// The type of footer
     enum FooterType {
+        /// The input is valid
         case valid
+        /// The input is not correct
         case error
     }
 }
@@ -312,6 +315,7 @@ extension HostsView {
     /// - Parameter host: The ``HostItem`` currenly editing
     /// - Returns: True or false
     private func validateForm(host: Host) -> Bool {
+        /// The status of the form item
         var status = true
         if host.details.description.isEmpty {
             status = false
@@ -321,7 +325,7 @@ extension HostsView {
         }
         return status
     }
-
+    /// Validate the name label
     private var validateNameLabel: some View {
         let validate = isValidName()
 
@@ -332,11 +336,11 @@ extension HostsView {
             return footer(text: "The name can't be empty", type: .error)
         }
     }
-
+    /// Bool if the name is valid
     private func isValidName() -> Bool {
         return !values.details.description.isEmpty
     }
-
+    /// Validate IP address
     private var validateIPLabel: some View {
         let validate = isValidIP()
 
@@ -364,7 +368,7 @@ extension HostsView {
         }
         return false
     }
-
+    /// Bool if the IP is available
     private func isValidIPAvailable() -> Bool {
         if edit.details.ip != values.details.ip, appState.hosts.first(where: {$0.details.ip == values.details.ip}) != nil {
             return false

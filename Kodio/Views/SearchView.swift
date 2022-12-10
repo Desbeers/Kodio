@@ -9,7 +9,9 @@ import SwiftUI
 
 /// The Search View
 struct SearchView: View {
+    /// The search query
     let query: String
+    /// The body of the `View`
     var body: some View {
         VStack {
             Text("Search")

@@ -12,11 +12,13 @@ import SwiftlyKodiAPI
 struct SidebarView: View {
     /// The SceneState model
     @EnvironmentObject var scene: SceneState
+    /// The search query
     @Binding var query: String
     /// The AppState model
     @EnvironmentObject var appState: AppState
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
+    /// The body of the `View`
     var body: some View {
         List(selection: $scene.selection) {
             Section(appState.host?.details.description ?? "Not connected") {
@@ -64,6 +66,9 @@ struct SidebarView: View {
         .animation(.default, value: appState.settings)
     }
 
+    /// Convert a ``Router`` iitem to a View
+    /// - Parameter item: The ``Router`` item
+    /// - Returns: A `View`
     @ViewBuilder func sidebarItem(item: Router) -> some View {
         if appState.visible(route: item) {
             Label(item.sidebar.title, systemImage: item.sidebar.icon)

@@ -23,7 +23,7 @@ struct StartView: View {
         Animation.linear(duration: 3.6)
             .repeatForever(autoreverses: false)
     }
-    /// The View
+    /// The body of the `View`
     var body: some View {
         ZStack(alignment: .center) {
             PartsView.RotatingRecord(icon: appState.host?.icon,

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RotatingRecord Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+    <script src="../../js/lunr.min.js" defer></script>
+    <script src="../../js/typeahead.jquery.js" defer></script>
+    <script src="../../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/RotatingRecord" class="dashAnchor"></a>
+    <a title="RotatingRecord Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../../index.html">Kodio</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
+          <form role="search" action="../../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../../index.html">Kodio Reference</a>
+        <img id="carat" src="../../img/carat.png" alt=""/>
+        RotatingRecord Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Classes/AppState.html">AppState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/AppState/State.html">– State</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/BrowserModel.html">BrowserModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/BrowserModel/Media.html">– Media</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/BrowserModel/Selection.html">– Selection</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/HelpModel.html">HelpModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/HelpModel/Page.html">– Page</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicBridge.html">MusicBridge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel.html">MusicMatchModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/SongItem.html">– SongItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/Playcount.html">– Playcount</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/RatingAction.html">– RatingAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/PlayerType.html">– PlayerType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/RotatingRecordModel.html">RotatingRecordModel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/RotatingRecordModel/Rotate.html">– Rotate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/SceneState.html">SceneState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/SceneState/Sheets.html">– Sheets</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Global%20Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Global%20Variables.html#/s:5Kodio13radioStationsSay14SwiftlyKodiAPI5AudioO7DetailsO6StreamVGvp">radioStations</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Enums/ButtonStyles.html">ButtonStyles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ButtonStyles/RadioStation.html">– RadioStation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ButtonStyles/Play.html">– Play</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ButtonStyles/MusicVideoNavigation.html">– MusicVideoNavigation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ButtonStyles/Help.html">– Help</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ButtonStyles/Browser.html">– Browser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/PartsView.html">PartsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/PartsView/BrowserHeader.html">– BrowserHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/PartsView/ListHeader.html">– ListHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/PartsView/LoadingState.html">– LoadingState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/PartsView/RotatingRecord.html">– RotatingRecord</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/PartsView/RotatingTape.html">– RotatingTape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/PartsView/SymbolsPicker.html">– SymbolsPicker</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/PartsView/HostSelector.html">– HostSelector</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/Router.html">Router</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/Router/Item.html">– Item</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Extensions/NSWindow.html">NSWindow</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/NSWindow/Position.html">– Position</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Protocols/MusicBridgeProtocol.html">MusicBridgeProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Structs/AboutView.html">AboutView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/AlbumsView.html">AlbumsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ArtistsView.html">ArtistsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/BrowserView.html">BrowserView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/DetailsView.html">DetailsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/GenresView.html">GenresView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/HelpView.html">HelpView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Host.html">Host</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Host/Status.html">– Status</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/HostingWindowFinder.html">HostingWindowFinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/HostsView.html">HostsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/HostsView/FooterType.html">– FooterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/KodioApp.html">KodioApp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/KodioApp/Window.html">– Window</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/KodioSettings.html">KodioSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/KodioSettings/ReplayGain.html">– ReplayGain</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MainView.html">MainView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MarkdownView.html">MarkdownView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MarkdownView/MarkdownLine.html">– MarkdownLine</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MarkdownView/MarkdownType.html">– MarkdownType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MenuBarExtraView.html">MenuBarExtraView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicMatchView.html">MusicMatchView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView.html">MusicVideosView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/MusicVideosRouter.html">– MusicVideosRouter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/Artists.html">– Artists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/Artist.html">– Artist</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/Album.html">– Album</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/StreamButton.html">– StreamButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/PlayAlbumButton.html">– PlayAlbumButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/MusicVideo.html">– MusicVideo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/PlaylistView.html">PlaylistView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/QueueView.html">QueueView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SearchView.html">SearchView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SettingsView.html">SettingsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SettingsView/Tabs.html">– Tabs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SettingsView/Playback.html">– Playback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SettingsView/Sidebar.html">– Sidebar</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SettingsView/KodiSetting.html">– KodiSetting</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SheetView.html">SheetView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SidebarView.html">SidebarView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SongsView.html">SongsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/SongsView/Song.html">– Song</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/StartView.html">StartView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/StatusView.html">StatusView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ToolbarView.html">ToolbarView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ToolbarView/NowPlaying.html">– NowPlaying</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ToolbarView/NowPlayingProgressView.html">– NowPlayingProgressView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ToolbarView/ProgressTimelineView.html">– ProgressTimelineView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ToolbarView/NowPlayingProgressViewStyle.html">– NowPlayingProgressViewStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ToolbarView/SetPartyMode.html">– SetPartyMode</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>RotatingRecord</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">RotatingRecord</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
+
+                </div>
+              </div>
+            <p>View a  record image that can rotate</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9PartsViewO14RotatingRecordV11rotateModelAA0deG0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/rotateModel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9PartsViewO14RotatingRecordV11rotateModelAA0deG0Cvp">rotateModel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The RotatingAnimationModel</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@StateObject</span>
+<span class="k">var</span> <span class="nv">rotateModel</span><span class="p">:</span> <span class="kt"><a href="../../Classes/RotatingRecordModel.html">RotatingRecordModel</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9PartsViewO14RotatingRecordV4iconSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/icon" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9PartsViewO14RotatingRecordV4iconSSSgvp">icon</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The optional SF symbol</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">icon</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9PartsViewO14RotatingRecordV5titleSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/title" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9PartsViewO14RotatingRecordV5titleSSSgvp">title</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The title</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9PartsViewO14RotatingRecordV8subtitleSSvp"></a>
+                    <a name="//apple_ref/swift/Property/subtitle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9PartsViewO14RotatingRecordV8subtitleSSvp">subtitle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The subtitle</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">subtitle</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9PartsViewO14RotatingRecordV7detailsSSvp"></a>
+                    <a name="//apple_ref/swift/Property/details" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9PartsViewO14RotatingRecordV7detailsSSvp">details</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The details</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">details</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9PartsViewO14RotatingRecordV6rotateSbvp"></a>
+                    <a name="//apple_ref/swift/Property/rotate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9PartsViewO14RotatingRecordV6rotateSbvp">rotate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Do we want to rotate or not</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Binding</span>
+<span class="k">var</span> <span class="nv">rotate</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9PartsViewO14RotatingRecordV4bodyQrvp"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9PartsViewO14RotatingRecordV4bodyQrvp">body</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The body of the <code>View</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9PartsViewO14RotatingRecordV7minSize4size14CoreFoundation7CGFloatV7SwiftUI13GeometryProxyV_tF"></a>
+                    <a name="//apple_ref/swift/Method/minSize(size:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9PartsViewO14RotatingRecordV7minSize4size14CoreFoundation7CGFloatV7SwiftUI13GeometryProxyV_tF">minSize(size:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The minimum size of the record</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">minSize</span><span class="p">(</span><span class="nv">size</span><span class="p">:</span> <span class="kt">GeometryProxy</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>size</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>View</code> size</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The minimum size as <code>CGFloat</code></p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2022 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2022-12-10)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

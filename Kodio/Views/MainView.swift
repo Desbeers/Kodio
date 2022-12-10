@@ -20,7 +20,7 @@ struct MainView: View {
     @State var searchField: String = ""
     /// Show all columns
     @State private var columnVisibility = NavigationSplitViewVisibility.all
-    /// The View
+    /// The body of the `View`
     var body: some View {
         NavigationSplitView(
             columnVisibility: $columnVisibility,

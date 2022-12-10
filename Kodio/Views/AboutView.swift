@@ -9,7 +9,9 @@ import SwiftUI
 
 /// The About Kodio View
 struct AboutView: View {
+    /// The rotate animation
     @State private var rotate: Bool = true
+    /// The body of the `View`
     var body: some View {
         VStack {
             HStack {

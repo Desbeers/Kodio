@@ -10,18 +10,29 @@ import SwiftlyKodiAPI
 
 /// The Router for Kodio navigation
 enum Router: Hashable {
+    /// Start View
     case start
+    /// Library View
     case library
+    /// Recently added View
     case recentlyAdded
+    /// Most played View
     case mostPlayed
+    /// Recently played View
     case recentlyPlayed
+    /// Favorites View
     case favorites
+    /// Current qeue View
     case playingQueue
+    /// Playlist View
     case playlist(file: List.Item.File)
+    /// Music videos View
     case musicVideos
+    /// Search View
     case search
+    /// Music match View
     case musicMatch
-
+    /// Message for an empty View
     var empty: String {
         switch self {
         case .start:
@@ -48,7 +59,7 @@ enum Router: Hashable {
             return "Music Match is not available"
         }
     }
-
+    /// Router item for the Sidebar
     var sidebar: Item {
         switch self {
         case .start:
@@ -111,11 +122,15 @@ enum Router: Hashable {
 
     /// An item in the sidebar
     struct Item {
+        /// The title of the item
         let title: String
+        /// The description of the item
         let description: String
+        /// The SF symbol of the item
         let icon: String
+        /// The actual ``Router``
         let route: Router = .start
+        /// Is the item visible or not
         var visible: Bool = true
     }
-
 }

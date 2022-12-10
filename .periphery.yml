@@ -1,6 +1,6 @@
-project: Kodio.xcodeproj
-retain_public: true
+retain_objc_accessible: true
 schemes:
-- Kodio (macOS)
+- Kodio
 targets:
-- Kodio (macOS)
+- Kodio
+workspace: Kodio.xcworkspace

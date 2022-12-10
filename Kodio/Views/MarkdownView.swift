@@ -15,10 +15,9 @@ import SwiftUI
 struct MarkdownView: View {
     /// The Help model
     @EnvironmentObject var help: HelpModel
-
     /// The Markdown `String` that will be formatted
     let markdown: String
-    /// The view
+    /// The body of the `View`
     var body: some View {
         let markdownLines: [MarkdownLine] = convertMarkdown(string: markdown)
         VStack(alignment: .leading) {

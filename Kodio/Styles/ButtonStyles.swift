@@ -21,7 +21,7 @@ extension ButtonStyles {
         @EnvironmentObject var player: KodiPlayer
         /// The radio channe;
         let channel: Audio.Details.Stream
-        /// The View
+        /// The body of the `View`
         var body: some View {
             Button(action: {
                 channel.play()

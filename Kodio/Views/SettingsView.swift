@@ -14,7 +14,7 @@ struct SettingsView: View {
     @EnvironmentObject var appState: AppState
     /// The selected tab
     @State var selection: Tabs = .kodiHosts
-    /// The View
+    /// The body of the `View`
     var body: some View {
         TabView(selection: $selection) {
             HostsView()
@@ -43,8 +43,11 @@ struct SettingsView: View {
 
     /// The tabs of the ``SettingsView``
     enum Tabs {
+        /// Host setiings
         case kodiHosts
+        /// Sidebar settings
         case sidebar
+        /// Playback settings
         case playback
     }
 }
@@ -63,7 +66,7 @@ extension SettingsView {
         @Binding var settings: KodioSettings
         /// Open Window
         @Environment(\.openWindow) var openWindow
-        /// The View
+        /// The body of the `View`
         var body: some View {
             ScrollView {
                 VStack {
@@ -138,7 +141,7 @@ extension SettingsView {
         @EnvironmentObject var appState: AppState
         /// All the Kodio settings
         @Binding var settings: KodioSettings
-        /// The View
+        /// The body of the `View`
         var body: some View {
                 VStack {
                     Text("Sidebar Settings")
@@ -185,7 +188,7 @@ extension SettingsView {
         @EnvironmentObject var kodi: KodiConnector
         /// The Kodi setting
         @State var setting: Setting.Details.Base
-        /// The View
+        /// The body of the `View`
         var body: some View {
             VStack(alignment: .leading) {
                 switch setting.control.controlType {
@@ -258,15 +261,16 @@ extension SettingsView {
             }
         }
 
+        /// Format a Kodi label
+        /// - Parameter value: An `Int` value
+        /// - Returns: A `String`
         func formatLabel(value: Int) -> String {
-            // swiftlint:disable:next colon
             let labelRegex = /{0:d}(?<label>.+?)/
             if let result = setting.control.formatLabel.wholeMatch(of: labelRegex) {
                 return "\(value)\(result.label)"
             } else {
                 return "\(value)"
             }
-
         }
     }
 }

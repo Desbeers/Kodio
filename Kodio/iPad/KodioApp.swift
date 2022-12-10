@@ -16,7 +16,7 @@ import SwiftlyKodiAPI
     @StateObject var kodi: KodiConnector = .shared
     /// The KodiPlayer model
     @StateObject var player: KodiPlayer = .shared
-    /// The View
+    /// The body of the `App`
     var body: some Scene {
         WindowGroup {
             MainView()

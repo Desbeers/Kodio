@@ -24,10 +24,15 @@ extension HelpModel {
     /// The pages for the Help View
     /// - Note: They are taken from the `Documentation Catalog`
     enum Page: String, CaseIterable {
+        /// General help
         case kodioHelp = "KodioHelp"
+        /// Settings help
         case kodiSettings = "KodiSettings"
+        /// Replay Gain help
         case replayGain = "ReplayGain"
+        /// Bugs help
         case bugs = "Bugs"
+        /// The title of the help page
         var title: String {
             switch self {
             case .kodioHelp:
@@ -67,7 +72,6 @@ extension HelpModel {
     /// - Parameter text: The text containing the link
     /// - Returns: A SwiftUI View
     @ViewBuilder func doccLink(text: String) -> some View {
-        // swiftlint:disable:next colon operator_usage_whitespace
         let doccRegex = /(?<leading>.+?)?<doc:(?<docc>.+?)>(?<trailing>.+?)?/
         if let result = text.wholeMatch(of: doccRegex) {
             HStack {

@@ -25,6 +25,9 @@ class SceneState: ObservableObject {
 }
 
 extension SceneState {
+
+    /// Update the serach
+    /// - Parameter query: The search query
     func updateSearch(query: String) async {
         do {
             try await Task.sleep(nanoseconds: 1_000_000_000)

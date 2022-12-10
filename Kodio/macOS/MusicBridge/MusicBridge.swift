@@ -37,7 +37,7 @@ extension MusicBridge {
         return Int(bridge.getTrackID([title, album, "\(track)"]).intValue)
     }
 
-    /// Set the rating of a Music song
+    /// Set the rating of a music song
     /// - Parameters:
     ///   - songID: The AppleScript ID of the song
     ///   - rating: The rating
@@ -45,10 +45,18 @@ extension MusicBridge {
         bridge.setTrackRating(["\(songID)", "\(rating)"])
     }
 
+    /// Set the playcount of a music song
+    /// - Parameters:
+    ///   - songID: The AppleScript ID of the song
+    ///   - playcount: The playcount
     func setMusicSongPlaycount(songID: Int, playcount: Int) {
         bridge.setTrackPlaycount(["\(songID)", "\(playcount)"])
     }
 
+    /// Set the play date of a music song
+    /// - Parameters:
+    ///   - songID: The AppleScript ID of the song
+    ///   - playDate: The play date
     func setMusicSongPlayDate(songID: Int, playDate: String) {
         bridge.setTrackPlayDate(["\(songID)", playDate])
     }
@@ -68,10 +76,8 @@ extension MusicBridge {
     func setTrackRating(_ theTrack: [String])
     /// Set the playcount of a track
     func setTrackPlaycount(_ theTrack: [String])
-
     /// Set the play date of a track
     func setTrackPlayDate(_ theTrack: [String])
-
     /// Get the AppleScript ID of a track
     func getTrackID(_ theTrack: [String]) -> NSString
     /// Send a notification

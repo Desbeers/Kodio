@@ -10,7 +10,9 @@ import SwiftlyKodiAPI
 
 /// The Music Videos View
 struct MusicVideosView: View {
+    /// The current ``MusicVideosRouter``
     @State var router: MusicVideosRouter
+    /// The body of the `View`
     var body: some View {
         VStack {
             switch router {
@@ -30,8 +32,11 @@ extension MusicVideosView {
 
     /// The router for this ``MusicVideosView``
     enum MusicVideosRouter: Hashable {
+        /// Show all artists
         case all
+        /// Show a specific artist
         case artist(artist: String)
+        /// Show an album
         case album(album: Video.Details.MusicVideo)
     }
 }
@@ -42,12 +47,15 @@ extension MusicVideosView {
     struct Artists: View {
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
+        /// The current artist
         @State var artists: [String] = []
+        /// The current `MusicVideosRouter`
         @Binding var router: MusicVideosRouter
         /// The state of loading the queue
         @State var state: AppState.State = .loading
         /// Define the grid layout
         private let grid = [GridItem(.adaptive(minimum: 220))]
+        /// The body of the `View`
         var body: some View {
             VStack {
                 Text("Your Music Videos")
@@ -105,13 +113,17 @@ extension MusicVideosView {
 
     /// View videos and albums for one artist
     struct Artist: View {
+        /// The name of the artist
         let artist: String
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
+        /// The music videos to show
         @State var musicVideos: [Video.Details.MusicVideo] = []
+        /// The current `MusicVideosRouter`
         @Binding var router: MusicVideosRouter
         /// Define the grid layout
         private let grid = [GridItem(.adaptive(minimum: 220))]
+        /// The body of the `View`
         var body: some View {
             VStack(spacing: 0) {
                 ZStack(alignment: .top) {
@@ -167,13 +179,17 @@ extension MusicVideosView {
 
     /// View videos from an album of an artist
     struct Album: View {
+        /// The album
         let album: Video.Details.MusicVideo
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
+        /// The music videos to show
         @State var musicVideos: [Video.Details.MusicVideo] = []
+        /// The current `MusicVideosRouter`
         @Binding var router: MusicVideosRouter
         /// Define the grid layout
         private let grid = [GridItem(.adaptive(minimum: 320))]
+        /// The body of the `View`
         var body: some View {
             VStack(spacing: 0) {
                 ZStack(alignment: .top) {
@@ -234,6 +250,9 @@ extension MusicVideosView {
 
 extension MusicVideosView {
 
+    /// Play and Stream SwiftUI buttons
+    /// - Parameter item: The `KodiItem`
+    /// - Returns: SwiftUI buttons
     static func playButtons(item: Video.Details.MusicVideo) -> some View {
         HStack {
             Button(action: {
@@ -249,11 +268,15 @@ extension MusicVideosView {
 
 extension MusicVideosView {
 
+    /// SwiftUI button to stream a `KodiItem`
     struct StreamButton: View {
+        /// The `KodiItem`
         let item: any KodiItem
+        /// Open in a window enviroment
         @Environment(\.openWindow) var openWindow
         /// The SceneState model
         @EnvironmentObject var scene: SceneState
+        /// The body of the `View`
         var body: some View {
             Button(action: {
 #if os(macOS)
@@ -270,11 +293,15 @@ extension MusicVideosView {
 
 extension MusicVideosView {
 
+    /// SwiftUI button to play an album
     struct PlayAlbumButton: View {
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
+        /// The `KodiItem`
         let item: any KodiItem
+        /// Bool to shuffle or not
         var shuffle: Bool
+        /// The body of the `View`
         var body: some View {
             Button(action: {
                 let album = kodi.library.musicVideos.filter({$0.subtitle == item.subtitle && $0.details == item.details})
@@ -290,10 +317,13 @@ extension MusicVideosView {
 
 extension MusicVideosView {
 
+    /// SwiftUI `View` for a music video
     struct MusicVideo: View {
         /// The KodiPlayer model
         @EnvironmentObject var player: KodiPlayer
+        /// The music video
         let musicVideo: Video.Details.MusicVideo
+        /// The body of the `View`
         var body: some View {
             HStack {
                 Image(systemName: "play.fill")

@@ -10,10 +10,13 @@ import SwiftlyKodiAPI
 
 /// The Details View for the Browser View
 struct DetailsView: View {
+    /// The selected ``Router``
     let router: Router
+    /// The selected `KodiItem`
     let selectedItem: (any KodiItem)?
     /// Rotate the record
     @State private var rotate: Bool = false
+    /// The body of the `View`
     var body: some View {
         ScrollView {
             Text(selectedItem?.title ?? router.sidebar.title)

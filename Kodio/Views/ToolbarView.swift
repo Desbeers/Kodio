@@ -87,7 +87,7 @@ extension ToolbarView {
     struct NowPlaying: View {
         /// The KodiPlayer model
         @EnvironmentObject var player: KodiPlayer
-        /// The View
+        /// The body of the `View`
         var body: some View {
             HStack(spacing: 0) {
                 if let nowPlaying = player.currentItem {
@@ -122,11 +122,17 @@ extension ToolbarView {
 
 extension ToolbarView {
 
+    /// SwiftUI `View` for the progess of the current item in the player
     struct NowPlayingProgressView: View {
+        /// The `KodiPlayer` model
         @EnvironmentObject var player: KodiPlayer
+        /// The current seconds
         @State var currentSeconds: Double = 0
+        /// The total seconds
         @State var totalSeconds: Double = 0
+        /// The time the item started to play
         @State var startTime: Date = .now
+        /// The body of the `View`
         var body: some View {
             if player.currentItem != nil && player.currentItem?.media != .stream {
                 TimelineView(.periodic(from: .now, by: 1.0)) { timeline in
@@ -152,8 +158,11 @@ extension ToolbarView {
             }
     }
 
+    /// SwiftUI `View` for the progress
     struct ProgressTimelineView: View {
+        /// Played percentage
         let percentage: Double
+        /// The body of the `View`
         var body: some View {
             ProgressView(value: percentage)
                 .progressViewStyle(NowPlayingProgressViewStyle())
@@ -161,6 +170,7 @@ extension ToolbarView {
         }
     }
 
+    /// The SwiftUI `ProgressViewStyle`
     struct NowPlayingProgressViewStyle: ProgressViewStyle {
         func makeBody(configuration: Configuration) -> some View {
             GeometryReader { geometry in
@@ -179,9 +189,10 @@ extension ToolbarView {
     ///
     /// - Note: This will set 'Party Mode' for audio, I don't see a use of videos for this
     struct SetPartyMode: View {
+        /// The `KodiPlayer` model
         @EnvironmentObject var player: KodiPlayer
-        public init() {}
-        public var body: some View {
+        /// The body of the `View`
+        var body: some View {
             Button(action: {
                 Task {
                     if player.properties.partymode {

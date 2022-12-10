@@ -19,7 +19,7 @@ struct MusicMatchView: View {
     @AppStorage("ratingAction") var ratingAction: MusicMatchModel.RatingAction = .useKodiRating
     /// Sort order for the table
     @State var sortOrder: [KeyPathComparator<MusicMatchModel.SongItem>] = [ .init(\.lastPlayed, order: SortOrder.reverse)]
-    /// The View
+    /// The body of the `View`
     var body: some View {
         VStack(spacing: 0) {
             VStack {

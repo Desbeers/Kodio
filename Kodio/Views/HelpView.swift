@@ -9,12 +9,10 @@ import SwiftUI
 
 /// The Help View
 struct HelpView: View {
-
     /// The Help model
     @StateObject var help: HelpModel = .shared
-    /// The view
+    /// The body of the `View`
     var body: some View {
-
         NavigationSplitView(sidebar: {
             List(selection: $help.page) {
                 ForEach(HelpModel.Page.allCases, id: \.self) { help in

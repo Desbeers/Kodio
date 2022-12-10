@@ -328,6 +328,9 @@ extension MusicMatchModel {
         )
     }
 
+    /// Convert a Swift `Date` to a Kodi date `String`
+    /// - Parameter date: The Swift `Date`
+    /// - Returns: A date `String`
     private func dateToKodiString(date: Date?) -> String {
         var string = ""
         if let date = date {
@@ -418,24 +421,34 @@ extension MusicMatchModel {
         }
     }
 
+    /// Struct for the playcount between Kodi and Music
     struct Playcount: Codable {
+        /// The Kodi ID
         var id: Library.id = 0
+        /// Music playcount
         var musicPlaycount: Int = 0
+        /// Kodi playcount
         var kodiPlaycount: Int = 0
+        /// The new Music playcount
         var musicPlayed: Int = 0
+        /// The new Kodi playcount
         var kodiPlayed: Int = 0
+        /// Bool if this item is synced before
         var synced = false
 
         /// # Calculated stuff
 
+        /// How many times is this item played
         var morePlayed: Int {
             musicPlayed + kodiPlayed
         }
 
+        /// The new Kodi playcount
         var addToKodi: Int? {
             musicPlayed != 0 ? kodiPlaycount + morePlayed : nil
         }
 
+        /// The new Music playcount
         var addToMusic: Int? {
             kodiPlayed != 0 ? musicPlaycount + morePlayed : nil
         }
