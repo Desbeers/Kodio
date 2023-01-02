@@ -91,14 +91,14 @@ extension SettingsView {
                     })
                     .font(.title)
                     .padding(.top)
-                    Text("Change settings on you selected Kodi")
+                    Text(appState.settings.togglePlayerSettings ? "Kodio takes care of these settings" : "Change settings on you selected Kodi")
+                        .foregroundColor(appState.settings.togglePlayerSettings ? .red : .primary)
                         .font(.caption)
                     VStack(alignment: .leading) {
-                        ForEach(kodi.settings.filter({$0.parent == .unknown && $0.control.controlType != .edit})) { setting in
-                            KodiSetting(setting: setting)
-                                .padding(.bottom)
-                        }
+                        KodiSettingView.setting(for: .musicplayerCrossfade)
+                        KodiSettingView.setting(for: .musicPlayerReplayGainType)
                     }
+                            .disabled(appState.settings.togglePlayerSettings)
                 }
                 .padding(.horizontal)
             }
@@ -174,103 +174,6 @@ extension SettingsView {
                 }
             .padding()
             .frame(maxHeight: .infinity, alignment: .top)
-        }
-    }
-}
-
-extension SettingsView {
-
-    /// The View for a Kodi Setting
-    struct KodiSetting: View {
-        /// The AppState model
-        @EnvironmentObject var appState: AppState
-        /// The KodiConnector model
-        @EnvironmentObject var kodi: KodiConnector
-        /// The Kodi setting
-        @State var setting: Setting.Details.Base
-        /// The body of the `View`
-        var body: some View {
-            VStack(alignment: .leading) {
-                switch setting.control.controlType {
-                case .list:
-                    Text(setting.label)
-                        .font(setting.parent == .unknown ? .title2 : .headline)
-                    Picker(setting.label, selection: $setting.valueInt) {
-                        ForEach(setting.settingInt ?? [Setting.Details.SettingInt](), id: \.self) { option in
-                            Text(option.label)
-                                .tag(option.value)
-                        }
-                    }
-                    .labelsHidden()
-                    .disabled(KodioSettings.disabled(setting: setting.id))
-                case .spinner:
-                    Text(setting.label)
-                        .font(setting.parent == .unknown ? .title2 : .headline)
-                    Picker(setting.label, selection: $setting.valueInt) {
-
-                        ForEach((setting.minimum...setting.maximum), id: \.self) { value in
-
-                            Text(value == 0 ? setting.control.minimumLabel : formatLabel(value: value))
-                                .tag(value)
-                        }
-
-                        ForEach(setting.settingInt ?? [Setting.Details.SettingInt](), id: \.self) { option in
-                            Text(option.label)
-                                .tag(option.value)
-                        }
-                    }
-                    .labelsHidden()
-                    .disabled(KodioSettings.disabled(setting: setting.id))
-                case .toggle:
-                    Toggle(setting.label, isOn: $setting.valueBool)
-                        .disabled(KodioSettings.disabled(setting: setting.id))
-                default:
-                        Text("Setting \(setting.control.controlType.rawValue) is not implemented")
-                            .font(.caption)
-                }
-
-                Text(setting.help)
-                    .font(.caption)
-                    .fixedSize(horizontal: false, vertical: true)
-                Text(KodioSettings.disabled(setting: setting.id) ? "Kodio takes care of this setting" : "")
-                    .font(.caption)
-                    .foregroundColor(.red)
-                /// Recursive load child settings
-                ForEach(kodi.settings.filter({$0.parent == setting.id && $0.enabled})) { child in
-                    KodiSetting(setting: child)
-                        .padding(.top)
-                }
-            }
-            .padding(setting.parent == .unknown ? .all : .horizontal)
-            .background(.thickMaterial)
-            .cornerRadius(10)
-            .animation(.default, value: appState.settings)
-            .onChange(of: setting.valueInt) { _ in
-                Task { @MainActor in
-                    await Settings.setSettingValue(setting: setting.id, int: setting.valueInt)
-                    /// Get the settings of the host
-                    kodi.settings = await Settings.getSettings()
-                }
-            }
-            .onChange(of: setting.valueBool) { _ in
-                Task { @MainActor in
-                    await Settings.setSettingValue(setting: setting.id, bool: setting.valueBool)
-                    /// Get the settings of the host
-                    kodi.settings = await Settings.getSettings()
-                }
-            }
-        }
-
-        /// Format a Kodi label
-        /// - Parameter value: An `Int` value
-        /// - Returns: A `String`
-        func formatLabel(value: Int) -> String {
-            let labelRegex = /{0:d}(?<label>.+?)/
-            if let result = setting.control.formatLabel.wholeMatch(of: labelRegex) {
-                return "\(value)\(result.label)"
-            } else {
-                return "\(value)"
-            }
         }
     }
 }

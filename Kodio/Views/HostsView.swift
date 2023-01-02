@@ -129,7 +129,7 @@ extension HostsView {
                         .font(.title)
                 MarkdownView(markdown: help)
                         .padding()
-                        .background(.thinMaterial)
+                        .background(.thickMaterial)
                         .cornerRadius(10)
                         .padding(40)
 

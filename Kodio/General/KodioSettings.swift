@@ -71,21 +71,3 @@ extension KodioSettings {
         case track = 2
     }
 }
-
-extension KodioSettings {
-
-    /// Check if a Kodi setting is disabled
-    /// - Parameter setting: The setting ID
-    /// - Returns: True or False
-    static func disabled(setting: Setting.ID) -> Bool {
-        let kodio = AppState.shared.settings.togglePlayerSettings
-        switch setting {
-        case .musicPlayerReplayGainType:
-            return kodio
-        case .musicplayerCrossfadeAlbumTracks:
-            return kodio
-        default:
-            return false
-        }
-    }
-}
