@@ -20,7 +20,7 @@ import SwiftlyKodiAPI
     @Environment(\.openWindow) var openWindow
     /// The body of the `View`
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: "Main") {
             MainView()
                 .environmentObject(appState)
                 .environmentObject(kodi)
@@ -34,8 +34,7 @@ import SwiftlyKodiAPI
                 }
         }
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
-        .windowResizability(.contentSize)
-        .defaultSize(width: 1200, height: 800)
+        .defaultSize(width: 1000, height: 800)
         .commands {
             /// Show or hide the sidebar
             SidebarCommands()
@@ -92,28 +91,22 @@ import SwiftlyKodiAPI
                 }
             }
             .background(Color("Window"))
-            .withHostingWindow { window in
-                if let window = window?.windowController?.window {
-                    window.setPosition(vertical: .center, horizontal: .center, padding: 0)
-                }
-            }
         }
         .windowResizability(.contentSize)
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
         .windowStyle(.hiddenTitleBar)
+        .defaultSize(width: 800, height: 600)
+        .defaultPosition(.center)
         /// Open a Video Window
         WindowGroup("Player", for: Video.Details.MusicVideo.self) { $item in
             /// Check if `item` isn't `nil`
             if let item = item {
                 KodiPlayerView(video: item)
-                    .withHostingWindow { window in
-                        if let window = window?.windowController?.window {
-                            window.setPosition(vertical: .center, horizontal: .center, padding: 0)
-                        }
-                    }
             }
         }
         .windowStyle(.hiddenTitleBar)
+        .defaultSize(width: 1280, height: 720)
+        .defaultPosition(.center)
     }
 }
 
