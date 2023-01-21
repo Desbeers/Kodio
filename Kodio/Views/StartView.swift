@@ -26,12 +26,12 @@ struct StartView: View {
     /// The body of the `View`
     var body: some View {
         ZStack(alignment: .center) {
-            PartsView.RotatingRecord(icon: appState.host?.icon,
-                                     subtitle: appState.host?.details.description ?? "",
-                                     details: kodi.state.rawValue,
+            PartsView.RotatingRecord(icon: "music.quarternote.3",
+                                     subtitle: kodi.host.bonjour?.name ?? "",
+                                     details: kodi.state.message,
                                      rotate: $rotate
             )
-            if appState.host == nil {
+            if kodi.state == .none {
                 VStack {
                     Text("Welcome to Kodio!")
                         .font(.title)

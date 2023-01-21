@@ -17,7 +17,7 @@ struct StatusView: View {
             VStack {
                 Spacer()
                 VStack {
-                    Text(kodi.state.rawValue)
+                    Text(kodi.state.message)
                         .font(.caption)
                     if kodi.state == .outdatedLibrary {
                         Button("Reload library") {

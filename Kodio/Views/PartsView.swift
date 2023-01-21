@@ -255,98 +255,6 @@ extension PartsView {
 
 extension PartsView {
 
-    /// A View to select an SF symbol
-    struct SymbolsPicker: View {
-        /// Show this View or not
-        @Binding var isPresented: Bool
-        /// The selected icon
-        @Binding var icon: String
-        /// The category of SF symbols to show
-        let category: String
-        /// The body of the `View`
-        var body: some View {
-            ScrollView(.horizontal) {
-                HStack {
-                    if isPresented {
-                        ForEach(symbols[category]!, id: \.hash) { icon in
-                            image(icon: icon)
-                        }
-                    } else {
-                        image(icon: icon)
-                    }
-                }
-            }
-        }
-
-        /// Convert an SF symbol Stribg to an Image
-        /// - Parameter icon: The SF symbol String
-        /// - Returns: An Image View
-        func image(icon: String) -> some View {
-            Image(systemName: icon)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 30, height: 30, alignment: .center)
-                .foregroundColor(self.icon == icon ? Color.accentColor : Color.primary)
-                .onTapGesture {
-                    withAnimation {
-                        self.icon = icon
-                        isPresented.toggle()
-                    }
-                }
-
-        }
-        /// All the SF symbols in use for Kodio
-        let symbols: [String: [String]] = ["RadioStations":
-                                            ["a.square.fill",
-                                             "b.square.fill",
-                                             "c.square.fill",
-                                             "d.square.fill",
-                                             "e.square.fill",
-                                             "f.square.fill",
-                                             "g.square.fill",
-                                             "h.square.fill",
-                                             "i.square.fill",
-                                             "j.square.fill",
-                                             "k.square.fill",
-                                             "l.square.fill",
-                                             "m.square.fill",
-                                             "n.square.fill",
-                                             "o.square.fill",
-                                             "p.square.fill",
-                                             "q.square.fill",
-                                             "r.square.fill",
-                                             "s.square.fill",
-                                             "t.square.fill",
-                                             "u.square.fill",
-                                             "v.square.fill",
-                                             "w.square.fill",
-                                             "x.square.fill",
-                                             "y.square.fill",
-                                             "z.square.fill",
-                                             "1.square.fill",
-                                             "2.square.fill",
-                                             "3.square.fill",
-                                             "4.square.fill",
-                                             "5.square.fill",
-                                             "6.square.fill",
-                                             "7.square.fill",
-                                             "8.square.fill",
-                                             "9.square.fill"
-                                            ],
-                                           "KodiHosts":
-                                            ["building.columns",
-                                             "display",
-                                             "desktopcomputer",
-                                             "laptopcomputer",
-                                             "macmini",
-                                             "bonjour"
-                                            ]
-        ]
-    }
-}
-
-extension PartsView {
-
     /// View a Kodi host selector
     struct HostSelector: View {
         /// The AppState model that has the hosts information
@@ -355,7 +263,7 @@ extension PartsView {
         @EnvironmentObject var kodi: KodiConnector
         /// The body of the `View`
         var body: some View {
-            if let host = appState.host {
+            if kodi.host.isOnline {
                 Button(
                     action: {
                         Task {
@@ -363,21 +271,21 @@ extension PartsView {
                         }
                     },
                     label: {
-                        Label("Reload \(host.details.description)", systemImage: "arrow.clockwise")
+                        Label("Reload \(kodi.host.name)", systemImage: "arrow.clockwise")
                     }
                 )
                 Divider()
             }
-            ForEach(appState.hosts.filter { $0.status == .configured }) { host in
+            ForEach(kodi.configuredHosts) { host in
                 Button(
                     action: {
-                        appState.selectHost(host: host)
+                        kodi.connect(host: host)
                     },
                     label: {
-                        Label("\(host.details.description)\(host.details.isOnline ? "" : "(offline)")", systemImage: host.icon)
+                        Label("\(host.name)\(host.isOnline ? "" : "(offline)")", systemImage: "globe")
                     }
                 )
-                .disabled(!host.details.isOnline)
+                .disabled(!host.isOnline || kodi.host == host)
             }
         }
     }

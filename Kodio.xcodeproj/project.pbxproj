@@ -45,8 +45,6 @@
 		D7B0F28B28B22F40008AD0D7 /* Documentation.docc in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7B0F28728B22F2B008AD0D7 /* Documentation.docc */; };
 		D7C06EF828A79C74003A7FAB /* RotatingRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */; };
 		D7C5B0F928A25C4A004F9465 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0F828A25C4A004F9465 /* SettingsView.swift */; };
-		D7C5B0FB28A25D01004F9465 /* HostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0FA28A25D01004F9465 /* HostsView.swift */; };
-		D7C5B0FE28A25E4D004F9465 /* Hosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0FD28A25E4D004F9465 /* Hosts.swift */; };
 		D7CB306C28995BE7004131BA /* MusicMatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB306B28995BE7004131BA /* MusicMatchModel.swift */; };
 		D7D2F931289592A400173389 /* MusicMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2F930289592A400173389 /* MusicMatchView.swift */; };
 		D7D48EE128AA70CD001C7DEC /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D48EE028AA70CD001C7DEC /* KodioApp.swift */; };
@@ -56,13 +54,14 @@
 		D7D48EE828AA957E001C7DEC /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D48EE728AA957E001C7DEC /* PlayerView.swift */; };
 		D7D9FF36289015A300AF9424 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9FF35289015A300AF9424 /* DetailsView.swift */; };
 		D7D9FF3A28901DE900AF9424 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D75BAE76288099C400401AF3 /* Assets.xcassets */; };
+		D7DB54BA297C13F800AEB373 /* HostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0FA28A25D01004F9465 /* HostsView.swift */; };
+		D7DB54BB297C13F900AEB373 /* HostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0FA28A25D01004F9465 /* HostsView.swift */; };
 		D7E3B27728959661007BB419 /* MusicBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3B27628959661007BB419 /* MusicBridge.swift */; };
 		D7E3B27928959685007BB419 /* MusicBridge.applescript in Sources */ = {isa = PBXBuildFile; fileRef = D7E3B27828959685007BB419 /* MusicBridge.applescript */; };
 		D7EE587B28AA3C75000EA00D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE587A28AA3C75000EA00D /* SheetView.swift */; };
 		D7EE58F528AA5BF8000EA00D /* SceneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AD41CF28A8FD6C002573D1 /* SceneState.swift */; };
 		D7EE58F628AA5BF8000EA00D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A2042881AB19007AFF45 /* Router.swift */; };
 		D7EE58F828AA5BF8000EA00D /* RotatingRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */; };
-		D7EE58F928AA5BF8000EA00D /* Hosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0FD28A25E4D004F9465 /* Hosts.swift */; };
 		D7EE58FA28AA5BF8000EA00D /* RadioStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CFD342882EFD80098F873 /* RadioStations.swift */; };
 		D7EE58FB28AA5BF8000EA00D /* BrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1F628817FC0007AFF45 /* BrowserModel.swift */; };
 		D7EE58FC28AA5BF8000EA00D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598628A46E0A00996A6A /* AppState.swift */; };
@@ -84,7 +83,6 @@
 		D7EE590C28AA5C0B000EA00D /* PartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CFD322882D9350098F873 /* PartsView.swift */; };
 		D7EE590D28AA5C0B000EA00D /* MusicVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E2D012885A8CA00AB3BCB /* MusicVideosView.swift */; };
 		D7EE590E28AA5C0B000EA00D /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75BAE8928809B8B00401AF3 /* AlbumsView.swift */; };
-		D7EE590F28AA5C0B000EA00D /* HostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0FA28A25D01004F9465 /* HostsView.swift */; };
 		D7EE591028AA5C0B000EA00D /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598928A505CA00996A6A /* StartView.swift */; };
 		D7EE591128AA5C0B000EA00D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0F828A25C4A004F9465 /* SettingsView.swift */; };
 		D7EE591228AA5C0B000EA00D /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE587A28AA3C75000EA00D /* SheetView.swift */; };
@@ -153,7 +151,6 @@
 		D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingRecordModel.swift; sourceTree = "<group>"; };
 		D7C5B0F828A25C4A004F9465 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D7C5B0FA28A25D01004F9465 /* HostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostsView.swift; sourceTree = "<group>"; };
-		D7C5B0FD28A25E4D004F9465 /* Hosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hosts.swift; sourceTree = "<group>"; };
 		D7CB306B28995BE7004131BA /* MusicMatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMatchModel.swift; sourceTree = "<group>"; };
 		D7D2F930289592A400173389 /* MusicMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMatchView.swift; sourceTree = "<group>"; };
 		D7D48EE028AA70CD001C7DEC /* KodioApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
@@ -297,7 +294,6 @@
 				D79C598628A46E0A00996A6A /* AppState.swift */,
 				D7AD41CF28A8FD6C002573D1 /* SceneState.swift */,
 				D762A2042881AB19007AFF45 /* Router.swift */,
-				D7C5B0FD28A25E4D004F9465 /* Hosts.swift */,
 				D762A1F628817FC0007AFF45 /* BrowserModel.swift */,
 				D70E603428AC07BA002309C1 /* HelpModel.swift */,
 				D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */,
@@ -474,10 +470,9 @@
 				D7CB306C28995BE7004131BA /* MusicMatchModel.swift in Sources */,
 				D75BAE8628809B1200401AF3 /* SidebarView.swift in Sources */,
 				D70E603228ABA702002309C1 /* KodioSettings.swift in Sources */,
-				D7C5B0FB28A25D01004F9465 /* HostsView.swift in Sources */,
 				D74CFD312882B0D30098F873 /* ToolbarView.swift in Sources */,
-				D7C5B0FE28A25E4D004F9465 /* Hosts.swift in Sources */,
 				D7E3B27928959685007BB419 /* MusicBridge.applescript in Sources */,
+				D7DB54BA297C13F800AEB373 /* HostsView.swift in Sources */,
 				D762A1FC288181ED007AFF45 /* ButtonStyles.swift in Sources */,
 				D726F0F3289C22EC00FE22CD /* AboutView.swift in Sources */,
 				D7D48EE128AA70CD001C7DEC /* KodioApp.swift in Sources */,
@@ -505,6 +500,7 @@
 				D7EE58FC28AA5BF8000EA00D /* AppState.swift in Sources */,
 				D7EE590128AA5C0B000EA00D /* MarkdownView.swift in Sources */,
 				D7EE58FD28AA5C0B000EA00D /* PlaylistView.swift in Sources */,
+				D7DB54BB297C13F900AEB373 /* HostsView.swift in Sources */,
 				D7EE590828AA5C0B000EA00D /* DetailsView.swift in Sources */,
 				D7EE58F528AA5BF8000EA00D /* SceneState.swift in Sources */,
 				D7EE590028AA5C0B000EA00D /* QueueView.swift in Sources */,
@@ -513,7 +509,6 @@
 				D7D48EE328AA70F3001C7DEC /* KodioApp.swift in Sources */,
 				D7EE591328AA5C10000EA00D /* ButtonStyles.swift in Sources */,
 				D7EE590D28AA5C0B000EA00D /* MusicVideosView.swift in Sources */,
-				D7EE58F928AA5BF8000EA00D /* Hosts.swift in Sources */,
 				D7EE591028AA5C0B000EA00D /* StartView.swift in Sources */,
 				D70E603328ABA702002309C1 /* KodioSettings.swift in Sources */,
 				D7EE591128AA5C0B000EA00D /* SettingsView.swift in Sources */,
@@ -529,7 +524,6 @@
 				D7B0F28928B22F2B008AD0D7 /* Documentation.docc in Sources */,
 				D7EE590728AA5C0B000EA00D /* SidebarView.swift in Sources */,
 				D7EE58FF28AA5C0B000EA00D /* GenresView.swift in Sources */,
-				D7EE590F28AA5C0B000EA00D /* HostsView.swift in Sources */,
 				D7EE58FA28AA5BF8000EA00D /* RadioStations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

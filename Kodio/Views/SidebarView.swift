@@ -21,7 +21,7 @@ struct SidebarView: View {
     /// The body of the `View`
     var body: some View {
         List(selection: $scene.selection) {
-            Section(appState.host?.details.description ?? "Not connected") {
+            Section(kodi.host.bonjour?.name ?? "Not connected") {
                 sidebarItem(item: Router.library)
                 sidebarItem(item: Router.recentlyAdded)
                 sidebarItem(item: Router.recentlyPlayed)

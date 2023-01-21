@@ -82,7 +82,7 @@ extension SettingsView {
                     .padding()
                     kodioSettings
                     Label(title: {
-                        Text("\(kodi.host.description)")
+                        Text("\(kodi.host.name)")
                     }, icon: {
                         Image("KodiLogo")
                             .resizable()

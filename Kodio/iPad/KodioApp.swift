@@ -23,11 +23,10 @@ import SwiftlyKodiAPI
                 .environmentObject(appState)
                 .environmentObject(kodi)
                 .environmentObject(player)
-                .task(id: appState.host) {
-                    if let host = appState.host {
-                        if kodi.state == .none {
-                            kodi.connect(host: host.details)
-                        }
+                .task {
+                    if kodi.state == .none {
+                        /// Get the selected host (if any)
+                        kodi.getSelectedHost()
                     }
                 }
         }

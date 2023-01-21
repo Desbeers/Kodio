@@ -220,7 +220,7 @@ extension MusicVideosView {
                                 Text(musicVideo.title)
                                     .font(.headline)
                                     .padding(.vertical, 5)
-                                KodiArt.Art(file: musicVideo.art.icon)
+                                KodiArt.Fanart(item: musicVideo)
                                     .frame(width: 320, height: 180)
                             }
                             .overlay(alignment: .bottom) {
@@ -328,7 +328,7 @@ extension MusicVideosView {
             HStack {
                 Image(systemName: "play.fill")
                     .opacity(player.currentItem?.id == musicVideo.id ? 1 : 0)
-                KodiArt.Art(file: musicVideo.art.icon)
+                KodiArt.Poster(item: musicVideo)
                     .frame(width: 160, height: 90)
                 VStack(alignment: .leading) {
                     Text(musicVideo.title)
