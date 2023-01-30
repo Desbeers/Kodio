@@ -81,24 +81,30 @@ extension BrowserModel {
         /// Get the shared KodiConnector
         let kodi: KodiConnector = .shared
 
+        /// Calculate past date
+        let date = Calendar.current.date(byAdding: .month, value: -6, to: Date()) ?? Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let pastDate = dateFormatter.string(from: date)
+
         /// Filter the songs
         switch router {
         case .recentlyAdded:
-            library.songs = Array(
-                kodi.library.songs.sorted {
-                        $0.dateAdded > $1.dateAdded
-                    }
-                    .prefix(100)
-            )
+            library.songs = kodi.library.songs
+                .filter {
+                    $0.dateAdded > pastDate
+                }
+                .sorted {
+                    $0.dateAdded > $1.dateAdded
+                }
         case .recentlyPlayed:
-            library.songs = Array(
-                kodi.library.songs.filter {
-                    $0.playcount > 0
-                }.sorted {
+            library.songs = kodi.library.songs
+                .filter {
+                    $0.playcount > 0 && $0.lastPlayed > pastDate
+                }
+                .sorted {
                     $0.lastPlayed > $1.lastPlayed
                 }
-                    .prefix(100)
-            )
         case .mostPlayed:
             library.songs = Array(
                 kodi.library.songs.filter {
@@ -106,7 +112,7 @@ extension BrowserModel {
                 }.sorted {
                     $0.playcount > $1.playcount
                 }
-                    .prefix(100)
+                    .prefix(1000)
             )
         case .favorites:
             library.songs = kodi.library.songs
