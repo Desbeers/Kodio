@@ -24,7 +24,7 @@ import SwiftlyKodiAPI
                 .environmentObject(kodi)
                 .environmentObject(player)
                 .task {
-                    if kodi.state == .none {
+                    if kodi.status == .none {
                         /// Get the selected host (if any)
                         kodi.getSelectedHost()
                     }

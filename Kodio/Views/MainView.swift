@@ -28,7 +28,7 @@ struct MainView: View {
                 ZStack {
                     SidebarView(query: $scene.query)
                     StatusView()
-                        .animation(.default, value: kodi.state)
+                        .animation(.default, value: kodi.status)
                 }
 #if os(iOS)
                 /// Add a Menu for iOS

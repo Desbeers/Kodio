@@ -28,10 +28,10 @@ struct StartView: View {
         ZStack(alignment: .center) {
             PartsView.RotatingRecord(icon: "music.quarternote.3",
                                      subtitle: kodi.host.bonjour?.name ?? "",
-                                     details: kodi.state.message,
+                                     details: kodi.status.message,
                                      rotate: $rotate
             )
-            if kodi.state == .none {
+            if kodi.status == .none {
                 VStack {
                     Text("Welcome to Kodio!")
                         .font(.title)
@@ -52,8 +52,8 @@ struct StartView: View {
                 .cornerRadius(10)
             }
         }
-        .task(id: kodi.state) {
-            rotate = kodi.state == .loadedLibrary ? true : false
+        .task(id: kodi.status) {
+            rotate = kodi.status == .loadedLibrary ? true : false
         }
     }
 }

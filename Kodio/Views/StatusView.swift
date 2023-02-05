@@ -13,13 +13,13 @@ struct StatusView: View {
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
     var body: some View {
-        if kodi.state != .loadedLibrary {
+        if kodi.status != .loadedLibrary {
             VStack {
                 Spacer()
                 VStack {
-                    Text(kodi.state.message)
+                    Text(kodi.status.message)
                         .font(.caption)
-                    if kodi.state == .outdatedLibrary {
+                    if kodi.status == .outdatedLibrary {
                         Button("Reload library") {
                             Task {
                                 await kodi.loadLibrary(cache: false)
