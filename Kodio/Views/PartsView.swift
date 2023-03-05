@@ -152,8 +152,8 @@ extension PartsView {
 
         /// The minimum size of the record
         /// - Parameter size: The `View` size
-        /// - Returns: The minimum size as `CGFloat`
-        func minSize(size: GeometryProxy) -> CGFloat {
+        /// - Returns: The minimum size as `Double`
+        func minSize(size: GeometryProxy) -> Double {
             return size.size.width > size.size.height ? size.size.height : size.size.width
         }
     }
@@ -246,8 +246,8 @@ extension PartsView {
 
         /// The minimum size of the record
         /// - Parameter size: The `View` size
-        /// - Returns: The minimum size as `CGFloat`
-        func minSize(size: GeometryProxy) -> CGFloat {
+        /// - Returns: The minimum size as `Double`
+        func minSize(size: GeometryProxy) -> Double {
             return size.size.width > size.size.height ? size.size.height : size.size.width
         }
     }

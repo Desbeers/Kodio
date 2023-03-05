@@ -175,7 +175,7 @@ extension ToolbarView {
         func makeBody(configuration: Configuration) -> some View {
             GeometryReader { geometry in
                 Rectangle()
-                    .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * geometry.size.width)
+                    .frame(width: Double(configuration.fractionCompleted ?? 0) * geometry.size.width)
                     .foregroundColor(.accentColor)
             }
             .opacity(0.1)
