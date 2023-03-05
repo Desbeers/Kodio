@@ -65,15 +65,9 @@ struct PlaylistView: View {
         .animation(.default, value: state)
         /// Get the songs from the playlist
         .task(id: kodi.library.songs) {
-            var songList = [Audio.Details.Song]()
-            let items = await Files.getDirectory(directory: playlist.file, media: .music)
-            for item in items {
-                if let songID = item.id, let song = kodi.library.songs.first(where: {$0.songID == songID}) {
-                    songList.append(song)
-                }
-            }
-            songs = songList
-            state = songList.isEmpty ? .empty : .ready
+            let playlist = await Files.getDirectory(directory: playlist.file, media: .music).compactMap(\.id)
+            songs = kodi.library.songs.filter({playlist.contains($0.songID)})
+            state = songs.isEmpty ? .empty : .ready
         }
         .animation(.default, value: songs)
     }
