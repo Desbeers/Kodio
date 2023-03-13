@@ -54,7 +54,6 @@ struct DetailsView: View {
             switch item.media {
             case .artist:
                 KodiArt.Fanart(item: item)
-                    .id(item.fanart)
             case .album:
                 ZStack {
                     HStack {
@@ -70,7 +69,6 @@ struct DetailsView: View {
                             .scaledToFit()
                             .cornerRadius(2)
                             .padding(.leading)
-                            .id(item.poster)
                         Color.clear
                     }
                 }
