@@ -17,6 +17,8 @@ struct MusicMatchView: View {
     @StateObject var musicMatch = MusicMatchModel()
     /// Setting wich ratings will be used
     @AppStorage("ratingAction") var ratingAction: MusicMatchModel.RatingAction = .useKodiRating
+    /// The songs in the table
+    @State private var songs: [MusicMatchModel.SongItem] = []
     /// Sort order for the table
     @State var sortOrder: [KeyPathComparator<MusicMatchModel.SongItem>] = [ .init(\.lastPlayed, order: SortOrder.reverse)]
     /// The body of the `View`
@@ -36,6 +38,7 @@ struct MusicMatchView: View {
                             var song = await musicMatch.syncRating(song: song, ratingAction: ratingAction)
                             song = await musicMatch.syncPlaycount(song: song)
                             musicMatch.updateSongItem(song: song)
+                            songs = musicMatch.songs
                             /// Store the playcount table
                             await musicMatch.setPlaycountCache()
                         }
@@ -66,7 +69,7 @@ struct MusicMatchView: View {
                     }
                 }
             } rows: {
-                ForEach(musicMatch.songs.sorted(using: sortOrder)) { item in
+                ForEach(songs.sorted(using: sortOrder)) { item in
                     TableRow(item)
                 }
             }
@@ -78,10 +81,11 @@ struct MusicMatchView: View {
                     musicMatch.status = .musicMatching
                     Task {
                         await musicMatch.matchSongs()
+                        songs = musicMatch.songs
                         musicMatch.status = .musicMatched
                     }
                 }, label: {
-                    Text("Match songs with Music")
+                    Text(musicMatch.status == .musicMatched ? "Match songs again" : "Match songs")
                 })
                 .disabled(musicMatch.status == .musicMatching)
                 HStack {
@@ -92,10 +96,15 @@ struct MusicMatchView: View {
                     }
                     .frame(width: 240)
                     Button(action: {
-                        /// Disable the buttons
-                        musicMatch.status = .syncAllRatings
                         Task {
+                            /// Disable the buttons
+                            musicMatch.status = .syncAllRatings
+                            /// Sync all songs
                             await musicMatch.syncAllSongs(ratingAction: ratingAction)
+                            /// Get the new list
+                            songs = musicMatch.songs
+                            /// Enable the buttons again
+                            musicMatch.status = .musicMatched
                         }
                     }, label: {
                         Text("Sync your songs")
@@ -106,9 +115,6 @@ struct MusicMatchView: View {
             }
         }
         .disabled(musicMatch.status == .syncAllRatings)
-        .task {
-            musicMatch.status = .kodiLoaded
-        }
     }
 }
 
@@ -142,7 +148,7 @@ extension MusicMatchView {
                     Text("Music: \(song.musicPlaycount)")
                 }
             }
-            .foregroundColor(playcount.morePlayed != 0 ? .red : .primary)
+            .foregroundColor(song.playcountInSync ? .primary : .red)
         } else {
             Text("Kodi: \(song.kodiPlaycount)")
         }

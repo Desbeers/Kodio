@@ -12,9 +12,9 @@ import iTunesLibrary
 // swiftlint:disable file_length
 
 /// The model for ``MusicMatchView``
-class MusicMatchModel: ObservableObject {
+final class MusicMatchModel: ObservableObject {
     /// All the songs
-    @Published var songs: [SongItem] = []
+    var songs: [SongItem] = []
     /// Playcounts
     var playcounts: [Playcount] = []
     /// The status of matching songs between Kodi and Music
@@ -23,8 +23,6 @@ class MusicMatchModel: ObservableObject {
     let musicBridge = MusicBridge()
     /// Init the model
     init() {
-        logger("INIT THE MODEL")
-        self.songs = getKodiSongs()
         if let cache = Cache.get(key: "MusicMatch", as: [Playcount].self) {
             self.playcounts = cache
         }
@@ -38,11 +36,7 @@ extension MusicMatchModel {
     /// Match songs between Kodi and Music
     func matchSongs() async {
         logger("Matching your songs...")
-        let songs = await getMusicMatch()
-        Task { @MainActor [songs] in
-            logger("Matching done")
-            self.songs = songs
-        }
+        songs = await getMusicMatch()
     }
 
     /// Get all songs from Kodi
@@ -103,7 +97,7 @@ extension MusicMatchModel {
                 playcounts[index].kodiPlayed = song.kodiPlaycount - playcounts[index].kodiPlaycount
                 playcounts[index].musicPlayed = song.musicPlaycount - playcounts[index].musicPlaycount
                 /// Set the sync status
-                song.playcountInSync = playcounts[index].morePlayed == 0 ? true : false
+                song.playcountInSync = playcounts[index].synced && playcounts[index].morePlayed == 0 ? true : false
             } else {
                 playcounts.append(Playcount(id: song.id,
                                             musicPlaycount: song.musicPlaycount,
@@ -148,10 +142,6 @@ extension MusicMatchModel {
         /// Store the match table
         await setPlaycountCache()
         musicBridge.sendNotification(title: "Kodio", message: "All your songs are in sync")
-        /// Enable the buttons again
-        Task { @MainActor in
-            status = .musicMatched
-        }
     }
 }
 
@@ -162,11 +152,8 @@ extension MusicMatchModel {
     /// Update the song in the SwiftUI Table View
     /// - Parameter song: The song as``SongItem``
     func updateSongItem(song: SongItem) {
-        /// Update the UI
-        Task { @MainActor in
-            if let index = songs.firstIndex(where: { $0.id == song.id }) {
-                songs[index] = song
-            }
+        if let index = songs.firstIndex(where: { $0.id == song.id }) {
+            songs[index] = song
         }
     }
 }
@@ -457,13 +444,11 @@ extension MusicMatchModel {
     /// The status of rating matching
     enum Status: String {
         /// Not loaded
-        case none = "Loading songs from Kodi"
-        /// Got ratings from Kodi
-        case kodiLoaded = "Loaded songs from Kodi"
+        case none = "Ready to match your songs between Kodi and Music"
         /// Match the Kodi songs with music
-        case musicMatching = "Matching songs with Music; this might take some time..."
+        case musicMatching = "Matching songs between Kodi and Music; this might take some time..."
         /// Kodi songs are matched with Music
-        case musicMatched = "Matched songs with Music"
+        case musicMatched = "Matched songs between Kodi and Music"
         /// Sync all ratings
         case syncAllRatings = "Syncing your songs"
     }
