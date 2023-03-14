@@ -11,17 +11,19 @@ import SwiftlyKodiAPI
 /// The Albums View
 struct AlbumsView: View {
 
-    /// The browser model
-    @EnvironmentObject var browser: BrowserModel
+    /// The albums for this View
+    let albums: [Audio.Details.Album]
+    /// The optional selected album
+    @Binding var selectedAlbum: Audio.Details.Album?
 
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
                 PartsView.BrowserHeader(label: "Albums")
                 LazyVStack(spacing: 0) {
-                    ForEach(browser.items.albums) { album in
+                    ForEach(albums) { album in
                         Button(action: {
-                            browser.selection.album = browser.selection.album == album ? nil : album
+                            selectedAlbum = selectedAlbum == album ? nil : album
                         }, label: {
                             HStack {
                                 KodiArt.Poster(item: album)
@@ -39,11 +41,10 @@ struct AlbumsView: View {
                                 }
                             }
                         })
-                        .buttonStyle(ButtonStyles.Browser(item: album, selected: browser.selection.album == album))
+                        .buttonStyle(ButtonStyles.Browser(item: album, selected: selectedAlbum == album))
                     }
                 }
             }
         }
-        .id(browser.items.albums)
     }
 }

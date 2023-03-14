@@ -56,19 +56,26 @@ struct QueueView: View {
                     case 1:
                         queueItem(item: items.first!, single: true)
                     default:
-                        ScrollViewReader { proxy in
-                            List {
-                                ForEach(items, id: \.id) { item in
-                                    queueItem(item: item)
+                        ScrollView {
+                            ScrollViewReader { proxy in
+                                LazyVStack {
+                                    ForEach(items, id: \.id) { item in
+                                        queueItem(item: item)
+                                        if let song = item as? Audio.Details.Song {
+                                            Divider()
+                                                .padding(.horizontal)
+                                                .id(song.id)
+                                        }
+
+                                    }
+                                }
+                                .task(id: player.currentItem?.id) {
+                                    withAnimation(.linear(duration: 1)) {
+                                        proxy.scrollTo(player.currentItem?.id, anchor: .center)
+                                    }
                                 }
                             }
-                            .listStyle(.plain)
-                            .task(id: player.currentItem?.id) {
-                                withAnimation(.linear(duration: 1)) {
-                                    /// - Note: This does not work correct on macOS with a long list; it partly scrolls
-                                    proxy.scrollTo(player.currentItem?.id, anchor: .center)
-                                }
-                            }
+
                         }
                     }
                 }

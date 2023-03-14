@@ -27,7 +27,7 @@ struct StartView: View {
     var body: some View {
         ZStack(alignment: .center) {
             PartsView.RotatingRecord(icon: "music.quarternote.3",
-                                     subtitle: kodi.host.bonjour?.name ?? "",
+                                     subtitle: kodi.host.bonjour?.name ?? "Kodio",
                                      details: kodi.status.message,
                                      rotate: $rotate
             )

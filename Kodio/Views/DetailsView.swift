@@ -35,15 +35,10 @@ struct DetailsView: View {
             }
             .aspectRatio(1.78, contentMode: .fit)
             .cornerRadius(3)
-            if let item = selectedItem as? Audio.Details.Album {
-                Text(item.description)
-                    .padding(.bottom)
-            }
-            if let item = selectedItem as? Audio.Details.Artist {
-                Text(item.description)
-                    .padding(.bottom)
-            }
+            Text(selectedItem?.description ?? "")
+                .padding(.bottom)
         }
+        .id(selectedItem?.id)
         .padding(.top)
         .padding(.horizontal)
     }

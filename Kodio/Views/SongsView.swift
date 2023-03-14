@@ -11,43 +11,43 @@ import SwiftlyKodiAPI
 /// The Songs View
 struct SongsView: View {
 
-    /// The AppState model
-    @EnvironmentObject var appState: AppState
-
-    /// The browser model
-    @EnvironmentObject var browser: BrowserModel
+    /// The songs for this View
+    let songs: [Audio.Details.Song]
+    /// The optional selection
+    @Binding var selection: BrowserModel.Selection
 
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    KodioSettings.setPlayerSettings(setting: browser.selection.album == nil ? .track : .album)
-                    browser.items.songs.play()
+                    KodioSettings.setPlayerSettings(setting: selection.album == nil ? .track : .album)
+                    songs.play()
                 }, label: {
                     Label("Play songs", systemImage: "play.fill")
                 })
                 Button(action: {
-                    KodioSettings.setPlayerSettings(setting: browser.selection.album == nil ? .track : .album)
-                    browser.items.songs.play(shuffle: true)
+                    KodioSettings.setPlayerSettings(setting: selection.album == nil ? .track : .album)
+                    songs.play(shuffle: true)
                 }, label: {
                     Label("Shuffle songs", systemImage: "shuffle")
                 })
             }
             .buttonStyle(ButtonStyles.Play())
             .padding(.top)
-            List {
-                ForEach(browser.items.songs) { song in
-                    Song(song: song, album: browser.selection.album)
+            /// On macOS, `List` is not lazy, so slow... So, viewed in a `LazyVStack` and no fancy swipes....
+            ScrollView {
+                LazyVStack {
+                    ForEach(Array(songs.enumerated()), id: \.element) { index, song in
+                        Song(song: song, album: selection.album)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background((index % 2 == 0) ? Color.gray.opacity(0.1) : Color.clear)
+                            .cornerRadius(6)
+                            .padding(.trailing)
+                    }
                 }
             }
-#if os(macOS)
-            .listStyle(.inset(alternatesRowBackgrounds: true))
-#else
-            .listStyle(.plain)
-#endif
-            .id(browser.items.songs)
         }
-        .id(browser.selection)
+        .id(selection)
     }
 }
 
@@ -55,8 +55,6 @@ extension SongsView {
 
     /// The View for a song
     struct Song: View {
-        /// The SceneState model
-        @EnvironmentObject var scene: SceneState
         /// The KodiPlayer model
         @EnvironmentObject var player: KodiPlayer
         /// The song tho view
@@ -66,14 +64,9 @@ extension SongsView {
         var body: some View {
             HStack {
                 icon
-                if album != nil {
-                    Text("\(song.track)")
-                        .font(.headline)
-                } else {
-                    KodiArt.Poster(item: song)
-                        .cornerRadius(4)
-                        .frame(width: 60, height: 60)
-                }
+                    .frame(width: 20)
+                art
+                    .frame(width: 60, height: 60)
                 VStack(alignment: .leading) {
                     Text(song.title)
                     Text(song.displayArtist)
@@ -83,52 +76,75 @@ extension SongsView {
                         .font(.caption)
                         .opacity(0.6)
                 }
+                Spacer()
+                Menu {
+                    Actions(song: song)
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+                .frame(width: 40)
+                .menuStyle(.borderlessButton)
             }
-            .swipeActions(edge: .leading) {
-                Button(action: {
-                    /// Check if this song is in the current playlist
-                    /// and if not, set the Player Settings to 'track'
-                    if song.playlistID == nil {
-                        KodioSettings.setPlayerSettings(setting: .track)
-                    }
-                    song.play()
-                }, label: {
-                    Label("Play", systemImage: "play")
-
-                })
-                .tint(.green)
-                Button(action: {
-                    Task {
-                        await song.toggleFavorite()
-                    }
-                }, label: {
-                    Label(song.userRating == 0 ? "Favorite" : "Unfavorite", systemImage: song.userRating == 0 ? "heart.fill" : "heart")
-                })
-                .tint(.red)
-                Button(action: {
-                    Task {
-                        await song.togglePlayedState()
-                    }
-                }, label: {
-                    Label(song.playcount == 0 ? "Mark played" : "Mark new", systemImage: song.playcount == 0 ? "speaker" : "speaker.slash")
-
-                })
+            .padding()
+            .contextMenu {
+                Actions(song: song)
             }
-            #if os(macOS)
-            .padding(.vertical)
-            #endif
         }
         /// The icon for the song item
         @ViewBuilder var icon: some View {
             if song.id == player.currentItem?.id && player.currentItem?.media == .song {
-                if player.properties.speed == 0 {
-                    Image(systemName: "pause.fill")
-                } else {
-                    Image(systemName: "play.fill")
-                }
+                Image(systemName: player.properties.speed == 0 ? "pause.fill" : "play.fill")
             } else {
                 Image(systemName: song.userRating == 0 ? "music.note" : "heart")
             }
+        }
+        /// The art or track for the song item
+        @ViewBuilder var art: some View {
+            if album != nil {
+                Text("\(song.track)")
+                    .font(.headline)
+            } else {
+                KodiArt.Poster(item: song)
+                    .cornerRadius(4)
+                    .frame(width: 60, height: 60)
+            }
+        }
+    }
+}
+
+extension SongsView {
+    struct Actions: View {
+        let song: Audio.Details.Song
+        var body: some View {
+            Button(action: {
+                /// Check if this song is in the current playlist
+                /// and if not, set the Player Settings to 'track'
+                if song.playlistID == nil {
+                    KodioSettings.setPlayerSettings(setting: .track)
+                }
+                song.play()
+            }, label: {
+                Label("Play song", systemImage: "play")
+
+            })
+            .tint(.green)
+            Button(action: {
+                Task {
+                    await song.toggleFavorite()
+                }
+            }, label: {
+                Label(song.userRating == 0 ? "Add song to favourites" : "Remove song from favourites",
+                      systemImage: song.userRating == 0 ? "heart.fill" : "heart")
+            })
+            .tint(.red)
+            Button(action: {
+                Task {
+                    await song.togglePlayedState()
+                }
+            }, label: {
+                Label(song.playcount == 0 ? "Mark song as played" : "Mark song as new",
+                      systemImage: song.playcount == 0 ? "speaker" : "speaker.slash")
+            })
         }
     }
 }

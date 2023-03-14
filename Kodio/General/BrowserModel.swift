@@ -10,8 +10,6 @@ import SwiftlyKodiAPI
 
 /// The model for ``BrowserView``
 class BrowserModel: ObservableObject {
-    /// All the items for this View
-    @Published var items = Media()
     /// The selection of optional genre, artist or album in the ``BrowserView``
     @Published var selection = Selection()
     /// The state of loading the songs
@@ -45,7 +43,7 @@ class BrowserModel: ObservableObject {
 extension BrowserModel {
 
     /// The media to show in the ``BrowserView``
-    struct Media: Equatable {
+    struct Media: Equatable, Sendable {
         /// All genres
         var genres: [Library.Details.Genre] = []
         /// All martists
@@ -72,12 +70,8 @@ extension BrowserModel {
     /// Filter the library by ``Router`` selection
     ///
     /// The browser library is based on songs; they are filtered first and then the rest is added
-    func filterLibrary() {
+    func filterLibrary() async {
 
-        let start = CFAbsoluteTimeGetCurrent()
-
-        /// Set the state
-        state = state == .ready ? .ready : .loading
         /// Get the shared KodiConnector
         let kodi: KodiConnector = .shared
 
@@ -130,9 +124,7 @@ extension BrowserModel {
                     $0.displayArtist < $1.displayArtist
                 }
         }
-        if library.songs.isEmpty {
-            state = .empty
-        } else {
+        if !library.songs.isEmpty {
 
             /// All albums in the browser
             let songAlbumIDs = Set(library.songs.map({ $0.albumID }))
@@ -147,19 +139,11 @@ extension BrowserModel {
             /// All genres in the browser
             let songGenreIDs = Set(library.songs.flatMap({ $0.genreID }))
             library.genres = kodi.library.audioGenres.filter({songGenreIDs.contains($0.genreID)})
-
-            /// Filter the browser based on selection
-            filterBrowser()
-            /// Set the state
-            state = .ready
-            let diff = CFAbsoluteTimeGetCurrent() - start
-            logger("Took \(diff) seconds")
         }
     }
 
-    /// Filter the ``BrowserView`` based on the optional ``BrowserModel/selection-swift.property``
-    func filterBrowser() {
-
+    /// Filter the ``BrowserView`` based on the optional ``BrowserModel/selection``
+    func filterBrowser() async -> Media {
         var artists = library.artists
         var albums = library.albums
         var songs = library.songs
@@ -182,11 +166,11 @@ extension BrowserModel {
         if let album = selection.album {
             songs = songs.filter({$0.albumID == album.albumID}).sorted { $0.track < $1.track }
         }
-        /// Set the filtered items
-        items = Media(genres: library.genres,
-                      artists: artists,
-                      albums: albums,
-                      songs: songs
+        /// return the filtered items
+        return Media(genres: library.genres,
+                     artists: artists,
+                     albums: albums,
+                     songs: songs
         )
     }
 }

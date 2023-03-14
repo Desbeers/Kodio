@@ -10,19 +10,21 @@ import SwiftlyKodiAPI
 
 /// The Artists View
 struct ArtistsView: View {
-    /// The browser model
-    @EnvironmentObject var browser: BrowserModel
+
+    /// The artists for this View
+    let artists: [Audio.Details.Artist]
+    /// The optional selection
+    @Binding var selection: BrowserModel.Selection
 
     var body: some View {
-
         ScrollView {
             VStack(spacing: 0) {
                 PartsView.BrowserHeader(label: "Artists")
                 LazyVStack(spacing: 0) {
-                    ForEach(browser.items.artists) { artist in
+                    ForEach(artists) { artist in
                         Button(action: {
-                            browser.selection.artist = browser.selection.artist == artist ? nil : artist
-                            browser.selection.album = nil
+                            selection.artist = selection.artist == artist ? nil : artist
+                            selection.album = nil
                         }, label: {
                             HStack {
                                 KodiArt.Poster(item: artist)
@@ -38,11 +40,10 @@ struct ArtistsView: View {
                                 }
                             }
                         })
-                        .buttonStyle(ButtonStyles.Browser(item: artist, selected: browser.selection.artist == artist))
+                        .buttonStyle(ButtonStyles.Browser(item: artist, selected: selection.artist == artist))
                     }
                 }
             }
         }
-        .id(browser.items.artists)
     }
 }

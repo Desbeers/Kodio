@@ -14,6 +14,8 @@ struct BrowserView: View {
     @EnvironmentObject var kodi: KodiConnector
     /// The Browser model
     @StateObject private var browser: BrowserModel
+    /// All the items for this View
+    @State var items = BrowserModel.Media()
     /// The ``Router`` item
     private let router: Router
     /// The search query
@@ -45,14 +47,12 @@ struct BrowserView: View {
                 }
             case .ready:
                     HStack(spacing: 0) {
-                        GenresView()
+                        GenresView(genres: items.genres, selection: $browser.selection)
                             .frame(width: 150)
                             .padding(.leading, 5)
-                        ArtistsView()
-                        AlbumsView()
+                        ArtistsView(artists: items.artists, selection: $browser.selection)
+                        AlbumsView(albums: items.albums, selectedAlbum: $browser.selection.album)
                     }
-                    /// Just some eyecandy
-                    .animation(.default, value: browser.items.songs)
                     .overlay {
                         LinearGradient(gradient: Gradient(stops: [
                             Gradient.Stop(color: Color.black.opacity(0.25), location: 0),
@@ -64,21 +64,31 @@ struct BrowserView: View {
                     }
                     HStack(alignment: .top) {
                         DetailsView(router: router, selectedItem: browser.details)
-                            .animation(.default, value: browser.selection)
-                        SongsView()
+                        SongsView(songs: items.songs, selection: $browser.selection)
                     }
-                    .animation(.default, value: browser.selection)
             }
         }
+        /// Just some eyecandy
         .animation(.default, value: browser.state)
-        .environmentObject(browser)
+        .animation(.default, value: browser.selection)
         /// Load the library
-        .task(id: kodi.library.songs) {
-            browser.filterLibrary()
+        .task(id: router) {
+            await browser.filterLibrary()
+            items = await browser.filterBrowser()
+            browser.state = items.songs.isEmpty ? .empty : .ready
         }
         /// Filter the browser when a selection has changed
         .onChange(of: browser.selection) { _ in
-            browser.filterBrowser()
+            Task {
+                items = await browser.filterBrowser()
+            }
+        }
+        /// Filter the browser when songs are changed
+        .onChange(of: kodi.library.songs) { _ in
+            Task {
+                await browser.filterLibrary()
+                items = await browser.filterBrowser()
+            }
         }
     }
 }

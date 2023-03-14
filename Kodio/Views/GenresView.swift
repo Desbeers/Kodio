@@ -11,29 +11,30 @@ import SwiftlyKodiAPI
 /// The Genres View
 struct GenresView: View {
 
-    /// The browser model
-    @EnvironmentObject var browser: BrowserModel
+    /// The genres for this View
+    let genres: [Library.Details.Genre]
+    /// The optional selection
+    @Binding var selection: BrowserModel.Selection
 
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
                 PartsView.BrowserHeader(label: "Genres")
                 LazyVStack(spacing: 0) {
-                    ForEach(browser.items.genres) { genre in
+                    ForEach(genres) { genre in
                         Button(action: {
-                            browser.selection.genre = browser.selection.genre == genre ? nil : genre
-                            browser.selection.artist = nil
-                            browser.selection.album = nil
+                            selection.genre = selection.genre == genre ? nil : genre
+                            selection.artist = nil
+                            selection.album = nil
                         }, label: {
                             Text(genre.title)
                                 .font(.subheadline)
                                 .padding(6.5)
                         })
-                        .buttonStyle(ButtonStyles.Browser(item: genre, selected: browser.selection.genre == genre))
+                        .buttonStyle(ButtonStyles.Browser(item: genre, selected: selection.genre == genre))
                     }
                 }
             }
         }
-        .id(browser.items.genres)
     }
 }
