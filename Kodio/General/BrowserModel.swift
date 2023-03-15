@@ -111,7 +111,7 @@ extension BrowserModel {
         case .favorites:
             library.songs = kodi.library.songs
                 .filter {
-                    $0.userRating > 0
+                    $0.userRating >= AppState.shared.settings.userRating
                 }
                 .sorted {
                     $0.userRating > $1.userRating

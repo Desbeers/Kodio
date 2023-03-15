@@ -163,35 +163,56 @@ extension SettingsView {
         @Binding var settings: KodioSettings
         /// The body of the `View`
         var body: some View {
-                VStack {
-                    Text("Sidebar Settings")
-                        .font(.title)
-                    VStack(alignment: .leading) {
+            VStack {
+                Text("Sidebar Items")
+                    .font(.title)
+                VStack(alignment: .leading) {
 #if os(macOS)
-                        Toggle(isOn: $settings.showMusicMatch) {
-                            VStack(alignment: .leading) {
-                                Text("Show Music Match")
-                                Text(Router.musicMatch.sidebar.description)
-                                    .font(.caption)
-                            }
+                    Toggle(isOn: $settings.showMusicMatch) {
+                        VStack(alignment: .leading) {
+                            Text("Show Music Match")
+                            Text(Router.musicMatch.sidebar.description)
+                                .font(.caption)
                         }
+                    }
 #endif
-                        Toggle(isOn: $settings.showMusicVideos) {
-                            VStack(alignment: .leading) {
-                                Text("Show Music Videos")
-                                Text(Router.musicVideos.sidebar.description)
-                                    .font(.caption)
-                            }
+                    Toggle(isOn: $settings.showMusicVideos) {
+                        VStack(alignment: .leading) {
+                            Text("Show Music Videos")
+                            Text(Router.musicVideos.sidebar.description)
+                                .font(.caption)
                         }
-                        Toggle(isOn: $settings.showRadioStations) {
-                            VStack(alignment: .leading) {
-                                Text("Show Radio Stations")
-                                Text("Show the list of Radio Stations")
-                                    .font(.caption)
-                            }
+                    }
+                    Toggle(isOn: $settings.showRadioStations) {
+                        VStack(alignment: .leading) {
+                            Text("Show Radio Stations")
+                            Text("Show the list of Radio Stations")
+                                .font(.caption)
                         }
                     }
                 }
+                Text("Favourites")
+                    .font(.title2)
+                    .padding(.top)
+                VStack(alignment: .leading) {
+                    Picker("Minimum rating of a song", selection: $settings.userRating) {
+                        ForEach(1...10, id: \.self) { value in
+                            Text("Rating of \(value)")
+                        }
+                    }
+                    .frame(width: 200)
+                    .labelsHidden()
+                        Text("Minimum rating you gave a song to be viewed in Favourites.")
+                            .padding(.bottom)
+                            .font(.caption)
+                        Label(title: {
+                            Text("_This it not the content of the **Kodi Favourites** menu item_.")
+                        }, icon: {
+                            Image(systemName: "info.circle.fill")
+                        })
+                }
+
+            }
             .padding()
             .frame(maxHeight: .infinity, alignment: .top)
         }

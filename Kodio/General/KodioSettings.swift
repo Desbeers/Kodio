@@ -19,6 +19,8 @@ struct KodioSettings: Equatable, Codable {
     var showMusicVideos = true
     /// Show Radio Stations
     var showRadioStations = false
+    /// Minimum user rating to show in Favourites
+    var userRating: Int = 8
 
     /// ### Player
 
