@@ -99,10 +99,16 @@ extension SongsView {
         }
         /// The icon for the song item
         @ViewBuilder var icon: some View {
-            if song.id == player.currentItem?.id && player.currentItem?.media == .song {
-                Image(systemName: player.properties.speed == 0 ? "pause.fill" : "play.fill")
-            } else {
-                Image(systemName: song.userRating == 0 ? "music.note" : "heart")
+            VStack {
+                if song.id == player.currentItem?.id && player.currentItem?.media == .song {
+                    Image(systemName: player.properties.speed == 0 ? "pause.fill" : "play.fill")
+                } else {
+                    Image(systemName: song.userRating == 0 ? "music.note" : "heart")
+                    if song.userRating > 0 {
+                        Text("\(song.userRating)")
+                            .font(.caption)
+                    }
+                }
             }
         }
         /// The art or track for the song item
@@ -132,18 +138,36 @@ extension SongsView {
                 song.play()
             }, label: {
                 Label("Play song", systemImage: "play")
-
             })
-            .tint(.green)
-            Button(action: {
-                Task {
-                    await song.toggleFavorite()
+            Menu {
+                if song.userRating > 0 {
+                    Button(action: {
+                        Task {
+                            await song.setUserRating(rating: 0)
+                        }
+                    }, label: {
+                        HStack {
+                            Image(systemName: "star.slash")
+                            Text("Remove your rating")
+                        }
+                    })
                 }
-            }, label: {
-                Label(song.userRating == 0 ? "Add song to favourites" : "Remove song from favourites",
-                      systemImage: song.userRating == 0 ? "heart.fill" : "heart")
-            })
-            .tint(.red)
+                ForEach((1...10).reversed(), id: \.self) { value in
+                    Button(action: {
+                        Task {
+                            await song.setUserRating(rating: value)
+                        }
+                    }, label: {
+                        HStack {
+                            Image(systemName: song.userRating == value ? "star.fill" : "\(value).circle.fill")
+                            Text("Rate with \(value)")
+                        }
+                    })
+                    .disabled(song.userRating == value)
+                }
+            } label: {
+                Text("Rate your song")
+            }
             Button(action: {
                 Task {
                     await song.togglePlayedState()
