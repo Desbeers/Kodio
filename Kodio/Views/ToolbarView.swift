@@ -198,7 +198,7 @@ extension ToolbarView {
                     if player.properties.partymode {
                         Player.setPartyMode(playerID: .audio)
                     } else {
-                        KodioSettings.setPlayerSettings(setting: .track)
+                        KodioSettings.setPlayerSettings(media: .partymode)
                         Player.open(partyMode: .music)
                     }
                 }

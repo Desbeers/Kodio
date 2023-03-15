@@ -24,6 +24,14 @@ struct KodioSettings: Equatable, Codable {
 
     /// Toggle Player Settings
     var togglePlayerSettings = false
+    /// Crossfade playlists
+    var crossfadePlaylists = false
+    /// Crossfade compilation albums
+    var crossfadeCompilations = false
+    /// Crossfade Party Mode
+    var crossfadePartyMode = false
+    /// Crossfade duration (when enabled)
+    var crossfade: Int = 3
 }
 
 extension KodioSettings {
@@ -53,12 +61,33 @@ extension KodioSettings {
 extension KodioSettings {
 
     /// Set the Player Settings if 'togglePlayerSettings' is true
-    /// - Parameter setting: The ``ReplayGain`` setting
-    static func setPlayerSettings(setting: ReplayGain) {
-        if AppState.shared.settings.togglePlayerSettings {
+    /// - Parameter media: The kind of media for optional  ``Crossfade``
+    static func setPlayerSettings(media: Crossfade) {
+        let settings = AppState.shared.settings
+        if settings.togglePlayerSettings {
             Task {
-                await Settings.setSettingValue(setting: .musicPlayerReplayGainType, int: setting.rawValue)
-                await Settings.setSettingValue(setting: .musicplayerCrossfadeAlbumTracks, bool: setting == .track ? true : false)
+                /// Set defaults
+                var replayGain: ReplayGain = .track
+                var crossfade: Int = settings.crossfade
+                var crossfadeAlbumTracks: Bool = true
+                /// Alter defaults if needed
+                switch media {
+                case .album:
+                    replayGain = .album
+                    /// Never crossfade a full album
+                    crossfadeAlbumTracks = false
+                    crossfade = 0
+                case .playlist:
+                    crossfade = settings.crossfadePlaylists ? crossfade : 0
+                case .compilation:
+                    crossfade = settings.crossfadeCompilations ? crossfade : 0
+                case .partymode:
+                    crossfade = settings.crossfadePartyMode ? crossfade : 0
+                }
+                /// Apply the settings
+                await Settings.setSettingValue(setting: .musicPlayerReplayGainType, int: replayGain.rawValue)
+                await Settings.setSettingValue(setting: .musicplayerCrossfadeAlbumTracks, bool: crossfadeAlbumTracks)
+                await Settings.setSettingValue(setting: .musicplayerCrossfade, int: crossfade)
             }
         }
     }
@@ -69,5 +98,13 @@ extension KodioSettings {
         case album = 1
         /// Use `track` mode
         case track = 2
+    }
+
+    /// The media for optional Crossfade
+    enum Crossfade {
+        case album
+        case playlist
+        case compilation
+        case partymode
     }
 }

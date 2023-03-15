@@ -98,7 +98,7 @@ extension SettingsView {
                         KodiSettingView.setting(for: .musicplayerCrossfade)
                         KodiSettingView.setting(for: .musicPlayerReplayGainType)
                     }
-                            .disabled(appState.settings.togglePlayerSettings)
+                    .disabled(appState.settings.togglePlayerSettings)
                 }
                 .padding(.horizontal)
             }
@@ -125,6 +125,26 @@ extension SettingsView {
                 })
                 .buttonStyle(ButtonStyles.Help())
                 .frame(maxWidth: .infinity, alignment: .trailing)
+                if settings.togglePlayerSettings {
+                    Toggle(isOn: $settings.crossfadePlaylists) {
+                        Text("*Crossfade* songs when playing a playlist")
+                    }
+                    Toggle(isOn: $settings.crossfadeCompilations) {
+                        Text("*Crossfade* songs on compilation albums")
+                    }
+                    Toggle(isOn: $settings.crossfadePartyMode) {
+                        Text("*Crossfade* songs when in Party Mode")
+                    }
+                    Text("*Norml* albums will never crossfade.")
+                        .font(.caption)
+                    Picker("Duration of the crossfade", selection: $settings.crossfade) {
+                        ForEach(1...10, id: \.self) { value in
+                            Text("\(value) seconds")
+                        }
+                    }
+                    .disabled(!settings.crossfadePlaylists && !settings.crossfadeCompilations && !settings.crossfadePartyMode)
+                }
+
             }
             .padding()
             .background(.thickMaterial)

@@ -20,14 +20,12 @@ struct SongsView: View {
         VStack {
             HStack {
                 Button(action: {
-                    KodioSettings.setPlayerSettings(setting: selection.album == nil ? .track : .album)
-                    songs.play()
+                    playSongs(shuffle: false)
                 }, label: {
                     Label("Play songs", systemImage: "play.fill")
                 })
                 Button(action: {
-                    KodioSettings.setPlayerSettings(setting: selection.album == nil ? .track : .album)
-                    songs.play(shuffle: true)
+                    playSongs(shuffle: true)
                 }, label: {
                     Label("Shuffle songs", systemImage: "shuffle")
                 })
@@ -48,6 +46,15 @@ struct SongsView: View {
             }
         }
         .id(selection)
+    }
+
+    func playSongs(shuffle: Bool) {
+        var media: KodioSettings.Crossfade = .playlist
+        if let album = selection.album {
+            media = album.compilation ? .compilation : .album
+        }
+        KodioSettings.setPlayerSettings(media: media)
+        songs.play(shuffle: shuffle)
     }
 }
 
@@ -118,9 +125,9 @@ extension SongsView {
         var body: some View {
             Button(action: {
                 /// Check if this song is in the current playlist
-                /// and if not, set the Player Settings to 'track'
+                /// and if not, set the Player Settings to 'playlist'
                 if song.playlistID == nil {
-                    KodioSettings.setPlayerSettings(setting: .track)
+                    KodioSettings.setPlayerSettings(media: .playlist)
                 }
                 song.play()
             }, label: {
