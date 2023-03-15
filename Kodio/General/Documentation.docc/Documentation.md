@@ -16,5 +16,5 @@ It is using my [SwiftlyKodiApi](https://github.com/Desbeers/SwiftlyKodiAPI) fram
 
 - <doc:KodiSettings>
 - <doc:KodioHelp>
-- <doc:ReplayGain>
+- <doc:PlayerSettings>
 - <doc:Bugs>

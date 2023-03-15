@@ -20,7 +20,7 @@ import SwiftlyKodiAPI
     @Environment(\.openWindow) var openWindow
     /// The body of the `View`
     var body: some Scene {
-        WindowGroup(id: "Main") {
+        Window("Kodio", id: "Main") {
             MainView()
                 .environmentObject(appState)
                 .environmentObject(kodi)
@@ -48,13 +48,13 @@ import SwiftlyKodiAPI
             /// Replace `Help`
             CommandGroup(replacing: .help) {
                 Button("Help") {
-                    openWindow(value: Window.help)
+                    openWindow(value: Windows.help)
                 }
             }
             /// Replace ``About``
             CommandGroup(replacing: .appInfo) {
                 Button("About Kodio") {
-                    openWindow(value: Window.about)
+                    openWindow(value: Windows.about)
                 }
             }
             /// Add a `Host` menu
@@ -78,7 +78,7 @@ import SwiftlyKodiAPI
         }
         .menuBarExtraStyle(.window)
         /// Open new Windows
-        WindowGroup("Window", for: Window.self) { $item in
+        WindowGroup("Window", for: Windows.self) { $item in
             ZStack {
                 switch item {
                 case .about:
@@ -86,7 +86,7 @@ import SwiftlyKodiAPI
                 case .help:
                     HelpView()
                 case .none:
-                    EmptyView()
+                    AboutView()
                 }
             }
             .background(Color("Window"))
@@ -112,7 +112,7 @@ import SwiftlyKodiAPI
 extension KodioApp {
 
     /// The kind of Windows Kodio can open
-    enum Window: String, Codable {
+    enum Windows: String, Codable {
         /// About `View`
         case about = "About Kodio"
         /// Help `View`

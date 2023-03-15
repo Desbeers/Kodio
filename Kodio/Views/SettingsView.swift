@@ -109,14 +109,14 @@ extension SettingsView {
         var kodioSettings: some View {
             VStack(alignment: .leading) {
                 Toggle(isOn: $settings.togglePlayerSettings) {
-                    Text("Adjust the *Music Player* settings on playback")
+                    Text("Adjust the *Kodi Music Player* settings on playback")
                 }
-                Text("When enabled, Kodio will adjust the *Volume adjustment*  and *Crossfade* settings in your Kodi depending on your selection to play.")
+                Text("When enabled, Kodio will adjust the *Volume adjustment*  and *Crossfade* settings on your Kodi depending on your selection to play.")
                     .font(.caption)
                 Button(action: {
-                    HelpModel.shared.page = .replayGain
+                    HelpModel.shared.page = .playerSettings
 #if os(macOS)
-                    self.openWindow(value: KodioApp.Window.help)
+                    self.openWindow(value: KodioApp.Windows.help)
 #else
                     scene.viewSheet(type: .help)
 #endif

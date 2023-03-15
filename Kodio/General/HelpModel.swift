@@ -26,10 +26,10 @@ extension HelpModel {
     enum Page: String, CaseIterable {
         /// General help
         case kodioHelp = "KodioHelp"
-        /// Settings help
+        /// Kodi Settings help
         case kodiSettings = "KodiSettings"
-        /// Replay Gain help
-        case replayGain = "ReplayGain"
+        /// Player Settings help
+        case playerSettings = "PlayerSettings"
         /// Bugs help
         case bugs = "Bugs"
         /// The title of the help page
@@ -39,8 +39,8 @@ extension HelpModel {
                 return "Kodio Help"
             case .kodiSettings:
                 return "Kodi Settings"
-            case .replayGain:
-                return "ReplayGain"
+            case .playerSettings:
+                return "Player Settings"
             case .bugs:
                 return "Bugs, bugs, bugs!"
             }

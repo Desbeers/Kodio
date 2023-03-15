@@ -138,7 +138,11 @@ extension MarkdownView {
             EmptyView()
         case 2:
             Text(text)
-                .font(.headline)
+                .font(.title2)
+                .padding(.bottom, 5)
+        case 3:
+            Text(text)
+                .font(.title3)
                 .padding(.bottom, 5)
         default:
             Text(text)

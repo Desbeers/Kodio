@@ -12,28 +12,26 @@ Well, I think it is pretty straightforward. Maybe there is only one thing unusua
 
 Start to *play* or *shuffle* your songs with the buttons above the songlist.
 
-If you swipe (or *right click*) on a song you can play it. If it is already in the queue, it will just jump to that song. If not, the queue will be emptied and the selected song will play.
+If you '_right click_' on a song, or open the menu on the right,  you can play it. If it is already in the queue, it will just jump to that song. If not, the queue will be emptied and the selected song will be played.
 
 There is no option to add a new song to the `queue`. See below about settings...
-
-Click (or tap) the small image in the toolbar to open the *Playing Queue*. You can jump to a song in your Queue by *swiping* or *right click* a song and you can rearrange the order with *Drag & Drop*.
 
 ## Playlists
 
 Your Kodi playlists are loaded when Kodio is started. If you *add* or *delete* playlists; Kodio will not know until you either restart it or reload the library.
 
-Kodio is smart enough to get *the latest and greatest* for a playlist when you select it in the sidebar. You have to select it again if you have changed it. Kodio is only a *little bit* smart.
+Kodio is smart enough to get *the latest and greatest* for a playlist when you selected it in the sidebar. It will update 'smart playlists' when needed.
 
 
 ## I cannot connect to my host!
 
 See <doc:KodiSettings> for some tips.
 
-## There are no settings!
+## Settings and options
 
-No, because it is not needed, haha!
+There are not many settings or options in *Kodio*. It just plays the music the way I like it. The _queue_ is the _queue_ and if you want to play something else; just start it.
 
-I made Kodio exactly how I want it to be so I have no need for any settings. You want something different? Just change the source code or send a pull request if it is something worth to share.
+You can't go _forward_ or _backward_ in a song. I don't see the use of it.
 
 ## Will this ever be in the Apple Store?
 
