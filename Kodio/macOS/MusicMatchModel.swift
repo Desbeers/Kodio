@@ -51,7 +51,7 @@ extension MusicMatchModel {
                                    artist: song.displayArtist,
                                    track: song.track,
                                    kodiPlaycount: song.playcount,
-                                   kodiRating: song.userRating / 2,
+                                   kodiRating: song.userRating,
                                    kodiLastPlayed: song.lastPlayed)
             )
         }
@@ -89,7 +89,7 @@ extension MusicMatchModel {
                 $0.trackNumber == song.track
             }) {
                 song.musicPlaycount = musicSong.playCount
-                song.musicRating = musicSong.isRatingComputed ? 0 : musicSong.rating / 20
+                song.musicRating = musicSong.isRatingComputed ? 0 : musicSong.rating / 10
                 song.musicLastPlayed = dateToKodiString(date: musicSong.lastPlayedDate)
             }
             /// Update the playcount table if the song is known
@@ -217,7 +217,6 @@ extension MusicMatchModel {
     /// Set a playcount in Kodi
     /// - Parameter song: The song as ``SongItem``
     func setKodiPlaycount(song: SongItem, playcount: Int) async {
-        logger("Set Kodi Playcount to \(playcount)")
         /// Find the Kodi song in the database and update it
         if var kodiSong = KodiConnector.shared.library.songs.first(where: {$0.songID == song.id}) {
             kodiSong.playcount = playcount
@@ -229,7 +228,6 @@ extension MusicMatchModel {
     /// Set a playcount in Music
     /// - Parameter song: The song as ``SongItem``
     func setMusicPlaycount(song: SongItem, playcount: Int) async {
-        logger("Set Music Playcount to \(playcount)")
         /// Get the AppeScript ID for the song
         let songID = getMusicSongID(song: song)
         /// Update the playcount in Music
@@ -259,7 +257,6 @@ extension MusicMatchModel {
     func syncRating(song: SongItem, ratingAction: RatingAction) async -> SongItem {
         var song = song
         if song.musicRating != song.kodiRating {
-            logger("Update rating")
             switch ratingAction {
             case .useKodiRating:
                 await setMusicRating(song: &song)
@@ -284,7 +281,7 @@ extension MusicMatchModel {
         song.kodiRating = song.musicRating
         /// Find the Kodi song in the database and update it
         if var kodiSong = KodiConnector.shared.library.songs.first(where: {$0.songID == song.id}) {
-            kodiSong.userRating = song.musicRating * 10
+            kodiSong.userRating = song.musicRating
             await AudioLibrary.setSongDetails(song: kodiSong)
         }
     }
@@ -297,7 +294,7 @@ extension MusicMatchModel {
         /// Get the AppeScript ID for the song
         let songID = getMusicSongID(song: song)
         /// Update the song in Music
-        musicBridge.setMusicSongRating(songID: songID, rating: song.kodiRating * 20)
+        musicBridge.setMusicSongRating(songID: songID, rating: song.kodiRating * 10)
     }
 }
 
@@ -448,9 +445,9 @@ extension MusicMatchModel {
         /// Match the Kodi songs with music
         case musicMatching = "Matching songs between Kodi and Music; this might take some time..."
         /// Kodi songs are matched with Music
-        case musicMatched = "Matched songs between Kodi and Music"
-        /// Sync all ratings
-        case syncAllRatings = "Syncing your songs"
+        case musicMatched = "Matched songs between Kodi and Music..."
+        /// Sync all songs
+        case syncAllSongs = "Syncing your songs"
     }
 
     /// Which rating to use for syncing

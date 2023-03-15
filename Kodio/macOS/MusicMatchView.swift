@@ -61,7 +61,7 @@ struct MusicMatchView: View {
                         .foregroundColor(song.color(ratingAction: ratingAction, player: .kodi))
                 }
                 TableColumn("Music Rating", value: \.musicRating) { song in
-                    if musicMatch.status == .musicMatched || musicMatch.status == .syncAllRatings {
+                    if musicMatch.status == .musicMatched || musicMatch.status == .syncAllSongs {
                         ratings(rating: song.musicRating)
                             .foregroundColor(song.color(ratingAction: ratingAction, player: .music))
                     } else {
@@ -74,9 +74,7 @@ struct MusicMatchView: View {
                 }
             }
             VStack {
-                Text(musicMatch.status.rawValue)
-                    .font(.headline)
-                    .padding()
+                statusMessage(status: musicMatch.status)
                 Button(action: {
                     musicMatch.status = .musicMatching
                     Task {
@@ -96,9 +94,9 @@ struct MusicMatchView: View {
                     }
                     .frame(width: 240)
                     Button(action: {
+                        /// Disable the buttons
+                        musicMatch.status = .syncAllSongs
                         Task {
-                            /// Disable the buttons
-                            musicMatch.status = .syncAllRatings
                             /// Sync all songs
                             await musicMatch.syncAllSongs(ratingAction: ratingAction)
                             /// Get the new list
@@ -114,7 +112,8 @@ struct MusicMatchView: View {
                 .disabled(musicMatch.status != .musicMatched)
             }
         }
-        .disabled(musicMatch.status == .syncAllRatings)
+        .disabled(musicMatch.status == .syncAllSongs)
+        .animation(.default, value: musicMatch.status)
     }
 }
 
@@ -126,11 +125,20 @@ extension MusicMatchView {
     /// - Parameters:
     ///   - rating: The rating
     /// - Returns: A view with stars
-    @ViewBuilder func ratings(rating: Int) -> some View {
-        HStack {
+    func ratings(rating: Int) -> some View {
+        return HStack(spacing: 0) {
             ForEach(1..<6, id: \.self) { number in
-                Image(systemName: number <= rating ? "star.fill" : "star")
+                Image(systemName: image(number: number))
                     .font(.caption)
+            }
+        }
+        func image(number: Int) -> String {
+            if number * 2 <= rating {
+                return "star.fill"
+            } else if number * 2 == rating + 1 {
+                return "star.leadinghalf.filled"
+            } else {
+                return "star"
             }
         }
     }
@@ -144,7 +152,7 @@ extension MusicMatchView {
             HStack {
                 Image(systemName: playcount.synced ? "infinity" : "minus")
                 Text("Kodi: \(song.kodiPlaycount)")
-                if musicMatch.status == .musicMatched || musicMatch.status == .syncAllRatings {
+                if musicMatch.status == .musicMatched || musicMatch.status == .syncAllSongs {
                     Text("Music: \(song.musicPlaycount)")
                 }
             }
@@ -152,5 +160,20 @@ extension MusicMatchView {
         } else {
             Text("Kodi: \(song.kodiPlaycount)")
         }
+    }
+
+    @ViewBuilder func statusMessage(status: MusicMatchModel.Status) -> some View {
+        HStack {
+            switch status {
+            case .musicMatching, .syncAllSongs:
+                ProgressView()
+                    .scaleEffect(0.5)
+                Text(status.rawValue)
+            default:
+                Text(status.rawValue)
+            }
+        }
+        .frame(height: 30)
+        .font(.headline)
     }
 }

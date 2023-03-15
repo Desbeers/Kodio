@@ -12,7 +12,7 @@ Unlike most SwiftUI programmers, my main focus is for macOS. It is a challenge b
 
 ### macOS
 
-- Kodio can synchronise ratings between Kodi and Apple Music.
+- Kodio can synchronise playcounts and ratings between Kodi and Apple Music.
 
 ### Bugs, bugs, bugs!
 
