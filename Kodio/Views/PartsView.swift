@@ -282,7 +282,7 @@ extension PartsView {
                         kodi.connect(host: host)
                     },
                     label: {
-                        Label("\(host.name)\(host.isOnline ? "" : "(offline)")", systemImage: "globe")
+                        Label("\(host.name)\(host.isOnline ? "" : " (offline)")", systemImage: "globe")
                     }
                 )
                 .disabled(!host.isOnline || kodi.host == host)

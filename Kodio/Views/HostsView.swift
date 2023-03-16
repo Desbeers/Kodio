@@ -69,7 +69,7 @@ extension HostsView {
             }
         }, icon: {
             Image(systemName: "globe")
-                .foregroundColor(host.isSelected ? host.isOnline ? .green : .red : .gray)
+                .foregroundColor(host.isOnline ? host.isSelected ? .green : .accentColor : .red)
         })
         .tag(host)
     }
