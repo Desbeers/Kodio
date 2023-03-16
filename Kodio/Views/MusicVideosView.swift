@@ -153,7 +153,7 @@ extension MusicVideosView {
                                     }
                                     .overlay(alignment: .bottom) {
                                         if musicVideo.album.isEmpty {
-                                            playButtons(item: musicVideo)
+                                            playButton(item: musicVideo)
                                                 .padding(.vertical, 5)
                                                 .frame(maxWidth: .infinity)
                                                 .background(.ultraThinMaterial)
@@ -224,7 +224,7 @@ extension MusicVideosView {
                                     .frame(width: 320, height: 180)
                             }
                             .overlay(alignment: .bottom) {
-                                MusicVideosView.playButtons(item: musicVideo)
+                                MusicVideosView.playButton(item: musicVideo)
                                     .padding(.vertical, 5)
                                     .frame(maxWidth: .infinity)
                                     .background(.ultraThinMaterial)
@@ -250,40 +250,16 @@ extension MusicVideosView {
 
 extension MusicVideosView {
 
-    /// Play and Stream SwiftUI buttons
+    /// Play SwiftUI button
     /// - Parameter item: The `KodiItem`
-    /// - Returns: SwiftUI buttons
-    static func playButtons(item: Video.Details.MusicVideo) -> some View {
-        HStack {
-            Button(action: {
-                item.play()
-            }, label: {
-                Label("Play", systemImage: "play.fill")
-            })
-            StreamButton(item: item)
-        }
+    /// - Returns: SwiftUI button
+    static func playButton(item: Video.Details.MusicVideo) -> some View {
+        Button(action: {
+            item.play()
+        }, label: {
+            Label("Play", systemImage: "play.fill")
+        })
         .buttonStyle(ButtonStyles.Play())
-    }
-}
-
-extension MusicVideosView {
-
-    /// SwiftUI button to stream a `KodiItem`
-    struct StreamButton: View {
-        /// The `KodiItem`
-        let item: any KodiItem
-        /// Open in a window enviroment
-        @Environment(\.openWindow) var openWindow
-        /// The SceneState model
-        @EnvironmentObject var scene: SceneState
-        /// The body of the `View`
-        var body: some View {
-            Button(action: {
-                openWindow(value: item)
-            }, label: {
-                Label("Stream", systemImage: "network")
-            })
-        }
     }
 }
 

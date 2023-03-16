@@ -96,16 +96,6 @@ import SwiftlyKodiAPI
         .windowStyle(.hiddenTitleBar)
         .defaultSize(width: 800, height: 600)
         .defaultPosition(.center)
-        /// Open a Video Window
-        WindowGroup("Player", for: Video.Details.MusicVideo.self) { $item in
-            /// Check if `item` isn't `nil`
-            if let item = item {
-                KodiPlayerView(video: item)
-            }
-        }
-        .windowStyle(.hiddenTitleBar)
-        .defaultSize(width: 1280, height: 720)
-        .defaultPosition(.center)
     }
 }
 
