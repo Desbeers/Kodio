@@ -279,11 +279,7 @@ extension MusicVideosView {
         /// The body of the `View`
         var body: some View {
             Button(action: {
-#if os(macOS)
                 openWindow(value: item)
-#else
-                scene.viewMusicVideo(item: item)
-#endif
             }, label: {
                 Label("Stream", systemImage: "network")
             })

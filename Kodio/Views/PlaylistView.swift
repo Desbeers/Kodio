@@ -55,11 +55,7 @@ struct PlaylistView: View {
                         SongsView.Song(song: song, album: nil)
                     }
                 }
-#if os(macOS)
                 .listStyle(.inset(alternatesRowBackgrounds: true))
-#else
-                .listStyle(.plain)
-#endif
             }
         }
         .animation(.default, value: state)

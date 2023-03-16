@@ -1,6 +1,6 @@
 //
-//  ViewSyncRatings.swift
-//  Kodio (macOS)
+//  MusicMatchView.swift
+//  Kodio
 //
 //  © 2022 Nick Berendsen
 //

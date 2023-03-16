@@ -29,13 +29,11 @@ struct SidebarView: View {
                 sidebarItem(item: Router.favorites)
                 sidebarItem(item: Router.musicVideos)
             }
-#if os(macOS)
             if appState.settings.showMusicMatch {
                 Section("Match") {
                     sidebarItem(item: Router.musicMatch)
                 }
             }
-#endif
             Section("Queue") {
                 sidebarItem(item: Router.playingQueue)
             }

@@ -29,9 +29,6 @@ struct BrowserView: View {
     /// The body of the `View`
     var body: some View {
         VStack(spacing: 0) {
-            #if os(iOS)
-            Divider()
-            #endif
             switch browser.state {
             case .loading:
                 if router == .search {

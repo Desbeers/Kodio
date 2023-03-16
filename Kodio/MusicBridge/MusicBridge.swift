@@ -1,6 +1,6 @@
 //
 //  MusicBridge.swift
-//  Kodio (macOS)
+//  Kodio
 //
 //  © 2022 Nick Berendsen
 //

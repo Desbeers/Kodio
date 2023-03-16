@@ -38,11 +38,7 @@ struct StartView: View {
                     Text("There is no host configured")
                         .font(.subheadline)
                     Button(action: {
-                        #if os(macOS)
                         NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-                        #else
-                        scene.viewSheet(type: .settings)
-                        #endif
                     }, label: {
                         Text("Add a host")
                     })

@@ -30,10 +30,6 @@ struct MainView: View {
                     StatusView()
                         .animation(.default, value: kodi.status)
                 }
-#if os(iOS)
-                /// Add a Menu for iOS
-                .toolbar(content: iPadMenu)
-#endif
             }, detail: {
                 /// In a ZStack because the toolbar is added
                 ZStack {
@@ -48,10 +44,8 @@ struct MainView: View {
                         MusicVideosView(router: .all)
                     case .search:
                         BrowserView(router: .search, query: scene.query).id(scene.query)
-#if os(macOS)
                     case .musicMatch:
                         MusicMatchView()
-#endif
                     default:
                         BrowserView(router: scene.selection ?? .library).id(scene.selection)
                     }
@@ -61,18 +55,6 @@ struct MainView: View {
         .background(Color("Window"))
         .environmentObject(scene)
         .searchable(text: $searchField, prompt: "Search library")
-        /// Show sheets
-        .sheet(isPresented: $scene.showSheet) {
-            SheetView()
-                .environmentObject(scene)
-        }
-#if os(iOS)
-        .fullScreenCover(isPresented: $scene.showFullScreenCover) {
-            if let item = scene.activeMusicVideo {
-                PlayerView(video: item)
-            }
-        }
-#endif
         .task(id: searchField) {
             await scene.updateSearch(query: searchField)
         }

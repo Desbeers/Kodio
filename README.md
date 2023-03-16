@@ -1,26 +1,25 @@
 #  Kodio
 
-## A macOS and iPad music remote for [Kodi](https://kodi.tv)
+## A macOS Ventura music remote for [Kodi](https://kodi.tv)
 
-Kodio is written in SwiftUI 4 for macOS Ventura and iPadOS 16. Kodi version 19 *Matrix* is required.
+**Kodio** is written in SwiftUI 4 for macOS Ventura. Kodi version 19 *Matrix* is required.
 
 ![Screenshot](https://github.com/Desbeers/Kodio/raw/main/screenshot.png)
 
-My goal is to share as much code between the platforms, while still make them feel as *native* as possible. Both versions have exactly the same functionalities except for `rating syncing`, that is macOS only.
+Unlike most SwiftUI programmers, my focus is on macOS. It is a challenge because there is *by far* less information about SwiftUI on macOS. Well, part of the fun.
 
-Unlike most SwiftUI programmers, my main focus is for macOS. It is a challenge because there is *by far* less information about SwiftUI on macOS. Well, part of the fun.
+There are plenty Kodi music remotes for iOS and iPadOS. The _official Kodi Remote for iOS_ (in the AppStore) works very well and [KODI Music Remote](https://kodimusicremote.com/) is simply great!
 
-### macOS
+For macOS, there is none, except mine. I think it is also a little bit great, haha!
 
-- Kodio can synchronise playcounts and ratings between Kodi and Apple Music.
 
 ### Bugs, bugs, bugs!
 
-Yes, I know. Kodio is a bit buggy and always will be. Learning everyday something new and Kodio will always be work in progress. Part of the hobby! It is not my job. Not even close; I'm actually a seaman with a lot of free time, haha!
+Yes, I know. **Kodio** is a bit buggy and always will be. Learning everyday something new and Kodio will always be work in progress. Part of the hobby! It is not my job. Not even close; I'm actually a seaman with a lot of free time, haha!
 
 ## Dependencies
 
-Komodio depends on the following Swift Packages that are in my GitHub account:
+**Kodio** depends on the following Swift Package that is also in my GitHub account:
 
 - [SwiftlyKodiAPI](https://github.com/Desbeers/swiftlykodiapi/). The Swift API to talk to Kodio.
 

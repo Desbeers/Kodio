@@ -115,11 +115,7 @@ extension SettingsView {
                     .font(.caption)
                 Button(action: {
                     HelpModel.shared.page = .playerSettings
-#if os(macOS)
-                    self.openWindow(value: KodioApp.Windows.help)
-#else
-                    scene.viewSheet(type: .help)
-#endif
+                    openWindow(value: KodioApp.Windows.help)
                 }, label: {
                     Label("Help", systemImage: "questionmark.circle.fill")
                 })
@@ -167,7 +163,6 @@ extension SettingsView {
                 Text("Sidebar Items")
                     .font(.title)
                 VStack(alignment: .leading) {
-#if os(macOS)
                     Toggle(isOn: $settings.showMusicMatch) {
                         VStack(alignment: .leading) {
                             Text("Show Music Match")
@@ -175,7 +170,6 @@ extension SettingsView {
                                 .font(.caption)
                         }
                     }
-#endif
                     Toggle(isOn: $settings.showMusicVideos) {
                         VStack(alignment: .leading) {
                             Text("Show Music Videos")
