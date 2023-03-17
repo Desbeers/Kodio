@@ -10,8 +10,8 @@ import SwiftlyKodiAPI
 
 /// The Sidebar View
 struct SidebarView: View {
-    /// The search query
-    @Binding var query: String
+    /// The search field in the toolbar
+    @State var searchField: String = ""
     /// The AppState model
     @EnvironmentObject var appState: AppState
     /// The KodiConnector model
@@ -37,7 +37,7 @@ struct SidebarView: View {
             Section("Queue") {
                 sidebarItem(item: Router.playingQueue)
             }
-            if !query.isEmpty {
+            if !searchField.isEmpty {
                 Section("Search") {
                     sidebarItem(item: Router.search)
                 }
@@ -60,17 +60,18 @@ struct SidebarView: View {
             /// Make space for the status view
             Spacer(minLength: 40)
         }
-        .animation(.default, value: query)
-        //.animation(.default, value: appState.settings)
+        .animation(.default, value: appState.query)
+        .searchable(text: $searchField, prompt: "Search library")
+        .task(id: searchField) {
+            await appState.updateSearch(query: searchField)
+        }
     }
 
     /// Convert a ``Router`` iitem to a View
     /// - Parameter item: The ``Router`` item
     /// - Returns: A `View`
-    @ViewBuilder func sidebarItem(item: Router) -> some View {
-        //if appState.visible(route: item) {
-            Label(item.sidebar.title, systemImage: item.sidebar.icon)
-                .tag(item)
-        //}
+    func sidebarItem(item: Router) -> some View {
+        Label(item.sidebar.title, systemImage: item.sidebar.icon)
+            .tag(item)
     }
 }

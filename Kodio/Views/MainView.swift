@@ -14,8 +14,6 @@ struct MainView: View {
     @EnvironmentObject var appState: AppState
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
-    /// The search field in the toolbar
-    @State var searchField: String = ""
     /// Show all columns
     @State private var columnVisibility = NavigationSplitViewVisibility.all
     /// The body of the `View`
@@ -24,7 +22,7 @@ struct MainView: View {
             columnVisibility: $columnVisibility,
             sidebar: {
                 ZStack {
-                    SidebarView(query: $appState.query)
+                    SidebarView()
                     StatusView()
                         .animation(.default, value: kodi.status)
                 }
@@ -49,11 +47,7 @@ struct MainView: View {
                     }
                 }
                 .modifier(ToolbarView())
-            })
-        .background(Color("Window"))
-        .searchable(text: $searchField, prompt: "Search library")
-        .task(id: searchField) {
-            await appState.updateSearch(query: searchField)
-        }
+            }
+        )
     }
 }
