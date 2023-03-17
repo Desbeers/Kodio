@@ -36,7 +36,6 @@
 		D77CD1CC28912EEF00F2B905 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77CD1CB28912EEF00F2B905 /* StatusView.swift */; };
 		D79C598728A46E0A00996A6A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598628A46E0A00996A6A /* AppState.swift */; };
 		D79C598A28A505CA00996A6A /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598928A505CA00996A6A /* StartView.swift */; };
-		D7AD41D028A8FD6C002573D1 /* SceneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AD41CF28A8FD6C002573D1 /* SceneState.swift */; };
 		D7B0F28828B22F2B008AD0D7 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = D7B0F28728B22F2B008AD0D7 /* Documentation.docc */; };
 		D7B0F28A28B22F3A008AD0D7 /* Documentation.docc in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7B0F28728B22F2B008AD0D7 /* Documentation.docc */; };
 		D7C06EF828A79C74003A7FAB /* RotatingRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */; };
@@ -97,7 +96,6 @@
 		D77CD1CB28912EEF00F2B905 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		D79C598628A46E0A00996A6A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D79C598928A505CA00996A6A /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
-		D7AD41CF28A8FD6C002573D1 /* SceneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneState.swift; sourceTree = "<group>"; };
 		D7B0F28728B22F2B008AD0D7 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingRecordModel.swift; sourceTree = "<group>"; };
 		D7C5B0F828A25C4A004F9465 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			children = (
 				D7D48EE028AA70CD001C7DEC /* KodioApp.swift */,
 				D79C598628A46E0A00996A6A /* AppState.swift */,
-				D7AD41CF28A8FD6C002573D1 /* SceneState.swift */,
 				D762A2042881AB19007AFF45 /* Router.swift */,
 				D762A1F628817FC0007AFF45 /* BrowserModel.swift */,
 				D7CB306B28995BE7004131BA /* MusicMatchModel.swift */,
@@ -358,7 +355,6 @@
 				D726F0F3289C22EC00FE22CD /* AboutView.swift in Sources */,
 				D7D48EE128AA70CD001C7DEC /* KodioApp.swift in Sources */,
 				D7C06EF828A79C74003A7FAB /* RotatingRecordModel.swift in Sources */,
-				D7AD41D028A8FD6C002573D1 /* SceneState.swift in Sources */,
 				D762A1F92881805F007AFF45 /* GenresView.swift in Sources */,
 				D726F0F6289C28E700FE22CD /* MarkdownView.swift in Sources */,
 				D71E2D022885A8CA00AB3BCB /* MusicVideosView.swift in Sources */,

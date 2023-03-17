@@ -14,8 +14,6 @@ struct MainView: View {
     @EnvironmentObject var appState: AppState
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
-    /// The SceneState model
-    @StateObject var scene = SceneState()
     /// The search field in the toolbar
     @State var searchField: String = ""
     /// Show all columns
@@ -26,37 +24,36 @@ struct MainView: View {
             columnVisibility: $columnVisibility,
             sidebar: {
                 ZStack {
-                    SidebarView(query: $scene.query)
+                    SidebarView(query: $appState.query)
                     StatusView()
                         .animation(.default, value: kodi.status)
                 }
             }, detail: {
                 /// In a ZStack because the toolbar is added
                 ZStack {
-                    switch scene.selection {
+                    switch appState.selection {
                     case .start:
                         StartView()
                     case .playlist(let file):
-                        PlaylistView(playlist: file).id(scene.selection)
+                        PlaylistView(playlist: file).id(appState.selection)
                     case .playingQueue:
                         QueueView()
                     case .musicVideos:
                         MusicVideosView(router: .all)
                     case .search:
-                        BrowserView(router: .search, query: scene.query).id(scene.query)
+                        BrowserView(router: .search, query: appState.query).id(appState.query)
                     case .musicMatch:
                         MusicMatchView()
                     default:
-                        BrowserView(router: scene.selection ?? .library).id(scene.selection)
+                        BrowserView(router: appState.selection ?? .library).id(appState.selection)
                     }
                 }
                 .modifier(ToolbarView())
             })
         .background(Color("Window"))
-        .environmentObject(scene)
         .searchable(text: $searchField, prompt: "Search library")
         .task(id: searchField) {
-            await scene.updateSearch(query: searchField)
+            await appState.updateSearch(query: searchField)
         }
     }
 }

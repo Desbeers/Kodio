@@ -14,8 +14,10 @@ class AppState: ObservableObject {
     static let shared = AppState()
     /// The Kodio settings
     @Published var settings: KodioSettings
-    /// Items in the sidebar
-    @Published var sidebar: [Router.Item] = []
+    /// The current selection in the sidebar
+    @Published var selection: Router? = .start
+    /// The current search query
+    var query: String = ""
     /// Init the class; get Kodio settings
     private init() {
         self.settings = KodioSettings.load()
@@ -24,16 +26,19 @@ class AppState: ObservableObject {
 
 extension AppState {
 
-    /// Check if a sidebar item is visible
-    /// - Parameter route: The ``Router``
-    /// - Returns: True or False
-    func visible(route: Router) -> Bool {
-        switch route {
-        case .musicVideos:
-            return settings.showMusicVideos
-        default:
-            return true
-        }
+    /// Update the search query
+    /// - Parameter query: The search query
+    @MainActor func updateSearch(query: String) async {
+        do {
+            try await Task.sleep(until: .now + .seconds(1), clock: .continuous)
+            self.query = query
+                if !query.isEmpty {
+                    selection = .search
+                } else if selection == .search {
+                    /// Go to the main browser view; the search is canceled
+                    selection = .library
+                }
+        } catch { }
     }
 }
 

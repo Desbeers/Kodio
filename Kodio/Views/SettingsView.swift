@@ -58,8 +58,6 @@ extension SettingsView {
     struct Playback: View {
         /// The AppState model
         @EnvironmentObject var appState: AppState
-        /// The SceneState model
-        @EnvironmentObject var scene: SceneState
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
         /// All the Kodio settings

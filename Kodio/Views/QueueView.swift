@@ -10,8 +10,8 @@ import SwiftlyKodiAPI
 
 /// The Queue View
 struct QueueView: View {
-    /// The SceneState model
-    @EnvironmentObject var scene: SceneState
+    /// The AppState model
+    @EnvironmentObject var appState: AppState
     /// The KodiPlayer model
     @EnvironmentObject var player: KodiPlayer
     /// The state of loading the queue
@@ -31,7 +31,7 @@ struct QueueView: View {
             case .loading:
                 PartsView.LoadingState(message: "Loading the playlist...")
             case .empty:
-                PartsView.LoadingState(message: scene.selection?.empty ?? "", icon: scene.selection?.sidebar.icon)
+                PartsView.LoadingState(message: appState.selection?.empty ?? "", icon: appState.selection?.sidebar.icon)
             case .ready:
                 HStack(alignment: .center) {
                     VStack {

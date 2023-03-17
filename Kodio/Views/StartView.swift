@@ -12,8 +12,6 @@ import SwiftlyKodiAPI
 struct StartView: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState
-    /// The SceneState model
-    @EnvironmentObject var scene: SceneState
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
     /// Rotate the record

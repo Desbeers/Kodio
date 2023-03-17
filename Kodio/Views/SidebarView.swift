@@ -10,8 +10,6 @@ import SwiftlyKodiAPI
 
 /// The Sidebar View
 struct SidebarView: View {
-    /// The SceneState model
-    @EnvironmentObject var scene: SceneState
     /// The search query
     @Binding var query: String
     /// The AppState model
@@ -20,14 +18,16 @@ struct SidebarView: View {
     @EnvironmentObject var kodi: KodiConnector
     /// The body of the `View`
     var body: some View {
-        List(selection: $scene.selection) {
+        List(selection: $appState.selection) {
             Section(kodi.host.bonjour?.name ?? "Not connected") {
                 sidebarItem(item: Router.library)
                 sidebarItem(item: Router.recentlyAdded)
                 sidebarItem(item: Router.recentlyPlayed)
                 sidebarItem(item: Router.mostPlayed)
                 sidebarItem(item: Router.favorites)
-                sidebarItem(item: Router.musicVideos)
+                if appState.settings.showMusicVideos {
+                    sidebarItem(item: Router.musicVideos)
+                }
             }
             if appState.settings.showMusicMatch {
                 Section("Match") {
@@ -61,16 +61,16 @@ struct SidebarView: View {
             Spacer(minLength: 40)
         }
         .animation(.default, value: query)
-        .animation(.default, value: appState.settings)
+        //.animation(.default, value: appState.settings)
     }
 
     /// Convert a ``Router`` iitem to a View
     /// - Parameter item: The ``Router`` item
     /// - Returns: A `View`
     @ViewBuilder func sidebarItem(item: Router) -> some View {
-        if appState.visible(route: item) {
+        //if appState.visible(route: item) {
             Label(item.sidebar.title, systemImage: item.sidebar.icon)
                 .tag(item)
-        }
+        //}
     }
 }
