@@ -195,7 +195,7 @@ extension PartsView {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .shadow(radius: minSize(size: geometry) / 50)
-                    VStack(spacing: 0) {
+                    VStack(spacing: 2) {
                         Spacer()
                         Group {
                             if let icon = icon {
@@ -218,7 +218,7 @@ extension PartsView {
                     .foregroundColor(.black)
                     .shadow(radius: 0)
                     .minimumScaleFactor(0.01)
-                    .frame(width: minSize(size: geometry) / 3, height: minSize(size: geometry) / 8, alignment: .bottom)
+                    .frame(width: minSize(size: geometry) / 3, height: minSize(size: geometry) / 8 - 10, alignment: .bottom)
                 }
                 .padding()
                 /// Below is needed or else the View will not center

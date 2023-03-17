@@ -20,8 +20,8 @@ struct MusicVideosView: View {
                 Artists(router: $router)
             case .artist(let artist):
                 Artist(artist: artist, router: $router)
-            case .album(let album):
-                Album(album: album, router: $router)
+            case .album(let artist, let album):
+                Album(album: album, artist: artist, router: $router)
             }
         }
         .animation(.default, value: router)
@@ -35,9 +35,9 @@ extension MusicVideosView {
         /// Show all artists
         case all
         /// Show a specific artist
-        case artist(artist: String)
+        case artist(artist: Audio.Details.Artist)
         /// Show an album
-        case album(album: Video.Details.MusicVideo)
+        case album(artist: Audio.Details.Artist, album: Video.Details.MusicVideo)
     }
 }
 
@@ -48,7 +48,7 @@ extension MusicVideosView {
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
         /// The current artist
-        @State var artists: [String] = []
+        @State var artists: [Audio.Details.Artist] = []
         /// The current `MusicVideosRouter`
         @Binding var router: MusicVideosRouter
         /// The state of loading the queue
@@ -75,16 +75,9 @@ extension MusicVideosView {
                                     router = .artist(artist: artist)
                                 }, label: {
                                     VStack {
-                                        if let artistDetails = KodiConnector.shared.library.artists.first(where: {$0.artist == artist}) {
-                                            KodiArt.Poster(item: artistDetails)
-                                                .frame(width: 200, height: 200)
-                                        } else {
-                                            Image(systemName: "music.quarternote.3")
-                                                .resizable()
-                                                .padding(20)
-                                                .frame(width: 200, height: 200)
-                                        }
-                                        Text(artist)
+                                        KodiArt.Poster(item: artist)
+                                            .frame(width: 200, height: 200)
+                                        Text(artist.artist)
                                             .font(.headline)
                                             .padding(.bottom, 4)
                                     }
@@ -101,7 +94,12 @@ extension MusicVideosView {
             }
             .buttonStyle(.plain)
             .task(id: kodi.library.musicVideos) {
-                artists = kodi.library.musicVideos.unique(by: {$0.artist.first}).flatMap({$0.artist})
+                var artistList: [Audio.Details.Artist] = []
+                let allArtists = kodi.library.musicVideos.unique(by: {$0.artist}).flatMap({$0.artist})
+                for artist in allArtists {
+                    artistList.append(artistItem(artist: artist))
+                }
+                artists = artistList
                 if artists.isEmpty {
                     state = .empty
                 } else {
@@ -111,10 +109,21 @@ extension MusicVideosView {
         }
     }
 
+    /// Convert an 'artist' string to a `KodiItem`
+    /// - Parameter artist: Name of the artist
+    /// - Returns: A `KodiItem`
+    static func artistItem(artist: String) -> Audio.Details.Artist {
+        if let artistDetails = KodiConnector.shared.library.artists.first(where: {$0.artist == artist}) {
+            return artistDetails
+        }
+        /// Return an uknown artist
+        return Audio.Details.Artist(media: .artist, artist: artist, artistID: Int.random(in: 1...1000))
+    }
+
     /// View videos and albums for one artist
     struct Artist: View {
         /// The name of the artist
-        let artist: String
+        let artist: Audio.Details.Artist
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
         /// The music videos to show
@@ -136,7 +145,7 @@ extension MusicVideosView {
                         .buttonStyle(ButtonStyles.MusicVideoNavigation())
                         Spacer()
                     }
-                    Text(artist)
+                    Text(artist.artist)
                         .font(.title)
                 }
                 .modifier(PartsView.ListHeader())
@@ -148,7 +157,7 @@ extension MusicVideosView {
                                     .frame(width: 200, height: 300)
                                     .onTapGesture {
                                         if !musicVideo.album.isEmpty {
-                                            router = .album(album: musicVideo)
+                                            router = .album(artist: artist, album: musicVideo)
                                         }
                                     }
                                     .overlay(alignment: .bottom) {
@@ -171,7 +180,7 @@ extension MusicVideosView {
             }
             .task(id: kodi.library.musicVideos) {
                 musicVideos = kodi.library.musicVideos
-                    .filter({$0.artist.contains(artist)}).uniqueAlbum()
+                    .filter({$0.artist.contains(artist.artist)}).uniqueAlbum()
                     .sorted { $0.year < $1.year }
             }
         }
@@ -181,6 +190,8 @@ extension MusicVideosView {
     struct Album: View {
         /// The album
         let album: Video.Details.MusicVideo
+        /// The artist
+        let artist: Audio.Details.Artist
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
         /// The music videos to show
@@ -195,7 +206,7 @@ extension MusicVideosView {
                 ZStack(alignment: .top) {
                     HStack {
                         Button(action: {
-                            router = .artist(artist: album.artist.first ?? "")
+                            router = .artist(artist: artist)
                         }, label: {
                             Label("Back to \(album.artist.first ?? "")", systemImage: "chevron.backward")
                         })
@@ -301,7 +312,7 @@ extension MusicVideosView {
                 Image(systemName: "play.fill")
                     .opacity(player.currentItem?.id == musicVideo.id ? 1 : 0)
                 KodiArt.Poster(item: musicVideo)
-                    .frame(width: 160, height: 90)
+                    .frame(width: 90, height: 160)
                 VStack(alignment: .leading) {
                     Text(musicVideo.title)
                     Text(musicVideo.subtitle)
@@ -311,15 +322,6 @@ extension MusicVideosView {
                         .font(.caption)
                         .opacity(0.6)
                 }
-            }
-            .swipeActions(edge: .leading) {
-                Button(action: {
-                    musicVideo.play()
-                }, label: {
-                    Label("Play", systemImage: "play")
-
-                })
-                .tint(.green)
             }
         }
     }

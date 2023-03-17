@@ -61,12 +61,9 @@ struct QueueView: View {
                                 LazyVStack {
                                     ForEach(items, id: \.id) { item in
                                         queueItem(item: item)
-                                        if let song = item as? Audio.Details.Song {
-                                            Divider()
-                                                .padding(.horizontal)
-                                                .id(song.id)
-                                        }
-
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                        Divider()
+                                            .padding(.horizontal)
                                     }
                                 }
                                 .task(id: player.currentItem?.id) {
