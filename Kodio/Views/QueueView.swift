@@ -22,6 +22,7 @@ struct QueueView: View {
     @State private var animationToggle: Bool = false
     /// Rotate the record
     @State private var rotate: Bool = false
+    /// The body of the View
     var body: some View {
         VStack(spacing: 0) {
             Text("Now Playing")
@@ -33,65 +34,84 @@ struct QueueView: View {
             case .empty:
                 PartsView.LoadingState(message: appState.selection?.empty ?? "", icon: appState.selection?.sidebar.icon)
             case .ready:
-                HStack(alignment: .center) {
-                    VStack {
-
-                        switch player.properties.playlistID {
-                        case .audio:
-                            PartsView.RotatingRecord(title: player.currentItem?.title,
-                                                     subtitle: player.currentItem?.subtitle ?? "",
-                                                     details: player.currentItem?.details ?? "",
-                                                     rotate: $rotate
-                            )
-                        default:
-                            PartsView.RotatingTape(title: player.currentItem?.title,
-                                                     subtitle: player.currentItem?.subtitle ?? "",
-                                                     details: player.currentItem?.details ?? "",
-                                                     rotate: $rotate
-                            )
+                content
+            }
+        }
+        .animation(.default, value: player.currentItem?.id)
+        .animation(.default, value: animationToggle)
+        /// Update the current playlist
+        .task(id: player.playlistUpdate) {
+            getCurrentPlaylist()
+        }
+        /// Start or stop the animation
+        .task(id: player.properties.speed) {
+            rotate = player.properties.speed == 1 ? true : false
+        }
+        .onChange(of: player.properties.playlistID) { _ in
+            getCurrentPlaylist()
+        }
+    }
+    /// The content of the View
+    var content: some View {
+        HStack(alignment: .center) {
+            HStack {
+                switch player.properties.playlistID {
+                case .audio:
+                    PartsView.RotatingRecord(title: player.currentItem?.title,
+                                             subtitle: player.currentItem?.subtitle ?? "",
+                                             details: player.currentItem?.details ?? "",
+                                             rotate: $rotate
+                    )
+                    itemsList
+                default:
+                    PartsView.RotatingTape(title: player.currentItem?.title,
+                                             subtitle: player.currentItem?.subtitle ?? "",
+                                             details: player.currentItem?.details ?? "",
+                                             rotate: $rotate
+                    )
+                    itemsList
+                }
+            }
+        }
+    }
+    /// The list of items
+    @ViewBuilder var itemsList: some View {
+        switch items.count {
+        case 1:
+            queueItem(item: items.first!, single: true)
+        default:
+            ScrollView {
+                ScrollViewReader { proxy in
+                    LazyVStack {
+                        ForEach(items, id: \.id) { item in
+                            queueItem(item: item)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Divider()
+                                .padding(.horizontal)
                         }
                     }
-
-                    switch items.count {
-                    case 1:
-                        queueItem(item: items.first!, single: true)
-                    default:
-                        ScrollView {
-                            ScrollViewReader { proxy in
-                                LazyVStack {
-                                    ForEach(items, id: \.id) { item in
-                                        queueItem(item: item)
-                                            .frame(maxWidth: .infinity, alignment: .leading)
-                                        Divider()
-                                            .padding(.horizontal)
-                                    }
-                                }
-                                .task(id: player.currentItem?.id) {
-                                    withAnimation(.linear(duration: 1)) {
-                                        proxy.scrollTo(player.currentItem?.id, anchor: .center)
-                                    }
-                                }
-                            }
-
+                    .task(id: player.currentItem?.id) {
+                        withAnimation(.linear(duration: 1)) {
+                            proxy.scrollTo(player.currentItem?.id, anchor: .center)
                         }
                     }
                 }
             }
         }
-        .animation(.default, value: animationToggle)
-        .task(id: player.playlistUpdate) {
-            if let queue = player.currentPlaylist, !queue.isEmpty {
-                state = .ready
-                items = queue
-            } else {
-                state = .empty
-                items = []
-            }
-            animationToggle.toggle()
+    }
+}
+extension QueueView {
+
+    /// Get the current playlist
+    @MainActor func getCurrentPlaylist() {
+        if let queue = player.currentPlaylist, !queue.isEmpty {
+            state = .ready
+            items = queue
+        } else {
+            state = .empty
+            items = []
         }
-        .task(id: player.properties.speed) {
-            rotate = player.properties.speed == 1 ? true : false
-        }
+        animationToggle.toggle()
     }
 }
 
@@ -106,7 +126,7 @@ extension QueueView {
         switch item {
         case let song as Audio.Details.Song:
             SongsView.Song(song: song, album: nil)
-                .id(song.songID)
+                .id(song.id)
         case let song as Audio.Details.Stream:
             if let stream = radioStations.first(where: {$0.file.contains(song.title)}) {
                 VStack {
