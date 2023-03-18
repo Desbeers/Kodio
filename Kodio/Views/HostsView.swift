@@ -47,7 +47,7 @@ extension HostsView {
                             Image(systemName: "star.fill")
                                 .foregroundColor(.orange)
                         })
-                        .tag(HostItem(ip: host.ip, media: .audio, status: .new))
+                        .tag(HostItem(ip: host.ip, media: .audio, player: .local, status: .new))
                     }
                 }
             }
