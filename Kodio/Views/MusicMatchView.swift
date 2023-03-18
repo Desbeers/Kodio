@@ -132,6 +132,10 @@ extension MusicMatchView {
                     .font(.caption)
             }
         }
+
+        /// Convert a number to an SF symbol image
+        /// - Parameter number: The number
+        /// - Returns: The String of the SF symbol
         func image(number: Int) -> String {
             if number * 2 <= rating {
                 return "star.fill"
@@ -162,6 +166,9 @@ extension MusicMatchView {
         }
     }
 
+    /// View the status medssage
+    /// - Parameter status: The current ``MusicMatchModel/Status``
+    /// - Returns: A SwiftUI View with the status
     @ViewBuilder func statusMessage(status: MusicMatchModel.Status) -> some View {
         HStack {
             switch status {

@@ -13,3 +13,45 @@ theme: apple
 
 # Command line for doc generation:
 # jazzy
+
+custom_categories:
+  - name: General
+    children:
+    - KodioApp
+    - KodioSettings
+    - Router
+  - name: Observable Classes
+    children:
+    - AppState
+    - BrowserModel
+    - MusicMatchModel
+    - RotatingRecordModel
+    - HelpModel
+  - name: SwiftUI Views
+    children:
+    - MainView
+    - SidebarView
+    - StartView
+    - BrowserView
+    - GenresView
+    - ArtistsView
+    - AlbumsView
+    - SongsView
+    - MusicVideosView
+    - MusicMatchView
+    - PlaylistView
+    - QueueView
+    - SearchView
+    - AboutView
+    - DetailsView
+    - HelpView
+    - HostsView
+    - MarkdownView
+    - MenuBarExtraView
+    - SettingsView
+    - StatusView
+    - ToolbarView
+    - PartsView
+  - name: SwiftUI Styles
+    children:
+    - ButtonStyles

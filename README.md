@@ -15,13 +15,17 @@ For macOS, there is none, except mine. I think it is also a little bit great, ha
 
 ### Bugs, bugs, bugs!
 
-Yes, I know. **Kodio** is a bit buggy and always will be. Learning everyday something new and Kodio will always be work in progress. Part of the hobby! It is not my job. Not even close; I'm actually a seaman with a lot of free time, haha!
+Yes, I know. **Kodio** is a bit buggy and always will be. Learning everyday something new and **Kodio** will always be work in progress. Part of the hobby! It is not my job. Not even close; I'm actually a seaman with a lot of free time, haha!
 
 ## Dependencies
 
 **Kodio** depends on the following Swift Package that is also in my GitHub account:
 
 - [SwiftlyKodiAPI](https://github.com/Desbeers/swiftlykodiapi/). The Swift API to talk to Kodio.
+
+## Code documentation
+
+The source code of **Kodio** is well [documented](https://desbeers.github.io/Kodio/).
 
 ## How to compile
 

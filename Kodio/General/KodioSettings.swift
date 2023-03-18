@@ -104,9 +104,14 @@ extension KodioSettings {
 
     /// The media for optional Crossfade
     enum Crossfade {
+        /// Crossfade an album
         case album
+        /// Crossfade a playlist
         case playlist
+        /// Crossfade a compilation album
         case compilation
+        /// Crossfade when in party mode
         case partymode
+        /// Crossfade an album
     }
 }

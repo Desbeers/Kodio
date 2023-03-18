@@ -48,6 +48,8 @@ struct SongsView: View {
         .id(selection)
     }
 
+    /// Play the songs iin the  current list
+    /// - Parameter shuffle: Bool to shuffle the list or not
     func playSongs(shuffle: Bool) {
         var media: KodioSettings.Crossfade = .playlist
         if let album = selection.album {
@@ -126,8 +128,12 @@ extension SongsView {
 }
 
 extension SongsView {
+
+    /// A SwiftUI View with action for a Song
     struct Actions: View {
+        /// The Song
         let song: Audio.Details.Song
+        /// The body of the View
         var body: some View {
             Button(action: {
                 /// Check if this song is in the current playlist
