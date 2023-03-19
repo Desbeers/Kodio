@@ -56,9 +56,7 @@ extension ButtonStyles {
             }
             return icon
         }
-
     }
-
 }
 
 extension ButtonStyles {

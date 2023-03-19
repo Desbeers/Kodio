@@ -1,6 +1,5 @@
-retain_objc_accessible: true
+project: Kodio.xcodeproj
 schemes:
 - Kodio
 targets:
 - Kodio
-workspace: Kodio.xcworkspace

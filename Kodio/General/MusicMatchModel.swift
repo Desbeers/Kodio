@@ -43,17 +43,20 @@ extension MusicMatchModel {
     /// - Returns: All songs from the Kodi database
     private func getKodiSongs() -> [SongItem] {
         logger("Loading Kodi Songs...")
-        var tracks = [SongItem]()
+        var tracks: [SongItem] = []
         for song in KodiConnector.shared.library.songs {
-            tracks.append(SongItem(id: song.songID,
-                                   title: song.title,
-                                   album: song.album,
-                                   artist: song.displayArtist,
-                                   track: song.track,
-                                   kodiPlaycount: song.playcount,
-                                   kodiRating: song.userRating,
-                                   kodiLastPlayed: song.lastPlayed)
-            )
+            tracks
+                .append(
+                    SongItem(
+                        id: song.songID,
+                        title: song.title,
+                        album: song.album,
+                        artist: song.displayArtist,
+                        track: song.track,
+                        kodiPlaycount: song.playcount,
+                        kodiRating: song.userRating,
+                        kodiLastPlayed: song.lastPlayed)
+                )
         }
         return tracks
     }
@@ -77,8 +80,9 @@ extension MusicMatchModel {
     private func getMusicMatch() async -> [SongItem] {
         /// Get a fresh list of Kodi songs
         let kodiSongs = getKodiSongs()
-        var tracks = [SongItem]()
-        let musicSongs = getMusicSongs().filter {  ($0.rating != 0 && $0.isRatingComputed == false) || $0.playCount > 0}
+        var tracks: [SongItem] = []
+        let musicSongs = getMusicSongs()
+            .filter { ($0.rating != 0 && $0.isRatingComputed == false) || $0.playCount > 0 }
         for song in kodiSongs {
             /// Make it mutable
             var song = song
@@ -93,22 +97,23 @@ extension MusicMatchModel {
                 song.musicLastPlayed = dateToKodiString(date: musicSong.lastPlayedDate)
             }
             /// Update the playcount table if the song is known
-            if !playcounts.isEmpty, let index = playcounts.firstIndex(where: {$0.id == song.id}) {
+            if !playcounts.isEmpty, let index = playcounts.firstIndex(where: { $0.id == song.id }) {
                 playcounts[index].kodiPlayed = song.kodiPlaycount - playcounts[index].kodiPlaycount
                 playcounts[index].musicPlayed = song.musicPlaycount - playcounts[index].musicPlaycount
                 /// Set the sync status
                 song.playcountInSync = playcounts[index].synced && playcounts[index].morePlayed == 0 ? true : false
             } else {
-                playcounts.append(Playcount(id: song.id,
-                                            musicPlaycount: song.musicPlaycount,
-                                            kodiPlaycount: song.kodiPlaycount,
-                                            musicPlayed: 0,
-                                            kodiPlayed: 0,
-                                            synced: false
-                                            /// Note: for debugging:
-                                            /// synced: song.musicPlaycount == song.kodiPlaycount ? true : false
-                                           )
-                )
+                playcounts
+                    .append(
+                        Playcount(
+                            id: song.id,
+                            musicPlaycount: song.musicPlaycount,
+                            kodiPlaycount: song.kodiPlaycount,
+                            musicPlayed: 0,
+                            kodiPlayed: 0,
+                            synced: false
+                        )
+                    )
             }
             tracks.append(song)
         }
@@ -168,7 +173,7 @@ extension MusicMatchModel {
         /// Make it mutable
         var song = song
         /// Find it in the playcoun table
-        if let index = playcounts.firstIndex(where: {$0.id == song.id}) {
+        if let index = playcounts.firstIndex(where: { $0.id == song.id }) {
             switch playcounts[index].synced {
             case true:
                 if let kodiPlaycount = playcounts[index].addToKodi {
@@ -180,12 +185,13 @@ extension MusicMatchModel {
                     song.musicPlaycount = musicPlaycount
                 }
                 /// Update the table
-                playcounts[index] = Playcount(id: song.id,
-                                              musicPlaycount: song.musicPlaycount,
-                                              kodiPlaycount: song.kodiPlaycount,
-                                              musicPlayed: 0,
-                                              kodiPlayed: 0,
-                                              synced: true
+                playcounts[index] = Playcount(
+                    id: song.id,
+                    musicPlaycount: song.musicPlaycount,
+                    kodiPlaycount: song.kodiPlaycount,
+                    musicPlayed: 0,
+                    kodiPlayed: 0,
+                    synced: true
                 )
             case false:
                 /// Set the playcount for both as the total
@@ -193,12 +199,13 @@ extension MusicMatchModel {
                 song.kodiPlaycount = playcount
                 song.musicPlaycount = playcount
                 /// Update the table
-                playcounts[index] = Playcount(id: song.id,
-                                              musicPlaycount: playcount,
-                                              kodiPlaycount: playcount,
-                                              musicPlayed: 0,
-                                              kodiPlayed: 0,
-                                              synced: true
+                playcounts[index] = Playcount(
+                    id: song.id,
+                    musicPlaycount: playcount,
+                    kodiPlaycount: playcount,
+                    musicPlayed: 0,
+                    kodiPlayed: 0,
+                    synced: true
                 )
                 /// Update the songs
                 await setKodiPlaycount(song: song, playcount: playcount)
@@ -218,7 +225,7 @@ extension MusicMatchModel {
     /// - Parameter song: The song as ``SongItem``
     func setKodiPlaycount(song: SongItem, playcount: Int) async {
         /// Find the Kodi song in the database and update it
-        if var kodiSong = KodiConnector.shared.library.songs.first(where: {$0.songID == song.id}) {
+        if var kodiSong = KodiConnector.shared.library.songs.first(where: { $0.songID == song.id }) {
             kodiSong.playcount = playcount
             kodiSong.lastPlayed = song.lastPlayed
             await AudioLibrary.setSongDetails(song: kodiSong)
@@ -280,7 +287,7 @@ extension MusicMatchModel {
         /// Set the new Kodi rating for the song
         song.kodiRating = song.musicRating
         /// Find the Kodi song in the database and update it
-        if var kodiSong = KodiConnector.shared.library.songs.first(where: {$0.songID == song.id}) {
+        if var kodiSong = KodiConnector.shared.library.songs.first(where: { $0.songID == song.id }) {
             kodiSong.userRating = song.musicRating
             await AudioLibrary.setSongDetails(song: kodiSong)
         }
@@ -306,10 +313,12 @@ extension MusicMatchModel {
     /// - Parameter song: The son as a ``SongItem``
     /// - Returns: The Applescript ID of the song
     private func getMusicSongID(song: SongItem) -> Int {
-        musicBridge.getMusicSongID(title: song.title,
-                                   album: song.album,
-                                   track: song.track
-        )
+        musicBridge
+            .getMusicSongID(
+                title: song.title,
+                album: song.album,
+                track: song.track
+            )
     }
 
     /// Convert a Swift `Date` to a Kodi date `String`

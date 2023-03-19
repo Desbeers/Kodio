@@ -57,17 +57,19 @@ struct QueueView: View {
             HStack {
                 switch player.properties.playlistID {
                 case .audio:
-                    PartsView.RotatingRecord(title: player.currentItem?.title,
-                                             subtitle: player.currentItem?.subtitle ?? "",
-                                             details: player.currentItem?.details ?? "",
-                                             rotate: $rotate
+                    PartsView.RotatingRecord(
+                        title: player.currentItem?.title,
+                        subtitle: player.currentItem?.subtitle ?? "",
+                        details: player.currentItem?.details ?? "",
+                        rotate: $rotate
                     )
                     itemsList
                 default:
-                    PartsView.RotatingTape(title: player.currentItem?.title,
-                                             subtitle: player.currentItem?.subtitle ?? "",
-                                             details: player.currentItem?.details ?? "",
-                                             rotate: $rotate
+                    PartsView.RotatingTape(
+                        title: player.currentItem?.title,
+                        subtitle: player.currentItem?.subtitle ?? "",
+                        details: player.currentItem?.details ?? "",
+                        rotate: $rotate
                     )
                     itemsList
                 }
@@ -78,7 +80,9 @@ struct QueueView: View {
     @ViewBuilder var itemsList: some View {
         switch items.count {
         case 1:
-            queueItem(item: items.first!, single: true)
+            if let item = items.first {
+                queueItem(item: item, single: true)
+            }
         default:
             ScrollView {
                 ScrollViewReader { proxy in
@@ -128,7 +132,7 @@ extension QueueView {
             SongsView.Song(song: song, album: nil)
                 .id(song.id)
         case let song as Audio.Details.Stream:
-            if let stream = radioStations.first(where: {$0.file.contains(song.title)}) {
+            if let stream = radioStations.first(where: { $0.file.contains(song.title) }) {
                 VStack {
                     Label(stream.station, systemImage: "antenna.radiowaves.left.and.right")
                         .font(.title)

@@ -15,10 +15,11 @@ struct AboutView: View {
     var body: some View {
         VStack {
             HStack {
-                PartsView.RotatingRecord(title: "Kodio",
-                                         subtitle: "Play your own music",
-                                         details: "© Nick Berendsen",
-                                         rotate: $rotate
+                PartsView.RotatingRecord(
+                    title: "Kodio",
+                    subtitle: "Play your own music",
+                    details: "© Nick Berendsen",
+                    rotate: $rotate
                 )
                 .frame(maxWidth: 400)
                 VStack {
@@ -30,7 +31,9 @@ struct AboutView: View {
                         .padding(.bottom)
                     HStack(spacing: 0) {
                         Text("A music remote for ")
-                        Link("Kodi", destination: URL(string: "https://kodi.tv")!)
+                        if let link = URL(string: "https://kodi.tv") {
+                            Link("Kodi", destination: link)
+                        }
                     }
                     Text("For those who are still treasure their **own** music")
                         .font(.caption)
@@ -46,11 +49,11 @@ struct AboutView: View {
                 }
             }
             if let text = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-
                 HStack(spacing: 0) {
                     Text("Version \(text), GPL-3.0 License, source code on ")
-
-                    Link("GitHub", destination: URL(string: "https://github.com/desbeers/kodio")!)
+                    if let link = URL(string: "https://github.com/desbeers/kodio") {
+                        Link("GitHub", destination: link)
+                    }
                 }
                 .font(.caption)
                 .padding(.bottom)

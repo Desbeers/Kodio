@@ -38,9 +38,9 @@ extension HostsView {
                     hostItem(host: host)
                 }
             }
-            if !kodi.bonjourHosts.filter({$0.new}).isEmpty {
+            if !kodi.bonjourHosts.filter { $0.new }.isEmpty {
                 Section("New Kodi's on your network") {
-                    ForEach(kodi.bonjourHosts.filter({$0.new}), id: \.ip) { host in
+                    ForEach(kodi.bonjourHosts.filter { $0.new }, id: \.ip) { host in
                         Label(title: {
                             Text(host.name)
                         }, icon: {

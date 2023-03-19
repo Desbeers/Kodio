@@ -20,7 +20,7 @@ struct MusicVideosView: View {
                 Artists(router: $router)
             case .artist(let artist):
                 Artist(artist: artist, router: $router)
-            case .album(let artist, let album):
+            case let .album(artist, album):
                 Album(album: album, artist: artist, router: $router)
             }
         }
@@ -95,7 +95,9 @@ extension MusicVideosView {
             .buttonStyle(.plain)
             .task(id: kodi.library.musicVideos) {
                 var artistList: [Audio.Details.Artist] = []
-                let allArtists = kodi.library.musicVideos.unique(by: {$0.artist}).flatMap({$0.artist})
+                let allArtists = kodi.library.musicVideos
+                    .unique { $0.artist }
+                    .flatMap { $0.artist }
                 for artist in allArtists {
                     artistList.append(artistItem(artist: artist))
                 }
@@ -113,7 +115,7 @@ extension MusicVideosView {
     /// - Parameter artist: Name of the artist
     /// - Returns: A `KodiItem`
     static func artistItem(artist: String) -> Audio.Details.Artist {
-        if let artistDetails = KodiConnector.shared.library.artists.first(where: {$0.artist == artist}) {
+        if let artistDetails = KodiConnector.shared.library.artists.first(where: { $0.artist == artist }) {
             return artistDetails
         }
         /// Return an uknown artist
@@ -180,7 +182,8 @@ extension MusicVideosView {
             }
             .task(id: kodi.library.musicVideos) {
                 musicVideos = kodi.library.musicVideos
-                    .filter({$0.artist.contains(artist.artist)}).uniqueAlbum()
+                    .filter { $0.artist.contains(artist.artist) }
+                    .uniqueAlbum()
                     .sorted { $0.year < $1.year }
             }
         }
@@ -252,7 +255,7 @@ extension MusicVideosView {
             }
             .task(id: kodi.library.musicVideos) {
                 musicVideos = kodi.library.musicVideos
-                    .filter({$0.artist == album.artist && $0.album == album.album})
+                    .filter { $0.artist == album.artist && $0.album == album.album }
                     .sorted { $0.year < $1.year }
             }
         }
@@ -287,9 +290,9 @@ extension MusicVideosView {
         /// The body of the `View`
         var body: some View {
             Button(action: {
-                let album = kodi.library.musicVideos.filter({$0.subtitle == item.subtitle && $0.details == item.details})
+                let album = kodi.library.musicVideos
+                    .filter { $0.subtitle == item.subtitle && $0.details == item.details }
                 album.play(shuffle: shuffle)
-
             }, label: {
                 Label("\(shuffle ? "Shuffle" : "Play") Album", systemImage: shuffle ? "shuffle" : "play.fill")
             })

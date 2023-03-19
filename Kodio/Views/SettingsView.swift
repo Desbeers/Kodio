@@ -89,7 +89,10 @@ extension SettingsView {
                     })
                     .font(.title)
                     .padding(.top)
-                    Text(appState.settings.togglePlayerSettings ? "Kodio takes care of these settings" : "Change settings on you selected Kodi")
+                    Text(
+                        appState.settings.togglePlayerSettings ?
+                        "Kodio takes care of these settings" : "Change settings on you selected Kodi"
+                    )
                         .foregroundColor(appState.settings.togglePlayerSettings ? .red : .primary)
                         .font(.caption)
                     VStack(alignment: .leading) {
@@ -109,6 +112,7 @@ extension SettingsView {
                 Toggle(isOn: $settings.togglePlayerSettings) {
                     Text("Adjust the *Kodi Music Player* settings on playback")
                 }
+                // swiftlint:disable:next line_length
                 Text("When enabled, Kodio will adjust the *Volume adjustment*  and *Crossfade* settings on your Kodi depending on your selection to play.")
                     .font(.caption)
                 Button(action: {
@@ -136,9 +140,10 @@ extension SettingsView {
                             Text("\(value) seconds")
                         }
                     }
-                    .disabled(!settings.crossfadePlaylists && !settings.crossfadeCompilations && !settings.crossfadePartyMode)
+                    .disabled(
+                        !settings.crossfadePlaylists && !settings.crossfadeCompilations && !settings.crossfadePartyMode
+                    )
                 }
-
             }
             .padding()
             .background(.thickMaterial)
@@ -203,7 +208,6 @@ extension SettingsView {
                             Image(systemName: "info.circle.fill")
                         })
                 }
-
             }
             .padding()
             .frame(maxHeight: .infinity, alignment: .top)

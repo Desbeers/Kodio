@@ -54,7 +54,11 @@ extension HelpModel {
     /// - Parameter help: The page
     /// - Returns: The content of the page
     static func getPage(help: HelpModel.Page) -> String {
-        if let filepath = Bundle.main.url(forResource: help.rawValue, withExtension: "md", subdirectory: "Documentation.docc") {
+        if let filepath = Bundle.main.url(
+            forResource: help.rawValue,
+            withExtension: "md",
+            subdirectory: "Documentation.docc"
+        ) {
             do {
                 let contents = try String(contentsOf: filepath)
                 return contents

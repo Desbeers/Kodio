@@ -24,10 +24,11 @@ struct StartView: View {
     /// The body of the `View`
     var body: some View {
         ZStack(alignment: .center) {
-            PartsView.RotatingRecord(icon: "music.quarternote.3",
-                                     subtitle: kodi.host.bonjour?.name ?? "Kodio",
-                                     details: kodi.status.message,
-                                     rotate: $rotate
+            PartsView.RotatingRecord(
+                icon: "music.quarternote.3",
+                subtitle: kodi.host.bonjour?.name ?? "Kodio",
+                details: kodi.status.message,
+                rotate: $rotate
             )
             if kodi.status == .none {
                 VStack {

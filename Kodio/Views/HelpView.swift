@@ -24,10 +24,11 @@ struct HelpView: View {
             VStack {
                 Divider()
                 ZStack(alignment: .top) {
-                    PartsView.RotatingRecord(title: "Kodio",
-                                             subtitle: "Play your own music",
-                                             details: "© Nick Berendsen",
-                                             rotate: .constant(false)
+                    PartsView.RotatingRecord(
+                        title: "Kodio",
+                        subtitle: "Play your own music",
+                        details: "© Nick Berendsen",
+                        rotate: .constant(false)
                     )
                     .padding()
                     .opacity(0.05)
@@ -50,7 +51,7 @@ struct HelpView: View {
                 }
             }
         }
-         .task(id: help.page) {
+        .task(id: help.page) {
             Task {
                 help.text = HelpModel.getPage(help: help.page ?? .kodioHelp)
             }

@@ -15,7 +15,7 @@ final class MusicBridge {
     /// AppleScriptObjC setup
     init() {
         Bundle.main.loadAppleScriptObjectiveCScripts()
-        //// create an instance of MusicBridge script object
+        // swiftlint:disable:next force_unwrapping
         let musicBridgeClass: AnyClass = NSClassFromString("MusicBridge")!
         // swiftlint:disable:next force_cast
         self.bridge = musicBridgeClass.alloc() as! MusicBridgeProtocol

@@ -175,10 +175,10 @@ extension MarkdownView {
     /// - Returns: a formatted code block in an `HStack` view
     @ViewBuilder func formatCodeBlock(text: String) -> some View {
         HStack {
-            Text(text.trimmingCharacters(in: .whitespaces))
-                .multilineTextAlignment(.leading)
-                .font(.monospaced(.caption)())
-
+            Text(text
+                .trimmingCharacters(in: .whitespaces))
+            .multilineTextAlignment(.leading)
+            .font(.monospaced(.caption)())
         }
         .padding(.leading)
     }

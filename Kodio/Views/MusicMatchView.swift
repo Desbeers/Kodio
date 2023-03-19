@@ -20,7 +20,11 @@ struct MusicMatchView: View {
     /// The songs in the table
     @State private var songs: [MusicMatchModel.SongItem] = []
     /// Sort order for the table
-    @State var sortOrder: [KeyPathComparator<MusicMatchModel.SongItem>] = [ .init(\.lastPlayed, order: SortOrder.reverse)]
+    @State var sortOrder: [KeyPathComparator<MusicMatchModel.SongItem>] = [
+        .init(
+            \.lastPlayed, order: SortOrder.reverse
+        )
+    ]
     /// The body of the `View`
     var body: some View {
         VStack(spacing: 0) {
@@ -152,7 +156,7 @@ extension MusicMatchView {
     /// - Returns: A View with playcount status
     @ViewBuilder func playcount(song: MusicMatchModel.SongItem) -> some View {
 
-        if let playcount = musicMatch.playcounts.first(where: {$0.id == song.id}) {
+        if let playcount = musicMatch.playcounts.first(where: { $0.id == song.id }) {
             HStack {
                 Image(systemName: playcount.synced ? "infinity" : "minus")
                 Text("Kodi: \(song.kodiPlaycount)")

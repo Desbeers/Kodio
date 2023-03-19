@@ -43,26 +43,30 @@ struct BrowserView: View {
                     PartsView.LoadingState(message: router.empty, icon: router.sidebar.icon)
                 }
             case .ready:
-                    HStack(spacing: 0) {
-                        GenresView(genres: items.genres, selection: $browser.selection)
-                            .frame(width: 150)
-                            .padding(.leading, 5)
-                        ArtistsView(artists: items.artists, selection: $browser.selection)
-                        AlbumsView(albums: items.albums, selectedAlbum: $browser.selection.album)
-                    }
-                    .overlay {
-                        LinearGradient(gradient: Gradient(stops: [
+                HStack(spacing: 0) {
+                    GenresView(genres: items.genres, selection: $browser.selection)
+                        .frame(width: 150)
+                        .padding(.leading, 5)
+                    ArtistsView(artists: items.artists, selection: $browser.selection)
+                    AlbumsView(albums: items.albums, selectedAlbum: $browser.selection.album)
+                }
+                .overlay {
+                    LinearGradient(
+                        gradient: Gradient(stops: [
                             Gradient.Stop(color: Color.black.opacity(0.25), location: 0),
                             Gradient.Stop(color: Color.black.opacity(0.025), location: 0.2),
                             Gradient.Stop(color: Color.clear, location: 1)
-                        ]), startPoint: .bottom, endPoint: .top)
-                            .blendMode(.multiply)
-                            .allowsHitTesting(false)
-                    }
-                    HStack(alignment: .top) {
-                        DetailsView(router: router, selectedItem: browser.details)
-                        SongsView(songs: items.songs, selection: $browser.selection)
-                    }
+                        ]),
+                        startPoint: .bottom,
+                        endPoint: .top
+                    )
+                    .blendMode(.multiply)
+                    .allowsHitTesting(false)
+                }
+                HStack(alignment: .top) {
+                    DetailsView(router: router, selectedItem: browser.details)
+                    SongsView(songs: items.songs, selection: $browser.selection)
+                }
             }
         }
         /// Just some eyecandy

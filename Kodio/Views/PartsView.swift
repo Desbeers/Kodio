@@ -39,8 +39,13 @@ extension PartsView {
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(
-                    RadialGradient(gradient: Gradient(colors: [.accentColor, .black]), center: .center, startRadius: 0, endRadius: 280)
-                        .saturation(0.4)
+                    RadialGradient(
+                        gradient: Gradient(colors: [.accentColor, .black]),
+                        center: .center,
+                        startRadius: 0,
+                        endRadius: 280
+                    )
+                    .saturation(0.4)
                 )
         }
     }
@@ -106,7 +111,11 @@ extension PartsView {
                                     .fontWeight(.bold)
                             }
                         }
-                        .frame(width: minSize(size: geometry) / 5, height: minSize(size: geometry) / 20, alignment: .center)
+                        .frame(
+                            width: minSize(size: geometry) / 5,
+                            height: minSize(size: geometry) / 20,
+                            alignment: .center
+                        )
                         Spacer()
                         Text(subtitle)
                             .fontWeight(.semibold)
@@ -114,7 +123,11 @@ extension PartsView {
                         Text(details)
                             .fontWeight(.thin)
                             .opacity(0.8)
-                            .frame(width: minSize(size: geometry) / 5, height: minSize(size: geometry) / 40, alignment: .center)
+                            .frame(
+                                width: minSize(size: geometry) / 5,
+                                height: minSize(size: geometry) / 40,
+                                alignment: .center
+                            )
                     }
                     .font(.system(size: 100))
                     .lineLimit(1)
@@ -135,7 +148,9 @@ extension PartsView {
                 .modifier(RotatingRecordModel.Rotate(rotate: rotateModel.rotating, status: $rotateModel.status))
             }
             .animation(.default, value: subtitle)
-            .animation(rotateModel.rotating ? rotateModel.foreverAnimation : .linear(duration: 0), value: rotateModel.rotating)
+            .animation(
+                rotateModel.rotating ? rotateModel.foreverAnimation : .linear(duration: 0), value: rotateModel.rotating
+            )
             .task(id: rotate) {
                 switch rotate {
                 case true:
@@ -218,7 +233,11 @@ extension PartsView {
                     .foregroundColor(.black)
                     .shadow(radius: 0)
                     .minimumScaleFactor(0.01)
-                    .frame(width: minSize(size: geometry) / 3, height: minSize(size: geometry) / 8 - 10, alignment: .bottom)
+                    .frame(
+                        width: minSize(size: geometry) / 3,
+                        height: minSize(size: geometry) / 8 - 10,
+                        alignment: .bottom
+                    )
                 }
                 .padding()
                 /// Below is needed or else the View will not center
@@ -229,7 +248,9 @@ extension PartsView {
                 )
             }
             .animation(.default, value: title)
-            .animation(rotateModel.rotating ? rotateModel.foreverAnimation : .linear(duration: 0), value: rotateModel.rotating)
+            .animation(
+                rotateModel.rotating ? rotateModel.foreverAnimation : .linear(duration: 0), value: rotateModel.rotating
+            )
             .task(id: rotate) {
                 switch rotate {
                 case true:

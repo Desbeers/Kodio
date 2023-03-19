@@ -63,59 +63,70 @@ enum Router: Hashable {
     var sidebar: Item {
         switch self {
         case .start:
-            return Item(title: "Start",
-                        description: "Loading your library",
-                        icon: "music.quarternote.3"
+            return Item(
+                title: "Start",
+                description: "Loading your library",
+                icon: "music.quarternote.3"
             )
         case .library:
-            return Item(title: "All Music",
-                        description: "All the music in your library",
-                        icon: "music.quarternote.3"
+            return Item(
+                title: "All Music",
+                description: "All the music in your library",
+                icon: "music.quarternote.3"
             )
         case .recentlyAdded:
-            return Item(title: "Recently Added",
-                        description: "Your recently added songs",
-                        icon: "star"
+            return Item(
+                title: "Recently Added",
+                description: "Your recently added songs",
+                icon: "star"
             )
         case .mostPlayed:
-            return Item(title: "Most Played",
-                        description: "Your most played songs",
-                        icon: "infinity"
+            return Item(
+                title: "Most Played",
+                description: "Your most played songs",
+                icon: "infinity"
             )
         case .recentlyPlayed:
-            return Item(title: "Recently Played",
-                        description: "Your recently played songs",
-                        icon: "gobackward"
+            return Item(
+                title: "Recently Played",
+                description: "Your recently played songs",
+                icon: "gobackward"
             )
         case .favorites:
-            return Item(title: "Favorites",
-                        description: "Your favorite songs",
-                        icon: "heart"
+            return Item(
+                title: "Favorites",
+                description: "Your favorite songs",
+                icon: "heart"
             )
         case .playingQueue:
-            return Item(title: "Now Playing",
-                        description: "The current playlist",
-                        icon: "list.triangle"
+            return Item(
+                title: "Now Playing",
+                description: "The current playlist",
+                icon: "list.triangle"
             )
         case .playlist(let file):
-            return Item(title: file.title,
-                        description: "Your playlist",
-                        icon: "music.note.list"
+            return Item(
+                title: file.title,
+                description: "Your playlist",
+                icon: "music.note.list"
             )
         case .musicVideos:
-            return Item(title: "Music Videos",
-                        description: "All the music videos in your library",
-                        icon: "music.note.tv"
+            return Item(
+                title: "Music Videos",
+                description: "All the music videos in your library",
+                icon: "music.note.tv"
             )
         case .search:
-            return Item(title: "Search",
-                        description: "Search Results",
-                        icon: "magnifyingglass"
+            return Item(
+                title: "Search",
+                description: "Search Results",
+                icon: "magnifyingglass"
             )
         case .musicMatch:
-            return Item(title: "Music Match",
-                        description: "Match playcounts and ratings between Kodi and Music",
-                        icon: "arrow.triangle.2.circlepath"
+            return Item(
+                title: "Music Match",
+                description: "Match playcounts and ratings between Kodi and Music",
+                icon: "arrow.triangle.2.circlepath"
             )
         }
     }

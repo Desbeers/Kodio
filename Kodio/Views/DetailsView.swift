@@ -25,13 +25,15 @@ struct DetailsView: View {
             Text(selectedItem?.subtitle ?? router.sidebar.description)
                 .font(.caption)
             VStack {
-                RadialGradient(gradient: Gradient(colors: [.accentColor, .black]), center: .center, startRadius: 0, endRadius: 280)
-                    .saturation(0.4)
-                    .overlay(
-                        overlay
-                            .scaledToFill()
-                            .foregroundColor(.white)
-                    )
+                RadialGradient(
+                    gradient: Gradient(colors: [.accentColor, .black]), center: .center, startRadius: 0, endRadius: 280
+                )
+                .saturation(0.4)
+                .overlay(
+                    overlay
+                        .scaledToFill()
+                        .foregroundColor(.white)
+                )
             }
             .aspectRatio(1.78, contentMode: .fit)
             .cornerRadius(3)
@@ -53,10 +55,11 @@ struct DetailsView: View {
                 ZStack {
                     HStack {
                         Color.clear
-                        PartsView.RotatingRecord(title: item.title,
-                                                 subtitle: item.subtitle,
-                                                 details: item.details,
-                                                 rotate: .constant(true)
+                        PartsView.RotatingRecord(
+                            title: item.title,
+                            subtitle: item.subtitle,
+                            details: item.details,
+                            rotate: .constant(true)
                         )
                     }
                     HStack {

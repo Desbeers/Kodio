@@ -14,7 +14,6 @@ class BrowserModel: ObservableObject {
     @Published var selection = Selection()
     /// The state of loading the songs
     @Published var state: AppState.State = .loading
-
     /// Details for the 'highest selected item'
     var details: (any KodiItem)? {
         if let album = selection.album {
@@ -25,7 +24,6 @@ class BrowserModel: ObservableObject {
         }
         return nil
     }
-
     /// All the items that are available
     var library = Media()
     /// The current ``Router`` selection
@@ -37,7 +35,6 @@ class BrowserModel: ObservableObject {
         self.router = router
         self.query = query
     }
-
 }
 
 extension BrowserModel {
@@ -103,9 +100,10 @@ extension BrowserModel {
             library.songs = Array(
                 kodi.library.songs.filter {
                     $0.playcount > 0
-                }.sorted {
-                    $0.playcount > $1.playcount
                 }
+                    .sorted {
+                        $0.playcount > $1.playcount
+                    }
                     .prefix(1000)
             )
         case .favorites:
@@ -127,18 +125,23 @@ extension BrowserModel {
         if !library.songs.isEmpty {
 
             /// All albums in the browser
-            let songAlbumIDs = Set(library.songs.map({ $0.albumID }))
+            let songAlbumIDs = Set(library.songs.map { $0.albumID })
             library.albums = kodi.library.albums
-                .filter({songAlbumIDs.contains($0.albumID)})
-                .sorted { $0.displayArtist == $1.displayArtist ? $0.year < $1.year : $0.displayArtist < $1.displayArtist }
+                .filter { songAlbumIDs.contains($0.albumID) }
+                .sorted {
+                    $0.displayArtist == $1.displayArtist ? $0.year < $1.year : $0.displayArtist < $1.displayArtist
+                }
 
             /// All artists in the browser
-            let songArtistIDs = Set(library.songs.flatMap({ $0.albumArtistID }))
-            library.artists = kodi.library.artists.filter({songArtistIDs.contains($0.artistID)}).sorted { $0.sortByTitle < $1.sortByTitle }
+            let songArtistIDs = Set(library.songs.flatMap { $0.albumArtistID })
+            library.artists = kodi.library.artists
+                .filter { songArtistIDs.contains($0.artistID) }
+                .sorted { $0.sortByTitle < $1.sortByTitle }
 
             /// All genres in the browser
-            let songGenreIDs = Set(library.songs.flatMap({ $0.genreID }))
-            library.genres = kodi.library.audioGenres.filter({songGenreIDs.contains($0.genreID)})
+            let songGenreIDs = Set(library.songs.flatMap { $0.genreID })
+            library.genres = kodi.library.audioGenres
+                .filter { songGenreIDs.contains($0.genreID) }
         }
     }
 
@@ -150,27 +153,38 @@ extension BrowserModel {
 
         /// Filter by genre
         if let genre = selection.genre {
-            songs = songs.filter({$0.genreID.contains(genre.genreID)})
-            albums = albums.filter({$0.genre.contains(genre.title)})
-            let songArtistIDs = Set(songs.flatMap({ $0.albumArtistID }))
-            artists = artists.filter({songArtistIDs.contains($0.artistID)}).sorted { $0.title < $1.title }
+            songs = songs
+                .filter { $0.genreID.contains(genre.genreID) }
+            albums = albums
+                .filter { $0.genre.contains(genre.title) }
+            let songArtistIDs = Set(songs.flatMap { $0.albumArtistID })
+            artists = artists
+                .filter { songArtistIDs.contains($0.artistID) }
+                .sorted { $0.title < $1.title }
         }
 
         /// Filter by artist
         if let artist = selection.artist {
-            songs = songs.filter({$0.albumArtistID.contains(artist.artistID)}).sorted { $0.title < $1.title }
-            albums = albums.filter({$0.artistID.contains(artist.artistID)})
+            songs = songs
+                .filter { $0.albumArtistID.contains(artist.artistID) }
+                .sorted { $0.title < $1.title }
+            albums = albums
+                .filter { $0.artistID.contains(artist.artistID) }
         }
 
         /// Filter by album
         if let album = selection.album {
-            songs = songs.filter({$0.albumID == album.albumID}).sorted { $0.track < $1.track }
+            songs = songs
+                .filter { $0.albumID == album.albumID }
+                .sorted { $0.track < $1.track }
         }
+
         /// return the filtered items
-        return Media(genres: library.genres,
-                     artists: artists,
-                     albums: albums,
-                     songs: songs
+        return Media(
+            genres: library.genres,
+            artists: artists,
+            albums: albums,
+            songs: songs
         )
     }
 }

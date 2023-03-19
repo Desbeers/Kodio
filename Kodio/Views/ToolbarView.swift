@@ -16,30 +16,31 @@ struct ToolbarView: ViewModifier {
     func body(content: Content) -> some View {
         content
             .toolbar(id: "Toolbar") {
-                ToolbarItem(id: "previousButton",
-                            placement: .automatic,
-                            showsByDefault: true
+                ToolbarItem(
+                    id: "previousButton",
+                    placement: .automatic,
+                    showsByDefault: true
                 ) {
                     MediaButtons.PlayPrevious()
                 }
-
-                ToolbarItem(id: "playPauseButton",
-                            placement: .automatic,
-                            showsByDefault: true
+                ToolbarItem(
+                    id: "playPauseButton",
+                    placement: .automatic,
+                    showsByDefault: true
                 ) {
                     MediaButtons.PlayPause()
                 }
-
-                ToolbarItem(id: "nextButton",
-                            placement: .automatic,
-                            showsByDefault: true
+                ToolbarItem(
+                    id: "nextButton",
+                    placement: .automatic,
+                    showsByDefault: true
                 ) {
                     MediaButtons.PlayNext()
                 }
-
-                ToolbarItem(id: "nowPlaying",
-                            placement: .automatic,
-                            showsByDefault: true
+                ToolbarItem(
+                    id: "nowPlaying",
+                    placement: .automatic,
+                    showsByDefault: true
                 ) {
                     Label {
                         Text("Now playing")
@@ -48,31 +49,31 @@ struct ToolbarView: ViewModifier {
                             .frame(maxHeight: 50)
                     }
                 }
-
-                ToolbarItem(id: "shuffleButton",
-                            placement: .automatic,
-                            showsByDefault: true
+                ToolbarItem(
+                    id: "shuffleButton",
+                    placement: .automatic,
+                    showsByDefault: true
                 ) {
                     MediaButtons.SetShuffle()
                 }
-
-                ToolbarItem(id: "repeatButton",
-                            placement: .automatic,
-                            showsByDefault: true
+                ToolbarItem(
+                    id: "repeatButton",
+                    placement: .automatic,
+                    showsByDefault: true
                 ) {
                     MediaButtons.SetRepeat()
                 }
-
-                ToolbarItem(id: "partyButton",
-                            placement: .automatic,
-                            showsByDefault: true
+                ToolbarItem(
+                    id: "partyButton",
+                    placement: .automatic,
+                    showsByDefault: true
                 ) {
                     SetPartyMode()
                 }
-
-                ToolbarItem(id: "volumeSlider",
-                            placement: .automatic,
-                            showsByDefault: true
+                ToolbarItem(
+                    id: "volumeSlider",
+                    placement: .automatic,
+                    showsByDefault: true
                 ) {
                     MediaButtons.VolumeSlider()
                 }
@@ -210,7 +211,9 @@ extension ToolbarView {
                         .padding(2)
                         .foregroundColor(player.properties.partymode ? .white : .none)
                 })
-                .background(player.properties.partymode ? Color.red : Color.clear, in: RoundedRectangle(cornerRadius: 4))
+                .background(
+                    player.properties.partymode ? Color.red : Color.clear, in: RoundedRectangle(cornerRadius: 4)
+                )
             })
             .help("Music party mode")
         }

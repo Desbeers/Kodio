@@ -179,8 +179,10 @@ extension SongsView {
                     await song.togglePlayedState()
                 }
             }, label: {
-                Label(song.playcount == 0 ? "Mark song as played" : "Mark song as new",
-                      systemImage: song.playcount == 0 ? "speaker" : "speaker.slash")
+                Label(
+                    song.playcount == 0 ? "Mark song as played" : "Mark song as new",
+                    systemImage: song.playcount == 0 ? "speaker" : "speaker.slash"
+                )
             })
         }
     }
