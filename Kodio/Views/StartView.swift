@@ -23,35 +23,28 @@ struct StartView: View {
     }
     /// The body of the View
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        VStack {
+            ZStack {
+                if kodi.configuredHosts.isEmpty {
+                    noHostConfigured
+                } else {
+                    if !kodi.host.ip.isEmpty {
+                        hostActions
+                            .frame(width: 400)
+                    }
+                    HStack {
+                        Spacer()
+                        otherHosts
+                    }
+                }
+            }
+            .modifier(PartsView.ListHeader())
             PartsView.RotatingRecord(
                 icon: "music.quarternote.3",
                 subtitle: kodi.host.bonjour?.name ?? "Kodio",
                 details: kodi.status.message,
                 rotate: $rotate
             )
-            VStack {
-                if kodi.configuredHosts.isEmpty {
-                    noHostConfigured
-                } else {
-                    HStack {
-                        if !kodi.host.ip.isEmpty {
-                            hostActions
-                                .frame(width: 400)
-                        }
-                        otherHosts
-                    }
-                }
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(.thickMaterial)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.secondary.opacity(0.4), lineWidth: 1)
-            )
-            .padding()
         }
         .animation(.default, value: kodi.status)
         .animation(.default, value: kodi.configuredHosts)
@@ -82,6 +75,7 @@ struct StartView: View {
                 .font(.title)
             Text(kodi.status.message)
                 .font(.caption)
+                .opacity(0.6)
             Button(action: {
                 Task {
                     await kodi.loadLibrary(cache: false)
@@ -94,7 +88,7 @@ struct StartView: View {
     }
     /// Optional View for other configured hosts
     var otherHosts: some View {
-        VStack {
+        VStack(alignment: .leading) {
             ForEach(
                 kodi
                     .configuredHosts
@@ -109,8 +103,8 @@ struct StartView: View {
                             Text(host.name)
                             Text(host.isOnline ? "Online" : "Offline")
                                 .font(.caption)
+                                .opacity(0.6)
                         }
-                        .frame(width: 200, alignment: .leading)
                     }, icon: {
                         Image(systemName: "globe")
                             .foregroundColor(host.isOnline ? host.isSelected ? .green : .accentColor : .red)

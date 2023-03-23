@@ -45,6 +45,7 @@ struct MainView: View {
                 .modifier(ToolbarView())
             }
         )
+        .animation(.default, value: appState.selection)
         .task(id: kodi.status) {
             if kodi.status != .loadedLibrary && appState.selection != .start {
                 appState.selection = .start
