@@ -19,48 +19,66 @@ struct SidebarView: View {
     /// The body of the `View`
     var body: some View {
         List(selection: $appState.selection) {
-            Section(kodi.host.bonjour?.name ?? "Not connected") {
-                sidebarItem(item: Router.library)
-                sidebarItem(item: Router.recentlyAdded)
-                sidebarItem(item: Router.recentlyPlayed)
-                sidebarItem(item: Router.mostPlayed)
-                sidebarItem(item: Router.favorites)
-                if appState.settings.showMusicVideos {
-                    sidebarItem(item: Router.musicVideos)
+            Label(title: {
+                VStack(alignment: .leading) {
+                    Text(kodi.host.bonjour?.name ?? "Kodio")
+                    Text(kodi.status.message)
+                        .font(.caption)
+                        .opacity(0.5)
                 }
-            }
-            if appState.settings.showMusicMatch {
-                Section("Match") {
-                    sidebarItem(item: Router.musicMatch)
-                }
-            }
-            Section("Queue") {
-                sidebarItem(item: Router.playingQueue)
-            }
-            if !searchField.isEmpty {
-                Section("Search") {
-                    sidebarItem(item: Router.search)
-                }
-            }
-            if !kodi.library.audioPlaylists.isEmpty {
-                Section("Playlists") {
-                    ForEach(kodi.library.audioPlaylists, id: \.self) { playlist in
-                        sidebarItem(item: Router.playlist(file: playlist))
+            }, icon: {
+                Image(systemName: "record.circle.fill")
+                    .symbolRenderingMode(.palette)
+                    .font(.title2)
+                    .foregroundStyle(
+                        .red,
+                        .black.gradient
+                    )
+            })
+            .tag(Router.start)
+            if kodi.status == .loadedLibrary {
+                Section("Music") {
+                    sidebarItem(item: Router.library)
+                    sidebarItem(item: Router.recentlyAdded)
+                    sidebarItem(item: Router.recentlyPlayed)
+                    sidebarItem(item: Router.mostPlayed)
+                    sidebarItem(item: Router.favorites)
+                    if appState.settings.showMusicVideos {
+                        sidebarItem(item: Router.musicVideos)
                     }
                 }
-            }
-            if appState.settings.showRadioStations {
-                Section("Radio Stations") {
-                    ForEach(radioStations, id: \.self) { channel in
-                        ButtonStyles.RadioStation(channel: channel)
+                if appState.settings.showMusicMatch {
+                    Section("Match") {
+                        sidebarItem(item: Router.musicMatch)
                     }
                 }
-                .buttonStyle(.plain)
+                Section("Queue") {
+                    sidebarItem(item: Router.playingQueue)
+                }
+                if !searchField.isEmpty {
+                    Section("Search") {
+                        sidebarItem(item: Router.search)
+                    }
+                }
+                if !kodi.library.audioPlaylists.isEmpty {
+                    Section("Playlists") {
+                        ForEach(kodi.library.audioPlaylists, id: \.self) { playlist in
+                            sidebarItem(item: Router.playlist(file: playlist))
+                        }
+                    }
+                }
+                if appState.settings.showRadioStations {
+                    Section("Radio Stations") {
+                        ForEach(radioStations, id: \.self) { channel in
+                            ButtonStyles.RadioStation(channel: channel)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
             }
-            /// Make space for the status view
-            Spacer(minLength: 40)
         }
         .animation(.default, value: appState.query)
+        .animation(.default, value: kodi.status)
         .searchable(text: $searchField, prompt: "Search library")
         .task(id: searchField) {
             await appState.updateSearch(query: searchField)

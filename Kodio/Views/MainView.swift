@@ -21,11 +21,7 @@ struct MainView: View {
         NavigationSplitView(
             columnVisibility: $columnVisibility,
             sidebar: {
-                ZStack {
-                    SidebarView()
-                    StatusView()
-                        .animation(.default, value: kodi.status)
-                }
+                SidebarView()
             }, detail: {
                 /// In a ZStack because the toolbar is added
                 ZStack {
@@ -49,5 +45,10 @@ struct MainView: View {
                 .modifier(ToolbarView())
             }
         )
+        .task(id: kodi.status) {
+            if kodi.status != .loadedLibrary && appState.selection != .start {
+                appState.selection = .start
+            }
+        }
     }
 }

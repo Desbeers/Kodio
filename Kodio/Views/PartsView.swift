@@ -288,6 +288,7 @@ extension PartsView {
                 Button(
                     action: {
                         Task {
+                            appState.selection = .start
                             await kodi.loadLibrary(cache: false)
                         }
                     },
@@ -300,6 +301,7 @@ extension PartsView {
             ForEach(kodi.configuredHosts) { host in
                 Button(
                     action: {
+                        appState.selection = .start
                         kodi.connect(host: host)
                     },
                     label: {
