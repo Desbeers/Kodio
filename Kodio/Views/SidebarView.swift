@@ -27,13 +27,8 @@ struct SidebarView: View {
                         .opacity(0.5)
                 }
             }, icon: {
-                Image(systemName: "record.circle.fill")
-                    .symbolRenderingMode(.palette)
-                    .font(.title2)
-                    .foregroundStyle(
-                        .red,
-                        .black.gradient
-                    )
+                Image(systemName: "globe")
+                    .foregroundColor(kodi.host.isOnline ? kodi.host.isSelected ? .green : .accentColor : .red)
             })
             .tag(Router.start)
             if kodi.status == .loadedLibrary {

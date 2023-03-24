@@ -25,6 +25,14 @@ struct StartView: View {
     var body: some View {
         VStack {
             ZStack {
+                HStack {
+                    ProgressView()
+                    /// 'tint' does not work on macOS here
+                        .colorInvert()
+                        .brightness(1)
+                        .opacity(kodi.status == .loadedLibrary ? 0 : 1)
+                    Spacer()
+                }
                 if kodi.configuredHosts.isEmpty {
                     noHostConfigured
                 } else {
@@ -57,15 +65,15 @@ struct StartView: View {
         VStack {
             Text("Welcome to Kodio!")
                 .font(.title)
-                .padding()
             Text("There is no host configured")
-                .font(.subheadline)
+                .font(.caption)
+                .opacity(0.6)
             Button(action: {
                 NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
             }, label: {
                 Text("Add a host")
             })
-            .padding()
+            .buttonStyle(ButtonStyles.Play())
         }
     }
     /// View for actions for the selected host
@@ -81,9 +89,15 @@ struct StartView: View {
                     await kodi.loadLibrary(cache: false)
                 }
             }, label: {
-                Text("Reload Library")
+
+                Label(title: {
+                    Text("Reload Library")
+                }, icon: {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                })
             })
             .disabled(kodi.status != .loadedLibrary && kodi.status != .outdatedLibrary)
+            .buttonStyle(ButtonStyles.Play())
         }
     }
     /// Optional View for other configured hosts
@@ -111,6 +125,7 @@ struct StartView: View {
                     })
                 })
                 .disabled(!host.isOnline || kodi.status == .loadingLibrary)
+                .padding(.bottom, 2)
             }
         }
         .buttonStyle(.plain)

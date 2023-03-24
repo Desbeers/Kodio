@@ -63,16 +63,19 @@ extension ButtonStyles {
 
     /// Buttom style for a 'play', 'shuffle' or 'stream' button
     struct Play: ButtonStyle {
+        /// Enabled or not
+        @Environment(\.isEnabled) var isEnabled
         /// The style
         func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
-                .foregroundColor(.primary)
+                .foregroundColor(isEnabled ? .primary : .secondary)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 6)
                 .background(Color("Window").gradient)
                 .cornerRadius(4)
                 .shadow(radius: 1)
                 .opacity(configuration.isPressed ? 0.8 : 1)
+                .opacity(isEnabled ? 1 : 0.25)
         }
     }
 }
