@@ -89,11 +89,11 @@ struct QueueView: View {
                     LazyVStack {
                         ForEach(items, id: \.id) { item in
                             queueItem(item: item)
-                                .frame(maxWidth: .infinity, alignment: .leading)
                             Divider()
-                                .padding(.horizontal)
+                                .padding(.leading)
                         }
                     }
+                    .padding()
                     .task(id: player.currentItem?.id) {
                         withAnimation(.linear(duration: 1)) {
                             proxy.scrollTo(player.currentItem?.id, anchor: .center)

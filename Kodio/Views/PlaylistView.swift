@@ -43,19 +43,22 @@ struct PlaylistView: View {
                 .disabled(state != .ready)
             }
             .modifier(PartsView.ListHeader())
-
             switch state {
             case .loading:
                 PartsView.LoadingState(message: "Getting '\(playlist.title)' songs...")
             case .empty:
                 PartsView.LoadingState(message: "The playlist is empty", icon: "music.note.list")
             case .ready:
-                List {
-                    ForEach(songs) { song in
-                        SongsView.Song(song: song, album: nil)
+                /// On macOS, `List` is not lazy, so slow... So, viewed in a `LazyVStack` and no fancy swipes....
+                ScrollView {
+                    LazyVStack {
+                        ForEach(Array(songs.enumerated()), id: \.element) { index, song in
+                            SongsView.Song(song: song, album: nil)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background((index % 2 == 0) ? Color.gray.opacity(0.1) : Color.clear)
+                        }
                     }
                 }
-                .listStyle(.inset(alternatesRowBackgrounds: true))
             }
         }
         .animation(.default, value: state)
