@@ -114,6 +114,28 @@ extension ButtonStyles {
 
 extension ButtonStyles {
 
+    /// Buttom style for a 'host action' button
+    struct HostAction: ButtonStyle {
+        /// Enabled or not
+        @Environment(\.isEnabled) var isEnabled
+        /// The style
+        func makeBody(configuration: Self.Configuration) -> some View {
+            configuration.label
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.6))
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(.black.gradient.opacity(0.2))
+                .cornerRadius(4)
+                .shadow(radius: 1)
+                .opacity(configuration.isPressed ? 0.8 : 1)
+                .opacity(isEnabled ? 1 : 0.25)
+        }
+    }
+}
+
+extension ButtonStyles {
+
     /// Button style for the browser
     struct Browser: ButtonStyle {
         /// The kodi item

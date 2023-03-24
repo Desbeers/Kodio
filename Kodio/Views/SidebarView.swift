@@ -73,7 +73,6 @@ struct SidebarView: View {
             }
         }
         .animation(.default, value: appState.query)
-        .animation(.default, value: kodi.status)
         .searchable(text: $searchField, prompt: "Search library")
         .task(id: searchField) {
             await appState.updateSearch(query: searchField)

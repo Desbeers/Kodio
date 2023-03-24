@@ -38,7 +38,6 @@ struct StartView: View {
                 } else {
                     if !kodi.host.ip.isEmpty {
                         hostActions
-                            .frame(width: 400)
                     }
                     HStack {
                         Spacer()
@@ -54,8 +53,6 @@ struct StartView: View {
                 rotate: $rotate
             )
         }
-        .animation(.default, value: kodi.status)
-        .animation(.default, value: kodi.configuredHosts)
         .task(id: kodi.status) {
             rotate = kodi.status == .loadedLibrary ? true : false
         }
@@ -89,7 +86,6 @@ struct StartView: View {
                     await kodi.loadLibrary(cache: false)
                 }
             }, label: {
-
                 Label(title: {
                     Text("Reload Library")
                 }, icon: {
@@ -97,7 +93,7 @@ struct StartView: View {
                 })
             })
             .disabled(kodi.status != .loadedLibrary && kodi.status != .outdatedLibrary)
-            .buttonStyle(ButtonStyles.Play())
+            .buttonStyle(ButtonStyles.HostAction())
         }
     }
     /// Optional View for other configured hosts
@@ -106,7 +102,7 @@ struct StartView: View {
             ForEach(
                 kodi
                     .configuredHosts
-                    .filter { $0.status == .configured && $0.ip != kodi.host.ip },
+                    .filter { $0.ip != kodi.host.ip },
                 id: \.ip
             ) { host in
                 Button(action: {
@@ -121,7 +117,7 @@ struct StartView: View {
                         }
                     }, icon: {
                         Image(systemName: "globe")
-                            .foregroundColor(host.isOnline ? host.isSelected ? .green : .accentColor : .red)
+                            .foregroundColor(host.isOnline ? .accentColor : .red)
                     })
                 })
                 .disabled(!host.isOnline || kodi.status == .loadingLibrary)
