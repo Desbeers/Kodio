@@ -33,8 +33,6 @@ struct BrowserView: View {
             case .loading:
                 if router == .search {
                     PartsView.LoadingState(message: "Seaching for \(query)...")
-                } else {
-                    PartsView.LoadingState(message: "\(router.sidebar.description)...")
                 }
             case .empty:
                 if router == .search {

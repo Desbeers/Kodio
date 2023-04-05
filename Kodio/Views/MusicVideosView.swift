@@ -119,7 +119,7 @@ extension MusicVideosView {
             return artistDetails
         }
         /// Return an uknown artist
-        return Audio.Details.Artist(media: .artist, artist: artist, artistID: Int.random(in: 1...1000))
+        return Audio.Details.Artist(media: .artist, artist: artist, artistID: UUID().hashValue)
     }
 
     /// View videos and albums for one artist
