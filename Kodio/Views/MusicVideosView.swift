@@ -129,7 +129,7 @@ extension MusicVideosView {
         /// The KodiConnector model
         @EnvironmentObject var kodi: KodiConnector
         /// The music videos to show
-        @State var musicVideos: [Video.Details.MusicVideo] = []
+        @State var musicVideos: [MediaItem] = []
         /// The current `MusicVideosRouter`
         @Binding var router: MusicVideosRouter
         /// Define the grid layout
@@ -155,16 +155,16 @@ extension MusicVideosView {
                     LazyVGrid(columns: grid, spacing: 0) {
                         ForEach(musicVideos) { musicVideo in
                             ZStack(alignment: .bottom) {
-                                KodiArt.Poster(item: musicVideo)
+                                KodiArt.Poster(item: musicVideo.item)
                                     .frame(width: 200, height: 300)
                                     .onTapGesture {
-                                        if !musicVideo.album.isEmpty {
-                                            router = .album(artist: artist, album: musicVideo)
+                                        if musicVideo.media != .musicVideo {
+                                            router = .album(artist: artist, album: musicVideo.item)
                                         }
                                     }
                                     .overlay(alignment: .bottom) {
-                                        if musicVideo.album.isEmpty {
-                                            playButton(item: musicVideo)
+                                        if musicVideo.media == .musicVideo {
+                                            playButton(item: musicVideo.item)
                                                 .padding(.vertical, 5)
                                                 .frame(maxWidth: .infinity)
                                                 .background(.ultraThinMaterial)
@@ -181,11 +181,38 @@ extension MusicVideosView {
                 .buttonStyle(.plain)
             }
             .task(id: kodi.library.musicVideos) {
-                musicVideos = kodi.library.musicVideos
-                    .filter { $0.artist.contains(artist.artist) }
-                    .uniqueAlbum()
-                    .sorted { $0.year < $1.year }
+                getItems()
             }
+        }
+
+        /// Get all items from the library
+        private func getItems() {
+            var result: [MediaItem] = []
+            let allMusicVideosFromArtist = kodi.library.musicVideos
+                .filter { $0.artist.contains(artist.artist) }
+                .sorted { $0.year < $1.year }
+            for video in allMusicVideosFromArtist.uniqueAlbum() {
+                var item = video
+                var count: Int = 1
+                if !video.album.isEmpty {
+                    let albumMusicVideos = allMusicVideosFromArtist
+                        .filter { $0.album == video.album }
+                    count = albumMusicVideos.count
+                    /// Set the watched state for an album
+                    if count != 1, !albumMusicVideos.filter({ $0.playcount == 0 }).isEmpty {
+                        item.playcount = 0
+                        item.resume.position = 0
+                    }
+                }
+                result.append(
+                    MediaItem(
+                        id: count == 1 ? video.title : video.album,
+                        media: count == 1 ? .musicVideo : .album,
+                        item: item
+                    )
+                )
+            }
+            musicVideos = result
         }
     }
 
@@ -327,5 +354,20 @@ extension MusicVideosView {
                 }
             }
         }
+    }
+}
+
+extension MusicVideosView {
+
+    /// An item in the Artist list, either a Video or an Album
+    struct MediaItem: Identifiable {
+        /// The ID of the item
+        var id: String
+        /// The kind of media
+        var media: Library.Media = .musicVideo
+        /// When playing this item, resume or not
+        var resume: Bool = false
+        /// The Music Video item
+        var item: Video.Details.MusicVideo
     }
 }
