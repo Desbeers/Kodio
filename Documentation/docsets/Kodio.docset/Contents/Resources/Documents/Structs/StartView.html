@@ -84,19 +84,22 @@
                 <a href="../Classes/MusicMatchModel.html">MusicMatchModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/MusicMatchModel/SongItem.html">– SongItem</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/MusicMatchModel/Playcount.html">– Playcount</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/MusicMatchModel/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/MusicMatchModel/RatingAction.html">– RatingAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/MusicMatchModel/PlayerType.html">– PlayerType</a>
+                <a href="../Classes/MusicMatchModel/PlaycountAction.html">– PlaycountAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MusicMatchModel/Item.html">– Item</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MusicMatchModel/Values.html">– Values</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MusicMatchModel/Progress.html">– Progress</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/RotatingRecordModel.html">RotatingRecordModel</a>
@@ -167,6 +170,9 @@
                 <a href="../Structs/MusicVideosView/MusicVideo.html">– MusicVideo</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/MusicVideosView/MediaItem.html">– MediaItem</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/MusicMatchView.html">MusicMatchView</a>
               </li>
               <li class="nav-group-task">
@@ -213,9 +219,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/SettingsView/Sidebar.html">– Sidebar</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/StatusView.html">StatusView</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ToolbarView.html">ToolbarView</a>
@@ -277,6 +280,9 @@
                 <a href="../Enums/ButtonStyles/Help.html">– Help</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Enums/ButtonStyles/HostAction.html">– HostAction</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/ButtonStyles/Browser.html">– Browser</a>
               </li>
             </ul>
@@ -294,6 +300,14 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Other%20Global%20Variables.html#/s:5Kodio13radioStationsSay14SwiftlyKodiAPI5AudioO7DetailsO6StreamVGvp">radioStations</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Parts.html">Parts</a>
               </li>
             </ul>
           </li>
@@ -448,7 +462,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The body of the <code>View</code></p>
+                        <p>The body of the View</p>
 
                       </div>
                       <div class="declaration">
@@ -462,12 +476,93 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9StartViewV16noHostConfiguredQrvp"></a>
+                    <a name="//apple_ref/swift/Property/noHostConfigured" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9StartViewV16noHostConfiguredQrvp">noHostConfigured</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View when no hst is configured</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">noHostConfigured</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9StartViewV11hostActionsQrvp"></a>
+                    <a name="//apple_ref/swift/Property/hostActions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9StartViewV11hostActionsQrvp">hostActions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View for actions for the selected host</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">hostActions</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio9StartViewV10otherHostsQrvp"></a>
+                    <a name="//apple_ref/swift/Property/otherHosts" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio9StartViewV10otherHostsQrvp">otherHosts</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Optional View for other configured hosts</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">otherHosts</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-03-18)</p>
+          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-04-25)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

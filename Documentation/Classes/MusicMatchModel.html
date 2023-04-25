@@ -84,19 +84,22 @@
                 <a href="../Classes/MusicMatchModel.html">MusicMatchModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/MusicMatchModel/SongItem.html">– SongItem</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/MusicMatchModel/Playcount.html">– Playcount</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/MusicMatchModel/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/MusicMatchModel/RatingAction.html">– RatingAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/MusicMatchModel/PlayerType.html">– PlayerType</a>
+                <a href="../Classes/MusicMatchModel/PlaycountAction.html">– PlaycountAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MusicMatchModel/Item.html">– Item</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MusicMatchModel/Values.html">– Values</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MusicMatchModel/Progress.html">– Progress</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/RotatingRecordModel.html">RotatingRecordModel</a>
@@ -167,6 +170,9 @@
                 <a href="../Structs/MusicVideosView/MusicVideo.html">– MusicVideo</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/MusicVideosView/MediaItem.html">– MediaItem</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/MusicMatchView.html">MusicMatchView</a>
               </li>
               <li class="nav-group-task">
@@ -213,9 +219,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/SettingsView/Sidebar.html">– Sidebar</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/StatusView.html">StatusView</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ToolbarView.html">ToolbarView</a>
@@ -277,6 +280,9 @@
                 <a href="../Enums/ButtonStyles/Help.html">– Help</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Enums/ButtonStyles/HostAction.html">– HostAction</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/ButtonStyles/Browser.html">– Browser</a>
               </li>
             </ul>
@@ -298,6 +304,14 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Parts.html">Parts</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Other%20Protocols.html">Other Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -314,7 +328,7 @@
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">MusicMatchModel</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">class</span> <span class="kt">MusicMatchModel</span> <span class="p">:</span> <span class="kt">ObservableObject</span><span class="p">,</span> <span class="kd">@unchecked</span> <span class="kt">Sendable</span></code></pre>
 
                 </div>
               </div>
@@ -324,60 +338,6 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC5songsSayAC8SongItemVGvp"></a>
-                    <a name="//apple_ref/swift/Property/songs" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC5songsSayAC8SongItemVGvp">songs</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>All the songs</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">songs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC10playcountsSayAC9PlaycountVGvp"></a>
-                    <a name="//apple_ref/swift/Property/playcounts" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC10playcountsSayAC9PlaycountVGvp">playcounts</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Playcounts</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">playcounts</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/MusicMatchModel/Playcount.html">Playcount</a></span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -400,6 +360,144 @@
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@Published</span>
 <span class="k">var</span> <span class="nv">status</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/Status.html">Status</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC8progressAC8ProgressVvp"></a>
+                    <a name="//apple_ref/swift/Property/progress" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC8progressAC8ProgressVvp">progress</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Matching progress values</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="k">var</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/Progress.html">Progress</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC12ratingActionAC06RatingF0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/ratingAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC12ratingActionAC06RatingF0Ovp">ratingAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Setting which ratings will be used</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@AppStorage</span>
+<span class="k">var</span> <span class="nv">ratingAction</span><span class="p">:</span> <span class="kt">MusicMatchModel</span><span class="o">.</span><span class="kt"><a href="../Classes/MusicMatchModel/RatingAction.html">RatingAction</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC15playcountActionAC09PlaycountF0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/playcountAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC15playcountActionAC09PlaycountF0Ovp">playcountAction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Setting which playcount will be used</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@AppStorage</span>
+<span class="k">var</span> <span class="nv">playcountAction</span><span class="p">:</span> <span class="kt">MusicMatchModel</span><span class="o">.</span><span class="kt"><a href="../Classes/MusicMatchModel/PlaycountAction.html">PlaycountAction</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC05musicC5ItemsSayAC4ItemVGvp"></a>
+                    <a name="//apple_ref/swift/Property/musicMatchItems" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC05musicC5ItemsSayAC4ItemVGvp">musicMatchItems</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The items to match</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">musicMatchItems</span><span class="p">:</span> <span class="p">[</span><span class="kt">MusicMatchModel</span><span class="o">.</span><span class="kt"><a href="../Classes/MusicMatchModel/Item.html">Item</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC5cacheSayAC4ItemVGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/cache" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC5cacheSayAC4ItemVGSgvp">cache</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The optional cache of the Music Match</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cache</span><span class="p">:</span> <span class="p">[</span><span class="kt">MusicMatchModel</span><span class="o">.</span><span class="kt"><a href="../Classes/MusicMatchModel/Item.html">Item</a></span><span class="p">]?</span></code></pre>
 
                         </div>
                       </div>
@@ -433,42 +531,15 @@
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelCACycfc"></a>
-                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelCACycfc">init()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Init the model</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
               </ul>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Load%20and%20match%20the%20library"></a>
-                <a name="//apple_ref/swift/Section/Load and match the library" class="dashAnchor"></a>
+                <a name="/Get%20Kodi%20and%20Music%20songs"></a>
+                <a name="//apple_ref/swift/Section/Get Kodi and Music songs" class="dashAnchor"></a>
                 <div class="section-name-container">
-                  <a class="section-name-link" href="#/Load%20and%20match%20the%20library"></a>
-                  <h3 class="section-name"><span>Load and match the library</span>
+                  <a class="section-name-link" href="#/Get%20Kodi%20and%20Music%20songs"></a>
+                  <h3 class="section-name"><span>Get Kodi and Music songs</span>
 </h3>
                 </div>
               </div>
@@ -476,40 +547,13 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicMatchModelC10matchSongsyyYaF"></a>
-                    <a name="//apple_ref/swift/Method/matchSongs()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC10matchSongsyyYaF">matchSongs()</a>
+                    <a name="/s:5Kodio15MusicMatchModelC12getKodiSongs33_466CEF11629337D9CF865140BDF11EA9LLyyYaF"></a>
+                    <a name="//apple_ref/swift/Method/getKodiSongs()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC12getKodiSongs33_466CEF11629337D9CF865140BDF11EA9LLyyYaF">getKodiSongs()</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
                       </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Match songs between Kodi and Music</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">matchSongs</span><span class="p">()</span> <span class="k">async</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC12getKodiSongs33_466CEF11629337D9CF865140BDF11EA9LLSayAC8SongItemVGyF"></a>
-                    <a name="//apple_ref/swift/Method/getKodiSongs()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC12getKodiSongs33_466CEF11629337D9CF865140BDF11EA9LLSayAC8SongItemVGyF">getKodiSongs()</a>
-                    </code>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -523,13 +567,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">getKodiSongs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">getKodiSongs</span><span class="p">()</span> <span class="k">async</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>All songs from the Kodi database</p>
                       </div>
                     </section>
                   </div>
@@ -565,49 +605,15 @@
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC03getbC033_466CEF11629337D9CF865140BDF11EA9LLSayAC8SongItemVGyYaF"></a>
-                    <a name="//apple_ref/swift/Method/getMusicMatch()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC03getbC033_466CEF11629337D9CF865140BDF11EA9LLSayAC8SongItemVGyYaF">getMusicMatch()</a>
-                    </code>
-                      <span class="declaration-note">
-                        Asynchronous
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Match Kodi songs with Music Songs</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">getMusicMatch</span><span class="p">()</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>An updated tabel with mUsic data added</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
               </ul>
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Sync%20all%20songs"></a>
-                <a name="//apple_ref/swift/Section/Sync all songs" class="dashAnchor"></a>
+                <a name="/Match%20songs"></a>
+                <a name="//apple_ref/swift/Section/Match songs" class="dashAnchor"></a>
                 <div class="section-name-container">
-                  <a class="section-name-link" href="#/Sync%20all%20songs"></a>
-                  <h3 class="section-name"><span>Sync all songs</span>
+                  <a class="section-name-link" href="#/Match%20songs"></a>
+                  <h3 class="section-name"><span>Match songs</span>
 </h3>
                 </div>
               </div>
@@ -615,9 +621,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicMatchModelC12syncAllSongs12ratingActionyAC06RatingI0O_tYaF"></a>
-                    <a name="//apple_ref/swift/Method/syncAllSongs(ratingAction:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC12syncAllSongs12ratingActionyAC06RatingI0O_tYaF">syncAllSongs(ratingAction:<wbr>)</a>
+                    <a name="/s:5Kodio15MusicMatchModelC10matchSongsyyYaF"></a>
+                    <a name="//apple_ref/swift/Method/matchSongs()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC10matchSongsyyYaF">matchSongs()</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -628,14 +634,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Sync all songs that are not in sync yet</p>
+                        <p>Match songs between Kodi and Music</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">syncAllSongs</span><span class="p">(</span><span class="nv">ratingAction</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/RatingAction.html">RatingAction</a></span><span class="p">)</span> <span class="k">async</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">matchSongs</span><span class="p">()</span> <span class="k">async</span></code></pre>
 
                         </div>
                       </div>
@@ -646,11 +652,11 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Update%20song%20item%20in%20the%20Table%20View"></a>
-                <a name="//apple_ref/swift/Section/Update song item in the Table View" class="dashAnchor"></a>
+                <a name="/Synchronise%20songs"></a>
+                <a name="//apple_ref/swift/Section/Synchronise songs" class="dashAnchor"></a>
                 <div class="section-name-container">
-                  <a class="section-name-link" href="#/Update%20song%20item%20in%20the%20Table%20View"></a>
-                  <h3 class="section-name"><span>Update song item in the Table View</span>
+                  <a class="section-name-link" href="#/Synchronise%20songs"></a>
+                  <h3 class="section-name"><span>Synchronise songs</span>
 </h3>
                 </div>
               </div>
@@ -658,68 +664,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicMatchModelC14updateSongItem4songyAC0fG0V_tF"></a>
-                    <a name="//apple_ref/swift/Method/updateSongItem(song:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC14updateSongItem4songyAC0fG0V_tF">updateSongItem(song:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Update the song in the SwiftUI Table View</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">updateSongItem</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>song</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The song as<code><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></code></p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Playcounts"></a>
-                <a name="//apple_ref/swift/Section/Playcounts" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Playcounts"></a>
-                  <h3 class="section-name"><span>Playcounts</span>
-</h3>
-                </div>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC13syncPlaycount4songAC8SongItemVAG_tYaF"></a>
-                    <a name="//apple_ref/swift/Method/syncPlaycount(song:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC13syncPlaycount4songAC8SongItemVAG_tYaF">syncPlaycount(song:<wbr>)</a>
+                    <a name="/s:5Kodio15MusicMatchModelC12syncAllSongsyyYaF"></a>
+                    <a name="//apple_ref/swift/Method/syncAllSongs()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC12syncAllSongsyyYaF">syncAllSongs()</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -730,35 +677,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Sync a playcount</p>
+                        <p>Sync all songs between Kodi and Music</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">syncPlaycount</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">)</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">syncAllSongs</span><span class="p">()</span> <span class="k">async</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>song</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The song as<code><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></code></p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -766,9 +694,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicMatchModelC16setKodiPlaycount4song9playcountyAC8SongItemV_SitYaF"></a>
-                    <a name="//apple_ref/swift/Method/setKodiPlaycount(song:playcount:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC16setKodiPlaycount4song9playcountyAC8SongItemV_SitYaF">setKodiPlaycount(song:<wbr>playcount:<wbr>)</a>
+                    <a name="/s:5Kodio15MusicMatchModelC8syncSong4songyAC4ItemV_tYaF"></a>
+                    <a name="//apple_ref/swift/Method/syncSong(song:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC8syncSong4songyAC4ItemV_tYaF">syncSong(song:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Asynchronous
@@ -779,204 +707,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Set a playcount in Kodi</p>
+                        <p>Sync one song between Kodi and Music</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setKodiPlaycount</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">,</span> <span class="nv">playcount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="k">async</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>song</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The song as <code><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></code></p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC03setB9Playcount4song9playcountyAC8SongItemV_SitYaF"></a>
-                    <a name="//apple_ref/swift/Method/setMusicPlaycount(song:playcount:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC03setB9Playcount4song9playcountyAC8SongItemV_SitYaF">setMusicPlaycount(song:<wbr>playcount:<wbr>)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Asynchronous
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Set a playcount in Music</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setMusicPlaycount</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">,</span> <span class="nv">playcount</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="k">async</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>song</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The song as <code><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></code></p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC17setPlaycountCacheyyYaF"></a>
-                    <a name="//apple_ref/swift/Method/setPlaycountCache()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC17setPlaycountCacheyyYaF">setPlaycountCache()</a>
-                    </code>
-                      <span class="declaration-note">
-                        Asynchronous
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Store the Match in cache</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setPlaycountCache</span><span class="p">()</span> <span class="k">async</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Ratings"></a>
-                <a name="//apple_ref/swift/Section/Ratings" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Ratings"></a>
-                  <h3 class="section-name"><span>Ratings</span>
-</h3>
-                </div>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC10syncRating4song12ratingActionAC8SongItemVAH_AC0fI0OtYaF"></a>
-                    <a name="//apple_ref/swift/Method/syncRating(song:ratingAction:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC10syncRating4song12ratingActionAC8SongItemVAH_AC0fI0OtYaF">syncRating(song:<wbr>ratingAction:<wbr>)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Asynchronous
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Sync a rating</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">syncRating</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">,</span> <span class="nv">ratingAction</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/RatingAction.html">RatingAction</a></span><span class="p">)</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>song</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The song from the <code><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></code></p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC13setKodiRating4songyAC8SongItemVz_tYaF"></a>
-                    <a name="//apple_ref/swift/Method/setKodiRating(song:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC13setKodiRating4songyAC8SongItemVz_tYaF">setKodiRating(song:<wbr>)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Asynchronous
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Set a rating in Kodi</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setKodiRating</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="k">inout</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">)</span> <span class="k">async</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">syncSong</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt">MusicMatchModel</span><span class="o">.</span><span class="kt"><a href="../Classes/MusicMatchModel/Item.html">Item</a></span><span class="p">)</span> <span class="k">async</span></code></pre>
 
                         </div>
                       </div>
@@ -992,56 +730,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The song as a<code><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></code></p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:5Kodio15MusicMatchModelC03setB6Rating4songyAC8SongItemVz_tYaF"></a>
-                    <a name="//apple_ref/swift/Method/setMusicRating(song:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC03setB6Rating4songyAC8SongItemVz_tYaF">setMusicRating(song:<wbr>)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Asynchronous
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Set a rating in Music</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setMusicRating</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="k">inout</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">)</span> <span class="k">async</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>song</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The song as a<code><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></code></p>
+                                  <p>The song to sync as <code><a href="../Classes/MusicMatchModel/Item.html">Item</a></code></p>
                                 </div>
                               </td>
                             </tr>
@@ -1067,9 +756,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicMatchModelC03getB6SongID33_466CEF11629337D9CF865140BDF11EA9LL4songSiAC0F4ItemV_tF"></a>
-                    <a name="//apple_ref/swift/Method/getMusicSongID(song:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC03getB6SongID33_466CEF11629337D9CF865140BDF11EA9LL4songSiAC0F4ItemV_tF">getMusicSongID(song:<wbr>)</a>
+                    <a name="/s:5Kodio15MusicMatchModelC19calculateSyncValues4itemAC0G0VAC4ItemV_tF"></a>
+                    <a name="//apple_ref/swift/Method/calculateSyncValues(item:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC19calculateSyncValues4itemAC0G0VAC4ItemV_tF">calculateSyncValues(item:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1077,14 +766,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Get the AppeScript ID for the song</p>
+                        <p>Calculate the sync values</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">getMusicSongID</span><span class="p">(</span><span class="nv">song</span><span class="p">:</span> <span class="kt"><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">calculateSyncValues</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt">MusicMatchModel</span><span class="o">.</span><span class="kt"><a href="../Classes/MusicMatchModel/Item.html">Item</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">MusicMatchModel</span><span class="o">.</span><span class="kt"><a href="../Classes/MusicMatchModel/Values.html">Values</a></span></code></pre>
 
                         </div>
                       </div>
@@ -1095,12 +784,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>song</em>
+                                <em>item</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The son as a <code><a href="../Classes/MusicMatchModel/SongItem.html">SongItem</a></code></p>
+                                  <p>The Music Match Item</p>
                                 </div>
                               </td>
                             </tr>
@@ -1109,7 +798,7 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The Applescript ID of the song</p>
+                        <p>The sync values</p>
                       </div>
                     </section>
                   </div>
@@ -1117,9 +806,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicMatchModelC16dateToKodiString33_466CEF11629337D9CF865140BDF11EA9LL0E0SS10Foundation4DateVSg_tF"></a>
-                    <a name="//apple_ref/swift/Method/dateToKodiString(date:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC16dateToKodiString33_466CEF11629337D9CF865140BDF11EA9LL0E0SS10Foundation4DateVSg_tF">dateToKodiString(date:<wbr>)</a>
+                    <a name="/s:5Kodio15MusicMatchModelC20calculateRatingValue33_466CEF11629337D9CF865140BDF11EA9LL4itemSiAC4ItemV_tF"></a>
+                    <a name="//apple_ref/swift/Method/calculateRatingValue(item:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC20calculateRatingValue33_466CEF11629337D9CF865140BDF11EA9LL4itemSiAC4ItemV_tF">calculateRatingValue(item:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1127,14 +816,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Convert a Swift <code>Date</code> to a Kodi date <code>String</code></p>
+                        <p>Calculate the sync rating</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">dateToKodiString</span><span class="p">(</span><span class="nv">date</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">calculateRatingValue</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt">MusicMatchModel</span><span class="o">.</span><span class="kt"><a href="../Classes/MusicMatchModel/Item.html">Item</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -1145,12 +834,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>date</em>
+                                <em>item</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The Swift <code>Date</code></p>
+                                  <p>The Music Match Item</p>
                                 </div>
                               </td>
                             </tr>
@@ -1159,30 +848,17 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A date <code>String</code></p>
+                        <p>The rating</p>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Struct%20and%20Enum%20extensions"></a>
-                <a name="//apple_ref/swift/Section/Struct and Enum extensions" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Struct%20and%20Enum%20extensions"></a>
-                  <h3 class="section-name"><span>Struct and Enum extensions</span>
-</h3>
-                </div>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicMatchModelC8SongItemV"></a>
-                    <a name="//apple_ref/swift/Struct/SongItem" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC8SongItemV">SongItem</a>
+                    <a name="/s:5Kodio15MusicMatchModelC11setProgress5total7currentySdSg_AGtF"></a>
+                    <a name="//apple_ref/swift/Method/setProgress(total:current:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC11setProgress5total7currentySdSg_AGtF">setProgress(total:<wbr>current:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1190,43 +866,75 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A song in the Table View</p>
+                        <p>Set the progress values for the <code><a href="../Structs/MusicMatchView.html">MusicMatchView</a></code></p>
 
-                        <a href="../Classes/MusicMatchModel/SongItem.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">SongItem</span> <span class="p">:</span> <span class="kt">Identifiable</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setProgress</span><span class="p">(</span><span class="nv">total</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">current</span><span class="p">:</span> <span class="kt">Double</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>total</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The total items</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>current</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The current item</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicMatchModelC9PlaycountV"></a>
-                    <a name="//apple_ref/swift/Struct/Playcount" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC9PlaycountV">Playcount</a>
+                    <a name="/s:5Kodio15MusicMatchModelC03setbC5CacheyyYaF"></a>
+                    <a name="//apple_ref/swift/Method/setMusicMatchCache()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC03setbC5CacheyyYaF">setMusicMatchCache()</a>
                     </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Struct for the playcount between Kodi and Music</p>
+                        <p>Store the Match struct in cache</p>
 
-                        <a href="../Classes/MusicMatchModel/Playcount.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Playcount</span> <span class="p">:</span> <span class="kt">Codable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setMusicMatchCache</span><span class="p">()</span> <span class="k">async</span></code></pre>
 
                         </div>
                       </div>
@@ -1246,7 +954,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The status of rating matching</p>
+                        <p>The status of song matching</p>
 
                         <a href="../Classes/MusicMatchModel/Status.html" class="slightly-smaller">See more</a>
                       </div>
@@ -1292,9 +1000,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicMatchModelC10PlayerTypeO"></a>
-                    <a name="//apple_ref/swift/Enum/PlayerType" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicMatchModelC10PlayerTypeO">PlayerType</a>
+                    <a name="/s:5Kodio15MusicMatchModelC15PlaycountActionO"></a>
+                    <a name="//apple_ref/swift/Enum/PlaycountAction" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC15PlaycountActionO">PlaycountAction</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1302,15 +1010,99 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The type of player</p>
+                        <p>Which playcount to use for syncing</p>
 
-                        <a href="../Classes/MusicMatchModel/PlayerType.html" class="slightly-smaller">See more</a>
+                        <a href="../Classes/MusicMatchModel/PlaycountAction.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">PlayerType</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">PlaycountAction</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">CaseIterable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC4ItemV"></a>
+                    <a name="//apple_ref/swift/Struct/Item" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC4ItemV">Item</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Music Match Item</p>
+
+                        <a href="../Classes/MusicMatchModel/Item.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Item</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Identifiable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC6ValuesV"></a>
+                    <a name="//apple_ref/swift/Struct/Values" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC6ValuesV">Values</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The sync values of an Item (Kodi or Music song)</p>
+
+                        <a href="../Classes/MusicMatchModel/Values.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Values</span> <span class="p">:</span> <span class="kt">Codable</span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC8ProgressV"></a>
+                    <a name="//apple_ref/swift/Struct/Progress" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC8ProgressV">Progress</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Progress values of matching</p>
+
+                        <a href="../Classes/MusicMatchModel/Progress.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Progress</span></code></pre>
 
                         </div>
                       </div>
@@ -1322,7 +1114,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-03-18)</p>
+          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-04-25)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

@@ -18,6 +18,9 @@ import SwiftlyKodiAPI
     @StateObject var player: KodiPlayer = .shared
     /// Open new windows
     @Environment(\.openWindow) var openWindow
+
+    // MARK: Body of the Scene
+
     /// The body of the `View`
     var body: some Scene {
         Window("Kodio", id: "Main") {

@@ -10,7 +10,7 @@ import SwiftlyKodiAPI
 
 /// The Button Styles for Kodio
 enum ButtonStyles {
-    /// Just a placeholder
+    // Just a namespace here
 }
 
 extension ButtonStyles {

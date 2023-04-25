@@ -15,6 +15,7 @@
 		D726F0F0289C214100FE22CD /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726F0EF289C214100FE22CD /* HelpView.swift */; };
 		D726F0F3289C22EC00FE22CD /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726F0F2289C22EC00FE22CD /* AboutView.swift */; };
 		D726F0F6289C28E700FE22CD /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726F0F5289C28E700FE22CD /* MarkdownView.swift */; };
+		D72EA2BE29F0600300E9DAD2 /* Parts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EA2BD29F0600300E9DAD2 /* Parts.swift */; };
 		D74CF4AA2896594300E8EC03 /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D74CF4A92896594300E8EC03 /* AppleScriptObjC.framework */; };
 		D74CFD312882B0D30098F873 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CFD302882B0D30098F873 /* ToolbarView.swift */; };
 		D74CFD332882D9350098F873 /* PartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CFD322882D9350098F873 /* PartsView.swift */; };
@@ -25,6 +26,8 @@
 		D75BAE8628809B1200401AF3 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75BAE8528809B1200401AF3 /* SidebarView.swift */; };
 		D75BAE8828809B2600401AF3 /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75BAE8728809B2600401AF3 /* BrowserView.swift */; };
 		D75BAE8A28809B8B00401AF3 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75BAE8928809B8B00401AF3 /* AlbumsView.swift */; };
+		D760A82D29F4F86D00432606 /* MusicMatchModel+Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760A82C29F4F86D00432606 /* MusicMatchModel+Structs.swift */; };
+		D760A82F29F4FA1300432606 /* MusicMatchModel+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760A82E29F4FA1300432606 /* MusicMatchModel+Enums.swift */; };
 		D762A1F728817FC0007AFF45 /* BrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1F628817FC0007AFF45 /* BrowserModel.swift */; };
 		D762A1F92881805F007AFF45 /* GenresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1F82881805F007AFF45 /* GenresView.swift */; };
 		D762A1FC288181ED007AFF45 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FB288181ED007AFF45 /* ButtonStyles.swift */; };
@@ -39,8 +42,8 @@
 		D7B0F28A28B22F3A008AD0D7 /* Documentation.docc in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7B0F28728B22F2B008AD0D7 /* Documentation.docc */; };
 		D7C06EF828A79C74003A7FAB /* RotatingRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */; };
 		D7C5B0F928A25C4A004F9465 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0F828A25C4A004F9465 /* SettingsView.swift */; };
-		D7CB306C28995BE7004131BA /* MusicMatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB306B28995BE7004131BA /* MusicMatchModel.swift */; };
-		D7D2F931289592A400173389 /* MusicMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2F930289592A400173389 /* MusicMatchView.swift */; };
+		D7CBAAA529E9C3170046C879 /* MusicMatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CBAAA429E9C3170046C879 /* MusicMatchModel.swift */; };
+		D7CBAAA729E9E21E0046C879 /* MusicMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CBAAA629E9E21E0046C879 /* MusicMatchView.swift */; };
 		D7D48EE128AA70CD001C7DEC /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D48EE028AA70CD001C7DEC /* KodioApp.swift */; };
 		D7D9FF36289015A300AF9424 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9FF35289015A300AF9424 /* DetailsView.swift */; };
 		D7D9FF3A28901DE900AF9424 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D75BAE76288099C400401AF3 /* Assets.xcassets */; };
@@ -71,6 +74,7 @@
 		D726F0EF289C214100FE22CD /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		D726F0F2289C22EC00FE22CD /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		D726F0F5289C28E700FE22CD /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
+		D72EA2BD29F0600300E9DAD2 /* Parts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parts.swift; sourceTree = "<group>"; };
 		D74CF4A92896594300E8EC03 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		D74CFD302882B0D30098F873 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		D74CFD322882D9350098F873 /* PartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsView.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 		D75BAE8528809B1200401AF3 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		D75BAE8728809B2600401AF3 /* BrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
 		D75BAE8928809B8B00401AF3 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
+		D760A82C29F4F86D00432606 /* MusicMatchModel+Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicMatchModel+Structs.swift"; sourceTree = "<group>"; };
+		D760A82E29F4FA1300432606 /* MusicMatchModel+Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicMatchModel+Enums.swift"; sourceTree = "<group>"; };
 		D762A1F628817FC0007AFF45 /* BrowserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserModel.swift; sourceTree = "<group>"; };
 		D762A1F82881805F007AFF45 /* GenresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresView.swift; sourceTree = "<group>"; };
 		D762A1FB288181ED007AFF45 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
@@ -98,8 +104,8 @@
 		D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingRecordModel.swift; sourceTree = "<group>"; };
 		D7C5B0F828A25C4A004F9465 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D7C5B0FA28A25D01004F9465 /* HostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostsView.swift; sourceTree = "<group>"; };
-		D7CB306B28995BE7004131BA /* MusicMatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMatchModel.swift; sourceTree = "<group>"; };
-		D7D2F930289592A400173389 /* MusicMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMatchView.swift; sourceTree = "<group>"; };
+		D7CBAAA429E9C3170046C879 /* MusicMatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMatchModel.swift; sourceTree = "<group>"; };
+		D7CBAAA629E9E21E0046C879 /* MusicMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMatchView.swift; sourceTree = "<group>"; };
 		D7D48EE028AA70CD001C7DEC /* KodioApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
 		D7D9FF35289015A300AF9424 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		D7E3B27628959661007BB419 /* MusicBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBridge.swift; sourceTree = "<group>"; };
@@ -150,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				D762A2032881AAEC007AFF45 /* General */,
-				D7E3B27A28959692007BB419 /* MusicBridge */,
+				D7E3B27A28959692007BB419 /* MusicMatch */,
 				D75BAE8B28809BD000401AF3 /* Views */,
 				D762A1FA288181E2007AFF45 /* Styles */,
 			);
@@ -173,7 +179,6 @@
 				D71E2D012885A8CA00AB3BCB /* MusicVideosView.swift */,
 				D71E2CFD2885532700AB3BCB /* SearchView.swift */,
 				D7D9FF35289015A300AF9424 /* DetailsView.swift */,
-				D7D2F930289592A400173389 /* MusicMatchView.swift */,
 				D726F0F2289C22EC00FE22CD /* AboutView.swift */,
 				D726F0EF289C214100FE22CD /* HelpView.swift */,
 				D7C5B0F828A25C4A004F9465 /* SettingsView.swift */,
@@ -201,11 +206,11 @@
 				D79C598628A46E0A00996A6A /* AppState.swift */,
 				D762A2042881AB19007AFF45 /* Router.swift */,
 				D762A1F628817FC0007AFF45 /* BrowserModel.swift */,
-				D7CB306B28995BE7004131BA /* MusicMatchModel.swift */,
 				D70E603428AC07BA002309C1 /* HelpModel.swift */,
 				D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */,
 				D70E603128ABA702002309C1 /* KodioSettings.swift */,
 				D74CFD342882EFD80098F873 /* RadioStations.swift */,
+				D72EA2BD29F0600300E9DAD2 /* Parts.swift */,
 				D75BAE76288099C400401AF3 /* Assets.xcassets */,
 				D7B0F28728B22F2B008AD0D7 /* Documentation.docc */,
 				D75BAE7B288099C400401AF3 /* Kodio.entitlements */,
@@ -214,13 +219,17 @@
 			path = General;
 			sourceTree = "<group>";
 		};
-		D7E3B27A28959692007BB419 /* MusicBridge */ = {
+		D7E3B27A28959692007BB419 /* MusicMatch */ = {
 			isa = PBXGroup;
 			children = (
-				D7E3B27828959685007BB419 /* MusicBridge.applescript */,
+				D7CBAAA429E9C3170046C879 /* MusicMatchModel.swift */,
+				D760A82C29F4F86D00432606 /* MusicMatchModel+Structs.swift */,
+				D760A82E29F4FA1300432606 /* MusicMatchModel+Enums.swift */,
+				D7CBAAA629E9E21E0046C879 /* MusicMatchView.swift */,
 				D7E3B27628959661007BB419 /* MusicBridge.swift */,
+				D7E3B27828959685007BB419 /* MusicBridge.applescript */,
 			);
-			path = MusicBridge;
+			path = MusicMatch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,12 +332,12 @@
 			files = (
 				D71E2CFE2885532700AB3BCB /* SearchView.swift in Sources */,
 				D75BAE75288099C300401AF3 /* MainView.swift in Sources */,
-				D7D2F931289592A400173389 /* MusicMatchView.swift in Sources */,
 				D762A2022881A6EA007AFF45 /* QueueView.swift in Sources */,
 				D75BAE8A28809B8B00401AF3 /* AlbumsView.swift in Sources */,
 				D70E603528AC07BA002309C1 /* HelpModel.swift in Sources */,
 				D79C598728A46E0A00996A6A /* AppState.swift in Sources */,
 				D762A2052881AB19007AFF45 /* Router.swift in Sources */,
+				D7CBAAA529E9C3170046C879 /* MusicMatchModel.swift in Sources */,
 				D74CFD352882EFD80098F873 /* RadioStations.swift in Sources */,
 				D7B0F28828B22F2B008AD0D7 /* Documentation.docc in Sources */,
 				D762A200288187B9007AFF45 /* SongsView.swift in Sources */,
@@ -341,18 +350,21 @@
 				D726F0F0289C214100FE22CD /* HelpView.swift in Sources */,
 				D762A1F728817FC0007AFF45 /* BrowserModel.swift in Sources */,
 				D74CFD3728832C440098F873 /* MenuBarExtraView.swift in Sources */,
-				D7CB306C28995BE7004131BA /* MusicMatchModel.swift in Sources */,
 				D75BAE8628809B1200401AF3 /* SidebarView.swift in Sources */,
 				D70E603228ABA702002309C1 /* KodioSettings.swift in Sources */,
+				D760A82D29F4F86D00432606 /* MusicMatchModel+Structs.swift in Sources */,
 				D74CFD312882B0D30098F873 /* ToolbarView.swift in Sources */,
 				D7E3B27928959685007BB419 /* MusicBridge.applescript in Sources */,
+				D7CBAAA729E9E21E0046C879 /* MusicMatchView.swift in Sources */,
 				D7DB54BA297C13F800AEB373 /* HostsView.swift in Sources */,
 				D762A1FC288181ED007AFF45 /* ButtonStyles.swift in Sources */,
 				D726F0F3289C22EC00FE22CD /* AboutView.swift in Sources */,
 				D7D48EE128AA70CD001C7DEC /* KodioApp.swift in Sources */,
+				D760A82F29F4FA1300432606 /* MusicMatchModel+Enums.swift in Sources */,
 				D7C06EF828A79C74003A7FAB /* RotatingRecordModel.swift in Sources */,
 				D762A1F92881805F007AFF45 /* GenresView.swift in Sources */,
 				D726F0F6289C28E700FE22CD /* MarkdownView.swift in Sources */,
+				D72EA2BE29F0600300E9DAD2 /* Parts.swift in Sources */,
 				D71E2D022885A8CA00AB3BCB /* MusicVideosView.swift in Sources */,
 				D75BAE8828809B2600401AF3 /* BrowserView.swift in Sources */,
 				D74CFD332882D9350098F873 /* PartsView.swift in Sources */,

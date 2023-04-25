@@ -37,6 +37,21 @@ extension MusicBridge {
         return Int(bridge.getTrackID([title, album, "\(track)"]).intValue)
     }
 
+    /// Set the sync values of a music song
+    /// - Parameters:
+    ///   - songID: The AppleScript ID of the song
+    ///   - values: The values
+    func setMusicSongValues(songID: Int, values: MusicMatchModel.Values) {
+        bridge.setTrackValues(
+            [
+                "\(songID)",
+                "\(values.playcount)",
+                "\(values.lastPlayed)",
+                "\(values.rating * 10)"
+            ]
+        )
+    }
+
     /// Set the rating of a music song
     /// - Parameters:
     ///   - songID: The AppleScript ID of the song
@@ -72,6 +87,8 @@ extension MusicBridge {
 
 /// The bridge to talk to Music via AppleScript
 @objc(NSObject) protocol MusicBridgeProtocol {
+    /// Set the values of a track
+    func setTrackValues(_ theTrack: [String])
     /// Set the rating of a track
     func setTrackRating(_ theTrack: [String])
     /// Set the playcount of a track

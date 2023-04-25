@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ratings(rating:) Instance Method Reference</title>
+    <title>PlaycountAction Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Method/ratings(rating:)" class="dashAnchor"></a>
-    <a title="ratings(rating:) Instance Method Reference"></a>
+    <a name="//apple_ref/swift/Enum/PlaycountAction" class="dashAnchor"></a>
+    <a title="PlaycountAction Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../index.html">Kodio</a> (100% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../../index.html">Kodio Reference</a>
         <img id="carat" src="../../img/carat.png" alt=""/>
-        ratings(rating:) Instance Method Reference
+        PlaycountAction Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -84,19 +84,22 @@
                 <a href="../../Classes/MusicMatchModel.html">MusicMatchModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Classes/MusicMatchModel/SongItem.html">– SongItem</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Classes/MusicMatchModel/Playcount.html">– Playcount</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../../Classes/MusicMatchModel/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Classes/MusicMatchModel/RatingAction.html">– RatingAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Classes/MusicMatchModel/PlayerType.html">– PlayerType</a>
+                <a href="../../Classes/MusicMatchModel/PlaycountAction.html">– PlaycountAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/Item.html">– Item</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/Values.html">– Values</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/Progress.html">– Progress</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Classes/RotatingRecordModel.html">RotatingRecordModel</a>
@@ -167,6 +170,9 @@
                 <a href="../../Structs/MusicVideosView/MusicVideo.html">– MusicVideo</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/MediaItem.html">– MediaItem</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Structs/MusicMatchView.html">MusicMatchView</a>
               </li>
               <li class="nav-group-task">
@@ -213,9 +219,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/SettingsView/Sidebar.html">– Sidebar</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/StatusView.html">StatusView</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/ToolbarView.html">ToolbarView</a>
@@ -277,6 +280,9 @@
                 <a href="../../Enums/ButtonStyles/Help.html">– Help</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../Enums/ButtonStyles/HostAction.html">– HostAction</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Enums/ButtonStyles/Browser.html">– Browser</a>
               </li>
             </ul>
@@ -298,6 +304,14 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Enums/Parts.html">Parts</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../../Other%20Protocols.html">Other Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -310,39 +324,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>ratings(rating:)</h1>
+            <h1>PlaycountAction</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">ratings</span><span class="p">(</span><span class="nv">rating</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kd">some</span> <span class="kt">View</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">PlaycountAction</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">CaseIterable</span></code></pre>
 
                 </div>
               </div>
-            <p>View the song rating with stars</p>
+            <p>Which playcount to use for syncing</p>
 
-              <div>
-                <h4>Parameters</h4>
-                <table class="graybox">
-                  <tbody>
-                      <tr>
-                        <td>
-                          <code>
-                          <em>rating</em>
-                          </code>
-                        </td>
-                        <td>
-                          <div>
-                            <p>The rating</p>
-                          </div>
-                        </td>
-                      </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div>
-                <h4>Return Value</h4>
-                <p>A view with stars</p>
-              </div>
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -350,9 +341,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio14MusicMatchViewV7ratings6ratingQrSi_tF5imageL_6numberSSSi_tF"></a>
-                    <a name="//apple_ref/swift/Function/image(number:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio14MusicMatchViewV7ratings6ratingQrSi_tF5imageL_6numberSSSi_tF">image(number:<wbr>)</a>
+                    <a name="/s:5Kodio15MusicMatchModelC15PlaycountActionO07useKodiE0yA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/useKodiPlaycount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC15PlaycountActionO07useKodiE0yA2EmF">useKodiPlaycount</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -360,39 +351,97 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Convert a number to an SF symbol image</p>
+                        <p>Use the playcount from Kodi</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">image</span><span class="p">(</span><span class="nv">number</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">useKodiPlaycount</span> <span class="o">=</span> <span class="s">"Use Kodi Playcount"</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>number</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The number</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC15PlaycountActionO03usebE0yA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/useMusicPlaycount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC15PlaycountActionO03usebE0yA2EmF">useMusicPlaycount</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use the playcount from Music</p>
+
                       </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The String of the SF symbol</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">useMusicPlaycount</span> <span class="o">=</span> <span class="s">"Use Music Playcount"</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC15PlaycountActionO010useHighestE0yA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/useHighestPlaycount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC15PlaycountActionO010useHighestE0yA2EmF">useHighestPlaycount</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use the highest playcount</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">useHighestPlaycount</span> <span class="o">=</span> <span class="s">"Use Highest Playcount"</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicMatchModelC15PlaycountActionO08useTotalE0yA2EmF"></a>
+                    <a name="//apple_ref/swift/Element/useTotalPlaycount" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicMatchModelC15PlaycountActionO08useTotalE0yA2EmF">useTotalPlaycount</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use the total playcount</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">useTotalPlaycount</span> <span class="o">=</span> <span class="s">"Use Total Playcount"</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -402,7 +451,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-03-18)</p>
+          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-04-25)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

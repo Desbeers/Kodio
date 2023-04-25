@@ -10,7 +10,7 @@ import SwiftlyKodiAPI
 
 /// Shared bits and pieces Views used in other Views
 enum PartsView {
-    /// Just a placeholder
+    // Just a namespace here
 }
 
 extension PartsView {
@@ -309,6 +309,35 @@ extension PartsView {
                     }
                 )
                 .disabled(!host.isOnline || kodi.host == host)
+            }
+        }
+    }
+}
+
+extension PartsView {
+
+    /// View the song rating with stars
+    /// - Parameters:
+    ///   - rating: The rating
+    /// - Returns: A view with stars
+    static func ratings(rating: Int) -> some View {
+        return HStack(spacing: 0) {
+            ForEach(1..<6, id: \.self) { number in
+                Image(systemName: image(number: number))
+                    .font(.caption)
+            }
+        }
+
+        /// Convert a number to an SF symbol image
+        /// - Parameter number: The number
+        /// - Returns: The String of the SF symbol
+        func image(number: Int) -> String {
+            if number * 2 <= rating {
+                return "star.fill"
+            } else if number * 2 == rating + 1 {
+                return "star.leadinghalf.filled"
+            } else {
+                return "star"
             }
         }
     }

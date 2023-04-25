@@ -47,7 +47,7 @@ struct MainView: View {
         )
         .animation(.default, value: appState.selection)
         .task(id: kodi.status) {
-            if kodi.status != .loadedLibrary && appState.selection != .start {
+            if kodi.status != .loadedLibrary && kodi.status != .updatingLibrary && appState.selection != .start {
                 appState.selection = .start
             }
         }

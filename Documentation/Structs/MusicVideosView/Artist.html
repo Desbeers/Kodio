@@ -84,19 +84,22 @@
                 <a href="../../Classes/MusicMatchModel.html">MusicMatchModel</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Classes/MusicMatchModel/SongItem.html">– SongItem</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Classes/MusicMatchModel/Playcount.html">– Playcount</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../../Classes/MusicMatchModel/Status.html">– Status</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Classes/MusicMatchModel/RatingAction.html">– RatingAction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Classes/MusicMatchModel/PlayerType.html">– PlayerType</a>
+                <a href="../../Classes/MusicMatchModel/PlaycountAction.html">– PlaycountAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/Item.html">– Item</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/Values.html">– Values</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/MusicMatchModel/Progress.html">– Progress</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Classes/RotatingRecordModel.html">RotatingRecordModel</a>
@@ -167,6 +170,9 @@
                 <a href="../../Structs/MusicVideosView/MusicVideo.html">– MusicVideo</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/MediaItem.html">– MediaItem</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Structs/MusicMatchView.html">MusicMatchView</a>
               </li>
               <li class="nav-group-task">
@@ -213,9 +219,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/SettingsView/Sidebar.html">– Sidebar</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/StatusView.html">StatusView</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/ToolbarView.html">ToolbarView</a>
@@ -277,6 +280,9 @@
                 <a href="../../Enums/ButtonStyles/Help.html">– Help</a>
               </li>
               <li class="nav-group-task">
+                <a href="../../Enums/ButtonStyles/HostAction.html">– HostAction</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Enums/ButtonStyles/Browser.html">– Browser</a>
               </li>
             </ul>
@@ -294,6 +300,14 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../../Other%20Global%20Variables.html#/s:5Kodio13radioStationsSay14SwiftlyKodiAPI5AudioO7DetailsO6StreamVGvp">radioStations</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Enums/Parts.html">Parts</a>
               </li>
             </ul>
           </li>
@@ -382,9 +396,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicVideosViewV6ArtistV05musicC0Say14SwiftlyKodiAPI5VideoO7DetailsO0bJ0VGvp"></a>
+                    <a name="/s:5Kodio15MusicVideosViewV6ArtistV05musicC0SayAC9MediaItemVGvp"></a>
                     <a name="//apple_ref/swift/Property/musicVideos" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicVideosViewV6ArtistV05musicC0Say14SwiftlyKodiAPI5VideoO7DetailsO0bJ0VGvp">musicVideos</a>
+                    <a class="token" href="#/s:5Kodio15MusicVideosViewV6ArtistV05musicC0SayAC9MediaItemVGvp">musicVideos</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -400,7 +414,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@State</span>
-<span class="k">var</span> <span class="nv">musicVideos</span><span class="p">:</span> <span class="p">[</span><span class="kt">Video</span><span class="o">.</span><span class="kt">Details</span><span class="o">.</span><span class="kt"><a href="../../Structs/MusicVideosView/MusicVideo.html">MusicVideo</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+<span class="k">var</span> <span class="nv">musicVideos</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../../Structs/MusicVideosView/MediaItem.html">MediaItem</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -489,12 +503,39 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio15MusicVideosViewV6ArtistV8getItems33_E7B0B67FCDB4E68B3C24A74B479A4282LLyyF"></a>
+                    <a name="//apple_ref/swift/Method/getItems()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio15MusicVideosViewV6ArtistV8getItems33_E7B0B67FCDB4E68B3C24A74B479A4282LLyyF">getItems()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get all items from the library</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="kd">func</span> <span class="nf">getItems</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-03-18)</p>
+          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-04-25)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

@@ -56,7 +56,7 @@ extension HostsView {
     }
 
     /// The View for a Host
-    /// - Parameter host: The ``Host``
+    /// - Parameter host: The Kodi `Host`
     /// - Returns: A View with the host information
     func hostItem(host: HostItem) -> some View {
         Label(title: {

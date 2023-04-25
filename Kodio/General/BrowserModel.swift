@@ -145,7 +145,7 @@ extension BrowserModel {
         }
     }
 
-    /// Filter the ``BrowserView`` based on the optional ``BrowserModel/selection``
+    /// Filter the ``BrowserView`` based on the optional ``BrowserModel/Selection-swift.struct``
     func filterBrowser() async -> Media {
         var artists = library.artists
         var albums = library.albums
