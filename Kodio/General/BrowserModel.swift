@@ -80,6 +80,15 @@ extension BrowserModel {
 
         /// Filter the songs
         switch router {
+        case .compilations:
+            let compilationAlbums = kodi.library.albums.filter({ $0.compilation == true }).map { $0.albumID }
+            library.songs = kodi.library.songs
+                .filter {
+                    compilationAlbums.contains($0.albumID)
+                }
+                .sorted {
+                    $0.sortByTitle < $1.sortByTitle
+                }
         case .recentlyAdded:
             library.songs = kodi.library.songs
                 .filter {
@@ -160,7 +169,7 @@ extension BrowserModel {
             let songArtistIDs = Set(songs.flatMap { $0.albumArtistID })
             artists = artists
                 .filter { songArtistIDs.contains($0.artistID) }
-                .sorted { $0.title < $1.title }
+                .sorted { $0.sortByTitle < $1.sortByTitle }
         }
 
         /// Filter by artist

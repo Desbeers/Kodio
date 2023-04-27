@@ -34,6 +34,7 @@ struct SidebarView: View {
             if kodi.status == .loadedLibrary {
                 Section("Music") {
                     sidebarItem(item: Router.library)
+                    sidebarItem(item: Router.compilations)
                     sidebarItem(item: Router.recentlyAdded)
                     sidebarItem(item: Router.recentlyPlayed)
                     sidebarItem(item: Router.mostPlayed)

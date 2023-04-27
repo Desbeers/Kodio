@@ -139,11 +139,6 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
                 }
             }
             if song.music != song.sync {
-                print(musicBridge.getMusicSongID(
-                    title: song.title,
-                    album: song.album,
-                    track: song.track
-                ))
                 /// Update Music Item
                 musicBridge.setMusicSongValues(
                     songID: musicBridge.getMusicSongID(
@@ -155,7 +150,6 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
                 )
                 musicMatchItems[index].music = musicMatchItems[index].sync
             }
-
             /// Mark the item as matched
             musicMatchItems[index].matched = true
         }

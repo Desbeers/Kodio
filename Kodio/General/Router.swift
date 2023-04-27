@@ -14,6 +14,8 @@ enum Router: Hashable {
     case start
     /// Library View
     case library
+    /// Compilations View
+    case compilations
     /// Recently added View
     case recentlyAdded
     /// Most played View
@@ -39,6 +41,8 @@ enum Router: Hashable {
             return "Loading your library"
         case .library:
             return "Your library is empty"
+        case .compilations:
+            return "You have no compilation albums"
         case .recentlyAdded:
             return "You have no recently added songs"
         case .mostPlayed:
@@ -73,6 +77,12 @@ enum Router: Hashable {
                 title: "All Music",
                 description: "All the music in your library",
                 icon: "music.quarternote.3"
+            )
+        case .compilations:
+            return Item(
+                title: "Compilations",
+                description: "All compilation albums",
+                icon: "person.2"
             )
         case .recentlyAdded:
             return Item(
