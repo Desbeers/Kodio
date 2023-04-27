@@ -10,7 +10,6 @@ import SwiftlyKodiAPI
 
 /// The Songs View
 struct SongsView: View {
-
     /// The songs for this View
     let songs: [Audio.Details.Song]
     /// The optional selection
@@ -34,18 +33,27 @@ struct SongsView: View {
             .padding(.top)
             /// On macOS, `List` is not lazy, so slow... So, viewed in a `LazyVStack` and no fancy swipes....
             ScrollView {
-                LazyVStack {
-                    ForEach(Array(songs.enumerated()), id: \.element) { index, song in
-                        Song(song: song, album: selection.album)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background((index % 2 == 0) ? Color.gray.opacity(0.1) : Color.clear)
-                            .cornerRadius(6)
-                            .padding(.trailing)
+                ScrollViewReader { proxy in
+                    LazyVStack {
+                        /// Scroll to the top on new selection
+                        Divider()
+                            .id("SongList")
+                            .hidden()
+                        ForEach(Array(songs.enumerated()), id: \.element) { index, song in
+                            Song(song: song, album: selection.album)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background((index % 2 == 0) ? Color.gray.opacity(0.1) : Color.clear)
+                                .cornerRadius(6)
+                                .padding(.trailing)
+                        }
+                        .task(id: selection) {
+                            proxy.scrollTo("SongList", anchor: .top)
+                        }
                     }
                 }
+                .padding(.leading)
             }
         }
-        .id(selection)
     }
 
     /// Play the songs iin the  current list
@@ -100,7 +108,7 @@ extension SongsView {
             }
         }
         /// The icon for the song item
-        @ViewBuilder var icon: some View {
+        var icon: some View {
             VStack {
                 if song.id == player.currentItem?.id && player.currentItem?.media == .song {
                     Image(systemName: player.properties.speed == 0 ? "pause.fill" : "play.fill")
@@ -185,5 +193,14 @@ extension SongsView {
                 )
             })
         }
+    }
+}
+
+extension Audio.Details.Song {
+    var tablePlaycount: String {
+        return "\(playcount)"
+    }
+    var tableRating: String {
+        return "\(userRating)"
     }
 }

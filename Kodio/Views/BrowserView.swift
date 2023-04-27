@@ -28,7 +28,7 @@ struct BrowserView: View {
     }
     /// The body of the `View`
     var body: some View {
-        VStack(spacing: 0) {
+        VSplitView {
             switch browser.state {
             case .loading:
                 if router == .search {
@@ -61,14 +61,13 @@ struct BrowserView: View {
                     .blendMode(.multiply)
                     .allowsHitTesting(false)
                 }
-                HStack(alignment: .top) {
+                HSplitView {
                     DetailsView(router: router, selectedItem: browser.details)
                     SongsView(songs: items.songs, selection: $browser.selection)
                 }
             }
         }
         /// Just some eyecandy
-        .animation(.default, value: browser.state)
         .animation(.default, value: browser.selection)
         /// Load the library
         .task(id: router) {

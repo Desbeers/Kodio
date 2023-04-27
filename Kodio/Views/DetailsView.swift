@@ -19,30 +19,38 @@ struct DetailsView: View {
     /// The body of the `View`
     var body: some View {
         ScrollView {
-            Text(selectedItem?.title ?? router.sidebar.title)
-                .font(.title2)
-                .lineLimit(1)
-            Text(selectedItem?.subtitle ?? router.sidebar.description)
-                .font(.caption)
-            VStack {
-                RadialGradient(
-                    gradient: Gradient(colors: [.accentColor, .black]), center: .center, startRadius: 0, endRadius: 280
-                )
-                .saturation(0.4)
-                .overlay(
-                    overlay
-                        .scaledToFill()
-                        .foregroundColor(.white)
-                )
+            ScrollViewReader { proxy in
+                Text(selectedItem?.title ?? router.sidebar.title)
+                    .font(.title2)
+                    .lineLimit(1)
+                    .padding(.top)
+                    .id("Title")
+                    .task(id: selectedItem?.id) {
+                        proxy.scrollTo("Title", anchor: .top)
+                    }
+                Text(selectedItem?.subtitle ?? router.sidebar.description)
+                    .font(.caption)
+                VStack {
+                    RadialGradient(
+                        gradient: Gradient(colors: [.accentColor, .black]),
+                        center: .center,
+                        startRadius: 0,
+                        endRadius: 280
+                    )
+                    .saturation(0.4)
+                    .overlay(
+                        overlay
+                            .scaledToFill()
+                            .foregroundColor(.white)
+                    )
+                }
+                .aspectRatio(1.78, contentMode: .fit)
+                .cornerRadius(3)
+                Text(selectedItem?.description ?? "")
+                    .padding(.bottom)
             }
-            .aspectRatio(1.78, contentMode: .fit)
-            .cornerRadius(3)
-            Text(selectedItem?.description ?? "")
-                .padding(.bottom)
+            .padding(.horizontal)
         }
-        .id(selectedItem?.id)
-        .padding(.top)
-        .padding(.horizontal)
     }
 
     /// Overlay the base artwork
