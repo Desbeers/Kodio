@@ -32,7 +32,7 @@ struct QueueView: View {
             case .loading:
                 PartsView.LoadingState(message: "Loading the playlist...")
             case .empty:
-                PartsView.LoadingState(message: appState.selection?.empty ?? "", icon: appState.selection?.sidebar.icon)
+                PartsView.LoadingState(message: appState.selection.empty, icon: appState.selection.sidebar.icon)
             case .ready:
                 content
             }

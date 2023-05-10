@@ -63,7 +63,10 @@ struct BrowserView: View {
                 }
                 HSplitView {
                     DetailsView(router: router, selectedItem: browser.details)
-                    SongsView(songs: items.songs, selection: $browser.selection)
+                    VStack {
+                        HeaderView(songs: $items.songs, selectedAlbum: browser.selection.album)
+                        SongsView(songs: items.songs, selectedAlbum: browser.selection.album)
+                    }
                 }
             }
         }

@@ -50,6 +50,8 @@
 		D7DB54BA297C13F800AEB373 /* HostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0FA28A25D01004F9465 /* HostsView.swift */; };
 		D7E3B27728959661007BB419 /* MusicBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3B27628959661007BB419 /* MusicBridge.swift */; };
 		D7E3B27928959685007BB419 /* MusicBridge.applescript in Sources */ = {isa = PBXBuildFile; fileRef = D7E3B27828959685007BB419 /* MusicBridge.applescript */; };
+		D7FEE71729FE8E280085C610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEE71629FE8E280085C610 /* AppDelegate.swift */; };
+		D7FEE71B2A056D880085C610 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEE71A2A056D880085C610 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -110,6 +112,8 @@
 		D7D9FF35289015A300AF9424 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		D7E3B27628959661007BB419 /* MusicBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBridge.swift; sourceTree = "<group>"; };
 		D7E3B27828959685007BB419 /* MusicBridge.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = MusicBridge.applescript; sourceTree = "<group>"; };
+		D7FEE71629FE8E280085C610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D7FEE71A2A056D880085C610 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,7 @@
 				D762A1F82881805F007AFF45 /* GenresView.swift */,
 				D762A1FD288183EF007AFF45 /* ArtistsView.swift */,
 				D75BAE8928809B8B00401AF3 /* AlbumsView.swift */,
+				D7FEE71A2A056D880085C610 /* HeaderView.swift */,
 				D762A1FF288187B9007AFF45 /* SongsView.swift */,
 				D762A2012881A6EA007AFF45 /* QueueView.swift */,
 				D762A2062881CA3F007AFF45 /* PlaylistView.swift */,
@@ -203,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				D7D48EE028AA70CD001C7DEC /* KodioApp.swift */,
+				D7FEE71629FE8E280085C610 /* AppDelegate.swift */,
 				D79C598628A46E0A00996A6A /* AppState.swift */,
 				D762A2042881AB19007AFF45 /* Router.swift */,
 				D762A1F628817FC0007AFF45 /* BrowserModel.swift */,
@@ -345,12 +351,14 @@
 				D7D9FF36289015A300AF9424 /* DetailsView.swift in Sources */,
 				D762A1FE288183EF007AFF45 /* ArtistsView.swift in Sources */,
 				D7E3B27728959661007BB419 /* MusicBridge.swift in Sources */,
+				D7FEE71B2A056D880085C610 /* HeaderView.swift in Sources */,
 				D7C5B0F928A25C4A004F9465 /* SettingsView.swift in Sources */,
 				D79C598A28A505CA00996A6A /* StartView.swift in Sources */,
 				D726F0F0289C214100FE22CD /* HelpView.swift in Sources */,
 				D762A1F728817FC0007AFF45 /* BrowserModel.swift in Sources */,
 				D74CFD3728832C440098F873 /* MenuBarExtraView.swift in Sources */,
 				D75BAE8628809B1200401AF3 /* SidebarView.swift in Sources */,
+				D7FEE71729FE8E280085C610 /* AppDelegate.swift in Sources */,
 				D70E603228ABA702002309C1 /* KodioSettings.swift in Sources */,
 				D760A82D29F4F86D00432606 /* MusicMatchModel+Structs.swift in Sources */,
 				D74CFD312882B0D30098F873 /* ToolbarView.swift in Sources */,
@@ -414,7 +422,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -431,7 +439,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -474,6 +482,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -495,6 +504,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconMac;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Kodio/General/Kodio.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -503,6 +513,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = FHPCJ7396C;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -516,7 +527,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -535,6 +546,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconMac;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Kodio/General/Kodio.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -543,6 +555,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = FHPCJ7396C;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -556,7 +569,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";

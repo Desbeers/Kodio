@@ -18,6 +18,8 @@ import SwiftlyKodiAPI
     @StateObject var player: KodiPlayer = .shared
     /// Open new windows
     @Environment(\.openWindow) var openWindow
+    /// AppKit app delegate
+    @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
 
     // MARK: Body of the Scene
 

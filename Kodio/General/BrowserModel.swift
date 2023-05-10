@@ -169,14 +169,12 @@ extension BrowserModel {
             let songArtistIDs = Set(songs.flatMap { $0.albumArtistID })
             artists = artists
                 .filter { songArtistIDs.contains($0.artistID) }
-                .sorted { $0.sortByTitle < $1.sortByTitle }
         }
 
         /// Filter by artist
         if let artist = selection.artist {
             songs = songs
                 .filter { $0.albumArtistID.contains(artist.artistID) }
-                .sorted { $0.title < $1.title }
             albums = albums
                 .filter { $0.artistID.contains(artist.artistID) }
         }

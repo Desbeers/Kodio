@@ -149,9 +149,5 @@ enum Router: Hashable {
         let description: String
         /// The SF symbol of the item
         let icon: String
-        /// The actual ``Router``
-        let route: Router = .start
-        /// Is the item visible or not
-        var visible: Bool = true
     }
 }

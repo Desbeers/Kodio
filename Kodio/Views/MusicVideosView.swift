@@ -118,7 +118,7 @@ extension MusicVideosView {
         if let artistDetails = KodiConnector.shared.library.artists.first(where: { $0.artist == artist }) {
             return artistDetails
         }
-        /// Return an uknown artist
+        /// Return an unknown artist
         return Audio.Details.Artist(media: .artist, artist: artist, artistID: UUID().hashValue)
     }
 

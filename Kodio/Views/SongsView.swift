@@ -12,59 +12,32 @@ import SwiftlyKodiAPI
 struct SongsView: View {
     /// The songs for this View
     let songs: [Audio.Details.Song]
-    /// The optional selection
-    @Binding var selection: BrowserModel.Selection
-
+    /// The optional selected album
+    let selectedAlbum: Audio.Details.Album?
+    /// The body of the View
     var body: some View {
-        VStack {
-            HStack {
-                Button(action: {
-                    playSongs(shuffle: false)
-                }, label: {
-                    Label("Play songs", systemImage: "play.fill")
-                })
-                Button(action: {
-                    playSongs(shuffle: true)
-                }, label: {
-                    Label("Shuffle songs", systemImage: "shuffle")
-                })
-            }
-            .buttonStyle(ButtonStyles.Play())
-            .padding(.top)
-            /// On macOS, `List` is not lazy, so slow... So, viewed in a `LazyVStack` and no fancy swipes....
-            ScrollView {
-                ScrollViewReader { proxy in
-                    LazyVStack {
-                        /// Scroll to the top on new selection
-                        Divider()
-                            .id("SongList")
-                            .hidden()
-                        ForEach(Array(songs.enumerated()), id: \.element) { index, song in
-                            Song(song: song, album: selection.album)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background((index % 2 == 0) ? Color.gray.opacity(0.1) : Color.clear)
-                                .cornerRadius(6)
-                                .padding(.trailing)
-                        }
-                        .task(id: selection) {
-                            proxy.scrollTo("SongList", anchor: .top)
-                        }
+        /// On macOS, `List` is not lazy, so slow... So, viewed in a `LazyVStack` and no fancy swipes....
+        ScrollView {
+            ScrollViewReader { proxy in
+                LazyVStack {
+                    /// Scroll to the top on new selection
+                    Divider()
+                        .id("SongList")
+                        .hidden()
+                    ForEach(Array(songs.enumerated()), id: \.element) { index, song in
+                        Song(song: song, album: selectedAlbum)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background((index % 2 == 0) ? Color.gray.opacity(0.1) : Color.clear)
+                            .cornerRadius(6)
+                            .padding(.trailing)
+                    }
+                    .task(id: songs) {
+                        proxy.scrollTo("SongList", anchor: .top)
                     }
                 }
-                .padding(.leading)
             }
+            .padding(.leading)
         }
-    }
-
-    /// Play the songs iin the  current list
-    /// - Parameter shuffle: Bool to shuffle the list or not
-    func playSongs(shuffle: Bool) {
-        var media: KodioSettings.Crossfade = .playlist
-        if let album = selection.album {
-            media = album.compilation ? .compilation : .album
-        }
-        KodioSettings.setPlayerSettings(media: media)
-        songs.play(shuffle: shuffle)
     }
 }
 
@@ -86,10 +59,10 @@ extension SongsView {
                     .frame(width: 60, height: 60)
                 VStack(alignment: .leading) {
                     Text(song.title)
-                    Text(song.displayArtist)
+                    Text(song.subtitle)
                         .font(.subheadline)
                         .opacity(0.8)
-                    Text(song.album)
+                    Text(song.details)
                         .font(.caption)
                         .opacity(0.6)
                 }
@@ -122,15 +95,16 @@ extension SongsView {
             }
         }
         /// The art or track for the song item
-        @ViewBuilder var art: some View {
-            if album != nil {
+        var art: some View {
+            ZStack {
                 Text("\(song.track)")
                     .font(.headline)
-            } else {
+                    .opacity(album == nil ? 0 : 1)
                 KodiArt.Poster(item: song)
-                    .cornerRadius(4)
-                    .frame(width: 60, height: 60)
+                    .opacity(album == nil ? 1 : 0)
             }
+            .cornerRadius(4)
+            .frame(width: 60, height: 60)
         }
     }
 }
@@ -143,6 +117,11 @@ extension SongsView {
         let song: Audio.Details.Song
         /// The body of the View
         var body: some View {
+            Button(action: {
+                dump(song)
+            }, label: {
+                Text("Dump")
+            })
             Button(action: {
                 /// Check if this song is in the current playlist
                 /// and if not, set the Player Settings to 'playlist'

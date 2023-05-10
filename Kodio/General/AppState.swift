@@ -15,7 +15,7 @@ class AppState: ObservableObject {
     /// The Kodio settings
     @Published var settings: KodioSettings
     /// The current selection in the sidebar
-    @Published var selection: Router? = .start
+    @Published var selection: Router = .start
     /// The current search query
     var query: String = ""
     /// Init the class; get Kodio settings

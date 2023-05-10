@@ -29,17 +29,20 @@ struct MainView: View {
                     case .start:
                         StartView()
                     case .playlist(let file):
-                        PlaylistView(playlist: file).id(appState.selection)
+                        PlaylistView(playlist: file)
+                            .id(appState.selection)
                     case .playingQueue:
                         QueueView()
                     case .musicVideos:
                         MusicVideosView(router: .all)
                     case .search:
-                        BrowserView(router: .search, query: appState.query).id(appState.query)
+                        BrowserView(router: .search, query: appState.query)
+                            .id(appState.query)
                     case .musicMatch:
                         MusicMatchView()
                     default:
-                        BrowserView(router: appState.selection ?? .library).id(appState.selection)
+                        BrowserView(router: appState.selection)
+                            .id(appState.selection)
                     }
                 }
                 .modifier(ToolbarView())
