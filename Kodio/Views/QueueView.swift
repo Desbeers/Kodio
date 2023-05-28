@@ -129,7 +129,7 @@ extension QueueView {
     @ViewBuilder func queueItem(item: any KodiItem, single: Bool = false) -> some View {
         switch item {
         case let song as Audio.Details.Song:
-            SongsView.Song(song: song, album: nil)
+            SongView(song: song, album: nil)
                 .id(song.id)
         case let song as Audio.Details.Stream:
             if let stream = radioStations.first(where: { $0.file.contains(song.title) }) {

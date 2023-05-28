@@ -53,7 +53,7 @@ struct PlaylistView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(Array(songs.enumerated()), id: \.element) { index, song in
-                            SongsView.Song(song: song, album: nil)
+                            SongView(song: song, album: nil)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .background((index % 2 == 0) ? Color.gray.opacity(0.1) : Color.clear)
                         }

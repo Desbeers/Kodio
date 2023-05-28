@@ -38,6 +38,7 @@
 		D762A2072881CA3F007AFF45 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A2062881CA3F007AFF45 /* PlaylistView.swift */; };
 		D79C598728A46E0A00996A6A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598628A46E0A00996A6A /* AppState.swift */; };
 		D79C598A28A505CA00996A6A /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598928A505CA00996A6A /* StartView.swift */; };
+		D7A7223A2A238475009E1DE7 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A722392A238475009E1DE7 /* SongView.swift */; };
 		D7B0F28828B22F2B008AD0D7 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = D7B0F28728B22F2B008AD0D7 /* Documentation.docc */; };
 		D7B0F28A28B22F3A008AD0D7 /* Documentation.docc in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7B0F28728B22F2B008AD0D7 /* Documentation.docc */; };
 		D7C06EF828A79C74003A7FAB /* RotatingRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */; };
@@ -102,6 +103,7 @@
 		D777CFF328A28FE60098D8AD /* Kodio.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Kodio.plist; sourceTree = "<group>"; };
 		D79C598628A46E0A00996A6A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D79C598928A505CA00996A6A /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		D7A722392A238475009E1DE7 /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
 		D7B0F28728B22F2B008AD0D7 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingRecordModel.swift; sourceTree = "<group>"; };
 		D7C5B0F828A25C4A004F9465 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				D75BAE8928809B8B00401AF3 /* AlbumsView.swift */,
 				D7FEE71A2A056D880085C610 /* HeaderView.swift */,
 				D762A1FF288187B9007AFF45 /* SongsView.swift */,
+				D7A722392A238475009E1DE7 /* SongView.swift */,
 				D762A2012881A6EA007AFF45 /* QueueView.swift */,
 				D762A2062881CA3F007AFF45 /* PlaylistView.swift */,
 				D71E2D012885A8CA00AB3BCB /* MusicVideosView.swift */,
@@ -364,6 +367,7 @@
 				D74CFD312882B0D30098F873 /* ToolbarView.swift in Sources */,
 				D7E3B27928959685007BB419 /* MusicBridge.applescript in Sources */,
 				D7CBAAA729E9E21E0046C879 /* MusicMatchView.swift in Sources */,
+				D7A7223A2A238475009E1DE7 /* SongView.swift in Sources */,
 				D7DB54BA297C13F800AEB373 /* HostsView.swift in Sources */,
 				D762A1FC288181ED007AFF45 /* ButtonStyles.swift in Sources */,
 				D726F0F3289C22EC00FE22CD /* AboutView.swift in Sources */,
