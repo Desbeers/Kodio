@@ -13,7 +13,7 @@ extension MusicMatchModel {
     /// A Music Match Item
     struct Item: Codable, Identifiable, Equatable {
         /// The ID of the Kodi Song
-        var id: Library.id
+        var id: Library.ID
         /// The title of the song
         var title: String
         /// The album title of the song

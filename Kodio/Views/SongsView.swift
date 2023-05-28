@@ -118,11 +118,6 @@ extension SongsView {
         /// The body of the View
         var body: some View {
             Button(action: {
-                dump(song)
-            }, label: {
-                Text("Dump")
-            })
-            Button(action: {
                 /// Check if this song is in the current playlist
                 /// and if not, set the Player Settings to 'playlist'
                 if song.playlistID == nil {
@@ -172,14 +167,5 @@ extension SongsView {
                 )
             })
         }
-    }
-}
-
-extension Audio.Details.Song {
-    var tablePlaycount: String {
-        return "\(playcount)"
-    }
-    var tableRating: String {
-        return "\(userRating)"
     }
 }
