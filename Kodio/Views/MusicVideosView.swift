@@ -94,32 +94,10 @@ extension MusicVideosView {
             }
             .buttonStyle(.plain)
             .task(id: kodi.library.musicVideos) {
-                var artistList: [Audio.Details.Artist] = []
-                let allArtists = kodi.library.musicVideos
-                    .unique { $0.artist }
-                    .flatMap { $0.artist }
-                for artist in allArtists {
-                    artistList.append(artistItem(artist: artist))
-                }
-                artists = artistList
-                if artists.isEmpty {
-                    state = .empty
-                } else {
-                    state = .ready
-                }
+                artists = VideoLibrary.getMusicVideoArtists()
+                state = artists.isEmpty ? .empty : .ready
             }
         }
-    }
-
-    /// Convert an 'artist' string to a `KodiItem`
-    /// - Parameter artist: Name of the artist
-    /// - Returns: A `KodiItem`
-    static func artistItem(artist: String) -> Audio.Details.Artist {
-        if let artistDetails = KodiConnector.shared.library.artists.first(where: { $0.artist == artist }) {
-            return artistDetails
-        }
-        /// Return an unknown artist
-        return Audio.Details.Artist(media: .artist, artist: artist, artistID: UUID().hashValue)
     }
 
     /// View videos and albums for one artist
