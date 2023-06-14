@@ -2,13 +2,13 @@
 //  DetailsView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 14/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Albums View
+/// SwiftUI `View` for the albums
 struct AlbumsView: View {
 
     /// The albums for this View

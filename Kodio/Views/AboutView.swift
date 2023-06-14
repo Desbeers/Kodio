@@ -2,12 +2,12 @@
 //  AboutView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 04/08/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 
-/// The About Kodio View
+/// SwiftUI `View` for the about info
 struct AboutView: View {
     /// The rotate animation
     @State private var rotate: Bool = true

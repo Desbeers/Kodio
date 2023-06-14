@@ -2,7 +2,7 @@
 //  RadioStations.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 16/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI

@@ -2,7 +2,7 @@
 //  MusicMatchModel.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 14/04/2023.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI

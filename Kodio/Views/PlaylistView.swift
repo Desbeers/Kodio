@@ -2,13 +2,13 @@
 //  PlaylistView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 15/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The View for a playlist
+/// SwiftUI `View` for a playlist
 struct PlaylistView: View {
 
     /// The KodiConnector model

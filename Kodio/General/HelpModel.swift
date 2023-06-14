@@ -2,7 +2,7 @@
 //  HelpModel.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 16/08/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
@@ -72,9 +72,9 @@ extension HelpModel {
 
 extension HelpModel {
 
-    /// Convert a 'docc' link to a SwiftUI View
+    /// Convert a 'docc' link to a SwiftUI `View` with a button
     /// - Parameter text: The text containing the link
-    /// - Returns: A SwiftUI View
+    /// - Returns: A SwiftUI `View`
     @ViewBuilder func doccLink(text: String) -> some View {
         let doccRegex = /(?<leading>.+?)?<doc:(?<docc>.+?)>(?<trailing>.+?)?/
         if let result = text.wholeMatch(of: doccRegex) {

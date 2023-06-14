@@ -2,13 +2,13 @@
 //  BrowserView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 14/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Browser View
+/// SwiftUI `View` for the browser
 struct BrowserView: View {
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector

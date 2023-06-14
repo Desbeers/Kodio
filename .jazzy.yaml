@@ -37,6 +37,8 @@ custom_categories:
     - ArtistsView
     - AlbumsView
     - SongsView
+    - HeaderView
+    - SongView
     - MusicVideosView
     - MusicMatchView
     - PlaylistView
@@ -49,7 +51,6 @@ custom_categories:
     - MarkdownView
     - MenuBarExtraView
     - SettingsView
-    - StatusView
     - ToolbarView
     - PartsView
   - name: SwiftUI Styles

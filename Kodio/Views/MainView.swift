@@ -2,13 +2,13 @@
 //  ContentView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 14/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Main View vor Kodio
+/// SwiftUI `View` for the main view
 struct MainView: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState

@@ -2,7 +2,7 @@
 //  Router.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 15/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import Foundation

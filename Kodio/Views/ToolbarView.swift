@@ -2,13 +2,13 @@
 //  ToolbarView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 16/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Toolbar View Modifier
+/// SwiftUI `ViewModifier` for the toolbar
 struct ToolbarView: ViewModifier {
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector

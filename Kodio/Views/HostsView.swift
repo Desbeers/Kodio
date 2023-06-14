@@ -2,13 +2,13 @@
 //  HostsView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 09/08/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The View to add, edit, delete or select Kodi hosts
+/// SwiftUI `View` for add, edit, delete or select Kodi hosts
 struct HostsView: View {
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector

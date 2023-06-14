@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// The  View to show a Markdown text
+/// SwiftUI `View` for a Markdown text
 ///
 /// This View is used for  Help and is parsing the Documentation Catalog
 ///

@@ -2,19 +2,19 @@
 //  HeaderView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 05/05/2023.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The SwiftUI View for the play and sort buttons
+/// SwiftUI `View` for the header
 struct HeaderView: View {
-    /// The songs for this View
+    /// The songs for this `View`
     @Binding var songs: [Audio.Details.Song]
     /// The optional selected album
     let selectedAlbum: Audio.Details.Album?
-    /// The body of the View
+    /// The body of the `View`
     var body: some View {
         HStack {
             Button(action: {

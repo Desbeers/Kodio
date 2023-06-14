@@ -2,13 +2,13 @@
 //  KodioSettings.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 16/08/2022.
+//  © 2023 Nick Berendsen
 //
 
 import Foundation
 import SwiftlyKodiAPI
 
-/// All the Kodio Settings
+/// Structure with all the Kodio Settings
 struct KodioSettings: Equatable, Codable {
 
     /// ### Sidebar

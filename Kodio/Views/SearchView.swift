@@ -2,12 +2,12 @@
 //  SearchView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 18/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 
-/// The Search View
+/// SwiftUI `View` for the search
 struct SearchView: View {
     /// The search query
     let query: String

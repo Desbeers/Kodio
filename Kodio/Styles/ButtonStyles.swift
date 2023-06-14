@@ -2,7 +2,7 @@
 //  ButtonStyles.swift
 //  Macodi
 //
-//  Created by Nick Berendsen on 13/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI

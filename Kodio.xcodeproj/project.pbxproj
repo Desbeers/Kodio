@@ -172,9 +172,9 @@
 		D75BAE8B28809BD000401AF3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D79C598928A505CA00996A6A /* StartView.swift */,
 				D75BAE74288099C300401AF3 /* MainView.swift */,
 				D75BAE8528809B1200401AF3 /* SidebarView.swift */,
+				D79C598928A505CA00996A6A /* StartView.swift */,
 				D75BAE8728809B2600401AF3 /* BrowserView.swift */,
 				D762A1F82881805F007AFF45 /* GenresView.swift */,
 				D762A1FD288183EF007AFF45 /* ArtistsView.swift */,
@@ -193,8 +193,8 @@
 				D7C5B0FA28A25D01004F9465 /* HostsView.swift */,
 				D74CFD3628832C440098F873 /* MenuBarExtraView.swift */,
 				D74CFD302882B0D30098F873 /* ToolbarView.swift */,
-				D74CFD322882D9350098F873 /* PartsView.swift */,
 				D726F0F5289C28E700FE22CD /* MarkdownView.swift */,
+				D74CFD322882D9350098F873 /* PartsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

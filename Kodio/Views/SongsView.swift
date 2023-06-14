@@ -2,19 +2,19 @@
 //  SongsView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 14/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Songs View
+/// SwiftUI `View` for the songs
 struct SongsView: View {
     /// The songs for this View
     let songs: [Audio.Details.Song]
     /// The optional selected album
     let selectedAlbum: Audio.Details.Album?
-    /// The body of the View
+    /// The body of the `View`
     var body: some View {
         /// On macOS, `List` is not lazy, so slow... So, viewed in a `LazyVStack` and no fancy swipes....
         ScrollView {

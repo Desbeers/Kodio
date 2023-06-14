@@ -2,13 +2,13 @@
 //  SidebarView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 14/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Sidebar View
+/// SwiftUI `View` for the sidebar
 struct SidebarView: View {
     /// The search field in the toolbar
     @State var searchField: String = ""

@@ -2,84 +2,84 @@
 //  SongView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 28/05/2023.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-    /// The View for a song
-    struct SongView: View {
-        /// The KodiPlayer model
-        @EnvironmentObject private var player: KodiPlayer
-        /// The song tho view
-        let song: Audio.Details.Song
-        /// The optional selected album
-        let album: Audio.Details.Album?
-        var body: some View {
-            HStack {
-                icon
-                    .frame(width: 20)
-                art
-                    .frame(width: 60, height: 60)
-                VStack(alignment: .leading) {
-                    Text(song.title)
-                    Text(song.subtitle)
-                        .font(.subheadline)
-                        .opacity(0.8)
-                    Text(song.details)
-                        .font(.caption)
-                        .opacity(0.6)
-                }
-                Spacer()
-                Menu {
-                    Actions(song: song)
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                }
-                .frame(width: 40)
-                .menuStyle(.borderlessButton)
+/// SwiftUI `View` for a single song
+struct SongView: View {
+    /// The KodiPlayer model
+    @EnvironmentObject private var player: KodiPlayer
+    /// The song tho view
+    let song: Audio.Details.Song
+    /// The optional selected album
+    let album: Audio.Details.Album?
+    var body: some View {
+        HStack {
+            icon
+                .frame(width: 20)
+            art
+                .frame(width: 60, height: 60)
+            VStack(alignment: .leading) {
+                Text(song.title)
+                Text(song.subtitle)
+                    .font(.subheadline)
+                    .opacity(0.8)
+                Text(song.details)
+                    .font(.caption)
+                    .opacity(0.6)
             }
-            .padding()
-            .contextMenu {
+            Spacer()
+            Menu {
                 Actions(song: song)
+            } label: {
+                Image(systemName: "ellipsis.circle")
             }
+            .frame(width: 40)
+            .menuStyle(.borderlessButton)
         }
-        /// The icon for the song item
-        var icon: some View {
-            VStack {
-                if song.id == player.currentItem?.id && player.currentItem?.media == .song {
-                    Image(systemName: player.properties.speed == 0 ? "pause.fill" : "play.fill")
-                } else {
-                    Image(systemName: song.userRating == 0 ? "music.note" : "heart")
-                    if song.userRating > 0 {
-                        Text("\(song.userRating)")
-                            .font(.caption)
-                    }
-                }
-            }
-        }
-        /// The art or track for the song item
-        var art: some View {
-            ZStack {
-                Text("\(song.track)")
-                    .font(.headline)
-                    .opacity(album == nil ? 0 : 1)
-                KodiArt.Poster(item: song)
-                    .opacity(album == nil ? 1 : 0)
-            }
-            .cornerRadius(4)
-            .frame(width: 60, height: 60)
+        .padding()
+        .contextMenu {
+            Actions(song: song)
         }
     }
+    /// The icon for the song item
+    var icon: some View {
+        VStack {
+            if song.id == player.currentItem?.id && player.currentItem?.media == .song {
+                Image(systemName: player.properties.speed == 0 ? "pause.fill" : "play.fill")
+            } else {
+                Image(systemName: song.userRating == 0 ? "music.note" : "heart")
+                if song.userRating > 0 {
+                    Text("\(song.userRating)")
+                        .font(.caption)
+                }
+            }
+        }
+    }
+    /// The art or track for the song item
+    var art: some View {
+        ZStack {
+            Text("\(song.track)")
+                .font(.headline)
+                .opacity(album == nil ? 0 : 1)
+            KodiArt.Poster(item: song)
+                .opacity(album == nil ? 1 : 0)
+        }
+        .cornerRadius(4)
+        .frame(width: 60, height: 60)
+    }
+}
 
 extension SongView {
 
-    /// A SwiftUI View with action for a Song
+    /// SwiftUI `View` for song actions
     struct Actions: View {
         /// The Song
         let song: Audio.Details.Song
-        /// The body of the View
+        /// The body of the `View`
         var body: some View {
             Button(action: {
                 /// Check if this song is in the current playlist

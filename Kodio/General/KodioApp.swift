@@ -2,13 +2,13 @@
 //  KodioApp.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 14/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Scenes for Kodio
+/// SwiftUI `Scene` for the application
 @main struct KodioApp: App {
     /// The AppState model
     @StateObject var appState: AppState = .shared
@@ -23,7 +23,7 @@ import SwiftlyKodiAPI
 
     // MARK: Body of the Scene
 
-    /// The body of the `View`
+    /// The body of the `Scene`
     var body: some Scene {
         Window("Kodio", id: "Main") {
             MainView()

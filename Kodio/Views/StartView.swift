@@ -2,13 +2,13 @@
 //  StartView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 11/08/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The View that will be shown when Kodio is starting
+/// SwiftUI `View` for the start
 struct StartView: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState
@@ -21,7 +21,7 @@ struct StartView: View {
         Animation.linear(duration: 3.6)
             .repeatForever(autoreverses: false)
     }
-    /// The body of the View
+    /// The body of the `View`
     var body: some View {
         VStack {
             ZStack {

@@ -2,12 +2,12 @@
 //  KodioHelpView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 04/08/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 
-/// The Help View
+/// SwiftUI `View` for the help
 struct HelpView: View {
     /// The Help model
     @StateObject var help: HelpModel = .shared

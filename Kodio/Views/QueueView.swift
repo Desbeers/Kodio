@@ -2,13 +2,13 @@
 //  QueueView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 15/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Queue View
+/// SwiftUI `View` for the queue
 struct QueueView: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState
@@ -22,7 +22,7 @@ struct QueueView: View {
     @State private var animationToggle: Bool = false
     /// Rotate the record
     @State private var rotate: Bool = false
-    /// The body of the View
+    /// The body of the `View`
     var body: some View {
         VStack(spacing: 0) {
             Text("Now Playing")
@@ -121,7 +121,7 @@ extension QueueView {
 
 extension QueueView {
 
-    /// SwiftUI View for an item in the queue
+    /// SwiftUI `View` for a queue item
     /// - Parameters:
     ///   - item: The `KodiItem`
     ///   - single: Bool if there is only one item in the queue

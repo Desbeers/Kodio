@@ -2,13 +2,13 @@
 //  DetailsView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 26/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Details View for the Browser View
+/// SwiftUI `View` for the details
 struct DetailsView: View {
     /// The selected ``Router``
     let router: Router

@@ -2,13 +2,13 @@
 //  SettingsView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 09/08/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Settings View
+/// SwiftUI `View` for the settings
 struct SettingsView: View {
     /// The AppState model
     @EnvironmentObject var appState: AppState

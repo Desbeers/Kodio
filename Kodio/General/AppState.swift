@@ -2,7 +2,7 @@
 //  AppState.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 11/08/2022.
+//  © 2023 Nick Berendsen
 //
 
 import Foundation

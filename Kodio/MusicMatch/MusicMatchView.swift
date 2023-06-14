@@ -2,13 +2,13 @@
 //  MusicMatchView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 14/04/2023.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The View to sync ratings and playcounts between Kodi and Music
+/// SwiftUI `View` for syncing ratings and playcounts between Kodi and Music
 struct MusicMatchView: View {
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
@@ -25,7 +25,7 @@ struct MusicMatchView: View {
 
     // MARK: Body of the View
 
-    /// The body of the View
+    /// The body of the `View`
     var body: some View {
         VStack(spacing: 0) {
             VStack {

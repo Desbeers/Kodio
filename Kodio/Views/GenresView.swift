@@ -2,13 +2,13 @@
 //  GenresView.swift
 //  Kodio
 //
-//  Created by Nick Berendsen on 15/07/2022.
+//  © 2023 Nick Berendsen
 //
 
 import SwiftUI
 import SwiftlyKodiAPI
 
-/// The Genres View
+/// SwiftUI `View` for the genres
 struct GenresView: View {
 
     /// The genres for this View
