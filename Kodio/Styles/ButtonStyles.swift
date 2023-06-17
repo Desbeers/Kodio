@@ -149,44 +149,25 @@ extension ButtonStyles {
                 .foregroundColor(.white)
                 .background(
                     Color.accentColor
-                        .brightness(selected ? 0 : buttonBrightness(item: item))
-                        .saturation(selected ? 1 : buttonSaturation(item: item))
+                        .brightness(selected ? 0 : buttonColor.brightness)
+                        .saturation(selected ? 1 : buttonColor.saturation)
                 )
                 .cornerRadius(6)
                 .brightness(configuration.isPressed ? 0.1 : 0)
                 .padding(.vertical, 2)
                 .padding(.trailing, 8)
         }
-
-        /// Saturate a button
-        /// - Parameter media: The media type
-        /// - Returns: A saturation value
-        private func buttonBrightness(item: any KodiItem) -> Double {
+        /// Brightness and saturation values for a button
+        private var buttonColor: (brightness: Double, saturation: Double) {
             switch item.media {
             case .album:
-                return -0.3
+                return (-0.3, 0.4)
             case .artist:
-                return -0.2
+                return (-0.2, 0.25)
             case .genre:
-                return -0.1
+                return (-0.1, 0.1)
             default:
-                return 0.0
-            }
-        }
-
-        /// Saturate a button
-        /// - Parameter media: The media type
-        /// - Returns: A saturation value
-        private func buttonSaturation(item: any KodiItem) -> Double {
-            switch item.media {
-            case .album:
-                return 0.4
-            case .artist:
-                return 0.25
-            case .genre:
-                return 0.1
-            default:
-                return 1.0
+                return (0.0, 1.0)
             }
         }
     }
