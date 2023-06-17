@@ -94,7 +94,7 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
             }) {
                 var lastPlayed = "2000-01-01 00:00:00"
                 if let musicLastPlayed = musicSong.lastPlayedDate {
-                    lastPlayed = Parts.kodiDateFromSwiftDate(musicLastPlayed)
+                    lastPlayed = Utils.kodiDateFromSwiftDate(musicLastPlayed)
                 }
                 musicMatchItems[index].music = .init(
                     playcount: musicSong.playCount,

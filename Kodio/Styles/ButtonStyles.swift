@@ -36,16 +36,13 @@ extension ButtonStyles {
                             .opacity(0.5)
                     }
                 } icon: {
-                    Image(systemName: radioIcon(channel: channel))
+                    Image(systemName: radioIcon)
                         .foregroundColor(.purple)
                 }
             })
         }
-
         /// The SF symbol for the radio item
-        /// - Parameter channel: A `Stream` item
-        /// - Returns: A 'String' with the name of the SF symbol
-        func radioIcon(channel: Audio.Details.Stream) -> String {
+        var radioIcon: String {
             var icon = "antenna.radiowaves.left.and.right"
             if player.currentItem?.file == channel.file {
                 if player.properties.speed == 0 {
