@@ -70,7 +70,7 @@ extension MusicVideosView {
                 case .ready:
                     ScrollView {
                         LazyVGrid(columns: grid, spacing: 0) {
-                            ForEach(artists, id: \.self) { artist in
+                            ForEach(artists) { artist in
                                 Button(action: {
                                     router = .artist(artist: artist)
                                 }, label: {

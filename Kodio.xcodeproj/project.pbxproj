@@ -10,6 +10,7 @@
 		D704E2D828C0CC6000A82703 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D704E2D728C0CC6000A82703 /* AVKit.framework */; };
 		D70E603228ABA702002309C1 /* KodioSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E603128ABA702002309C1 /* KodioSettings.swift */; };
 		D70E603528AC07BA002309C1 /* HelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E603428AC07BA002309C1 /* HelpModel.swift */; };
+		D71496362A459FBC0029042C /* ArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FD288183EF007AFF45 /* ArtistsView.swift */; };
 		D71E2CFE2885532700AB3BCB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E2CFD2885532700AB3BCB /* SearchView.swift */; };
 		D71E2D022885A8CA00AB3BCB /* MusicVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E2D012885A8CA00AB3BCB /* MusicVideosView.swift */; };
 		D726F0F0289C214100FE22CD /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726F0EF289C214100FE22CD /* HelpView.swift */; };
@@ -30,7 +31,6 @@
 		D762A1F728817FC0007AFF45 /* BrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1F628817FC0007AFF45 /* BrowserModel.swift */; };
 		D762A1F92881805F007AFF45 /* GenresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1F82881805F007AFF45 /* GenresView.swift */; };
 		D762A1FC288181ED007AFF45 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FB288181ED007AFF45 /* ButtonStyles.swift */; };
-		D762A1FE288183EF007AFF45 /* ArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FD288183EF007AFF45 /* ArtistsView.swift */; };
 		D762A200288187B9007AFF45 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FF288187B9007AFF45 /* SongsView.swift */; };
 		D762A2022881A6EA007AFF45 /* QueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A2012881A6EA007AFF45 /* QueueView.swift */; };
 		D762A2052881AB19007AFF45 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A2042881AB19007AFF45 /* Router.swift */; };
@@ -349,11 +349,11 @@
 				D762A200288187B9007AFF45 /* SongsView.swift in Sources */,
 				D762A2072881CA3F007AFF45 /* PlaylistView.swift in Sources */,
 				D7D9FF36289015A300AF9424 /* DetailsView.swift in Sources */,
-				D762A1FE288183EF007AFF45 /* ArtistsView.swift in Sources */,
 				D7E3B27728959661007BB419 /* MusicBridge.swift in Sources */,
 				D7FEE71B2A056D880085C610 /* HeaderView.swift in Sources */,
 				D7C5B0F928A25C4A004F9465 /* SettingsView.swift in Sources */,
 				D79C598A28A505CA00996A6A /* StartView.swift in Sources */,
+				D71496362A459FBC0029042C /* ArtistsView.swift in Sources */,
 				D726F0F0289C214100FE22CD /* HelpView.swift in Sources */,
 				D762A1F728817FC0007AFF45 /* BrowserModel.swift in Sources */,
 				D74CFD3728832C440098F873 /* MenuBarExtraView.swift in Sources */,
