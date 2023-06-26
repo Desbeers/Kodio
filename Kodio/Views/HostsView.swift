@@ -77,7 +77,9 @@ extension HostsView {
     var hostEdit: some View {
         VStack {
             if let selection {
-                KodiHostItemView(host: selection)
+                KodiHostItemView(host: selection) {
+                    self.selection = nil
+                }
             } else {
                 Text("Add or edit your Kodi hosts")
                     .font(.title)
