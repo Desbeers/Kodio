@@ -36,9 +36,9 @@ struct BrowserView: View {
                 }
             case .empty:
                 if router == .search {
-                    PartsView.LoadingState(message: "Nothing found for '\(query)'", icon: router.sidebar.icon)
+                    PartsView.LoadingState(message: "Nothing found for '\(query)'", icon: router.item.icon)
                 } else {
-                    PartsView.LoadingState(message: router.empty, icon: router.sidebar.icon)
+                    PartsView.LoadingState(message: router.item.empty, icon: router.item.icon)
                 }
             case .ready:
                 HStack(spacing: 0) {

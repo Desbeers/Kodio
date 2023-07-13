@@ -80,7 +80,7 @@ extension BrowserModel {
 
         /// Filter the songs
         switch router {
-        case .compilations:
+        case .compilationAlbums:
             let compilationAlbums = kodi.library.albums.filter({ $0.compilation == true }).map { $0.albumID }
             library.songs = kodi.library.songs
                 .filter {
@@ -89,7 +89,7 @@ extension BrowserModel {
                 .sorted {
                     $0.sortByTitle < $1.sortByTitle
                 }
-        case .recentlyAdded:
+        case .recentlyAddedMusic:
             library.songs = kodi.library.songs
                 .filter {
                     $0.dateAdded > pastDate
@@ -97,7 +97,7 @@ extension BrowserModel {
                 .sorted {
                     $0.dateAdded > $1.dateAdded
                 }
-        case .recentlyPlayed:
+        case .recentlyPlayedMusic:
             library.songs = kodi.library.songs
                 .filter {
                     $0.playcount > 0 && $0.lastPlayed > pastDate
@@ -105,7 +105,7 @@ extension BrowserModel {
                 .sorted {
                     $0.lastPlayed > $1.lastPlayed
                 }
-        case .mostPlayed:
+        case .mostPlayedMusic:
             library.songs = Array(
                 kodi.library.songs.filter {
                     $0.playcount > 0
@@ -115,7 +115,7 @@ extension BrowserModel {
                     }
                     .prefix(1000)
             )
-        case .favorites:
+        case .favourites:
             library.songs = kodi.library.songs
                 .filter {
                     $0.userRating >= AppState.shared.settings.userRating

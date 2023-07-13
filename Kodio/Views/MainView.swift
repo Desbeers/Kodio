@@ -28,10 +28,10 @@ struct MainView: View {
                     switch appState.selection {
                     case .start:
                         StartView()
-                    case .playlist(let file):
+                    case .musicPlaylist(let file):
                         PlaylistView(playlist: file)
                             .id(appState.selection)
-                    case .playingQueue:
+                    case .nowPlayingQueue:
                         QueueView()
                     case .musicVideos:
                         MusicVideosView(router: .all)

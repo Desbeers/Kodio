@@ -36,7 +36,7 @@ extension AppState {
                     selection = .search
                 } else if selection == .search {
                     /// Go to the main browser view; the search is canceled
-                    selection = .library
+                    selection = .musicBrowser
                 }
         } catch { }
     }

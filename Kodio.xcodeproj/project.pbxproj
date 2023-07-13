@@ -33,7 +33,6 @@
 		D762A1FC288181ED007AFF45 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FB288181ED007AFF45 /* ButtonStyles.swift */; };
 		D762A200288187B9007AFF45 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FF288187B9007AFF45 /* SongsView.swift */; };
 		D762A2022881A6EA007AFF45 /* QueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A2012881A6EA007AFF45 /* QueueView.swift */; };
-		D762A2052881AB19007AFF45 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A2042881AB19007AFF45 /* Router.swift */; };
 		D762A2072881CA3F007AFF45 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A2062881CA3F007AFF45 /* PlaylistView.swift */; };
 		D79C598728A46E0A00996A6A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598628A46E0A00996A6A /* AppState.swift */; };
 		D79C598A28A505CA00996A6A /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598928A505CA00996A6A /* StartView.swift */; };
@@ -96,7 +95,6 @@
 		D762A1FD288183EF007AFF45 /* ArtistsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistsView.swift; sourceTree = "<group>"; };
 		D762A1FF288187B9007AFF45 /* SongsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		D762A2012881A6EA007AFF45 /* QueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueView.swift; sourceTree = "<group>"; };
-		D762A2042881AB19007AFF45 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D762A2062881CA3F007AFF45 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		D777CFF328A28FE60098D8AD /* Kodio.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Kodio.plist; sourceTree = "<group>"; };
 		D79C598628A46E0A00996A6A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -211,7 +209,6 @@
 				D7D48EE028AA70CD001C7DEC /* KodioApp.swift */,
 				D7FEE71629FE8E280085C610 /* AppDelegate.swift */,
 				D79C598628A46E0A00996A6A /* AppState.swift */,
-				D762A2042881AB19007AFF45 /* Router.swift */,
 				D762A1F628817FC0007AFF45 /* BrowserModel.swift */,
 				D70E603428AC07BA002309C1 /* HelpModel.swift */,
 				D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */,
@@ -342,7 +339,6 @@
 				D75BAE8A28809B8B00401AF3 /* AlbumsView.swift in Sources */,
 				D70E603528AC07BA002309C1 /* HelpModel.swift in Sources */,
 				D79C598728A46E0A00996A6A /* AppState.swift in Sources */,
-				D762A2052881AB19007AFF45 /* Router.swift in Sources */,
 				D7CBAAA529E9C3170046C879 /* MusicMatchModel.swift in Sources */,
 				D74CFD352882EFD80098F873 /* RadioStations.swift in Sources */,
 				D7B0F28828B22F2B008AD0D7 /* Documentation.docc in Sources */,
@@ -535,7 +531,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -577,7 +573,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

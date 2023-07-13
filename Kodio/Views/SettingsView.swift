@@ -169,14 +169,14 @@ extension SettingsView {
                     Toggle(isOn: $settings.showMusicMatch) {
                         VStack(alignment: .leading) {
                             Text("Show Music Match")
-                            Text(Router.musicMatch.sidebar.description)
+                            Text(Router.musicMatch.item.description)
                                 .font(.caption)
                         }
                     }
                     Toggle(isOn: $settings.showMusicVideos) {
                         VStack(alignment: .leading) {
                             Text("Show Music Videos")
-                            Text(Router.musicVideos.sidebar.description)
+                            Text(Router.musicVideos.item.description)
                                 .font(.caption)
                         }
                     }

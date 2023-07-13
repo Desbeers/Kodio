@@ -19,47 +19,49 @@ struct SidebarView: View {
     /// The body of the `View`
     var body: some View {
         List(selection: $appState.selection) {
-            Label(title: {
-                VStack(alignment: .leading) {
-                    Text(kodi.host.bonjour?.name ?? "Kodio")
-                    Text(kodi.status.message)
-                        .font(.caption)
-                        .opacity(0.5)
+            Label(
+                title: {
+                    VStack(alignment: .leading) {
+                        Text(kodi.host.bonjour?.name ?? "Kodio")
+                        Text(kodi.status.message)
+                            .font(.caption)
+                            .opacity(0.5)
+                    }
+                }, icon: {
+                    Image(systemName: "globe")
                 }
-            }, icon: {
-                Image(systemName: "globe")
-                    .foregroundColor(kodi.host.isOnline ? kodi.host.isSelected ? .green : .accentColor : .red)
-            })
+            )
+            .listItemTint(kodi.host.isOnline ? .green : .red)
             .tag(Router.start)
             if kodi.status == .loadedLibrary {
                 Section("Music") {
-                    sidebarItem(item: Router.library)
-                    sidebarItem(item: Router.compilations)
-                    sidebarItem(item: Router.recentlyAdded)
-                    sidebarItem(item: Router.recentlyPlayed)
-                    sidebarItem(item: Router.mostPlayed)
-                    sidebarItem(item: Router.favorites)
+                    sidebarItem(router: .musicBrowser)
+                    sidebarItem(router: .compilationAlbums)
+                    sidebarItem(router: .recentlyAddedMusic)
+                    sidebarItem(router: .recentlyPlayedMusic)
+                    sidebarItem(router: .mostPlayedMusic)
+                    sidebarItem(router: .favourites)
                     if appState.settings.showMusicVideos {
-                        sidebarItem(item: Router.musicVideos)
+                        sidebarItem(router: .musicVideos)
                     }
                 }
                 if appState.settings.showMusicMatch {
                     Section("Match") {
-                        sidebarItem(item: Router.musicMatch)
+                        sidebarItem(router: .musicMatch)
                     }
                 }
                 Section("Queue") {
-                    sidebarItem(item: Router.playingQueue)
+                    sidebarItem(router: .nowPlayingQueue)
                 }
                 if !searchField.isEmpty {
                     Section("Search") {
-                        sidebarItem(item: Router.search)
+                        sidebarItem(router: .search)
                     }
                 }
                 if !kodi.library.audioPlaylists.isEmpty {
                     Section("Playlists") {
                         ForEach(kodi.library.audioPlaylists, id: \.self) { playlist in
-                            sidebarItem(item: Router.playlist(file: playlist))
+                            sidebarItem(router: .musicPlaylist(file: playlist))
                         }
                     }
                 }
@@ -80,11 +82,12 @@ struct SidebarView: View {
         }
     }
 
-    /// Convert a ``Router`` iitem to a View
-    /// - Parameter item: The ``Router`` item
-    /// - Returns: A `View`
-    func sidebarItem(item: Router) -> some View {
-        Label(item.sidebar.title, systemImage: item.sidebar.icon)
-            .tag(item)
+    /// SwiftUI `View` for an item in the sidebar
+    /// - Parameter router: The ``Router`` item
+    /// - Returns: A SwiftUI `View` with the sidebar item
+    private func sidebarItem(router: Router) -> some View {
+        Label(router.item.title, systemImage: router.item.icon)
+            .tag(router)
+            .listItemTint(router.item.color)
     }
 }

@@ -20,7 +20,7 @@ struct DetailsView: View {
     var body: some View {
         ScrollView {
             ScrollViewReader { proxy in
-                Text(selectedItem?.title ?? router.sidebar.title)
+                Text(selectedItem?.title ?? router.item.title)
                     .font(.title2)
                     .lineLimit(1)
                     .padding(.top)
@@ -28,7 +28,7 @@ struct DetailsView: View {
                     .task(id: selectedItem?.id) {
                         proxy.scrollTo("Title", anchor: .top)
                     }
-                Text(selectedItem?.subtitle ?? router.sidebar.description)
+                Text(selectedItem?.subtitle ?? router.item.description)
                     .font(.caption)
                 VStack {
                     RadialGradient(
@@ -84,7 +84,7 @@ struct DetailsView: View {
                 EmptyView()
             }
         } else {
-            Image(systemName: router.sidebar.icon)
+            Image(systemName: router.item.icon)
                 .font(.system(size: 80))
                 .foregroundColor(.white)
                 .shadow(radius: 20)
