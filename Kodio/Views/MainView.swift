@@ -34,7 +34,7 @@ struct MainView: View {
                     case .nowPlayingQueue:
                         QueueView()
                     case .musicVideos:
-                        MusicVideosView(router: .all)
+                        MusicVideosView(router: .musicVideos)
                     case .search:
                         BrowserView(router: .search, query: appState.query)
                             .id(appState.query)

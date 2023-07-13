@@ -151,7 +151,7 @@ extension QueueView {
                     .cornerRadius(10)
                     .padding()
             } else {
-                MusicVideosView.MusicVideo(musicVideo: musicVideo)
+                MusicVideosView.ListItem(musicVideo: musicVideo)
                     .id(musicVideo.id)
             }
         default:

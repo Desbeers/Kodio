@@ -34,13 +34,13 @@ struct SidebarView: View {
             .listItemTint(kodi.host.isOnline ? .green : .red)
             .tag(Router.start)
             if kodi.status == .loadedLibrary {
+                sidebarItem(router: .favourites)
                 Section("Music") {
                     sidebarItem(router: .musicBrowser)
                     sidebarItem(router: .compilationAlbums)
                     sidebarItem(router: .recentlyAddedMusic)
                     sidebarItem(router: .recentlyPlayedMusic)
                     sidebarItem(router: .mostPlayedMusic)
-                    sidebarItem(router: .favourites)
                     if appState.settings.showMusicVideos {
                         sidebarItem(router: .musicVideos)
                     }
