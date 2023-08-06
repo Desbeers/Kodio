@@ -30,7 +30,8 @@ class RotatingRecordModel: ObservableObject {
     }
 
     /// Start the rotating animation
-    @MainActor func startRotating() async {
+    @MainActor
+    func startRotating() async {
         do {
             /// Sleep for a moment before we start to avoid hickups
             try await Task.sleep(until: .now + .seconds(1), clock: .continuous)

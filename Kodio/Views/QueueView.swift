@@ -107,7 +107,8 @@ struct QueueView: View {
 extension QueueView {
 
     /// Get the current playlist
-    @MainActor func getCurrentPlaylist() {
+    @MainActor
+    func getCurrentPlaylist() {
         if let queue = player.currentPlaylist, !queue.isEmpty {
             state = .ready
             items = queue
@@ -126,7 +127,8 @@ extension QueueView {
     ///   - item: The `KodiItem`
     ///   - single: Bool if there is only one item in the queue
     /// - Returns: A View
-    @ViewBuilder func queueItem(item: any KodiItem, single: Bool = false) -> some View {
+    @ViewBuilder
+    func queueItem(item: any KodiItem, single: Bool = false) -> some View {
         switch item {
         case let song as Audio.Details.Song:
             SongView(song: song, album: nil)

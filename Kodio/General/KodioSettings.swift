@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftlyKodiAPI
+import SwiftlyStructCache
 
 /// Structure with all the Kodio Settings
 struct KodioSettings: Equatable, Codable {
@@ -42,7 +43,7 @@ extension KodioSettings {
     /// - Returns: The ``KodioSettings``
     static func load() -> KodioSettings {
         logger("Get Kodio Settings")
-        if let hosts = Cache.get(key: "KodioSettings", as: KodioSettings.self, root: true) {
+        if let hosts = try? Cache.get(key: "KodioSettings", as: KodioSettings.self) {
             return hosts
         }
         /// No settings found
@@ -53,7 +54,7 @@ extension KodioSettings {
     /// - Parameter hosts: The array of hosts
     static func save(settings: KodioSettings) {
         do {
-            try Cache.set(key: "KodioSettings", object: settings, root: true)
+            try Cache.set(key: "KodioSettings", object: settings)
         } catch {
             logger("Error saving Kodio settings")
         }

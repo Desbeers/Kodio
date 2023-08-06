@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftlyKodiAPI
+import SwiftlyStructCache
 import iTunesLibrary
 
 /// The model for ``MusicMatchView``
@@ -16,9 +17,11 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
     /// Matching progress values
     @Published var progress: Progress = .init(total: 0, current: 0)
     /// Setting which ratings will be used
-    @AppStorage("ratingAction") var ratingAction: MusicMatchModel.RatingAction = .useKodiRating
+    @AppStorage("ratingAction")
+    var ratingAction: MusicMatchModel.RatingAction = .useKodiRating
     /// Setting which playcount will be used
-    @AppStorage("playcountAction") var playcountAction: MusicMatchModel.PlaycountAction = .useKodiPlaycount
+    @AppStorage("playcountAction")
+    var playcountAction: MusicMatchModel.PlaycountAction = .useKodiPlaycount
     /// The items to match
     var musicMatchItems: [MusicMatchModel.Item] = []
     /// The optional cache of the Music Match
@@ -78,7 +81,11 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
     func matchSongs() async {
         logger("Matching your songs...")
         cache = []
-        if let cache = Cache.get(key: "MusicMatchItems", as: [MusicMatchModel.Item].self) {
+        if let cache = try? Cache.get(
+            key: "MusicMatchItems",
+            as: [MusicMatchModel.Item].self,
+            folder: KodiConnector.shared.host.ip
+        ) {
             self.cache = cache
         }
         await getKodiSongs()
@@ -226,7 +233,7 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
     /// Store the Match struct in cache
     func setMusicMatchCache() async {
         do {
-            try Cache.set(key: "MusicMatchItems", object: musicMatchItems)
+            try Cache.set(key: "MusicMatchItems", object: musicMatchItems, folder: KodiConnector.shared.host.ip)
         } catch {
             print("Saving Music Match Items failed with error: \(error)")
         }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftlyKodiAPI
+import SwiftlyStructCache
 
 /// SwiftUI `View` for syncing ratings and playcounts between Kodi and Music
 struct MusicMatchView: View {
@@ -174,7 +175,7 @@ struct MusicMatchView: View {
             actions: {
                 Button("Reset matches", role: .destructive) {
                     do {
-                        try Cache.delete(key: "MusicMatchItems")
+                        try Cache.delete(key: "MusicMatchItems", folder: KodiConnector.shared.host.ip)
                     } catch {}
                     matchSongs()
                 }

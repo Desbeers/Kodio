@@ -129,7 +129,8 @@ extension MarkdownView {
     ///   - text: the text of the heading
     ///   - level: the level of the heading
     /// - Returns: the formatted heading in a `Text` view
-    @ViewBuilder func formatHeading(text: String, level: Int) -> some View {
+    @ViewBuilder
+    func formatHeading(text: String, level: Int) -> some View {
         switch level {
         case 1:
             Text(text)
@@ -158,7 +159,8 @@ extension MarkdownView {
     /// Format a list item
     /// - Parameter text: the text of the list item
     /// - Returns: a formatted list item in an `HStack` view
-    @ViewBuilder func formatListItem(text: String) -> some View {
+    @ViewBuilder
+    func formatListItem(text: String) -> some View {
         HStack(alignment: .top) {
             Text("・")
             formatAttributedString(text: text)
@@ -173,7 +175,8 @@ extension MarkdownView {
     /// Format a code block
     /// - Parameter text: the text of the code block
     /// - Returns: a formatted code block in an `HStack` view
-    @ViewBuilder func formatCodeBlock(text: String) -> some View {
+    @ViewBuilder
+    func formatCodeBlock(text: String) -> some View {
         HStack {
             Text(text
                 .trimmingCharacters(in: .whitespaces))
@@ -191,7 +194,8 @@ extension MarkdownView {
     /// Format a string if it has atributes
     /// - Parameter text: the Markdown text
     /// - Returns: the formatted text in a `Text` view
-    @ViewBuilder  func formatAttributedString(text: String) -> some View {
+    @ViewBuilder
+    func formatAttributedString(text: String) -> some View {
         if text.contains("<doc:") {
             HelpModel.shared.doccLink(text: text)
         } else if let attributedString = try? AttributedString(markdown: text) {
@@ -209,7 +213,8 @@ extension MarkdownView {
     /// Format a quote
     /// - Parameter text: the Markdown text
     /// - Returns: the formatted text in a `Text` view
-    @ViewBuilder func formatQuote(text: String) -> some View {
+    @ViewBuilder
+    func formatQuote(text: String) -> some View {
         VStack {
             if let attributedString = try? AttributedString(markdown: text) {
                 Text(attributedString)

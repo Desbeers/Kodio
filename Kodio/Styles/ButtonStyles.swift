@@ -61,7 +61,8 @@ extension ButtonStyles {
     /// Buttom style for a 'play', 'shuffle' or 'stream' button
     struct Play: ButtonStyle {
         /// Enabled or not
-        @Environment(\.isEnabled) var isEnabled
+        @Environment(\.isEnabled)
+        var isEnabled
         /// The style
         func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
@@ -114,7 +115,8 @@ extension ButtonStyles {
     /// Buttom style for a 'host action' button
     struct HostAction: ButtonStyle {
         /// Enabled or not
-        @Environment(\.isEnabled) var isEnabled
+        @Environment(\.isEnabled)
+        var isEnabled
         /// The style
         func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label

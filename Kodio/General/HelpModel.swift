@@ -75,7 +75,8 @@ extension HelpModel {
     /// Convert a 'docc' link to a SwiftUI `View` with a button
     /// - Parameter text: The text containing the link
     /// - Returns: A SwiftUI `View`
-    @ViewBuilder func doccLink(text: String) -> some View {
+    @ViewBuilder
+    func doccLink(text: String) -> some View {
         let doccRegex = /(?<leading>.+?)?<doc:(?<docc>.+?)>(?<trailing>.+?)?/
         if let result = text.wholeMatch(of: doccRegex) {
             HStack {

@@ -63,7 +63,8 @@ extension SettingsView {
         /// All the Kodio settings
         @Binding var settings: KodioSettings
         /// Open Window
-        @Environment(\.openWindow) var openWindow
+        @Environment(\.openWindow)
+        var openWindow
         /// The body of the `View`
         var body: some View {
             ScrollView {

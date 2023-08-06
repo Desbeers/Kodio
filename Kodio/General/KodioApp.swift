@@ -17,7 +17,8 @@ import SwiftlyKodiAPI
     /// The KodiPlayer model
     @StateObject var player: KodiPlayer = .shared
     /// Open new windows
-    @Environment(\.openWindow) var openWindow
+    @Environment(\.openWindow)
+    var openWindow
     /// AppKit app delegate
     @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
 

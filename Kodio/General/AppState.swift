@@ -28,7 +28,8 @@ extension AppState {
 
     /// Update the search query
     /// - Parameter query: The search query
-    @MainActor func updateSearch(query: String) async {
+    @MainActor
+    func updateSearch(query: String) async {
         do {
             try await Task.sleep(until: .now + .seconds(1), clock: .continuous)
             self.query = query
@@ -46,7 +47,8 @@ extension AppState {
 
     /// Update the Kodio settings
     /// - Parameter settings: The ``KodioSettings``
-    @MainActor func updateSettings(settings: KodioSettings) {
+    @MainActor
+    func updateSettings(settings: KodioSettings) {
         KodioSettings.save(settings: settings)
         self.settings = settings
     }
