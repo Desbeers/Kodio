@@ -69,8 +69,8 @@ extension MusicVideosView {
                             .padding(.bottom)
                         }
                     }
+                    .padding()
                 }
-                .padding()
                 .buttonStyle(.plain)
             }
             .task(id: kodi.library.musicVideos) {
