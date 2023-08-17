@@ -19,12 +19,26 @@ extension PartsView {
     struct BrowserHeader: View {
         /// The label of the header
         let label: String
+        /// The optional index
+        var index: String?
+        /// The optional padding
+        var padding: Double = 0
         /// The body of the `View`
         var body: some View {
-            Text(label)
-                .font(.subheadline)
-                .padding(.top, 4)
-                .foregroundColor(Color.secondary)
+            HStack {
+                Text(label)
+                if let index {
+                    Text(index)
+                        .bold()
+                }
+            }
+            .padding(.vertical, 4)
+            .frame(maxWidth: .infinity)
+            .background(.thinMaterial)
+            .padding(.trailing, padding)
+            .lineLimit(1)
+            .minimumScaleFactor(0.1)
+            .font(.subheadline)
         }
     }
 }
