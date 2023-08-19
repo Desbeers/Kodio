@@ -33,6 +33,9 @@ struct SettingsView: View {
                 }
                 .tag(Tabs.playback)
         }
+#if os(visionOS)
+        .frame(width: 1000)
+#endif
         .animation(.default, value: selection)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         /// Store the settings when they are changed
@@ -94,8 +97,8 @@ extension SettingsView {
                         appState.settings.togglePlayerSettings ?
                         "Kodio takes care of these settings" : "Change settings on you selected Kodi"
                     )
-                        .foregroundColor(appState.settings.togglePlayerSettings ? .red : .primary)
-                        .font(.caption)
+                    .foregroundColor(appState.settings.togglePlayerSettings ? .red : .primary)
+                    .font(.caption)
                     VStack(alignment: .leading) {
                         KodiSettingView.setting(for: .musicplayerCrossfade)
                         KodiSettingView.setting(for: .musicPlayerReplayGainType)
@@ -167,6 +170,7 @@ extension SettingsView {
                 Text("Sidebar Items")
                     .font(.title)
                 VStack(alignment: .leading) {
+#if os(macOS)
                     Toggle(isOn: $settings.showMusicMatch) {
                         VStack(alignment: .leading) {
                             Text("Show Music Match")
@@ -174,6 +178,7 @@ extension SettingsView {
                                 .font(.caption)
                         }
                     }
+#endif
                     Toggle(isOn: $settings.showMusicVideos) {
                         VStack(alignment: .leading) {
                             Text("Show Music Videos")
@@ -200,14 +205,14 @@ extension SettingsView {
                     }
                     .frame(width: 200)
                     .labelsHidden()
-                        Text("Minimum rating you gave a song to be viewed in Favourites.")
-                            .padding(.bottom)
-                            .font(.caption)
-                        Label(title: {
-                            Text("_This it not the content of the **Kodi Favourites** menu item_.")
-                        }, icon: {
-                            Image(systemName: "info.circle.fill")
-                        })
+                    Text("Minimum rating you gave a song to be viewed in Favourites.")
+                        .padding(.bottom)
+                        .font(.caption)
+                    Label(title: {
+                        Text("_This it not the content of the **Kodi Favourites** menu item_.")
+                    }, icon: {
+                        Image(systemName: "info.circle.fill")
+                    })
                 }
             }
             .padding()

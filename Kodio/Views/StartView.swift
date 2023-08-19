@@ -66,7 +66,11 @@ struct StartView: View {
                 .font(.caption)
                 .opacity(0.6)
             Button(action: {
+#if os(macOS)
                 NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+#else
+                appState.selection = .appSettings
+#endif
             }, label: {
                 Text("Add a host")
             })

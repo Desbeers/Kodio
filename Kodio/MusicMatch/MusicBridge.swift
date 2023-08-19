@@ -5,6 +5,8 @@
 //  © 2022 Nick Berendsen
 //
 
+#if os(macOS)
+
 import Foundation
 import AppleScriptObjC
 
@@ -100,3 +102,5 @@ extension MusicBridge {
     /// Send a notification
     func sendNotification(_ theNotification: [String])
 }
+
+#endif

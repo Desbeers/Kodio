@@ -5,6 +5,8 @@
 --  © 2023 Nick Berendsen
 --
 
+#if os(macOS)
+
 script MusicBridge
 	
 	property parent : class "NSObject"
@@ -67,3 +69,5 @@ script MusicBridge
     end setNotification
 
 end script
+
+#endif

@@ -71,6 +71,13 @@ struct ToolbarView: ViewModifier {
                     SetPartyMode()
                 }
                 ToolbarItem(
+                    id: "volumeMute",
+                    placement: .automatic,
+                    showsByDefault: true
+                ) {
+                    MediaButtons.VolumeMute()
+                }
+                ToolbarItem(
                     id: "volumeSlider",
                     placement: .automatic,
                     showsByDefault: true

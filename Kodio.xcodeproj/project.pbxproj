@@ -7,266 +7,249 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D704E2D828C0CC6000A82703 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D704E2D728C0CC6000A82703 /* AVKit.framework */; };
-		D70E603228ABA702002309C1 /* KodioSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E603128ABA702002309C1 /* KodioSettings.swift */; };
-		D70E603528AC07BA002309C1 /* HelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70E603428AC07BA002309C1 /* HelpModel.swift */; };
-		D71496362A459FBC0029042C /* ArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FD288183EF007AFF45 /* ArtistsView.swift */; };
-		D71E2CFE2885532700AB3BCB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E2CFD2885532700AB3BCB /* SearchView.swift */; };
-		D71E2D022885A8CA00AB3BCB /* MusicVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E2D012885A8CA00AB3BCB /* MusicVideosView.swift */; };
-		D726F0F0289C214100FE22CD /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726F0EF289C214100FE22CD /* HelpView.swift */; };
-		D726F0F3289C22EC00FE22CD /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726F0F2289C22EC00FE22CD /* AboutView.swift */; };
-		D726F0F6289C28E700FE22CD /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726F0F5289C28E700FE22CD /* MarkdownView.swift */; };
-		D72DEF052A605FBD00EC0B8E /* MusicVideosView+Artists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72DEF042A605FBD00EC0B8E /* MusicVideosView+Artists.swift */; };
-		D72DEF072A605FD200EC0B8E /* MusicVideosView+Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72DEF062A605FD200EC0B8E /* MusicVideosView+Artist.swift */; };
-		D72DEF092A60600C00EC0B8E /* MusicVideosView+Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72DEF082A60600C00EC0B8E /* MusicVideosView+Album.swift */; };
-		D72DEF0E2A60844F00EC0B8E /* MusicVideosView+ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72DEF0D2A60844F00EC0B8E /* MusicVideosView+ListItem.swift */; };
-		D74CF4AA2896594300E8EC03 /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D74CF4A92896594300E8EC03 /* AppleScriptObjC.framework */; };
-		D74CFD312882B0D30098F873 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CFD302882B0D30098F873 /* ToolbarView.swift */; };
-		D74CFD332882D9350098F873 /* PartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CFD322882D9350098F873 /* PartsView.swift */; };
-		D74CFD352882EFD80098F873 /* RadioStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CFD342882EFD80098F873 /* RadioStations.swift */; };
-		D74CFD3728832C440098F873 /* MenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74CFD3628832C440098F873 /* MenuBarExtraView.swift */; };
-		D75BAE75288099C300401AF3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75BAE74288099C300401AF3 /* MainView.swift */; };
-		D75BAE8328809A0B00401AF3 /* SwiftlyKodiAPI in Frameworks */ = {isa = PBXBuildFile; productRef = D75BAE8228809A0B00401AF3 /* SwiftlyKodiAPI */; };
-		D75BAE8628809B1200401AF3 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75BAE8528809B1200401AF3 /* SidebarView.swift */; };
-		D75BAE8828809B2600401AF3 /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75BAE8728809B2600401AF3 /* BrowserView.swift */; };
-		D75BAE8A28809B8B00401AF3 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75BAE8928809B8B00401AF3 /* AlbumsView.swift */; };
-		D760A82D29F4F86D00432606 /* MusicMatchModel+Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760A82C29F4F86D00432606 /* MusicMatchModel+Structs.swift */; };
-		D760A82F29F4FA1300432606 /* MusicMatchModel+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760A82E29F4FA1300432606 /* MusicMatchModel+Enums.swift */; };
-		D762A1F728817FC0007AFF45 /* BrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1F628817FC0007AFF45 /* BrowserModel.swift */; };
-		D762A1F92881805F007AFF45 /* GenresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1F82881805F007AFF45 /* GenresView.swift */; };
-		D762A1FC288181ED007AFF45 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FB288181ED007AFF45 /* ButtonStyles.swift */; };
-		D762A200288187B9007AFF45 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A1FF288187B9007AFF45 /* SongsView.swift */; };
-		D762A2022881A6EA007AFF45 /* QueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A2012881A6EA007AFF45 /* QueueView.swift */; };
-		D762A2072881CA3F007AFF45 /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762A2062881CA3F007AFF45 /* PlaylistView.swift */; };
-		D79C598728A46E0A00996A6A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598628A46E0A00996A6A /* AppState.swift */; };
-		D79C598A28A505CA00996A6A /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C598928A505CA00996A6A /* StartView.swift */; };
-		D7A7223A2A238475009E1DE7 /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A722392A238475009E1DE7 /* SongView.swift */; };
-		D7B0F28828B22F2B008AD0D7 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = D7B0F28728B22F2B008AD0D7 /* Documentation.docc */; };
-		D7B0F28A28B22F3A008AD0D7 /* Documentation.docc in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7B0F28728B22F2B008AD0D7 /* Documentation.docc */; };
-		D7C06EF828A79C74003A7FAB /* RotatingRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */; };
-		D7C5B0F928A25C4A004F9465 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0F828A25C4A004F9465 /* SettingsView.swift */; };
-		D7CBAAA529E9C3170046C879 /* MusicMatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CBAAA429E9C3170046C879 /* MusicMatchModel.swift */; };
-		D7CBAAA729E9E21E0046C879 /* MusicMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CBAAA629E9E21E0046C879 /* MusicMatchView.swift */; };
-		D7D48EE128AA70CD001C7DEC /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D48EE028AA70CD001C7DEC /* KodioApp.swift */; };
-		D7D9FF36289015A300AF9424 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9FF35289015A300AF9424 /* DetailsView.swift */; };
-		D7D9FF3A28901DE900AF9424 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D75BAE76288099C400401AF3 /* Assets.xcassets */; };
-		D7DB54BA297C13F800AEB373 /* HostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5B0FA28A25D01004F9465 /* HostsView.swift */; };
-		D7E3B27728959661007BB419 /* MusicBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3B27628959661007BB419 /* MusicBridge.swift */; };
-		D7E3B27928959685007BB419 /* MusicBridge.applescript in Sources */ = {isa = PBXBuildFile; fileRef = D7E3B27828959685007BB419 /* MusicBridge.applescript */; };
-		D7FEE71729FE8E280085C610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEE71629FE8E280085C610 /* AppDelegate.swift */; };
-		D7FEE71B2A056D880085C610 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEE71A2A056D880085C610 /* HeaderView.swift */; };
+		D7A84CEA2A91523B004BA2DA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CB82A91523B004BA2DA /* AppState.swift */; };
+		D7A84CEB2A91523B004BA2DA /* BrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CB92A91523B004BA2DA /* BrowserModel.swift */; };
+		D7A84CEC2A91523B004BA2DA /* RadioStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBA2A91523B004BA2DA /* RadioStations.swift */; };
+		D7A84CED2A91523B004BA2DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A84CBB2A91523B004BA2DA /* Assets.xcassets */; };
+		D7A84CEE2A91523B004BA2DA /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBD2A91523B004BA2DA /* Documentation.docc */; };
+		D7A84CEF2A91523B004BA2DA /* KodioSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */; };
+		D7A84CF02A91523B004BA2DA /* RotatingRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */; };
+		D7A84CF12A91523B004BA2DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC02A91523B004BA2DA /* AppDelegate.swift */; };
+		D7A84CF22A91523B004BA2DA /* HelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC12A91523B004BA2DA /* HelpModel.swift */; };
+		D7A84CF32A91523B004BA2DA /* Kodio.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7A84CC22A91523B004BA2DA /* Kodio.plist */; };
+		D7A84CF42A91523B004BA2DA /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC32A91523B004BA2DA /* KodioApp.swift */; };
+		D7A84CF52A91523B004BA2DA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC52A91523B004BA2DA /* ButtonStyles.swift */; };
+		D7A84CF62A91523B004BA2DA /* MusicMatchModel+Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC72A91523B004BA2DA /* MusicMatchModel+Structs.swift */; };
+		D7A84CF72A91523B004BA2DA /* MusicBridge.applescript in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC82A91523B004BA2DA /* MusicBridge.applescript */; };
+		D7A84CF82A91523B004BA2DA /* MusicMatchModel+Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC92A91523B004BA2DA /* MusicMatchModel+Enums.swift */; };
+		D7A84CF92A91523B004BA2DA /* MusicBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CCA2A91523B004BA2DA /* MusicBridge.swift */; };
+		D7A84CFA2A91523B004BA2DA /* MusicMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CCB2A91523B004BA2DA /* MusicMatchView.swift */; };
+		D7A84CFB2A91523B004BA2DA /* MusicMatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CCC2A91523B004BA2DA /* MusicMatchModel.swift */; };
+		D7A84CFC2A91523B004BA2DA /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CCE2A91523B004BA2DA /* AboutView.swift */; };
+		D7A84CFD2A91523B004BA2DA /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CCF2A91523B004BA2DA /* PlaylistView.swift */; };
+		D7A84CFE2A91523B004BA2DA /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD02A91523B004BA2DA /* StartView.swift */; };
+		D7A84CFF2A91523B004BA2DA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD12A91523B004BA2DA /* SettingsView.swift */; };
+		D7A84D002A91523B004BA2DA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD22A91523B004BA2DA /* SearchView.swift */; };
+		D7A84D012A91523B004BA2DA /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD32A91523B004BA2DA /* SongsView.swift */; };
+		D7A84D022A91523B004BA2DA /* MenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD42A91523B004BA2DA /* MenuBarExtraView.swift */; };
+		D7A84D032A91523B004BA2DA /* GenresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD52A91523B004BA2DA /* GenresView.swift */; };
+		D7A84D042A91523B004BA2DA /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD62A91523B004BA2DA /* DetailsView.swift */; };
+		D7A84D052A91523B004BA2DA /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD72A91523B004BA2DA /* MarkdownView.swift */; };
+		D7A84D062A91523B004BA2DA /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD82A91523B004BA2DA /* ToolbarView.swift */; };
+		D7A84D072A91523B004BA2DA /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD92A91523B004BA2DA /* SidebarView.swift */; };
+		D7A84D082A91523B004BA2DA /* ArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDA2A91523B004BA2DA /* ArtistsView.swift */; };
+		D7A84D092A91523B004BA2DA /* HostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDB2A91523B004BA2DA /* HostsView.swift */; };
+		D7A84D0A2A91523B004BA2DA /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDC2A91523B004BA2DA /* HeaderView.swift */; };
+		D7A84D0B2A91523B004BA2DA /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDD2A91523B004BA2DA /* BrowserView.swift */; };
+		D7A84D0C2A91523B004BA2DA /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDE2A91523B004BA2DA /* HelpView.swift */; };
+		D7A84D0D2A91523B004BA2DA /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDF2A91523B004BA2DA /* AlbumsView.swift */; };
+		D7A84D0E2A91523B004BA2DA /* QueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE02A91523B004BA2DA /* QueueView.swift */; };
+		D7A84D0F2A91523B004BA2DA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE12A91523B004BA2DA /* MainView.swift */; };
+		D7A84D102A91523B004BA2DA /* PartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE22A91523B004BA2DA /* PartsView.swift */; };
+		D7A84D112A91523B004BA2DA /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE32A91523B004BA2DA /* SongView.swift */; };
+		D7A84D122A91523B004BA2DA /* MusicVideosView+Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE52A91523B004BA2DA /* MusicVideosView+Album.swift */; };
+		D7A84D132A91523B004BA2DA /* MusicVideosView+Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE62A91523B004BA2DA /* MusicVideosView+Artist.swift */; };
+		D7A84D142A91523B004BA2DA /* MusicVideosView+Artists.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE72A91523B004BA2DA /* MusicVideosView+Artists.swift */; };
+		D7A84D152A91523B004BA2DA /* MusicVideosView+ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE82A91523B004BA2DA /* MusicVideosView+ListItem.swift */; };
+		D7A84D162A91523B004BA2DA /* MusicVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE92A91523B004BA2DA /* MusicVideosView.swift */; };
+		D7A84D192A9154EB004BA2DA /* SwiftlyKodiAPI in Frameworks */ = {isa = PBXBuildFile; productRef = D7A84D182A9154EB004BA2DA /* SwiftlyKodiAPI */; };
+		D7A84D1F2A915828004BA2DA /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A84D1E2A915828004BA2DA /* AppleScriptObjC.framework */; platformFilters = (macos, ); };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		D7AD41D428A93E51002573D1 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				D7B0F28A28B22F3A008AD0D7 /* Documentation.docc in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		D704E2D728C0CC6000A82703 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-		D70E603128ABA702002309C1 /* KodioSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KodioSettings.swift; sourceTree = "<group>"; };
-		D70E603428AC07BA002309C1 /* HelpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpModel.swift; sourceTree = "<group>"; };
-		D71E2CFD2885532700AB3BCB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		D71E2D012885A8CA00AB3BCB /* MusicVideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideosView.swift; sourceTree = "<group>"; };
-		D726F0EF289C214100FE22CD /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
-		D726F0F2289C22EC00FE22CD /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		D726F0F5289C28E700FE22CD /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
-		D72DEF042A605FBD00EC0B8E /* MusicVideosView+Artists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicVideosView+Artists.swift"; sourceTree = "<group>"; };
-		D72DEF062A605FD200EC0B8E /* MusicVideosView+Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicVideosView+Artist.swift"; sourceTree = "<group>"; };
-		D72DEF082A60600C00EC0B8E /* MusicVideosView+Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicVideosView+Album.swift"; sourceTree = "<group>"; };
-		D72DEF0D2A60844F00EC0B8E /* MusicVideosView+ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicVideosView+ListItem.swift"; sourceTree = "<group>"; };
-		D74CF4A92896594300E8EC03 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
-		D74CFD302882B0D30098F873 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
-		D74CFD322882D9350098F873 /* PartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsView.swift; sourceTree = "<group>"; };
-		D74CFD342882EFD80098F873 /* RadioStations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStations.swift; sourceTree = "<group>"; };
-		D74CFD3628832C440098F873 /* MenuBarExtraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarExtraView.swift; sourceTree = "<group>"; };
-		D75BAE6F288099C300401AF3 /* Kodio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kodio.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D75BAE74288099C300401AF3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		D75BAE76288099C400401AF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D75BAE7B288099C400401AF3 /* Kodio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kodio.entitlements; sourceTree = "<group>"; };
-		D75BAE8528809B1200401AF3 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
-		D75BAE8728809B2600401AF3 /* BrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
-		D75BAE8928809B8B00401AF3 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
-		D760A82C29F4F86D00432606 /* MusicMatchModel+Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicMatchModel+Structs.swift"; sourceTree = "<group>"; };
-		D760A82E29F4FA1300432606 /* MusicMatchModel+Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicMatchModel+Enums.swift"; sourceTree = "<group>"; };
-		D762A1F628817FC0007AFF45 /* BrowserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserModel.swift; sourceTree = "<group>"; };
-		D762A1F82881805F007AFF45 /* GenresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresView.swift; sourceTree = "<group>"; };
-		D762A1FB288181ED007AFF45 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
-		D762A1FD288183EF007AFF45 /* ArtistsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistsView.swift; sourceTree = "<group>"; };
-		D762A1FF288187B9007AFF45 /* SongsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
-		D762A2012881A6EA007AFF45 /* QueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueView.swift; sourceTree = "<group>"; };
-		D762A2062881CA3F007AFF45 /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
-		D777CFF328A28FE60098D8AD /* Kodio.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Kodio.plist; sourceTree = "<group>"; };
-		D79C598628A46E0A00996A6A /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		D79C598928A505CA00996A6A /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
-		D7A722392A238475009E1DE7 /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
-		D7B0F28728B22F2B008AD0D7 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
-		D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatingRecordModel.swift; sourceTree = "<group>"; };
-		D7C5B0F828A25C4A004F9465 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		D7C5B0FA28A25D01004F9465 /* HostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostsView.swift; sourceTree = "<group>"; };
-		D7CBAAA429E9C3170046C879 /* MusicMatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMatchModel.swift; sourceTree = "<group>"; };
-		D7CBAAA629E9E21E0046C879 /* MusicMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMatchView.swift; sourceTree = "<group>"; };
-		D7D48EE028AA70CD001C7DEC /* KodioApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
-		D7D9FF35289015A300AF9424 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
-		D7E3B27628959661007BB419 /* MusicBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBridge.swift; sourceTree = "<group>"; };
-		D7E3B27828959685007BB419 /* MusicBridge.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = MusicBridge.applescript; sourceTree = "<group>"; };
-		D7FEE71629FE8E280085C610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D7FEE71A2A056D880085C610 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		D7A84CA42A9151E8004BA2DA /* Kodio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kodio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A84CB82A91523B004BA2DA /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D7A84CB92A91523B004BA2DA /* BrowserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserModel.swift; sourceTree = "<group>"; };
+		D7A84CBA2A91523B004BA2DA /* RadioStations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStations.swift; sourceTree = "<group>"; };
+		D7A84CBB2A91523B004BA2DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D7A84CBC2A91523B004BA2DA /* Kodio.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Kodio.entitlements; sourceTree = "<group>"; };
+		D7A84CBD2A91523B004BA2DA /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
+		D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioSettings.swift; sourceTree = "<group>"; };
+		D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingRecordModel.swift; sourceTree = "<group>"; };
+		D7A84CC02A91523B004BA2DA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D7A84CC12A91523B004BA2DA /* HelpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpModel.swift; sourceTree = "<group>"; };
+		D7A84CC22A91523B004BA2DA /* Kodio.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Kodio.plist; sourceTree = "<group>"; };
+		D7A84CC32A91523B004BA2DA /* KodioApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioApp.swift; sourceTree = "<group>"; };
+		D7A84CC52A91523B004BA2DA /* ButtonStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		D7A84CC72A91523B004BA2DA /* MusicMatchModel+Structs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MusicMatchModel+Structs.swift"; sourceTree = "<group>"; };
+		D7A84CC82A91523B004BA2DA /* MusicBridge.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = MusicBridge.applescript; sourceTree = "<group>"; };
+		D7A84CC92A91523B004BA2DA /* MusicMatchModel+Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MusicMatchModel+Enums.swift"; sourceTree = "<group>"; };
+		D7A84CCA2A91523B004BA2DA /* MusicBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicBridge.swift; sourceTree = "<group>"; };
+		D7A84CCB2A91523B004BA2DA /* MusicMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicMatchView.swift; sourceTree = "<group>"; };
+		D7A84CCC2A91523B004BA2DA /* MusicMatchModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicMatchModel.swift; sourceTree = "<group>"; };
+		D7A84CCE2A91523B004BA2DA /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		D7A84CCF2A91523B004BA2DA /* PlaylistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
+		D7A84CD02A91523B004BA2DA /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		D7A84CD12A91523B004BA2DA /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D7A84CD22A91523B004BA2DA /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		D7A84CD32A91523B004BA2DA /* SongsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
+		D7A84CD42A91523B004BA2DA /* MenuBarExtraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarExtraView.swift; sourceTree = "<group>"; };
+		D7A84CD52A91523B004BA2DA /* GenresView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresView.swift; sourceTree = "<group>"; };
+		D7A84CD62A91523B004BA2DA /* DetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		D7A84CD72A91523B004BA2DA /* MarkdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
+		D7A84CD82A91523B004BA2DA /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		D7A84CD92A91523B004BA2DA /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		D7A84CDA2A91523B004BA2DA /* ArtistsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistsView.swift; sourceTree = "<group>"; };
+		D7A84CDB2A91523B004BA2DA /* HostsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostsView.swift; sourceTree = "<group>"; };
+		D7A84CDC2A91523B004BA2DA /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		D7A84CDD2A91523B004BA2DA /* BrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
+		D7A84CDE2A91523B004BA2DA /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		D7A84CDF2A91523B004BA2DA /* AlbumsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
+		D7A84CE02A91523B004BA2DA /* QueueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueView.swift; sourceTree = "<group>"; };
+		D7A84CE12A91523B004BA2DA /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D7A84CE22A91523B004BA2DA /* PartsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsView.swift; sourceTree = "<group>"; };
+		D7A84CE32A91523B004BA2DA /* SongView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
+		D7A84CE52A91523B004BA2DA /* MusicVideosView+Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MusicVideosView+Album.swift"; sourceTree = "<group>"; };
+		D7A84CE62A91523B004BA2DA /* MusicVideosView+Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MusicVideosView+Artist.swift"; sourceTree = "<group>"; };
+		D7A84CE72A91523B004BA2DA /* MusicVideosView+Artists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MusicVideosView+Artists.swift"; sourceTree = "<group>"; };
+		D7A84CE82A91523B004BA2DA /* MusicVideosView+ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MusicVideosView+ListItem.swift"; sourceTree = "<group>"; };
+		D7A84CE92A91523B004BA2DA /* MusicVideosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideosView.swift; sourceTree = "<group>"; };
+		D7A84D1C2A9157F7004BA2DA /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
+		D7A84D1E2A915828004BA2DA /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D75BAE6C288099C300401AF3 /* Frameworks */ = {
+		D7A84CA12A9151E8004BA2DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D704E2D828C0CC6000A82703 /* AVKit.framework in Frameworks */,
-				D74CF4AA2896594300E8EC03 /* AppleScriptObjC.framework in Frameworks */,
-				D75BAE8328809A0B00401AF3 /* SwiftlyKodiAPI in Frameworks */,
+				D7A84D1F2A915828004BA2DA /* AppleScriptObjC.framework in Frameworks */,
+				D7A84D192A9154EB004BA2DA /* SwiftlyKodiAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D72DEF032A605F0800EC0B8E /* MusicVideos */ = {
+		D7A84C9B2A9151E8004BA2DA = {
 			isa = PBXGroup;
 			children = (
-				D71E2D012885A8CA00AB3BCB /* MusicVideosView.swift */,
-				D72DEF042A605FBD00EC0B8E /* MusicVideosView+Artists.swift */,
-				D72DEF062A605FD200EC0B8E /* MusicVideosView+Artist.swift */,
-				D72DEF082A60600C00EC0B8E /* MusicVideosView+Album.swift */,
-				D72DEF0D2A60844F00EC0B8E /* MusicVideosView+ListItem.swift */,
-			);
-			path = MusicVideos;
-			sourceTree = "<group>";
-		};
-		D74CF4A82896594200E8EC03 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D704E2D728C0CC6000A82703 /* AVKit.framework */,
-				D74CF4A92896594300E8EC03 /* AppleScriptObjC.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D75BAE66288099C300401AF3 = {
-			isa = PBXGroup;
-			children = (
-				D75BAE71288099C300401AF3 /* Kodio */,
-				D75BAE70288099C300401AF3 /* Products */,
-				D74CF4A82896594200E8EC03 /* Frameworks */,
+				D7A84CB62A91523B004BA2DA /* Kodio */,
+				D7A84CA52A9151E8004BA2DA /* Products */,
+				D7A84D1B2A9157F7004BA2DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		D75BAE70288099C300401AF3 /* Products */ = {
+		D7A84CA52A9151E8004BA2DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D75BAE6F288099C300401AF3 /* Kodio.app */,
+				D7A84CA42A9151E8004BA2DA /* Kodio.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D75BAE71288099C300401AF3 /* Kodio */ = {
+		D7A84CB62A91523B004BA2DA /* Kodio */ = {
 			isa = PBXGroup;
 			children = (
-				D762A2032881AAEC007AFF45 /* General */,
-				D7E3B27A28959692007BB419 /* MusicMatch */,
-				D75BAE8B28809BD000401AF3 /* Views */,
-				D762A1FA288181E2007AFF45 /* Styles */,
+				D7A84CB72A91523B004BA2DA /* General */,
+				D7A84CC42A91523B004BA2DA /* Styles */,
+				D7A84CC62A91523B004BA2DA /* MusicMatch */,
+				D7A84CCD2A91523B004BA2DA /* Views */,
 			);
 			path = Kodio;
 			sourceTree = "<group>";
 		};
-		D75BAE8B28809BD000401AF3 /* Views */ = {
+		D7A84CB72A91523B004BA2DA /* General */ = {
 			isa = PBXGroup;
 			children = (
-				D75BAE74288099C300401AF3 /* MainView.swift */,
-				D75BAE8528809B1200401AF3 /* SidebarView.swift */,
-				D79C598928A505CA00996A6A /* StartView.swift */,
-				D75BAE8728809B2600401AF3 /* BrowserView.swift */,
-				D762A1F82881805F007AFF45 /* GenresView.swift */,
-				D762A1FD288183EF007AFF45 /* ArtistsView.swift */,
-				D75BAE8928809B8B00401AF3 /* AlbumsView.swift */,
-				D7FEE71A2A056D880085C610 /* HeaderView.swift */,
-				D762A1FF288187B9007AFF45 /* SongsView.swift */,
-				D7A722392A238475009E1DE7 /* SongView.swift */,
-				D762A2012881A6EA007AFF45 /* QueueView.swift */,
-				D762A2062881CA3F007AFF45 /* PlaylistView.swift */,
-				D72DEF032A605F0800EC0B8E /* MusicVideos */,
-				D71E2CFD2885532700AB3BCB /* SearchView.swift */,
-				D7D9FF35289015A300AF9424 /* DetailsView.swift */,
-				D726F0F2289C22EC00FE22CD /* AboutView.swift */,
-				D726F0EF289C214100FE22CD /* HelpView.swift */,
-				D7C5B0F828A25C4A004F9465 /* SettingsView.swift */,
-				D7C5B0FA28A25D01004F9465 /* HostsView.swift */,
-				D74CFD3628832C440098F873 /* MenuBarExtraView.swift */,
-				D74CFD302882B0D30098F873 /* ToolbarView.swift */,
-				D726F0F5289C28E700FE22CD /* MarkdownView.swift */,
-				D74CFD322882D9350098F873 /* PartsView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		D762A1FA288181E2007AFF45 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				D762A1FB288181ED007AFF45 /* ButtonStyles.swift */,
-			);
-			path = Styles;
-			sourceTree = "<group>";
-		};
-		D762A2032881AAEC007AFF45 /* General */ = {
-			isa = PBXGroup;
-			children = (
-				D7D48EE028AA70CD001C7DEC /* KodioApp.swift */,
-				D7FEE71629FE8E280085C610 /* AppDelegate.swift */,
-				D79C598628A46E0A00996A6A /* AppState.swift */,
-				D762A1F628817FC0007AFF45 /* BrowserModel.swift */,
-				D70E603428AC07BA002309C1 /* HelpModel.swift */,
-				D7C06EF728A79C74003A7FAB /* RotatingRecordModel.swift */,
-				D70E603128ABA702002309C1 /* KodioSettings.swift */,
-				D74CFD342882EFD80098F873 /* RadioStations.swift */,
-				D75BAE76288099C400401AF3 /* Assets.xcassets */,
-				D7B0F28728B22F2B008AD0D7 /* Documentation.docc */,
-				D75BAE7B288099C400401AF3 /* Kodio.entitlements */,
-				D777CFF328A28FE60098D8AD /* Kodio.plist */,
+				D7A84CB82A91523B004BA2DA /* AppState.swift */,
+				D7A84CB92A91523B004BA2DA /* BrowserModel.swift */,
+				D7A84CBA2A91523B004BA2DA /* RadioStations.swift */,
+				D7A84CBB2A91523B004BA2DA /* Assets.xcassets */,
+				D7A84CBC2A91523B004BA2DA /* Kodio.entitlements */,
+				D7A84CBD2A91523B004BA2DA /* Documentation.docc */,
+				D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */,
+				D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */,
+				D7A84CC02A91523B004BA2DA /* AppDelegate.swift */,
+				D7A84CC12A91523B004BA2DA /* HelpModel.swift */,
+				D7A84CC22A91523B004BA2DA /* Kodio.plist */,
+				D7A84CC32A91523B004BA2DA /* KodioApp.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
 		};
-		D7E3B27A28959692007BB419 /* MusicMatch */ = {
+		D7A84CC42A91523B004BA2DA /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				D7CBAAA429E9C3170046C879 /* MusicMatchModel.swift */,
-				D760A82C29F4F86D00432606 /* MusicMatchModel+Structs.swift */,
-				D760A82E29F4FA1300432606 /* MusicMatchModel+Enums.swift */,
-				D7CBAAA629E9E21E0046C879 /* MusicMatchView.swift */,
-				D7E3B27628959661007BB419 /* MusicBridge.swift */,
-				D7E3B27828959685007BB419 /* MusicBridge.applescript */,
+				D7A84CC52A91523B004BA2DA /* ButtonStyles.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		D7A84CC62A91523B004BA2DA /* MusicMatch */ = {
+			isa = PBXGroup;
+			children = (
+				D7A84CC72A91523B004BA2DA /* MusicMatchModel+Structs.swift */,
+				D7A84CC82A91523B004BA2DA /* MusicBridge.applescript */,
+				D7A84CC92A91523B004BA2DA /* MusicMatchModel+Enums.swift */,
+				D7A84CCA2A91523B004BA2DA /* MusicBridge.swift */,
+				D7A84CCB2A91523B004BA2DA /* MusicMatchView.swift */,
+				D7A84CCC2A91523B004BA2DA /* MusicMatchModel.swift */,
 			);
 			path = MusicMatch;
+			sourceTree = "<group>";
+		};
+		D7A84CCD2A91523B004BA2DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7A84CCE2A91523B004BA2DA /* AboutView.swift */,
+				D7A84CCF2A91523B004BA2DA /* PlaylistView.swift */,
+				D7A84CD02A91523B004BA2DA /* StartView.swift */,
+				D7A84CD12A91523B004BA2DA /* SettingsView.swift */,
+				D7A84CD22A91523B004BA2DA /* SearchView.swift */,
+				D7A84CD32A91523B004BA2DA /* SongsView.swift */,
+				D7A84CD42A91523B004BA2DA /* MenuBarExtraView.swift */,
+				D7A84CD52A91523B004BA2DA /* GenresView.swift */,
+				D7A84CD62A91523B004BA2DA /* DetailsView.swift */,
+				D7A84CD72A91523B004BA2DA /* MarkdownView.swift */,
+				D7A84CD82A91523B004BA2DA /* ToolbarView.swift */,
+				D7A84CD92A91523B004BA2DA /* SidebarView.swift */,
+				D7A84CDA2A91523B004BA2DA /* ArtistsView.swift */,
+				D7A84CDB2A91523B004BA2DA /* HostsView.swift */,
+				D7A84CDC2A91523B004BA2DA /* HeaderView.swift */,
+				D7A84CDD2A91523B004BA2DA /* BrowserView.swift */,
+				D7A84CDE2A91523B004BA2DA /* HelpView.swift */,
+				D7A84CDF2A91523B004BA2DA /* AlbumsView.swift */,
+				D7A84CE02A91523B004BA2DA /* QueueView.swift */,
+				D7A84CE12A91523B004BA2DA /* MainView.swift */,
+				D7A84CE22A91523B004BA2DA /* PartsView.swift */,
+				D7A84CE32A91523B004BA2DA /* SongView.swift */,
+				D7A84CE42A91523B004BA2DA /* MusicVideos */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7A84CE42A91523B004BA2DA /* MusicVideos */ = {
+			isa = PBXGroup;
+			children = (
+				D7A84CE52A91523B004BA2DA /* MusicVideosView+Album.swift */,
+				D7A84CE62A91523B004BA2DA /* MusicVideosView+Artist.swift */,
+				D7A84CE72A91523B004BA2DA /* MusicVideosView+Artists.swift */,
+				D7A84CE82A91523B004BA2DA /* MusicVideosView+ListItem.swift */,
+				D7A84CE92A91523B004BA2DA /* MusicVideosView.swift */,
+			);
+			path = MusicVideos;
+			sourceTree = "<group>";
+		};
+		D7A84D1B2A9157F7004BA2DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D7A84D1E2A915828004BA2DA /* AppleScriptObjC.framework */,
+				D7A84D1C2A9157F7004BA2DA /* AppleScriptKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D75BAE6E288099C300401AF3 /* Kodio */ = {
+		D7A84CA32A9151E8004BA2DA /* Kodio */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D75BAE7E288099C400401AF3 /* Build configuration list for PBXNativeTarget "Kodio" */;
+			buildConfigurationList = D7A84CB32A9151EB004BA2DA /* Build configuration list for PBXNativeTarget "Kodio" */;
 			buildPhases = (
-				D75BAE6B288099C300401AF3 /* Sources */,
-				D75BAE6C288099C300401AF3 /* Frameworks */,
-				D75BAE6D288099C300401AF3 /* Resources */,
-				D7AD41D428A93E51002573D1 /* CopyFiles */,
-				D7B0F28F28B2472D008AD0D7 /* ShellScript */,
+				D7A84CA02A9151E8004BA2DA /* Sources */,
+				D7A84CA12A9151E8004BA2DA /* Frameworks */,
+				D7A84CA22A9151E8004BA2DA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -274,28 +257,28 @@
 			);
 			name = Kodio;
 			packageProductDependencies = (
-				D75BAE8228809A0B00401AF3 /* SwiftlyKodiAPI */,
+				D7A84D182A9154EB004BA2DA /* SwiftlyKodiAPI */,
 			);
 			productName = Kodio;
-			productReference = D75BAE6F288099C300401AF3 /* Kodio.app */;
+			productReference = D7A84CA42A9151E8004BA2DA /* Kodio.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D75BAE67288099C300401AF3 /* Project object */ = {
+		D7A84C9C2A9151E8004BA2DA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1410;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					D75BAE6E288099C300401AF3 = {
-						CreatedOnToolsVersion = 14.0;
+					D7A84CA32A9151E8004BA2DA = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = D75BAE6A288099C300401AF3 /* Build configuration list for PBXProject "Kodio" */;
+			buildConfigurationList = D7A84C9F2A9151E8004BA2DA /* Build configuration list for PBXProject "Kodio" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -303,109 +286,90 @@
 				en,
 				Base,
 			);
-			mainGroup = D75BAE66288099C300401AF3;
+			mainGroup = D7A84C9B2A9151E8004BA2DA;
 			packageReferences = (
-				D75BAE8128809A0B00401AF3 /* XCRemoteSwiftPackageReference "SwiftlyKodiAPI" */,
+				D7A84D172A9154EB004BA2DA /* XCRemoteSwiftPackageReference "SwiftlyKodiAPI" */,
 			);
-			productRefGroup = D75BAE70288099C300401AF3 /* Products */;
+			productRefGroup = D7A84CA52A9151E8004BA2DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D75BAE6E288099C300401AF3 /* Kodio */,
+				D7A84CA32A9151E8004BA2DA /* Kodio */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D75BAE6D288099C300401AF3 /* Resources */ = {
+		D7A84CA22A9151E8004BA2DA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7D9FF3A28901DE900AF9424 /* Assets.xcassets in Resources */,
+				D7A84CED2A91523B004BA2DA /* Assets.xcassets in Resources */,
+				D7A84CF32A91523B004BA2DA /* Kodio.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		D7B0F28F28B2472D008AD0D7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which /opt/homebrew/bin/swiftlint >/dev/null; then\n  # swiftlint --enable-all-rules\n  # swiftlint autocorrect\n  /opt/homebrew/bin/swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		D75BAE6B288099C300401AF3 /* Sources */ = {
+		D7A84CA02A9151E8004BA2DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D71E2CFE2885532700AB3BCB /* SearchView.swift in Sources */,
-				D75BAE75288099C300401AF3 /* MainView.swift in Sources */,
-				D762A2022881A6EA007AFF45 /* QueueView.swift in Sources */,
-				D75BAE8A28809B8B00401AF3 /* AlbumsView.swift in Sources */,
-				D70E603528AC07BA002309C1 /* HelpModel.swift in Sources */,
-				D79C598728A46E0A00996A6A /* AppState.swift in Sources */,
-				D72DEF092A60600C00EC0B8E /* MusicVideosView+Album.swift in Sources */,
-				D7CBAAA529E9C3170046C879 /* MusicMatchModel.swift in Sources */,
-				D74CFD352882EFD80098F873 /* RadioStations.swift in Sources */,
-				D7B0F28828B22F2B008AD0D7 /* Documentation.docc in Sources */,
-				D762A200288187B9007AFF45 /* SongsView.swift in Sources */,
-				D762A2072881CA3F007AFF45 /* PlaylistView.swift in Sources */,
-				D7D9FF36289015A300AF9424 /* DetailsView.swift in Sources */,
-				D7E3B27728959661007BB419 /* MusicBridge.swift in Sources */,
-				D7FEE71B2A056D880085C610 /* HeaderView.swift in Sources */,
-				D7C5B0F928A25C4A004F9465 /* SettingsView.swift in Sources */,
-				D79C598A28A505CA00996A6A /* StartView.swift in Sources */,
-				D72DEF0E2A60844F00EC0B8E /* MusicVideosView+ListItem.swift in Sources */,
-				D71496362A459FBC0029042C /* ArtistsView.swift in Sources */,
-				D726F0F0289C214100FE22CD /* HelpView.swift in Sources */,
-				D762A1F728817FC0007AFF45 /* BrowserModel.swift in Sources */,
-				D74CFD3728832C440098F873 /* MenuBarExtraView.swift in Sources */,
-				D75BAE8628809B1200401AF3 /* SidebarView.swift in Sources */,
-				D7FEE71729FE8E280085C610 /* AppDelegate.swift in Sources */,
-				D70E603228ABA702002309C1 /* KodioSettings.swift in Sources */,
-				D760A82D29F4F86D00432606 /* MusicMatchModel+Structs.swift in Sources */,
-				D74CFD312882B0D30098F873 /* ToolbarView.swift in Sources */,
-				D7E3B27928959685007BB419 /* MusicBridge.applescript in Sources */,
-				D7CBAAA729E9E21E0046C879 /* MusicMatchView.swift in Sources */,
-				D7A7223A2A238475009E1DE7 /* SongView.swift in Sources */,
-				D7DB54BA297C13F800AEB373 /* HostsView.swift in Sources */,
-				D762A1FC288181ED007AFF45 /* ButtonStyles.swift in Sources */,
-				D726F0F3289C22EC00FE22CD /* AboutView.swift in Sources */,
-				D7D48EE128AA70CD001C7DEC /* KodioApp.swift in Sources */,
-				D760A82F29F4FA1300432606 /* MusicMatchModel+Enums.swift in Sources */,
-				D7C06EF828A79C74003A7FAB /* RotatingRecordModel.swift in Sources */,
-				D762A1F92881805F007AFF45 /* GenresView.swift in Sources */,
-				D72DEF052A605FBD00EC0B8E /* MusicVideosView+Artists.swift in Sources */,
-				D726F0F6289C28E700FE22CD /* MarkdownView.swift in Sources */,
-				D71E2D022885A8CA00AB3BCB /* MusicVideosView.swift in Sources */,
-				D75BAE8828809B2600401AF3 /* BrowserView.swift in Sources */,
-				D74CFD332882D9350098F873 /* PartsView.swift in Sources */,
-				D72DEF072A605FD200EC0B8E /* MusicVideosView+Artist.swift in Sources */,
+				D7A84CF02A91523B004BA2DA /* RotatingRecordModel.swift in Sources */,
+				D7A84D0F2A91523B004BA2DA /* MainView.swift in Sources */,
+				D7A84CFE2A91523B004BA2DA /* StartView.swift in Sources */,
+				D7A84D062A91523B004BA2DA /* ToolbarView.swift in Sources */,
+				D7A84CF42A91523B004BA2DA /* KodioApp.swift in Sources */,
+				D7A84CFC2A91523B004BA2DA /* AboutView.swift in Sources */,
+				D7A84CF92A91523B004BA2DA /* MusicBridge.swift in Sources */,
+				D7A84CFF2A91523B004BA2DA /* SettingsView.swift in Sources */,
+				D7A84CEB2A91523B004BA2DA /* BrowserModel.swift in Sources */,
+				D7A84D082A91523B004BA2DA /* ArtistsView.swift in Sources */,
+				D7A84CF52A91523B004BA2DA /* ButtonStyles.swift in Sources */,
+				D7A84D072A91523B004BA2DA /* SidebarView.swift in Sources */,
+				D7A84D0B2A91523B004BA2DA /* BrowserView.swift in Sources */,
+				D7A84D102A91523B004BA2DA /* PartsView.swift in Sources */,
+				D7A84D022A91523B004BA2DA /* MenuBarExtraView.swift in Sources */,
+				D7A84D132A91523B004BA2DA /* MusicVideosView+Artist.swift in Sources */,
+				D7A84D162A91523B004BA2DA /* MusicVideosView.swift in Sources */,
+				D7A84D122A91523B004BA2DA /* MusicVideosView+Album.swift in Sources */,
+				D7A84D0E2A91523B004BA2DA /* QueueView.swift in Sources */,
+				D7A84CEF2A91523B004BA2DA /* KodioSettings.swift in Sources */,
+				D7A84D0D2A91523B004BA2DA /* AlbumsView.swift in Sources */,
+				D7A84D032A91523B004BA2DA /* GenresView.swift in Sources */,
+				D7A84D152A91523B004BA2DA /* MusicVideosView+ListItem.swift in Sources */,
+				D7A84D042A91523B004BA2DA /* DetailsView.swift in Sources */,
+				D7A84D0C2A91523B004BA2DA /* HelpView.swift in Sources */,
+				D7A84CF82A91523B004BA2DA /* MusicMatchModel+Enums.swift in Sources */,
+				D7A84D142A91523B004BA2DA /* MusicVideosView+Artists.swift in Sources */,
+				D7A84D002A91523B004BA2DA /* SearchView.swift in Sources */,
+				D7A84D012A91523B004BA2DA /* SongsView.swift in Sources */,
+				D7A84CEA2A91523B004BA2DA /* AppState.swift in Sources */,
+				D7A84D0A2A91523B004BA2DA /* HeaderView.swift in Sources */,
+				D7A84CF72A91523B004BA2DA /* MusicBridge.applescript in Sources */,
+				D7A84CF22A91523B004BA2DA /* HelpModel.swift in Sources */,
+				D7A84CF12A91523B004BA2DA /* AppDelegate.swift in Sources */,
+				D7A84D112A91523B004BA2DA /* SongView.swift in Sources */,
+				D7A84D092A91523B004BA2DA /* HostsView.swift in Sources */,
+				D7A84CFD2A91523B004BA2DA /* PlaylistView.swift in Sources */,
+				D7A84CEC2A91523B004BA2DA /* RadioStations.swift in Sources */,
+				D7A84CFA2A91523B004BA2DA /* MusicMatchView.swift in Sources */,
+				D7A84CF62A91523B004BA2DA /* MusicMatchModel+Structs.swift in Sources */,
+				D7A84CEE2A91523B004BA2DA /* Documentation.docc in Sources */,
+				D7A84CFB2A91523B004BA2DA /* MusicMatchModel.swift in Sources */,
+				D7A84D052A91523B004BA2DA /* MarkdownView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D75BAE7C288099C400401AF3 /* Debug */ = {
+		D7A84CB12A9151EB004BA2DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -435,11 +399,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -453,20 +417,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		D75BAE7D288099C400401AF3 /* Release */ = {
+		D7A84CB22A9151EB004BA2DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -496,129 +460,122 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
-		D75BAE7F288099C400401AF3 /* Debug */ = {
+		D7A84CB42A9151EB004BA2DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconMac;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Kodio/General/Kodio.entitlements;
-				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = FHPCJ7396C;
-				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kodio/General/Kodio.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Sync data between Music and Kodi";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Discover Kodi hosts";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 4.0;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Access Kodi on your network";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.4;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = macosx;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "2,7";
 			};
 			name = Debug;
 		};
-		D75BAE80288099C400401AF3 /* Release */ = {
+		D7A84CB52A9151EB004BA2DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconMac;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_ENTITLEMENTS = Kodio/General/Kodio.entitlements;
-				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = FHPCJ7396C;
-				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kodio/General/Kodio.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSAppleEventsUsageDescription = "Sync data between Music and Kodi";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Discover Kodi hosts";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 4.0;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Access Kodi on your network";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.4;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = macosx;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_STRICT_CONCURRENCY = targeted;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "2,7";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D75BAE6A288099C300401AF3 /* Build configuration list for PBXProject "Kodio" */ = {
+		D7A84C9F2A9151E8004BA2DA /* Build configuration list for PBXProject "Kodio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D75BAE7C288099C400401AF3 /* Debug */,
-				D75BAE7D288099C400401AF3 /* Release */,
+				D7A84CB12A9151EB004BA2DA /* Debug */,
+				D7A84CB22A9151EB004BA2DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D75BAE7E288099C400401AF3 /* Build configuration list for PBXNativeTarget "Kodio" */ = {
+		D7A84CB32A9151EB004BA2DA /* Build configuration list for PBXNativeTarget "Kodio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D75BAE7F288099C400401AF3 /* Debug */,
-				D75BAE80288099C400401AF3 /* Release */,
+				D7A84CB42A9151EB004BA2DA /* Debug */,
+				D7A84CB52A9151EB004BA2DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -626,7 +583,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D75BAE8128809A0B00401AF3 /* XCRemoteSwiftPackageReference "SwiftlyKodiAPI" */ = {
+		D7A84D172A9154EB004BA2DA /* XCRemoteSwiftPackageReference "SwiftlyKodiAPI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Desbeers/SwiftlyKodiAPI";
 			requirement = {
@@ -637,12 +594,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D75BAE8228809A0B00401AF3 /* SwiftlyKodiAPI */ = {
+		D7A84D182A9154EB004BA2DA /* SwiftlyKodiAPI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D75BAE8128809A0B00401AF3 /* XCRemoteSwiftPackageReference "SwiftlyKodiAPI" */;
+			package = D7A84D172A9154EB004BA2DA /* XCRemoteSwiftPackageReference "SwiftlyKodiAPI" */;
 			productName = SwiftlyKodiAPI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = D75BAE67288099C300401AF3 /* Project object */;
+	rootObject = D7A84C9C2A9151E8004BA2DA /* Project object */;
 }

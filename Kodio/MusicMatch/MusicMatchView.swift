@@ -5,6 +5,8 @@
 //  © 2023 Nick Berendsen
 //
 
+#if os(macOS)
+
 import SwiftUI
 import SwiftlyKodiAPI
 import SwiftlyStructCache
@@ -212,3 +214,5 @@ struct MusicMatchView: View {
         }
     }
 }
+
+#endif

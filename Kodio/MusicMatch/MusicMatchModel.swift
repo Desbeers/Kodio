@@ -5,6 +5,8 @@
 //  © 2023 Nick Berendsen
 //
 
+#if os(macOS)
+
 import SwiftUI
 import SwiftlyKodiAPI
 import SwiftlyStructCache
@@ -239,3 +241,5 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
         }
     }
 }
+
+#endif

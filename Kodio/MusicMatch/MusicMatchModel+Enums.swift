@@ -5,6 +5,8 @@
 //  © 2023 Nick Berendsen
 //
 
+#if os(macOS)
+
 import Foundation
 
 extension MusicMatchModel {
@@ -47,3 +49,5 @@ extension MusicMatchModel {
         case useTotalPlaycount = "Use Total Playcount"
     }
 }
+
+#endif

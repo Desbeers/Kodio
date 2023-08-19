@@ -12,13 +12,15 @@ import SwiftlyKodiAPI
 struct SidebarView: View {
     /// The search field in the toolbar
     @State var searchField: String = ""
+    /// The current selection in the sidebar
+    @State private var selection: Router? = .start
     /// The AppState model
     @EnvironmentObject var appState: AppState
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
     /// The body of the `View`
     var body: some View {
-        List(selection: $appState.selection) {
+        List(selection: $selection) {
             Label(
                 title: {
                     VStack(alignment: .leading) {
@@ -33,6 +35,9 @@ struct SidebarView: View {
             )
             .listItemTint(kodi.host.isOnline ? .green : .red)
             .tag(Router.start)
+#if os(visionOS)
+            sidebarItem(router: .appSettings)
+#endif
             if kodi.status == .loadedLibrary {
                 sidebarItem(router: .favourites)
                 Section("Music") {
@@ -45,11 +50,13 @@ struct SidebarView: View {
                         sidebarItem(router: .musicVideos)
                     }
                 }
+#if os(macOS)
                 if appState.settings.showMusicMatch {
                     Section("Match") {
                         sidebarItem(router: .musicMatch)
                     }
                 }
+#endif
                 Section("Queue") {
                     sidebarItem(router: .nowPlayingQueue)
                 }
@@ -72,6 +79,18 @@ struct SidebarView: View {
                         }
                     }
                     .buttonStyle(.plain)
+                }
+            }
+        }
+        .onChange(of: selection) { newSelection in
+            if let newSelection {
+                appState.selection = newSelection
+            }
+        }
+        .onChange(of: appState.selection) { mainSelection in
+            if mainSelection != selection {
+                Task { @MainActor in
+                    selection = mainSelection
                 }
             }
         }

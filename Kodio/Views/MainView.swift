@@ -28,6 +28,10 @@ struct MainView: View {
                     switch appState.selection {
                     case .start:
                         StartView()
+                    case .appSettings:
+                        NavigationStack {
+                            SettingsView()
+                        }
                     case .musicPlaylist(let file):
                         PlaylistView(playlist: file)
                             .id(appState.selection)
@@ -38,8 +42,10 @@ struct MainView: View {
                     case .search:
                         BrowserView(router: .search, query: appState.query)
                             .id(appState.query)
+#if os(macOS)
                     case .musicMatch:
                         MusicMatchView()
+#endif
                     default:
                         BrowserView(router: appState.selection)
                             .id(appState.selection)

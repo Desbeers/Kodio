@@ -28,7 +28,7 @@ struct BrowserView: View {
     }
     /// The body of the `View`
     var body: some View {
-        VSplitView {
+        VStack {
             switch browser.state {
             case .loading:
                 if router == .search {
@@ -41,33 +41,7 @@ struct BrowserView: View {
                     PartsView.LoadingState(message: router.item.empty, icon: router.item.icon)
                 }
             case .ready:
-                HStack(spacing: 0) {
-                    GenresView(genres: items.genres, selection: $browser.selection)
-                        .frame(width: 150)
-                        .padding(.leading, 5)
-                    ArtistsView(artists: items.artists, selection: $browser.selection)
-                    AlbumsView(albums: items.albums, selectedAlbum: $browser.selection.album)
-                }
-                .overlay {
-                    LinearGradient(
-                        gradient: Gradient(stops: [
-                            Gradient.Stop(color: Color.black.opacity(0.25), location: 0),
-                            Gradient.Stop(color: Color.black.opacity(0.025), location: 0.2),
-                            Gradient.Stop(color: Color.clear, location: 1)
-                        ]),
-                        startPoint: .bottom,
-                        endPoint: .top
-                    )
-                    .blendMode(.multiply)
-                    .allowsHitTesting(false)
-                }
-                HSplitView {
-                    DetailsView(router: router, selectedItem: browser.details)
-                    VStack {
-                        HeaderView(songs: $items.songs, selectedAlbum: browser.selection.album)
-                        SongsView(songs: items.songs, selectedAlbum: browser.selection.album)
-                    }
-                }
+                content
             }
         }
         /// Just some eyecandy
@@ -90,6 +64,59 @@ struct BrowserView: View {
                 await browser.filterLibrary()
                 items = await browser.filterBrowser()
             }
+        }
+    }
+
+    @ViewBuilder var content: some View {
+#if os(macOS)
+        VSplitView {
+            top
+            HSplitView {
+                bottom
+            }
+        }
+#endif
+
+#if os(visionOS) || os(iOS)
+        VStack {
+            /// Dont scroll the lists over the toolbar
+            Divider().opacity(0)
+            top
+            HStack {
+                bottom
+            }
+        }
+#endif
+    }
+
+    var top: some View {
+        HStack(spacing: 0) {
+            GenresView(genres: items.genres, selection: $browser.selection)
+                .frame(width: 150)
+                .padding(.leading, 5)
+            ArtistsView(artists: items.artists, selection: $browser.selection)
+            AlbumsView(albums: items.albums, selectedAlbum: $browser.selection.album)
+        }
+        .overlay {
+            LinearGradient(
+                gradient: Gradient(stops: [
+                    Gradient.Stop(color: Color.black.opacity(0.25), location: 0),
+                    Gradient.Stop(color: Color.black.opacity(0.025), location: 0.2),
+                    Gradient.Stop(color: Color.clear, location: 1)
+                ]),
+                startPoint: .bottom,
+                endPoint: .top
+            )
+            .blendMode(.multiply)
+            .allowsHitTesting(false)
+        }
+    }
+
+    @ViewBuilder var bottom: some View {
+        DetailsView(router: router, selectedItem: browser.details)
+        VStack {
+            HeaderView(songs: $items.songs, selectedAlbum: browser.selection.album)
+            SongsView(songs: items.songs, selectedAlbum: browser.selection.album)
         }
     }
 }

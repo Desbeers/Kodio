@@ -18,7 +18,9 @@ struct HostsView: View {
     var body: some View {
         HStack {
             hostList
+            #if os(macOS)
                 .frame(width: 200)
+            #endif
             hostEdit
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
