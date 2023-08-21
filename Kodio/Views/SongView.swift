@@ -44,6 +44,9 @@ struct SongView: View {
         .contextMenu {
             Actions(song: song)
         }
+#if os(visionOS)
+        .hoverEffect()
+#endif
     }
     /// The icon for the song item
     var icon: some View {

@@ -36,13 +36,13 @@ extension HelpModel {
         var title: String {
             switch self {
             case .kodioHelp:
-                return "Kodio Help"
+                "Kodio Help"
             case .kodiSettings:
-                return "Kodi Settings"
+                "Kodi Settings"
             case .playerSettings:
-                return "Player Settings"
+                "Player Settings"
             case .bugs:
-                return "Bugs, bugs, bugs!"
+                "Bugs, bugs, bugs!"
             }
         }
     }
@@ -56,8 +56,7 @@ extension HelpModel {
     static func getPage(help: HelpModel.Page) -> String {
         if let filepath = Bundle.main.url(
             forResource: help.rawValue,
-            withExtension: "md",
-            subdirectory: "Documentation.docc"
+            withExtension: "md"
         ) {
             do {
                 let contents = try String(contentsOf: filepath)

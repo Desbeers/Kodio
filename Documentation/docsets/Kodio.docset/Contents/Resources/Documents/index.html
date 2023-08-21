@@ -54,10 +54,10 @@
                 <a href="Structs/KodioSettings/Crossfade.html">– Crossfade</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/Router.html">Router</a>
+                <a href="Protocols/MusicBridgeProtocol.html">MusicBridgeProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/Router/Item.html">– Item</a>
+                <a href="General.html#/s:5Kodio13radioStationsSay14SwiftlyKodiAPI5AudioO7DetailsO6StreamVGvp">radioStations</a>
               </li>
             </ul>
           </li>
@@ -154,25 +154,19 @@
                 <a href="Structs/MusicVideosView.html">MusicVideosView</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/MusicVideosView/MusicVideosRouter.html">– MusicVideosRouter</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/MusicVideosView/Artists.html">– Artists</a>
+                <a href="Structs/MusicVideosView/Album.html">– Album</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/MusicVideosView/Artist.html">– Artist</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/MusicVideosView/Album.html">– Album</a>
+                <a href="Structs/MusicVideosView/Artists.html">– Artists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MusicVideosView/ListItem.html">– ListItem</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/MusicVideosView/PlayAlbumButton.html">– PlayAlbumButton</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/MusicVideosView/MusicVideo.html">– MusicVideo</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/MusicVideosView/MediaItem.html">– MediaItem</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/MusicMatchView.html">MusicMatchView</a>
@@ -194,6 +188,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Structs/HelpView.html">HelpView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/HelpView/HelpButton.html">– HelpButton</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/HostsView.html">HostsView</a>
@@ -282,10 +279,10 @@
                 <a href="Enums/ButtonStyles/Help.html">– Help</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/ButtonStyles/HostAction.html">– HostAction</a>
+                <a href="Enums/ButtonStyles/Browser.html">– Browser</a>
               </li>
               <li class="nav-group-task">
-                <a href="Enums/ButtonStyles/Browser.html">– Browser</a>
+                <a href="Enums/ButtonStyles/PlayButtonStyle.html">– PlayButtonStyle</a>
               </li>
             </ul>
           </li>
@@ -301,26 +298,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Other%20Global%20Variables.html">Other Global Variables</a>
+            <a href="Other%20Extensions.html">Other Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Other%20Global%20Variables.html#/s:5Kodio13radioStationsSay14SwiftlyKodiAPI5AudioO7DetailsO6StreamVGvp">radioStations</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other%20Enums.html">Other Enumerations</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Enums/Parts.html">Parts</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other%20Protocols.html">Other Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Protocols/MusicBridgeProtocol.html">MusicBridgeProtocol</a>
+                <a href="Extensions/View.html">View</a>
               </li>
             </ul>
           </li>
@@ -331,20 +312,32 @@
           <section class="section">
             
             <h1 id='kodio' class='heading'>Kodio</h1>
-<h2 id='a-macos-ventura-music-remote-for-a-href-https-kodi-tv-kodi-a' class='heading'>A macOS Ventura music remote for <a href="https://kodi.tv">Kodi</a></h2>
+<h2 id='a-macos-ipados-and-visionos-music-remote-for-a-href-https-kodi-tv-kodi-a' class='heading'>A macOS, iPadOS and visionOS music remote for <a href="https://kodi.tv">Kodi</a></h2>
 
-<p><strong>Kodio</strong> is written in SwiftUI 4 for macOS Ventura. Kodi version 19 <em>Matrix</em> is required.</p>
+<p><strong>Kodio</strong> is written in SwiftUI and needs Xcode 15 to compile. Kodi version 19 <em>Matrix</em> is required.</p>
+
+<ul>
+<li>macOS Ventura</li>
+<li>iPadOS 16</li>
+<li>visionOS 1</li>
+</ul>
 
 <p><img src="https://github.com/Desbeers/Kodio/raw/main/screenshot.png" alt="Screenshot"></p>
 
 <p>Unlike most SwiftUI programmers, my focus is on macOS. It is a challenge because there is <em>by far</em> less information about SwiftUI on macOS. Well, part of the fun.</p>
 
-<p>There are plenty Kodi music remotes for iOS and iPadOS. The <em>official Kodi Remote for iOS</em> (in the AppStore) works very well and <a href="https://kodimusicremote.com/">KODI Music Remote</a> is simply great!</p>
+<p>There are plenty Kodi music remotes for iOS and iPadOS.</p>
 
-<p>For macOS, there is none, except mine. I think it is also a little bit great, haha!</p>
+<p>For macOS, there is none, except mine. I think it is also a little bit great, haha!
+Music and Kodi.</p>
 <h3 id='bugs-bugs-bugs' class='heading'>Bugs, bugs, bugs!</h3>
 
 <p>Yes, I know. <strong>Kodio</strong> is a bit buggy and always will be. Learning everyday something new and <strong>Kodio</strong> will always be work in progress. Part of the hobby! It is not my job. Not even close; I&rsquo;m actually a seaman with a lot of free time, haha!</p>
+
+<ul>
+<li>Kodio depends on Bonjour to find your Kodi hosts.</li>
+<li>The visionOS version is only tested in the simulator but looks good!</li>
+</ul>
 <h2 id='dependencies' class='heading'>Dependencies</h2>
 
 <p><strong>Kodio</strong> depends on the following Swift Package that is also in my GitHub account:</p>
@@ -357,6 +350,8 @@
 <p>The source code of <strong>Kodio</strong> is well <a href="https://desbeers.github.io/Kodio/">documented</a>.</p>
 <h2 id='how-to-compile' class='heading'>How to compile</h2>
 
+<p>Xcode 15 is required.</p>
+
 <ol>
 <li>Clone the project.</li>
 <li>Change the signing certificate to your own.</li>
@@ -366,7 +361,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-06-14)</p>
+          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-08-21)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

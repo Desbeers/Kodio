@@ -18,7 +18,6 @@ struct HostsView: View {
     var body: some View {
         HStack {
             hostList
-                .frame(width: 200)
             hostEdit
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
@@ -34,8 +33,12 @@ extension HostsView {
     var hostList: some View {
         List(selection: $selection) {
             Section("Your Hosts") {
-                ForEach(kodi.configuredHosts) { host in
-                    hostItem(host: host)
+                if kodi.configuredHosts.isEmpty {
+                    Text("You have no host configured")
+                } else {
+                    ForEach(kodi.configuredHosts) { host in
+                        hostItem(host: host)
+                    }
                 }
             }
             if !kodi.bonjourHosts.filter({ $0.new }).isEmpty {
@@ -52,7 +55,13 @@ extension HostsView {
                 }
             }
         }
+        #if os(macOS)
+        .frame(width: 200)
         .listStyle(.sidebar)
+        #else
+        .listStyle(.insetGrouped)
+        .frame(width: 300)
+        #endif
     }
 
     /// The View for a Host

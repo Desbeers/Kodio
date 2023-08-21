@@ -28,7 +28,7 @@ struct HeaderView: View {
                 Label("Shuffle songs", systemImage: "shuffle")
             })
         }
-        .buttonStyle(ButtonStyles.Play())
+        .playButtonStyle()
         .padding(.top)
     }
     /// Play the songs in the  current list

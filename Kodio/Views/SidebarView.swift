@@ -12,13 +12,15 @@ import SwiftlyKodiAPI
 struct SidebarView: View {
     /// The search field in the toolbar
     @State var searchField: String = ""
+    /// The current selection in the sidebar
+    @State private var selection: Router? = .start
     /// The AppState model
     @EnvironmentObject var appState: AppState
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
     /// The body of the `View`
     var body: some View {
-        List(selection: $appState.selection) {
+        List(selection: $selection) {
             Label(
                 title: {
                     VStack(alignment: .leading) {
@@ -45,11 +47,13 @@ struct SidebarView: View {
                         sidebarItem(router: .musicVideos)
                     }
                 }
+#if os(macOS)
                 if appState.settings.showMusicMatch {
                     Section("Match") {
                         sidebarItem(router: .musicMatch)
                     }
                 }
+#endif
                 Section("Queue") {
                     sidebarItem(router: .nowPlayingQueue)
                 }
@@ -75,11 +79,32 @@ struct SidebarView: View {
                 }
             }
         }
+        .onChange(of: selection) { newSelection in
+            if let newSelection {
+                appState.selection = newSelection
+            }
+        }
+        .onChange(of: appState.selection) { mainSelection in
+            if mainSelection != selection {
+                Task { @MainActor in
+                    selection = mainSelection
+                }
+            }
+        }
         .animation(.default, value: appState.query)
         .searchable(text: $searchField, prompt: "Search library")
         .task(id: searchField) {
             await appState.updateSearch(query: searchField)
         }
+        #if !os(macOS)
+        .toolbar {
+            Button(action: {
+                selection = .appSettings
+            }, label: {
+                Image(systemName: "gear")
+            })
+        }
+        #endif
     }
 
     /// SwiftUI `View` for an item in the sidebar

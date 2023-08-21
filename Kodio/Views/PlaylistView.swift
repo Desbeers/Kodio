@@ -39,7 +39,7 @@ struct PlaylistView: View {
                         Label("Shuffle playlist", systemImage: "shuffle")
                     })
                 }
-                .buttonStyle(ButtonStyles.Play())
+                .playButtonStyle()
                 .disabled(state != .ready)
             }
             .modifier(PartsView.ListHeader())

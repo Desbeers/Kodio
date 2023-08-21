@@ -40,7 +40,7 @@ extension MusicVideosView {
                             PlayAlbumButton(item: album, shuffle: true)
                             PlayAlbumButton(item: album, shuffle: false)
                         }
-                        .buttonStyle(ButtonStyles.Play())
+                        .playButtonStyle()
                     }
                 }
                 .modifier(PartsView.ListHeader())

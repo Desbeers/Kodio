@@ -2,6 +2,13 @@
   "colors" : [
     {
       "color" : {
+        "platform" : "XR",
+        "reference" : "darkTextColor"
+      },
+      "idiom" : "reality"
+    },
+    {
+      "color" : {
         "platform" : "ios",
         "reference" : "systemBackgroundColor"
       },

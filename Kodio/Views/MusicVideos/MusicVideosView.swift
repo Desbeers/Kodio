@@ -42,7 +42,7 @@ extension MusicVideosView {
         }, label: {
             Label("Play", systemImage: "play.fill")
         })
-        .buttonStyle(ButtonStyles.Play())
+        .playButtonStyle()
     }
 }
 
@@ -65,7 +65,7 @@ extension MusicVideosView {
             }, label: {
                 Label("\(shuffle ? "Shuffle" : "Play") Album", systemImage: shuffle ? "shuffle" : "play.fill")
             })
-            .buttonStyle(ButtonStyles.Play())
+            .playButtonStyle()
         }
     }
 }

@@ -347,11 +347,11 @@ extension PartsView {
         /// - Returns: The String of the SF symbol
         func image(number: Int) -> String {
             if number * 2 <= rating {
-                return "star.fill"
+                "star.fill"
             } else if number * 2 == rating + 1 {
-                return "star.leadinghalf.filled"
+                "star.leadinghalf.filled"
             } else {
-                return "star"
+                "star"
             }
         }
     }

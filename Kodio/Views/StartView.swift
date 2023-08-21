@@ -39,10 +39,6 @@ struct StartView: View {
                     if !kodi.host.ip.isEmpty {
                         hostActions
                     }
-                    HStack {
-                        Spacer()
-                        otherHosts
-                    }
                 }
             }
             .modifier(PartsView.ListHeader())
@@ -66,11 +62,15 @@ struct StartView: View {
                 .font(.caption)
                 .opacity(0.6)
             Button(action: {
+#if os(macOS)
                 NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+#else
+                appState.selection = .appSettings
+#endif
             }, label: {
                 Text("Add a host")
             })
-            .buttonStyle(ButtonStyles.Play())
+            .playButtonStyle()
         }
     }
     /// View for actions for the selected host
@@ -81,6 +81,9 @@ struct StartView: View {
             Text(kodi.status.message)
                 .font(.caption)
                 .opacity(0.6)
+        }
+        .frame(maxWidth: .infinity)
+        .overlay(alignment: .trailing) {
             Button(action: {
                 Task {
                     await kodi.loadLibrary(cache: false)
@@ -93,37 +96,7 @@ struct StartView: View {
                 })
             })
             .disabled(kodi.status != .loadedLibrary && kodi.status != .outdatedLibrary)
-            .buttonStyle(ButtonStyles.HostAction())
+            .playButtonStyle()
         }
-    }
-    /// Optional View for other configured hosts
-    var otherHosts: some View {
-        VStack(alignment: .leading) {
-            ForEach(
-                kodi
-                    .configuredHosts
-                    .filter { $0.ip != kodi.host.ip },
-                id: \.ip
-            ) { host in
-                Button(action: {
-                    kodi.connect(host: host)
-                }, label: {
-                    Label(title: {
-                        VStack(alignment: .leading) {
-                            Text(host.name)
-                            Text(host.isOnline ? "Online" : "Offline")
-                                .font(.caption)
-                                .opacity(0.6)
-                        }
-                    }, icon: {
-                        Image(systemName: "globe")
-                            .foregroundColor(host.isOnline ? .accentColor : .red)
-                    })
-                })
-                .disabled(!host.isOnline || kodi.status == .loadingLibrary)
-                .padding(.bottom, 2)
-            }
-        }
-        .buttonStyle(.plain)
     }
 }

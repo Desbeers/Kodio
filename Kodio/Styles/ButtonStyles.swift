@@ -66,14 +66,14 @@ extension ButtonStyles {
         /// The style
         func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
-                .foregroundColor(isEnabled ? .primary : .secondary)
-                .padding(.horizontal, 8)
+                .foregroundColor(.primary.opacity(0.8))
+                .padding(.horizontal, 6)
                 .padding(.vertical, 6)
-                .background(Color("Window").gradient)
-                .cornerRadius(4)
+                .background(Color.window.gradient)
+                .cornerRadius(6)
                 .shadow(radius: 1)
                 .opacity(configuration.isPressed ? 0.8 : 1)
-                .opacity(isEnabled ? 1 : 0.25)
+                .opacity(isEnabled ? 1 : 0.5)
         }
     }
 }
@@ -102,33 +102,10 @@ extension ButtonStyles {
                 .foregroundColor(.primary)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
-                .background(Color("Window").gradient)
+                .background(Color.window.gradient)
                 .cornerRadius(4)
                 .shadow(radius: 1)
                 .opacity(configuration.isPressed ? 0.8 : 1)
-        }
-    }
-}
-
-extension ButtonStyles {
-
-    /// Buttom style for a 'host action' button
-    struct HostAction: ButtonStyle {
-        /// Enabled or not
-        @Environment(\.isEnabled)
-        var isEnabled
-        /// The style
-        func makeBody(configuration: Self.Configuration) -> some View {
-            configuration.label
-                .font(.caption)
-                .foregroundColor(.white.opacity(0.6))
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(.black.gradient.opacity(0.2))
-                .cornerRadius(4)
-                .shadow(radius: 1)
-                .opacity(configuration.isPressed ? 0.8 : 1)
-                .opacity(isEnabled ? 1 : 0.25)
         }
     }
 }
@@ -155,19 +132,45 @@ extension ButtonStyles {
                 .brightness(configuration.isPressed ? 0.1 : 0)
                 .padding(.vertical, 2)
                 .padding(.trailing, 8)
+#if os(visionOS)
+                .hoverEffect()
+#endif
         }
         /// Brightness and saturation values for a button
         private var buttonColor: (brightness: Double, saturation: Double) {
             switch item.media {
             case .album:
-                return (-0.3, 0.4)
+                (-0.3, 0.4)
             case .artist:
-                return (-0.2, 0.25)
+                (-0.2, 0.25)
             case .genre:
-                return (-0.1, 0.1)
+                (-0.1, 0.1)
             default:
-                return (0.0, 1.0)
+                (0.0, 1.0)
             }
         }
+    }
+}
+
+extension ButtonStyles {
+
+    /// A `ViewModifier` to add a play button style
+    struct PlayButtonStyle: ViewModifier {
+        public func body(content: Content) -> some View {
+            content
+            #if os(visionOS)
+                .buttonStyle(.bordered)
+            #else
+                .buttonStyle(Play())
+            #endif
+        }
+    }
+}
+
+extension View {
+
+    /// A `ViewModifier` to add a play button style
+    func playButtonStyle() -> some View {
+        modifier(ButtonStyles.PlayButtonStyle())
     }
 }

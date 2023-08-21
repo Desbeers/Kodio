@@ -16,22 +16,66 @@ struct SettingsView: View {
     @State var selection: Tabs = .kodiHosts
     /// The body of the `View`
     var body: some View {
-        TabView(selection: $selection) {
-            HostsView()
-                .tabItem {
-                    Label("Kodi Hosts", systemImage: "gear")
+        VStack {
+#if os(macOS)
+            TabView(selection: $selection) {
+                HostsView()
+                    .tabItem {
+                        Label("Kodi Hosts", systemImage: "gear")
+                    }
+                    .tag(Tabs.kodiHosts)
+                Sidebar(settings: $appState.settings)
+                    .tabItem {
+                        Label("Sidebar", systemImage: "sidebar.leading")
+                    }
+                    .tag(Tabs.sidebar)
+                Playback(settings: $appState.settings)
+                    .tabItem {
+                        Label("Playback", systemImage: "play.fill")
+                    }
+                    .tag(Tabs.playback)
+            }
+#else
+            VStack(spacing: 0) {
+                HStack {
+                    Button(
+                        action: { selection = .kodiHosts },
+                        label: { Tabs.kodiHosts.label }
+                    )
+                    Button(
+                        action: { selection = .sidebar },
+                        label: { Tabs.sidebar.label }
+                    )
+                    Button(
+                        action: { selection = .playback },
+                        label: { Tabs.playback.label }
+                    )
+                    HelpView.HelpButton()
+                    Button(
+                        action: { selection = .about },
+                        label: { Tabs.about.label }
+                    )
                 }
-                .tag(Tabs.kodiHosts)
-            Sidebar(settings: $appState.settings)
-                .tabItem {
-                    Label("Sidebar", systemImage: "sidebar.leading")
+                .playButtonStyle()
+                .padding()
+                .modifier(PartsView.ListHeader())
+                VStack {
+                    switch selection {
+                    case .kodiHosts:
+                        HostsView()
+                    case .sidebar:
+                        Sidebar(settings: $appState.settings)
+                    case .playback:
+                        Playback(settings: $appState.settings)
+                    case .help:
+                        HelpView()
+                    case .about:
+                        AboutView()
+                    }
                 }
-                .tag(Tabs.sidebar)
-            Playback(settings: $appState.settings)
-                .tabItem {
-                    Label("Playback", systemImage: "play.fill")
-                }
-                .tag(Tabs.playback)
+                .frame(maxWidth: 800)
+            }
+#endif
         }
         .animation(.default, value: selection)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -49,6 +93,25 @@ struct SettingsView: View {
         case sidebar
         /// Playback settings
         case playback
+        /// Help
+        case help
+        /// About
+        case about
+        /// The `Label` for a tab
+        var label: some View {
+            switch self {
+            case .kodiHosts:
+                Label("Kodi Hosts", systemImage: "gear")
+            case .sidebar:
+                Label("Sidebar", systemImage: "sidebar.leading")
+            case .playback:
+                Label("Playback", systemImage: "play.fill")
+            case .help:
+                Label("Help", systemImage: "questionmark.circle.fill")
+            case .about:
+                Label("About", systemImage: "info.circle")
+            }
+        }
     }
 }
 
@@ -63,8 +126,7 @@ extension SettingsView {
         /// All the Kodio settings
         @Binding var settings: KodioSettings
         /// Open Window
-        @Environment(\.openWindow)
-        var openWindow
+        @Environment(\.openWindow) var openWindow
         /// The body of the `View`
         var body: some View {
             ScrollView {
@@ -94,8 +156,8 @@ extension SettingsView {
                         appState.settings.togglePlayerSettings ?
                         "Kodio takes care of these settings" : "Change settings on you selected Kodi"
                     )
-                        .foregroundColor(appState.settings.togglePlayerSettings ? .red : .primary)
-                        .font(.caption)
+                    .foregroundColor(appState.settings.togglePlayerSettings ? .red : .primary)
+                    .font(.caption)
                     VStack(alignment: .leading) {
                         KodiSettingView.setting(for: .musicplayerCrossfade)
                         KodiSettingView.setting(for: .musicPlayerReplayGainType)
@@ -116,13 +178,8 @@ extension SettingsView {
                 // swiftlint:disable:next line_length
                 Text("When enabled, Kodio will adjust the *Volume adjustment*  and *Crossfade* settings on your Kodi depending on your selection to play.")
                     .font(.caption)
-                Button(action: {
-                    HelpModel.shared.page = .playerSettings
-                    openWindow(value: KodioApp.Windows.help)
-                }, label: {
-                    Label("Help", systemImage: "questionmark.circle.fill")
-                })
-                .buttonStyle(ButtonStyles.Help())
+                HelpView.HelpButton(page: .playerSettings)
+                    .playButtonStyle()
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 if settings.togglePlayerSettings {
                     Toggle(isOn: $settings.crossfadePlaylists) {
@@ -167,6 +224,7 @@ extension SettingsView {
                 Text("Sidebar Items")
                     .font(.title)
                 VStack(alignment: .leading) {
+#if os(macOS)
                     Toggle(isOn: $settings.showMusicMatch) {
                         VStack(alignment: .leading) {
                             Text("Show Music Match")
@@ -174,6 +232,7 @@ extension SettingsView {
                                 .font(.caption)
                         }
                     }
+#endif
                     Toggle(isOn: $settings.showMusicVideos) {
                         VStack(alignment: .leading) {
                             Text("Show Music Videos")
@@ -200,14 +259,14 @@ extension SettingsView {
                     }
                     .frame(width: 200)
                     .labelsHidden()
-                        Text("Minimum rating you gave a song to be viewed in Favourites.")
-                            .padding(.bottom)
-                            .font(.caption)
-                        Label(title: {
-                            Text("_This it not the content of the **Kodi Favourites** menu item_.")
-                        }, icon: {
-                            Image(systemName: "info.circle.fill")
-                        })
+                    Text("Minimum rating you gave a song to be viewed in Favourites.")
+                        .padding(.bottom)
+                        .font(.caption)
+                    Label(title: {
+                        Text("_This it not the content of the **Kodi Favourites** menu item_.")
+                    }, icon: {
+                        Image(systemName: "info.circle.fill")
+                    })
                 }
             }
             .padding()
