@@ -122,6 +122,17 @@ extension ToolbarView {
             .frame(minWidth: 300, maxWidth: 300, maxHeight: .infinity, alignment: .leading)
             .background(Color.secondary.opacity(0.15))
             .border(Color.secondary.opacity(0.15), width: 1)
+#if os(visionOS)
+            .ornament(attachmentAnchor: .scene(alignment: .trailing)) {
+                if let nowPlaying = player.currentItem {
+                    KodiArt.Poster(item: nowPlaying)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxHeight: 100)
+                        .clipShape(.rect(cornerRadius: 10))
+                        .frame(depth: 100)
+                }
+            }
+#endif
         }
     }
 }
@@ -215,14 +226,9 @@ extension ToolbarView {
                     Text("Party Mode")
                 }, icon: {
                     Image(systemName: "wand.and.stars.inverse")
-                        .padding(2)
-                        .foregroundColor(player.properties.partymode ? .white : .none)
                 })
-                .background(
-                    player.properties.partymode ? Color.red : Color.clear, in: RoundedRectangle(cornerRadius: 4)
-                )
             })
-            .help("Music party mode")
+            .mediaButtonStyle(background: player.properties.partymode, color: .red, help: "Music party mode")
         }
     }
 }

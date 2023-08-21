@@ -14,12 +14,15 @@ theme: apple
 # Command line for doc generation:
 # jazzy
 
+exclude: /*/GeneratedAssetSymbols*
+
 custom_categories:
   - name: General
     children:
     - KodioApp
     - KodioSettings
-    - Router
+    - MusicBridgeProtocol
+    - radioStations
   - name: Observable Classes
     children:
     - AppState

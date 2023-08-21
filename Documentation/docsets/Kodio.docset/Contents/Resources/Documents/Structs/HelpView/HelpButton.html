@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MediaItem Structure Reference</title>
+    <title>HelpButton Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/MediaItem" class="dashAnchor"></a>
-    <a title="MediaItem Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/HelpButton" class="dashAnchor"></a>
+    <a title="HelpButton Structure Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../../index.html">Kodio</a> (100% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../../index.html">Kodio Reference</a>
         <img id="carat" src="../../img/carat.png" alt=""/>
-        MediaItem Structure Reference
+        HelpButton Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -55,10 +55,10 @@
                 <a href="../../Structs/KodioSettings/Crossfade.html">– Crossfade</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Enums/Router.html">Router</a>
+                <a href="../../Protocols/MusicBridgeProtocol.html">MusicBridgeProtocol</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Enums/Router/Item.html">– Item</a>
+                <a href="../../General.html#/s:5Kodio13radioStationsSay14SwiftlyKodiAPI5AudioO7DetailsO6StreamVGvp">radioStations</a>
               </li>
             </ul>
           </li>
@@ -155,25 +155,19 @@
                 <a href="../../Structs/MusicVideosView.html">MusicVideosView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Structs/MusicVideosView/MusicVideosRouter.html">– MusicVideosRouter</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/MusicVideosView/Artists.html">– Artists</a>
+                <a href="../../Structs/MusicVideosView/Album.html">– Album</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/MusicVideosView/Artist.html">– Artist</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Structs/MusicVideosView/Album.html">– Album</a>
+                <a href="../../Structs/MusicVideosView/Artists.html">– Artists</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/MusicVideosView/ListItem.html">– ListItem</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/MusicVideosView/PlayAlbumButton.html">– PlayAlbumButton</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/MusicVideosView/MusicVideo.html">– MusicVideo</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../../Structs/MusicVideosView/MediaItem.html">– MediaItem</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/MusicMatchView.html">MusicMatchView</a>
@@ -195,6 +189,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/HelpView.html">HelpView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/HelpView/HelpButton.html">– HelpButton</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Structs/HostsView.html">HostsView</a>
@@ -283,10 +280,10 @@
                 <a href="../../Enums/ButtonStyles/Help.html">– Help</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Enums/ButtonStyles/HostAction.html">– HostAction</a>
+                <a href="../../Enums/ButtonStyles/Browser.html">– Browser</a>
               </li>
               <li class="nav-group-task">
-                <a href="../../Enums/ButtonStyles/Browser.html">– Browser</a>
+                <a href="../../Enums/ButtonStyles/PlayButtonStyle.html">– PlayButtonStyle</a>
               </li>
             </ul>
           </li>
@@ -302,26 +299,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../../Other%20Global%20Variables.html">Other Global Variables</a>
+            <a href="../../Other%20Extensions.html">Other Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../../Other%20Global%20Variables.html#/s:5Kodio13radioStationsSay14SwiftlyKodiAPI5AudioO7DetailsO6StreamVGvp">radioStations</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../../Other%20Enums.html">Other Enumerations</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../../Enums/Parts.html">Parts</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../../Other%20Protocols.html">Other Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../../Protocols/MusicBridgeProtocol.html">MusicBridgeProtocol</a>
+                <a href="../../Extensions/View.html">View</a>
               </li>
             </ul>
           </li>
@@ -330,15 +311,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>MediaItem</h1>
+            <h1>HelpButton</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">MediaItem</span> <span class="p">:</span> <span class="kt">Identifiable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">HelpButton</span> <span class="p">:</span> <span class="kt">View</span></code></pre>
 
                 </div>
               </div>
-            <p>An item in the Artist list, either a Video or an Album</p>
+            <p>SwiftUI <code>View</code> for a help button</p>
 
           </section>
           <section class="section task-group-section">
@@ -347,9 +328,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicVideosViewV9MediaItemV2idSSvp"></a>
-                    <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicVideosViewV9MediaItemV2idSSvp">id</a>
+                    <a name="/s:5Kodio8HelpViewV0B6ButtonV4pageAA0B5ModelC4PageOvp"></a>
+                    <a name="//apple_ref/swift/Property/page" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio8HelpViewV0B6ButtonV4pageAA0B5ModelC4PageOvp">page</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -357,14 +338,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The ID of the item</p>
+                        <p>The page to show</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">page</span><span class="p">:</span> <span class="kt"><a href="../../Classes/HelpModel.html">HelpModel</a></span><span class="o">.</span><span class="kt">Page</span></code></pre>
 
                         </div>
                       </div>
@@ -374,9 +355,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicVideosViewV9MediaItemV5media14SwiftlyKodiAPI7LibraryO0E0Ovp"></a>
-                    <a name="//apple_ref/swift/Property/media" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicVideosViewV9MediaItemV5media14SwiftlyKodiAPI7LibraryO0E0Ovp">media</a>
+                    <a name="/s:5Kodio8HelpViewV0B6ButtonV10openWindow7SwiftUI04OpenF6ActionVvp"></a>
+                    <a name="//apple_ref/swift/Property/openWindow" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio8HelpViewV0B6ButtonV10openWindow7SwiftUI04OpenF6ActionVvp">openWindow</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -384,14 +365,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The kind of media</p>
+                        <p>Open Window (macOS)</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">media</span><span class="p">:</span> <span class="kt">Library</span><span class="o">.</span><span class="kt">Media</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@Environment</span>
+<span class="k">var</span> <span class="nv">openWindow</span><span class="p">:</span> <span class="kt">OpenWindowAction</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -401,9 +383,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicVideosViewV9MediaItemV6resumeSbvp"></a>
-                    <a name="//apple_ref/swift/Property/resume" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicVideosViewV9MediaItemV6resumeSbvp">resume</a>
+                    <a name="/s:5Kodio8HelpViewV0B6ButtonV9showSheet33_5D09AA2FFF8BAD660ADBECB8F790440DLLSbvp"></a>
+                    <a name="//apple_ref/swift/Property/showSheet" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio8HelpViewV0B6ButtonV9showSheet33_5D09AA2FFF8BAD660ADBECB8F790440DLLSbvp">showSheet</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -411,14 +393,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>When playing this item, resume or not</p>
+                        <p>Open Sheet (other)</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">resume</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@State</span>
+<span class="kd">private</span> <span class="k">var</span> <span class="nv">showSheet</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">nonmutating</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -428,9 +411,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio15MusicVideosViewV9MediaItemV4item14SwiftlyKodiAPI5VideoO7DetailsO0bK0Vvp"></a>
-                    <a name="//apple_ref/swift/Property/item" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio15MusicVideosViewV9MediaItemV4item14SwiftlyKodiAPI5VideoO7DetailsO0bK0Vvp">item</a>
+                    <a name="/s:7SwiftUI4ViewP4body4BodyQzvp"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7SwiftUI4ViewP4body4BodyQzvp">body</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -438,14 +421,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The Music Video item</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">item</span><span class="p">:</span> <span class="kt">Video</span><span class="o">.</span><span class="kt">Details</span><span class="o">.</span><span class="kt"><a href="../../Structs/MusicVideosView/MusicVideo.html">MusicVideo</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -457,7 +439,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-06-14)</p>
+          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-08-21)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

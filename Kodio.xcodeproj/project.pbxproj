@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D750986C2A936A0C00ADC35F /* LaunchScreen (iPadOS).storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D750986B2A936A0C00ADC35F /* LaunchScreen (iPadOS).storyboard */; platformFilter = ios; };
 		D7A84CEA2A91523B004BA2DA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CB82A91523B004BA2DA /* AppState.swift */; };
 		D7A84CEB2A91523B004BA2DA /* BrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CB92A91523B004BA2DA /* BrowserModel.swift */; };
 		D7A84CEC2A91523B004BA2DA /* RadioStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBA2A91523B004BA2DA /* RadioStations.swift */; };
 		D7A84CED2A91523B004BA2DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A84CBB2A91523B004BA2DA /* Assets.xcassets */; };
-		D7A84CEE2A91523B004BA2DA /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBD2A91523B004BA2DA /* Documentation.docc */; };
 		D7A84CEF2A91523B004BA2DA /* KodioSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */; };
 		D7A84CF02A91523B004BA2DA /* RotatingRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */; };
 		D7A84CF12A91523B004BA2DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC02A91523B004BA2DA /* AppDelegate.swift */; };
 		D7A84CF22A91523B004BA2DA /* HelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC12A91523B004BA2DA /* HelpModel.swift */; };
-		D7A84CF32A91523B004BA2DA /* Kodio.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7A84CC22A91523B004BA2DA /* Kodio.plist */; };
 		D7A84CF42A91523B004BA2DA /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC32A91523B004BA2DA /* KodioApp.swift */; };
 		D7A84CF52A91523B004BA2DA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC52A91523B004BA2DA /* ButtonStyles.swift */; };
 		D7A84CF62A91523B004BA2DA /* MusicMatchModel+Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC72A91523B004BA2DA /* MusicMatchModel+Structs.swift */; };
@@ -31,7 +30,7 @@
 		D7A84CFF2A91523B004BA2DA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD12A91523B004BA2DA /* SettingsView.swift */; };
 		D7A84D002A91523B004BA2DA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD22A91523B004BA2DA /* SearchView.swift */; };
 		D7A84D012A91523B004BA2DA /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD32A91523B004BA2DA /* SongsView.swift */; };
-		D7A84D022A91523B004BA2DA /* MenuBarExtraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD42A91523B004BA2DA /* MenuBarExtraView.swift */; };
+		D7A84D022A91523B004BA2DA /* MenuBarExtraView (macOS).swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD42A91523B004BA2DA /* MenuBarExtraView (macOS).swift */; };
 		D7A84D032A91523B004BA2DA /* GenresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD52A91523B004BA2DA /* GenresView.swift */; };
 		D7A84D042A91523B004BA2DA /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD62A91523B004BA2DA /* DetailsView.swift */; };
 		D7A84D052A91523B004BA2DA /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD72A91523B004BA2DA /* MarkdownView.swift */; };
@@ -54,16 +53,21 @@
 		D7A84D162A91523B004BA2DA /* MusicVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CE92A91523B004BA2DA /* MusicVideosView.swift */; };
 		D7A84D192A9154EB004BA2DA /* SwiftlyKodiAPI in Frameworks */ = {isa = PBXBuildFile; productRef = D7A84D182A9154EB004BA2DA /* SwiftlyKodiAPI */; };
 		D7A84D1F2A915828004BA2DA /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A84D1E2A915828004BA2DA /* AppleScriptObjC.framework */; platformFilters = (macos, ); };
+		D7A84D2C2A9264DC004BA2DA /* Bugs.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D272A9264DB004BA2DA /* Bugs.md */; };
+		D7A84D2D2A9264DC004BA2DA /* KodiSettings.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D282A9264DC004BA2DA /* KodiSettings.md */; };
+		D7A84D2E2A9264DC004BA2DA /* Documentation.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D292A9264DC004BA2DA /* Documentation.md */; };
+		D7A84D2F2A9264DC004BA2DA /* PlayerSettings.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D2A2A9264DC004BA2DA /* PlayerSettings.md */; };
+		D7A84D302A9264DC004BA2DA /* KodioHelp.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D2B2A9264DC004BA2DA /* KodioHelp.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D750986B2A936A0C00ADC35F /* LaunchScreen (iPadOS).storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "LaunchScreen (iPadOS).storyboard"; sourceTree = "<group>"; };
 		D7A84CA42A9151E8004BA2DA /* Kodio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kodio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A84CB82A91523B004BA2DA /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D7A84CB92A91523B004BA2DA /* BrowserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserModel.swift; sourceTree = "<group>"; };
 		D7A84CBA2A91523B004BA2DA /* RadioStations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStations.swift; sourceTree = "<group>"; };
 		D7A84CBB2A91523B004BA2DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7A84CBC2A91523B004BA2DA /* Kodio.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Kodio.entitlements; sourceTree = "<group>"; };
-		D7A84CBD2A91523B004BA2DA /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioSettings.swift; sourceTree = "<group>"; };
 		D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingRecordModel.swift; sourceTree = "<group>"; };
 		D7A84CC02A91523B004BA2DA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,7 +87,7 @@
 		D7A84CD12A91523B004BA2DA /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D7A84CD22A91523B004BA2DA /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D7A84CD32A91523B004BA2DA /* SongsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
-		D7A84CD42A91523B004BA2DA /* MenuBarExtraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarExtraView.swift; sourceTree = "<group>"; };
+		D7A84CD42A91523B004BA2DA /* MenuBarExtraView (macOS).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MenuBarExtraView (macOS).swift"; sourceTree = "<group>"; };
 		D7A84CD52A91523B004BA2DA /* GenresView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresView.swift; sourceTree = "<group>"; };
 		D7A84CD62A91523B004BA2DA /* DetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		D7A84CD72A91523B004BA2DA /* MarkdownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
@@ -106,6 +110,11 @@
 		D7A84CE92A91523B004BA2DA /* MusicVideosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideosView.swift; sourceTree = "<group>"; };
 		D7A84D1C2A9157F7004BA2DA /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = System/Library/Frameworks/AppleScriptKit.framework; sourceTree = SDKROOT; };
 		D7A84D1E2A915828004BA2DA /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
+		D7A84D272A9264DB004BA2DA /* Bugs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Bugs.md; sourceTree = "<group>"; };
+		D7A84D282A9264DC004BA2DA /* KodiSettings.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = KodiSettings.md; sourceTree = "<group>"; };
+		D7A84D292A9264DC004BA2DA /* Documentation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
+		D7A84D2A2A9264DC004BA2DA /* PlayerSettings.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = PlayerSettings.md; sourceTree = "<group>"; };
+		D7A84D2B2A9264DC004BA2DA /* KodioHelp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = KodioHelp.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,9 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				D7A84CB72A91523B004BA2DA /* General */,
-				D7A84CC42A91523B004BA2DA /* Styles */,
-				D7A84CC62A91523B004BA2DA /* MusicMatch */,
 				D7A84CCD2A91523B004BA2DA /* Views */,
+				D7A84CC42A91523B004BA2DA /* Styles */,
+				D7A84D262A9264B9004BA2DA /* Help */,
+				D7A84CC62A91523B004BA2DA /* MusicMatch (macOS) */,
 			);
 			path = Kodio;
 			sourceTree = "<group>";
@@ -152,18 +162,18 @@
 		D7A84CB72A91523B004BA2DA /* General */ = {
 			isa = PBXGroup;
 			children = (
+				D7A84CC32A91523B004BA2DA /* KodioApp.swift */,
 				D7A84CB82A91523B004BA2DA /* AppState.swift */,
 				D7A84CB92A91523B004BA2DA /* BrowserModel.swift */,
+				D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */,
+				D7A84CC12A91523B004BA2DA /* HelpModel.swift */,
+				D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */,
 				D7A84CBA2A91523B004BA2DA /* RadioStations.swift */,
+				D7A84CC02A91523B004BA2DA /* AppDelegate.swift */,
 				D7A84CBB2A91523B004BA2DA /* Assets.xcassets */,
 				D7A84CBC2A91523B004BA2DA /* Kodio.entitlements */,
-				D7A84CBD2A91523B004BA2DA /* Documentation.docc */,
-				D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */,
-				D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */,
-				D7A84CC02A91523B004BA2DA /* AppDelegate.swift */,
-				D7A84CC12A91523B004BA2DA /* HelpModel.swift */,
 				D7A84CC22A91523B004BA2DA /* Kodio.plist */,
-				D7A84CC32A91523B004BA2DA /* KodioApp.swift */,
+				D750986B2A936A0C00ADC35F /* LaunchScreen (iPadOS).storyboard */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -176,45 +186,45 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
-		D7A84CC62A91523B004BA2DA /* MusicMatch */ = {
+		D7A84CC62A91523B004BA2DA /* MusicMatch (macOS) */ = {
 			isa = PBXGroup;
 			children = (
 				D7A84CC72A91523B004BA2DA /* MusicMatchModel+Structs.swift */,
-				D7A84CC82A91523B004BA2DA /* MusicBridge.applescript */,
 				D7A84CC92A91523B004BA2DA /* MusicMatchModel+Enums.swift */,
 				D7A84CCA2A91523B004BA2DA /* MusicBridge.swift */,
 				D7A84CCB2A91523B004BA2DA /* MusicMatchView.swift */,
 				D7A84CCC2A91523B004BA2DA /* MusicMatchModel.swift */,
+				D7A84CC82A91523B004BA2DA /* MusicBridge.applescript */,
 			);
-			path = MusicMatch;
+			path = "MusicMatch (macOS)";
 			sourceTree = "<group>";
 		};
 		D7A84CCD2A91523B004BA2DA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D7A84CCE2A91523B004BA2DA /* AboutView.swift */,
-				D7A84CCF2A91523B004BA2DA /* PlaylistView.swift */,
+				D7A84CE42A91523B004BA2DA /* MusicVideos */,
+				D7A84CE12A91523B004BA2DA /* MainView.swift */,
+				D7A84CD92A91523B004BA2DA /* SidebarView.swift */,
+				D7A84CD82A91523B004BA2DA /* ToolbarView.swift */,
 				D7A84CD02A91523B004BA2DA /* StartView.swift */,
+				D7A84CCE2A91523B004BA2DA /* AboutView.swift */,
+				D7A84CDD2A91523B004BA2DA /* BrowserView.swift */,
+				D7A84CD52A91523B004BA2DA /* GenresView.swift */,
+				D7A84CDA2A91523B004BA2DA /* ArtistsView.swift */,
+				D7A84CDF2A91523B004BA2DA /* AlbumsView.swift */,
+				D7A84CD62A91523B004BA2DA /* DetailsView.swift */,
+				D7A84CD32A91523B004BA2DA /* SongsView.swift */,
+				D7A84CE32A91523B004BA2DA /* SongView.swift */,
+				D7A84CCF2A91523B004BA2DA /* PlaylistView.swift */,
 				D7A84CD12A91523B004BA2DA /* SettingsView.swift */,
 				D7A84CD22A91523B004BA2DA /* SearchView.swift */,
-				D7A84CD32A91523B004BA2DA /* SongsView.swift */,
-				D7A84CD42A91523B004BA2DA /* MenuBarExtraView.swift */,
-				D7A84CD52A91523B004BA2DA /* GenresView.swift */,
-				D7A84CD62A91523B004BA2DA /* DetailsView.swift */,
 				D7A84CD72A91523B004BA2DA /* MarkdownView.swift */,
-				D7A84CD82A91523B004BA2DA /* ToolbarView.swift */,
-				D7A84CD92A91523B004BA2DA /* SidebarView.swift */,
-				D7A84CDA2A91523B004BA2DA /* ArtistsView.swift */,
 				D7A84CDB2A91523B004BA2DA /* HostsView.swift */,
 				D7A84CDC2A91523B004BA2DA /* HeaderView.swift */,
-				D7A84CDD2A91523B004BA2DA /* BrowserView.swift */,
 				D7A84CDE2A91523B004BA2DA /* HelpView.swift */,
-				D7A84CDF2A91523B004BA2DA /* AlbumsView.swift */,
 				D7A84CE02A91523B004BA2DA /* QueueView.swift */,
-				D7A84CE12A91523B004BA2DA /* MainView.swift */,
 				D7A84CE22A91523B004BA2DA /* PartsView.swift */,
-				D7A84CE32A91523B004BA2DA /* SongView.swift */,
-				D7A84CE42A91523B004BA2DA /* MusicVideos */,
+				D7A84CD42A91523B004BA2DA /* MenuBarExtraView (macOS).swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +250,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D7A84D262A9264B9004BA2DA /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				D7A84D272A9264DB004BA2DA /* Bugs.md */,
+				D7A84D292A9264DC004BA2DA /* Documentation.md */,
+				D7A84D2B2A9264DC004BA2DA /* KodioHelp.md */,
+				D7A84D282A9264DC004BA2DA /* KodiSettings.md */,
+				D7A84D2A2A9264DC004BA2DA /* PlayerSettings.md */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -250,6 +272,7 @@
 				D7A84CA02A9151E8004BA2DA /* Sources */,
 				D7A84CA12A9151E8004BA2DA /* Frameworks */,
 				D7A84CA22A9151E8004BA2DA /* Resources */,
+				D750986D2A93738100ADC35F /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -304,12 +327,39 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7A84D2F2A9264DC004BA2DA /* PlayerSettings.md in Resources */,
+				D7A84D2C2A9264DC004BA2DA /* Bugs.md in Resources */,
+				D7A84D2E2A9264DC004BA2DA /* Documentation.md in Resources */,
+				D7A84D2D2A9264DC004BA2DA /* KodiSettings.md in Resources */,
 				D7A84CED2A91523B004BA2DA /* Assets.xcassets in Resources */,
-				D7A84CF32A91523B004BA2DA /* Kodio.plist in Resources */,
+				D7A84D302A9264DC004BA2DA /* KodioHelp.md in Resources */,
+				D750986C2A936A0C00ADC35F /* LaunchScreen (iPadOS).storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D750986D2A93738100ADC35F /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which /opt/homebrew/bin/swiftlint >/dev/null; then\n  /opt/homebrew/bin/swiftlint --no-cache\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D7A84CA02A9151E8004BA2DA /* Sources */ = {
@@ -330,7 +380,7 @@
 				D7A84D072A91523B004BA2DA /* SidebarView.swift in Sources */,
 				D7A84D0B2A91523B004BA2DA /* BrowserView.swift in Sources */,
 				D7A84D102A91523B004BA2DA /* PartsView.swift in Sources */,
-				D7A84D022A91523B004BA2DA /* MenuBarExtraView.swift in Sources */,
+				D7A84D022A91523B004BA2DA /* MenuBarExtraView (macOS).swift in Sources */,
 				D7A84D132A91523B004BA2DA /* MusicVideosView+Artist.swift in Sources */,
 				D7A84D162A91523B004BA2DA /* MusicVideosView.swift in Sources */,
 				D7A84D122A91523B004BA2DA /* MusicVideosView+Album.swift in Sources */,
@@ -356,7 +406,6 @@
 				D7A84CEC2A91523B004BA2DA /* RadioStations.swift in Sources */,
 				D7A84CFA2A91523B004BA2DA /* MusicMatchView.swift in Sources */,
 				D7A84CF62A91523B004BA2DA /* MusicMatchModel+Structs.swift in Sources */,
-				D7A84CEE2A91523B004BA2DA /* Documentation.docc in Sources */,
 				D7A84CFB2A91523B004BA2DA /* MusicMatchModel.swift in Sources */,
 				D7A84D052A91523B004BA2DA /* MarkdownView.swift in Sources */,
 			);
@@ -399,6 +448,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -460,6 +510,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -487,9 +538,11 @@
 				CODE_SIGN_ENTITLEMENTS = Kodio/General/Kodio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = FHPCJ7396C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kodio/General/Kodio.plist;
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Access Kodi on your network";
@@ -499,6 +552,8 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "LaunchScreen (iPadOS).storyboard";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -507,7 +562,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -527,9 +582,11 @@
 				CODE_SIGN_ENTITLEMENTS = Kodio/General/Kodio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = FHPCJ7396C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kodio/General/Kodio.plist;
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Access Kodi on your network";
@@ -539,6 +596,8 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "LaunchScreen (iPadOS).storyboard";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -547,7 +606,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

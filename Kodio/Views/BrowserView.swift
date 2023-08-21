@@ -67,6 +67,7 @@ struct BrowserView: View {
         }
     }
 
+    /// The content of the `View`
     @ViewBuilder var content: some View {
 #if os(macOS)
         VSplitView {
@@ -89,6 +90,7 @@ struct BrowserView: View {
 #endif
     }
 
+    /// The top part of the `View`
     var top: some View {
         HStack(spacing: 0) {
             GenresView(genres: items.genres, selection: $browser.selection)
@@ -112,6 +114,7 @@ struct BrowserView: View {
         }
     }
 
+    /// The bottom part of the `View`
     @ViewBuilder var bottom: some View {
         DetailsView(router: router, selectedItem: browser.details)
         VStack {

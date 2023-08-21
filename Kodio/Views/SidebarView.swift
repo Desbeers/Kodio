@@ -35,9 +35,6 @@ struct SidebarView: View {
             )
             .listItemTint(kodi.host.isOnline ? .green : .red)
             .tag(Router.start)
-#if os(visionOS)
-            sidebarItem(router: .appSettings)
-#endif
             if kodi.status == .loadedLibrary {
                 sidebarItem(router: .favourites)
                 Section("Music") {
@@ -99,6 +96,15 @@ struct SidebarView: View {
         .task(id: searchField) {
             await appState.updateSearch(query: searchField)
         }
+        #if !os(macOS)
+        .toolbar {
+            Button(action: {
+                selection = .appSettings
+            }, label: {
+                Image(systemName: "gear")
+            })
+        }
+        #endif
     }
 
     /// SwiftUI `View` for an item in the sidebar
