@@ -12,7 +12,7 @@ struct HelpView: View {
     /// The Help model
     @StateObject var help: HelpModel = .shared
     /// The presentation mode
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     /// The body of the `View`
     var body: some View {
         NavigationSplitView(
@@ -28,7 +28,7 @@ struct HelpView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigation) {
                         Button(action: {
-                            presentationMode.wrappedValue.dismiss()
+                            dismiss()
                         }, label: {
                             Image(systemName: "xmark.circle")
                         })
