@@ -52,6 +52,9 @@ struct MainView: View {
                     }
                 }
                 .modifier(ToolbarView())
+#if os(macOS)
+                .navigationTitle("Kodio")
+#endif
             }
         )
         .animation(.default, value: appState.selection)

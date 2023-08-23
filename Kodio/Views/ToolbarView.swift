@@ -12,34 +12,42 @@ import SwiftlyKodiAPI
 struct ToolbarView: ViewModifier {
     /// The KodiConnector model
     @EnvironmentObject var kodi: KodiConnector
+#if os(visionOS)
+    /// Placement of the toolbar
+    let placement: ToolbarItemPlacement = .bottomOrnament
+#else
+    /// Placement of the toolbar
+    let placement: ToolbarItemPlacement = .automatic
+#endif
+
     /// The toolbar
     func body(content: Content) -> some View {
         content
             .toolbar(id: "Toolbar") {
                 ToolbarItem(
                     id: "previousButton",
-                    placement: .automatic,
+                    placement: placement,
                     showsByDefault: true
                 ) {
                     MediaButtons.PlayPrevious()
                 }
                 ToolbarItem(
                     id: "playPauseButton",
-                    placement: .automatic,
+                    placement: placement,
                     showsByDefault: true
                 ) {
                     MediaButtons.PlayPause()
                 }
                 ToolbarItem(
                     id: "nextButton",
-                    placement: .automatic,
+                    placement: placement,
                     showsByDefault: true
                 ) {
                     MediaButtons.PlayNext()
                 }
                 ToolbarItem(
                     id: "nowPlaying",
-                    placement: .automatic,
+                    placement: placement,
                     showsByDefault: true
                 ) {
                     Label {
@@ -51,35 +59,35 @@ struct ToolbarView: ViewModifier {
                 }
                 ToolbarItem(
                     id: "shuffleButton",
-                    placement: .automatic,
+                    placement: placement,
                     showsByDefault: true
                 ) {
                     MediaButtons.SetShuffle()
                 }
                 ToolbarItem(
                     id: "repeatButton",
-                    placement: .automatic,
+                    placement: placement,
                     showsByDefault: true
                 ) {
                     MediaButtons.SetRepeat()
                 }
                 ToolbarItem(
                     id: "partyButton",
-                    placement: .automatic,
+                    placement: placement,
                     showsByDefault: true
                 ) {
                     SetPartyMode()
                 }
                 ToolbarItem(
                     id: "volumeMute",
-                    placement: .automatic,
+                    placement: placement,
                     showsByDefault: true
                 ) {
                     MediaButtons.VolumeMute()
                 }
                 ToolbarItem(
                     id: "volumeSlider",
-                    placement: .automatic,
+                    placement: placement,
                     showsByDefault: true
                 ) {
                     MediaButtons.VolumeSlider()
@@ -174,7 +182,7 @@ extension ToolbarView {
             let percentage = (currentSeconds + interval) / totalSeconds
             /// Don't ever return a value greater than 1
             return percentage < 1 ? percentage : 1
-            }
+        }
     }
 
     /// SwiftUI `View` for the progress
