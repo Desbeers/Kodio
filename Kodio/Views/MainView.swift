@@ -52,8 +52,17 @@ struct MainView: View {
                     }
                 }
                 .modifier(ToolbarView())
-#if os(macOS)
-                .navigationTitle("Kodio")
+#if os(visionOS)
+                .toolbar {
+                    ToolbarItemGroup(placement: .topBarLeading) {
+                        VStack(alignment: .leading) {
+                            Text(appState.selection.item.title)
+                                .font(.largeTitle)
+                            Text(appState.selection.item.description)
+                                .foregroundStyle(.tertiary)
+                        }
+                    }
+                }
 #endif
             }
         )
