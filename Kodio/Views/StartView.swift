@@ -24,20 +24,18 @@ struct StartView: View {
     /// The body of the `View`
     var body: some View {
         VStack {
-            ZStack {
-                HStack {
-                    ProgressView()
-                    /// 'tint' does not work on macOS here
-                        .colorInvert()
-                        .brightness(1)
-                        .opacity(kodi.status == .loadedLibrary ? 0 : 1)
-                    Spacer()
-                }
+            Group {
                 if kodi.configuredHosts.isEmpty {
                     noHostConfigured
                 } else {
                     if !kodi.host.ip.isEmpty {
                         hostActions
+                            .overlay(alignment: .leading) {
+                                loadingSpinner
+                                /// 'tint' does not work on macOS here
+                                    .colorInvert()
+                                    .brightness(1)
+                            }
                     }
                 }
             }
@@ -51,6 +49,15 @@ struct StartView: View {
         }
         .task(id: kodi.status) {
             rotate = kodi.status == .loadedLibrary ? true : false
+        }
+    }
+    /// Spinner when loading
+    @ViewBuilder var loadingSpinner: some View {
+        switch kodi.status {
+        case .loadingLibrary, .updatingLibrary, .connectedToWebSocket:
+            ProgressView()
+        default:
+            EmptyView()
         }
     }
     ///  View when no hst is configured

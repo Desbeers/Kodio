@@ -41,7 +41,7 @@ struct AboutView: View {
                     Button(action: {
                         rotate.toggle()
                     }, label: {
-                        Text(rotate ? "Stop the record pleaae" : "Start the record again")
+                        Text(rotate ? "Stop the record please" : "Start the record again")
                     })
                     .padding(.bottom)
                     Text("© Nick Berendsen")

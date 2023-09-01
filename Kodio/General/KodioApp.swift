@@ -97,7 +97,6 @@ import SwiftlyKodiAPI
                     AboutView()
                 }
             }
-            .background(Color.window)
         }
         .windowResizability(.contentSize)
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))

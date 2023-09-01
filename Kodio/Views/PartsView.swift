@@ -54,13 +54,17 @@ extension PartsView {
                 .frame(maxWidth: .infinity)
                 .background(
                     RadialGradient(
-                        gradient: Gradient(colors: [.accentColor, .black]),
+                        gradient: Gradient(colors: [.accentColor, .header]),
                         center: .center,
                         startRadius: 0,
                         endRadius: 280
                     )
                     .saturation(0.4)
                 )
+#if os(iOS)
+                .cornerRadius(10)
+                .padding([.top, .horizontal])
+#endif
         }
     }
 }

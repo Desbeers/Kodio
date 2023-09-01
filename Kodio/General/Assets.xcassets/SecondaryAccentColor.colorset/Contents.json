@@ -23,7 +23,7 @@
       ],
       "color" : {
         "platform" : "ios",
-        "reference" : "systemBackgroundColor"
+        "reference" : "secondarySystemBackgroundColor"
       },
       "idiom" : "ipad"
     },
