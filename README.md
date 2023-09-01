@@ -2,13 +2,15 @@
 
 ## A macOS, iPadOS and visionOS music remote for [Kodi](https://kodi.tv)
 
+![Icon](https://github.com/Desbeers/Kodio/raw/main/Images/icon.png)
+
 **Kodio** is written in SwiftUI and needs Xcode 15 to compile. Kodi version 19 *Matrix* is required.
 
 - macOS Ventura
 - iPadOS 16
 - visionOS 1
 
-![Screenshot](https://github.com/Desbeers/Kodio/raw/main/screenshot.png)
+![Screenshot](https://github.com/Desbeers/Kodio/raw/main/Images/screenshot-macOS.jpg)
 
 Unlike most SwiftUI programmers, my focus is on macOS. It is a challenge because there is *by far* less information about SwiftUI on macOS. Well, part of the fun.
 
