@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "LaunchIcon.png",
+      "filename" : "Icon-macOS-256.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Icon-macOS-512.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Icon-macOS-1024.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
