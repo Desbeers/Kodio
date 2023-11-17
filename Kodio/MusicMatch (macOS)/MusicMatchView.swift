@@ -109,9 +109,11 @@ struct MusicMatchView: View {
             }
         } rows: {
             // ForEach(items.filter { $0.itemInSync == false }.sorted(using: sortOrder)) { item in
-            ForEach(items.sorted(using: sortOrder)) { item in
-                TableRow(item)
-            }
+            ForEach(items)
+        }
+        .id(UUID())
+        .onChange(of: sortOrder) { _ in
+            items.sort(using: sortOrder)
         }
     }
     // MARK: Actions of the View

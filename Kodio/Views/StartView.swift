@@ -60,7 +60,7 @@ struct StartView: View {
             EmptyView()
         }
     }
-    ///  View when no hst is configured
+    ///  View when no host is configured
     var noHostConfigured: some View {
         VStack {
             Text("Welcome to Kodio!")
@@ -68,16 +68,31 @@ struct StartView: View {
             Text("There is no host configured")
                 .font(.caption)
                 .opacity(0.6)
-            Button(action: {
+
 #if os(macOS)
-                NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+            if #available(macOS 14, *) {
+                SettingsLink(label: {
+                    Text("Add a host")
+                })
+                .playButtonStyle()
+            }
+            else {
+                Button(action: {
+                    NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
+                }, label: {
+                    Text("Add a host")
+                })
+                .playButtonStyle()
+
+            }
 #else
+            Button(action: {
                 appState.selection = .appSettings
-#endif
             }, label: {
                 Text("Add a host")
             })
             .playButtonStyle()
+#endif
         }
     }
     /// View for actions for the selected host

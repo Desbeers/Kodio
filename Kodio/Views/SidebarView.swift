@@ -92,7 +92,7 @@ struct SidebarView: View {
             }
         }
         .animation(.default, value: appState.query)
-        .searchable(text: $searchField, prompt: "Search library")
+        .searchable(text: $searchField, placement: .automatic, prompt: "Search library")
         .task(id: searchField) {
             await appState.updateSearch(query: searchField)
         }
