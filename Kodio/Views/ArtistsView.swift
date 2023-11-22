@@ -32,7 +32,7 @@ struct ArtistsView: View {
                     padding: 8
                 )
             },
-            cell: { item in
+            cell: { _, item in
                 if let artist = item.item as? Audio.Details.Artist {
                     Button(action: {
                         selection.artist = selection.artist == artist ? nil : artist

@@ -71,19 +71,17 @@ struct StartView: View {
 
 #if os(macOS)
             if #available(macOS 14, *) {
-                SettingsLink(label: {
+                SettingsLink {
                     Text("Add a host")
-                })
+                }
                 .playButtonStyle()
-            }
-            else {
+            } else {
                 Button(action: {
                     NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
                 }, label: {
                     Text("Add a host")
                 })
                 .playButtonStyle()
-
             }
 #else
             Button(action: {

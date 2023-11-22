@@ -108,7 +108,6 @@ struct MusicMatchView: View {
                     .foregroundColor(item.music.rating == item.sync.rating ? .green : .red)
             }
         } rows: {
-            // ForEach(items.filter { $0.itemInSync == false }.sorted(using: sortOrder)) { item in
             ForEach(items)
         }
         .id(UUID())

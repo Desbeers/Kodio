@@ -61,7 +61,6 @@ struct PlaylistView: View {
                 }
             }
         }
-        //.animation(.default, value: state)
         /// Get the songs from the playlist
         .task(id: kodi.library.songs) {
             let playlist = await Files.getDirectory(directory: playlist.file, media: .music).map(\.file)
