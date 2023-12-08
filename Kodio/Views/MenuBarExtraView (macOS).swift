@@ -11,10 +11,10 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the Menubar Extra
 struct MenuBarExtraView: View {
     /// The KodiConnector model
-    @EnvironmentObject var kodi: KodiConnector
+    @Environment(KodiConnector.self) private var kodi
 
     /// The KodiPlayer model
-    @StateObject var player: KodiPlayer = .shared
+    @Environment(KodiPlayer.self) private var player
 
     var body: some View {
         VStack {
@@ -25,11 +25,16 @@ struct MenuBarExtraView: View {
                 MediaButtons.PlayPause()
                 MediaButtons.PlayNext()
             }
-            .padding()
-            MediaButtons.VolumeSlider()
+            .padding(.horizontal)
+            HStack {
+                MediaButtons.VolumeSlider()
+                MediaButtons.VolumeMute()
+                    .frame(height: 30)
+            }
+                .padding(.horizontal)
         }
         .labelStyle(.iconOnly)
         .padding(.bottom)
-        .environmentObject(player)
+        .environment(player)
     }
 }

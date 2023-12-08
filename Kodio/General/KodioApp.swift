@@ -11,11 +11,13 @@ import SwiftlyKodiAPI
 /// SwiftUI `Scene` for the application
 @main struct KodioApp: App {
     /// The AppState model
-    @StateObject var appState: AppState = .shared
+    @State private var appState: AppState = .shared
     /// The KodiConnector model
-    @StateObject var kodi: KodiConnector = .shared
+    @State private var kodi: KodiConnector = .shared
     /// The KodiPlayer model
-    @StateObject var player: KodiPlayer = .shared
+    @State private var player: KodiPlayer = .shared
+    /// The Browser model
+    @State private var browser = BrowserModel()
 
 #if os(macOS)
     /// Open new windows
@@ -30,9 +32,10 @@ import SwiftlyKodiAPI
     var body: some Scene {
         Window("Kodio", id: "Main") {
             MainView()
-                .environmentObject(appState)
-                .environmentObject(kodi)
-                .environmentObject(player)
+                .environment(appState)
+                .environment(kodi)
+                .environment(player)
+                .environment(browser)
                 .task {
                     if kodi.status == .none {
                         /// Get the selected host (if any)
@@ -68,21 +71,22 @@ import SwiftlyKodiAPI
             /// Add a `Host` menu
             CommandMenu("Host") {
                 PartsView.HostSelector()
-                    .environmentObject(appState)
-                    .environmentObject(kodi)
+                    .environment(appState)
+                    .environment(kodi)
             }
         }
         /// The Kodio Settings
         Settings {
             SettingsView()
                 .frame(width: 700, height: 500)
-                .environmentObject(appState)
-                .environmentObject(kodi)
+                .environment(appState)
+                .environment(kodi)
         }
         /// Add Kodio to the Menu Bar
         MenuBarExtra("Kodio", systemImage: "k.square.fill") {
             MenuBarExtraView()
-                .environmentObject(kodi)
+                .environment(kodi)
+                .environment(player)
         }
         .menuBarExtraStyle(.window)
         /// Open new Windows
@@ -112,9 +116,9 @@ import SwiftlyKodiAPI
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(appState)
-                .environmentObject(kodi)
-                .environmentObject(player)
+                .environment(appState)
+                .environment(kodi)
+                .environment(player)
                 .task {
                     if kodi.status == .none {
                         /// Get the selected host (if any)
@@ -131,9 +135,9 @@ import SwiftlyKodiAPI
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(appState)
-                .environmentObject(kodi)
-                .environmentObject(player)
+                .environment(appState)
+                .environment(kodi)
+                .environment(player)
                 .task {
                     if kodi.status == .none {
                         /// Get the selected host (if any)

@@ -4,10 +4,10 @@
 
 ![Icon](https://github.com/Desbeers/Kodio/raw/main/Images/icon.png)
 
-**Kodio** is written in SwiftUI and needs Xcode 15 to compile. Kodi version 19 *Matrix* is required.
+**Kodio** is written in SwiftUI 5 and needs Xcode 15 to compile. Kodi version 19 *Matrix* is required.
 
-- macOS Ventura
-- iPadOS 16
+- macOS Sonoma
+- iPadOS 17
 - visionOS 1
 
 ![Screenshot](https://github.com/Desbeers/Kodio/raw/main/Images/screenshot-macOS.jpg)

@@ -10,10 +10,8 @@ import SwiftlyKodiAPI
 
 /// SwiftUI `View` for the songs
 struct SongsView: View {
-    /// The songs for this View
-    let songs: [Audio.Details.Song]
-    /// The optional selected album
-    let selectedAlbum: Audio.Details.Album?
+    /// The Browser model
+    @Environment(BrowserModel.self) private var browser
     /// The body of the `View`
     var body: some View {
         /// On macOS, `List` is not lazy, so slow... So, viewed in a `LazyVStack` and no fancy swipes....
@@ -24,19 +22,22 @@ struct SongsView: View {
                     Divider()
                         .id("SongList")
                         .hidden()
-                    ForEach(Array(songs.enumerated()), id: \.element) { index, song in
-                        SongView(song: song, album: selectedAlbum)
+                    ForEach(Array(browser.items.songs.enumerated()), id: \.element) { index, song in
+                        SongView(song: song, album: browser.selection.album)
+                            .id(song)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .background((index % 2 == 0) ? Color.gray.opacity(0.1) : Color.clear)
                             .cornerRadius(6)
                             .padding(.trailing)
                     }
-                    .task(id: songs) {
-                        proxy.scrollTo("SongList", anchor: .top)
+                    .task(id: browser.items.songs) {
+                        withAnimation(.linear(duration: 1)) {
+                            proxy.scrollTo("SongList", anchor: .top)
+                        }
                     }
                 }
+                .padding(.leading)
             }
-            .padding(.leading)
         }
     }
 }

@@ -51,7 +51,7 @@ extension MusicVideosView {
     /// SwiftUI button to play an album
     struct PlayAlbumButton: View {
         /// The KodiConnector model
-        @EnvironmentObject var kodi: KodiConnector
+        @Environment(KodiConnector.self) private var kodi
         /// The `KodiItem`
         let item: any KodiItem
         /// Bool to shuffle or not

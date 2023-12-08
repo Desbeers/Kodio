@@ -1,5 +1,5 @@
 //
-//  DetailsView.swift
+//  AlbumsView.swift
 //  Kodio
 //
 //  © 2023 Nick Berendsen
@@ -10,19 +10,19 @@ import SwiftlyKodiAPI
 
 /// SwiftUI `View` for the albums
 struct AlbumsView: View {
-    /// The albums for this View
-    let albums: [Audio.Details.Album]
-    /// The optional selected album
-    @Binding var selectedAlbum: Audio.Details.Album?
+    /// The Browser model
+    @Environment(BrowserModel.self) private var browser
     /// The body of the `View`
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .center, spacing: 0, pinnedViews: [.sectionHeaders]) {
                 Section(
                     content: {
-                        ForEach(albums) { album in
+                        ForEach(browser.items.albums) { album in
                             Button(action: {
-                                selectedAlbum = selectedAlbum == album ? nil : album
+                                withAnimation {
+                                    browser.selection.album = browser.selection.album == album ? nil : album
+                                }
                             }, label: {
                                 HStack {
                                     KodiArt.Poster(item: album)
@@ -40,7 +40,7 @@ struct AlbumsView: View {
                                     }
                                 }
                             })
-                            .buttonStyle(ButtonStyles.Browser(item: album, selected: selectedAlbum == album))
+                            .buttonStyle(ButtonStyles.Browser(item: album, selected: browser.selection.album == album))
                         }
                     }, header: {
                         PartsView.BrowserHeader(

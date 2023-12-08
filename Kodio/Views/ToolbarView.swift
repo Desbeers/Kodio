@@ -11,7 +11,7 @@ import SwiftlyKodiAPI
 /// SwiftUI `ViewModifier` for the toolbar
 struct ToolbarView: ViewModifier {
     /// The KodiConnector model
-    @EnvironmentObject var kodi: KodiConnector
+    @Environment(KodiConnector.self) private var kodi
 #if os(visionOS)
     /// Placement of the toolbar
     let placement: ToolbarItemPlacement = .bottomOrnament
@@ -102,7 +102,7 @@ extension ToolbarView {
     /// The 'Now Playing' View
     struct NowPlaying: View {
         /// The KodiPlayer model
-        @EnvironmentObject var player: KodiPlayer
+        @Environment(KodiPlayer.self) private var player
         /// The body of the `View`
         var body: some View {
             HStack(spacing: 0) {
@@ -131,7 +131,7 @@ extension ToolbarView {
             .background(Color.secondary.opacity(0.15))
             .border(Color.secondary.opacity(0.15), width: 1)
 #if os(visionOS)
-            .ornament(attachmentAnchor: .scene(alignment: .trailing)) {
+            .ornament(attachmentAnchor: .scene(.trailing)) {
                 if let nowPlaying = player.currentItem {
                     KodiArt.Poster(item: nowPlaying)
                         .aspectRatio(contentMode: .fit)
@@ -152,7 +152,7 @@ extension ToolbarView {
     /// SwiftUI `View` for the progess of the current item in the player
     struct NowPlayingProgressView: View {
         /// The `KodiPlayer` model
-        @EnvironmentObject var player: KodiPlayer
+        @Environment(KodiPlayer.self) private var player
         /// The current seconds
         @State var currentSeconds: Double = 0
         /// The total seconds
@@ -161,7 +161,7 @@ extension ToolbarView {
         @State var startTime: Date = .now
         /// The body of the `View`
         var body: some View {
-            if player.currentItem != nil && player.currentItem?.media != .stream {
+            if player.currentItem != nil && player.currentItem?.media != .stream && player.properties.speed != 0 {
                 TimelineView(.periodic(from: .now, by: 1.0)) { timeline in
                     ProgressTimelineView(percentage: percentageValue(for: timeline.date))
                 }
@@ -186,6 +186,7 @@ extension ToolbarView {
     }
 
     /// SwiftUI `View` for the progress
+    /// - Note: animating this View cost a lot of CPU
     struct ProgressTimelineView: View {
         /// Played percentage
         let percentage: Double
@@ -193,7 +194,6 @@ extension ToolbarView {
         var body: some View {
             ProgressView(value: percentage)
                 .progressViewStyle(NowPlayingProgressViewStyle())
-                .animation(.default, value: percentage)
         }
     }
 
@@ -205,7 +205,7 @@ extension ToolbarView {
                     .frame(width: Double(configuration.fractionCompleted ?? 0) * geometry.size.width)
                     .foregroundColor(.accentColor)
             }
-            .opacity(0.1)
+            .opacity(0.2)
         }
     }
 }
@@ -217,7 +217,7 @@ extension ToolbarView {
     /// - Note: This will set 'Party Mode' for audio, I don't see a use of videos for this
     struct SetPartyMode: View {
         /// The `KodiPlayer` model
-        @EnvironmentObject var player: KodiPlayer
+        @Environment(KodiPlayer.self) private var player
         /// The body of the `View`
         var body: some View {
             Button(action: {

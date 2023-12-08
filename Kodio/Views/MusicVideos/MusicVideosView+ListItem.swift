@@ -13,7 +13,7 @@ extension MusicVideosView {
     /// SwiftUI `View` for a music video in a list
     struct ListItem: View {
         /// The KodiPlayer model
-        @EnvironmentObject var player: KodiPlayer
+        @Environment(KodiPlayer.self) private var player
         /// The music video
         let musicVideo: Video.Details.MusicVideo
         /// The body of the `View`

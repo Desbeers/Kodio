@@ -71,32 +71,6 @@ extension PartsView {
 
 extension PartsView {
 
-    /// The state of a View
-    struct LoadingState: View {
-        /// The message
-        let message: String
-        /// The SF symbol
-        var icon: String?
-        /// The body of the `View`
-        var body: some View {
-            VStack {
-                if let icon = icon {
-                    Image(systemName: icon)
-                        .foregroundColor(.accentColor)
-                } else {
-                    ProgressView()
-                }
-                Text(message)
-                    .padding()
-            }
-            .font(.title)
-            .frame(maxHeight: .infinity)
-        }
-    }
-}
-
-extension PartsView {
-
     /// View a  record image that can rotate
     struct RotatingRecord: View {
         /// The RotatingAnimationModel
@@ -297,9 +271,9 @@ extension PartsView {
     /// View a Kodi host selector
     struct HostSelector: View {
         /// The AppState model that has the hosts information
-        @EnvironmentObject var appState: AppState
+        @Environment(AppState.self) private var appState
         /// The KodiConnector model
-        @EnvironmentObject var kodi: KodiConnector
+        @Environment(KodiConnector.self) private var kodi
         /// The body of the `View`
         var body: some View {
             if kodi.host.isOnline {

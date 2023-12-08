@@ -18,7 +18,7 @@ extension ButtonStyles {
     /// The Button View for a radio station
     struct RadioStation: View {
         /// The KodiPlayer model
-        @EnvironmentObject var player: KodiPlayer
+        @Environment(KodiPlayer.self) private var player
         /// The radio channe;
         let channel: Audio.Details.Stream
         /// The body of the `View`

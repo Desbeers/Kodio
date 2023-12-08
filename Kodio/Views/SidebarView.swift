@@ -15,9 +15,9 @@ struct SidebarView: View {
     /// The current selection in the sidebar
     @State private var selection: Router? = .start
     /// The AppState model
-    @EnvironmentObject var appState: AppState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @EnvironmentObject var kodi: KodiConnector
+    @Environment(KodiConnector.self) private var kodi
     /// The body of the `View`
     var body: some View {
         List(selection: $selection) {
@@ -79,12 +79,12 @@ struct SidebarView: View {
                 }
             }
         }
-        .onChange(of: selection) { newSelection in
+        .onChange(of: selection) { _, newSelection in
             if let newSelection {
                 appState.selection = newSelection
             }
         }
-        .onChange(of: appState.selection) { mainSelection in
+        .onChange(of: appState.selection) { _, mainSelection in
             if mainSelection != selection {
                 Task { @MainActor in
                     selection = mainSelection

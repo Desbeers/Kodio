@@ -11,9 +11,9 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the start
 struct StartView: View {
     /// The AppState model
-    @EnvironmentObject var appState: AppState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @EnvironmentObject var kodi: KodiConnector
+    @Environment(KodiConnector.self) private var kodi
     /// Rotate the record
     @State private var rotate: Bool = false
     /// The record animation

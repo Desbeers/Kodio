@@ -14,7 +14,7 @@ import SwiftlyStructCache
 /// SwiftUI `View` for syncing ratings and playcounts between Kodi and Music
 struct MusicMatchView: View {
     /// The KodiConnector model
-    @EnvironmentObject var kodi: KodiConnector
+    @Environment(KodiConnector.self) private var kodi
     /// The MusicMatch model
     @StateObject var musicMatch = MusicMatchModel()
     /// The items in the table
@@ -44,10 +44,10 @@ struct MusicMatchView: View {
         .disabled(musicMatch.status.busy)
         .animation(.default, value: musicMatch.status)
         .animation(.default, value: items)
-        .onChange(of: musicMatch.playcountAction) { _ in
+        .onChange(of: musicMatch.playcountAction) {
             matchSongs()
         }
-        .onChange(of: musicMatch.ratingAction) { _ in
+        .onChange(of: musicMatch.ratingAction) {
             matchSongs()
         }
     }
@@ -111,7 +111,7 @@ struct MusicMatchView: View {
             ForEach(items)
         }
         .id(UUID())
-        .onChange(of: sortOrder) { _ in
+        .onChange(of: sortOrder) {
             items.sort(using: sortOrder)
         }
     }

@@ -12,14 +12,16 @@ extension MusicVideosView {
 
     /// View all artists
     struct Artists: View {
+        /// The AppState model
+        @Environment(AppState.self) private var appState
         /// The KodiConnector model
-        @EnvironmentObject var kodi: KodiConnector
+        @Environment(KodiConnector.self) private var kodi
         /// The current artist
         @State var artists: [Audio.Details.Artist] = []
         /// The current `MusicVideosRouter`
         @Binding var router: Router
-        /// The state of loading the queue
-        @State var state: AppState.State = .loading
+        /// The status of loading the queue
+        @State var status: ViewStatus = .loading
         /// Define the grid layout
         private let grid = [GridItem(.adaptive(minimum: 220))]
         /// The body of the `View`
@@ -28,12 +30,12 @@ extension MusicVideosView {
                 Text("Your Music Videos")
                     .font(.title)
                     .modifier(PartsView.ListHeader())
-                switch state {
+                switch status {
                 case .loading:
-                    PartsView.LoadingState(message: "Loading Music Videos...")
+                    status.message(router: appState.selection)
                 case .empty:
-                    PartsView.LoadingState(message: "there are no Music Videos in you library", icon: "music.note.tv")
-                case .ready:
+                    status.message(router: appState.selection)
+                default:
                     ScrollView {
                         LazyVGrid(columns: grid, spacing: 0) {
                             ForEach(artists) { artist in
@@ -61,7 +63,7 @@ extension MusicVideosView {
             .buttonStyle(.plain)
             .task(id: kodi.library.musicVideos) {
                 artists = VideoLibrary.getMusicVideoArtists()
-                state = artists.isEmpty ? .empty : .ready
+                status = artists.isEmpty ? .empty : .ready
             }
         }
     }

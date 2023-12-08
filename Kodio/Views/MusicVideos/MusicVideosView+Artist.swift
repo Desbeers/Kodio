@@ -15,7 +15,7 @@ extension MusicVideosView {
         /// The name of the artist
         let artist: Audio.Details.Artist
         /// The KodiConnector model
-        @EnvironmentObject var kodi: KodiConnector
+        @Environment(KodiConnector.self) private var kodi
         /// The music videos to show
         @State private var musicVideos: [any KodiItem] = []
         /// The current `MusicVideosRouter`

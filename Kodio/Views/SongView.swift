@@ -11,11 +11,12 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for a single song
 struct SongView: View {
     /// The KodiPlayer model
-    @EnvironmentObject private var player: KodiPlayer
-    /// The song tho view
+    @Environment(KodiPlayer.self) private var player
+    /// The song to view
     let song: Audio.Details.Song
     /// The optional selected album
     let album: Audio.Details.Album?
+    /// The body of the `View`
     var body: some View {
         HStack {
             icon

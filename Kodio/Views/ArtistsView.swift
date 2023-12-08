@@ -10,10 +10,8 @@ import SwiftlyKodiAPI
 
 /// SwiftUI `View` for the artists
 struct ArtistsView: View {
-    /// The artists for this View
-    let artists: [Audio.Details.Artist]
-    /// The optional selection
-    @Binding var selection: BrowserModel.Selection
+    /// The Browser model
+    @Environment(BrowserModel.self) private var browser
     /// The sorting
     private let sorting = SwiftlyKodiAPI.List.Sort(id: "artists", method: .title, order: .ascending)
     /// The collection
@@ -35,8 +33,10 @@ struct ArtistsView: View {
             cell: { _, item in
                 if let artist = item.item as? Audio.Details.Artist {
                     Button(action: {
-                        selection.artist = selection.artist == artist ? nil : artist
-                        selection.album = nil
+                        withAnimation {
+                            browser.selection.artist = browser.selection.artist == artist ? nil : artist
+                            browser.selection.album = nil
+                        }
                     }, label: {
                         HStack {
                             KodiArt.Poster(item: artist)
@@ -52,12 +52,12 @@ struct ArtistsView: View {
                             }
                         }
                     })
-                    .buttonStyle(ButtonStyles.Browser(item: artist, selected: selection.artist == artist))
+                    .buttonStyle(ButtonStyles.Browser(item: artist, selected: browser.selection.artist == artist))
                 }
             }
         )
-        .task(id: artists) {
-            collection = Utils.groupKodiItems(items: artists, sorting: sorting)
+        .task(id: browser.items.artists) {
+            collection = Utils.groupKodiItems(items: browser.items.artists, sorting: sorting)
         }
     }
 }

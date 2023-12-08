@@ -11,11 +11,12 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the settings
 struct SettingsView: View {
     /// The AppState model
-    @EnvironmentObject var appState: AppState
+    @Environment(AppState.self) private var appState
     /// The selected tab
     @State var selection: Tabs = .kodiHosts
     /// The body of the `View`
     var body: some View {
+        @Bindable var appState = appState
         VStack {
 #if os(macOS)
             TabView(selection: $selection) {
@@ -80,7 +81,7 @@ struct SettingsView: View {
         .animation(.default, value: selection)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         /// Store the settings when they are changed
-        .onChange(of: appState.settings) { settings in
+        .onChange(of: appState.settings) { _, settings in
             appState.updateSettings(settings: settings)
         }
     }
@@ -120,9 +121,9 @@ extension SettingsView {
     /// The Playback settings
     struct Playback: View {
         /// The AppState model
-        @EnvironmentObject var appState: AppState
+        @Environment(AppState.self) private var appState
         /// The KodiConnector model
-        @EnvironmentObject var kodi: KodiConnector
+        @Environment(KodiConnector.self) private var kodi
         /// All the Kodio settings
         @Binding var settings: KodioSettings
         /// Open Window
@@ -215,7 +216,7 @@ extension SettingsView {
     /// The ``SidebarView`` settings
     struct Sidebar: View {
         /// The AppState model
-        @EnvironmentObject var appState: AppState
+        @Environment(AppState.self) private var appState
         /// All the Kodio settings
         @Binding var settings: KodioSettings
         /// The body of the `View`

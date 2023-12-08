@@ -28,7 +28,6 @@
 		D7A84CFD2A91523B004BA2DA /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CCF2A91523B004BA2DA /* PlaylistView.swift */; };
 		D7A84CFE2A91523B004BA2DA /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD02A91523B004BA2DA /* StartView.swift */; };
 		D7A84CFF2A91523B004BA2DA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD12A91523B004BA2DA /* SettingsView.swift */; };
-		D7A84D002A91523B004BA2DA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD22A91523B004BA2DA /* SearchView.swift */; };
 		D7A84D012A91523B004BA2DA /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD32A91523B004BA2DA /* SongsView.swift */; };
 		D7A84D022A91523B004BA2DA /* MenuBarExtraView (macOS).swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD42A91523B004BA2DA /* MenuBarExtraView (macOS).swift */; };
 		D7A84D032A91523B004BA2DA /* GenresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD52A91523B004BA2DA /* GenresView.swift */; };
@@ -85,7 +84,6 @@
 		D7A84CCF2A91523B004BA2DA /* PlaylistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		D7A84CD02A91523B004BA2DA /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		D7A84CD12A91523B004BA2DA /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		D7A84CD22A91523B004BA2DA /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		D7A84CD32A91523B004BA2DA /* SongsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		D7A84CD42A91523B004BA2DA /* MenuBarExtraView (macOS).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MenuBarExtraView (macOS).swift"; sourceTree = "<group>"; };
 		D7A84CD52A91523B004BA2DA /* GenresView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresView.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				D7A84CE32A91523B004BA2DA /* SongView.swift */,
 				D7A84CCF2A91523B004BA2DA /* PlaylistView.swift */,
 				D7A84CD12A91523B004BA2DA /* SettingsView.swift */,
-				D7A84CD22A91523B004BA2DA /* SearchView.swift */,
 				D7A84CD72A91523B004BA2DA /* MarkdownView.swift */,
 				D7A84CDB2A91523B004BA2DA /* HostsView.swift */,
 				D7A84CDC2A91523B004BA2DA /* HeaderView.swift */,
@@ -393,7 +390,6 @@
 				D7A84D0C2A91523B004BA2DA /* HelpView.swift in Sources */,
 				D7A84CF82A91523B004BA2DA /* MusicMatchModel+Enums.swift in Sources */,
 				D7A84D142A91523B004BA2DA /* MusicVideosView+Artists.swift in Sources */,
-				D7A84D002A91523B004BA2DA /* SearchView.swift in Sources */,
 				D7A84D012A91523B004BA2DA /* SongsView.swift in Sources */,
 				D7A84CEA2A91523B004BA2DA /* AppState.swift in Sources */,
 				D7A84D0A2A91523B004BA2DA /* HeaderView.swift in Sources */,
@@ -558,10 +554,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
 				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -602,10 +598,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
 				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";

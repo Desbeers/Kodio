@@ -10,25 +10,25 @@ import SwiftlyKodiAPI
 
 /// SwiftUI `View` for the details
 struct DetailsView: View {
-    /// The selected ``Router``
-    let router: Router
-    /// The selected `KodiItem`
-    let selectedItem: (any KodiItem)?
+    /// The AppState model
+    @Environment(AppState.self) private var appState
+    /// The Browser model
+    @Environment(BrowserModel.self) private var browser
     /// Rotate the record
     @State private var rotate: Bool = false
     /// The body of the `View`
     var body: some View {
         ScrollView {
             ScrollViewReader { proxy in
-                Text(selectedItem?.title ?? router.item.title)
+                Text(browser.details?.title ?? appState.selection.item.title)
                     .font(.title2)
                     .lineLimit(1)
                     .padding(.top)
                     .id("Title")
-                    .task(id: selectedItem?.id) {
+                    .task(id: browser.details?.id) {
                         proxy.scrollTo("Title", anchor: .top)
                     }
-                Text(selectedItem?.subtitle ?? router.item.description)
+                Text(browser.details?.subtitle ?? appState.selection.item.description)
                     .font(.caption)
                 VStack {
                     RadialGradient(
@@ -46,7 +46,7 @@ struct DetailsView: View {
                 }
                 .aspectRatio(1.78, contentMode: .fit)
                 .cornerRadius(3)
-                Text(selectedItem?.description ?? "")
+                Text(browser.details?.description ?? "")
                     .padding(.bottom)
             }
             .padding(.horizontal)
@@ -55,7 +55,7 @@ struct DetailsView: View {
 
     /// Overlay the base artwork
     @ViewBuilder var overlay: some View {
-        if let item = selectedItem {
+        if let item = browser.details {
             switch item.media {
             case .artist:
                 KodiArt.Fanart(item: item)
@@ -84,7 +84,7 @@ struct DetailsView: View {
                 EmptyView()
             }
         } else {
-            Image(systemName: router.item.icon)
+            Image(systemName: appState.selection.item.icon)
                 .font(.system(size: 80))
                 .foregroundColor(.white)
                 .shadow(radius: 20)

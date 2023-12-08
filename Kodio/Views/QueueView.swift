@@ -11,44 +11,42 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the queue
 struct QueueView: View {
     /// The AppState model
-    @EnvironmentObject var appState: AppState
+    @Environment(AppState.self) private var appState
     /// The KodiPlayer model
-    @EnvironmentObject var player: KodiPlayer
-    /// The state of loading the queue
-    @State var state: AppState.State = .loading
+    @Environment(KodiPlayer.self) private var player
+    /// The status of loading the queue
+    @State var status: ViewStatus = .loading
     /// The list of items
     @State private var items: [any KodiItem] = []
-    /// Animation toggle because we can't use the items list because its a Protocol
-    @State private var animationToggle: Bool = false
     /// Rotate the record
     @State private var rotate: Bool = false
+    /// The ID of the focussed scroll item
+    @State private var scrollID: String?
     /// The body of the `View`
     var body: some View {
         VStack(spacing: 0) {
             Text("Now Playing")
                 .font(.title)
                 .modifier(PartsView.ListHeader())
-            switch state {
+            switch status {
             case .loading:
-                PartsView.LoadingState(message: "Loading the playlist...")
+                status.message(router: appState.selection)
             case .empty:
-                PartsView.LoadingState(message: appState.selection.item.empty, icon: appState.selection.item.icon)
-            case .ready:
+                status.message(router: appState.selection)
+            default:
                 content
             }
         }
-        .animation(.default, value: player.currentItem?.id)
-        .animation(.default, value: animationToggle)
         /// Update the current playlist
         .task(id: player.playlistUpdate) {
+            getCurrentPlaylist()
+        }
+        .onChange(of: player.properties.playlistID) {
             getCurrentPlaylist()
         }
         /// Start or stop the animation
         .task(id: player.properties.speed) {
             rotate = player.properties.speed == 1 ? true : false
-        }
-        .onChange(of: player.properties.playlistID) { _ in
-            getCurrentPlaylist()
         }
     }
     /// The content of the View
@@ -78,28 +76,36 @@ struct QueueView: View {
     }
     /// The list of items
     @ViewBuilder var itemsList: some View {
-        switch items.count {
-        case 1:
-            if let item = items.first {
-                queueItem(item: item, single: true)
-            }
-        default:
-            ScrollView {
-                ScrollViewReader { proxy in
+        if let items = player.currentPlaylist {
+            switch items.count {
+            case 1:
+                if let item = items.first {
+                    queueItem(item: item, single: true)
+                }
+            default:
+                ScrollView {
                     LazyVStack {
                         ForEach(items, id: \.id) { item in
                             queueItem(item: item)
+                                .scrollTransition(.animated) { content, phase in
+                                    content
+                                        .opacity(phase != .identity ? 0.3 : 1)
+                                }
                             Divider()
                                 .padding(.leading)
                         }
                     }
                     .padding()
                     .task(id: player.currentItem?.id) {
-                        withAnimation(.linear(duration: 1)) {
-                            proxy.scrollTo(player.currentItem?.id, anchor: .center)
+                        if let id = player.currentItem?.id {
+                            withAnimation(.linear(duration: 1)) {
+                                self.scrollID = id
+                            }
                         }
                     }
                 }
+                .scrollPosition(id: $scrollID, anchor: .center)
+                .scrollTargetLayout()
             }
         }
     }
@@ -107,16 +113,12 @@ struct QueueView: View {
 extension QueueView {
 
     /// Get the current playlist
-    @MainActor
-    func getCurrentPlaylist() {
+    @MainActor func getCurrentPlaylist() {
         if let queue = player.currentPlaylist, !queue.isEmpty {
-            state = .ready
-            items = queue
+            status = .ready
         } else {
-            state = .empty
-            items = []
+            status = .empty
         }
-        animationToggle.toggle()
     }
 }
 
@@ -127,8 +129,7 @@ extension QueueView {
     ///   - item: The `KodiItem`
     ///   - single: Bool if there is only one item in the queue
     /// - Returns: A View
-    @ViewBuilder
-    func queueItem(item: any KodiItem, single: Bool = false) -> some View {
+    @ViewBuilder func queueItem(item: any KodiItem, single: Bool = false) -> some View {
         switch item {
         case let song as Audio.Details.Song:
             SongView(song: song, album: nil)

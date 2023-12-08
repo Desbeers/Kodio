@@ -9,11 +9,11 @@ import Foundation
 import SwiftlyKodiAPI
 
 /// The model for ``BrowserView``
-class BrowserModel: ObservableObject {
+@Observable class BrowserModel {
     /// The selection of optional genre, artist or album in the ``BrowserView``
-    @Published var selection = Selection()
-    /// The state of loading the songs
-    @Published var state: AppState.State = .loading
+    var selection = Selection()
+    /// The status of loading the songs
+    var status: ViewStatus = .loading
     /// Details for the 'highest selected item'
     var details: (any KodiItem)? {
         if let album = selection.album {
@@ -26,15 +26,12 @@ class BrowserModel: ObservableObject {
     }
     /// All the items that are available
     var library = Media()
+    /// The filtered items
+    var items = Media()
     /// The current ``Router`` selection
-    let router: Router
+    var router: Router = .musicBrowser
     /// The optional search query
-    let query: String
-    /// Init the model with the current ``Router``
-    init(router: Router, query: String) {
-        self.router = router
-        self.query = query
-    }
+    var query: String = ""
 }
 
 extension BrowserModel {
@@ -151,11 +148,13 @@ extension BrowserModel {
             let songGenreIDs = Set(library.songs.flatMap { $0.genreID })
             library.genres = kodi.library.audioGenres
                 .filter { songGenreIDs.contains($0.genreID) }
+        } else {
+            library = Media()
         }
     }
 
     /// Filter the ``BrowserView`` based on the optional ``BrowserModel/Selection-swift.struct``
-    func filterBrowser() async -> Media {
+    func filterBrowser() async {
         var artists = library.artists
         var albums = library.albums
         var songs = library.songs
@@ -186,8 +185,8 @@ extension BrowserModel {
                 .sorted { $0.track < $1.track }
         }
 
-        /// return the filtered items
-        return Media(
+        /// Return the filtered items
+        items = Media(
             genres: library.genres,
             artists: artists,
             albums: albums,

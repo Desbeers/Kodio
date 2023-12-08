@@ -10,10 +10,8 @@ import SwiftlyKodiAPI
 
 /// SwiftUI `View` for the header
 struct HeaderView: View {
-    /// The songs for this `View`
-    @Binding var songs: [Audio.Details.Song]
-    /// The optional selected album
-    let selectedAlbum: Audio.Details.Album?
+    /// The Browser model
+    @Environment(BrowserModel.self) private var browser
     /// The body of the `View`
     var body: some View {
         HStack {
@@ -30,15 +28,16 @@ struct HeaderView: View {
         }
         .playButtonStyle()
         .padding(.top)
+        .disabled(browser.status != .ready)
     }
     /// Play the songs in the  current list
     /// - Parameter shuffle: Bool to shuffle the list or not
     func playSongs(shuffle: Bool) {
         var media: KodioSettings.Crossfade = .playlist
-        if let selectedAlbum {
+        if let selectedAlbum = browser.selection.album {
             media = selectedAlbum.compilation ? .compilation : .album
         }
         KodioSettings.setPlayerSettings(media: media)
-        songs.play(shuffle: shuffle)
+        browser.items.songs.play(shuffle: shuffle)
     }
 }

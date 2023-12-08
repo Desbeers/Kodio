@@ -10,15 +10,16 @@ import SwiftlyKodiAPI
 
 /// SwiftUI `View` for a playlist
 struct PlaylistView: View {
-
+    /// The AppState model
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @EnvironmentObject var kodi: KodiConnector
+    @Environment(KodiConnector.self) private var kodi
     /// The list of songs
     @State private var songs: [Audio.Details.Song] = []
     /// The playlist file
     let playlist: SwiftlyKodiAPI.List.Item.File
-    /// The state of loading the playlist
-    @State var state: AppState.State = .loading
+    /// The status of loading the playlist
+    @State var status: ViewStatus = .loading
     /// The body of the `View`
     var body: some View {
         VStack(spacing: 0) {
@@ -40,14 +41,10 @@ struct PlaylistView: View {
                     })
                 }
                 .playButtonStyle()
-                .disabled(state != .ready)
+                .disabled(status != .ready)
             }
             .modifier(PartsView.ListHeader())
-            switch state {
-            case .loading:
-                PartsView.LoadingState(message: "Getting '\(playlist.title)' songs...")
-            case .empty:
-                PartsView.LoadingState(message: "The playlist is empty", icon: "music.note.list")
+            switch status {
             case .ready:
                 /// On macOS, `List` is not lazy, so slow... So, viewed in a `LazyVStack` and no fancy swipes....
                 ScrollView {
@@ -59,6 +56,8 @@ struct PlaylistView: View {
                         }
                     }
                 }
+            default:
+                status.message(router: appState.selection, progress: true)
             }
         }
         /// Get the songs from the playlist
@@ -66,7 +65,7 @@ struct PlaylistView: View {
             let playlist = await Files.getDirectory(directory: playlist.file, media: .music).map(\.file)
             songs = kodi.library.songs
                 .filter { playlist.contains($0.file) }
-            state = songs.isEmpty ? .empty : .ready
+            status = songs.isEmpty ? .empty : .ready
         }
         .animation(.default, value: songs)
     }

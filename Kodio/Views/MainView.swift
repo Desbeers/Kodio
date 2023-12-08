@@ -11,9 +11,9 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the main view
 struct MainView: View {
     /// The AppState model
-    @EnvironmentObject var appState: AppState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @EnvironmentObject var kodi: KodiConnector
+    @Environment(KodiConnector.self) private var kodi
     /// Show all columns
     @State private var columnVisibility = NavigationSplitViewVisibility.all
     /// The body of the `View`
@@ -22,6 +22,8 @@ struct MainView: View {
             columnVisibility: $columnVisibility,
             sidebar: {
                 SidebarView()
+                    .toolbar(removing: .sidebarToggle)
+                    .navigationSplitViewColumnWidth(200)
             }, detail: {
                 /// In a ZStack because the toolbar is added
                 ZStack {
@@ -40,15 +42,14 @@ struct MainView: View {
                     case .musicVideos:
                         MusicVideosView(router: .musicVideos)
                     case .search:
-                        BrowserView(router: .search, query: appState.query)
+                        BrowserView()
                             .id(appState.query)
 #if os(macOS)
                     case .musicMatch:
                         MusicMatchView()
 #endif
                     default:
-                        BrowserView(router: appState.selection)
-                            .id(appState.selection)
+                        BrowserView()
                     }
                 }
                 .modifier(ToolbarView())
@@ -66,7 +67,6 @@ struct MainView: View {
 #endif
             }
         )
-        .animation(.default, value: appState.selection)
         .task(id: kodi.status) {
             if kodi.status != .loadedLibrary && kodi.status != .updatingLibrary && appState.selection != .start {
                 appState.selection = .start
