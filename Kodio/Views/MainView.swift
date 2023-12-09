@@ -23,7 +23,6 @@ struct MainView: View {
             sidebar: {
                 SidebarView()
                     .toolbar(removing: .sidebarToggle)
-                    .navigationSplitViewColumnWidth(200)
             }, detail: {
                 /// In a ZStack because the toolbar is added
                 ZStack {

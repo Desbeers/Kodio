@@ -112,6 +112,7 @@ struct SidebarView: View {
     /// - Returns: A SwiftUI `View` with the sidebar item
     private func sidebarItem(router: Router) -> some View {
         Label(router.item.title, systemImage: router.item.icon)
+            .lineLimit(nil)
             .tag(router)
             .listItemTint(router.item.color)
     }

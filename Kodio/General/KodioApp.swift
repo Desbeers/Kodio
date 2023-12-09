@@ -119,6 +119,7 @@ import SwiftlyKodiAPI
                 .environment(appState)
                 .environment(kodi)
                 .environment(player)
+                .environment(browser)
                 .task {
                     if kodi.status == .none {
                         /// Get the selected host (if any)
@@ -138,6 +139,7 @@ import SwiftlyKodiAPI
                 .environment(appState)
                 .environment(kodi)
                 .environment(player)
+                .environment(browser)
                 .task {
                     if kodi.status == .none {
                         /// Get the selected host (if any)
