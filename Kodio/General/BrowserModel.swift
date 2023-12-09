@@ -12,8 +12,6 @@ import SwiftlyKodiAPI
 @Observable class BrowserModel {
     /// The selection of optional genre, artist or album in the ``BrowserView``
     var selection = Selection()
-    /// The status of loading the songs
-    var status: ViewStatus = .loading
     /// Details for the 'highest selected item'
     var details: (any KodiItem)? {
         if let album = selection.album {

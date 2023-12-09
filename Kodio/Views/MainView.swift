@@ -50,6 +50,7 @@ struct MainView: View {
 #endif
                     default:
                         BrowserView()
+                            .id(appState.selection)
                     }
                 }
                 .modifier(ToolbarView())

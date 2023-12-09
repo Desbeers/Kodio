@@ -28,7 +28,7 @@ struct HeaderView: View {
         }
         .playButtonStyle()
         .padding(.top)
-        .disabled(browser.status != .ready)
+        .disabled(browser.items.songs.isEmpty)
     }
     /// Play the songs in the  current list
     /// - Parameter shuffle: Bool to shuffle the list or not

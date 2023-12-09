@@ -16,23 +16,25 @@ struct BrowserView: View {
     @Environment(KodiConnector.self) private var kodi
     /// The Browser model
     @Environment(BrowserModel.self) private var browser
+    /// The loading status of the View
+    @State private var status: ViewStatus = .loading
     /// The body of the `View`
     var body: some View {
         content
+            .animation(.default, value: status)
         /// Load the library for the selection
-            .task(id: appState.selection) {
+            .task {
                 browser.items = .init()
-                browser.status = .loading
                 browser.selection = .init()
                 browser.router = appState.selection
                 browser.query = appState.query
                 await browser.filterLibrary()
                 await browser.filterBrowser()
-                browser.status = browser.items.songs.isEmpty ? .empty : .ready
+                status = browser.items.songs.isEmpty ? .empty : .ready
             }
         /// Filter the browser when a selection has changed
         .onChange(of: browser.selection) {
-            if browser.status == .ready {
+            if status == .ready {
                 Task {
                     await browser.filterBrowser()
                 }
@@ -73,7 +75,7 @@ struct BrowserView: View {
     /// The top part of the `View`
     @ViewBuilder var top: some View {
         HStack(spacing: 0) {
-            switch browser.status {
+            switch status {
             case .ready:
                 GenresView()
                     .frame(width: 150)
@@ -81,10 +83,9 @@ struct BrowserView: View {
                 ArtistsView()
                 AlbumsView()
             default:
-                browser.status.message(router: appState.selection)
+                status.message(router: appState.selection)
             }
         }
-        .animation(.default, value: browser.status)
         .overlay {
             LinearGradient(
                 gradient: Gradient(stops: [
