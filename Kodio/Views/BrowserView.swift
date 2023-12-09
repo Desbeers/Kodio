@@ -21,18 +21,21 @@ struct BrowserView: View {
         content
         /// Load the library for the selection
             .task(id: appState.selection) {
+                browser.items = .init()
                 browser.status = .loading
+                browser.selection = .init()
                 browser.router = appState.selection
                 browser.query = appState.query
                 await browser.filterLibrary()
-                browser.selection = .init()
                 await browser.filterBrowser()
                 browser.status = browser.items.songs.isEmpty ? .empty : .ready
             }
         /// Filter the browser when a selection has changed
         .onChange(of: browser.selection) {
-            Task {
-                await browser.filterBrowser()
+            if browser.status == .ready {
+                Task {
+                    await browser.filterBrowser()
+                }
             }
         }
         /// Filter the browser when songs are changed
@@ -70,17 +73,18 @@ struct BrowserView: View {
     /// The top part of the `View`
     @ViewBuilder var top: some View {
         HStack(spacing: 0) {
-            if browser.status == .empty {
-                browser.status.message(router: appState.selection)
-                    .frame(maxWidth: .infinity)
-            } else {
+            switch browser.status {
+            case .ready:
                 GenresView()
                     .frame(width: 150)
                     .padding(.leading, 5)
                 ArtistsView()
                 AlbumsView()
+            default:
+                browser.status.message(router: appState.selection)
             }
         }
+        .animation(.default, value: browser.status)
         .overlay {
             LinearGradient(
                 gradient: Gradient(stops: [

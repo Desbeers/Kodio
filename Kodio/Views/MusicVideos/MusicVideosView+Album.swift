@@ -54,6 +54,7 @@ extension MusicVideosView {
                                 KodiArt.Fanart(item: musicVideo)
                                     .frame(width: 320, height: 180)
                             }
+                            .background(.thickMaterial)
                             .overlay(alignment: .bottom) {
                                 MusicVideosView.playButton(item: musicVideo)
                                     .padding(.vertical, 5)
@@ -61,7 +62,6 @@ extension MusicVideosView {
                                     .background(.ultraThinMaterial)
                             }
                             .cornerRadius(8)
-                            .shadow(radius: 2)
                             .padding(.bottom)
                         }
                     }

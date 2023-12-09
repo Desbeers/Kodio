@@ -29,14 +29,13 @@ struct QueueView: View {
                 .font(.title)
                 .modifier(PartsView.ListHeader())
             switch status {
-            case .loading:
-                status.message(router: appState.selection)
-            case .empty:
-                status.message(router: appState.selection)
-            default:
+            case .ready:
                 content
+            default:
+                status.message(router: appState.selection)
             }
         }
+        .animation(.default, value: status)
         /// Update the current playlist
         .task(id: player.playlistUpdate) {
             getCurrentPlaylist()
