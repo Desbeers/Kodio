@@ -197,7 +197,7 @@ struct MusicMatchView: View {
             items = []
             musicMatch.status = .musicMatching
             await musicMatch.matchSongs()
-            items = musicMatch.musicMatchItems
+            items = musicMatch.musicMatchItems.filter { $0.itemInSync == false }
             musicMatch.status = .musicMatched
         }
     }
