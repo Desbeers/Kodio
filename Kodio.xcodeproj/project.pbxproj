@@ -57,6 +57,7 @@
 		D7A84D2E2A9264DC004BA2DA /* Documentation.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D292A9264DC004BA2DA /* Documentation.md */; };
 		D7A84D2F2A9264DC004BA2DA /* PlayerSettings.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D2A2A9264DC004BA2DA /* PlayerSettings.md */; };
 		D7A84D302A9264DC004BA2DA /* KodioHelp.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D2B2A9264DC004BA2DA /* KodioHelp.md */; };
+		D7B815982B29CE4D003BBDD8 /* RandomItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B815972B29CE4D003BBDD8 /* RandomItemsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		D7A84D292A9264DC004BA2DA /* Documentation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
 		D7A84D2A2A9264DC004BA2DA /* PlayerSettings.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = PlayerSettings.md; sourceTree = "<group>"; };
 		D7A84D2B2A9264DC004BA2DA /* KodioHelp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = KodioHelp.md; sourceTree = "<group>"; };
+		D7B815972B29CE4D003BBDD8 /* RandomItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomItemsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				D7A84CD32A91523B004BA2DA /* SongsView.swift */,
 				D7A84CE32A91523B004BA2DA /* SongView.swift */,
 				D7A84CCF2A91523B004BA2DA /* PlaylistView.swift */,
+				D7B815972B29CE4D003BBDD8 /* RandomItemsView.swift */,
 				D7A84CD12A91523B004BA2DA /* SettingsView.swift */,
 				D7A84CD72A91523B004BA2DA /* MarkdownView.swift */,
 				D7A84CDB2A91523B004BA2DA /* HostsView.swift */,
@@ -377,6 +380,7 @@
 				D7A84D072A91523B004BA2DA /* SidebarView.swift in Sources */,
 				D7A84D0B2A91523B004BA2DA /* BrowserView.swift in Sources */,
 				D7A84D102A91523B004BA2DA /* PartsView.swift in Sources */,
+				D7B815982B29CE4D003BBDD8 /* RandomItemsView.swift in Sources */,
 				D7A84D022A91523B004BA2DA /* MenuBarExtraView (macOS).swift in Sources */,
 				D7A84D132A91523B004BA2DA /* MusicVideosView+Artist.swift in Sources */,
 				D7A84D162A91523B004BA2DA /* MusicVideosView.swift in Sources */,

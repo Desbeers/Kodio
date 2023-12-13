@@ -46,7 +46,12 @@ struct StartView: View {
                 details: kodi.status.message,
                 rotate: $rotate
             )
+            if rotate {
+                RandomItemsView()
+                    .id(UUID())
+            }
         }
+        .animation(.default, value: rotate)
         .task(id: kodi.status) {
             rotate = kodi.status == .loadedLibrary ? true : false
         }

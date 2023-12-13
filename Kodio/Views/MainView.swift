@@ -22,7 +22,6 @@ struct MainView: View {
             columnVisibility: $columnVisibility,
             sidebar: {
                 SidebarView()
-                    .toolbar(removing: .sidebarToggle)
             }, detail: {
                 /// In a ZStack because the toolbar is added
                 ZStack {
