@@ -67,7 +67,7 @@ struct DetailsView: View {
                             title: item.title,
                             subtitle: item.subtitle,
                             details: item.details,
-                            rotate: .constant(true)
+                            rotate: true
                         )
                     }
                     HStack {
@@ -80,8 +80,9 @@ struct DetailsView: View {
                 }
                 .cornerRadius(2)
                 .padding(1)
+                .transition(.move(edge: .leading))
             default:
-                EmptyView()
+                Color.clear
             }
         } else {
             Image(systemName: appState.selection.item.icon)

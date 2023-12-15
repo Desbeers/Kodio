@@ -58,7 +58,7 @@ struct QueueView: View {
                         title: player.currentItem?.title,
                         subtitle: player.currentItem?.subtitle ?? "",
                         details: player.currentItem?.details ?? "",
-                        rotate: $rotate
+                        rotate: rotate
                     )
                     itemsList
                 default:
@@ -66,7 +66,7 @@ struct QueueView: View {
                         title: player.currentItem?.title,
                         subtitle: player.currentItem?.subtitle ?? "",
                         details: player.currentItem?.details ?? "",
-                        rotate: $rotate
+                        rotate: rotate
                     )
                     itemsList
                 }

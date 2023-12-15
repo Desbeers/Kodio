@@ -19,7 +19,7 @@ struct AboutView: View {
                     title: "Kodio",
                     subtitle: "Play your own music",
                     details: "© Nick Berendsen",
-                    rotate: $rotate
+                    rotate: rotate
                 )
                 .frame(maxWidth: 400)
                 VStack {

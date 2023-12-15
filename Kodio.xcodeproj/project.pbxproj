@@ -13,7 +13,6 @@
 		D7A84CEC2A91523B004BA2DA /* RadioStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBA2A91523B004BA2DA /* RadioStations.swift */; };
 		D7A84CED2A91523B004BA2DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A84CBB2A91523B004BA2DA /* Assets.xcassets */; };
 		D7A84CEF2A91523B004BA2DA /* KodioSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */; };
-		D7A84CF02A91523B004BA2DA /* RotatingRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */; };
 		D7A84CF12A91523B004BA2DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC02A91523B004BA2DA /* AppDelegate.swift */; };
 		D7A84CF22A91523B004BA2DA /* HelpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC12A91523B004BA2DA /* HelpModel.swift */; };
 		D7A84CF42A91523B004BA2DA /* KodioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CC32A91523B004BA2DA /* KodioApp.swift */; };
@@ -58,6 +57,7 @@
 		D7A84D2F2A9264DC004BA2DA /* PlayerSettings.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D2A2A9264DC004BA2DA /* PlayerSettings.md */; };
 		D7A84D302A9264DC004BA2DA /* KodioHelp.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D2B2A9264DC004BA2DA /* KodioHelp.md */; };
 		D7B815982B29CE4D003BBDD8 /* RandomItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B815972B29CE4D003BBDD8 /* RandomItemsView.swift */; };
+		D7B815BE2B2B7193003BBDD8 /* RotatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B815BD2B2B7193003BBDD8 /* RotatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +69,6 @@
 		D7A84CBB2A91523B004BA2DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7A84CBC2A91523B004BA2DA /* Kodio.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Kodio.entitlements; sourceTree = "<group>"; };
 		D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KodioSettings.swift; sourceTree = "<group>"; };
-		D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingRecordModel.swift; sourceTree = "<group>"; };
 		D7A84CC02A91523B004BA2DA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7A84CC12A91523B004BA2DA /* HelpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpModel.swift; sourceTree = "<group>"; };
 		D7A84CC22A91523B004BA2DA /* Kodio.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Kodio.plist; sourceTree = "<group>"; };
@@ -115,6 +114,7 @@
 		D7A84D2A2A9264DC004BA2DA /* PlayerSettings.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = PlayerSettings.md; sourceTree = "<group>"; };
 		D7A84D2B2A9264DC004BA2DA /* KodioHelp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = KodioHelp.md; sourceTree = "<group>"; };
 		D7B815972B29CE4D003BBDD8 /* RandomItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomItemsView.swift; sourceTree = "<group>"; };
+		D7B815BD2B2B7193003BBDD8 /* RotatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +165,6 @@
 				D7A84CC32A91523B004BA2DA /* KodioApp.swift */,
 				D7A84CB82A91523B004BA2DA /* AppState.swift */,
 				D7A84CB92A91523B004BA2DA /* BrowserModel.swift */,
-				D7A84CBF2A91523B004BA2DA /* RotatingRecordModel.swift */,
 				D7A84CC12A91523B004BA2DA /* HelpModel.swift */,
 				D7A84CBE2A91523B004BA2DA /* KodioSettings.swift */,
 				D7A84CBA2A91523B004BA2DA /* RadioStations.swift */,
@@ -224,6 +223,7 @@
 				D7A84CDE2A91523B004BA2DA /* HelpView.swift */,
 				D7A84CE02A91523B004BA2DA /* QueueView.swift */,
 				D7A84CE22A91523B004BA2DA /* PartsView.swift */,
+				D7B815BD2B2B7193003BBDD8 /* RotatingView.swift */,
 				D7A84CD42A91523B004BA2DA /* MenuBarExtraView (macOS).swift */,
 			);
 			path = Views;
@@ -366,9 +366,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7A84CF02A91523B004BA2DA /* RotatingRecordModel.swift in Sources */,
 				D7A84D0F2A91523B004BA2DA /* MainView.swift in Sources */,
 				D7A84CFE2A91523B004BA2DA /* StartView.swift in Sources */,
+				D7B815BE2B2B7193003BBDD8 /* RotatingView.swift in Sources */,
 				D7A84D062A91523B004BA2DA /* ToolbarView.swift in Sources */,
 				D7A84CF42A91523B004BA2DA /* KodioApp.swift in Sources */,
 				D7A84CFC2A91523B004BA2DA /* AboutView.swift in Sources */,

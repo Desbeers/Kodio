@@ -108,5 +108,6 @@ struct BrowserView: View {
             HeaderView()
             SongsView()
         }
+        .frame(maxHeight: .infinity)
     }
 }

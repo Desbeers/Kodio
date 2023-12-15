@@ -23,6 +23,7 @@ struct HelpView: View {
                             .tag(help)
                     }
                 }
+                .toolbar(removing: .sidebarToggle)
 #if os(visionOS)
                 /// Add a button to dismiss the Sheet
                 .toolbar {
@@ -44,7 +45,7 @@ struct HelpView: View {
                             title: "Kodio",
                             subtitle: "Play your own music",
                             details: "© Nick Berendsen",
-                            rotate: .constant(false)
+                            rotate: false
                         )
                         .padding()
                         .opacity(0.05)

@@ -73,8 +73,6 @@ extension PartsView {
 
     /// View a  record image that can rotate
     struct RotatingRecord: View {
-        /// The RotatingAnimationModel
-        @StateObject var rotateModel = RotatingRecordModel()
         /// The optional SF symbol
         var icon: String?
         /// The title
@@ -84,76 +82,64 @@ extension PartsView {
         /// The details
         var details: String
         /// Do we want to rotate or not
-        @Binding var rotate: Bool
+        let rotate: Bool
         /// The body of the `View`
         var body: some View {
-            GeometryReader { geometry in
-                ZStack(alignment: .center) {
-                    Image("Record")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                    VStack(spacing: 0) {
-                        Group {
-                            if let icon = icon {
-                                Image(systemName: icon)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            } else {
-                                Text(title ?? "Kodio")
-                                    .fontWeight(.bold)
+            RotatingView(speed: 3.6, rotate: rotate) {
+                GeometryReader { geometry in
+                    ZStack(alignment: .center) {
+                        Image("Record")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        VStack(spacing: 0) {
+                            Group {
+                                if let icon = icon {
+                                    Image(systemName: icon)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                } else {
+                                    Text(title ?? "Kodio")
+                                        .fontWeight(.bold)
+                                }
                             }
-                        }
-                        .frame(
-                            width: minSize(size: geometry) / 5,
-                            height: minSize(size: geometry) / 20,
-                            alignment: .center
-                        )
-                        Spacer()
-                        Text(subtitle)
-                            .fontWeight(.semibold)
-                            .frame(height: minSize(size: geometry) / 30, alignment: .center)
-                        Text(details)
-                            .fontWeight(.thin)
-                            .opacity(0.8)
                             .frame(
                                 width: minSize(size: geometry) / 5,
-                                height: minSize(size: geometry) / 40,
+                                height: minSize(size: geometry) / 20,
                                 alignment: .center
                             )
+                            Spacer()
+                            Text(subtitle)
+                                .fontWeight(.semibold)
+                                .frame(height: minSize(size: geometry) / 30, alignment: .center)
+                            Text(details)
+                                .fontWeight(.thin)
+                                .opacity(0.8)
+                                .frame(
+                                    width: minSize(size: geometry) / 5,
+                                    height: minSize(size: geometry) / 40,
+                                    alignment: .center
+                                )
+                        }
+                        .font(.system(size: 100))
+                        .lineLimit(1)
+                        .foregroundColor(.white)
+                        .minimumScaleFactor(0.01)
+                        .frame(
+                            width: minSize(size: geometry) / 4,
+                            height: minSize(size: geometry) / 4.8,
+                            alignment: .top
+                        )
                     }
-                    .font(.system(size: 100))
-                    .lineLimit(1)
                     .foregroundColor(.white)
-                    .minimumScaleFactor(0.01)
-                    .frame(width: minSize(size: geometry) / 4, height: minSize(size: geometry) / 4.8, alignment: .top)
+                    .shadow(radius: minSize(size: geometry) / 50)
+                    /// Below is needed or else the View will not center
+                    .frame(
+                        width: geometry.size.width,
+                        height: geometry.size.height,
+                        alignment: .center
+                    )
                 }
-                .foregroundColor(.white)
-                .shadow(radius: minSize(size: geometry) / 50)
-                /// Below is needed or else the View will not center
-                .frame(
-                    width: geometry.size.width,
-                    height: geometry.size.height,
-                    alignment: .center
-                )
-
-                /// The custom rotator
-                .modifier(RotatingRecordModel.Rotate(rotate: rotateModel.rotating, status: $rotateModel.status))
-            }
-            .animation(.default, value: subtitle)
-            .animation(
-                rotateModel.rotating ? rotateModel.foreverAnimation : .linear(duration: 0), value: rotateModel.rotating
-            )
-            .task(id: rotate) {
-                switch rotate {
-                case true:
-                    /// Start the rotation
-                    /// - Note: It will start with some delay to make it more smoother
-                    await rotateModel.startRotating()
-                case false:
-                    /// Tell the model we like to stop
-                    /// - Note: It will be stopped when the animation is completed
-                    rotateModel.stopRotating()
-                }
+                .animation(.default, value: subtitle)
             }
         }
 
@@ -170,8 +156,6 @@ extension PartsView {
 
     /// View a  tape image that can rotate
     struct RotatingTape: View {
-        /// The RotatingAnimationModel
-        @StateObject var rotateModel = RotatingRecordModel()
         /// The optional icon
         var icon: String?
         /// The title
@@ -181,22 +165,22 @@ extension PartsView {
         /// The details
         var details: String
         /// Do we want to rotate or not
-        @Binding var rotate: Bool
+        let rotate: Bool
         /// The body of the `View`
         var body: some View {
             GeometryReader { geometry in
                 ZStack(alignment: .center) {
                     HStack(spacing: 0) {
-                        Image("Left")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                        /// The custom rotator
-                        .modifier(RotatingRecordModel.Rotate(rotate: rotateModel.rotating, status: $rotateModel.status))
-                        Image("Right")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                        /// The custom rotator
-                        .modifier(RotatingRecordModel.Rotate(rotate: rotateModel.rotating, status: $rotateModel.status))
+                        RotatingView(speed: 3.6, rotate: rotate) {
+                            Image("Left")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                        RotatingView(speed: 3.6, rotate: rotate) {
+                            Image("Right")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
                     }
                     Image("Cover")
                         .resizable()
@@ -240,21 +224,6 @@ extension PartsView {
                 )
             }
             .animation(.default, value: title)
-            .animation(
-                rotateModel.rotating ? rotateModel.foreverAnimation : .linear(duration: 0), value: rotateModel.rotating
-            )
-            .task(id: rotate) {
-                switch rotate {
-                case true:
-                    /// Start the rotation
-                    /// - Note: It will start with some delay to make it more smoother
-                    await rotateModel.startRotating()
-                case false:
-                    /// Tell the model we like to stop
-                    /// - Note: It will be stopped when the animation is completed
-                    rotateModel.stopRotating()
-                }
-            }
         }
 
         /// The minimum size of the record

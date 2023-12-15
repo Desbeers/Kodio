@@ -44,11 +44,13 @@ struct StartView: View {
                 icon: "music.quarternote.3",
                 subtitle: kodi.host.bonjour?.name ?? "Kodio",
                 details: kodi.status.message,
-                rotate: $rotate
+                rotate: rotate
             )
-            if rotate {
-                RandomItemsView()
-                    .id(UUID())
+            .overlay(alignment: .bottom) {
+                if rotate {
+                    RandomItemsView()
+                        .transition(.move(edge: .bottom))
+                }
             }
         }
         .animation(.default, value: rotate)

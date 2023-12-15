@@ -61,6 +61,7 @@ extension MusicVideosView {
                 }
             }
             .buttonStyle(.plain)
+            .animation(.default, value: status)
             .task(id: kodi.library.musicVideos) {
                 artists = VideoLibrary.getMusicVideoArtists()
                 status = artists.isEmpty ? .empty : .ready
