@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D750986C2A936A0C00ADC35F /* LaunchScreen (iPadOS).storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D750986B2A936A0C00ADC35F /* LaunchScreen (iPadOS).storyboard */; platformFilter = ios; };
+		D784868F2B2C870400517EFC /* SwiftlyRotatingView in Frameworks */ = {isa = PBXBuildFile; productRef = D784868E2B2C870400517EFC /* SwiftlyRotatingView */; };
 		D7A84CEA2A91523B004BA2DA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CB82A91523B004BA2DA /* AppState.swift */; };
 		D7A84CEB2A91523B004BA2DA /* BrowserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CB92A91523B004BA2DA /* BrowserModel.swift */; };
 		D7A84CEC2A91523B004BA2DA /* RadioStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CBA2A91523B004BA2DA /* RadioStations.swift */; };
@@ -57,7 +58,6 @@
 		D7A84D2F2A9264DC004BA2DA /* PlayerSettings.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D2A2A9264DC004BA2DA /* PlayerSettings.md */; };
 		D7A84D302A9264DC004BA2DA /* KodioHelp.md in Resources */ = {isa = PBXBuildFile; fileRef = D7A84D2B2A9264DC004BA2DA /* KodioHelp.md */; };
 		D7B815982B29CE4D003BBDD8 /* RandomItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B815972B29CE4D003BBDD8 /* RandomItemsView.swift */; };
-		D7B815BE2B2B7193003BBDD8 /* RotatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B815BD2B2B7193003BBDD8 /* RotatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,7 +114,6 @@
 		D7A84D2A2A9264DC004BA2DA /* PlayerSettings.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = PlayerSettings.md; sourceTree = "<group>"; };
 		D7A84D2B2A9264DC004BA2DA /* KodioHelp.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = KodioHelp.md; sourceTree = "<group>"; };
 		D7B815972B29CE4D003BBDD8 /* RandomItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomItemsView.swift; sourceTree = "<group>"; };
-		D7B815BD2B2B7193003BBDD8 /* RotatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D784868F2B2C870400517EFC /* SwiftlyRotatingView in Frameworks */,
 				D7A84D1F2A915828004BA2DA /* AppleScriptObjC.framework in Frameworks */,
 				D7A84D192A9154EB004BA2DA /* SwiftlyKodiAPI in Frameworks */,
 			);
@@ -223,7 +223,6 @@
 				D7A84CDE2A91523B004BA2DA /* HelpView.swift */,
 				D7A84CE02A91523B004BA2DA /* QueueView.swift */,
 				D7A84CE22A91523B004BA2DA /* PartsView.swift */,
-				D7B815BD2B2B7193003BBDD8 /* RotatingView.swift */,
 				D7A84CD42A91523B004BA2DA /* MenuBarExtraView (macOS).swift */,
 			);
 			path = Views;
@@ -281,6 +280,7 @@
 			name = Kodio;
 			packageProductDependencies = (
 				D7A84D182A9154EB004BA2DA /* SwiftlyKodiAPI */,
+				D784868E2B2C870400517EFC /* SwiftlyRotatingView */,
 			);
 			productName = Kodio;
 			productReference = D7A84CA42A9151E8004BA2DA /* Kodio.app */;
@@ -312,6 +312,7 @@
 			mainGroup = D7A84C9B2A9151E8004BA2DA;
 			packageReferences = (
 				D7A84D172A9154EB004BA2DA /* XCRemoteSwiftPackageReference "SwiftlyKodiAPI" */,
+				D784868D2B2C870400517EFC /* XCRemoteSwiftPackageReference "SwiftlyRotatingView" */,
 			);
 			productRefGroup = D7A84CA52A9151E8004BA2DA /* Products */;
 			projectDirPath = "";
@@ -368,7 +369,6 @@
 			files = (
 				D7A84D0F2A91523B004BA2DA /* MainView.swift in Sources */,
 				D7A84CFE2A91523B004BA2DA /* StartView.swift in Sources */,
-				D7B815BE2B2B7193003BBDD8 /* RotatingView.swift in Sources */,
 				D7A84D062A91523B004BA2DA /* ToolbarView.swift in Sources */,
 				D7A84CF42A91523B004BA2DA /* KodioApp.swift in Sources */,
 				D7A84CFC2A91523B004BA2DA /* AboutView.swift in Sources */,
@@ -644,6 +644,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D784868D2B2C870400517EFC /* XCRemoteSwiftPackageReference "SwiftlyRotatingView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Desbeers/SwiftlyRotatingView";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		D7A84D172A9154EB004BA2DA /* XCRemoteSwiftPackageReference "SwiftlyKodiAPI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Desbeers/SwiftlyKodiAPI";
@@ -655,6 +663,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D784868E2B2C870400517EFC /* SwiftlyRotatingView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D784868D2B2C870400517EFC /* XCRemoteSwiftPackageReference "SwiftlyRotatingView" */;
+			productName = SwiftlyRotatingView;
+		};
 		D7A84D182A9154EB004BA2DA /* SwiftlyKodiAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D7A84D172A9154EB004BA2DA /* XCRemoteSwiftPackageReference "SwiftlyKodiAPI" */;

@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "swiftlyrotatingview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Desbeers/SwiftlyRotatingView",
+      "state" : {
+        "branch" : "main",
+        "revision" : "2471b8bc2f715591bb1dc87d420145c73376c273"
+      }
+    },
+    {
       "identity" : "swiftlystructcache",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Desbeers/SwiftlyStructCache",
