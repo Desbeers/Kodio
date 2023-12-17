@@ -45,15 +45,14 @@ struct RandomItemsView: View {
         .contentMargins(.horizontal, 10, for: .scrollContent)
         .animation(.default, value: albums)
         .buttonStyle(.plain)
-        .task {
-            getRandomAlbums()
+        .task(id: kodi.status) {
+            albums = kodi.status == .loadedLibrary ? getRandomAlbums() : []
         }
     }
 
     /// Get random items from the library
-    private func getRandomAlbums() {
-        albums = []
-        albums = Array(Set(kodi.library.albums).prefix(20))
+    private func getRandomAlbums() -> [Audio.Details.Album] {
+        return Array(Set(kodi.library.albums).prefix(20))
     }
 }
 

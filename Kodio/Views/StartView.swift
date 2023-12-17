@@ -16,11 +16,8 @@ struct StartView: View {
     @Environment(KodiConnector.self) private var kodi
     /// Rotate the record
     @State private var rotate: Bool = false
-    /// The record animation
-    var foreverAnimation: Animation {
-        Animation.linear(duration: 3.6)
-            .repeatForever(autoreverses: false)
-    }
+    /// The loading status of the View
+    @State private var status: ViewStatus = .loading
     /// The body of the `View`
     var body: some View {
         VStack {
@@ -40,21 +37,47 @@ struct StartView: View {
                 }
             }
             .modifier(PartsView.ListHeader())
-            PartsView.RotatingRecord(
-                icon: "music.quarternote.3",
-                subtitle: kodi.host.bonjour?.name ?? "Kodio",
-                details: kodi.status.message,
-                rotate: rotate
-            )
-            .overlay(alignment: .bottom) {
-                if rotate {
-                    RandomItemsView()
-                        .transition(.move(edge: .bottom))
+            switch status {
+            case .ready:
+//                Group {
+//                    if kodi.configuredHosts.isEmpty {
+//                        noHostConfigured
+//                    } else {
+//                        if !kodi.host.ip.isEmpty {
+//                            hostActions
+//                                .overlay(alignment: .leading) {
+//                                    loadingSpinner
+//                                    /// 'tint' does not work on macOS here
+//                                        .colorInvert()
+//                                        .brightness(1)
+//                                }
+//                        }
+//                    }
+//                }
+//                .modifier(PartsView.ListHeader())
+                PartsView.RotatingRecord(
+                    icon: "music.quarternote.3",
+                    subtitle: kodi.host.bonjour?.name ?? "Kodio",
+                    details: kodi.status.message,
+                    rotate: rotate
+                )
+                .overlay(alignment: .bottom) {
+                    if rotate {
+                        RandomItemsView()
+                            .transition(.move(edge: .bottom))
+                    }
                 }
+            default:
+                status.message(router: appState.selection)
             }
         }
+        .animation(.default, value: status)
         .animation(.default, value: rotate)
+        .task {
+            status = .ready
+        }
         .task(id: kodi.status) {
+            try? await Task.sleep(until: .now + .seconds(1), clock: .continuous)
             rotate = kodi.status == .loadedLibrary ? true : false
         }
     }
@@ -75,21 +98,11 @@ struct StartView: View {
             Text("There is no host configured")
                 .font(.caption)
                 .opacity(0.6)
-
 #if os(macOS)
-            if #available(macOS 14, *) {
-                SettingsLink {
-                    Text("Add a host")
-                }
-                .playButtonStyle()
-            } else {
-                Button(action: {
-                    NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil)
-                }, label: {
-                    Text("Add a host")
-                })
-                .playButtonStyle()
+            SettingsLink {
+                Text("Add a host")
             }
+            .playButtonStyle()
 #else
             Button(action: {
                 appState.selection = .appSettings
