@@ -19,7 +19,7 @@ struct RandomItemsView: View {
         VStack {
             Button(action: {
                 Task { @MainActor in
-                    getRandomAlbums()
+                    albums = getRandomAlbums()
                 }
             }, label: {
                 Text("Random Albums")
