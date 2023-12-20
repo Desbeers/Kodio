@@ -11,7 +11,7 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the sidebar
 struct SidebarView: View {
     /// The search field in the toolbar
-    @State var searchField: String = ""
+    @State private var searchField: String = ""
     /// The current selection in the sidebar
     @State private var selection: Router? = .start
     /// The AppState model

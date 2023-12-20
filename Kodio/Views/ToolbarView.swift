@@ -154,11 +154,11 @@ extension ToolbarView {
         /// The `KodiPlayer` model
         @Environment(KodiPlayer.self) private var player
         /// The current seconds
-        @State var currentSeconds: Double = 0
+        @State private var currentSeconds: Double = 0
         /// The total seconds
-        @State var totalSeconds: Double = 0
+        @State private var totalSeconds: Double = 0
         /// The time the item started to play
-        @State var startTime: Date = .now
+        @State private var startTime: Date = .now
         /// The body of the `View`
         var body: some View {
             if player.currentItem != nil && player.currentItem?.media != .stream && player.properties.speed != 0 {

@@ -13,7 +13,7 @@ struct HostsView: View {
     /// The KodiConnector model
     @Environment(KodiConnector.self) private var kodi
     /// The selected host
-    @State var selection: HostItem?
+    @State private var selection: HostItem?
     /// The body of the `View`
     var body: some View {
         HStack {

@@ -30,7 +30,7 @@ struct SongsView: View {
                             .cornerRadius(6)
                             .padding(.trailing)
                     }
-                    .task(id: browser.items.songs) {
+                    .task(id: browser.items.songs.map(\.id)) {
                         withAnimation(.linear(duration: 1)) {
                             proxy.scrollTo("SongList", anchor: .top)
                         }

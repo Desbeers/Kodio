@@ -11,7 +11,7 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the music videos
 struct MusicVideosView: View {
     /// The current  Router for Music Videos
-    @State var router: Router
+    @State private var router: Router = .musicVideos
 
     /// The body of the `View`
     var body: some View {

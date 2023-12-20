@@ -17,11 +17,11 @@ extension MusicVideosView {
         /// The KodiConnector model
         @Environment(KodiConnector.self) private var kodi
         /// The current artist
-        @State var artists: [Audio.Details.Artist] = []
+        @State private var artists: [Audio.Details.Artist] = []
         /// The current `MusicVideosRouter`
         @Binding var router: Router
         /// The status of loading the queue
-        @State var status: ViewStatus = .loading
+        @State private var status: ViewStatus = .loading
         /// Define the grid layout
         private let grid = [GridItem(.adaptive(minimum: 220))]
         /// The body of the `View`

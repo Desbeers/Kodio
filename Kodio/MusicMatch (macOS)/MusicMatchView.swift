@@ -22,7 +22,7 @@ struct MusicMatchView: View {
     /// Confirmation dialog
     @State private var isPresentingConfirm: Bool = false
     /// Sort order for the table
-    @State var sortOrder: [KeyPathComparator<MusicMatchModel.Item>] = [
+    @State private var sortOrder: [KeyPathComparator<MusicMatchModel.Item>] = [
         .init(\.kodi.lastPlayed, order: SortOrder.reverse)
     ]
 

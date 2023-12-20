@@ -15,7 +15,7 @@ struct QueueView: View {
     /// The KodiPlayer model
     @Environment(KodiPlayer.self) private var player
     /// The status of loading the queue
-    @State var status: ViewStatus = .loading
+    @State private var status: ViewStatus = .loading
     /// The list of items
     @State private var items: [any KodiItem] = []
     /// Rotate the record

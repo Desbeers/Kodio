@@ -64,7 +64,7 @@ struct SongView: View {
         }
     }
     /// The art or track for the song item
-    var art: some View {
+    @ViewBuilder var art: some View {
         ZStack {
             Text("\(song.track)")
                 .font(.headline)
@@ -73,7 +73,6 @@ struct SongView: View {
                 .opacity(album == nil ? 1 : 0)
         }
         .cornerRadius(4)
-        .frame(width: 60, height: 60)
     }
 }
 

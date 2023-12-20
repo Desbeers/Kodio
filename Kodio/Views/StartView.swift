@@ -39,22 +39,6 @@ struct StartView: View {
             .modifier(PartsView.ListHeader())
             switch status {
             case .ready:
-//                Group {
-//                    if kodi.configuredHosts.isEmpty {
-//                        noHostConfigured
-//                    } else {
-//                        if !kodi.host.ip.isEmpty {
-//                            hostActions
-//                                .overlay(alignment: .leading) {
-//                                    loadingSpinner
-//                                    /// 'tint' does not work on macOS here
-//                                        .colorInvert()
-//                                        .brightness(1)
-//                                }
-//                        }
-//                    }
-//                }
-//                .modifier(PartsView.ListHeader())
                 PartsView.RotatingRecord(
                     icon: "music.quarternote.3",
                     subtitle: kodi.host.bonjour?.name ?? "Kodio",

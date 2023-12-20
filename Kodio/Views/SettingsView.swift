@@ -13,7 +13,7 @@ struct SettingsView: View {
     /// The AppState model
     @Environment(AppState.self) private var appState
     /// The selected tab
-    @State var selection: Tabs = .kodiHosts
+    @State private var selection: Tabs = .kodiHosts
     /// The body of the `View`
     var body: some View {
         @Bindable var appState = appState
