@@ -12,15 +12,15 @@ extension MusicVideosView {
 
     /// SwiftUI `View` for a music video in a list
     struct ListItem: View {
-        /// The KodiPlayer model
-        @Environment(KodiPlayer.self) private var player
+        /// The KodiConnector model
+        @Environment(KodiConnector.self) private var kodi
         /// The music video
         let musicVideo: Video.Details.MusicVideo
         /// The body of the `View`
         var body: some View {
             HStack {
                 Image(systemName: "play.fill")
-                    .opacity(player.currentItem?.id == musicVideo.id ? 1 : 0)
+                    .opacity(kodi.player.currentItem?.id == musicVideo.id ? 1 : 0)
                 KodiArt.Poster(item: musicVideo)
                     .frame(width: 90, height: 160)
                 VStack(alignment: .leading) {

@@ -36,9 +36,9 @@ extension MusicVideosView {
     /// Play SwiftUI button
     /// - Parameter item: The `KodiItem`
     /// - Returns: SwiftUI button
-    static func playButton(item: Video.Details.MusicVideo) -> some View {
+    static func playButton(host: HostItem, item: Video.Details.MusicVideo) -> some View {
         Button(action: {
-            item.play()
+            item.play(host: host)
         }, label: {
             Label("Play", systemImage: "play.fill")
         })
@@ -61,7 +61,7 @@ extension MusicVideosView {
             Button(action: {
                 let album = kodi.library.musicVideos
                     .filter { $0.subtitle == item.subtitle && $0.details == item.details }
-                album.play(shuffle: shuffle)
+                album.play(host: kodi.host, shuffle: shuffle)
             }, label: {
                 Label("\(shuffle ? "Shuffle" : "Play") Album", systemImage: shuffle ? "shuffle" : "play.fill")
             })

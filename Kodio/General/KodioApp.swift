@@ -14,8 +14,6 @@ import SwiftlyKodiAPI
     @State private var appState: AppState = .shared
     /// The KodiConnector model
     @State private var kodi: KodiConnector = .shared
-    /// The KodiPlayer model
-    @State private var player: KodiPlayer = .shared
     /// The Browser model
     @State private var browser = BrowserModel()
 
@@ -34,7 +32,6 @@ import SwiftlyKodiAPI
             MainView()
                 .environment(appState)
                 .environment(kodi)
-                .environment(player)
                 .environment(browser)
                 .task {
                     if kodi.status == .none {
@@ -86,7 +83,6 @@ import SwiftlyKodiAPI
         MenuBarExtra("Kodio", systemImage: "k.square.fill") {
             MenuBarExtraView()
                 .environment(kodi)
-                .environment(player)
         }
         .menuBarExtraStyle(.window)
         /// Open new Windows
@@ -118,7 +114,6 @@ import SwiftlyKodiAPI
             MainView()
                 .environment(appState)
                 .environment(kodi)
-                .environment(player)
                 .environment(browser)
                 .task {
                     if kodi.status == .none {

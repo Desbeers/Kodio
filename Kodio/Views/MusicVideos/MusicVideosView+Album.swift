@@ -56,7 +56,7 @@ extension MusicVideosView {
                             }
                             .background(.thickMaterial)
                             .overlay(alignment: .bottom) {
-                                MusicVideosView.playButton(item: musicVideo)
+                                MusicVideosView.playButton(host: kodi.host, item: musicVideo)
                                     .padding(.vertical, 5)
                                     .frame(maxWidth: .infinity)
                                     .background(.ultraThinMaterial)

@@ -12,8 +12,8 @@ import SwiftlyKodiAPI
 struct QueueView: View {
     /// The AppState model
     @Environment(AppState.self) private var appState
-    /// The KodiPlayer model
-    @Environment(KodiPlayer.self) private var player
+    /// The KodiConnector model
+    @Environment(KodiConnector.self) private var kodi
     /// The status of loading the queue
     @State private var status: ViewStatus = .loading
     /// The list of items
@@ -37,35 +37,35 @@ struct QueueView: View {
         }
         .animation(.default, value: status)
         /// Update the current playlist
-        .task(id: player.playlistUpdate) {
+        .task(id: kodi.player.playlistUpdate) {
             getCurrentPlaylist()
         }
-        .onChange(of: player.properties.playlistID) {
+        .onChange(of: kodi.player.properties.playlistID) {
             getCurrentPlaylist()
         }
         /// Start or stop the animation
-        .task(id: player.properties.speed) {
-            rotate = player.properties.speed == 1 ? true : false
+        .task(id: kodi.player.properties.speed) {
+            rotate = kodi.player.properties.speed == 1 ? true : false
         }
     }
     /// The content of the View
     var content: some View {
         HStack(alignment: .center) {
             HStack {
-                switch player.properties.playlistID {
+                switch kodi.player.properties.playlistID {
                 case .audio:
                     PartsView.RotatingRecord(
-                        title: player.currentItem?.title,
-                        subtitle: player.currentItem?.subtitle ?? "",
-                        details: player.currentItem?.details ?? "",
+                        title: kodi.player.currentItem?.title,
+                        subtitle: kodi.player.currentItem?.subtitle ?? "",
+                        details: kodi.player.currentItem?.details ?? "",
                         rotate: rotate
                     )
                     itemsList
                 default:
                     PartsView.RotatingTape(
-                        title: player.currentItem?.title,
-                        subtitle: player.currentItem?.subtitle ?? "",
-                        details: player.currentItem?.details ?? "",
+                        title: kodi.player.currentItem?.title,
+                        subtitle: kodi.player.currentItem?.subtitle ?? "",
+                        details: kodi.player.currentItem?.details ?? "",
                         rotate: rotate
                     )
                     itemsList
@@ -75,7 +75,7 @@ struct QueueView: View {
     }
     /// The list of items
     @ViewBuilder var itemsList: some View {
-        if let items = player.currentPlaylist {
+        if let items = kodi.player.currentPlaylist {
             switch items.count {
             case 1:
                 if let item = items.first {
@@ -95,8 +95,8 @@ struct QueueView: View {
                         }
                     }
                     .padding()
-                    .task(id: player.currentItem?.id) {
-                        if let id = player.currentItem?.id {
+                    .task(id: kodi.player.currentItem?.id) {
+                        if let id = kodi.player.currentItem?.id {
                             withAnimation(.linear(duration: 1)) {
                                 self.scrollID = id
                             }
@@ -113,7 +113,7 @@ extension QueueView {
 
     /// Get the current playlist
     @MainActor func getCurrentPlaylist() {
-        if let queue = player.currentPlaylist, !queue.isEmpty {
+        if let queue = kodi.player.currentPlaylist, !queue.isEmpty {
             status = .ready
         } else {
             status = .empty

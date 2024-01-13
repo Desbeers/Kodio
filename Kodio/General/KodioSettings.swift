@@ -8,6 +8,7 @@
 import Foundation
 import SwiftlyKodiAPI
 import SwiftlyStructCache
+import OSLog
 
 /// Structure with all the Kodio Settings
 struct KodioSettings: Equatable, Codable {
@@ -42,8 +43,8 @@ extension KodioSettings {
     /// Load the Kodio settings
     /// - Returns: The ``KodioSettings``
     static func load() -> KodioSettings {
-        logger("Get Kodio Settings")
         if let hosts = try? Cache.get(key: "KodioSettings", as: KodioSettings.self) {
+            logger("Loaded Kodio Settings")
             return hosts
         }
         /// No settings found
@@ -66,6 +67,10 @@ extension KodioSettings {
     /// Set the Player Settings if 'togglePlayerSettings' is true
     /// - Parameter media: The kind of media for optional  ``KodioSettings/Crossfade-swift.enum``
     static func setPlayerSettings(media: Crossfade) {
+
+        // TODO: Don't use a shared instance
+        let host = KodiConnector.shared.host
+
         let settings = AppState.shared.settings
         if settings.togglePlayerSettings {
             Task {
@@ -88,9 +93,21 @@ extension KodioSettings {
                     crossfade = settings.crossfadePartyMode ? crossfade : 0
                 }
                 /// Apply the settings
-                await Settings.setSettingValue(setting: .musicPlayerReplayGainType, int: replayGain.rawValue)
-                await Settings.setSettingValue(setting: .musicplayerCrossfadeAlbumTracks, bool: crossfadeAlbumTracks)
-                await Settings.setSettingValue(setting: .musicplayerCrossfade, int: crossfade)
+                await Settings.setSettingValue(
+                    host: host,
+                    setting: .musicPlayerReplayGainType,
+                    int: replayGain.rawValue
+                )
+                await Settings.setSettingValue(
+                    host: host,
+                    setting: .musicplayerCrossfadeAlbumTracks,
+                    bool: crossfadeAlbumTracks
+                )
+                await Settings.setSettingValue(
+                    host: host,
+                    setting: .musicplayerCrossfade,
+                    int: crossfade
+                )
             }
         }
     }

@@ -29,13 +29,13 @@ struct PlaylistView: View {
                 HStack {
                     Button(action: {
                         KodioSettings.setPlayerSettings(media: .playlist)
-                        songs.play()
+                        songs.play(host: kodi.host)
                     }, label: {
                         Label("Play playlist", systemImage: "play.fill")
                     })
                     Button(action: {
                         KodioSettings.setPlayerSettings(media: .playlist)
-                        songs.play(shuffle: true)
+                        songs.play(host: kodi.host, shuffle: true)
                     }, label: {
                         Label("Shuffle playlist", systemImage: "shuffle")
                     })
@@ -62,7 +62,12 @@ struct PlaylistView: View {
         }
         /// Get the songs from the playlist
         .task(id: kodi.library.songs) {
-            let playlist = await Files.getDirectory(directory: playlist.file, media: .music).map(\.file)
+            let playlist = await Files.getDirectory(
+                host: kodi.host,
+                directory: playlist.file,
+                media: .music
+            )
+                .map(\.file)
             songs = kodi.library.songs
                 .filter { playlist.contains($0.file) }
             status = songs.isEmpty ? .empty : .ready

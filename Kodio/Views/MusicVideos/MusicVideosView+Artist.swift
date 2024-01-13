@@ -48,7 +48,7 @@ extension MusicVideosView {
                                     KodiArt.Poster(item: video)
                                         .frame(width: 200, height: 300)
                                         .overlay(alignment: .bottom) {
-                                            playButton(item: musicVideo)
+                                            playButton(host: kodi.host, item: musicVideo)
                                                 .padding(.vertical, 5)
                                                 .frame(maxWidth: .infinity)
                                                 .background(.ultraThinMaterial)

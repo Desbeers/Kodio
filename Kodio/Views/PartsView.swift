@@ -246,7 +246,7 @@ extension PartsView {
         @Environment(KodiConnector.self) private var kodi
         /// The body of the `View`
         var body: some View {
-            if kodi.host.isOnline {
+            if kodi.hostIsOnline(kodi.host) {
                 Button(
                     action: {
                         Task {
@@ -267,10 +267,10 @@ extension PartsView {
                         kodi.connect(host: host)
                     },
                     label: {
-                        Label("\(host.name)\(host.isOnline ? "" : " (offline)")", systemImage: "globe")
+                        Label("\(host.name)\(kodi.hostIsOnline(host) ? "" : " (offline)")", systemImage: "globe")
                     }
                 )
-                .disabled(!host.isOnline || kodi.host == host)
+                .disabled(!kodi.hostIsOnline(host) || kodi.host == host)
             }
         }
     }

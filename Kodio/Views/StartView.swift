@@ -41,7 +41,7 @@ struct StartView: View {
             case .ready:
                 PartsView.RotatingRecord(
                     icon: "music.quarternote.3",
-                    subtitle: kodi.host.bonjour?.name ?? "Kodio",
+                    subtitle: kodi.host.name,
                     details: kodi.status.message,
                     rotate: rotate
                 )

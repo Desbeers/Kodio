@@ -17,14 +17,14 @@ extension ButtonStyles {
 
     /// The Button View for a radio station
     struct RadioStation: View {
-        /// The KodiPlayer model
-        @Environment(KodiPlayer.self) private var player
+        /// The KodiConnector model
+        @Environment(KodiConnector.self) private var kodi
         /// The radio channe;
         let channel: Audio.Details.Stream
         /// The body of the `View`
         var body: some View {
             Button(action: {
-                channel.play()
+                channel.play(host: kodi.host)
             }, label: {
                 Label {
                     VStack(alignment: .leading) {
@@ -44,8 +44,8 @@ extension ButtonStyles {
         /// The SF symbol for the radio item
         var radioIcon: String {
             var icon = "antenna.radiowaves.left.and.right"
-            if player.currentItem?.file == channel.file {
-                if player.properties.speed == 0 {
+            if kodi.player.currentItem?.file == channel.file {
+                if kodi.player.properties.speed == 0 {
                     icon = "pause.fill"
                 } else {
                     icon = "play.fill"

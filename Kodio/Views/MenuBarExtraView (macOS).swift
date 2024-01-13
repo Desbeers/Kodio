@@ -12,10 +12,7 @@ import SwiftlyKodiAPI
 struct MenuBarExtraView: View {
     /// The KodiConnector model
     @Environment(KodiConnector.self) private var kodi
-
-    /// The KodiPlayer model
-    @Environment(KodiPlayer.self) private var player
-
+    /// The body of the `View`
     var body: some View {
         VStack {
             ToolbarView.NowPlaying()
@@ -35,6 +32,6 @@ struct MenuBarExtraView: View {
         }
         .labelStyle(.iconOnly)
         .padding(.bottom)
-        .environment(player)
+        .environment(kodi)
     }
 }

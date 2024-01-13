@@ -160,8 +160,8 @@ extension SettingsView {
                     .foregroundColor(appState.settings.togglePlayerSettings ? .red : .primary)
                     .font(.caption)
                     VStack(alignment: .leading) {
-                        KodiSettingView.setting(for: .musicplayerCrossfade)
-                        KodiSettingView.setting(for: .musicPlayerReplayGainType)
+                        KodiSettingView.SingleSetting(setting: .musicplayerCrossfade)
+                        KodiSettingView.SingleSetting(setting: .musicPlayerReplayGainType)
                     }
                     .disabled(appState.settings.togglePlayerSettings)
                 }

@@ -24,7 +24,7 @@ struct SidebarView: View {
             Label(
                 title: {
                     VStack(alignment: .leading) {
-                        Text(kodi.host.bonjour?.name ?? "Kodio")
+                        Text(kodi.host.name)
                         Text(kodi.status.message)
                             .font(.caption)
                             .opacity(0.5)
@@ -33,7 +33,7 @@ struct SidebarView: View {
                     Image(systemName: "globe")
                 }
             )
-            .listItemTint(kodi.host.isOnline ? .green : .red)
+            .listItemTint(kodi.hostIsOnline(kodi.host) ? .green : .red)
             .tag(Router.start)
             if kodi.status == .loadedLibrary {
                 sidebarItem(router: .favourites)

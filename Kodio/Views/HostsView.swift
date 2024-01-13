@@ -41,16 +41,26 @@ extension HostsView {
                     }
                 }
             }
-            if !kodi.bonjourHosts.filter({ $0.new }).isEmpty {
+            if let newHosts = kodi.getNewHosts() {
                 Section("New Kodi's on your network") {
-                    ForEach(kodi.bonjourHosts.filter { $0.new }, id: \.ip) { host in
+                    ForEach(newHosts) { host in
                         Label(title: {
                             Text(host.name)
                         }, icon: {
                             Image(systemName: "star.fill")
                                 .foregroundColor(.orange)
                         })
-                        .tag(HostItem(name: host.name, ip: host.ip, media: .audio, player: .local, status: .new))
+                        .tag(
+                            HostItem(
+                                name: host.name,
+                                ip: host.ip,
+                                port: 8080,
+                                tcpPort: host.tcpPort,
+                                media: .audio,
+                                player: .local,
+                                status: .new
+                            )
+                        )
                     }
                 }
             }
@@ -71,14 +81,14 @@ extension HostsView {
         Label(title: {
             VStack(alignment: .leading) {
                 Text(host.name)
-                Text(host.isOnline ? "Online" : "Offline")
+                Text(kodi.hostIsOnline(host) ? "Online" : "Offline")
                     .font(.caption)
                     .opacity(0.6)
                     .padding(.bottom, 2)
             }
         }, icon: {
             Image(systemName: "globe")
-                .foregroundColor(host.isOnline ? host.isSelected ? .green : .accentColor : .red)
+                .foregroundColor(kodi.hostIsOnline(host) ? kodi.hostIsSelected(host) ? .green : .accentColor : .red)
         })
         .tag(host)
     }

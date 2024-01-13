@@ -31,6 +31,9 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
     /// The MusicBridge class
     let musicBridge = MusicBridge()
 
+    // TODO: Don't use a shared instance
+    let host = KodiConnector.shared.host
+
     // MARK: Get Kodi and Music songs
 
     /// Get all songs from Kodi
@@ -143,7 +146,7 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
                     kodiSong.playcount = song.sync.playcount
                     kodiSong.lastPlayed = song.sync.lastPlayed
                     kodiSong.userRating = song.sync.rating
-                    await AudioLibrary.setSongDetails(song: kodiSong)
+                    await AudioLibrary.setSongDetails(host: host, song: kodiSong)
                     musicMatchItems[index].kodi = musicMatchItems[index].sync
                 }
             }

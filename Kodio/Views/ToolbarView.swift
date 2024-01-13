@@ -101,12 +101,12 @@ extension ToolbarView {
 
     /// The 'Now Playing' View
     struct NowPlaying: View {
-        /// The KodiPlayer model
-        @Environment(KodiPlayer.self) private var player
+        /// The KodiConnector model
+        @Environment(KodiConnector.self) private var kodi
         /// The body of the `View`
         var body: some View {
             HStack(spacing: 0) {
-                if let nowPlaying = player.currentItem {
+                if let nowPlaying = kodi.player.currentItem {
                     KodiArt.Poster(item: nowPlaying)
                         .aspectRatio(contentMode: .fit)
                         .frame(maxHeight: .infinity)
@@ -118,9 +118,9 @@ extension ToolbarView {
                 }
                 ZStack(alignment: .leading) {
                     VStack(alignment: .leading) {
-                        Text(player.currentItem?.title ?? "Kodio")
+                        Text(kodi.player.currentItem?.title ?? "Kodio")
                             .font(.headline)
-                        Text(player.currentItem?.subtitle ?? "Nothing is playing")
+                        Text(kodi.player.currentItem?.subtitle ?? "Nothing is playing")
                             .font(.subheadline)
                     }
                     .padding(.leading, 8)
@@ -132,7 +132,7 @@ extension ToolbarView {
             .border(Color.secondary.opacity(0.15), width: 1)
 #if os(visionOS)
             .ornament(attachmentAnchor: .scene(.trailing)) {
-                if let nowPlaying = player.currentItem {
+                if let nowPlaying = kodi.player.currentItem {
                     KodiArt.Poster(item: nowPlaying)
                         .aspectRatio(contentMode: .fit)
                         .frame(maxHeight: 100)
@@ -151,8 +151,8 @@ extension ToolbarView {
 
     /// SwiftUI `View` for the progess of the current item in the player
     struct NowPlayingProgressView: View {
-        /// The `KodiPlayer` model
-        @Environment(KodiPlayer.self) private var player
+        /// The KodiConnector model
+        @Environment(KodiConnector.self) private var kodi
         /// The current seconds
         @State private var currentSeconds: Double = 0
         /// The total seconds
@@ -161,19 +161,21 @@ extension ToolbarView {
         @State private var startTime: Date = .now
         /// The body of the `View`
         var body: some View {
-            if player.currentItem != nil && player.currentItem?.media != .stream && player.properties.speed != 0 {
+            if kodi.player.currentItem != nil &&
+                kodi.player.currentItem?.media != .stream &&
+                kodi.player.properties.speed != 0 {
                 TimelineView(.periodic(from: .now, by: 1.0)) { timeline in
                     ProgressTimelineView(percentage: percentageValue(for: timeline.date))
                 }
-                .task(id: player.properties.time) {
+                .task(id: kodi.player.properties.time) {
                     setTime()
                 }
             }
         }
         /// Set the time
         private func setTime() {
-            currentSeconds = Double(player.properties.time.total)
-            totalSeconds = Double(player.properties.timeTotal.total)
+            currentSeconds = Double(kodi.player.properties.time.total)
+            totalSeconds = Double(kodi.player.properties.timeTotal.total)
             startTime = Date.now
         }
         /// Calculate percentage played
@@ -216,17 +218,17 @@ extension ToolbarView {
     ///
     /// - Note: This will set 'Party Mode' for audio, I don't see a use of videos for this
     struct SetPartyMode: View {
-        /// The `KodiPlayer` model
-        @Environment(KodiPlayer.self) private var player
+        /// The KodiConnector model
+        @Environment(KodiConnector.self) private var kodi
         /// The body of the `View`
         var body: some View {
             Button(action: {
                 Task {
-                    if player.properties.partymode {
-                        Player.setPartyMode(playerID: .audio)
+                    if kodi.player.properties.partymode {
+                        Player.setPartyMode(host: kodi.host, playerID: .audio)
                     } else {
                         KodioSettings.setPlayerSettings(media: .partymode)
-                        Player.open(partyMode: .music)
+                        Player.open(host: kodi.host, partyMode: .music)
                     }
                 }
             }, label: {
@@ -236,7 +238,7 @@ extension ToolbarView {
                     Image(systemName: "wand.and.stars.inverse")
                 })
             })
-            .mediaButtonStyle(background: player.properties.partymode, color: .red, help: "Music party mode")
+            .mediaButtonStyle(background: kodi.player.properties.partymode, color: .red, help: "Music party mode")
         }
     }
 }

@@ -10,6 +10,8 @@ import SwiftlyKodiAPI
 
 /// SwiftUI `View` for the header
 struct HeaderView: View {
+    /// The KodiConnector model
+    @Environment(KodiConnector.self) private var kodi
     /// The Browser model
     @Environment(BrowserModel.self) private var browser
     /// The body of the `View`
@@ -38,6 +40,6 @@ struct HeaderView: View {
             media = selectedAlbum.compilation ? .compilation : .album
         }
         KodioSettings.setPlayerSettings(media: media)
-        browser.items.songs.play(shuffle: shuffle)
+        browser.items.songs.play(host: kodi.host, shuffle: shuffle)
     }
 }

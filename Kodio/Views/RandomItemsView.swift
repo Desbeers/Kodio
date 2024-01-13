@@ -124,7 +124,7 @@ private struct AlbumOptions: ViewModifier {
             .filter { $0.albumID == album.albumID }
             .sorted(using: KeyPathComparator(\.track))
         KodioSettings.setPlayerSettings(media: .album)
-        songs.play(shuffle: shuffle)
+        songs.play(host: kodi.host, shuffle: shuffle)
     }
 }
 
