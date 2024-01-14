@@ -28,13 +28,13 @@ struct PlaylistView: View {
                     .font(.title)
                 HStack {
                     Button(action: {
-                        KodioSettings.setPlayerSettings(media: .playlist)
+                        KodioSettings.setPlayerSettings(host: kodi.host, media: .playlist)
                         songs.play(host: kodi.host)
                     }, label: {
                         Label("Play playlist", systemImage: "play.fill")
                     })
                     Button(action: {
-                        KodioSettings.setPlayerSettings(media: .playlist)
+                        KodioSettings.setPlayerSettings(host: kodi.host, media: .playlist)
                         songs.play(host: kodi.host, shuffle: true)
                     }, label: {
                         Label("Shuffle playlist", systemImage: "shuffle")

@@ -28,7 +28,7 @@ struct BrowserView: View {
                 browser.selection = .init()
                 browser.router = appState.selection
                 browser.query = appState.query
-                await browser.filterLibrary()
+                await browser.filterLibrary(kodi: kodi)
                 await browser.filterBrowser()
                 status = browser.items.songs.isEmpty ? .empty : .ready
             }
@@ -43,7 +43,7 @@ struct BrowserView: View {
         /// Filter the browser when songs are changed
         .onChange(of: kodi.library.songs) {
             Task {
-                await browser.filterLibrary()
+                await browser.filterLibrary(kodi: kodi)
                 await browser.filterBrowser()
             }
         }

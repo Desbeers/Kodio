@@ -66,10 +66,7 @@ extension KodioSettings {
 
     /// Set the Player Settings if 'togglePlayerSettings' is true
     /// - Parameter media: The kind of media for optional  ``KodioSettings/Crossfade-swift.enum``
-    static func setPlayerSettings(media: Crossfade) {
-
-        // TODO: Don't use a shared instance
-        let host = KodiConnector.shared.host
+    static func setPlayerSettings(host: HostItem, media: Crossfade) {
 
         let settings = AppState.shared.settings
         if settings.togglePlayerSettings {

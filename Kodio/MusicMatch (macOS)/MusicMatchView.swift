@@ -16,7 +16,7 @@ struct MusicMatchView: View {
     /// The KodiConnector model
     @Environment(KodiConnector.self) private var kodi
     /// The MusicMatch model
-    @StateObject var musicMatch = MusicMatchModel()
+    @StateObject var musicMatch: MusicMatchModel
     /// The items in the table
     @State private var items: [MusicMatchModel.Item] = []
     /// Confirmation dialog
@@ -25,6 +25,10 @@ struct MusicMatchView: View {
     @State private var sortOrder: [KeyPathComparator<MusicMatchModel.Item>] = [
         .init(\.kodi.lastPlayed, order: SortOrder.reverse)
     ]
+
+    init(kodi: KodiConnector) {
+        self._musicMatch = StateObject(wrappedValue: MusicMatchModel(kodi: kodi))
+    }
 
     // MARK: Body of the View
 
@@ -178,7 +182,7 @@ struct MusicMatchView: View {
             actions: {
                 Button("Reset matches", role: .destructive) {
                     do {
-                        try Cache.delete(key: "MusicMatchItems", folder: KodiConnector.shared.host.ip)
+                        try Cache.delete(key: "MusicMatchItems", folder: kodi.host.ip)
                     } catch {}
                     matchSongs()
                 }
@@ -211,7 +215,7 @@ struct MusicMatchView: View {
             items = musicMatch.musicMatchItems
             musicMatch.status = .musicMatched
             kodi.scanningLibrary = false
-            await KodiConnector.shared.getAudioLibraryUpdates()
+            await kodi.getAudioLibraryUpdates()
         }
     }
 }

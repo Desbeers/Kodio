@@ -14,6 +14,11 @@ import iTunesLibrary
 
 /// The model for ``MusicMatchView``
 final class MusicMatchModel: ObservableObject, @unchecked Sendable {
+
+    init(kodi: KodiConnector) {
+        self.kodi = kodi
+    }
+
     /// The status of matching songs between Kodi and Music
     @Published var status: Status = .none
     /// Matching progress values
@@ -30,9 +35,8 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
     var cache: [MusicMatchModel.Item]?
     /// The MusicBridge class
     let musicBridge = MusicBridge()
-
-    // TODO: Don't use a shared instance
-    let host = KodiConnector.shared.host
+    /// The current host
+    let kodi: KodiConnector
 
     // MARK: Get Kodi and Music songs
 
@@ -41,7 +45,7 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
         logger("Loading Kodi Songs...")
         var items: [MusicMatchModel.Item] = []
         // for song in KodiConnector.shared.library.songs where song.albumID == 2 {
-        for song in KodiConnector.shared.library.songs {
+        for song in kodi.library.songs {
             /// Make a new item
             var item = MusicMatchModel.Item(
                 id: song.songID,
@@ -89,7 +93,7 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
         if let cache = try? Cache.get(
             key: "MusicMatchItems",
             as: [MusicMatchModel.Item].self,
-            folder: KodiConnector.shared.host.ip
+            folder: kodi.host.ip
         ) {
             self.cache = cache
         }
@@ -142,11 +146,11 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
         if let index = musicMatchItems.firstIndex(where: { $0.id == song.id }) {
             if song.kodi != song.sync {
                 /// Update Kodi Item
-                if var kodiSong = KodiConnector.shared.library.songs.first(where: { $0.songID == song.id }) {
+                if var kodiSong = kodi.library.songs.first(where: { $0.songID == song.id }) {
                     kodiSong.playcount = song.sync.playcount
                     kodiSong.lastPlayed = song.sync.lastPlayed
                     kodiSong.userRating = song.sync.rating
-                    await AudioLibrary.setSongDetails(host: host, song: kodiSong)
+                    await AudioLibrary.setSongDetails(host: kodi.host, song: kodiSong)
                     musicMatchItems[index].kodi = musicMatchItems[index].sync
                 }
             }
@@ -238,7 +242,7 @@ final class MusicMatchModel: ObservableObject, @unchecked Sendable {
     /// Store the Match struct in cache
     func setMusicMatchCache() async {
         do {
-            try Cache.set(key: "MusicMatchItems", object: musicMatchItems, folder: KodiConnector.shared.host.ip)
+            try Cache.set(key: "MusicMatchItems", object: musicMatchItems, folder: kodi.host.ip)
         } catch {
             print("Saving Music Match Items failed with error: \(error)")
         }

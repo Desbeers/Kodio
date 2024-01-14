@@ -13,7 +13,7 @@ import SwiftlyKodiAPI
     /// The AppState model
     @State private var appState: AppState = .shared
     /// The KodiConnector model
-    @State private var kodi: KodiConnector = .shared
+    @State private var kodi = KodiConnector()
     /// The Browser model
     @State private var browser = BrowserModel()
 

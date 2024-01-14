@@ -227,7 +227,7 @@ extension ToolbarView {
                     if kodi.player.properties.partymode {
                         Player.setPartyMode(host: kodi.host, playerID: .audio)
                     } else {
-                        KodioSettings.setPlayerSettings(media: .partymode)
+                        KodioSettings.setPlayerSettings(host: kodi.host, media: .partymode)
                         Player.open(host: kodi.host, partyMode: .music)
                     }
                 }

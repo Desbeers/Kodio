@@ -123,7 +123,7 @@ private struct AlbumOptions: ViewModifier {
         let songs = kodi.library.songs
             .filter { $0.albumID == album.albumID }
             .sorted(using: KeyPathComparator(\.track))
-        KodioSettings.setPlayerSettings(media: .album)
+        KodioSettings.setPlayerSettings(host: kodi.host, media: .album)
         songs.play(host: kodi.host, shuffle: shuffle)
     }
 }

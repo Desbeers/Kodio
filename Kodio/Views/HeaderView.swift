@@ -39,7 +39,7 @@ struct HeaderView: View {
         if let selectedAlbum = browser.selection.album {
             media = selectedAlbum.compilation ? .compilation : .album
         }
-        KodioSettings.setPlayerSettings(media: media)
+        KodioSettings.setPlayerSettings(host: kodi.host, media: media)
         browser.items.songs.play(host: kodi.host, shuffle: shuffle)
     }
 }

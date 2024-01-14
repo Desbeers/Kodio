@@ -44,7 +44,7 @@ struct MainView: View {
                             .id(appState.query)
 #if os(macOS)
                     case .musicMatch:
-                        MusicMatchView()
+                        MusicMatchView(kodi: kodi)
 #endif
                     default:
                         BrowserView()
