@@ -21,19 +21,17 @@ struct StartView: View {
     /// The body of the `View`
     var body: some View {
         VStack {
-            Group {
+            VStack {
                 if kodi.configuredHosts.isEmpty {
                     noHostConfigured
                 } else {
-                    if !kodi.host.ip.isEmpty {
-                        hostActions
-                            .overlay(alignment: .leading) {
-                                loadingSpinner
-                                /// 'tint' does not work on macOS here
-                                    .colorInvert()
-                                    .brightness(1)
-                            }
-                    }
+                    hostActions
+                        .overlay(alignment: .leading) {
+                            loadingSpinner
+                            /// 'tint' does not work on macOS here
+                                .colorInvert()
+                                .brightness(1)
+                        }
                 }
             }
             .modifier(PartsView.ListHeader())
@@ -68,7 +66,7 @@ struct StartView: View {
     /// Spinner when loading
     @ViewBuilder var loadingSpinner: some View {
         switch kodi.status {
-        case .loadingLibrary, .updatingLibrary, .connectedToWebSocket:
+        case .loadingLibrary, .updatingLibrary:
             ProgressView()
         default:
             EmptyView()
