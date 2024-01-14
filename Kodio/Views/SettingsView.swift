@@ -23,17 +23,17 @@ struct SettingsView: View {
             TabView(selection: $selection) {
                 HostsView()
                     .tabItem {
-                        Label("Kodi Hosts", systemImage: "gear")
+                        Tabs.kodiHosts.label
                     }
                     .tag(Tabs.kodiHosts)
                 Sidebar(settings: $appState.settings)
                     .tabItem {
-                        Label("Sidebar", systemImage: "sidebar.leading")
+                        Tabs.sidebar.label
                     }
                     .tag(Tabs.sidebar)
                 Playback(settings: $appState.settings)
                     .tabItem {
-                        Label("Playback", systemImage: "play.fill")
+                        Tabs.playback.label
                     }
                     .tag(Tabs.playback)
             }
