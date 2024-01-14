@@ -11,11 +11,14 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the browser
 struct BrowserView: View {
     /// The AppState model
-    @Environment(AppState.self) private var appState
+    @Environment(AppState.self)
+    private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self) private var kodi
+    @Environment(KodiConnector.self)
+    private var kodi
     /// The Browser model
-    @Environment(BrowserModel.self) private var browser
+    @Environment(BrowserModel.self)
+    private var browser
     /// The loading status of the View
     @State private var status: ViewStatus = .loading
     /// The body of the `View`
@@ -28,7 +31,7 @@ struct BrowserView: View {
                 browser.selection = .init()
                 browser.router = appState.selection
                 browser.query = appState.query
-                await browser.filterLibrary(kodi: kodi)
+                await browser.filterLibrary(kodi: kodi, settings: appState.settings)
                 await browser.filterBrowser()
                 status = browser.items.songs.isEmpty ? .empty : .ready
             }
@@ -43,7 +46,7 @@ struct BrowserView: View {
         /// Filter the browser when songs are changed
         .onChange(of: kodi.library.songs) {
             Task {
-                await browser.filterLibrary(kodi: kodi)
+                await browser.filterLibrary(kodi: kodi, settings: appState.settings)
                 await browser.filterBrowser()
             }
         }

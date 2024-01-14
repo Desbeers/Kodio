@@ -44,7 +44,7 @@ extension KodioSettings {
     /// - Returns: The ``KodioSettings``
     static func load() -> KodioSettings {
         if let hosts = try? Cache.get(key: "KodioSettings", as: KodioSettings.self) {
-            logger("Loaded Kodio Settings")
+            Logger.client.log("Loaded Kodio Settings")
             return hosts
         }
         /// No settings found
@@ -57,57 +57,12 @@ extension KodioSettings {
         do {
             try Cache.set(key: "KodioSettings", object: settings)
         } catch {
-            logger("Error saving Kodio settings")
+            Logger.client.error("Error saving Kodio settings")
         }
     }
 }
 
 extension KodioSettings {
-
-    /// Set the Player Settings if 'togglePlayerSettings' is true
-    /// - Parameter media: The kind of media for optional  ``KodioSettings/Crossfade-swift.enum``
-    static func setPlayerSettings(host: HostItem, media: Crossfade) {
-
-        let settings = AppState.shared.settings
-        if settings.togglePlayerSettings {
-            Task {
-                /// Set defaults
-                var replayGain: ReplayGain = .track
-                var crossfade: Int = settings.crossfade
-                var crossfadeAlbumTracks: Bool = true
-                /// Alter defaults if needed
-                switch media {
-                case .album:
-                    replayGain = .album
-                    /// Never crossfade a full album
-                    crossfadeAlbumTracks = false
-                    crossfade = 0
-                case .playlist:
-                    crossfade = settings.crossfadePlaylists ? crossfade : 0
-                case .compilation:
-                    crossfade = settings.crossfadeCompilations ? crossfade : 0
-                case .partymode:
-                    crossfade = settings.crossfadePartyMode ? crossfade : 0
-                }
-                /// Apply the settings
-                await Settings.setSettingValue(
-                    host: host,
-                    setting: .musicPlayerReplayGainType,
-                    int: replayGain.rawValue
-                )
-                await Settings.setSettingValue(
-                    host: host,
-                    setting: .musicplayerCrossfadeAlbumTracks,
-                    bool: crossfadeAlbumTracks
-                )
-                await Settings.setSettingValue(
-                    host: host,
-                    setting: .musicplayerCrossfade,
-                    int: crossfade
-                )
-            }
-        }
-    }
 
     /// The modes of ReplayGain; track based or album based
     enum ReplayGain: Int {

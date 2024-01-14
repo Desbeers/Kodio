@@ -11,9 +11,11 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for a playlist
 struct PlaylistView: View {
     /// The AppState model
-    @Environment(AppState.self) private var appState
+    @Environment(AppState.self)
+    private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self) private var kodi
+    @Environment(KodiConnector.self)
+    private var kodi
     /// The list of songs
     @State private var songs: [Audio.Details.Song] = []
     /// The playlist file
@@ -28,13 +30,13 @@ struct PlaylistView: View {
                     .font(.title)
                 HStack {
                     Button(action: {
-                        KodioSettings.setPlayerSettings(host: kodi.host, media: .playlist)
+                        appState.setPlayerSettings(host: kodi.host, media: .playlist)
                         songs.play(host: kodi.host)
                     }, label: {
                         Label("Play playlist", systemImage: "play.fill")
                     })
                     Button(action: {
-                        KodioSettings.setPlayerSettings(host: kodi.host, media: .playlist)
+                        appState.setPlayerSettings(host: kodi.host, media: .playlist)
                         songs.play(host: kodi.host, shuffle: true)
                     }, label: {
                         Label("Shuffle playlist", systemImage: "shuffle")

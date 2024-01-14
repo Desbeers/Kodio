@@ -9,9 +9,10 @@ import SwiftUI
 import SwiftlyKodiAPI
 
 /// SwiftUI `Scene` for the application
-@main struct KodioApp: App {
+@main
+struct KodioApp: App {
     /// The AppState model
-    @State private var appState: AppState = .shared
+    @State private var appState = AppState()
     /// The KodiConnector model
     @State private var kodi = KodiConnector()
     /// The Browser model
@@ -133,7 +134,6 @@ import SwiftlyKodiAPI
             MainView()
                 .environment(appState)
                 .environment(kodi)
-                .environment(player)
                 .environment(browser)
                 .task {
                     if kodi.status == .none {

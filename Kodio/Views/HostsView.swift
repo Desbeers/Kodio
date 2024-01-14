@@ -11,7 +11,8 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for add, edit, delete or select Kodi hosts
 struct HostsView: View {
     /// The KodiConnector model
-    @Environment(KodiConnector.self) private var kodi
+    @Environment(KodiConnector.self)
+    private var kodi
     /// The selected host
     @State private var selection: HostItem?
     /// The body of the `View`

@@ -15,7 +15,8 @@ extension MusicVideosView {
         /// The album
         let album: Video.Details.MusicVideoAlbum
         /// The KodiConnector model
-        @Environment(KodiConnector.self) private var kodi
+        @Environment(KodiConnector.self)
+        private var kodi
         /// The current `MusicVideosRouter`
         @Binding var router: Router
         /// Define the grid layout

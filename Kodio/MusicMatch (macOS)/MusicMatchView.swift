@@ -14,7 +14,8 @@ import SwiftlyStructCache
 /// SwiftUI `View` for syncing ratings and playcounts between Kodi and Music
 struct MusicMatchView: View {
     /// The KodiConnector model
-    @Environment(KodiConnector.self) private var kodi
+    @Environment(KodiConnector.self)
+    private var kodi
     /// The MusicMatch model
     @StateObject var musicMatch: MusicMatchModel
     /// The items in the table

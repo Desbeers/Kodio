@@ -88,7 +88,8 @@ extension MusicBridge {
 }
 
 /// The bridge to talk to Music via AppleScript
-@objc(NSObject) protocol MusicBridgeProtocol {
+@objc(NSObject)
+protocol MusicBridgeProtocol {
     /// Set the values of a track
     func setTrackValues(_ theTrack: [String])
     /// Set the rating of a track

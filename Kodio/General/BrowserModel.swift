@@ -9,8 +9,8 @@ import Foundation
 import SwiftlyKodiAPI
 
 /// The model for ``BrowserView``
-@Observable class BrowserModel {
-
+@Observable
+class BrowserModel {
     /// The selection of optional genre, artist or album in the ``BrowserView``
     var selection = Selection()
     /// Details for the 'highest selected item'
@@ -63,7 +63,7 @@ extension BrowserModel {
     /// Filter the library by ``Router`` selection
     ///
     /// The browser library is based on songs; they are filtered first and then the rest is added
-    func filterLibrary(kodi: KodiConnector) async {
+    func filterLibrary(kodi: KodiConnector, settings: KodioSettings) async {
 
         /// Calculate past date
         let date = Calendar.current.date(byAdding: .month, value: -6, to: Date()) ?? Date()
@@ -111,7 +111,7 @@ extension BrowserModel {
         case .favourites:
             library.songs = kodi.library.songs
                 .filter {
-                    $0.userRating >= AppState.shared.settings.userRating
+                    $0.userRating >= settings.userRating
                 }
                 .sorted {
                     $0.userRating > $1.userRating

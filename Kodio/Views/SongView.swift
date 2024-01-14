@@ -11,7 +11,8 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for a single song
 struct SongView: View {
     /// The KodiConnector model
-    @Environment(KodiConnector.self) private var kodi
+    @Environment(KodiConnector.self)
+    private var kodi
     /// The song to view
     let song: Audio.Details.Song
     /// The optional selected album
@@ -79,8 +80,7 @@ struct SongView: View {
 extension SongView {
 
     /// The actions for the song
-    @ViewBuilder
-    var actions: some View {
+    @ViewBuilder var actions: some View {
         Button(action: {
             song.play(host: kodi.host)
         }, label: {

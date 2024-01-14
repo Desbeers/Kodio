@@ -11,9 +11,11 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the queue
 struct QueueView: View {
     /// The AppState model
-    @Environment(AppState.self) private var appState
+    @Environment(AppState.self)
+    private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self) private var kodi
+    @Environment(KodiConnector.self)
+    private var kodi
     /// The status of loading the queue
     @State private var status: ViewStatus = .loading
     /// The list of items
@@ -112,7 +114,8 @@ struct QueueView: View {
 extension QueueView {
 
     /// Get the current playlist
-    @MainActor func getCurrentPlaylist() {
+    @MainActor
+    func getCurrentPlaylist() {
         if let queue = kodi.player.currentPlaylist, !queue.isEmpty {
             status = .ready
         } else {
@@ -128,7 +131,8 @@ extension QueueView {
     ///   - item: The `KodiItem`
     ///   - single: Bool if there is only one item in the queue
     /// - Returns: A View
-    @ViewBuilder func queueItem(item: any KodiItem, single: Bool = false) -> some View {
+    @ViewBuilder
+    func queueItem(item: any KodiItem, single: Bool = false) -> some View {
         switch item {
         case let song as Audio.Details.Song:
             SongView(song: song, album: nil)

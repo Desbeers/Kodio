@@ -11,9 +11,11 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the details
 struct DetailsView: View {
     /// The AppState model
-    @Environment(AppState.self) private var appState
+    @Environment(AppState.self)
+    private var appState
     /// The Browser model
-    @Environment(BrowserModel.self) private var browser
+    @Environment(BrowserModel.self)
+    private var browser
     /// Rotate the record
     @State private var rotate: Bool = false
     /// The body of the `View`

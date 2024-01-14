@@ -12,7 +12,8 @@ struct HelpView: View {
     /// The Help model
     @StateObject var help: HelpModel = .shared
     /// The presentation mode
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss)
+    var dismiss
     /// The body of the `View`
     var body: some View {
         NavigationSplitView(
@@ -80,7 +81,8 @@ extension HelpView {
         /// The page to show
         var page: HelpModel.Page = .kodioHelp
         /// Open Window (macOS)
-        @Environment(\.openWindow) var openWindow
+        @Environment(\.openWindow)
+        var openWindow
         /// Open Sheet (other)
         @State private var showSheet: Bool = false
         var body: some View {

@@ -13,7 +13,8 @@ struct RandomItemsView: View {
     /// The randon albums
     @State private var albums: [Audio.Details.Album] = []
     /// The KodiConnector model
-    @Environment(KodiConnector.self) private var kodi
+    @Environment(KodiConnector.self)
+    private var kodi
     /// The body of the `View`
     var body: some View {
         VStack {
@@ -58,10 +59,19 @@ struct RandomItemsView: View {
 }
 
 private struct AlbumOptions: ViewModifier {
+    /// The album to show
     let album: Audio.Details.Album
-    @Environment(KodiConnector.self) private var kodi
+    /// The AppState model
+    @Environment(AppState.self)
+    private var appState
+    /// The KodiConnector model
+    @Environment(KodiConnector.self)
+    private var kodi
+    /// Show play options or not
     @State private var showOptions: Bool = false
+    /// The opacity of the `View`
     @State private var opacity: Double = 0
+    /// The body of the `View`
     func body(content: Content) -> some View {
         Button(
             action: {
@@ -123,7 +133,7 @@ private struct AlbumOptions: ViewModifier {
         let songs = kodi.library.songs
             .filter { $0.albumID == album.albumID }
             .sorted(using: KeyPathComparator(\.track))
-        KodioSettings.setPlayerSettings(host: kodi.host, media: .album)
+        appState.setPlayerSettings(host: kodi.host, media: .album)
         songs.play(host: kodi.host, shuffle: shuffle)
     }
 }
