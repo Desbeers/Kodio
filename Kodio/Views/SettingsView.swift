@@ -13,6 +13,9 @@ struct SettingsView: View {
     /// The AppState model
     @Environment(AppState.self)
     private var appState
+    /// The KodiConnector model
+    @Environment(KodiConnector.self)
+    private var kodi
     /// The selected tab
     @State private var selection: Tabs = .kodiHosts
     /// The body of the `View`
@@ -21,7 +24,7 @@ struct SettingsView: View {
         VStack {
 #if os(macOS)
             TabView(selection: $selection) {
-                HostsView()
+                kodi.hostsView(media: .audio, player: .local)
                     .tabItem {
                         Tabs.kodiHosts.label
                     }
@@ -64,7 +67,7 @@ struct SettingsView: View {
                 VStack {
                     switch selection {
                     case .kodiHosts:
-                        HostsView()
+                        kodi.hostsView(media: .audio, player: .local)
                     case .sidebar:
                         Sidebar(settings: $appState.settings)
                     case .playback:

@@ -36,7 +36,6 @@
 		D7A84D062A91523B004BA2DA /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD82A91523B004BA2DA /* ToolbarView.swift */; };
 		D7A84D072A91523B004BA2DA /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CD92A91523B004BA2DA /* SidebarView.swift */; };
 		D7A84D082A91523B004BA2DA /* ArtistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDA2A91523B004BA2DA /* ArtistsView.swift */; };
-		D7A84D092A91523B004BA2DA /* HostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDB2A91523B004BA2DA /* HostsView.swift */; };
 		D7A84D0A2A91523B004BA2DA /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDC2A91523B004BA2DA /* HeaderView.swift */; };
 		D7A84D0B2A91523B004BA2DA /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDD2A91523B004BA2DA /* BrowserView.swift */; };
 		D7A84D0C2A91523B004BA2DA /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A84CDE2A91523B004BA2DA /* HelpView.swift */; };
@@ -92,7 +91,6 @@
 		D7A84CD82A91523B004BA2DA /* ToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		D7A84CD92A91523B004BA2DA /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		D7A84CDA2A91523B004BA2DA /* ArtistsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistsView.swift; sourceTree = "<group>"; };
-		D7A84CDB2A91523B004BA2DA /* HostsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostsView.swift; sourceTree = "<group>"; };
 		D7A84CDC2A91523B004BA2DA /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D7A84CDD2A91523B004BA2DA /* BrowserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
 		D7A84CDE2A91523B004BA2DA /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 				D7B815972B29CE4D003BBDD8 /* RandomItemsView.swift */,
 				D7A84CD12A91523B004BA2DA /* SettingsView.swift */,
 				D7A84CD72A91523B004BA2DA /* MarkdownView.swift */,
-				D7A84CDB2A91523B004BA2DA /* HostsView.swift */,
 				D7A84CDC2A91523B004BA2DA /* HeaderView.swift */,
 				D7A84CDE2A91523B004BA2DA /* HelpView.swift */,
 				D7A84CE02A91523B004BA2DA /* QueueView.swift */,
@@ -401,7 +398,6 @@
 				D7A84CF22A91523B004BA2DA /* HelpModel.swift in Sources */,
 				D7A84CF12A91523B004BA2DA /* AppDelegate.swift in Sources */,
 				D7A84D112A91523B004BA2DA /* SongView.swift in Sources */,
-				D7A84D092A91523B004BA2DA /* HostsView.swift in Sources */,
 				D7A84CFD2A91523B004BA2DA /* PlaylistView.swift in Sources */,
 				D7A84CEC2A91523B004BA2DA /* RadioStations.swift in Sources */,
 				D7A84CFA2A91523B004BA2DA /* MusicMatchView.swift in Sources */,
@@ -564,13 +560,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
+				MARKETING_VERSION = 5.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "2,7";
 			};
@@ -610,13 +607,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.Kodio;
+				MARKETING_VERSION = 5.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.desbeers.kodio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "2,7";
 			};
