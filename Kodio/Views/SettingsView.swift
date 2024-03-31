@@ -11,11 +11,9 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the settings
 struct SettingsView: View {
     /// The AppState model
-    @Environment(AppState.self)
-    private var appState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// The selected tab
     @State private var selection: Tabs = .kodiHosts
     /// The body of the `View`
@@ -125,16 +123,13 @@ extension SettingsView {
     /// The Playback settings
     struct Playback: View {
         /// The AppState model
-        @Environment(AppState.self)
-        private var appState
+        @Environment(AppState.self) private var appState
         /// The KodiConnector model
-        @Environment(KodiConnector.self)
-        private var kodi
+        @Environment(KodiConnector.self) private var kodi
         /// All the Kodio settings
         @Binding var settings: KodioSettings
         /// Open Window
-        @Environment(\.openWindow)
-        var openWindow
+        @Environment(\.openWindow) var openWindow
         /// The body of the `View`
         var body: some View {
             ScrollView {
@@ -187,7 +182,6 @@ extension SettingsView {
                 Text("When enabled, Kodio will adjust the *Volume adjustment*  and *Crossfade* settings on your Kodi depending on your selection to play.")
                     .font(.caption)
                 HelpView.HelpButton(page: .playerSettings)
-                    .playButtonStyle()
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 if settings.togglePlayerSettings {
                     Toggle(isOn: $settings.crossfadePlaylists) {
@@ -223,8 +217,7 @@ extension SettingsView {
     /// The ``SidebarView`` settings
     struct Sidebar: View {
         /// The AppState model
-        @Environment(AppState.self)
-        private var appState
+        @Environment(AppState.self) private var appState
         /// All the Kodio settings
         @Binding var settings: KodioSettings
         /// The body of the `View`

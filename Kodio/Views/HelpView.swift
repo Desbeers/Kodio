@@ -10,12 +10,12 @@ import SwiftUI
 /// SwiftUI `View` for the help
 struct HelpView: View {
     /// The Help model
-    @StateObject var help: HelpModel = .shared
+    @Environment(HelpModel.self) private var help
     /// The presentation mode
-    @Environment(\.dismiss)
-    var dismiss
+    @Environment(\.dismiss) var dismiss
     /// The body of the `View`
     var body: some View {
+        @Bindable var help = help
         NavigationSplitView(
             sidebar: {
                 List(selection: $help.page) {
@@ -80,15 +80,16 @@ extension HelpView {
     struct HelpButton: View {
         /// The page to show
         var page: HelpModel.Page = .kodioHelp
+        /// The Help model
+        @Environment(HelpModel.self) private var help
         /// Open Window (macOS)
-        @Environment(\.openWindow)
-        var openWindow
+        @Environment(\.openWindow) var openWindow
         /// Open Sheet (other)
         @State private var showSheet: Bool = false
         var body: some View {
             Button(
                 action: {
-                    HelpModel.shared.page = page
+                    help.page = page
 #if os(macOS)
                     openWindow(value: KodioApp.Windows.help)
 #else
@@ -96,9 +97,10 @@ extension HelpView {
 #endif
                 },
                 label: {
-                    Label("Help", systemImage: "questionmark.circle")
+                    Label("Help", systemImage: "questionmark.circle.fill")
                 }
             )
+            .buttonStyle(ButtonStyles.Help())
             .sheet(isPresented: $showSheet) {
                 HelpView()
                     .foregroundColor(.primary)

@@ -241,11 +241,9 @@ extension PartsView {
     /// View a Kodi host selector
     struct HostSelector: View {
         /// The AppState model that has the hosts information
-        @Environment(AppState.self)
-        private var appState
+        @Environment(AppState.self) private var appState
         /// The KodiConnector model
-        @Environment(KodiConnector.self)
-        private var kodi
+        @Environment(KodiConnector.self) private var kodi
         /// The body of the `View`
         var body: some View {
             if kodi.hostIsOnline(kodi.host) {

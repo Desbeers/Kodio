@@ -9,19 +9,19 @@ import SwiftUI
 import SwiftlyKodiAPI
 
 /// SwiftUI `Scene` for the application
-@main
-struct KodioApp: App {
+@main struct KodioApp: App {
     /// The AppState model
     @State private var appState = AppState()
     /// The KodiConnector model
     @State private var kodi = KodiConnector()
     /// The Browser model
     @State private var browser = BrowserModel()
+    /// The Help model
+    @State private var help = HelpModel()
 
 #if os(macOS)
     /// Open new windows
-    @Environment(\.openWindow)
-    var openWindow
+    @Environment(\.openWindow) var openWindow
     /// AppKit app delegate
     @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
 
@@ -34,6 +34,7 @@ struct KodioApp: App {
                 .environment(appState)
                 .environment(kodi)
                 .environment(browser)
+                .environment(help)
                 .task {
                     if kodi.status == .none {
                         /// Get the selected host (if any)
@@ -56,7 +57,7 @@ struct KodioApp: App {
             }
             /// Replace `Help`
             CommandGroup(replacing: .help) {
-                Button("Help") {
+                Button("Kodio Help") {
                     openWindow(value: Windows.help)
                 }
             }
@@ -79,6 +80,7 @@ struct KodioApp: App {
                 .frame(width: 700, height: 500)
                 .environment(appState)
                 .environment(kodi)
+                .environment(help)
         }
         /// Add Kodio to the Menu Bar
         MenuBarExtra("Kodio", systemImage: "k.square.fill") {
@@ -94,6 +96,7 @@ struct KodioApp: App {
                     AboutView()
                 case .help:
                     HelpView()
+                        .environment(help)
                 case .none:
                     AboutView()
                 }
@@ -153,6 +156,6 @@ extension KodioApp {
         /// About `View`
         case about = "About Kodio"
         /// Help `View`
-        case help = "Help"
+        case help = "Kodio Help"
     }
 }

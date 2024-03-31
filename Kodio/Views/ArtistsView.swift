@@ -11,8 +11,7 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the artists
 struct ArtistsView: View {
     /// The Browser model
-    @Environment(BrowserModel.self)
-    private var browser
+    @Environment(BrowserModel.self) private var browser
     /// The sorting
     private let sorting = SwiftlyKodiAPI.List.Sort(id: "artists", method: .title, order: .ascending)
     /// The collection

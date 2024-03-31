@@ -11,8 +11,7 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for a single song
 struct SongView: View {
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// The song to view
     let song: Audio.Details.Song
     /// The optional selected album

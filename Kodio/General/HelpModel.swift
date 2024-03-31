@@ -8,21 +8,17 @@
 import SwiftUI
 
 /// The model for ``HelpView``
-final class HelpModel: ObservableObject {
-    /// The shared instance of this HelpModel class
-    static let shared = HelpModel()
+@Observable
+final class HelpModel {
     /// The page to show
-    @Published var page: Page? = .kodioHelp
+    var page: Page? = .kodioHelp
     /// The content of the page
-    @Published var text: String = ""
-    /// Private init
-    private init() { }
+    var text: String = ""
 }
 
 extension HelpModel {
 
     /// The pages for the Help View
-    /// - Note: They are taken from the `Documentation Catalog`
     enum Page: String, CaseIterable {
         /// General help
         case kodioHelp = "KodioHelp"

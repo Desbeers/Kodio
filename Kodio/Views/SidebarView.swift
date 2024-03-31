@@ -15,11 +15,9 @@ struct SidebarView: View {
     /// The current selection in the sidebar
     @State private var selection: Router? = .start
     /// The AppState model
-    @Environment(AppState.self)
-    private var appState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// The body of the `View`
     var body: some View {
         List(selection: $selection) {

@@ -18,8 +18,7 @@ extension ButtonStyles {
     /// The Button View for a radio station
     struct RadioStation: View {
         /// The KodiConnector model
-        @Environment(KodiConnector.self)
-        private var kodi
+        @Environment(KodiConnector.self) private var kodi
         /// The radio channe;
         let channel: Audio.Details.Stream
         /// The body of the `View`
@@ -62,8 +61,7 @@ extension ButtonStyles {
     /// Buttom style for a 'play', 'shuffle' or 'stream' button
     struct Play: ButtonStyle {
         /// Enabled or not
-        @Environment(\.isEnabled)
-        var isEnabled
+        @Environment(\.isEnabled) var isEnabled
         /// The style
         func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label

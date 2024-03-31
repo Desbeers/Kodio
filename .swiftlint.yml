@@ -63,10 +63,11 @@ opt_in_rules:
 #    severity: warning
 
 
-#attributes:
-#  always_on_same_line:
-#    - "@main"
-#    - "@objc"
+attributes:
+  always_on_same_line:
+    - "@main"
+    - "@objc"
+    - "@Environment"
 
 force_cast: warning
 force_try: warning

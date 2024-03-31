@@ -11,8 +11,7 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the Menubar Extra
 struct MenuBarExtraView: View {
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// The body of the `View`
     var body: some View {
         VStack {

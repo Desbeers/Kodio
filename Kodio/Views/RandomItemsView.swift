@@ -13,8 +13,7 @@ struct RandomItemsView: View {
     /// The randon albums
     @State private var albums: [Audio.Details.Album] = []
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// The body of the `View`
     var body: some View {
         VStack {
@@ -62,11 +61,9 @@ private struct AlbumOptions: ViewModifier {
     /// The album to show
     let album: Audio.Details.Album
     /// The AppState model
-    @Environment(AppState.self)
-    private var appState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// Show play options or not
     @State private var showOptions: Bool = false
     /// The opacity of the `View`

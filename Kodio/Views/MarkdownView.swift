@@ -14,7 +14,7 @@ import SwiftUI
 /// - Note: The first heading is ignored; the Views have to show it themself
 struct MarkdownView: View {
     /// The Help model
-    @EnvironmentObject var help: HelpModel
+    @Environment(HelpModel.self) private var help
     /// The Markdown `String` that will be formatted
     let markdown: String
     /// The body of the `View`
@@ -197,7 +197,7 @@ extension MarkdownView {
     @ViewBuilder
     func formatAttributedString(text: String) -> some View {
         if text.contains("<doc:") {
-            HelpModel.shared.doccLink(text: text)
+            help.doccLink(text: text)
         } else if let attributedString = try? AttributedString(markdown: text) {
             Text(attributedString)
         } else {

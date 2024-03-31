@@ -11,8 +11,7 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the songs
 struct SongsView: View {
     /// The Browser model
-    @Environment(BrowserModel.self)
-    private var browser
+    @Environment(BrowserModel.self) private var browser
     /// The body of the `View`
     var body: some View {
         /// On macOS, `List` is not lazy, so slow... So, viewed in a `LazyVStack` and no fancy swipes....

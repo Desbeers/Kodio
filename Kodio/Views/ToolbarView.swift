@@ -11,8 +11,7 @@ import SwiftlyKodiAPI
 /// SwiftUI `ViewModifier` for the toolbar
 struct ToolbarView: ViewModifier {
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
 #if os(visionOS)
     /// Placement of the toolbar
     let placement: ToolbarItemPlacement = .bottomOrnament
@@ -103,8 +102,7 @@ extension ToolbarView {
     /// The 'Now Playing' View
     struct NowPlaying: View {
         /// The KodiConnector model
-        @Environment(KodiConnector.self)
-        private var kodi
+        @Environment(KodiConnector.self) private var kodi
         /// The body of the `View`
         var body: some View {
             HStack(spacing: 0) {
@@ -154,8 +152,7 @@ extension ToolbarView {
     /// SwiftUI `View` for the progess of the current item in the player
     struct NowPlayingProgressView: View {
         /// The KodiConnector model
-        @Environment(KodiConnector.self)
-        private var kodi
+        @Environment(KodiConnector.self) private var kodi
         /// The current seconds
         @State private var currentSeconds: Double = 0
         /// The total seconds
@@ -222,11 +219,9 @@ extension ToolbarView {
     /// - Note: This will set 'Party Mode' for audio, I don't see a use of videos for this
     struct SetPartyMode: View {
         /// The AppState model
-        @Environment(AppState.self)
-        private var appState
+        @Environment(AppState.self) private var appState
         /// The KodiConnector model
-        @Environment(KodiConnector.self)
-        private var kodi
+        @Environment(KodiConnector.self) private var kodi
         /// The body of the `View`
         var body: some View {
             Button(action: {

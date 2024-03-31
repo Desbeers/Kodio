@@ -10,7 +10,7 @@ import SwiftlyKodiAPI
 
 /// The model for ``BrowserView``
 @Observable
-class BrowserModel {
+final class BrowserModel: Sendable {
     /// The selection of optional genre, artist or album in the ``BrowserView``
     var selection = Selection()
     /// Details for the 'highest selected item'
@@ -48,7 +48,7 @@ extension BrowserModel {
     }
 
     /// The optional selection in the ``BrowserView``
-    struct Selection: Equatable, Hashable {
+    struct Selection: Equatable, Hashable, Sendable {
         /// Currently selected genre
         var genre: Library.Details.Genre?
         /// Currently selected artist

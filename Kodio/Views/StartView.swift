@@ -11,11 +11,9 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the start
 struct StartView: View {
     /// The AppState model
-    @Environment(AppState.self)
-    private var appState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// Rotate the record
     @State private var rotate: Bool = false
     /// The loading status of the View

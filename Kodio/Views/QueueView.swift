@@ -11,11 +11,9 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the queue
 struct QueueView: View {
     /// The AppState model
-    @Environment(AppState.self)
-    private var appState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// The status of loading the queue
     @State private var status: ViewStatus = .loading
     /// The list of items
@@ -99,14 +97,13 @@ struct QueueView: View {
                     .padding()
                     .task(id: kodi.player.currentItem?.id) {
                         if let id = kodi.player.currentItem?.id {
-                            withAnimation(.linear(duration: 1)) {
-                                self.scrollID = id
-                            }
+                            self.scrollID = id
                         }
                     }
                 }
                 .scrollPosition(id: $scrollID, anchor: .center)
                 .scrollTargetLayout()
+                .animation(.smooth, value: scrollID)
             }
         }
     }

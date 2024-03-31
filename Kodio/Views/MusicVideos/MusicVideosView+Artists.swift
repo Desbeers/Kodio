@@ -13,11 +13,9 @@ extension MusicVideosView {
     /// View all artists
     struct Artists: View {
         /// The AppState model
-        @Environment(AppState.self)
-        private var appState
+        @Environment(AppState.self) private var appState
         /// The KodiConnector model
-        @Environment(KodiConnector.self)
-        private var kodi
+        @Environment(KodiConnector.self) private var kodi
         /// The current artist
         @State private var artists: [Audio.Details.Artist] = []
         /// The current `MusicVideosRouter`

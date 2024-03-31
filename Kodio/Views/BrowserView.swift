@@ -11,14 +11,11 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the browser
 struct BrowserView: View {
     /// The AppState model
-    @Environment(AppState.self)
-    private var appState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// The Browser model
-    @Environment(BrowserModel.self)
-    private var browser
+    @Environment(BrowserModel.self) private var browser
     /// The loading status of the View
     @State private var status: ViewStatus = .loading
     /// The body of the `View`

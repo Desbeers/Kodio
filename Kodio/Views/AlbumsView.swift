@@ -11,8 +11,7 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the albums
 struct AlbumsView: View {
     /// The Browser model
-    @Environment(BrowserModel.self)
-    private var browser
+    @Environment(BrowserModel.self) private var browser
     /// The body of the `View`
     var body: some View {
         ScrollView {

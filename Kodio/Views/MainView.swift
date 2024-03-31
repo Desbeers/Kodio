@@ -11,11 +11,9 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for the main view
 struct MainView: View {
     /// The AppState model
-    @Environment(AppState.self)
-    private var appState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// Show all columns
     @State private var columnVisibility = NavigationSplitViewVisibility.all
     /// The body of the `View`

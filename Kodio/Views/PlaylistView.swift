@@ -11,11 +11,9 @@ import SwiftlyKodiAPI
 /// SwiftUI `View` for a playlist
 struct PlaylistView: View {
     /// The AppState model
-    @Environment(AppState.self)
-    private var appState
+    @Environment(AppState.self) private var appState
     /// The KodiConnector model
-    @Environment(KodiConnector.self)
-    private var kodi
+    @Environment(KodiConnector.self) private var kodi
     /// The list of songs
     @State private var songs: [Audio.Details.Song] = []
     /// The playlist file
