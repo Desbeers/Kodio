@@ -106,17 +106,21 @@ struct StartView: View {
         }
         .frame(maxWidth: .infinity)
         .overlay(alignment: .trailing) {
-            Button(action: {
-                Task {
-                    await kodi.loadLibrary(cache: false)
+            Button(
+                action: {
+                    let kodi = kodi
+                    Task {
+                        await kodi.loadLibrary(cache: false)
+                    }
+                },
+                label: {
+                    Label(title: {
+                        Text("Reload Library")
+                    }, icon: {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                    })
                 }
-            }, label: {
-                Label(title: {
-                    Text("Reload Library")
-                }, icon: {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                })
-            })
+            )
             .disabled(kodi.status != .loadedLibrary && kodi.status != .outdatedLibrary)
             .playButtonStyle()
         }

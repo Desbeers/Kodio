@@ -36,6 +36,7 @@ struct HeaderView: View {
     }
     /// Play the songs in the  current list
     /// - Parameter shuffle: Bool to shuffle the list or not
+    @MainActor
     func playSongs(shuffle: Bool) {
         var media: KodioSettings.Crossfade = .playlist
         if let selectedAlbum = browser.selection.album {

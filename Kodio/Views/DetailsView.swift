@@ -54,7 +54,7 @@ struct DetailsView: View {
     }
 
     /// Overlay the base artwork
-    @ViewBuilder var overlay: some View {
+    @ViewBuilder @MainActor var overlay: some View {
         if let item = browser.details {
             switch item.media {
             case .artist:

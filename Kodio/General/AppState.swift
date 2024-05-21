@@ -59,6 +59,7 @@ extension AppState {
     /// - Parameter media: The kind of media for optional crossfade
     func setPlayerSettings(host: HostItem, media: KodioSettings.Crossfade) {
         if settings.togglePlayerSettings {
+            let settings = settings
             Task {
                 /// Set defaults
                 var replayGain: KodioSettings.ReplayGain = .track

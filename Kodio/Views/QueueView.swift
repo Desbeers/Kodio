@@ -95,15 +95,18 @@ struct QueueView: View {
                         }
                     }
                     .padding()
-                    .task(id: kodi.player.currentItem?.id) {
-                        if let id = kodi.player.currentItem?.id {
-                            self.scrollID = id
-                        }
-                    }
                 }
                 .scrollPosition(id: $scrollID, anchor: .center)
                 .scrollTargetLayout()
                 .animation(.smooth, value: scrollID)
+                .onAppear {
+                    self.scrollID = kodi.player.currentItem?.id
+                }
+                .onChange(of: kodi.player.currentItem?.id) {
+                    if let id = kodi.player.currentItem?.id {
+                        self.scrollID = id
+                    }
+                }
             }
         }
     }

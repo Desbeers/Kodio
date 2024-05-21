@@ -7,7 +7,7 @@
       "location" : "https://github.com/Desbeers/SwiftlyKodiAPI",
       "state" : {
         "branch" : "main",
-        "revision" : "33ee2770e94ad68d9f6dd8c746f677654c3bf118"
+        "revision" : "509f1a84752a626e64efa30613e1a1c80c1704da"
       }
     },
     {
@@ -25,7 +25,7 @@
       "location" : "https://github.com/Desbeers/SwiftlyStructCache",
       "state" : {
         "branch" : "main",
-        "revision" : "e9b371734411f18e98982944ad213756b7f891fb"
+        "revision" : "96346529ca304eeed2412a8140ca2661f162115c"
       }
     }
   ],

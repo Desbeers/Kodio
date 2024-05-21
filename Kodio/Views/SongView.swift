@@ -87,42 +87,57 @@ extension SongView {
         })
         Menu {
             if song.userRating > 0 {
-                Button(action: {
-                    Task {
-                        await song.setUserRating(host: kodi.host, rating: 0)
+                Button(
+                    action: {
+                        let song = song
+                        let host = kodi.host
+                        Task {
+                            await song.setUserRating(host: host, rating: 0)
+                        }
+                    },
+                    label: {
+                        HStack {
+                            Image(systemName: "star.slash")
+                            Text("Remove your rating")
+                        }
                     }
-                }, label: {
-                    HStack {
-                        Image(systemName: "star.slash")
-                        Text("Remove your rating")
-                    }
-                })
+                )
             }
             ForEach((1...10).reversed(), id: \.self) { value in
-                Button(action: {
-                    Task {
-                        await song.setUserRating(host: kodi.host, rating: value)
+                Button(
+                    action: {
+                        let song = song
+                        let host = kodi.host
+                        Task {
+                            await song.setUserRating(host: host, rating: value)
+                        }
+                    },
+                    label: {
+                        HStack {
+                            Image(systemName: song.userRating == value ? "star.fill" : "\(value).circle.fill")
+                            Text("Rate with \(value)")
+                        }
                     }
-                }, label: {
-                    HStack {
-                        Image(systemName: song.userRating == value ? "star.fill" : "\(value).circle.fill")
-                        Text("Rate with \(value)")
-                    }
-                })
+                )
                 .disabled(song.userRating == value)
             }
         } label: {
             Text("Rate your song")
         }
-        Button(action: {
-            Task {
-                await song.togglePlayedState(host: kodi.host)
+        Button(
+            action: {
+                let song = song
+                let host = kodi.host
+                Task {
+                    await song.togglePlayedState(host: host)
+                }
+            },
+            label: {
+                Label(
+                    song.playcount == 0 ? "Mark song as played" : "Mark song as new",
+                    systemImage: song.playcount == 0 ? "speaker" : "speaker.slash"
+                )
             }
-        }, label: {
-            Label(
-                song.playcount == 0 ? "Mark song as played" : "Mark song as new",
-                systemImage: song.playcount == 0 ? "speaker" : "speaker.slash"
-            )
-        })
+        )
     }
 }
