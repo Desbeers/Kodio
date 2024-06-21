@@ -18,8 +18,6 @@ import SwiftlyKodiAPI
     @State private var browser = BrowserModel()
     /// The Help model
     @State private var help = HelpModel()
-
-#if os(macOS)
     /// Open new windows
     @Environment(\.openWindow) var openWindow
     /// AppKit app delegate
@@ -108,45 +106,6 @@ import SwiftlyKodiAPI
         .defaultSize(width: 800, height: 600)
         .defaultPosition(.center)
     }
-
-#endif
-
-#if os(visionOS)
-    /// The body of the `Scene`
-    var body: some Scene {
-        WindowGroup {
-            MainView()
-                .environment(appState)
-                .environment(kodi)
-                .environment(browser)
-                .task {
-                    if kodi.status == .none {
-                        /// Get the selected host (if any)
-                        kodi.getSelectedHost()
-                    }
-                }
-        }
-        .defaultSize(width: 1920, height: 1080)
-    }
-#endif
-
-#if os(iOS)
-    /// The body of the `Scene`
-    var body: some Scene {
-        WindowGroup {
-            MainView()
-                .environment(appState)
-                .environment(kodi)
-                .environment(browser)
-                .task {
-                    if kodi.status == .none {
-                        /// Get the selected host (if any)
-                        kodi.getSelectedHost()
-                    }
-                }
-        }
-    }
-#endif
 }
 
 extension KodioApp {

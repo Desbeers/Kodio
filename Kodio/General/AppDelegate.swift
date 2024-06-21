@@ -5,8 +5,6 @@
 //  © 2023 Nick Berendsen
 //
 
-#if os(macOS)
-
 import SwiftUI
 
 /// AppKit app delegate
@@ -17,5 +15,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         false
     }
 }
-
-#endif

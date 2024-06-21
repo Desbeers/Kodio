@@ -80,19 +80,10 @@ struct StartView: View {
             Text("There is no host configured")
                 .font(.caption)
                 .opacity(0.6)
-#if os(macOS)
             SettingsLink {
                 Text("Add a host")
             }
             .playButtonStyle()
-#else
-            Button(action: {
-                appState.selection = .appSettings
-            }, label: {
-                Text("Add a host")
-            })
-            .playButtonStyle()
-#endif
         }
     }
     /// View for actions for the selected host

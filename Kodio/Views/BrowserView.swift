@@ -51,25 +51,12 @@ struct BrowserView: View {
 
     /// The content of the `View`
     @ViewBuilder var content: some View {
-#if os(macOS)
         VSplitView {
             top
             HSplitView {
                 bottom
             }
         }
-#endif
-
-#if os(visionOS) || os(iOS)
-        VStack {
-            /// Dont scroll the lists over the toolbar
-            Divider().opacity(0)
-            top
-            HStack {
-                bottom
-            }
-        }
-#endif
     }
 
     /// The top part of the `View`

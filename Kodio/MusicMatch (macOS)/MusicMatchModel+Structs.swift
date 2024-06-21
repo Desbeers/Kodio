@@ -5,8 +5,6 @@
 //  © 2023 Nick Berendsen
 //
 
-#if os(macOS)
-
 import Foundation
 import SwiftlyKodiAPI
 
@@ -62,5 +60,3 @@ extension MusicMatchModel {
         var current: Double = 0
     }
 }
-
-#endif

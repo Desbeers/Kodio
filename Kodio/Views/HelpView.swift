@@ -25,18 +25,6 @@ struct HelpView: View {
                     }
                 }
                 .toolbar(removing: .sidebarToggle)
-#if os(visionOS)
-                /// Add a button to dismiss the Sheet
-                .toolbar {
-                    ToolbarItem(placement: .navigation) {
-                        Button(action: {
-                            dismiss()
-                        }, label: {
-                            Image(systemName: "xmark.circle")
-                        })
-                    }
-                }
-#endif
             },
             detail: {
                 VStack {
@@ -82,29 +70,20 @@ extension HelpView {
         var page: HelpModel.Page = .kodioHelp
         /// The Help model
         @Environment(HelpModel.self) private var help
-        /// Open Window (macOS)
+        /// Open Window
         @Environment(\.openWindow) var openWindow
-        /// Open Sheet (other)
-        @State private var showSheet: Bool = false
+
         var body: some View {
             Button(
                 action: {
                     help.page = page
-#if os(macOS)
                     openWindow(value: KodioApp.Windows.help)
-#else
-                    showSheet.toggle()
-#endif
                 },
                 label: {
                     Label("Help", systemImage: "questionmark.circle.fill")
                 }
             )
             .buttonStyle(ButtonStyles.Help())
-            .sheet(isPresented: $showSheet) {
-                HelpView()
-                    .foregroundColor(.primary)
-            }
         }
     }
 }

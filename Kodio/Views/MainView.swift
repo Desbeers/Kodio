@@ -42,28 +42,14 @@ struct MainView: View {
                     case .search:
                         BrowserView()
                             .id(appState.query)
-#if os(macOS)
                     case .musicMatch:
                         MusicMatchView(kodi: kodi)
-#endif
                     default:
                         BrowserView()
                             .id(appState.selection)
                     }
                 }
                 .modifier(ToolbarView())
-#if os(visionOS)
-                .toolbar {
-                    ToolbarItemGroup(placement: .topBarLeading) {
-                        VStack(alignment: .leading) {
-                            Text(appState.selection.item.title)
-                                .font(.largeTitle)
-                            Text(appState.selection.item.description)
-                                .foregroundStyle(.tertiary)
-                        }
-                    }
-                }
-#endif
             }
         )
         .task(id: kodi.status) {

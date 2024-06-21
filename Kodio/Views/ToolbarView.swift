@@ -12,14 +12,8 @@ import SwiftlyKodiAPI
 struct ToolbarView: ViewModifier {
     /// The KodiConnector model
     @Environment(KodiConnector.self) private var kodi
-#if os(visionOS)
-    /// Placement of the toolbar
-    let placement: ToolbarItemPlacement = .bottomOrnament
-#else
     /// Placement of the toolbar
     let placement: ToolbarItemPlacement = .automatic
-#endif
-
     /// The toolbar
     func body(content: Content) -> some View {
         content

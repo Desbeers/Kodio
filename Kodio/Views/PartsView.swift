@@ -62,10 +62,6 @@ extension PartsView {
                     )
                     .saturation(0.4)
                 )
-#if os(iOS)
-                .cornerRadius(10)
-                .padding([.top, .horizontal])
-#endif
         }
     }
 }

@@ -131,9 +131,6 @@ extension ButtonStyles {
                 .brightness(configuration.isPressed ? 0.1 : 0)
                 .padding(.vertical, 2)
                 .padding(.trailing, 8)
-#if os(visionOS)
-                .hoverEffect()
-#endif
         }
         /// Brightness and saturation values for a button
         private var buttonColor: (brightness: Double, saturation: Double) {
@@ -157,11 +154,7 @@ extension ButtonStyles {
     struct PlayButtonStyle: ViewModifier {
         public func body(content: Content) -> some View {
             content
-            #if os(visionOS)
-                .buttonStyle(.bordered)
-            #else
                 .buttonStyle(Play())
-            #endif
         }
     }
 }

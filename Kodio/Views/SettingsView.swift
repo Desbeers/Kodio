@@ -20,7 +20,6 @@ struct SettingsView: View {
     var body: some View {
         @Bindable var appState = appState
         VStack {
-#if os(macOS)
             TabView(selection: $selection) {
                 kodi.hostsView(media: .audio, player: .local)
                     .tabItem {
@@ -38,47 +37,6 @@ struct SettingsView: View {
                     }
                     .tag(Tabs.playback)
             }
-#else
-            VStack(spacing: 0) {
-                HStack {
-                    Button(
-                        action: { selection = .kodiHosts },
-                        label: { Tabs.kodiHosts.label }
-                    )
-                    Button(
-                        action: { selection = .sidebar },
-                        label: { Tabs.sidebar.label }
-                    )
-                    Button(
-                        action: { selection = .playback },
-                        label: { Tabs.playback.label }
-                    )
-                    HelpView.HelpButton()
-                    Button(
-                        action: { selection = .about },
-                        label: { Tabs.about.label }
-                    )
-                }
-                .playButtonStyle()
-                .padding()
-                .modifier(PartsView.ListHeader())
-                VStack {
-                    switch selection {
-                    case .kodiHosts:
-                        kodi.hostsView(media: .audio, player: .local)
-                    case .sidebar:
-                        Sidebar(settings: $appState.settings)
-                    case .playback:
-                        Playback(settings: $appState.settings)
-                    case .help:
-                        HelpView()
-                    case .about:
-                        AboutView()
-                    }
-                }
-                .frame(maxWidth: 800)
-            }
-#endif
         }
         .animation(.default, value: selection)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -226,7 +184,6 @@ extension SettingsView {
                 Text("Sidebar Items")
                     .font(.title)
                 VStack(alignment: .leading) {
-#if os(macOS)
                     Toggle(isOn: $settings.showMusicMatch) {
                         VStack(alignment: .leading) {
                             Text("Show Music Match")
@@ -234,7 +191,6 @@ extension SettingsView {
                                 .font(.caption)
                         }
                     }
-#endif
                     Toggle(isOn: $settings.showMusicVideos) {
                         VStack(alignment: .leading) {
                             Text("Show Music Videos")
