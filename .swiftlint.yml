@@ -78,11 +78,10 @@ legacy_hashing: error
 
 identifier_name:
   excluded:
-    - i
+    - as
     - id
     - x
     - y
-    - z
 
 indentation_width:
   indentation_width: 4

@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftlyKodiAPI
-import SwiftlyStructCache
 import OSLog
 
 /// Structure with all the Kodio Settings

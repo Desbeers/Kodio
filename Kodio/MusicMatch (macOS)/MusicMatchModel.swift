@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftlyKodiAPI
-import SwiftlyStructCache
 import iTunesLibrary
 
 /// The model for ``MusicMatchView``

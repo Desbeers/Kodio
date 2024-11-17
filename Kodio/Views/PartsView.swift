@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftlyKodiAPI
-import SwiftlyRotatingView
 
 /// SwiftUI `View` parts
 enum PartsView {

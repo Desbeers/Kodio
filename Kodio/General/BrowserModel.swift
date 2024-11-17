@@ -76,7 +76,7 @@ extension BrowserModel {
         /// Filter the songs
         switch router {
         case .compilationAlbums:
-            let compilationAlbums = kodi.library.albums.filter({ $0.compilation == true }).map { $0.albumID }
+            let compilationAlbums = kodi.library.albums.filter { $0.compilation == true } .map { $0.albumID }
             library.songs = kodi.library.songs
                 .filter {
                     compilationAlbums.contains($0.albumID)

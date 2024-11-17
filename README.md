@@ -1,24 +1,12 @@
 #  Kodio
 
-## Important:
-
-Due to rude treatment of Apple Support to get an official Apple Developer Account, the iPad and Vision Pro targets for **Kodio** are dropped.
-
-> Upon review, we can’t verify your identity with the Apple Developer app or provide further assistance with this Apple ID for Apple developer programs.
-
-Request for further assistance was ignored. So, I lost interest to code for fully closed platforms.
-
----
-
-## A macOS, ~~iPadOS~~ and ~~visionOS~~ music remote for [Kodi](https://kodi.tv)
+## A macOS music remote for [Kodi](https://kodi.tv)
 
 ![Icon](https://github.com/Desbeers/Kodio/raw/main/Images/icon.png)
 
 **Kodio** is written in SwiftUI 5 and needs Xcode 15 to compile. Kodi version 19 *Matrix* is required.
 
 - macOS Sonoma
-- ~~iPadOS 17~~
-- ~~visionOS 1~~
 
 ![Screenshot](https://github.com/Desbeers/Kodio/raw/main/Images/screenshot-macOS.jpg)
 
@@ -27,14 +15,12 @@ Unlike most SwiftUI programmers, my focus is on macOS. It is a challenge because
 There are plenty Kodi music remotes for iOS and iPadOS.
 
 For macOS, there is none, except mine. I think it is also a little bit great, haha!
-Music and Kodi.
 
 ### Bugs, bugs, bugs!
 
 Yes, I know. **Kodio** is a bit buggy and always will be. Learning everyday something new and **Kodio** will always be work in progress. Part of the hobby! It is not my job. Not even close; I'm actually a seaman with a lot of free time, haha!
 
 - Kodio depends on Bonjour to find your Kodi hosts.
-- ~~The visionOS version is only tested in the simulator but looks good!~~
 
 ## Dependencies
 

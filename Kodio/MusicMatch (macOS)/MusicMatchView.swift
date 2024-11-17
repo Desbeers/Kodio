@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftlyKodiAPI
-import SwiftlyStructCache
 
 /// SwiftUI `View` for syncing ratings and playcounts between Kodi and Music
 struct MusicMatchView: View {
