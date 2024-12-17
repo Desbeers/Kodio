@@ -17,7 +17,7 @@
     <a title="KodioSettings Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Kodio</a> (100% documented)</p>
+        <p><a href="../index.html">Kodio</a> (97% documented)</p>
         <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
@@ -28,7 +28,9 @@
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html">Kodio Reference</a>
+        <a href="../index.html">Kodio</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        <a href="../General.html">General</a>
         <img id="carat" src="../img/carat.png" alt=""/>
         KodioSettings Structure Reference
       </p>
@@ -69,9 +71,6 @@
                 <a href="../Classes/AppState.html">AppState</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AppState/State.html">– State</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/BrowserModel.html">BrowserModel</a>
               </li>
               <li class="nav-group-task">
@@ -100,12 +99,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/MusicMatchModel/Progress.html">– Progress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/RotatingRecordModel.html">RotatingRecordModel</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/RotatingRecordModel/Rotate.html">– Rotate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/HelpModel.html">HelpModel</a>
@@ -149,9 +142,6 @@
                 <a href="../Structs/SongView.html">SongView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SongView/Actions.html">– Actions</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/MusicVideosView.html">MusicVideosView</a>
               </li>
               <li class="nav-group-task">
@@ -179,9 +169,6 @@
                 <a href="../Structs/QueueView.html">QueueView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SearchView.html">SearchView</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/AboutView.html">AboutView</a>
               </li>
               <li class="nav-group-task">
@@ -192,9 +179,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/HelpView/HelpButton.html">– HelpButton</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/HostsView.html">HostsView</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/MarkdownView.html">MarkdownView</a>
@@ -248,9 +232,6 @@
                 <a href="../Enums/PartsView/ListHeader.html">– ListHeader</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/PartsView/LoadingState.html">– LoadingState</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/PartsView/RotatingRecord.html">– RotatingRecord</a>
               </li>
               <li class="nav-group-task">
@@ -299,10 +280,50 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Cache.html">Cache</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Other%20Extensions.html">Other Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Extensions/Animation.html">Animation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/AnimationContext.html">AnimationContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/EnvironmentValues.html">EnvironmentValues</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AlbumOptions.html">AlbumOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RandomItemsView.html">RandomItemsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotateSpeedAnimation.html">RotateSpeedAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotateSpeedKey.html">RotateSpeedKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotatingSpeedState.html">RotatingSpeedState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotatingView.html">RotatingView</a>
               </li>
             </ul>
           </li>
@@ -315,7 +336,7 @@
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">KodioSettings</span> <span class="p">:</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">KodioSettings</span><span class="p">:</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
 
                 </div>
               </div>
@@ -347,7 +368,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">showMusicMatch</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">showMusicMatch</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
 
                         </div>
                       </div>
@@ -374,7 +395,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">showMusicVideos</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">showMusicVideos</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
 
                         </div>
                       </div>
@@ -401,7 +422,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">showRadioStations</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">showRadioStations</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -428,7 +449,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">userRating</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">userRating</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">8</span></code></pre>
 
                         </div>
                       </div>
@@ -457,7 +478,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">togglePlayerSettings</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">togglePlayerSettings</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -484,7 +505,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">crossfadePlaylists</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">crossfadePlaylists</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -511,7 +532,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">crossfadeCompilations</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">crossfadeCompilations</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -538,7 +559,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">crossfadePartyMode</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">crossfadePartyMode</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -565,7 +586,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">crossfade</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">crossfade</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
 
                         </div>
                       </div>
@@ -652,52 +673,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio0A8SettingsV09setPlayerB05mediayAC9CrossfadeO_tFZ"></a>
-                    <a name="//apple_ref/swift/Method/setPlayerSettings(media:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio0A8SettingsV09setPlayerB05mediayAC9CrossfadeO_tFZ">setPlayerSettings(media:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Set the Player Settings if &lsquo;togglePlayerSettings&rsquo; is true</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">setPlayerSettings</span><span class="p">(</span><span class="nv">media</span><span class="p">:</span> <span class="kt"><a href="../Structs/KodioSettings/Crossfade.html">Crossfade</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>media</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The kind of media for optional  <code><a href="../Structs/KodioSettings/Crossfade.html">Crossfade</a></code></p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:5Kodio0A8SettingsV10ReplayGainO"></a>
                     <a name="//apple_ref/swift/Enum/ReplayGain" class="dashAnchor"></a>
                     <a class="token" href="#/s:5Kodio0A8SettingsV10ReplayGainO">ReplayGain</a>
@@ -716,7 +691,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">ReplayGain</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">ReplayGain</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -756,8 +731,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-08-21)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2024 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2024-11-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>

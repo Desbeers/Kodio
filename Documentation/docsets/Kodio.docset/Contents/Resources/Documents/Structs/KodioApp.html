@@ -17,7 +17,7 @@
     <a title="KodioApp Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Kodio</a> (100% documented)</p>
+        <p><a href="../index.html">Kodio</a> (97% documented)</p>
         <p class="header-right"><a href="https://github.com/desbeers/kodio/"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
@@ -28,7 +28,9 @@
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html">Kodio Reference</a>
+        <a href="../index.html">Kodio</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        <a href="../General.html">General</a>
         <img id="carat" src="../img/carat.png" alt=""/>
         KodioApp Structure Reference
       </p>
@@ -69,9 +71,6 @@
                 <a href="../Classes/AppState.html">AppState</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/AppState/State.html">– State</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Classes/BrowserModel.html">BrowserModel</a>
               </li>
               <li class="nav-group-task">
@@ -100,12 +99,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/MusicMatchModel/Progress.html">– Progress</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/RotatingRecordModel.html">RotatingRecordModel</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/RotatingRecordModel/Rotate.html">– Rotate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/HelpModel.html">HelpModel</a>
@@ -149,9 +142,6 @@
                 <a href="../Structs/SongView.html">SongView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SongView/Actions.html">– Actions</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/MusicVideosView.html">MusicVideosView</a>
               </li>
               <li class="nav-group-task">
@@ -179,9 +169,6 @@
                 <a href="../Structs/QueueView.html">QueueView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Structs/SearchView.html">SearchView</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Structs/AboutView.html">AboutView</a>
               </li>
               <li class="nav-group-task">
@@ -192,9 +179,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/HelpView/HelpButton.html">– HelpButton</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/HostsView.html">HostsView</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/MarkdownView.html">MarkdownView</a>
@@ -248,9 +232,6 @@
                 <a href="../Enums/PartsView/ListHeader.html">– ListHeader</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Enums/PartsView/LoadingState.html">– LoadingState</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Enums/PartsView/RotatingRecord.html">– RotatingRecord</a>
               </li>
               <li class="nav-group-task">
@@ -299,10 +280,50 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Other%20Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Cache.html">Cache</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Other%20Extensions.html">Other Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Extensions/Animation.html">Animation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/AnimationContext.html">AnimationContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/EnvironmentValues.html">EnvironmentValues</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/View.html">View</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Structs.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AlbumOptions.html">AlbumOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RandomItemsView.html">RandomItemsView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotateSpeedAnimation.html">RotateSpeedAnimation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotateSpeedKey.html">RotateSpeedKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotatingSpeedState.html">RotatingSpeedState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RotatingView.html">RotatingView</a>
               </li>
             </ul>
           </li>
@@ -315,8 +336,7 @@
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">@main</span>
-<span class="kd">struct</span> <span class="kt">KodioApp</span> <span class="p">:</span> <span class="kt">App</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">KodioApp</span><span class="p">:</span> <span class="kt">App</span></code></pre>
 
                 </div>
               </div>
@@ -329,9 +349,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio0A3AppV8appStateAA0bD0Cvp"></a>
+                    <a name="/s:5Kodio0A3AppV8appState33_4BB1A2024DBA29F56B7C25E05D3F99AELLAA0bD0Cvp"></a>
                     <a name="//apple_ref/swift/Property/appState" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio0A3AppV8appStateAA0bD0Cvp">appState</a>
+                    <a class="token" href="#/s:5Kodio0A3AppV8appState33_4BB1A2024DBA29F56B7C25E05D3F99AELLAA0bD0Cvp">appState</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -346,8 +366,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@StateObject</span>
-<span class="k">var</span> <span class="nv">appState</span><span class="p">:</span> <span class="kt"><a href="../Classes/AppState.html">AppState</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">appState</span> <span class="o">=</span> <span class="kt"><a href="../Classes/AppState.html">AppState</a></span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -357,9 +376,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio0A3AppV4kodi14SwiftlyKodiAPI0E9ConnectorCvp"></a>
+                    <a name="/s:5Kodio0A3AppV4kodi33_4BB1A2024DBA29F56B7C25E05D3F99AELL14SwiftlyKodiAPI0O9ConnectorCvp"></a>
                     <a name="//apple_ref/swift/Property/kodi" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio0A3AppV4kodi14SwiftlyKodiAPI0E9ConnectorCvp">kodi</a>
+                    <a class="token" href="#/s:5Kodio0A3AppV4kodi33_4BB1A2024DBA29F56B7C25E05D3F99AELL14SwiftlyKodiAPI0O9ConnectorCvp">kodi</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -374,8 +393,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@StateObject</span>
-<span class="k">var</span> <span class="nv">kodi</span><span class="p">:</span> <span class="kt">KodiConnector</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">kodi</span> <span class="o">=</span> <span class="kt">KodiConnector</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -385,9 +403,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:5Kodio0A3AppV6player14SwiftlyKodiAPI0E6PlayerCvp"></a>
-                    <a name="//apple_ref/swift/Property/player" class="dashAnchor"></a>
-                    <a class="token" href="#/s:5Kodio0A3AppV6player14SwiftlyKodiAPI0E6PlayerCvp">player</a>
+                    <a name="/s:5Kodio0A3AppV7browser33_4BB1A2024DBA29F56B7C25E05D3F99AELLAA12BrowserModelCvp"></a>
+                    <a name="//apple_ref/swift/Property/browser" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio0A3AppV7browser33_4BB1A2024DBA29F56B7C25E05D3F99AELLAA12BrowserModelCvp">browser</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -395,15 +413,41 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The KodiPlayer model</p>
+                        <p>The Browser model</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@StateObject</span>
-<span class="k">var</span> <span class="nv">player</span><span class="p">:</span> <span class="kt">KodiPlayer</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">browser</span> <span class="o">=</span> <span class="kt"><a href="../Classes/BrowserModel.html">BrowserModel</a></span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:5Kodio0A3AppV4help33_4BB1A2024DBA29F56B7C25E05D3F99AELLAA9HelpModelCvp"></a>
+                    <a name="//apple_ref/swift/Property/help" class="dashAnchor"></a>
+                    <a class="token" href="#/s:5Kodio0A3AppV4help33_4BB1A2024DBA29F56B7C25E05D3F99AELLAA9HelpModelCvp">help</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Help model</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">help</span> <span class="o">=</span> <span class="kt"><a href="../Classes/HelpModel.html">HelpModel</a></span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -430,8 +474,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@Environment</span>
-<span class="k">var</span> <span class="nv">openWindow</span><span class="p">:</span> <span class="kt">OpenWindowAction</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">openWindow</span></code></pre>
 
                         </div>
                       </div>
@@ -458,8 +501,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@NSApplicationDelegateAdaptor</span>
-<span class="kd">private</span> <span class="k">var</span> <span class="nv">appDelegate</span><span class="p">:</span> <span class="kt"><a href="../Classes/AppDelegate.html">AppDelegate</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">appDelegate</span><span class="p">:</span> <span class="kt"><a href="../Classes/AppDelegate.html">AppDelegate</a></span></code></pre>
 
                         </div>
                       </div>
@@ -499,28 +541,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">Scene</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">Scene</span></code></pre>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
-                    <a class="token" href="#/">body</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The body of the <code>Scene</code></p>
-
                       </div>
                     </section>
                   </div>
@@ -546,7 +569,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Windows</span> <span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Windows</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">Codable</span></code></pre>
 
                         </div>
                       </div>
@@ -558,8 +581,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2023 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2023-08-21)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+          <p>&copy; 2024 <a class="link" href="https://desbeers.nl" target="_blank" rel="external noopener">Nick Berendsen</a>. All rights reserved. (Last updated: 2024-11-17)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
     </div>

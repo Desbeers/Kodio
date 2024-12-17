@@ -1,6 +1,75 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/MusicMatch (macOS)/MusicMatchModel.swift",
+      "line": 15,
+      "symbol": "MusicMatchModel.init(kodi:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/MusicMatch (macOS)/MusicMatchView.swift",
+      "line": 26,
+      "symbol": "MusicMatchView.init(kodi:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/Views/RandomItemsView.swift",
+      "line": 60,
+      "symbol": "AlbumOptions",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/Views/RandomItemsView.swift",
+      "line": 139,
+      "symbol": "View.albumOptions(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/Views/RotatingView.swift",
+      "line": 65,
+      "symbol": "RotateSpeedKey",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/Views/RotatingView.swift",
+      "line": 70,
+      "symbol": "EnvironmentValues.rotateSpeed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/Views/RotatingView.swift",
+      "line": 92,
+      "symbol": "AnimationContext.rotatingSpeedState",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/Views/RotatingView.swift",
+      "line": 100,
+      "symbol": "Animation.rotateSpeed",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/Views/RotatingView.swift",
+      "line": 102,
+      "symbol": "Animation.rotateSpeed(duration:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Desbeers/Github/Applications/Kodio/Kodio/Views/RotatingView.swift",
+      "line": 107,
+      "symbol": "RotateSpeedAnimation",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    }
   ],
-  "source_directory": "/Users/Desbeers/Documents/Github/Applications/Kodio"
+  "source_directory": "/Users/Desbeers/Github/Applications/Kodio"
 }
