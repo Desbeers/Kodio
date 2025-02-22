@@ -34,7 +34,8 @@ struct AlbumsView: View {
                                         Text(album.displayArtist)
                                             .font(.subheadline)
                                             .opacity(0.8)
-                                        Text("\(album.year.description) ∙ \(album.genre.joined(separator: "∙"))")
+                                        // swiftlint:disable:next line_length
+                                        Text("\(album.year == 0 ? "Unknown Year" : album.year.description) ∙ \(album.genre.isEmpty ? "Unknown Genre" : album.genre.joined(separator: "∙"))")
                                             .font(.caption)
                                             .opacity(0.6)
                                     }

@@ -180,7 +180,7 @@ extension BrowserModel {
         if let album = selection.album {
             songs = songs
                 .filter { $0.albumID == album.albumID }
-                .sorted { $0.track < $1.track }
+                .sorted { ($0.disc, $0.track) < ($1.disc, $1.track) }
         }
 
         /// Return the filtered items

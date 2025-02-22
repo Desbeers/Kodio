@@ -28,7 +28,12 @@ struct SongView: View {
                 Text(song.subtitle)
                     .font(.subheadline)
                     .opacity(0.8)
-                Text(song.details)
+                HStack(spacing: 0) {
+                    Text(song.details)
+                    if album?.totalDiscs ?? 0 > 1 {
+                        Text(" (disc \(song.disc))")
+                    }
+                }
                     .font(.caption)
                     .opacity(0.6)
             }

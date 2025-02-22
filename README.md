@@ -4,9 +4,9 @@
 
 ![Icon](https://github.com/Desbeers/Kodio/raw/main/Images/icon.png)
 
-**Kodio** is written in SwiftUI 5 and needs Xcode 15 to compile. Kodi version 19 *Matrix* is required.
+**Kodio** is written in SwiftUI 6 and needs Xcode 16 to compile. Kodi version 19 *Matrix* is required.
 
-- macOS Sonoma
+- macOS Sequoia
 
 ![Screenshot](https://github.com/Desbeers/Kodio/raw/main/Images/screenshot-macOS.jpg)
 
@@ -34,7 +34,7 @@ The source code of **Kodio** is well [documented](https://desbeers.github.io/Kod
 
 ## How to compile
 
-Xcode 15 is required.
+Xcode 16 is required.
 
 1. Clone the project.
 2. Change the signing certificate to your own.

@@ -55,7 +55,7 @@ extension HelpModel {
             withExtension: "md"
         ) {
             do {
-                let contents = try String(contentsOf: filepath)
+                let contents = try String(contentsOf: filepath, encoding: .utf8)
                 return contents
             } catch let error as NSError {
                 print(error.localizedDescription)
@@ -71,6 +71,7 @@ extension HelpModel {
     /// - Parameter text: The text containing the link
     /// - Returns: A SwiftUI `View`
     @ViewBuilder
+    @MainActor
     func doccLink(text: String) -> some View {
         let doccRegex = /(?<leading>.+?)?<doc:(?<docc>.+?)>(?<trailing>.+?)?/
         if let result = text.wholeMatch(of: doccRegex) {
