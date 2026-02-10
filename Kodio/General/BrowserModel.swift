@@ -169,11 +169,18 @@ extension BrowserModel {
         }
 
         /// Filter by artist
+
+        let sortOrder = [
+            KeyPathComparator(\Audio.Details.Album.year),
+            KeyPathComparator(\Audio.Details.Album.sortByTitle)
+        ]
+
         if let artist = selection.artist {
             songs = songs
                 .filter { $0.albumArtistID.contains(artist.artistID) }
             albums = albums
                 .filter { $0.artistID.contains(artist.artistID) }
+                .sorted(using: sortOrder)
         }
 
         /// Filter by album
